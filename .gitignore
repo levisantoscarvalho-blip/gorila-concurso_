@@ -1,0 +1,16 @@
+# Arquivos do sistema (Windows / Mac)
+desktop.ini
+Thumbs.db
+.DS_Store
+
+# Futuro: dependências, segredos e configurações locais
+node_modules/
+.env
+.env.*
+.vercel/
+
+# Dados pessoais (backups com progresso de estudo) — ficam só neste computador
+Html_Gorilaconcurso/dados-pessoais/
+
+# Versão antiga em arquivo único (tem o progresso pessoal embutido) — fica só neste computador
+Html_Gorilaconcurso/versoes-antigas/

@@ -1,0 +1,28 @@
+/* ════════════════════════════════════════════
+   CALENDÁRIO — MURAL DO MÊS
+   Cartões com os dias estudados do mês.
+   ════════════════════════════════════════════ */
+
+/* ─── MURAL ─── */
+.mural-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.mural-card{background:var(--surface-1);border:1px solid var(--border);border-radius:12px;padding:14px;transition:border-color .15s}
+.mural-card:hover{border-color:var(--border-strong)}
+.mural-date-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.mural-date{font-size:15px;font-weight:600;color:var(--text-primary)}
+.mural-badge{font-size:10px;padding:3px 8px;border-radius:20px;font-weight:600}
+.badge-multi{background:#1a3555;color:#5daadd}
+.badge-ciencia{background:#1e3a6e;color:#7fb0ff}
+.badge-sefaz{background:#1e4a32;color:#6dbc8a}
+.badge-direito{background:#3a2010;color:#e0a050}
+.badge-notario{background:#2a1040;color:#c090f0}
+.badge-nda{background:var(--surface-3);color:var(--text-muted)}
+.mural-items{display:flex;flex-direction:column;gap:5px}
+.mural-item-row{font-size:12px;color:var(--text-secondary);display:flex;justify-content:space-between;align-items:flex-start;padding:5px 0;border-bottom:1px solid var(--border)}
+.mural-item-row:last-child{border:none}
+.mural-item-label{color:var(--text-muted);font-size:11px;min-width:70px}
+.mural-item-val{color:var(--text-primary);text-align:right;max-width:200px}
+.mural-hours{color:var(--accent-text);font-weight:600}
+.mural-img{width:100%;height:100px;object-fit:cover;border-radius:8px;margin-bottom:8px;cursor:pointer}
+.empty-state{text-align:center;color:var(--text-muted);padding:50px 20px;grid-column:1/-1}
+.empty-state i{font-size:40px;display:block;margin-bottom:10px}
+.empty-state p{font-size:14px}

@@ -1,0 +1,73 @@
+/* ════════════════════════════════════════════
+   TELA DE CARREGAMENTO
+   Gorila + barra de progresso que aparecem ao abrir o site.
+   ════════════════════════════════════════════ */
+
+
+/* ─── TELA DE CARREGAMENTO (gorila) ─── */
+#loading-screen{position:fixed;inset:0;z-index:1000;background:var(--bg);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:14px}
+
+@keyframes gorilaRespira{0%,100%{transform:scale(1)}50%{transform:scale(1.04)}}
+.load-title{font-size:18px;font-weight:700;color:var(--text-primary)}
+.load-bar{width:220px;height:6px;background:var(--surface-3);border-radius:3px;overflow:hidden}
+.load-bar-fill{height:100%;width:0%;background:var(--accent);border-radius:3px}
+.load-msg{font-size:12.5px;color:var(--text-muted)}
+
+
+/* animações do mascote (troque em ANIMACAO_MASCOTE no JS) */
+.load-wrap{will-change:transform,filter}
+.load-wrap.anim-respirar{animation:gRespirar 1.8s ease-in-out infinite!important}
+.load-wrap.anim-peito{animation:gPeito 1.5s ease-in-out infinite!important;transform-origin:50% 60%}
+.load-wrap.anim-pular{animation:gPular .9s cubic-bezier(.3,.7,.4,1) infinite!important;transform-origin:50% 100%}
+.load-wrap.anim-balancar{animation:gBalancar 1.6s ease-in-out infinite!important;transform-origin:50% 100%}
+.load-wrap.anim-neon{animation:gNeon 1.4s ease-in-out infinite!important}
+.load-wrap.anim-desenhar{animation:gDesenhar 2.25s ease-in-out infinite!important}
+@keyframes gRespirar{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+@keyframes gPeito{0%,50%,100%{transform:scale(1)}10%{transform:scale(1.07,.95)}20%{transform:scale(.97,1.04)}30%{transform:scale(1.07,.95)}40%{transform:scale(.98,1.03)}}
+@keyframes gPular{0%,100%{transform:translateY(0) scale(1.04,.96)}45%{transform:translateY(-22px) scale(.97,1.04)}}
+@keyframes gBalancar{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(4deg)}}
+@keyframes gNeon{0%,100%{filter:drop-shadow(0 0 2px rgba(0,50,240,.3))}50%{filter:drop-shadow(0 0 16px rgba(0,50,240,.95))}}
+@keyframes gDesenhar{0%{clip-path:inset(100% 0 0 0)}70%,100%{clip-path:inset(0 0 0 0)}}
+
+
+.load-wrap{position:relative;height:min(58vh,480px);aspect-ratio:392/450;max-width:90vw}
+.lg-img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+.lg-ghost{opacity:0;filter:grayscale(1)}
+.load-wrap.anim-preencher .lg-ghost{opacity:.14}
+.load-wrap.anim-preencher{animation:gRespirar 2.4s ease-in-out infinite}
+.load-title{margin-top:4px}
+
+
+/* ─── TELA DE CARREGAMENTO: gorila no papel + carregamento embaixo ─── */
+#loading-screen{position:fixed;inset:0;z-index:1000;display:none;flex-direction:column;align-items:center;justify-content:center;gap:0;background:#fdfdfb;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;padding:16px}
+.ld-logo{height:min(66vh,620px);width:auto;max-width:92vw;object-fit:contain;display:block}
+.ld-bottom{width:min(420px,84vw);margin-top:14px;display:flex;flex-direction:column;align-items:center}
+.ld-progress{width:100%;display:flex;align-items:center;gap:12px}
+.ld-track{flex:1;height:6px;background:#d9ddea;border-radius:3px;overflow:hidden}
+.ld-fill{height:100%;width:0%;background:#0a30e6;border-radius:3px}
+.ld-fill.lento{background:#d98a00}
+.ld-pct{width:42px;text-align:right;font-size:13px;font-weight:700;color:#0a30e6;font-variant-numeric:tabular-nums}
+.ld-status{margin-top:10px;font-size:12.5px;color:#4a5578;min-height:18px;text-align:center}
+.ld-status.lento{color:#b36b00;font-weight:600}
+.ld-steps{display:none}
+.ld-conn{margin-top:6px;font-size:11.5px;color:#7a86a8;text-align:center;min-height:15px}
+@media (max-height:560px){.ld-logo{height:58vh}}
+/* ─── TELA DE ESPERA: animações de 3 segundos ─── */
+#loading-screen .ld-logo{animation:ldFade .3s ease-out both}
+@keyframes ldFade{from{opacity:0}to{opacity:1}}
+@keyframes ldEntrada{
+  0%{opacity:0;transform:translateY(40px) scale(.55) rotate(-8deg);filter:drop-shadow(0 0 0 rgba(10,48,230,0))}
+  25%{opacity:1;transform:translateY(-14px) scale(1.07) rotate(3deg);filter:drop-shadow(0 0 22px rgba(10,48,230,.55))}
+  40%{transform:translateY(0) scale(.97) rotate(-2deg)}
+  55%{transform:translateY(-6px) scale(1.03) rotate(1deg);filter:drop-shadow(0 0 14px rgba(10,48,230,.4))}
+  75%{transform:translateY(0) scale(1) rotate(0)}
+  100%{opacity:1;transform:translateY(0) scale(1.02) rotate(0);filter:drop-shadow(0 0 8px rgba(10,48,230,.25))}
+}
+#loading-screen .ld-bottom{animation:ldFade .3s ease-out both}
+@keyframes ldSobe{0%,20%{opacity:0;transform:translateY(16px)}45%,100%{opacity:1;transform:translateY(0)}}
+#loading-screen .ld-fill{background-image:linear-gradient(90deg,#0a30e6,#4f7ef7,#0a30e6);background-size:200% 100%;animation:ldBrilho 1.5s linear infinite}
+#loading-screen .ld-fill.lento{background-image:none}
+@keyframes ldBrilho{from{background-position:200% 0}to{background-position:-200% 0}}
+#loading-screen .ld-pct{animation:ldPulso 1.5s ease-in-out 2}
+@keyframes ldPulso{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
+@media (prefers-reduced-motion:reduce){#loading-screen .ld-logo,#loading-screen .ld-bottom,#loading-screen .ld-fill,#loading-screen .ld-pct{animation:none}}

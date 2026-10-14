@@ -1,0 +1,39 @@
+/* ════════════════════════════════════════════
+   SALA DE ESTUDO — TRILHAS
+   Cartões das trilhas de estudo e carreiras.
+   ════════════════════════════════════════════ */
+
+
+/* ─── LOGIN ─── */
+/* ─── HOME SCREEN ─── */
+#home-screen{display:none;min-height:100vh;background:var(--bg);padding:40px 32px}
+.home-topbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:40px}
+.home-logo{display:flex;align-items:center;gap:10px}
+.home-logo i{font-size:22px;color:var(--accent)}
+.home-logo-title{font-size:18px;font-weight:700;color:var(--text-primary)}
+.home-logo-sub{font-size:12px;color:var(--text-muted);margin-top:1px}
+.home-actions{display:flex;align-items:center;gap:10px}
+.theme-toggle{background:var(--surface-1);border:1px solid var(--border);border-radius:var(--radius);padding:8px 14px;cursor:pointer;color:var(--text-secondary);font-size:13px;display:flex;align-items:center;gap:6px;transition:all .15s}
+.theme-toggle:hover{background:var(--surface-2);color:var(--text-primary)}
+.logout-btn-home{background:none;border:1px solid var(--border);border-radius:var(--radius);padding:8px 14px;cursor:pointer;color:var(--text-muted);font-size:13px;display:flex;align-items:center;gap:6px;transition:all .15s}
+.logout-btn-home:hover{background:var(--danger-bg);color:var(--danger);border-color:var(--danger)}
+.home-greeting{font-size:24px;font-weight:700;color:var(--text-primary);margin-bottom:6px}
+.home-sub{font-size:14px;color:var(--text-muted);margin-bottom:36px}
+.home-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:900px}
+.home-card{background:var(--surface-1);border:1px solid var(--border);border-radius:16px;padding:24px;cursor:pointer;transition:all .2s;position:relative;overflow:hidden}
+.home-card:hover{border-color:var(--accent);transform:translateY(-3px);box-shadow:0 8px 24px rgba(79,126,247,.15)}
+.home-card .hc-icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:14px;font-size:22px}
+.home-card .hc-title{font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:5px}
+.home-card .hc-desc{font-size:12px;color:var(--text-muted);line-height:1.5}
+.home-card .hc-arrow{position:absolute;top:18px;right:18px;color:var(--text-muted);font-size:18px;opacity:.4}
+.hc-blue .hc-icon{background:#1a2340;color:#7fa4ff}
+.hc-green .hc-icon{background:#0d2318;color:#6dbc8a}
+.hc-purple .hc-icon{background:#1e1040;color:#b07fe0}
+.hc-orange .hc-icon{background:#2a1800;color:#e0a050}
+.add-carreira-card{border-style:dashed;display:flex;flex-direction:column;justify-content:center}
+.add-carreira-card:hover{background:var(--surface-2)}
+.hc-del-btn{position:absolute;top:14px;right:14px;background:none;border:none;color:var(--text-muted);font-size:14px;cursor:pointer;padding:4px;border-radius:6px;z-index:2}
+.hc-del-btn:hover{background:var(--danger-bg);color:var(--danger)}
+.hc-teal .hc-icon{background:#0d2228;color:#50d0c8}
+.hc-pink .hc-icon{background:#2a1020;color:#e070b0}
+.home-section-label{font-size:11px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.8px;margin:28px 0 14px}

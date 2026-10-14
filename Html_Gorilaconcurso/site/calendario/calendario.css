@@ -1,0 +1,100 @@
+/* ════════════════════════════════════════════
+   CALENDÁRIO
+   Calendário do mês e do ano, botão liga/desliga, números do topo.
+   ════════════════════════════════════════════ */
+
+/* ─── CALENDÁRIO ATIVO (liga/desliga) ─── */
+.cal-ativo-bar{display:flex;align-items:center;gap:12px;margin-bottom:16px;padding:12px 16px;background:var(--surface-1);border:1px solid var(--border);border-radius:var(--radius)}
+.cal-ativo-bar .cab-txt{flex:1}
+.cal-ativo-bar .cab-title{font-size:13.5px;font-weight:700;color:var(--text-primary)}
+.cal-ativo-bar .cab-sub{font-size:11.5px;color:var(--text-muted);margin-top:2px}
+.cal-switch{position:relative;width:54px;height:28px;border-radius:14px;border:none;cursor:pointer;background:var(--surface-3);transition:background .2s;flex-shrink:0}
+.cal-switch::after{content:'';position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:#fff;transition:transform .2s;box-shadow:0 1px 3px rgba(0,0,0,.3)}
+.cal-switch.on{background:var(--accent)}
+.cal-switch.on::after{transform:translateX(26px)}
+.cal-switch-lbl{font-size:12px;font-weight:700;min-width:30px;color:var(--text-secondary)}
+#cal-off-msg{display:none;text-align:center;padding:50px 20px;color:var(--text-muted);background:var(--surface-1);border:1px dashed var(--border-strong);border-radius:12px}
+#cal-off-msg .co-ic{font-size:38px;display:block;margin-bottom:10px}
+#tab-calendario.cal-off #cal-off-msg{display:block}
+#tab-calendario.cal-off .stats-row,#tab-calendario.cal-off .cal-header,#tab-calendario.cal-off #cal-materias,#tab-calendario.cal-off #cal-month-view,#tab-calendario.cal-off #cal-year-view{display:none!important}
+
+#tb-cal-switch{display:flex;align-items:center;gap:8px;margin-left:12px;margin-right:84px}
+body.pre-login #tb-cal-switch{display:none}
+.cal-switch{width:44px;height:24px}
+.cal-switch::after{width:18px;height:18px}
+.cal-switch.on::after{transform:translateX(20px)}
+@media (max-width:1099px){#tb-cal-switch{margin-right:4px}}
+
+/* ─── Imagem limpa no calendário + estudos ligados ─── */
+.cal-cell.estudo{color:#fff}
+.cal-cell.has-photo{border-width:2px}
+.cal-cell.has-photo .cal-bg-img{image-rendering:auto}
+.cal-cell.has-photo .day-num{font-size:13px;text-shadow:0 1px 4px rgba(0,0,0,.95),0 0 2px rgba(0,0,0,.8)}
+.cal-cell.has-photo .day-hours{font-size:10px;opacity:1;text-shadow:0 1px 4px rgba(0,0,0,.95),0 0 2px rgba(0,0,0,.8)}
+.cal-ref{position:absolute;left:0;right:0;bottom:0;z-index:2;color:#fff;font-size:9px;font-weight:700;padding:2px 24px 2px 5px;opacity:.92;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-align:left}
+.de-btn{padding:8px 14px;border-radius:8px;border:1px solid var(--border);background:var(--surface-1);color:var(--text-secondary);font-size:12.5px;font-weight:600;cursor:pointer}
+.de-btn.sel{background:var(--accent);color:#fff;border-color:var(--accent)}
+
+
+/* ─── STATS ─── */
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:20px}
+.stat-card{background:var(--surface-1);border-radius:var(--radius);padding:14px;border:1px solid var(--border)}
+.stat-label{font-size:11px;color:var(--text-muted);margin-bottom:5px;font-weight:500}
+.stat-val{font-size:24px;font-weight:600;color:var(--text-primary)}
+.stat-sub{font-size:11px;color:var(--text-muted);margin-top:2px}
+
+/* ─── CALENDÁRIO ─── */
+.cal-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.cal-nav{display:flex;align-items:center;gap:8px}
+.cal-nav-btn{background:none;border:1px solid var(--border);border-radius:var(--radius);padding:7px 11px;cursor:pointer;color:var(--text-secondary);font-size:13px;transition:all .15s}
+.cal-nav-btn:hover{background:var(--surface-2);color:var(--text-primary)}
+.cal-month{font-size:16px;font-weight:600;min-width:180px;text-align:center;color:var(--text-primary)}
+.cal-reg-btn{background:var(--accent);color:#fff;border:none;border-radius:var(--radius);padding:9px 16px;cursor:pointer;font-size:13px;font-weight:600;display:flex;align-items:center;gap:6px;transition:opacity .15s}
+.cal-reg-btn:hover{opacity:.88}
+.cal-legend{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:14px}
+.legend-item{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--text-secondary)}
+.legend-dot{width:13px;height:13px;border-radius:4px}
+.cal-days-header{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;margin-bottom:3px}
+.cal-day-lbl{text-align:center;font-size:11px;color:var(--text-muted);font-weight:600;padding:4px 0}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:3px}
+.cal-cell{aspect-ratio:1;border-radius:7px;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:13px;font-weight:600;transition:all .15s;border:1px solid transparent;position:relative;overflow:hidden}
+.cal-cell:hover{border-color:var(--border-strong);transform:scale(1.04)}
+.cal-cell.empty{background:transparent;cursor:default;border:none}
+.cal-cell.empty:hover{transform:none}
+.cal-cell.no-study{background:#1c1c22;color:#3d3d4a}
+body.light .cal-cell.no-study{background:#e8eaf2;color:#b0b8d0}
+.cal-cell.ciencia-only{background:#1e3a6e;color:#7fb0ff}
+.cal-cell.sefaz-only{background:#1e4a32;color:#6dbc8a}
+.cal-cell.direito-only{background:#3a2010;color:#e0a050}
+.cal-cell.notario-only{background:#2a1040;color:#c090f0}
+.cal-cell.multi{background:#1a3555;color:#5daadd}
+.cal-cell.eletiva-only{background:#2a1e40;color:#b07fe0}
+.cal-cell.today{outline:2px solid var(--accent);outline-offset:2px}
+.cal-cell.has-photo{color:#fff;border-width:2px;border-style:solid}
+.cal-cell .day-num{font-size:13px;line-height:1;position:relative;z-index:2;text-shadow:0 1px 3px rgba(0,0,0,.85)}
+.cal-cell .day-hours{font-size:9px;opacity:.9;margin-top:2px;font-weight:400;position:relative;z-index:2;text-shadow:0 1px 3px rgba(0,0,0,.85)}
+.cal-cell .cal-bg-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:1;z-index:1}
+.cal-cell .cal-bg-overlay{position:absolute;inset:0;z-index:1}
+.cal-img-add{position:absolute;bottom:3px;right:3px;background:rgba(0,0,0,.55);border:none;border-radius:4px;padding:3px 5px;cursor:pointer;color:#fff;font-size:10px;z-index:3;opacity:0;transition:opacity .15s}
+.cal-cell:hover .cal-img-add{opacity:1}
+.cal-cell.no-study .cal-img-add{opacity:.55}
+/* ─── Alternador de visualização ─── */
+.cal-view-switch{display:inline-flex;background:var(--surface-2);border:1px solid var(--border);border-radius:var(--radius);padding:3px;gap:2px;margin-right:10px}
+.cal-view-btn{background:none;border:none;color:var(--text-secondary);padding:6px 12px;font-size:12px;font-weight:600;cursor:pointer;border-radius:6px;display:flex;align-items:center;gap:5px;transition:all .15s}
+.cal-view-btn:hover{color:var(--text-primary)}
+.cal-view-btn.active{background:var(--accent);color:#fff}
+/* ─── Visão anual ─── */
+.cal-year-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+@media (max-width:1100px){.cal-year-grid{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:780px){.cal-year-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:520px){.cal-year-grid{grid-template-columns:1fr}}
+.cal-year-month{background:var(--surface-1);border:1px solid var(--border);border-radius:12px;padding:12px;cursor:pointer;transition:border-color .15s}
+.cal-year-month:hover{border-color:var(--border-strong)}
+.cal-year-month.current{border-color:var(--accent)}
+.cym-title{font-size:13px;font-weight:600;color:var(--text-primary);margin-bottom:8px;display:flex;justify-content:space-between;align-items:center}
+.cym-title small{font-size:10px;font-weight:500;color:var(--text-muted)}
+.cym-days{display:grid;grid-template-columns:repeat(7,1fr);gap:2px}
+.cym-lbl{font-size:8px;color:var(--text-muted);text-align:center;font-weight:600;padding:1px 0}
+.cym-cell{aspect-ratio:1;border-radius:3px;font-size:9px;display:flex;align-items:center;justify-content:center;color:var(--text-muted);background:transparent;font-weight:500}
+.cym-cell.has-study{color:#fff}
+.cym-cell.today{outline:1.5px solid var(--accent);outline-offset:0}

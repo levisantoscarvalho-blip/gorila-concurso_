@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ver dados salvos</title>
+<!-- Mostra o que o site guardou NESTE navegador, separado por seção.
+     Só funciona aberto pelo mesmo endereço do site (ex.: Go Live → /banco-de-dados/ver-dados.html). -->
+<style>
+:root{--bg:#f0f2f8;--card:#fff;--borda:#d0d4e8;--texto:#1a1d2e;--suave:#5a6080;--destaque:#3a6ff0;--destaque-bg:#dde8ff}
+@media (prefers-color-scheme:dark){:root{--bg:#0f1117;--card:#1a1d27;--borda:#2e3350;--texto:#e8eaf0;--suave:#9aa0bc;--destaque:#7fa4ff;--destaque-bg:#1a2340}}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--texto);padding:24px 16px 60px}
+main{max-width:980px;margin:0 auto}
+h1{font-size:22px;margin-bottom:4px}
+.sub{color:var(--suave);font-size:13.5px;margin-bottom:18px;line-height:1.5}
+.acoes{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+button,a.btn,label.btn{padding:9px 16px;border-radius:8px;border:1px solid var(--borda);background:var(--card);color:var(--texto);font-size:13px;font-weight:600;cursor:pointer;text-decoration:none}
+button.principal{background:var(--destaque);border-color:var(--destaque);color:#fff}
+section{background:var(--card);border:1px solid var(--borda);border-radius:12px;padding:18px;margin-bottom:16px}
+h2{font-size:16px;margin-bottom:4px}
+.onde{font-size:12px;color:var(--suave);margin-bottom:14px}
+.onde code{background:var(--destaque-bg);color:var(--destaque);padding:1px 6px;border-radius:4px}
+.numeros{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:14px}
+.num{border:1px solid var(--borda);border-radius:10px;padding:10px 12px}
+.num b{display:block;font-size:22px}
+.num span{font-size:12px;color:var(--suave)}
+.tabela{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+th,td{text-align:left;padding:7px 8px;border-bottom:1px solid var(--borda);vertical-align:top}
+th{color:var(--suave);font-weight:600;white-space:nowrap}
+ul{padding-left:18px;font-size:13px;line-height:1.7}
+.vazio{color:var(--suave);font-size:13px}
+details{margin-top:10px}
+summary{cursor:pointer;font-size:12.5px;color:var(--destaque);font-weight:600}
+pre{margin-top:8px;max-height:360px;overflow:auto;background:var(--bg);border:1px solid var(--borda);border-radius:8px;padding:10px;font-size:11.5px;white-space:pre-wrap;word-break:break-all}
+.aviso{border-left:4px solid var(--destaque);padding:10px 14px;background:var(--destaque-bg);border-radius:6px;font-size:13px;line-height:1.5;margin-bottom:16px}
+</style>
+</head>
+<body>
+<main>
+  <h1>🗄️ Dados salvos neste navegador</h1>
+  <p class="sub">Tudo o que o site Gorila Concurso guardou, separado por seção. Aqui você vê os dados, baixa um backup ou importa um backup antigo.</p>
+  <div class="acoes">
+    <button class="principal" onclick="baixarBackup()">⬇️ Baixar backup (.json)</button>
+    <label class="btn" style="cursor:pointer">⬆️ Importar meus dados (.json)
+      <input type="file" accept=".json,application/json" id="arquivo-importar" style="display:none" onchange="importar(this)">
+    </label>
+    <button onclick="mostrar()">🔄 Atualizar</button>
+    <a class="btn" href="../index.html">← Voltar ao site</a>
+  </div>
+  <div id="conteudo"></div>
+</main>
+<script>
+const CHAVE_ESTADO = 'guia_estudos_state_v1';
+const CHAVE_PERFIL = 'guia_estudos_perfil_v1';
+const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const ler = k => { try { return JSON.parse(localStorage.getItem(k) || 'null'); } catch(e) { return null; } };
+const json = (obj, semImagens) => esc(JSON.stringify(obj, (k, v) =>
+  semImagens && typeof v === 'string' && v.startsWith('data:image') ? '[imagem]' : v, 2));
+const AREAS = { ciencia:'Ciência de Dados', sefaz:'SEFAZ SP', direito:'Direito', notario:'Notário', eletiva:'Eletiva' };
+
+function secao(titulo, onde, html, dados){
+  return `<section><h2>${titulo}</h2><div class="onde">${onde}</div>${html}
+    <details><summary>Ver dados brutos</summary><pre>${json(dados, true)}</pre></details></section>`;
+}
+
+// As fotos ficam no IndexedDB (banco 'gorila-fotos'), não no localStorage
+const lerFotos = () => new Promise(ok => {
+  try {
+    const r = indexedDB.open('gorila-fotos', 1);
+    r.onupgradeneeded = () => r.result.createObjectStore('fotos');
+    r.onerror = () => ok({});
+    r.onsuccess = () => {
+      const tudo = {};
+      const c = r.result.transaction('fotos').objectStore('fotos').openCursor();
+      c.onsuccess = () => { const x = c.result; if(x){ tudo[x.key] = x.value; x.continue(); } else ok(tudo); };
+      c.onerror = () => ok({});
+    };
+  } catch(e) { ok({}); }
+});
+
+async function mostrar(){
+  const s = ler(CHAVE_ESTADO);
+  const p = ler(CHAVE_PERFIL);
+  const fotos = await lerFotos();
+  const mbFotos = Object.values(fotos).reduce((t, f) => t + f.length, 0) / 1024 / 1024;
+  const el = document.getElementById('conteudo');
+  if(!s && !p){
+    el.innerHTML = `<div class="aviso">Nada salvo ainda neste navegador. Abra o site, crie sua conta e volte aqui.<br>
+      Lembre: os dados ficam no navegador e no endereço usados. Abra esta página pelo <b>Go Live</b>, do mesmo jeito que abre o site.</div>`;
+    return;
+  }
+  let html = '';
+
+  // CONTA
+  html += secao('👤 Conta', 'Arquivo do código: <code>login-e-carregamento/login.js</code> · chave <code>' + CHAVE_PERFIL + '</code>',
+    p ? `<ul><li><b>Nome:</b> ${esc(p.nome)}</li><li><b>E-mail:</b> ${esc(p.email)}</li><li><b>Senha:</b> guardada de forma protegida (não dá para ver)</li></ul>`
+      : '<p class="vazio">Nenhuma conta criada.</p>',
+    p ? { nome: p.nome, email: p.email, senha: '(oculta)' } : null);
+
+  if(s){
+    // CALENDÁRIO
+    const dias = Object.entries(s.days || {}).sort((a, b) => b[0].localeCompare(a[0]));
+    const horasDia = v => (v && (v.horasTotal || 0)) || 0;
+    const totalHoras = dias.reduce((t, [, v]) => t + horasDia(v), 0);
+    // Mesma regra do site (geral/utilidades.js → isStudyDay)
+    const estudou = v => !!v && (Object.keys(AREAS).some(a => { const x = v[a]; if(!x) return false; if(typeof x !== 'object') return true;
+      return (x.horas||0) > 0 || (x.questoes||0) > 0 || (x.assunto && x.assunto !== '—') || (x.horasLeitura||0) > 0; })
+      || (v.horasTotal||0) > 0 || !!(v.estudos && v.estudos.length));
+    const comEstudo = dias.filter(([, v]) => estudou(v)).length;
+    const linhas = dias.map(([d, v]) => {
+      const areas = Object.keys(AREAS).filter(a => v && v[a] && typeof v[a] === 'object' && (v[a].horas || v[a].questoes))
+        .map(a => `${AREAS[a]}: ${v[a].horas || 0}h${v[a].assunto && v[a].assunto !== '—' ? ' · ' + esc(v[a].assunto) : ''}${v[a].questoes ? ' · ' + v[a].questoes + ' questões' : ''}`);
+      (v.estudos || []).forEach(e => {
+        const curso = (s.cursos || []).find(c => c.id === e.cursoId);
+        areas.push(esc(curso ? curso.nome : (e.cursoNome || 'Estudo')) + ': ' + (e.horas || 0) + 'h' + (e.questoes ? ' · ' + e.questoes + ' questões' : ''));
+      });
+      return `<tr><td>${d.split('-').reverse().join('/')}</td><td>${horasDia(v)}h${horasDia(v) > 24 ? ' <span title="Mais de 24h em um dia: confira este registro">⚠️</span>' : ''}</td><td>${areas.join('<br>') || '—'}</td><td>${v.imgId || v.imgSrc ? '📷' : ''}</td></tr>`;
+    }).join('');
+    html += secao('📅 Calendário', 'Arquivos do código: <code>calendario/</code> · dados iniciais: <code>calendario/dados-calendario.js</code>',
+      `<div class="numeros">
+        <div class="num"><b>${dias.length}</b><span>dias registrados</span></div>
+        <div class="num"><b>${comEstudo}</b><span>dias estudados</span></div>
+        <div class="num"><b>${Object.keys(fotos).length}</b><span>fotos guardadas (${mbFotos.toFixed(1)} MB)</span></div>
+        <div class="num"><b>${Math.round(totalHoras * 10) / 10}h</b><span>horas no total</span></div>
+        <div class="num"><b>${s.calendarioAtivo === false ? 'Desligado' : 'Ligado'}</b><span>calendário</span></div>
+      </div>
+      ${dias.length ? `<div class="tabela"><table><thead><tr><th>Dia</th><th>Horas</th><th>O que estudou</th><th>Foto</th></tr></thead><tbody>${linhas}</tbody></table></div>` : '<p class="vazio">Nenhum dia registrado.</p>'}`,
+      { month: s.month, year: s.year, foguinhoStart: s.foguinhoStart, calendarioAtivo: s.calendarioAtivo, materiasEstudo: s.materiasEstudo, days: s.days });
+
+    // SALA DE ESTUDO
+    const lista = (itens, f) => itens && itens.length ? '<ul>' + itens.map(f).join('') + '</ul>' : '<p class="vazio">Nada ainda.</p>';
+    const topicos = (s.mindMap && s.mindMap.topicos) || [];
+    html += secao('📚 Sala de estudo', 'Arquivos do código: <code>sala-de-estudo/</code> · dados iniciais: <code>sala-de-estudo/dados-sala-de-estudo.js</code>',
+      `<h3 style="font-size:13.5px;margin:4px 0">Carreiras criadas</h3>${lista(s.trilhasCustom, t => `<li>${esc(t.icone || '')} ${esc(t.nome)} — ${(t.disciplinas || []).length} disciplina(s)</li>`)}
+       <h3 style="font-size:13.5px;margin:10px 0 4px">Cursos</h3>${lista(s.cursos, c => `<li>${esc(c.nome)}</li>`)}
+       <h3 style="font-size:13.5px;margin:10px 0 4px">Conteúdos</h3>${lista(s.conteudosCustom, c => `<li>${c.feito ? '✅' : '⬜'} ${esc(c.nome)}</li>`)}
+       <h3 style="font-size:13.5px;margin:10px 0 4px">Mapa mental</h3>${lista(topicos, t => `<li>${esc(t.nome)} — ${(t.subtopicos || []).length} subtópico(s)</li>`)}
+       <h3 style="font-size:13.5px;margin:10px 0 4px">Trilhas fixas removidas da tela inicial</h3>${lista(s.trilhasOcultas, t => `<li>${esc(t)}</li>`)}`,
+      { trilhasCustom: s.trilhasCustom, trilhasOcultas: s.trilhasOcultas, cursos: s.cursos, conteudosCustom: s.conteudosCustom, checks: s.checks, mindMap: s.mindMap, mapas: s.mapas });
+
+    // NOTÍCIAS + PREFERÊNCIAS
+    html += secao('📰 Notícias', 'Arquivos do código: <code>noticias/</code>',
+      lista(s.concursosInteresse, c => `<li>${esc(c)}</li>`), { concursosInteresse: s.concursosInteresse });
+    html += secao('🎨 Preferências', 'Arquivos do código: <code>geral/tema.js</code> · dados iniciais: <code>geral/dados-preferencias.js</code>',
+      `<ul><li><b>Tema:</b> ${s.theme === 'dark' ? 'escuro' : 'claro'}</li><li><b>Cor de destaque:</b> ${esc(s.corDestaque || 'azul')}</li></ul>`,
+      { theme: s.theme, corDestaque: s.corDestaque, temaEscolhido: s.temaEscolhido });
+
+    const tamanho = (localStorage.getItem(CHAVE_ESTADO) || '').length / 1024 / 1024;
+    html += `<p class="sub">Espaço usado pelos dados: <b>${tamanho.toFixed(2)} MB</b> de ~5 MB. As fotos (${mbFotos.toFixed(1)} MB) ficam num espaço separado e bem maior do navegador.</p>`;
+  }
+  el.innerHTML = html;
+}
+
+// Importa um backup (.json) — o mesmo formato do "Baixar backup". Substitui o progresso
+// salvo neste navegador; a conta (e-mail e senha) não é alterada.
+function gravarFotos(fotos){
+  const ids = Object.keys(fotos || {});
+  if(!ids.length) return Promise.resolve();
+  return new Promise((ok, falha) => {
+    const r = indexedDB.open('gorila-fotos', 1);
+    r.onupgradeneeded = () => r.result.createObjectStore('fotos');
+    r.onerror = () => falha(r.error);
+    r.onsuccess = () => {
+      const tx = r.result.transaction('fotos', 'readwrite');
+      ids.forEach(id => tx.objectStore('fotos').put(fotos[id], id));
+      tx.oncomplete = () => ok(); tx.onerror = () => falha(tx.error);
+    };
+  });
+}
+async function importar(input){
+  const arquivo = input.files && input.files[0];
+  input.value = '';
+  if(!arquivo) return;
+  let dados;
+  try { dados = JSON.parse(await arquivo.text()); }
+  catch(e){ alert('Este arquivo não é um backup válido do Gorila Concurso.'); return; }
+  if(!dados || typeof dados !== 'object' || !dados.days || typeof dados.days !== 'object'){
+    alert('Este arquivo não é um backup válido do Gorila Concurso (não tem os dias do calendário).'); return;
+  }
+  const nDias = Object.keys(dados.days).length;
+  const atual = ler(CHAVE_ESTADO);
+  const nAtual = atual && atual.days ? Object.keys(atual.days).length : 0;
+  const aviso = nAtual
+    ? `Importar ${nDias} dia(s) deste arquivo?\n\nISSO SUBSTITUI os ${nAtual} dia(s) que estão salvos agora neste navegador.`
+    : `Importar ${nDias} dia(s) deste arquivo?`;
+  if(!confirm(aviso)) return;
+  try {
+    const fotos = dados.fotos; delete dados.fotos;
+    await gravarFotos(fotos);
+    localStorage.setItem(CHAVE_ESTADO, JSON.stringify(dados));
+  } catch(e){
+    alert('Não foi possível importar: ' + (e && e.message ? e.message : e)); return;
+  }
+  await mostrar();
+  alert('Dados importados! Se o site estiver aberto em outra aba, feche essa aba e abra o site de novo antes de continuar.');
+}
+
+async function baixarBackup(){
+  const s = localStorage.getItem(CHAVE_ESTADO);
+  if(!s){ alert('Nada salvo ainda.'); return; }
+  const dados = Object.assign(JSON.parse(s), { fotos: await lerFotos() });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([JSON.stringify(dados, null, 2)], { type: 'application/json' }));
+  a.download = `guia-estudos-backup-${new Date().toISOString().slice(0, 10)}.json`;
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+
+mostrar();
+</script>
+</body>
+</html>

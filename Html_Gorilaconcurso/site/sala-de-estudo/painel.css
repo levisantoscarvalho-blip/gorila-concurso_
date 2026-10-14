@@ -1,0 +1,31 @@
+/* ════════════════════════════════════════════
+   SALA DE ESTUDO — PAINEL INFOGRÁFICO
+   Cartões, gráfico de barras e gráfico de rosca do painel.
+   ════════════════════════════════════════════ */
+
+/* ─── NOVO INFOGRÁFICO / PAINEL GERAL (Estilo da Imagem) ─── */
+.dash-wrapper { background: #e9ebee; padding: 20px; border-radius: 8px; font-family: -apple-system, sans-serif; }
+.dash-grid { display: grid; grid-template-columns: 3fr 1fr; gap: 20px; }
+.dash-col-main { display: flex; flex-direction: column; gap: 20px; }
+.dash-row-cards { display: grid; grid-template-columns: repeat(5, 1fr); gap: 15px; }
+.dash-card { background: #ffffff; border-radius: 6px; padding: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.03); position: relative; }
+.dash-card.dark-card { background: #153250; color: #ffffff; }
+.dc-title { font-size: 11.5px; color: #666; margin-bottom: 12px; font-weight: 500; line-height:1.35; white-space:normal; word-break:break-word; }
+.dark-card .dc-title { color: #a0b4c8; }
+@media (max-width:900px){.dash-row-cards{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:600px){.dash-row-cards{grid-template-columns:repeat(2,1fr)}}
+.dc-val { font-size: 28px; font-weight: 700; color: #333; display: flex; align-items: center; gap: 8px; }
+.dark-card .dc-val { color: #ffffff; }
+.dc-icon { position: absolute; top: 20px; right: 20px; color: #f49e11; font-size: 22px; }
+/* Simulated Bar Chart */
+.sim-bar-container { display: flex; align-items: flex-end; gap: 12px; height: 160px; margin-top: 10px; padding-bottom: 26px; justify-content: space-around; position:relative; border-bottom: 1px solid #ddd; }
+.sim-bar-group { display: flex; flex-direction:column; align-items:center; gap: 4px; height: 100%; justify-content: flex-end; position: relative; flex:1; max-width:70px; }
+.sim-bar-pair { display:flex; gap:4px; align-items:flex-end; height:100%; }
+.sim-bar-a { background: #153250; width: 18px; min-height:2px; border-radius: 2px 2px 0 0; transition: height 0.4s; }
+.sim-bar-b { background: #f49e11; width: 18px; min-height:2px; border-radius: 2px 2px 0 0; transition: height 0.4s; }
+.sim-bar-lbl { position: absolute; bottom: -22px; left:50%; transform:translateX(-50%); font-size: 10px; color: #888; text-transform: uppercase; font-weight: 600; white-space:nowrap; }
+.sim-bar-empty { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; color:#999; font-size:12.5px; text-align:center; padding:0 20px; }
+.dash-badge { position: absolute; top: 15px; right: 15px; background: #f49e11; color: #fff; padding: 4px 10px; border-radius: 4px; font-size: 11px; font-weight: bold; }
+/* Donut Chart */
+.donut-wrapper { width: 140px; height: 140px; border-radius: 50%; background: conic-gradient(#f49e11 0%, #153250 0); display: flex; align-items: center; justify-content: center; margin: 30px auto; transition: background 0.5s ease;}
+.donut-inner { width: 100px; height: 100px; background: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: bold; color: #153250; }

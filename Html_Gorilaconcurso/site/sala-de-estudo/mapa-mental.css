@@ -1,0 +1,20 @@
+/* ════════════════════════════════════════════
+   SALA DE ESTUDO — MAPA MENTAL
+   Cartões e área de envio do mapa mental.
+   ════════════════════════════════════════════ */
+
+/* ─── MAPAS ─── */
+.mapas-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.add-mapa-btn{background:var(--accent);color:#fff;border:none;border-radius:var(--radius);padding:9px 16px;cursor:pointer;font-size:13px;font-weight:600;display:flex;align-items:center;gap:6px;transition:opacity .15s}
+.add-mapa-btn:hover{opacity:.88}
+.mapa-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:14px}
+.mapa-card{background:var(--surface-1);border:1px solid var(--border);border-radius:12px;overflow:hidden;cursor:pointer;transition:all .15s}
+.mapa-card:hover{border-color:var(--accent);transform:translateY(-2px)}
+.mapa-thumb{width:100%;height:120px;object-fit:cover;display:block;background:var(--surface-2)}
+.mapa-info{padding:10px 12px}
+.mapa-title{font-size:13px;font-weight:600;color:var(--text-primary);margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mapa-meta{font-size:11px;color:var(--text-muted)}
+.upload-area{border:2px dashed var(--border);border-radius:12px;padding:40px;text-align:center;cursor:pointer;transition:all .15s;background:var(--surface-1)}
+.upload-area:hover{border-color:var(--accent);background:var(--accent-bg)}
+.upload-area i{font-size:34px;color:var(--text-muted);display:block;margin-bottom:10px}
+.upload-area p{font-size:13px;color:var(--text-muted)}

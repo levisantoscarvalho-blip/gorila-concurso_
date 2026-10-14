@@ -1,0 +1,42 @@
+/* ════════════════════════════════════════════
+   GERAL — ajustes finais de layout
+   Carregado por ÚLTIMO de propósito: estas regras ajustam as outras.
+   Inclui a barra de ícones da direita (Sala de estudos, Calendário, Notícias).
+   ════════════════════════════════════════════ */
+
+/* tela inicial removida: entra direto no Guia de Estudos */
+#home-screen{display:none!important}
+.sidebar-back{display:none!important}
+/* painel de notícias removido */
+#news-panel{display:none!important}
+@media (min-width:1100px){#home-screen{padding-left:32px!important}}
+/* ─── INTEGRAÇÃO DO CALENDÁRIO/SEÇÕES COM O LAYOUT INICIAL ─── */
+#app-shell{position:fixed!important;top:64px;left:0;right:0;bottom:0;height:auto!important;z-index:960}
+#app-shell .app{height:100%!important}
+#app-shell .main{background:var(--bg)}
+#app-shell .sidebar{background:var(--surface-1)}
+#theme-rail{z-index:985!important}
+#topbar{z-index:990!important}
+#mindmap-modal{top:64px!important}
+#news-screen{position:fixed;top:64px;left:0;right:0;bottom:0;z-index:960;background:var(--bg);display:none}
+.tr-item.ativo{filter:drop-shadow(0 0 6px rgba(47,107,255,.6))}
+.tr-item.ativo svg{stroke-width:3.6}
+#topbar{cursor:pointer}
+#tb-logo,.tb-title{cursor:pointer;transition:opacity .15s}
+#tb-logo:hover,.tb-title:hover{opacity:.75}
+#tb-entrar{cursor:pointer}
+.sidebar-back{font-size:13px!important;font-weight:700;color:var(--accent-text)!important;background:var(--accent-bg);margin:10px 12px;border:1px solid var(--border)!important;border-radius:10px;padding:10px 14px!important}
+.sidebar-back:hover{border-color:var(--accent)!important;color:var(--accent-text)!important}
+@media (min-width:1100px){#app-shell .main{padding-right:100px}}
+.tr-nav{display:flex;gap:10px;margin-bottom:6px}
+.tr-seta{width:34px;height:34px;padding:0;background:transparent;border:none;cursor:pointer;color:#2f6bff;transition:transform .15s,opacity .15s}
+.tr-seta svg{width:100%;height:100%;fill:none;stroke:currentColor;stroke-width:5;stroke-linecap:round;stroke-linejoin:round}
+.tr-seta:hover:not(:disabled){transform:scale(1.2)}
+.tr-seta:disabled{opacity:.25;cursor:default}
+/* ─── BARRA VERTICAL DE TEMAS (direita, flutuante, só ícones azuis) ─── */
+#theme-rail{position:fixed;right:28px;top:50%;transform:translateY(-50%);z-index:940;display:flex;flex-direction:column;align-items:center;gap:26px;padding:0;background:transparent;border:none;box-shadow:none}
+.tr-item{width:46px;height:46px;display:flex;align-items:center;justify-content:center;padding:0;background:transparent;border:none;border-radius:0;cursor:pointer;color:#2f6bff;transition:transform .18s,filter .18s}
+.tr-item:hover{transform:scale(1.18);filter:drop-shadow(0 4px 8px rgba(47,107,255,.45))}
+.tr-item svg{width:100%;height:100%;display:block;fill:none;stroke:currentColor;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;background:transparent}
+@media (min-width:1100px){#home-screen{padding-right:120px!important}}
+@media (max-width:1099px){#theme-rail{top:auto;bottom:16px;right:16px;transform:none;flex-direction:row;gap:20px}}

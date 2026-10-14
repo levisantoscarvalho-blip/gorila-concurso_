@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Gorila Concurso</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Estilos: a ORDEM importa (o último ajusta os anteriores) -->
+<link rel="stylesheet" href="geral/base.css">
+<link rel="stylesheet" href="login-e-carregamento/carregamento.css">
+<link rel="stylesheet" href="barra-superior/barra-superior.css">
+<link rel="stylesheet" href="noticias/noticias.css">
+<link rel="stylesheet" href="login-e-carregamento/login.css">
+<link rel="stylesheet" href="sala-de-estudo/trilhas.css">
+<link rel="stylesheet" href="calendario/calendario.css">
+<link rel="stylesheet" href="calendario/mural.css">
+<link rel="stylesheet" href="sala-de-estudo/conteudos.css">
+<link rel="stylesheet" href="sala-de-estudo/mapa-mental.css">
+<link rel="stylesheet" href="sala-de-estudo/painel.css">
+<link rel="stylesheet" href="geral/layout.css">
+</head>
+<body class="light accent-azul">
+
+<!-- ═══════════ DESENHO DO FOGUINHO (usado no mascote) ═══════════ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="flameGradMascote" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffe08a"></stop>
+      <stop offset="45%" stop-color="#ff9d2e"></stop>
+      <stop offset="100%" stop-color="#ff6a1e"></stop>
+    </linearGradient>
+  </defs>
+  <symbol id="foguinhoMascote" viewBox="0 0 100 140">
+    <!-- pernas (com contorno escuro por baixo pra destacar) -->
+    <path d="M40 106 Q31 117 33 129" stroke="#7a2b06" stroke-width="12" fill="none" stroke-linecap="round"></path>
+    <path d="M40 106 Q31 117 33 129" stroke="url(#flameGradMascote)" stroke-width="8" fill="none" stroke-linecap="round"></path>
+    <ellipse cx="32" cy="130" rx="8" ry="5.5" fill="#7a2b06"></ellipse>
+    <ellipse cx="32" cy="129" rx="6.5" ry="4.3" fill="#ffb14e"></ellipse>
+    <path d="M60 106 Q69 117 67 129" stroke="#7a2b06" stroke-width="12" fill="none" stroke-linecap="round"></path>
+    <path d="M60 106 Q69 117 67 129" stroke="url(#flameGradMascote)" stroke-width="8" fill="none" stroke-linecap="round"></path>
+    <ellipse cx="68" cy="130" rx="8" ry="5.5" fill="#7a2b06"></ellipse>
+    <ellipse cx="68" cy="129" rx="6.5" ry="4.3" fill="#ffb14e"></ellipse>
+    <!-- braços -->
+    <path d="M18 70 Q-3 76 2 96" stroke="#7a2b06" stroke-width="10" fill="none" stroke-linecap="round"></path>
+    <path d="M18 70 Q-3 76 2 96" stroke="url(#flameGradMascote)" stroke-width="6.5" fill="none" stroke-linecap="round"></path>
+    <circle cx="2" cy="97" r="7.5" fill="#7a2b06"></circle>
+    <circle cx="2" cy="97" r="6" fill="#ffb14e"></circle>
+    <path d="M82 70 Q103 76 98 96" stroke="#7a2b06" stroke-width="10" fill="none" stroke-linecap="round"></path>
+    <path d="M82 70 Q103 76 98 96" stroke="url(#flameGradMascote)" stroke-width="6.5" fill="none" stroke-linecap="round"></path>
+    <circle cx="98" cy="97" r="7.5" fill="#7a2b06"></circle>
+    <circle cx="98" cy="97" r="6" fill="#ffb14e"></circle>
+    <!-- corpo (gota de chama) com contorno grosso -->
+    <path fill="#7a2b06" d="M50 0 C24 30 10 53 10 77 C10 105 27 124 50 124 C73 124 90 105 90 77 C90 53 76 30 50 0 Z"></path>
+    <path fill="url(#flameGradMascote)" d="M50 8 C28 34 17 55 17 76 C17 100 31 118 50 118 C69 118 83 100 83 76 C83 55 72 34 50 8 Z"></path>
+    <path fill="#ffe9b0" d="M50 26 C38 44 32 56 32 68 C32 82 40 91 50 91 C60 91 68 82 68 68 C68 56 62 44 50 26 Z"></path>
+    <!-- sobrancelhas -->
+    <path d="M28 55 Q37 45 48 52" stroke="#7a2b06" stroke-width="5" fill="none" stroke-linecap="round"></path>
+    <path d="M72 55 Q63 45 52 52" stroke="#7a2b06" stroke-width="5" fill="none" stroke-linecap="round"></path>
+    <!-- olhos -->
+    <circle cx="39" cy="68" r="8.5" fill="#fff"></circle>
+    <circle cx="61" cy="68" r="8.5" fill="#fff"></circle>
+    <circle cx="40" cy="70" r="5.5" fill="#241109"></circle>
+    <circle cx="62" cy="70" r="5.5" fill="#241109"></circle>
+    <circle cx="42.5" cy="67" r="2" fill="#fff"></circle>
+    <circle cx="64.5" cy="67" r="2" fill="#fff"></circle>
+    <!-- bochechas -->
+    <ellipse cx="28" cy="82" rx="5" ry="3.4" fill="#ff8a3d" opacity=".8"></ellipse>
+    <ellipse cx="72" cy="82" rx="5" ry="3.4" fill="#ff8a3d" opacity=".8"></ellipse>
+    <!-- sorriso -->
+    <path d="M37 86 Q50 100 63 86" stroke="#3a1d10" stroke-width="4" fill="none" stroke-linecap="round"></path>
+  </symbol>
+</svg>
+
+
+<!-- ═══════════ TELA DE CARREGAMENTO → código em login-e-carregamento/ ═══════════ -->
+<div id="loading-screen">
+  <img class="ld-logo" alt="Mascote" src="imagens/gorila.webp">
+  <div class="ld-bottom">
+    <div class="ld-progress">
+      <div class="ld-track"><div class="ld-fill" id="ld-fill"></div></div>
+      <div class="ld-pct" id="ld-pct">0%</div>
+    </div>
+    <div class="ld-status" id="ld-status">Carregando...</div>
+    <div class="ld-conn" id="ld-conn"></div>
+    <ul class="ld-steps" id="ld-steps"></ul>
+  </div>
+</div>
+
+
+<!-- ═══════════ BARRA SUPERIOR → código em barra-superior/ ═══════════ -->
+<!-- ─── BARRA SUPERIOR (1: gorila · 2: busca) e PAINEL DE NOTÍCIAS (3) ─── -->
+<div id="topbar">
+  <img id="tb-logo" alt="Gorila" src="" title="Voltar ao início">
+  <span class="tb-title" title="Voltar ao início">Gorila Concurso</span>
+  <div class="tb-search">
+    <input id="busca-global" type="text" autocomplete="off" placeholder="Buscar dias, conteúdos, mapa mental ou concursos..." oninput="bgBuscar(this.value)" onkeydown="bgTecla(event)">
+    <div id="busca-resultados"></div>
+  </div>
+  <button id="tb-entrar" onclick="toggleMenuConta(event)" style="display:none">Entrar ▾</button>
+  <div id="tb-cal-switch" title="Calendário ativo"><span class="cal-switch-lbl" id="cal-ativo-lbl">Calendário ON</span><button type="button" class="cal-switch on" id="cal-ativo-btn" onclick="toggleCalendarioAtivo()" role="switch" aria-checked="true" aria-label="Calendário ativo"></button></div>
+</div>
+<div id="tb-conta-menu"><button type="button" onclick="auEscolher('login')">Entrar</button><button type="button" onclick="auEscolher('cadastro')">Criar conta</button><button type="button" id="tb-menu-visitante" onclick="auEscolher('visitante')" style="display:none;border-top:1px solid var(--border);border-radius:0 0 7px 7px;margin-top:4px;color:var(--text-secondary)">Continuar sem cadastro</button></div>
+<aside id="news-panel"></aside>
+
+<!-- ═══════════ BARRA DE ÍCONES DA DIREITA (Sala de estudos · Calendário · Notícias) → código em geral/navegacao.js ═══════════ -->
+  <!-- BARRA VERTICAL DE TEMAS PRINCIPAIS (visível antes e depois do login) -->
+  <nav id="theme-rail" aria-label="Temas principais">
+    <button class="tr-item" id="tr-sala" title="Sala de estudos" aria-label="Sala de estudos" onclick="mostrarToast('Sala de estudos — em breve!')">
+      <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sala de estudos">
+        <path d="M6 44h52M12 44v13M52 44v13"/>
+        <rect x="12" y="20" width="26" height="17" rx="2"/>
+        <path d="M8 41h34"/>
+        <path d="M51 44V31l-4-13"/>
+        <path d="M42 15l9-5 4 8-9 5z"/>
+      </svg>
+    </button>
+    <button class="tr-item" id="tr-calendario" title="Calendário de estudos" aria-label="Calendário de estudos" onclick="trAbrirCalendario()">
+      <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Calendário de estudos">
+        <rect x="8" y="12" width="48" height="44" rx="6"/>
+        <path d="M8 26h48M20 6v12M44 6v12"/>
+        <path d="M22 44l7 7 13-14"/>
+      </svg>
+    </button>
+    <button class="tr-item" id="tr-noticias" title="Notícias de concursos" aria-label="Notícias de concursos" onclick="trAbrirNoticias()">
+      <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Notícias de concursos">
+        <path d="M14 10h36a4 4 0 0 1 4 4v36a4 4 0 0 1-4 4H14a4 4 0 0 1-4-4V14a4 4 0 0 1 4-4z"/>
+        <rect x="18" y="18" width="16" height="12" rx="1"/>
+        <path d="M40 20h8M40 28h8M18 38h30M18 46h30"/>
+      </svg>
+    </button>
+  </nav>
+
+
+<!-- ═══════════ LOGIN / CADASTRO → código em login-e-carregamento/ ═══════════ -->
+<!-- ─── JANELA DE ACESSO: entrar / criar conta ─── -->
+<div id="auth-screen" style="display:none">
+  <div id="auth-modal" class="auth-modal" onclick="if(event.target===this)auFecharLogin()">
+    <div class="auth-box" role="dialog" aria-modal="true" aria-labelledby="auth-titulo">
+      <button type="button" class="au-fechar" onclick="auFecharLogin()" title="Fechar" aria-label="Fechar">&#10005;</button>
+
+      <div class="auth-marca">
+        <img src="imagens/gorila.webp" alt="" class="auth-logo">
+        <div>
+          <div class="auth-nome" id="auth-titulo">Gorila Concurso</div>
+          <div class="auth-slogan">Planejamento e controle da sua preparação</div>
+        </div>
+      </div>
+
+      <div class="au-tabs" role="tablist">
+        <button type="button" role="tab" id="au-tab-login" onclick="configurarAuthModal('login')">Entrar</button>
+        <button type="button" role="tab" id="au-tab-cadastro" onclick="configurarAuthModal('cadastro')">Criar conta</button>
+      </div>
+
+      <!-- ENTRAR -->
+      <form id="auth-login" class="auth-form" novalidate onsubmit="event.preventDefault();entrarLogin()">
+        <p class="auth-sub" id="auth-login-sub">Acesse sua área de estudos.</p>
+        <div id="auth-login-erro" class="auth-error" role="alert"></div>
+        <label class="auth-label" for="login-email">E-mail</label>
+        <input type="email" id="login-email" class="auth-input" autocomplete="username" inputmode="email" maxlength="120">
+        <label class="auth-label" for="login-senha">Senha</label>
+        <div class="auth-senha-wrap">
+          <input type="password" id="login-senha" class="auth-input" autocomplete="current-password" maxlength="128">
+          <button type="button" class="auth-olho" onclick="alternarSenha('login-senha',this)" aria-label="Mostrar senha">Mostrar</button>
+        </div>
+        <button type="submit" class="auth-btn" id="login-btn">Entrar</button>
+        <div class="auth-links"><button type="button" class="auth-link" onclick="esqueciSenha()">Esqueci minha senha</button></div>
+      </form>
+
+      <!-- CRIAR CONTA -->
+      <form id="auth-cadastro" class="auth-form" novalidate onsubmit="event.preventDefault();cadastrar()" style="display:none">
+        <p class="auth-sub">Crie sua conta para registrar e acompanhar seus estudos.</p>
+        <div class="au-aviso" id="au-aviso-cadastro">Já existe uma conta neste navegador. Criar uma nova substitui o acesso atual; seu progresso de estudo continua salvo.</div>
+        <div id="auth-cadastro-erro" class="auth-error" role="alert"></div>
+        <label class="auth-label" for="auth-nome">Nome</label>
+        <input type="text" id="auth-nome" class="auth-input" autocomplete="name" maxlength="60">
+        <label class="auth-label" for="auth-email">E-mail</label>
+        <input type="email" id="auth-email" class="auth-input" autocomplete="email" inputmode="email" maxlength="120">
+        <label class="auth-label" for="auth-senha">Senha</label>
+        <div class="auth-senha-wrap">
+          <input type="password" id="auth-senha" class="auth-input" autocomplete="new-password" maxlength="128" oninput="mostrarRegrasSenha()">
+          <button type="button" class="auth-olho" onclick="alternarSenha('auth-senha',this)" aria-label="Mostrar senha">Mostrar</button>
+        </div>
+        <ul class="auth-regras" id="auth-regras">
+          <li data-regra="tamanho">Mínimo de 8 caracteres</li>
+          <li data-regra="letra">Pelo menos uma letra</li>
+          <li data-regra="numero">Pelo menos um número</li>
+        </ul>
+        <label class="auth-label" for="auth-senha2">Confirmar senha</label>
+        <input type="password" id="auth-senha2" class="auth-input" autocomplete="new-password" maxlength="128">
+        <button type="submit" class="auth-btn" id="cadastro-btn">Criar conta</button>
+      </form>
+
+      <div class="auth-rodape">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+        <span>Seu progresso fica salvo neste computador. Acesse sempre pelo mesmo navegador para encontrar seus dados.</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════ TELA INICIAL COM AS TRILHAS → código em sala-de-estudo/trilhas.js ═══════════ -->
+<div id="home-screen" style="display:none">
+  <div class="home-topbar">
+    <div class="home-logo">
+      <span class="icon-emoji">📘</span>
+      <div>
+        <div class="home-logo-title">Gorila Concurso</div>
+        <div class="home-logo-sub"><span class="icon-emoji" style="font-size:11px">🔒</span> Salvo automaticamente neste navegador</div>
+      </div>
+    </div>
+    <div class="home-actions">
+      <div class="foguinho-box" title="Total de dias estudados — fixo, nunca reseta" onclick="tocarFoguinho(this)">
+        <span id="foguinho-icon-home" class="foguinho-emoji" style="filter: drop-shadow(rgb(0, 229, 255) 0px 0px 9px); transform: scale(1.25);">🔥</span>
+        <span id="foguinho-num-home">113</span>
+      </div>
+      <button class="theme-toggle" onclick="toggleTheme()" id="theme-btn"><span class="icon-emoji">🌙</span> Tema escuro</button>
+      <button class="logout-btn-home" id="salvar-agora-home-btn" onclick="salvarAgora(this)" title="Salva seu progresso atual agora"><span class="icon-emoji">💾</span> Salvar agora</button>
+      <button class="logout-btn-home" onclick="sairDaSecao()" title="Sai e volta pra tela de login"><span class="icon-emoji">🚪</span> Sair da seção</button>
+    </div>
+  </div>
+
+  <div class="home-greeting">O que você quer fazer hoje?</div>
+  <div class="home-sub">Escolha uma seção para começar</div>
+
+  <div class="home-section-label">📚 Trilhas de Estudo</div>
+  <div class="home-grid" id="trilhas-fixas-grid">
+    <div class="home-card hc-blue trilha-fixa-card" onclick="openSection('ciencia')">
+      <span class="icon-emoji hc-arrow">📊</span>
+      <button class="hc-del-btn" onclick="event.stopPropagation();ocultarTrilhaFixa('ciencia')" title="Remover esta trilha da tela inicial"><span class="icon-emoji">🗑️</span></button>
+      <div class="hc-icon"><span class="icon-emoji">🗄️</span></div>
+      <div class="hc-title">Ciência de Dados</div>
+      <div class="hc-desc">Estácio — disciplinas, horas, questões, PDFs, progresso da grade curricular</div>
+    </div><div class="home-card hc-green trilha-fixa-card" onclick="openSection('sefaz')">
+      <span class="icon-emoji hc-arrow">🏛️</span>
+      <button class="hc-del-btn" onclick="event.stopPropagation();ocultarTrilhaFixa('sefaz')" title="Remover esta trilha da tela inicial"><span class="icon-emoji">🗑️</span></button>
+      <div class="hc-icon"><span class="icon-emoji">🧾</span></div>
+      <div class="hc-title">SEFAZ SP</div>
+      <div class="hc-desc">Concurso fiscal — matérias, questões, horas, apostilas e progresso por disciplina</div>
+    </div><div class="home-card hc-orange trilha-fixa-card" onclick="openSection('direito')">
+      <span class="icon-emoji hc-arrow">⚖️</span>
+      <button class="hc-del-btn" onclick="event.stopPropagation();ocultarTrilhaFixa('direito')" title="Remover esta trilha da tela inicial"><span class="icon-emoji">🗑️</span></button>
+      <div class="hc-icon"><span class="icon-emoji">🔨</span></div>
+      <div class="hc-title">Direito</div>
+      <div class="hc-desc">Estudo jurídico geral — horas, questões, apostilas e acompanhamento de progresso</div>
+    </div><div class="home-card hc-purple trilha-fixa-card" onclick="openSection('notario')">
+      <span class="icon-emoji hc-arrow">🎓</span>
+      <button class="hc-del-btn" onclick="event.stopPropagation();ocultarTrilhaFixa('notario')" title="Remover esta trilha da tela inicial"><span class="icon-emoji">🗑️</span></button>
+      <div class="hc-icon"><span class="icon-emoji">✍️</span></div>
+      <div class="hc-title">Notário e Registrador</div>
+      <div class="hc-desc">Concurso de cartório — matérias específicas, horas, questões e progresso</div>
+    </div><div id="carreiras-custom-grid" style="display:contents"><div class="home-card hc-blue" onclick="openSection('car_mr29hgcjvv9o')">
+      <button class="hc-del-btn" onclick="event.stopPropagation();excluirCarreira('car_mr29hgcjvv9o')" title="Excluir carreira"><span class="icon-emoji">🗑️</span></button>
+      <div class="hc-icon"><span class="icon-emoji">💻</span></div>
+      <div class="hc-title">Cientista Inventor (empresarial)</div>
+      <div class="hc-desc">Nenhuma disciplina adicionada ainda</div>
+    </div></div>
+    <div class="home-card add-carreira-card" onclick="abrirAddCarreira()">
+      <div class="hc-icon" style="background:var(--surface-2);color:var(--text-secondary)"><span class="icon-emoji">➕</span></div>
+      <div class="hc-title">Adicionar carreira</div>
+      <div class="hc-desc">Crie uma nova, ou reative uma trilha que você tinha removido</div>
+    </div>
+  </div>
+
+  <div class="home-section-label">📊 Visão Geral</div>
+  <div class="home-grid" style="grid-template-columns:1fr 1fr;max-width:600px">
+    <div class="home-card hc-teal" onclick="openSection('guia')">
+      <span class="icon-emoji hc-arrow">📅</span>
+      <div class="hc-icon"><span class="icon-emoji">📊</span></div>
+      <div class="hc-title">Guia de Estudos (Geral)</div>
+      <div class="hc-desc">Calendário, mural do mês, conteúdos e backup</div>
+    </div>
+    <div class="home-card hc-pink" onclick="openSection('painel')">
+      <span class="icon-emoji hc-arrow">📊</span>
+      <div class="hc-icon"><span class="icon-emoji">📊</span></div>
+      <div class="hc-title">Painel Infográfico</div>
+      <div class="hc-desc">Panorama geral de evolução desenhado especificamente como sua dashboard</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════ TELA DE NOTÍCIAS → código em noticias/ ═══════════ -->
+<div id="news-screen"></div>
+
+
+<!-- ═══════════ APP (barra lateral + abas) ═══════════ -->
+<div id="app-shell" style="display:none">
+<div class="app">
+  <div class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <div style="display:flex; justify-content:space-between; align-items:center; width: 100%;">
+        <div>
+          <div class="logo-title"><span id="sidebar-section-title">Guia Geral</span></div>
+          <div class="logo-sub" id="sidebar-section-sub">Calendário · Mural · Conteúdos</div>
+        </div>
+        <div class="foguinho-box" style="padding: 4px 8px; font-size: 12px; background: transparent; border: none;" title="Total de dias estudados — fixo, nunca reseta" onclick="tocarFoguinho(this)">
+          <span id="foguinho-icon-sb" class="foguinho-emoji" style="filter: drop-shadow(rgb(0, 229, 255) 0px 0px 9px); transform: scale(1.25);">🔥</span>
+          <span id="foguinho-num-sb">113</span>
+        </div>
+      </div>
+    </div>
+    <div class="sidebar-back" onclick="goHome()"><span class="icon-emoji">←</span> Voltar ao início</div>
+    <div id="sidebar-nav"><!-- preenchido por geral/navegacao.js --></div>
+    <div class="sidebar-footer">
+      <div class="footer-label">Horas este mês</div>
+      <div class="footer-val" id="sidebar-hours">0h</div>
+      <button class="sb-btn" onclick="toggleTheme()" id="theme-btn-sidebar"><span class="icon-emoji">🌙</span> Tema escuro</button>
+      <div id="backup-toast" style="display:none;margin-top:6px;padding:6px 10px;background:var(--success-bg);border:1px solid var(--success);border-radius:var(--radius);font-size:11px;color:#6dbc8a;text-align:center"></div>
+    </div>
+  </div>
+  <div class="main" id="main-area">
+
+
+<!-- ═══════════ ABA CALENDÁRIO → código em calendario/calendario.js ═══════════ -->
+    <div class="tab-content active" id="tab-calendario">
+      <div class="page-header"><div class="page-title">Calendário de estudos</div><div class="page-sub" id="cal-subtitle">Outubro 2026</div></div>
+      <div id="cal-off-msg"><span class="icon-emoji co-ic">⏸️</span><div style="font-size:14px;font-weight:600;color:var(--text-primary);margin-bottom:4px">Calendário desligado</div><div style="font-size:12.5px">Seus registros continuam salvos. Ligue o botão acima para voltar a usar o calendário.</div></div>
+      <div class="stats-row">
+        <div class="stat-card"><div class="stat-label">Dias estudados</div><div class="stat-val" id="stat-dias">0</div><div class="stat-sub">este mês</div></div>
+        <div class="stat-card"><div class="stat-label">Total de horas</div><div class="stat-val" id="stat-horas">0h</div><div class="stat-sub">este mês</div></div>
+        <div class="stat-card"><div class="stat-label">Média por dia</div><div class="stat-val" id="stat-media">0h</div><div class="stat-sub">dias com estudo</div></div>
+        <div class="stat-card"><div class="stat-label">Sequência atual</div><div class="stat-val" id="stat-seq">0</div><div class="stat-sub">dias seguidos</div></div>
+      </div>
+      <div class="cal-header">
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:8px">
+          <div class="cal-view-switch" role="tablist" aria-label="Visualização do calendário">
+            <button class="cal-view-btn active" id="cal-view-month-btn" onclick="setCalView('month')"><span class="icon-emoji">🗓️</span> Mês</button>
+            <button class="cal-view-btn" id="cal-view-year-btn" onclick="setCalView('year')"><span class="icon-emoji">📈</span> Ano</button>
+          </div>
+          <div class="cal-nav" id="cal-nav-month">
+            <button class="cal-nav-btn" onclick="changeMonth(-1)"><span class="icon-emoji">‹</span></button>
+            <div class="cal-month" id="cal-month-label">Outubro de 2026</div>
+            <button class="cal-nav-btn" onclick="changeMonth(1)"><span class="icon-emoji">›</span></button>
+          </div>
+          <div class="cal-nav" id="cal-nav-year" style="display:none">
+            <button class="cal-nav-btn" onclick="changeYear(-1)"><span class="icon-emoji">‹</span></button>
+            <div class="cal-month" id="cal-year-label">—</div>
+            <button class="cal-nav-btn" onclick="changeYear(1)"><span class="icon-emoji">›</span></button>
+          </div>
+        </div>
+        <button class="cal-reg-btn" onclick="registrarHoje()"><span class="icon-emoji">➕</span> Registrar hoje</button>
+      </div>
+      <div class="cal-legend" id="cal-materias" style="align-items:center"></div>
+      <div id="cal-month-view">
+        <div class="cal-days-header" id="cal-days-header"><div class="cal-day-lbl">Dom</div><div class="cal-day-lbl">Seg</div><div class="cal-day-lbl">Ter</div><div class="cal-day-lbl">Qua</div><div class="cal-day-lbl">Qui</div><div class="cal-day-lbl">Sex</div><div class="cal-day-lbl">Sáb</div></div>
+        <div class="cal-grid" id="cal-grid"><div class="cal-cell empty"></div><div class="cal-cell empty"></div><div class="cal-cell empty"></div><div class="cal-cell empty"></div><div class="cal-cell no-study today" onclick="openDayModal('2026-10-01')">
+      
+      <div class="day-num">1</div>
+      <button class="cal-img-add" onclick="event.stopPropagation();triggerCalImg('2026-10-01')"><span class="icon-emoji">🖼️</span></button>
+    </div><div class="cal-cell no-study" onclick="openDayModal('2026-10-02')">
+      
+      <div class="day-num">2</div>
+      <button class="cal-img-add" onclick="event.stopPropagation();triggerCalImg('2026-10-02')"><span class="icon-emoji">🖼️</span></button>
+    </div><div class="cal-cell no-study" onclick="openDayModal('2026-10-03')">
+      
+      <div class="day-num">3</div>
+      <button class="cal-img-add" onclick="event.stopPropagation();triggerCalImg('2026-10-03')"><span class="icon-emoji">🖼️</span></button>
+    </div><div class="cal-cell no-study" onclick="openDayModal('2026-10-04')">
+      
+      <div class="day-num">4</div>
+      <button class="cal-img-add" onclick="event.stopPropagation();triggerCalImg('2026-10-04')"><span class="icon-emoji">🖼️</span></button>
+    </div><div class="cal-cell no-study" onclick="openDayModal('2026-10-05')">
+      
+      <div class="day-num">5</div>
+      <button class="cal-img-add" onclick="event.stopPropagation();triggerCalImg('2026-10-05')"><span class="icon-emoji">🖼️</span></button>
+    </div><div class="cal-cell no-study" onclick="openDayModal('2026-10-06')">
+      
+      <div class="day-num">6</div>
+      <button class="cal-img-add" onclick="event.stopPropagation();triggerCalImg('2026-10-06')"><span class="icon-emoji">🖼️</span></button>
+    </div><div class="cal-cell no-study" onclick="openDayModal('2026-10-07')">
+      
+      <div class="day-num">7</div>
+      <button class="cal-img-add" onclick="event.stopPropagation();triggerCalImg('2026-10-07')"><span class="icon-emoji">🖼️</span></button>
+    </div><div class="cal-cell no-study" onclick="openDayModal('2026-10-08')">
+      
+      <div class="day-num">8</div>
+      <button class="cal-img-add" onclick="event.stopPropagation();triggerCalImg('2026-10-08')"><span class="icon-emoji">🖼️</span></button>
+    </div><div class="cal-cell no-study" onclick="openDayModal('2026-10-09')">
+      
+      <div class="day-num">9</div>
+      <button class="cal-img-add" onclick="event.stopPropagation();triggerCalImg('2026-10-09')"><span class="icon-emoji">🖼️</span></button>
+    </div><div class="cal-cell no-study" onclick="openDayModal('2026-10-10')">
+      
+      <div class="day-num">10</div>
+      <button class="cal-img-add" onclick="event.stopPropagation();triggerCalImg('2026-10-10')"><span class="icon-emoji">🖼️</span></button>
+    </div><div class="cal-cell no-study" onclick="openDayModal('2026-10-11')">
+      
+      <div class="day-num">11</div>
+      <button class="cal-img-add" onclick="event.stopPropagation();triggerCalImg('2026-10-11')"><span class="icon-emoji">🖼️</span></button>
+    </div><div class="cal-cell no-study" onclick="openDayModal('2026-10-12')">
+      
+      <div class="day-num">12</div>
+      <button class="cal-img-add" onclick="event.stopPropagation();triggerCalImg('2026-10-12')"><span class="icon-emoji">🖼️</span></button>
+    </div><div class="cal-cell no-study" onclick="openDayModal('2026-10-13')">
+      
+      <div class="day-num">13</div>
+      <button class="cal-img-add" onclick="event.stopPropagation();triggerCalImg('2026-10-13')"><span class="icon-emoji">🖼️</span></button>
+    </div><div class="cal-cell no-study" onclick="openDayModal('2026-10-14')">
+      
+      <div class="day-num">14</div>
+      <button class="cal-img-add" onclick="event.stopPropagation();triggerCalImg('2026-10-14')"><span class="icon-emoji">🖼️</span></button>
+    </div><div class="cal-cell no-study" onclick="openDayModal('2026-10-15')">
+      
+      <div class="day-num">15</div>
+      <button class="cal-img-add" onclick="event.stopPropagation();triggerCalImg('2026-10-15')"><span class="icon-emoji">🖼️</span></button>
+    </div><div class="cal-cell no-study" onclick="openDayModal('2026-10-16')">
+      
+      <div class="day-num">16</div>
+      <button class="cal-img-add" onclick="event.stopPropagation();triggerCalImg('2026-10-16')"><span class="icon-emoji">🖼️</span></button>
+    </div><div class="cal-cell no-study" onclick="openDayModal('2026-10-17')">
+      
+      <div class="day-num">17</div>
+      <button class="cal-img-add" onclick="event.stopPropagation();triggerCalImg('2026-10-17')"><span class="icon-emoji">🖼️</span></button>
+    </div><div class="cal-cell no-study" onclick="openDayModal('2026-10-18')">
+      
+      <div class="day-num">18</div>
+      <button class="cal-img-add" onclick="event.stopPropagation();triggerCalImg('2026-10-18')"><span class="icon-emoji">🖼️</span></button>
+    </div><div class="cal-cell no-study" onclick="openDayModal('2026-10-19')">
+      
+      <div class="day-num">19</div>
+      <button class="cal-img-add" onclick="event.stopPropagation();triggerCalImg('2026-10-19')"><span class="icon-emoji">🖼️</span></button>
+    </div><div class="cal-cell no-study" onclick="openDayModal('2026-10-20')">
+      
+      <div class="day-num">20</div>
+      <button class="cal-img-add" onclick="event.stopPropagation();triggerCalImg('2026-10-20')"><span class="icon-emoji">🖼️</span></button>
+    </div><div class="cal-cell no-study" onclick="openDayModal('2026-10-21')">
+      
+      <div class="day-num">21</div>
+      <button class="cal-img-add" onclick="event.stopPropagation();triggerCalImg('2026-10-21')"><span class="icon-emoji">🖼️</span></button>
+    </div><div class="cal-cell no-study" onclick="openDayModal('2026-10-22')">
+      
+      <div class="day-num">22</div>
+      <button class="cal-img-add" onclick="event.stopPropagation();triggerCalImg('2026-10-22')"><span class="icon-emoji">🖼️</span></button>
+    </div><div class="cal-cell no-study" onclick="openDayModal('2026-10-23')">
+      
+      <div class="day-num">23</div>
+      <button class="cal-img-add" onclick="event.stopPropagation();triggerCalImg('2026-10-23')"><span class="icon-emoji">🖼️</span></button>
+    </div><div class="cal-cell no-study" onclick="openDayModal('2026-10-24')">
+      
+      <div class="day-num">24</div>
+      <button class="cal-img-add" onclick="event.stopPropagation();triggerCalImg('2026-10-24')"><span class="icon-emoji">🖼️</span></button>
+    </div><div class="cal-cell no-study" onclick="openDayModal('2026-10-25')">
+      
+      <div class="day-num">25</div>
+      <button class="cal-img-add" onclick="event.stopPropagation();triggerCalImg('2026-10-25')"><span class="icon-emoji">🖼️</span></button>
+    </div><div class="cal-cell no-study" onclick="openDayModal('2026-10-26')">
+      
+      <div class="day-num">26</div>
+      <button class="cal-img-add" onclick="event.stopPropagation();triggerCalImg('2026-10-26')"><span class="icon-emoji">🖼️</span></button>
+    </div><div class="cal-cell no-study" onclick="openDayModal('2026-10-27')">
+      
+      <div class="day-num">27</div>
+      <button class="cal-img-add" onclick="event.stopPropagation();triggerCalImg('2026-10-27')"><span class="icon-emoji">🖼️</span></button>
+    </div><div class="cal-cell no-study" onclick="openDayModal('2026-10-28')">
+      
+      <div class="day-num">28</div>
+      <button class="cal-img-add" onclick="event.stopPropagation();triggerCalImg('2026-10-28')"><span class="icon-emoji">🖼️</span></button>
+    </div><div class="cal-cell no-study" onclick="openDayModal('2026-10-29')">
+      
+      <div class="day-num">29</div>
+      <button class="cal-img-add" onclick="event.stopPropagation();triggerCalImg('2026-10-29')"><span class="icon-emoji">🖼️</span></button>
+    </div><div class="cal-cell no-study" onclick="openDayModal('2026-10-30')">
+      
+      <div class="day-num">30</div>
+      <button class="cal-img-add" onclick="event.stopPropagation();triggerCalImg('2026-10-30')"><span class="icon-emoji">🖼️</span></button>
+    </div><div class="cal-cell no-study" onclick="openDayModal('2026-10-31')">
+      
+      <div class="day-num">31</div>
+      <button class="cal-img-add" onclick="event.stopPropagation();triggerCalImg('2026-10-31')"><span class="icon-emoji">🖼️</span></button>
+    </div></div>
+      </div>
+      <div id="cal-year-view" style="display:none">
+        <div style="display:flex;gap:8px;margin-bottom:16px;justify-content:center">
+          <button id="cal-year-view-colors-btn" onclick="setCalYearView('cores')" style="padding:8px 16px;background:var(--accent);color:#fff;border:none;border-radius:6px;cursor:pointer;font-weight:600;font-size:13px;transition:opacity .2s">Cores</button>
+          <button id="cal-year-view-photos-btn" onclick="setCalYearView('fotos')" style="padding:8px 16px;background:var(--surface-2);color:var(--text-primary);border:1px solid var(--border);border-radius:6px;cursor:pointer;font-weight:600;font-size:13px;transition:opacity .2s">Fotos</button>
+        </div>
+        <div class="cal-year-grid" id="cal-year-grid"></div>
+      </div>
+      <input type="file" id="cal-img-input" accept="image/*" style="display:none" onchange="addCalImg(this)">
+    </div>
+
+
+<!-- ═══════════ ABA MURAL DO MÊS → código em calendario/mural.js ═══════════ -->
+    <div class="tab-content" id="tab-mural">
+      <div class="page-header"><div class="page-title">Mural do mês</div><div class="page-sub">O que você fez em cada dia</div></div>
+      <div class="mural-grid" id="mural-grid"><div class="empty-state"><span class="icon-emoji">😐</span><p>Nenhum dia registrado ainda.</p></div></div>
+    </div>
+
+
+
+<!-- ═══════════ ABA CONTEÚDOS → código em sala-de-estudo/conteudos.js ═══════════ -->
+    <div class="tab-content" id="tab-conteudos">
+      <div class="page-header" style="display:flex;align-items:center;flex-wrap:wrap;gap:10px">
+        <div>
+          <div class="page-title">Conteúdos</div>
+          <div class="page-sub">Escolha seu curso ou concurso e as matérias entram automaticamente (você ainda pode ajustar)</div>
+        </div>
+        <button class="add-mapa-btn" onclick="abrirAddCurso()" style="margin-left:auto"><span class="icon-emoji">➕</span> Adicionar curso</button>
+      </div>
+      <div id="cursos-grid" class="content-cols"></div>
+    </div>
+
+
+<!-- ═══════════ ABA CARREIRA → código em sala-de-estudo/trilhas.js ═══════════ -->
+    <div class="tab-content" id="tab-carreira">
+      <div class="page-header">
+        <div class="page-title" id="carreira-titulo">Carreira</div>
+        <div class="page-sub">Disciplinas, horas e progresso</div>
+      </div>
+      <div class="stats-row" id="carreira-stats" style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:20px">
+        <div class="stat-card"><div class="stat-label">Disciplinas</div><div class="stat-val" id="carreira-stat-total">0</div></div>
+        <div class="stat-card"><div class="stat-label">Concluídas</div><div class="stat-val" id="carreira-stat-done">0</div></div>
+        <div class="stat-card"><div class="stat-label">Horas</div><div class="stat-val" id="carreira-stat-horas">0h</div></div>
+      </div>
+      <div id="carreira-lista" style="display:flex;flex-direction:column;gap:8px;margin-bottom:16px"></div>
+      <div style="display:flex;gap:8px">
+        <input type="text" id="carreira-nova-disciplina" placeholder="Nome da nova disciplina..." style="flex:1;padding:10px 12px;border-radius:8px;border:1px solid var(--border);background:var(--surface-1);color:var(--text-primary);font-size:13px" onkeydown="if(event.key==='Enter')adicionarDisciplinaCarreira()">
+        <button style="background:var(--accent);color:#fff;border:none;border-radius:8px;padding:0 16px;cursor:pointer;font-weight:600;font-size:13px" onclick="adicionarDisciplinaCarreira()">Adicionar</button>
+      </div>
+    </div>
+
+
+<!-- ═══════════ ABA PAINEL INFOGRÁFICO → código em sala-de-estudo/painel.js ═══════════ -->
+    <div class="tab-content" id="tab-infografico">
+      <div class="page-header">
+        <div class="page-title" id="info-area-title">Infográfico Dashboard</div>
+        <div class="page-sub" id="info-area-sub">Painel visual de evolução (Referência)</div>
+      </div>
+      
+      <div class="dash-wrapper">
+        <div class="dash-grid">
+          <div class="dash-col-main">
+             <div class="dash-row-cards">
+                <div class="dash-card dark-card">
+                   <div class="dc-title">Horas Acumuladas</div>
+                   <div class="dc-icon" style="color: #ffffff;"><span class="icon-emoji">🕐</span></div>
+                   <div class="dc-val"><span id="img-horas">0</span>h</div>
+                </div>
+                <div class="dash-card">
+                   <div class="dc-title">Dias Estudados</div>
+                   <div class="dc-icon"><span class="icon-emoji">📅</span></div>
+                   <div class="dc-val" id="img-dias">0</div>
+                </div>
+                <div class="dash-card">
+                   <div class="dc-title">Questões Feitas</div>
+                   <div class="dc-icon"><span class="icon-emoji">👍</span></div>
+                   <div class="dc-val" id="img-questoes">0</div>
+                </div>
+                <div class="dash-card">
+                   <div class="dc-title">PDFs / Livros (Faculdade)</div>
+                   <div class="dc-icon"><span class="icon-emoji">📄</span></div>
+                   <div class="dc-val" id="img-pdfs">0</div>
+                </div>
+                <div class="dash-card">
+                   <div class="dc-title">Apostilas Digitais (Concurso)</div>
+                   <div class="dc-icon"><span class="icon-emoji">📘</span></div>
+                   <div class="dc-val" id="img-apostilas">0</div>
+                </div>
+             </div>
+             
+             <div class="dash-card">
+                <div class="dc-title">Resultados de Horas vs Questões por Área</div>
+                <div class="dash-badge" style="cursor:pointer" onclick="analisarDadosGerais()">Check Now</div>
+                <div class="sim-bar-container" id="img-bars">
+                   </div>
+             </div>
+             
+             <div class="dash-card" style="display:flex; justify-content:space-between; gap:20px; align-items:flex-end;">
+                <div style="flex:1; position:relative;">
+                  <div style="display:flex; gap:12px; margin-bottom:10px;">
+                     <div style="font-size:10px; color:#666; font-weight:600;"><span class="icon-emoji" style="color:#f49e11; font-size:8px;">●</span> Horas Mensais</div>
+                     <div style="font-size:10px; color:#666; font-weight:600;"><span class="icon-emoji" style="color:#153250; font-size:8px;">●</span> Consistência</div>
+                  </div>
+                  <svg viewBox="0 0 400 100" style="width:100%; height:80px; display:block;">
+                     <path d="M0,80 C40,40 80,100 140,50 C200,0 260,90 320,40 C360,10 400,70 400,70 L400,100 L0,100 Z" fill="rgba(244, 158, 17, 0.4)"></path>
+                     <path d="M0,90 C50,60 100,110 160,70 C220,30 280,80 400,50 L400,100 L0,100 Z" fill="rgba(21, 50, 80, 0.2)"></path>
+                  </svg>
+                </div>
+                <div style="width: 140px; font-size:8px; color:#666; font-weight:bold; text-align:center;">
+                   <div style="display:grid; grid-template-columns:repeat(7, 1fr); gap:4px; margin-bottom:4px;">
+                     <div>S</div><div>M</div><div>T</div><div>W</div><div>T</div><div>F</div><div>S</div>
+                   </div>
+                   <div style="display:grid; grid-template-columns:repeat(7, 1fr); gap:4px;">
+                     <div style="color:#ccc;">28</div><div style="color:#ccc;">29</div><div style="color:#ccc;">30</div><div style="color:#ccc;">31</div><div>1</div><div>2</div><div>3</div>
+                     <div>4</div><div>5</div><div style="background:#153250; color:#fff; border-radius:2px; padding:2px;">6</div><div>7</div><div>8</div><div>9</div><div>10</div>
+                     <div>11</div><div>12</div><div>13</div><div style="background:#f49e11; color:#fff; border-radius:2px; padding:2px;">14</div><div>15</div><div>16</div><div>17</div>
+                   </div>
+                </div>
+             </div>
+          </div>
+          
+          <div class="dash-col-side">
+             <div class="dash-card" style="text-align:center; height: 100%; display:flex; flex-direction:column; justify-content:center;">
+                <div class="dc-title" style="text-align:center; font-size:14px; margin-top:-10px;">Progresso Geral</div>
+                <div class="donut-wrapper" id="img-donut-bg">
+                   <div class="donut-inner" id="img-donut-val">0%</div>
+                </div>
+                <div style="font-size:12px; color:#888; line-height:1.8; text-align:left; margin:0 auto; display:inline-block;">
+                   <div style="display:flex; align-items:center; gap:6px;"><span class="icon-emoji" style="color:#f49e11; font-size:10px;">●</span> <span>Feito</span></div>
+                   <div style="display:flex; align-items:center; gap:6px;"><span class="icon-emoji" style="color:#153250; font-size:10px;">●</span> <span>Pendente</span></div>
+                </div>
+                <button style="margin-top:auto; width:100%; background:#f49e11; color:#fff; border:none; padding:12px; border-radius:4px; font-weight:bold; cursor:pointer;" onclick="analisarDadosGerais()">Analisar Dados</button>
+             </div>
+          </div>
+        </div>
+      </div>
+      <div style="background:var(--surface-1);border:1px solid var(--border);border-radius:12px;padding:18px;margin-top:20px;">
+        <h4 style="font-size:14px;font-weight:600;color:var(--text-primary);margin-bottom:12px;"><span class="icon-emoji">✅</span> Histórico de Registros da Área</h4>
+        <div id="info-registros-list" style="font-size:13px;color:var(--text-secondary);line-height:2">Selecione uma aba ou visão no menu lateral.</div>
+      </div>
+    </div>
+    
+    <div class="tab-content" id="tab-painel">
+       </div>
+
+  </div></div></div>
+
+
+<!-- ═══════════ JANELAS (modais): matéria, curso, conteúdo, mapa mental, carreira, dia do calendário ═══════════ -->
+<div class="modal-overlay" id="add-materia-modal">
+  <div class="modal-inner" style="max-width:360px">
+    <button class="modal-close" onclick="fecharAddMateria()"><span class="icon-emoji">✕</span></button>
+    <div style="font-size:16px;font-weight:700;color:var(--text-primary);margin-bottom:14px">O que você está estudando?</div>
+    <div style="font-size:11.5px;color:var(--text-muted);margin:-8px 0 12px">Vale para o Calendário e para Conteúdos (é a mesma lista).</div>
+    <input type="text" id="nova-materia-nome" oninput="catalogoPrev('nova-materia-nome','catalogo-prev-materia')" placeholder="Ex: Direito, SEFAZ SP, Python..." style="width:100%;padding:10px 12px;margin-bottom:8px;border-radius:8px;border:1px solid var(--border);background:var(--surface-2);color:var(--text-primary);font-size:13px" onkeydown="if(event.key==='Enter')criarMateria()">
+    <div id="catalogo-prev-materia" style="font-size:12px;color:var(--text-secondary);min-height:16px;margin-bottom:6px"></div>
+    <div id="catalogo-chips-materia" style="max-height:140px;overflow:auto;margin-bottom:12px"></div>
+    <div style="font-size:11px;color:var(--text-muted);margin-bottom:8px">Cor</div>
+    <div id="nova-materia-cores" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px"></div>
+    <button style="width:100%;padding:10px;background:var(--accent);color:#fff;border:none;border-radius:8px;cursor:pointer;font-weight:600;font-size:13px" onclick="criarMateria()">Adicionar</button>
+  </div>
+</div>
+
+<div class="modal-overlay" id="add-curso-modal">
+  <div class="modal-inner" style="max-width:360px">
+    <button class="modal-close" onclick="fecharAddCurso()"><span class="icon-emoji">✕</span></button>
+    <div style="font-size:16px;font-weight:700;color:var(--text-primary);margin-bottom:14px">Novo curso</div>
+    <input type="text" id="novo-curso-nome" oninput="catalogoPrev('novo-curso-nome','catalogo-prev-curso')" placeholder="Ex: Direito, SEFAZ SP, Psicologia..." style="width:100%;padding:10px 12px;margin-bottom:8px;border-radius:8px;border:1px solid var(--border);background:var(--surface-2);color:var(--text-primary);font-size:13px" onkeydown="if(event.key==='Enter')criarCurso()">
+    <div id="catalogo-prev-curso" style="font-size:12px;color:var(--text-secondary);min-height:16px;margin-bottom:6px"></div>
+    <div id="catalogo-chips-curso" style="max-height:180px;overflow:auto;margin-bottom:14px"></div>
+    <button style="width:100%;padding:10px;background:var(--accent);color:#fff;border:none;border-radius:8px;cursor:pointer;font-weight:600;font-size:13px" onclick="criarCurso()">Criar curso</button>
+  </div>
+</div>
+
+<div class="modal-overlay" id="add-conteudo-modal">
+  <div class="modal-inner" style="max-width:380px">
+    <button class="modal-close" onclick="fecharAddConteudo()"><span class="icon-emoji">✕</span></button>
+    <div style="font-size:16px;font-weight:700;color:var(--text-primary);margin-bottom:14px">Nova matéria</div>
+    <input type="text" id="novo-conteudo-nome" placeholder="Nome da matéria (ex: Direito Penal)" style="width:100%;padding:10px 12px;margin-bottom:10px;border-radius:8px;border:1px solid var(--border);background:var(--surface-2);color:var(--text-primary);font-size:13px" onkeydown="if(event.key==='Enter')criarConteudo()">
+    <div style="font-size:11px;color:var(--text-muted);margin-bottom:6px">Para qual curso vai essa matéria?</div>
+    <select id="novo-conteudo-trilha" style="width:100%;padding:10px 12px;margin-bottom:16px;border-radius:8px;border:1px solid var(--border);background:var(--surface-2);color:var(--text-primary);font-size:13px"></select>
+    <button style="width:100%;padding:10px;background:var(--accent);color:#fff;border:none;border-radius:8px;cursor:pointer;font-weight:600;font-size:13px" onclick="criarConteudo()">Adicionar</button>
+  </div>
+</div>
+
+<div class="modal-overlay" id="mindmap-modal" style="align-items:stretch;justify-content:stretch">
+  <div style="width:100%;height:100%;background:var(--surface-0);display:flex;flex-direction:column">
+    <div style="display:flex;align-items:center;gap:10px;padding:14px 18px;border-bottom:1px solid var(--border);background:var(--surface-1)">
+      <div style="font-size:15px;font-weight:700;color:var(--text-primary)"><span class="icon-emoji">🧠</span> Mapa Mental</div>
+      <div style="font-size:11px;color:var(--text-muted)">Crie seus tópicos e subtópicos</div>
+      <button style="margin-left:auto;padding:8px 14px;background:var(--accent);color:#fff;border:none;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer" onclick="mmNovoTopico()"><span class="icon-emoji">➕</span> Novo tópico</button>
+      <button class="modal-close" style="position:static" onclick="fecharMindMap()"><span class="icon-emoji">✕</span></button>
+    </div>
+    <div id="mindmap-viewport" style="flex:1;overflow-y:auto;background:var(--surface-0);padding:18px 24px">
+      <div id="mindmap-list" style="max-width:720px;margin:0 auto"></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="mm-lightbox-modal" style="background:rgba(0,0,0,.85);z-index:600" onclick="mmFecharLightbox()">
+  <div style="background:var(--surface-1);border:1px solid var(--border);border-radius:14px;padding:16px;max-width:90vw;max-height:90vh;display:flex;flex-direction:column;gap:12px;box-shadow:0 10px 40px rgba(0,0,0,.5)" onclick="event.stopPropagation()">
+    <div style="display:flex;align-items:center;justify-content:space-between">
+      <div style="font-size:14px;font-weight:700;color:var(--text-primary)"><span class="icon-emoji">🖼️</span> Ver imagem</div>
+      <button onclick="mmFecharLightbox()" style="background:var(--surface-2);border:1px solid var(--border);color:var(--text-secondary);border-radius:50%;width:30px;height:30px;font-size:14px;cursor:pointer">✕</button>
+    </div>
+    <img id="mm-lightbox-img" src="" style="max-width:85vw;max-height:75vh;border-radius:8px;display:block;object-fit:contain">
+  </div>
+</div>
+
+<div class="modal-overlay" id="mm-nome-modal">
+  <div class="modal-inner" style="max-width:360px">
+    <button class="modal-close" onclick="mmFecharNomeModal()"><span class="icon-emoji">✕</span></button>
+    <div id="mm-nome-titulo" style="font-size:16px;font-weight:700;color:var(--text-primary);margin-bottom:14px">Novo tópico</div>
+    <input type="text" id="mm-nome-input" placeholder="Nome" style="width:100%;padding:10px 12px;margin-bottom:16px;border-radius:8px;border:1px solid var(--border);background:var(--surface-2);color:var(--text-primary);font-size:13px" onkeydown="if(event.key==='Enter')mmConfirmarNome()">
+    <button style="width:100%;padding:10px;background:var(--accent);color:#fff;border:none;border-radius:8px;cursor:pointer;font-weight:600;font-size:13px" onclick="mmConfirmarNome()">Salvar</button>
+  </div>
+</div>
+
+<div class="modal-overlay" id="add-carreira-modal">
+  <div class="modal-inner" style="max-width:380px">
+    <button class="modal-close" onclick="fecharAddCarreira()"><span class="icon-emoji">✕</span></button>
+    <div style="font-size:16px;font-weight:700;color:var(--text-primary);margin-bottom:14px">Nova carreira</div>
+    <input type="text" id="nova-carreira-nome" placeholder="Nome da carreira (ex: Concurso TRT)" style="width:100%;padding:10px 12px;margin-bottom:10px;border-radius:8px;border:1px solid var(--border);background:var(--surface-2);color:var(--text-primary);font-size:13px" onkeydown="if(event.key==='Enter')criarCarreira()">
+    <div style="font-size:11px;color:var(--text-muted);margin-bottom:8px">Escolha um ícone</div>
+    <div id="nova-carreira-icones" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px"></div>
+    <div id="reativar-trilhas-box" style="display:none;margin-bottom:16px;padding:10px;background:var(--surface-2);border-radius:8px"></div>
+    <button style="width:100%;padding:10px;background:var(--accent);color:#fff;border:none;border-radius:8px;cursor:pointer;font-weight:600;font-size:13px" onclick="criarCarreira()">Criar carreira</button>
+  </div>
+</div>
+
+<div class="modal-overlay" id="day-modal">
+  <div class="modal-inner" style="max-width:480px">
+    <button class="modal-close" onclick="closeDayModal()"><span class="icon-emoji">✕</span></button>
+    <div style="font-size:16px;font-weight:700;color:var(--text-primary);margin-bottom:12px" id="day-modal-title">Dia</div>
+    <div id="day-modal-content"></div>
+    <div style="margin-top:14px;display:flex;gap:8px;flex-wrap:wrap">
+      <button id="day-modal-edit-btn" style="flex:1;min-width:130px;padding:9px;background:var(--accent);color:#fff;border:none;border-radius:var(--radius);cursor:pointer;font-size:13px;font-weight:600" onclick="openDayEditForm()"><span class="icon-emoji">✏️</span> Editar manualmente</button>
+      <button id="day-modal-img-btn" style="padding:9px 14px;background:none;border:1px solid var(--border);border-radius:var(--radius);cursor:pointer;color:var(--text-secondary);font-size:13px" onclick="document.getElementById('cal-img-input').click()"><span class="icon-emoji">🖼️</span> Foto</button>
+    </div>
+    <div id="day-edit-form" style="display:none;margin-top:14px;border-top:1px solid var(--border);padding-top:14px"></div>
+  </div>
+</div>
+
+
+<!-- ═══════════ AVISOS E JANELAS DE CONFIRMAÇÃO → código em geral/utilidades.js ═══════════ -->
+<div id="toast-wrap"></div>
+<div id="custom-dialog-overlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:99999;align-items:center;justify-content:center;padding:20px">
+  <div style="background:var(--surface-1,#fff);color:var(--text-primary,#111);border-radius:12px;padding:22px 24px;max-width:420px;width:100%;box-shadow:0 10px 40px rgba(0,0,0,.3)">
+    <div id="custom-dialog-msg" style="font-size:14.5px;line-height:1.5;margin-bottom:20px;white-space:pre-line"></div>
+    <div id="custom-dialog-buttons" style="display:flex;gap:10px;justify-content:flex-end"></div>
+  </div>
+</div>
+<div class="modal-overlay" id="atualizar-sistema-modal">
+  <div class="modal-inner" style="max-width:600px">
+    <button class="modal-close" onclick="fecharAtualizarSistema()"><span class="icon-emoji">✕</span></button>
+    <div style="font-size:16px;font-weight:700;color:var(--text-primary);margin-bottom:8px">🔧 Atualizar sistema</div>
+    <div style="font-size:12.5px;color:var(--text-muted);margin-bottom:14px;line-height:1.5">
+      Cole aqui o código HTML completo e atualizado (o arquivo inteiro que o Claude te enviar no chat). Ao aplicar, seus dados atuais são salvos primeiro e continuam intactos — só o código do site é substituído.
+    </div>
+    <textarea id="atualizar-sistema-textarea" placeholder="Cole aqui todo o código HTML novo (desde &lt;!DOCTYPE html&gt; até &lt;/html&gt;)..." style="width:100%;height:220px;padding:10px 12px;border-radius:8px;border:1px solid var(--border);background:var(--surface-2);color:var(--text-primary);font-size:12px;font-family:monospace;resize:vertical;margin-bottom:14px"></textarea>
+    <div style="display:flex;gap:10px;justify-content:flex-end">
+      <button onclick="fecharAtualizarSistema()" style="padding:9px 16px;background:var(--surface-2);color:var(--text-primary);border:1px solid var(--border);border-radius:8px;cursor:pointer;font-size:13px;font-weight:600">Cancelar</button>
+      <button onclick="aplicarAtualizacaoSistema()" style="padding:9px 16px;background:var(--accent);color:#fff;border:none;border-radius:8px;cursor:pointer;font-size:13px;font-weight:600">Aplicar atualização</button>
+    </div>
+  </div>
+</div>
+
+<div id="save-toast" style="position: fixed; bottom: 18px; right: 18px; z-index: 3000; padding: 10px 16px; border-radius: 8px; font-size: 12px; font-weight: 600; display: flex; align-items: center; gap: 7px; transition: opacity 0.3s; box-shadow: rgba(0, 0, 0, 0.3) 0px 4px 14px; max-width: 320px; background: var(--success-bg); color: var(--success); border: 1px solid var(--success); opacity: 0;"><span class="icon-emoji">✅</span> Salvo</div></body></html>
+
+<!-- ═══════════ CÓDIGO (a ORDEM importa: dados primeiro, iniciar.js por último) ═══════════ -->
+<script src="banco-de-dados/armazenamento.js"></script>
+<script src="geral/dados-preferencias.js"></script>
+<script src="calendario/dados-calendario.js"></script>
+<script src="sala-de-estudo/dados-sala-de-estudo.js"></script>
+<script src="banco-de-dados/estado.js"></script>
+<script src="banco-de-dados/catalogo-concursos.js"></script>
+<script src="geral/utilidades.js"></script>
+<script src="geral/tema.js"></script>
+<script src="geral/navegacao.js"></script>
+<script src="login-e-carregamento/carregamento.js"></script>
+<script src="login-e-carregamento/login.js"></script>
+<script src="barra-superior/busca.js"></script>
+<script src="noticias/noticias.js"></script>
+<script src="sala-de-estudo/trilhas.js"></script>
+<script src="sala-de-estudo/conteudos.js"></script>
+<script src="sala-de-estudo/mapa-mental.js"></script>
+<script src="sala-de-estudo/painel.js"></script>
+<script src="calendario/calendario.js"></script>
+<script src="calendario/mural.js"></script>
+<script src="geral/iniciar.js"></script>
+</body>
+</html>
