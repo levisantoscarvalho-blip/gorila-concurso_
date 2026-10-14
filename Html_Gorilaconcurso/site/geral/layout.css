@@ -27,7 +27,9 @@
 #tb-entrar{cursor:pointer}
 .sidebar-back{font-size:13px!important;font-weight:700;color:var(--accent-text)!important;background:var(--accent-bg);margin:10px 12px;border:1px solid var(--border)!important;border-radius:10px;padding:10px 14px!important}
 .sidebar-back:hover{border-color:var(--accent)!important;color:var(--accent-text)!important}
-@media (min-width:1100px){#app-shell .main{padding-right:100px}}
+@media (min-width:1100px){#app-shell .main{padding-right:84px}} /* espaço para a barra de ícones fixa da direita */
+/* Grade do mês do mesmo tamanho da versão antiga: só ela ocupa também o espaço da barra (que fica por cima, no mesmo lugar) */
+@media (min-width:1100px){#app-shell #cal-month-view{margin-right:-84px}}
 .tr-nav{display:flex;gap:10px;margin-bottom:6px}
 .tr-seta{width:34px;height:34px;padding:0;background:transparent;border:none;cursor:pointer;color:#2f6bff;transition:transform .15s,opacity .15s}
 .tr-seta svg{width:100%;height:100%;fill:none;stroke:currentColor;stroke-width:5;stroke-linecap:round;stroke-linejoin:round}
@@ -35,8 +37,10 @@
 .tr-seta:disabled{opacity:.25;cursor:default}
 /* ─── BARRA VERTICAL DE TEMAS (direita, flutuante, só ícones azuis) ─── */
 #theme-rail{position:fixed;right:28px;top:50%;transform:translateY(-50%);z-index:940;display:flex;flex-direction:column;align-items:center;gap:26px;padding:0;background:transparent;border:none;box-shadow:none}
-.tr-item{width:46px;height:46px;display:flex;align-items:center;justify-content:center;padding:0;background:transparent;border:none;border-radius:0;cursor:pointer;color:#2f6bff;transition:transform .18s,filter .18s}
+.tr-item{width:46px;height:46px;display:flex;align-items:center;justify-content:center;padding:0;background:transparent;border:none;border-radius:0;cursor:pointer;color:var(--tr-cor,#2f6bff);transition:transform .18s,filter .18s}
 .tr-item:hover{transform:scale(1.18);filter:drop-shadow(0 4px 8px rgba(47,107,255,.45))}
 .tr-item svg{width:100%;height:100%;display:block;fill:none;stroke:currentColor;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;background:transparent}
 @media (min-width:1100px){#home-screen{padding-right:120px!important}}
 @media (max-width:1099px){#theme-rail{top:auto;bottom:16px;right:16px;transform:none;flex-direction:row;gap:20px}}
+/* ícones da direita: no escuro, um azul mais claro para não sumir */
+body:not(.light){--tr-cor:#7aa2ff}

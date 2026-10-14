@@ -47,14 +47,14 @@ function mmRenderTopico(t){
       <span style="font-size:15px;color:var(--text-secondary);width:16px;text-align:center">${aberto ? '⌄' : '⌃'}</span>
       <div style="flex:1;font-size:16px;font-weight:700;color:var(--text-primary)">${mmEscape(t.nome)}</div>
       <span style="font-size:12px;color:var(--text-muted);font-weight:600">${feitos}/${subs.length} preenchidos</span>
-      <button title="Renomear" onclick="event.stopPropagation();mmRenomearTopico('${t.id}')" style="background:none;border:none;color:var(--text-muted);cursor:pointer;font-size:13px;padding:2px">✏️</button>
-      <button title="Excluir tópico" onclick="event.stopPropagation();mmExcluirTopico('${t.id}')" style="background:none;border:none;color:var(--text-muted);cursor:pointer;font-size:13px;padding:2px">🗑️</button>
+      <button title="Renomear" onclick="event.stopPropagation();mmRenomearTopico('${t.id}')" style="background:none;border:none;color:var(--text-muted);cursor:pointer;font-size:13px;padding:2px">${ICO.lapis}</button>
+      <button title="Excluir tópico" onclick="event.stopPropagation();mmExcluirTopico('${t.id}')" style="background:none;border:none;color:var(--text-muted);cursor:pointer;font-size:13px;padding:2px">${ICO.lixo}</button>
     </div>
     ${aberto ? `
     <div style="border-top:1px solid var(--border)">
       ${subs.map(s => mmRenderSubtopico(t.id, s)).join('')}
       <div style="padding:12px 20px">
-        <button onclick="mmNovoSubtopico('${t.id}')" style="padding:8px 14px;background:var(--surface-2);border:1px solid var(--border);border-radius:8px;color:var(--text-secondary);font-size:12px;font-weight:600;cursor:pointer"><span class="icon-emoji">➕</span> Adicionar subtópico</button>
+        <button onclick="mmNovoSubtopico('${t.id}')" style="padding:8px 14px;background:var(--surface-2);border:1px solid var(--border);border-radius:8px;color:var(--text-secondary);font-size:12px;font-weight:600;cursor:pointer">${ICO.mais} Adicionar subtópico</button>
       </div>
     </div>` : ''}
   </div>`;
@@ -73,9 +73,9 @@ function mmRenderSubtopico(topicoId, s){
     <div style="display:flex;align-items:center;gap:12px;padding:13px 20px;cursor:pointer" onclick="mmToggleSubtopico('${topicoId}','${s.id}')">
       ${marcador}
       <div style="flex:1;font-size:14px;color:var(--text-primary)">${mmEscape(s.nome)}</div>
-      ${s.imagem ? `<button title="Ver imagem" onclick="event.stopPropagation();mmVerImagem('${s.imagem.replace(/'/g,"\\'")}')" style="background:none;border:none;color:var(--accent-text);cursor:pointer;font-size:14px;padding:2px">🖼️</button>` : ''}
-      <button title="Renomear" onclick="event.stopPropagation();mmRenomearSubtopico('${topicoId}','${s.id}')" style="background:none;border:none;color:var(--text-muted);cursor:pointer;font-size:12px;padding:2px">✏️</button>
-      <button title="Excluir subtópico" onclick="event.stopPropagation();mmExcluirSubtopico('${topicoId}','${s.id}')" style="background:none;border:none;color:var(--text-muted);cursor:pointer;font-size:12px;padding:2px">🗑️</button>
+      ${s.imagem ? `<button title="Ver imagem" onclick="event.stopPropagation();mmVerImagem('${s.imagem.replace(/'/g,"\\'")}')" style="background:none;border:none;color:var(--accent-text);cursor:pointer;font-size:14px;padding:2px">${ICO.imagem}</button>` : ''}
+      <button title="Renomear" onclick="event.stopPropagation();mmRenomearSubtopico('${topicoId}','${s.id}')" style="background:none;border:none;color:var(--text-muted);cursor:pointer;font-size:12px;padding:2px">${ICO.lapis}</button>
+      <button title="Excluir subtópico" onclick="event.stopPropagation();mmExcluirSubtopico('${topicoId}','${s.id}')" style="background:none;border:none;color:var(--text-muted);cursor:pointer;font-size:12px;padding:2px">${ICO.lixo}</button>
       <span style="font-size:15px;color:var(--accent-text);transform:rotate(${aberto ? '90deg' : '0deg'});transition:transform .15s;display:inline-block">›</span>
     </div>
     ${aberto ? `
@@ -83,18 +83,18 @@ function mmRenderSubtopico(topicoId, s){
       ${editando ? `
       <textarea id="mm-textarea-${s.id}" placeholder="Escreva aqui o conteúdo desse subtópico..." style="width:100%;min-height:110px;padding:10px;border-radius:8px;border:1px solid var(--border);background:var(--surface-1);color:var(--text-primary);font-size:13px;font-family:inherit;resize:vertical">${mmEscape(s.texto || '')}</textarea>
       <div style="display:flex;gap:8px">
-        <button onclick="mmSalvarTextoBtn('${topicoId}','${s.id}')" style="padding:8px 16px;background:var(--accent);color:#fff;border:none;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer"><span class="icon-emoji">💾</span> Salvar texto</button>
+        <button onclick="mmSalvarTextoBtn('${topicoId}','${s.id}')" style="padding:8px 16px;background:var(--accent);color:#fff;border:none;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer">${ICO.check} Salvar texto</button>
         ${temTexto ? `<button onclick="mmCancelarEdicaoTexto('${topicoId}','${s.id}')" style="padding:8px 16px;background:var(--surface-1);color:var(--text-secondary);border:1px solid var(--border);border-radius:8px;font-size:12px;font-weight:600;cursor:pointer">Cancelar</button>` : ''}
       </div>
       ` : `
       <div style="background:var(--surface-1);border:1px solid var(--border);border-radius:8px;padding:12px;white-space:pre-wrap;font-size:13px;color:var(--text-primary);line-height:1.5">${mmEscape(s.texto)}</div>
-      <button onclick="mmEditarTexto('${topicoId}','${s.id}')" style="padding:8px 16px;background:var(--surface-1);color:var(--text-secondary);border:1px solid var(--border);border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;width:fit-content"><span class="icon-emoji">✏️</span> Editar texto</button>
+      <button onclick="mmEditarTexto('${topicoId}','${s.id}')" style="padding:8px 16px;background:var(--surface-1);color:var(--text-secondary);border:1px solid var(--border);border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;width:fit-content">${ICO.lapis} Editar texto</button>
       `}
       <div>
-        ${s.imagem ? `<div style="position:relative;display:inline-block"><img src="${s.imagem}" style="max-width:100%;max-height:200px;border-radius:8px;display:block;cursor:zoom-in" onclick="mmVerImagem('${s.imagem.replace(/'/g,"\\'")}')"><button onclick="event.stopPropagation();mmVerImagem('${s.imagem.replace(/'/g,"\\'")}')" style="position:absolute;top:6px;right:66px;background:rgba(0,0,0,.6);border:none;color:#fff;border-radius:6px;padding:3px 7px;font-size:11px;cursor:pointer"><span class="icon-emoji">🔍</span> Ver imagem</button><button onclick="event.stopPropagation();mmRemoverImagem('${topicoId}','${s.id}')" style="position:absolute;top:6px;right:6px;background:rgba(0,0,0,.6);border:none;color:#fff;border-radius:6px;padding:3px 7px;font-size:11px;cursor:pointer">remover</button></div>` : ''}
+        ${s.imagem ? `<div style="position:relative;display:inline-block"><img src="${s.imagem}" style="max-width:100%;max-height:200px;border-radius:8px;display:block;cursor:zoom-in" onclick="mmVerImagem('${s.imagem.replace(/'/g,"\\'")}')"><button onclick="event.stopPropagation();mmVerImagem('${s.imagem.replace(/'/g,"\\'")}')" style="position:absolute;top:6px;right:66px;background:rgba(0,0,0,.6);border:none;color:#fff;border-radius:6px;padding:3px 7px;font-size:11px;cursor:pointer">${ICO.lupa} Ver imagem</button><button onclick="event.stopPropagation();mmRemoverImagem('${topicoId}','${s.id}')" style="position:absolute;top:6px;right:6px;background:rgba(0,0,0,.6);border:none;color:#fff;border-radius:6px;padding:3px 7px;font-size:11px;cursor:pointer">remover</button></div>` : ''}
       </div>
       <label style="display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--text-secondary);cursor:pointer;background:var(--surface-1);border:1px solid var(--border);border-radius:8px;padding:7px 12px;width:fit-content">
-        <span class="icon-emoji">🖼️</span> ${s.imagem ? 'Trocar imagem' : 'Adicionar imagem'}
+        ${ICO.imagem} ${s.imagem ? 'Trocar imagem' : 'Adicionar imagem'}
         <input type="file" accept="image/*" style="display:none" onchange="mmUploadImagem('${topicoId}','${s.id}', this)">
       </label>
     </div>` : ''}

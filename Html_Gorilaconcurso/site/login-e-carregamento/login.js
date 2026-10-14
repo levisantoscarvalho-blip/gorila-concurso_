@@ -97,9 +97,10 @@ function mostrarAuth(){
   document.getElementById('auth-screen').style.display='flex';
   document.body.classList.add('pre-login');
   renderLanding(); auFecharLogin();
-  const _b = document.getElementById('busca-global'); if(_b){ _b.value=''; _b.placeholder='Buscar concursos...'; }
+  const _b = document.getElementById('busca-global'); if(_b){ _b.value=''; _b.placeholder='Pesquise um concurso'; }
   const _tv=document.getElementById('tb-visitante'); if(_tv) _tv.style.display='inline-block';
-  const _tb=document.getElementById('tb-entrar'); if(_tb){ _tb.textContent='Registrar grátis'; _tb.style.display='inline-block'; _tb.onclick=()=>auAbrirLogin('cadastro'); }
+  const _tb=document.getElementById('tb-entrar'); if(_tb){ _tb.textContent='Entrar'; _tb.style.display='inline-block'; _tb.onclick=()=>auAbrirLogin('login'); }
+  const _tc=document.getElementById('tb-cadastro'); if(_tc) _tc.style.display='inline-block';
   configurarAuthModal(perfilSalvo ? 'login' : 'cadastro');
 }
 
@@ -241,6 +242,9 @@ function atualizarBotaoConta(){
   b.style.display='inline-block';
   if(window.__guest){ b.textContent = 'Entrar'; b.onclick=()=>auAbrirLogin('login'); }
   else { b.textContent='Sair'; b.onclick=sairDaSecao; }
+  // "Registrar grátis" só para quem ainda não tem conta (visitante)
+  const c=document.getElementById('tb-cadastro'); if(c) c.style.display = window.__guest ? 'inline-block' : 'none';
+  const bu=document.getElementById('busca-global'); if(bu) bu.placeholder='Pesquise matérias, concursos ou dias de estudo';
 }
 function entrarComoVisitante(){
   const novo = !window.__guest;
@@ -252,7 +256,6 @@ function entrarComoVisitante(){
   atualizarBotaoConta(); renderNewsPanel();
   applyTheme(); updateFoguinho(); renderTrilhasFixas(); renderCarreirasCustom();
   navReset(); openSection('guia'); trMarcarAtivo('tr-calendario');
-  if(novo) mostrarToast('Você está como visitante. Entre ou crie uma conta para salvar seu progresso.');
 }
 async function sairDaSecao(){
   if(window.__guest) return;

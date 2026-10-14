@@ -1,28 +1,64 @@
 /* ════════════════════════════════════════════
    CALENDÁRIO — MURAL DO MÊS
-   Cartões com os dias estudados do mês.
+   1º meses do ano → 2º calendário do mês → 3º "Você fez" (dia escolhido).
+   Só usa as variáveis de cor do tema (funciona no claro e no escuro).
    ════════════════════════════════════════════ */
 
-/* ─── MURAL ─── */
-.mural-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.mural-card{background:var(--surface-1);border:1px solid var(--border);border-radius:12px;padding:14px;transition:border-color .15s}
-.mural-card:hover{border-color:var(--border-strong)}
-.mural-date-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
-.mural-date{font-size:15px;font-weight:600;color:var(--text-primary)}
-.mural-badge{font-size:10px;padding:3px 8px;border-radius:20px;font-weight:600}
-.badge-multi{background:#1a3555;color:#5daadd}
-.badge-ciencia{background:#1e3a6e;color:#7fb0ff}
-.badge-sefaz{background:#1e4a32;color:#6dbc8a}
-.badge-direito{background:#3a2010;color:#e0a050}
-.badge-notario{background:#2a1040;color:#c090f0}
-.badge-nda{background:var(--surface-3);color:var(--text-muted)}
-.mural-items{display:flex;flex-direction:column;gap:5px}
-.mural-item-row{font-size:12px;color:var(--text-secondary);display:flex;justify-content:space-between;align-items:flex-start;padding:5px 0;border-bottom:1px solid var(--border)}
-.mural-item-row:last-child{border:none}
-.mural-item-label{color:var(--text-muted);font-size:11px;min-width:70px}
-.mural-item-val{color:var(--text-primary);text-align:right;max-width:200px}
-.mural-hours{color:var(--accent-text);font-weight:600}
-.mural-img{width:100%;height:100px;object-fit:cover;border-radius:8px;margin-bottom:8px;cursor:pointer}
-.empty-state{text-align:center;color:var(--text-muted);padding:50px 20px;grid-column:1/-1}
-.empty-state i{font-size:40px;display:block;margin-bottom:10px}
-.empty-state p{font-size:14px}
+#mural-grid{display:flex;flex-direction:column;gap:16px}
+.mural-passo{background:var(--surface-1);border:1px solid var(--border);border-radius:12px;padding:16px}
+
+/* 1º — meses */
+.mural-ano{display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:12px}
+.mural-ano b{font-size:16px;color:var(--text-primary);min-width:48px;text-align:center}
+.mural-meses{display:grid;grid-template-columns:repeat(6,1fr);gap:8px}
+.mural-mes{display:flex;flex-direction:column;align-items:center;gap:2px;padding:9px 6px;border-radius:9px;border:1px solid var(--border);background:var(--surface-2);color:var(--text-primary);cursor:pointer;transition:border-color .15s,background .15s}
+.mural-mes:hover{border-color:var(--accent)}
+.mural-mes-nome{font-size:13px;font-weight:700}
+.mural-mes-dias{font-size:11px;color:var(--text-muted)}
+.mural-mes.vazio .mural-mes-nome{color:var(--text-secondary);font-weight:600}
+.mural-mes.ativo{background:var(--accent);border-color:var(--accent);color:#fff}
+.mural-mes.ativo .mural-mes-nome,.mural-mes.ativo .mural-mes-dias{color:#fff}
+
+/* 2º e 3º lado a lado */
+.mural-corpo{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:16px;align-items:start}
+.mural-cab{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:12px;flex-wrap:wrap}
+.mural-passo h3{font-size:16px;font-weight:700;color:var(--text-primary);margin:0}
+.mural-cab span{font-size:12.5px;color:var(--text-secondary)}
+
+/* 2º — calendário do mês */
+.mural-grade{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}
+.mural-sem{text-align:center;font-size:11px;font-weight:600;color:var(--text-muted);padding-bottom:2px}
+.mural-dia{aspect-ratio:1;border-radius:8px;border:1px solid var(--border);background:var(--surface-2);color:var(--text-muted);font-size:13px;font-weight:600;cursor:pointer;transition:transform .12s,box-shadow .12s}
+.mural-dia:hover{transform:scale(1.06)}
+.mural-dia.estudou{background:var(--cor);border-color:var(--cor);color:#fff}
+.mural-dia.hoje{box-shadow:inset 0 0 0 2px var(--accent)}
+.mural-dia.sel{box-shadow:0 0 0 2px var(--surface-1),0 0 0 4px var(--text-primary)}
+.mural-dica{font-size:12px;color:var(--text-muted);margin:10px 0 0;text-align:center}
+
+/* 3º — "Você fez" */
+.mural-fez h3{margin-bottom:2px}
+.mural-data{font-size:13px;color:var(--text-secondary);margin-bottom:14px}
+.mural-vazio{font-size:13.5px;color:var(--text-muted);padding:22px 0;text-align:center}
+.mural-resumo{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px}
+.mural-resumo div{background:var(--surface-2);border-radius:9px;padding:10px 12px}
+.mural-resumo b{display:block;font-size:20px;color:var(--text-primary)}
+.mural-resumo span{font-size:11.5px;color:var(--text-muted)}
+.mural-foto{width:100%;max-height:180px;object-fit:cover;border-radius:9px;margin-bottom:14px;display:block}
+.mural-lista{list-style:none;margin:0 0 12px;padding:0;display:flex;flex-direction:column;gap:8px}
+.mural-lista li{border:1px solid var(--border);border-left:4px solid var(--cor);border-radius:8px;padding:9px 11px;background:var(--surface-2)}
+.mural-item-topo{display:flex;justify-content:space-between;gap:10px;font-size:13.5px}
+.mural-item-topo b{color:var(--text-primary)}
+.mural-item-topo span{color:var(--text-secondary);white-space:nowrap}
+.mural-item-det{font-size:12.5px;color:var(--text-secondary);margin-top:2px}
+.mural-item-texto{font-size:12.5px;color:var(--text-primary);margin-top:5px;line-height:1.45}
+.mural-nota{font-size:13px;color:var(--text-primary);background:var(--surface-2);border-radius:8px;padding:9px 11px;margin-bottom:12px;line-height:1.45}
+.mural-nota span{display:block;font-size:11px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.4px;margin-bottom:2px}
+.mural-acoes{display:flex;gap:8px;flex-wrap:wrap}
+.mural-acao{display:inline-flex;align-items:center;gap:6px;padding:9px 14px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;border:1px solid var(--border);background:var(--surface-2);color:var(--text-primary)}
+.mural-acao svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.mural-acao.principal{background:var(--accent);border-color:var(--accent);color:#fff}
+.mural-acao.perigo{color:var(--danger);border-color:var(--danger);background:transparent}
+.mural-acao:hover{opacity:.9}
+
+@media (max-width:900px){.mural-corpo{grid-template-columns:1fr}.mural-meses{grid-template-columns:repeat(4,1fr)}}
+@media (max-width:480px){.mural-meses{grid-template-columns:repeat(3,1fr)}.mural-passo{padding:12px}}

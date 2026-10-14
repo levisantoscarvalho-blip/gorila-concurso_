@@ -4,9 +4,14 @@
    ════════════════════════════════════════════ */
 
 /* ─── BARRA SUPERIOR + NOTÍCIAS ─── */
-#topbar{position:fixed;top:0;left:0;right:0;height:64px;z-index:950;display:flex;align-items:center;gap:14px;padding:0 20px;background:#2b2f3c;border-bottom:1px solid var(--border);box-shadow:0 2px 10px rgba(0,0,0,.12)}
+#topbar{position:fixed;top:0;left:0;right:0;height:64px;z-index:950;display:flex;align-items:center;gap:14px;padding:0 20px;background:var(--surface-1);border-bottom:1px solid var(--border);box-shadow:0 2px 12px rgba(0,0,0,.3)}
 body.light #topbar{background:#ffffff;border-bottom:1px solid #d0d4e8;box-shadow:0 2px 8px rgba(16,24,40,.10)}
+/* Barra de cima: fundo um pouquinho mais escuro e linha fina cinza em volta (igual ao cartão de ícones da direita) */
+#topbar{background:#191919;border:1px solid #3d3d3d}
+body.light #topbar{background:#f3f4f6;border:1px solid #c4c7cc}
 #tb-logo{height:46px;width:auto;object-fit:contain;flex-shrink:0}
+/* modo escuro: o gorila é azul-escuro, então ganha um fundo claro redondo para aparecer */
+body:not(.light) #tb-logo,body:not(.light) .auth-logo{background:#f1f1f1;border-radius:50%;padding:3px;box-shadow:0 0 0 1px rgba(255,255,255,.08)}
 .tb-title{font-size:15px;font-weight:700;color:var(--text-primary);white-space:nowrap}
 .tb-search{position:relative;flex:1;max-width:620px;margin:0 auto}
 #busca-global{width:100%;padding:10px 14px;border-radius:22px;border:1px solid var(--border-strong);background:var(--surface-1);color:var(--text-primary);font-size:13.5px;outline:none}
@@ -26,5 +31,22 @@ body.light #topbar{background:#ffffff;border-bottom:1px solid #d0d4e8;box-shadow
 @media (max-width:700px){.tb-title{display:none}#topbar{padding:0 10px}}
 
 
-.tb-search,#busca-resultados{display:none!important}
-#tb-entrar{margin-left:auto}
+/* ─── Busca (meio) · Ajuda · Planos · Entrar · Comece grátis ─── */
+.tb-search{margin:0 8px 0 18px;max-width:440px}
+#busca-global{padding:9px 38px 9px 16px;border-radius:10px;background:var(--surface-2);border-color:var(--border)}
+body.light #busca-global{background:#ffffff;border-color:#c4c7cc}
+#busca-global::-webkit-search-cancel-button{display:none}
+.tb-lupa{position:absolute;right:12px;top:50%;transform:translateY(-50%);width:17px;height:17px;fill:none;stroke:var(--text-muted);stroke-width:2;stroke-linecap:round;pointer-events:none}
+.bg-item{align-items:center}
+.bg-ico{color:var(--accent-text);display:flex}
+.tb-links{display:flex;align-items:center;gap:4px;margin-left:auto}
+.tb-links a{padding:8px 10px;border-radius:8px;font-size:13px;font-weight:600;color:var(--text-secondary);text-decoration:none;white-space:nowrap}
+.tb-links a:hover{color:var(--text-primary);background:var(--surface-2)}
+body.light .tb-links a:hover{background:#e6e8ec}
+#topbar #tb-entrar{margin-left:4px}
+#tb-cadastro{padding:9px 18px;background:#16a34a;color:#fff;border:none;border-radius:20px;font-size:13.5px;font-weight:700;cursor:pointer;white-space:nowrap}
+#tb-cadastro:hover{filter:brightness(1.07)}
+/* telas menores: some primeiro o nome, depois os links, depois a busca */
+@media (max-width:1180px){.tb-links{display:none}#topbar #tb-entrar{margin-left:auto}}
+@media (max-width:860px){.tb-search{display:none}}
+@media (max-width:520px){#tb-cadastro{display:none!important}}

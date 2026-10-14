@@ -64,7 +64,7 @@ function renderCarreirasCustom(){
     return `<div class="home-card hc-${cor}" onclick="openSection('${c.id}')">
       <button class="hc-del-btn" onclick="event.stopPropagation();excluirCarreira('${c.id}')" title="Excluir carreira"><span class="icon-emoji">🗑️</span></button>
       <div class="hc-icon"><span class="icon-emoji">${c.icone||'🎯'}</span></div>
-      <div class="hc-title">${c.nome}</div>
+      <div class="hc-title">${escapeHtmlCarreira(c.nome)}</div>
       <div class="hc-desc">${total>0 ? `${done}/${total} disciplinas concluídas` : 'Nenhuma disciplina adicionada ainda'}</div>
     </div>`;
   }).join('');

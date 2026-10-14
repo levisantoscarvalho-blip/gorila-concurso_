@@ -27,7 +27,8 @@ body.pre-login #news-panel{display:none!important}
 .au-vazio{padding:30px;text-align:center;font-size:14px;color:var(--text-secondary)}
 .au-vazio a{color:var(--accent-text);font-weight:700}
 .au-nota{margin-top:26px;font-size:11.5px;color:var(--text-muted);text-align:center}
-.auth-modal{position:fixed;inset:0;z-index:995;display:none;align-items:center;justify-content:center;background:rgba(10,20,41,.6);padding:20px}
+.auth-modal{position:fixed;inset:0;z-index:995;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.65);padding:20px}
+body.light .auth-modal{background:rgba(10,20,41,.55)}
 .auth-modal.open{display:flex}
 .au-fechar{position:absolute;top:12px;right:12px;width:30px;height:30px;border-radius:50%;border:none;background:var(--surface-3);color:var(--text-secondary);cursor:pointer;font-size:13px}
 .au-fechar:hover{background:var(--danger-bg);color:var(--danger)}

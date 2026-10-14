@@ -23,6 +23,28 @@
 <!-- ═══════════ DESENHO DO FOGUINHO (usado no mascote) ═══════════ -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
+    <!-- Foguinho de sequência (estilo TikTok): aceso = degradê amarelo→laranja→rosa; apagado = cinza -->
+    <linearGradient id="fogoExtOn" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%" stop-color="#ffb800"></stop>
+      <stop offset="50%" stop-color="#ff5a1f"></stop>
+      <stop offset="100%" stop-color="#fe2c55"></stop>
+    </linearGradient>
+    <linearGradient id="fogoIntOn" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%" stop-color="#fff3b0"></stop>
+      <stop offset="100%" stop-color="#ffc93c"></stop>
+    </linearGradient>
+    <linearGradient id="fogoExtOff" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%" stop-color="#b6bac2"></stop>
+      <stop offset="100%" stop-color="#8b9099"></stop>
+    </linearGradient>
+    <linearGradient id="fogoIntOff" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%" stop-color="#eceef1"></stop>
+      <stop offset="100%" stop-color="#cfd2d8"></stop>
+    </linearGradient>
+    <symbol id="fogoTT" viewBox="0 0 24 28">
+      <path style="fill:var(--fogo-ext)" d="M12 1.2c.6 3.3 2.5 5.4 4.6 7.6 2.3 2.4 4.6 5 4.6 9.1 0 5.4-4.1 9.1-9.2 9.1S2.8 23.3 2.8 18c0-3 1.3-5.5 3.4-7.4.4 1.8 1.4 3.1 2.8 3.7-.4-4.6.9-9.3 3-13.1z"/>
+      <path style="fill:var(--fogo-int)" d="M12.3 13.4c.4 1.8 1.5 2.9 2.6 4 1.1 1.2 2.1 2.4 2.1 4.3 0 2.7-2.2 4.5-5 4.5s-5-1.8-5-4.4c0-1.6.8-2.9 1.9-3.8.2.9.8 1.6 1.6 1.9-.1-2.5.6-4.6 1.8-6.5z"/>
+    </symbol>
     <linearGradient id="flameGradMascote" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%" stop-color="#ffe08a"></stop>
       <stop offset="45%" stop-color="#ff9d2e"></stop>
@@ -92,10 +114,16 @@
   <img id="tb-logo" alt="Gorila" src="" title="Voltar ao início">
   <span class="tb-title" title="Voltar ao início">Gorila Concurso</span>
   <div class="tb-search">
-    <input id="busca-global" type="text" autocomplete="off" placeholder="Buscar dias, conteúdos, mapa mental ou concursos..." oninput="bgBuscar(this.value)" onkeydown="bgTecla(event)">
+    <input id="busca-global" type="search" autocomplete="off" placeholder="Pesquise matérias, concursos ou dias de estudo" aria-label="Pesquisar" oninput="bgBuscar(this.value)" onkeydown="bgTecla(event)">
+    <svg class="tb-lupa" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5"/></svg>
     <div id="busca-resultados"></div>
   </div>
+  <nav class="tb-links" aria-label="Links">
+    <a href="institucional/ajuda.html" target="_blank" rel="noopener">Ajuda</a>
+    <a href="institucional/planos.html" target="_blank" rel="noopener">Planos</a>
+  </nav>
   <button id="tb-entrar" onclick="auAbrirLogin('login')" style="display:none">Entrar</button>
+  <button id="tb-cadastro" type="button" onclick="auAbrirLogin('cadastro')" style="display:none">Registrar grátis</button>
   <div id="tb-cal-switch" title="Calendário ativo"><span class="cal-switch-lbl" id="cal-ativo-lbl">Calendário ON</span><button type="button" class="cal-switch on" id="cal-ativo-btn" onclick="toggleCalendarioAtivo()" role="switch" aria-checked="true" aria-label="Calendário ativo"></button></div>
 </div>
 <aside id="news-panel"></aside>
@@ -219,11 +247,11 @@
       </div>
     </div>
     <div class="home-actions">
-      <div class="foguinho-box" title="Total de dias estudados — fixo, nunca reseta" onclick="tocarFoguinho(this)">
-        <span id="foguinho-icon-home" class="foguinho-emoji" style="filter: drop-shadow(rgb(0, 229, 255) 0px 0px 9px); transform: scale(1.25);">🔥</span>
-        <span id="foguinho-num-home">113</span>
+      <div class="foguinho-box" title="Dias estudados" onclick="tocarFoguinho(this)">
+        <span id="foguinho-icon-home" class="foguinho-emoji fogo-apagado"><svg class="fogo-svg" viewBox="0 0 24 28" aria-hidden="true"><use href="#fogoTT"/></svg></span>
+        <span id="foguinho-num-home" class="fogo-num">0</span>
       </div>
-      <button class="theme-toggle" onclick="toggleTheme()" id="theme-btn"><span class="icon-emoji">🌙</span> Tema escuro</button>
+      <button class="theme-toggle" onclick="toggleTheme()" id="theme-btn"><svg class="ico-tema" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg> Tema escuro</button>
       <button class="logout-btn-home" id="salvar-agora-home-btn" onclick="salvarAgora(this)" title="Salva seu progresso atual agora"><span class="icon-emoji">💾</span> Salvar agora</button>
       <button class="logout-btn-home" onclick="sairDaSecao()" title="Sai e volta pra tela de login"><span class="icon-emoji">🚪</span> Sair da seção</button>
     </div>
@@ -303,9 +331,9 @@
           <div class="logo-title"><span id="sidebar-section-title">Guia Geral</span></div>
           <div class="logo-sub" id="sidebar-section-sub">Calendário · Mural · Conteúdos</div>
         </div>
-        <div class="foguinho-box" style="padding: 4px 8px; font-size: 12px; background: transparent; border: none;" title="Total de dias estudados — fixo, nunca reseta" onclick="tocarFoguinho(this)">
-          <span id="foguinho-icon-sb" class="foguinho-emoji" style="filter: drop-shadow(rgb(0, 229, 255) 0px 0px 9px); transform: scale(1.25);">🔥</span>
-          <span id="foguinho-num-sb">113</span>
+        <div class="foguinho-box foguinho-sb" title="Dias estudados" onclick="tocarFoguinho(this)">
+          <span id="foguinho-icon-sb" class="foguinho-emoji fogo-apagado"><svg class="fogo-svg" viewBox="0 0 24 28" aria-hidden="true"><use href="#fogoTT"/></svg></span>
+          <span id="foguinho-num-sb" class="fogo-num">0</span>
         </div>
       </div>
     </div>
@@ -313,8 +341,8 @@
     <div id="sidebar-nav"><!-- preenchido por geral/navegacao.js --></div>
     <div class="sidebar-footer">
       <div class="footer-label">Horas este mês</div>
-      <div class="footer-val" id="sidebar-hours">0h</div>
-      <button class="sb-btn" onclick="toggleTheme()" id="theme-btn-sidebar"><span class="icon-emoji">🌙</span> Tema escuro</button>
+      <div class="footer-linha"><div class="footer-val" id="sidebar-hours">0h</div><button type="button" class="sb-engrenagem" onclick="abrirCores()" title="Cores do calendário" aria-label="Cores do calendário"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg></button></div>
+      <button class="sb-btn" onclick="toggleTheme()" id="theme-btn-sidebar"><svg class="ico-tema" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg> Tema escuro</button>
       <div id="backup-toast" style="display:none;margin-top:6px;padding:6px 10px;background:var(--success-bg);border:1px solid var(--success);border-radius:var(--radius);font-size:11px;color:#6dbc8a;text-align:center"></div>
     </div>
   </div>
@@ -334,8 +362,8 @@
       <div class="cal-header">
         <div style="display:flex;align-items:center;flex-wrap:wrap;gap:8px">
           <div class="cal-view-switch" role="tablist" aria-label="Visualização do calendário">
-            <button class="cal-view-btn active" id="cal-view-month-btn" onclick="setCalView('month')"><span class="icon-emoji">🗓️</span> Mês</button>
-            <button class="cal-view-btn" id="cal-view-year-btn" onclick="setCalView('year')"><span class="icon-emoji">📈</span> Ano</button>
+            <button class="cal-view-btn active" id="cal-view-month-btn" onclick="setCalView('month')"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg> Mês</button>
+            <button class="cal-view-btn" id="cal-view-year-btn" onclick="setCalView('year')"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h16M7 16v-5M12 16V7M17 16v-8"/></svg> Ano</button>
           </div>
           <div class="cal-nav" id="cal-nav-month">
             <button class="cal-nav-btn" onclick="changeMonth(-1)"><span class="icon-emoji">‹</span></button>
@@ -348,7 +376,7 @@
             <button class="cal-nav-btn" onclick="changeYear(1)"><span class="icon-emoji">›</span></button>
           </div>
         </div>
-        <button class="cal-reg-btn" onclick="registrarHoje()"><span class="icon-emoji">➕</span> Registrar hoje</button>
+        <button class="cal-reg-btn" onclick="registrarHoje()"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg> Registrar hoje</button>
       </div>
       <div class="cal-legend" id="cal-materias" style="align-items:center"></div>
       <div id="cal-month-view">
@@ -368,8 +396,8 @@
 
 <!-- ═══════════ ABA MURAL DO MÊS → código em calendario/mural.js ═══════════ -->
     <div class="tab-content" id="tab-mural">
-      <div class="page-header"><div class="page-title">Mural do mês</div><div class="page-sub">O que você fez em cada dia</div></div>
-      <div class="mural-grid" id="mural-grid"><div class="empty-state"><span class="icon-emoji">😐</span><p>Nenhum dia registrado ainda.</p></div></div>
+      <div class="page-header"><div class="page-title">Mural do mês</div><div class="page-sub">Escolha o mês e depois o dia para ver o que você fez.</div></div>
+      <div id="mural-grid"></div><!-- preenchido por renderMural() em calendario/mural.js -->
     </div>
 
 
@@ -379,9 +407,9 @@
       <div class="page-header" style="display:flex;align-items:center;flex-wrap:wrap;gap:10px">
         <div>
           <div class="page-title">Conteúdos</div>
-          <div class="page-sub">Escolha seu curso ou concurso e as matérias entram automaticamente (você ainda pode ajustar)</div>
+          <div class="page-sub">Crie seu curso ou concurso e adicione as matérias que você estuda — o sistema reconhece as mais comuns (ex.: Português, Matemática)</div>
         </div>
-        <button class="add-mapa-btn" onclick="abrirAddCurso()" style="margin-left:auto"><span class="icon-emoji">➕</span> Adicionar curso</button>
+        <button class="add-mapa-btn" onclick="abrirAddCurso()" style="margin-left:auto"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg> Adicionar curso</button>
       </div>
       <div id="cursos-grid" class="content-cols"></div>
     </div>
@@ -508,11 +536,8 @@
     <button class="modal-close" onclick="fecharAddMateria()"><span class="icon-emoji">✕</span></button>
     <div style="font-size:16px;font-weight:700;color:var(--text-primary);margin-bottom:14px">O que você está estudando?</div>
     <div style="font-size:11.5px;color:var(--text-muted);margin:-8px 0 12px">Vale para o Calendário e para Conteúdos (é a mesma lista).</div>
-    <input type="text" id="nova-materia-nome" oninput="catalogoPrev('nova-materia-nome','catalogo-prev-materia')" placeholder="Ex: Direito, SEFAZ SP, Python..." style="width:100%;padding:10px 12px;margin-bottom:8px;border-radius:8px;border:1px solid var(--border);background:var(--surface-2);color:var(--text-primary);font-size:13px" onkeydown="if(event.key==='Enter')criarMateria()">
-    <div id="catalogo-prev-materia" style="font-size:12px;color:var(--text-secondary);min-height:16px;margin-bottom:6px"></div>
-    <div id="catalogo-chips-materia" style="max-height:140px;overflow:auto;margin-bottom:12px"></div>
-    <div style="font-size:11px;color:var(--text-muted);margin-bottom:8px">Cor</div>
-    <div id="nova-materia-cores" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px"></div>
+    <input type="text" id="nova-materia-nome" autocomplete="off" oninput="cursoDica('nova-materia-nome','dica-materia')" placeholder="Ex.: Direito, INSS, Polícia Civil SP, Ciência de Dados" style="width:100%;padding:10px 12px;margin-bottom:8px;border-radius:8px;border:1px solid var(--border);background:var(--surface-2);color:var(--text-primary);font-size:13px" onkeydown="if(event.key==='Enter')criarMateria()">
+    <div id="dica-materia" class="curso-dica"></div>
     <button style="width:100%;padding:10px;background:var(--accent);color:#fff;border:none;border-radius:8px;cursor:pointer;font-weight:600;font-size:13px" onclick="criarMateria()">Adicionar</button>
   </div>
 </div>
@@ -521,9 +546,8 @@
   <div class="modal-inner" style="max-width:360px">
     <button class="modal-close" onclick="fecharAddCurso()"><span class="icon-emoji">✕</span></button>
     <div style="font-size:16px;font-weight:700;color:var(--text-primary);margin-bottom:14px">Novo curso</div>
-    <input type="text" id="novo-curso-nome" oninput="catalogoPrev('novo-curso-nome','catalogo-prev-curso')" placeholder="Ex: Direito, SEFAZ SP, Psicologia..." style="width:100%;padding:10px 12px;margin-bottom:8px;border-radius:8px;border:1px solid var(--border);background:var(--surface-2);color:var(--text-primary);font-size:13px" onkeydown="if(event.key==='Enter')criarCurso()">
-    <div id="catalogo-prev-curso" style="font-size:12px;color:var(--text-secondary);min-height:16px;margin-bottom:6px"></div>
-    <div id="catalogo-chips-curso" style="max-height:180px;overflow:auto;margin-bottom:14px"></div>
+    <input type="text" id="novo-curso-nome" autocomplete="off" oninput="cursoDica('novo-curso-nome','dica-curso')" placeholder="Ex.: Direito, INSS, Polícia Civil SP, Ciência de Dados" style="width:100%;padding:10px 12px;margin-bottom:8px;border-radius:8px;border:1px solid var(--border);background:var(--surface-2);color:var(--text-primary);font-size:13px" onkeydown="if(event.key==='Enter')criarCurso()">
+    <div id="dica-curso" class="curso-dica"></div>
     <button style="width:100%;padding:10px;background:var(--accent);color:#fff;border:none;border-radius:8px;cursor:pointer;font-weight:600;font-size:13px" onclick="criarCurso()">Criar curso</button>
   </div>
 </div>
@@ -532,7 +556,8 @@
   <div class="modal-inner" style="max-width:380px">
     <button class="modal-close" onclick="fecharAddConteudo()"><span class="icon-emoji">✕</span></button>
     <div style="font-size:16px;font-weight:700;color:var(--text-primary);margin-bottom:14px">Nova matéria</div>
-    <input type="text" id="novo-conteudo-nome" placeholder="Nome da matéria (ex: Direito Penal)" style="width:100%;padding:10px 12px;margin-bottom:10px;border-radius:8px;border:1px solid var(--border);background:var(--surface-2);color:var(--text-primary);font-size:13px" onkeydown="if(event.key==='Enter')criarConteudo()">
+    <input type="text" id="novo-conteudo-nome" autocomplete="off" oninput="materiaSugerir()" onkeydown="if(event.key==='Enter')criarConteudo()" placeholder="Nome da matéria (ex: Português, Matemática)" style="width:100%;padding:10px 12px;margin-bottom:10px;border-radius:8px;border:1px solid var(--border);background:var(--surface-2);color:var(--text-primary);font-size:13px" onkeydown="if(event.key==='Enter')criarConteudo()">
+    <div id="materia-sugestoes"></div>
     <div style="font-size:11px;color:var(--text-muted);margin-bottom:6px">Para qual curso vai essa matéria?</div>
     <select id="novo-conteudo-trilha" style="width:100%;padding:10px 12px;margin-bottom:16px;border-radius:8px;border:1px solid var(--border);background:var(--surface-2);color:var(--text-primary);font-size:13px"></select>
     <button style="width:100%;padding:10px;background:var(--accent);color:#fff;border:none;border-radius:8px;cursor:pointer;font-weight:600;font-size:13px" onclick="criarConteudo()">Adicionar</button>
@@ -542,9 +567,9 @@
 <div class="modal-overlay" id="mindmap-modal" style="align-items:stretch;justify-content:stretch">
   <div style="width:100%;height:100%;background:var(--surface-0);display:flex;flex-direction:column">
     <div style="display:flex;align-items:center;gap:10px;padding:14px 18px;border-bottom:1px solid var(--border);background:var(--surface-1)">
-      <div style="font-size:15px;font-weight:700;color:var(--text-primary)"><span class="icon-emoji">🧠</span> Mapa Mental</div>
+      <div style="font-size:15px;font-weight:700;color:var(--text-primary)"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="5" r="2.5"/><circle cx="5" cy="19" r="2.5"/><circle cx="19" cy="19" r="2.5"/><path d="M12 7.5V12M12 12l-5.2 5.2M12 12l5.2 5.2"/></svg> Mapa Mental</div>
       <div style="font-size:11px;color:var(--text-muted)">Crie seus tópicos e subtópicos</div>
-      <button style="margin-left:auto;padding:8px 14px;background:var(--accent);color:#fff;border:none;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer" onclick="mmNovoTopico()"><span class="icon-emoji">➕</span> Novo tópico</button>
+      <button style="margin-left:auto;padding:8px 14px;background:var(--accent);color:#fff;border:none;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer" onclick="mmNovoTopico()"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg> Novo tópico</button>
       <button class="modal-close" style="position:static" onclick="fecharMindMap()"><span class="icon-emoji">✕</span></button>
     </div>
     <div id="mindmap-viewport" style="flex:1;overflow-y:auto;background:var(--surface-0);padding:18px 24px">
@@ -556,7 +581,7 @@
 <div class="modal-overlay" id="mm-lightbox-modal" style="background:rgba(0,0,0,.85);z-index:600" onclick="mmFecharLightbox()">
   <div style="background:var(--surface-1);border:1px solid var(--border);border-radius:14px;padding:16px;max-width:90vw;max-height:90vh;display:flex;flex-direction:column;gap:12px;box-shadow:0 10px 40px rgba(0,0,0,.5)" onclick="event.stopPropagation()">
     <div style="display:flex;align-items:center;justify-content:space-between">
-      <div style="font-size:14px;font-weight:700;color:var(--text-primary)"><span class="icon-emoji">🖼️</span> Ver imagem</div>
+      <div style="font-size:14px;font-weight:700;color:var(--text-primary)"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="M21 16l-5-5-8 8"/></svg> Ver imagem</div>
       <button onclick="mmFecharLightbox()" style="background:var(--surface-2);border:1px solid var(--border);color:var(--text-secondary);border-radius:50%;width:30px;height:30px;font-size:14px;cursor:pointer">✕</button>
     </div>
     <img id="mm-lightbox-img" src="" style="max-width:85vw;max-height:75vh;border-radius:8px;display:block;object-fit:contain">
@@ -584,16 +609,31 @@
   </div>
 </div>
 
+<!-- ─── JANELA DO DIA: registrar / editar um dia (abre já pronta para editar) → calendario/calendario.js ─── -->
 <div class="modal-overlay" id="day-modal">
-  <div class="modal-inner" style="max-width:480px">
-    <button class="modal-close" onclick="closeDayModal()"><span class="icon-emoji">✕</span></button>
-    <div style="font-size:16px;font-weight:700;color:var(--text-primary);margin-bottom:12px" id="day-modal-title">Dia</div>
-    <div id="day-modal-content"></div>
-    <div style="margin-top:14px;display:flex;gap:8px;flex-wrap:wrap">
-      <button id="day-modal-edit-btn" style="flex:1;min-width:130px;padding:9px;background:var(--accent);color:#fff;border:none;border-radius:var(--radius);cursor:pointer;font-size:13px;font-weight:600" onclick="openDayEditForm()"><span class="icon-emoji">✏️</span> Editar manualmente</button>
-      <button id="day-modal-img-btn" style="padding:9px 14px;background:none;border:1px solid var(--border);border-radius:var(--radius);cursor:pointer;color:var(--text-secondary);font-size:13px" onclick="document.getElementById('cal-img-input').click()"><svg class="ico-foto" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="M21 16l-5-5-8 8"/></svg> Foto</button>
+  <div class="modal-inner dia-janela" role="dialog" aria-modal="true" aria-labelledby="day-modal-title">
+    <div class="dia-cab">
+      <div><div class="dia-titulo" id="day-modal-title">Dia</div><div class="dia-sub" id="day-modal-sub"></div></div>
+      <button type="button" class="dia-fechar" onclick="closeDayModal()" aria-label="Fechar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
     </div>
-    <div id="day-edit-form" style="display:none;margin-top:14px;border-top:1px solid var(--border);padding-top:14px"></div>
+    <div id="day-edit-form"></div>
+  </div>
+</div>
+<input type="file" id="dia-foto-input" accept="image/*" style="display:none" onchange="diaFotoEscolhida(this)">
+
+<!-- ─── CORES DO CALENDÁRIO (engrenagem ao lado de "Horas este mês") → calendario/calendario.js ─── -->
+<div class="modal-overlay" id="cores-modal" onclick="if(event.target===this)fecharCores()">
+  <div class="modal-inner cores-janela" role="dialog" aria-modal="true" aria-labelledby="cores-titulo">
+    <div class="dia-cab"><div><div class="dia-titulo" id="cores-titulo">Cores do calendário</div><div class="cores-sub">Clique na cor para abrir a paleta completa e escolher qualquer cor.</div></div>
+      <button type="button" class="dia-fechar" onclick="fecharCores()" aria-label="Fechar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+    <div id="cores-lista"></div>
+    <div class="cores-rodape">
+      <div class="cores-resumo" id="cores-resumo"></div>
+      <div class="cores-botoes">
+        <button type="button" class="cores-cancelar" onclick="fecharCores()">Cancelar</button>
+        <button type="button" class="cores-confirmar" id="cores-confirmar" onclick="confirmarCores()"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Confirmar</button>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -630,6 +670,7 @@
 <script src="sala-de-estudo/dados-sala-de-estudo.js"></script>
 <script src="banco-de-dados/estado.js"></script>
 <script src="banco-de-dados/catalogo-concursos.js"></script>
+<script src="banco-de-dados/reconhecimento.js"></script>
 <script src="geral/utilidades.js"></script>
 <script src="geral/tema.js"></script>
 <script src="geral/navegacao.js"></script>

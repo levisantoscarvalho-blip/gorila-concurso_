@@ -98,7 +98,7 @@ async function trIrInicio(){
   } else {
     try{ auFecharLogin(); }catch(e){}
   }
-  navReset(); trMarcarAtivo('');
+  navReset(); trMarcarAtivo(''); atualizarSwitchCal();
   window.scrollTo(0,0);
 }
 // captura o clique na barra do topo antes de qualquer outro elemento poder bloqueá-lo
@@ -127,14 +127,14 @@ function mostrarNoticias(){
   fecharTudo();
   document.getElementById('home-screen').style.display='none';
   document.getElementById('app-shell').style.display='none';
-  const ns=document.getElementById('news-screen'), np=document.getElementById('news-panel');
-  if(ns && np){
-    if(!ns.querySelector('.ns-wrap')){ ns.innerHTML='<div class="ns-wrap"><button type="button" class="ns-voltar" onclick="trAbrirCalendario()">← Voltar ao calendário</button></div>'; }
-  }
-  document.getElementById('news-screen').style.display='block';
+  // Notícias ainda não está disponível: a tela fica em branco (sair pelos ícones da direita)
+  const ns=document.getElementById('news-screen');
+  ns.innerHTML='';
+  ns.style.display='block';
   currentSection='noticias';
   navRegistrar({section:'noticias', tab:'', area:''});
   trMarcarAtivo('tr-noticias');
+  atualizarSwitchCal();
 }
 function openSection(section){
   fecharTudo();
@@ -175,6 +175,15 @@ function showTab(id){
   document.querySelectorAll('.tab-content').forEach(t=>t.classList.remove('active'));
   const el=document.getElementById('tab-'+id);
   if(el) el.classList.add('active');
+  atualizarSwitchCal();
+}
+// "Calendário ON/OFF" na barra de cima só aparece na tela do Calendário.
+// Fora dela fica invisível mas guarda o espaço (o botão Entrar não sai do lugar).
+function atualizarSwitchCal(){
+  const sw=document.getElementById('tb-cal-switch'); if(!sw) return;
+  const ns=document.getElementById('news-screen'), shell=document.getElementById('app-shell'), cal=document.getElementById('tab-calendario');
+  const noCalendario = shell && shell.style.display!=='none' && !(ns && ns.style.display==='block') && cal && cal.classList.contains('active');
+  sw.classList.toggle('fora-do-cal', !noCalendario);
 }
 
 function goHome(){

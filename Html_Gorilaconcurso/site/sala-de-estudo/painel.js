@@ -59,7 +59,7 @@ function renderInfografico(area){
             
             const [y,m,d]=k.split('-');
             const matTxt = meta ? ` · ${meta.materialIcon} ${v[area][meta.materialKey]||0} ${meta.materialLabel.toLowerCase()}` : '';
-            registros.push(`<div style="padding:8px 0;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;"><span>${d}/${m}/${y} — ${v[area].assunto||'—'}${matTxt}</span><span><strong>${v[area].horas||0}h</strong></span></div>`);
+            registros.push(`<div style="padding:8px 0;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;"><span>${d}/${m}/${y} — ${escapeHtmlCarreira(v[area].assunto||'—')}${matTxt}</span><span><strong>${v[area].horas||0}h</strong></span></div>`);
         }
     }
   });

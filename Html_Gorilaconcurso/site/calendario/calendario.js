@@ -23,14 +23,77 @@ function cursoNomeEst(e){ const c=(state.cursos||[]).find(c=>c.id===e.cursoId); 
 function materiaNome(e){ const m=(state.conteudosCustom||[]).find(x=>x.id===e.materiaId); return m?m.nome:(e.materiaNome||''); }
 function dayRefEstudo(info){ const es=(info&&info.estudos)||[]; return es[info.imgEstudo||0]||es[0]||null; }
 function horasDe(cursoId,materiaId){ let t=0; Object.values(state.days||{}).forEach(d=>{ ((d&&d.estudos)||[]).forEach(e=>{ if(e.cursoId===cursoId&&(!materiaId||e.materiaId===materiaId)) t+=Number(e.horas)||0; }); }); return Math.round(t*10)/10; }
+// Foto do dia: guarda a ORIGINAL (qualidade total, como na versão antiga).
+// Só reduz se for muito grande (acima de 4 MB), e mesmo assim em alta qualidade.
 function comprimirImagem(file,cb){
   const r=new FileReader();
-  r.onload=e=>{ const img=new Image();
-    img.onload=()=>{ const MAX=1000; const k=Math.min(1,MAX/Math.max(img.width,img.height)); const w=Math.round(img.width*k), h=Math.round(img.height*k);
+  r.onload=e=>{
+    if(file.size <= 4*1024*1024) return cb(e.target.result);
+    const img=new Image();
+    img.onload=()=>{ const MAX=2400; const k=Math.min(1,MAX/Math.max(img.width,img.height)); const w=Math.round(img.width*k), h=Math.round(img.height*k);
       const c=document.createElement('canvas'); c.width=w; c.height=h; const x=c.getContext('2d'); x.imageSmoothingEnabled=true; x.imageSmoothingQuality='high'; x.drawImage(img,0,0,w,h);
-      cb(c.toDataURL('image/jpeg',0.9)); };
+      cb(c.toDataURL('image/jpeg',0.93)); };
     img.onerror=()=>cb(e.target.result); img.src=e.target.result; };
   r.readAsDataURL(file);
+}
+// Escurece uma cor (#rrggbb) — o filtro da foto usa a cor do dia escurecida, como na versão antiga
+function escurecerCor(hex,f){
+  const m=/^#?([0-9a-f]{6})$/i.exec(hex||''); if(!m) return '#1e3a6e';
+  const n=parseInt(m[1],16), c=v=>Math.round(v*f).toString(16).padStart(2,'0');
+  return `#${c(n>>16&255)}${c(n>>8&255)}${c(n&255)}`;
+}
+// Clareia uma cor (mistura com branco)
+function clarearCor(hex,f){
+  const m=/^#?([0-9a-f]{6})$/i.exec(hex||''); if(!m) return hex;
+  const n=parseInt(m[1],16), c=v=>Math.round(v+(255-v)*f).toString(16).padStart(2,'0');
+  return `#${c(n>>16&255)}${c(n>>8&255)}${c(n&255)}`;
+}
+// Cor clara (amarelo, pastel...) pede texto escuro para dar para ler
+function corEhClara(hex){
+  const m=/^#?([0-9a-f]{6})$/i.exec(hex||''); if(!m) return false;
+  const n=parseInt(m[1],16), r=n>>16&255, g=n>>8&255, b=n&255;
+  return (r*299+g*587+b*114)/1000 > 165;
+}
+
+// ── Estilo dos dias coloridos (a pessoa escolhe na engrenagem → state.estiloCal) ──
+const ESTILOS_CAL=[
+  {id:'solido',   nome:'Sólido'},
+  {id:'degrade',  nome:'Degradê'},
+  {id:'suave',    nome:'Suave'},
+  {id:'contorno', nome:'Contorno'},
+  {id:'faixa',    nome:'Faixa'},
+  {id:'brilho',   nome:'Brilho'},
+];
+function estiloCalAtual(){ return ESTILOS_CAL.some(e=>e.id===state.estiloCal) ? state.estiloCal : 'solido'; }
+// Devolve {style, cls} para pintar um dia com a cor. mini=true no calendário do ano.
+function estiloDia(cor, estilo, mini){
+  estilo = estilo || estiloCalAtual();
+  const hex=/^#[0-9a-f]{6}$/i.test(cor||'');
+  if(!hex && estilo!=='solido') estilo='solido';
+  const clara=corEhClara(cor), txt=clara?'#1a1a1a':'#fff';
+  switch(estilo){
+    case 'degrade':  return {style:`background:linear-gradient(135deg, ${clarearCor(cor,.3)} 0%, ${cor} 55%, ${escurecerCor(cor,.65)} 100%);color:${txt}`, cls:clara?' sem-sombra':''};
+    case 'suave':    return {style:`background:${cor}38;border-color:${cor}99;color:var(--text-primary)`, cls:' sem-sombra'};
+    case 'contorno': return {style:`background:var(--surface-1);border:${mini?1.5:2}px solid ${cor};color:var(--text-primary)`, cls:' sem-sombra'};
+    case 'faixa':    return {style:`background:var(--surface-1);border-color:var(--border);box-shadow:inset 0 -${mini?3:6}px 0 ${cor};color:var(--text-primary)`, cls:' sem-sombra'};
+    case 'brilho':   return {style:`background:${cor}26;border:1px solid ${cor};box-shadow:0 0 ${mini?4:10}px ${cor}aa, inset 0 0 ${mini?3:8}px ${cor}55;color:var(--text-primary)`, cls:' sem-sombra'};
+    default:         return {style:`background:${cor};color:${txt}`, cls:clara?' sem-sombra':''};
+  }
+}
+// Sombra por cima da FOTO do dia: usa a cor e o estilo escolhidos na engrenagem.
+// Sempre escurece embaixo para o número do dia continuar legível.
+function sombraFoto(cor, estilo){
+  estilo = estilo || estiloCalAtual();
+  if(!/^#[0-9a-f]{6}$/i.test(cor||'')) cor='#1e3a6e';
+  const baixo='rgba(0,0,0,.55)';
+  switch(estilo){
+    case 'degrade':  return {overlay:`linear-gradient(135deg, ${clarearCor(cor,.25)}aa 0%, ${cor}55 50%, ${escurecerCor(cor,.35)}e6 100%)`, borda:cor};
+    case 'suave':    return {overlay:`linear-gradient(180deg, ${cor}59 0%, ${cor}26 45%, ${baixo} 100%)`, borda:cor+'99'};
+    case 'contorno': return {overlay:`linear-gradient(180deg, rgba(0,0,0,0) 35%, ${baixo} 100%)`, borda:cor, larg:3};
+    case 'faixa':    return {overlay:`linear-gradient(0deg, ${cor} 0 6px, transparent 6px), linear-gradient(180deg, rgba(0,0,0,0) 35%, ${baixo} 100%)`, borda:'transparent'};
+    case 'brilho':   return {overlay:`radial-gradient(circle at 50% 45%, ${cor}14 0%, ${cor}99 100%), linear-gradient(180deg, rgba(0,0,0,0) 50%, rgba(0,0,0,.45) 100%)`, borda:cor, brilho:`0 0 10px ${cor}aa`};
+    default:         return {overlay:`linear-gradient(180deg, ${cor}b3 0%, ${cor}59 45%, ${baixo} 100%)`, borda:cor};
+  }
 }
 
 function mkKey(y,m,d){ return `${y}-${String(m).padStart(2,'0')}-${String(d).padStart(2,'0')}`; }
@@ -85,7 +148,7 @@ function guardarFoto(src){
   return id;
 }
 function gravarFoto(id,src){
-  fotosDB.set(id,src).catch(e=>{ console.error('Erro ao salvar foto:',e); mostrarToast('⚠️ Não foi possível salvar a foto no navegador.'); });
+  fotosDB.set(id,src).catch(e=>{ console.error('Erro ao salvar foto:',e); mostrarToast('Não foi possível salvar a foto no navegador.'); });
 }
 function fotoDoDia(info){
   if(!info) return '';
@@ -168,10 +231,12 @@ function renderCal(){
     const refCor = ref ? corCursoId(ref.cursoId) : (getCellColor(info)||'#555');
     if(temFoto){
       cls+=' has-photo';
-      borderStyle=` style="border-color:${refCor}"`;
-      const rotulo = ref ? (materiaNome(ref)||cursoNomeEst(ref)) : '';
-      bg=`<img class="cal-bg-img" src="${fotoDoDia(info)}" alt="" decoding="async"><div class="cal-bg-overlay" style="background:linear-gradient(180deg, ${refCor}66 0%, ${refCor}22 40%, rgba(0,0,0,.6) 100%)"></div>`+(rotulo?`<div class="cal-ref" style="background:${refCor}">${escapeHtmlCarreira(rotulo)}</div>`:'');
-    } else if(ref){ borderStyle=` style="background:${refCor};color:#fff"`; }
+      // A sombra da foto usa a cor do dia e o estilo escolhidos na engrenagem.
+      // Dia com foto mas sem curso usa azul-marinho (em vez de cinza).
+      const sf = sombraFoto((ref || getCellColor(info)) ? refCor : '#1e3a6e');
+      borderStyle=` style="border-color:${sf.borda}${sf.larg?`;border-width:${sf.larg}px`:''}${sf.brilho?`;box-shadow:${sf.brilho}`:''}"`;
+      bg=`<img class="cal-bg-img" src="${fotoDoDia(info)}" alt="" decoding="async"><div class="cal-bg-overlay" style="background:${sf.overlay}"></div>`;
+    } else if(ref || getCellColor(info)){ const e=estiloDia(refCor); borderStyle=` style="${e.style}"`; cls+=e.cls; }   // cor e estilo escolhidos na engrenagem
     cells+=`<div class="${cls}"${borderStyle} onclick="openDayModal('${key}')">
       ${bg}
       <div class="day-num">${d}</div>${sub}
@@ -230,13 +295,101 @@ function getCellColor(info){
   if(info.estudos&&info.estudos.length){ const r=dayRefEstudo(info); return r?corCursoId(r.cursoId):''; }
   const areas=[info.ciencia,info.sefaz,info.direito,info.notario].filter(Boolean).length;
   if(areas===0 && !info.eletiva) return '';
-  if(areas>1) return '#1a3555';
-  if(info.ciencia) return '#1e3a6e';
-  if(info.sefaz) return '#1e4a32';
-  if(info.direito) return '#3a2010';
-  if(info.notario) return '#2a1040';
-  if(info.eletiva) return '#2a1e40';
+  if(areas>1) return corArea('multi');
+  for(const a of ['ciencia','sefaz','direito','notario','eletiva']) if(info[a]) return corArea(a);
   return '';
+}
+// Cor dos registros antigos (áreas fixas); a pessoa pode trocar na engrenagem (state.coresAreas)
+const CORES_AREAS_PADRAO={ciencia:'#3567c8',sefaz:'#2f8a5c',direito:'#b5682b',notario:'#7a4bc2',eletiva:'#8a5cc8',multi:'#2f78b8'};
+const NOMES_AREAS={ciencia:'Ciência de Dados',sefaz:'SEFAZ SP',direito:'Direito',notario:'Notário e Registrador',eletiva:'Eletiva',multi:'Mais de uma área no mesmo dia'};
+function corArea(a){ return (state.coresAreas||{})[a] || CORES_AREAS_PADRAO[a]; }
+
+// ── Cores do calendário (engrenagem ao lado de "Horas este mês") ──
+const PALETAS=[
+  {id:'vivas',    nome:'Vivas',    cores:['#2563eb','#0ea5e9','#06b6d4','#14b8a6','#16a34a','#65a30d','#ca8a04','#f97316','#dc2626','#e11d48','#db2777','#9333ea','#6d28d9','#475569','#1e3a6e','#111827']},
+  {id:'pastel',   nome:'Pastel',   cores:['#93c5fd','#bae6fd','#a5f3fc','#99f6e4','#a7f3d0','#bbf7d0','#d9f99d','#fef08a','#fde68a','#fed7aa','#fecaca','#fbcfe8','#f5d0fe','#ddd6fe','#c7d2fe','#e2e8f0']},
+  {id:'escuras',  nome:'Escuras',  cores:['#1e3a8a','#0c4a6e','#164e63','#134e4a','#14532d','#365314','#713f12','#7c2d12','#7f1d1d','#881337','#831843','#581c87','#3b0764','#1e293b','#292524','#0f172a']},
+  {id:'neon',     nome:'Neon',     cores:['#00e5ff','#00b0ff','#2979ff','#651fff','#d500f9','#f500ff','#ff007f','#ff1744','#ff3d00','#ff9100','#ffea00','#c6ff00','#76ff03','#39ff14','#00ff9d','#1de9b6']},
+  {id:'terrosas', nome:'Terrosas', cores:['#3d405b','#5e503f','#7f5539','#8b5e3c','#9c6644','#a0522d','#b5682b','#bc6c25','#c2843f','#b08968','#d4a373','#ddb892','#283618','#606c38','#6b705c','#81b29a']},
+  {id:'oceano',   nome:'Oceano',   cores:['#03045e','#023e8a','#0077b6','#0096c7','#00b4d8','#48cae4','#90e0ef','#0a9396','#005f73','#94d2bd','#2a9d8f','#264653','#3a86ff','#4361ee','#4cc9f0','#7209b7']},
+  {id:'por-do-sol',nome:'Pôr do sol',cores:['#ffbe0b','#fb8500','#ffb703','#f77f00','#fb5607','#e85d04','#d62828','#9d0208','#ff006e','#f72585','#b5179e','#8338ec','#560bad','#3a0ca3','#ef476f','#ffd166']},
+  {id:'cinza',    nome:'Cinzas',   cores:['#f8fafc','#e2e8f0','#cbd5e1','#94a3b8','#64748b','#475569','#334155','#1e293b','#0f172a','#000000','#a8a29e','#78716c','#57534e','#44403c','#d4d4d8','#71717a']},
+];
+function paletaAtual(){ return PALETAS.find(p=>p.id===state.paletaCores) || PALETAS[0]; }
+// Enquanto a janela está aberta tudo é só PRÉVIA; "Confirmar" salva, fechar sem confirmar desfaz.
+let coresAntes=null;
+function fotoCores(){ return JSON.stringify({estiloCal:state.estiloCal, paletaCores:state.paletaCores, coresAreas:state.coresAreas||null, cursos:(state.cursos||[]).map(c=>[c.id,c.cor])}); }
+function abrirCores(){ coresAntes=fotoCores(); renderCores(); document.getElementById('cores-modal').classList.add('open'); }
+function coresMudaram(){ return coresAntes!==null && fotoCores()!==coresAntes; }
+function fecharCores(){
+  if(coresMudaram()){
+    const a=JSON.parse(coresAntes);
+    if(a.estiloCal===undefined) delete state.estiloCal; else state.estiloCal=a.estiloCal;
+    if(a.paletaCores===undefined) delete state.paletaCores; else state.paletaCores=a.paletaCores;
+    if(a.coresAreas) state.coresAreas=a.coresAreas; else delete state.coresAreas;
+    a.cursos.forEach(([id,cor])=>{ const c=(state.cursos||[]).find(x=>x.id===id); if(c) c.cor=cor; });
+    redesenharCores();
+    mostrarToast('Nada foi alterado');
+  }
+  coresAntes=null;
+  document.getElementById('cores-modal').classList.remove('open');
+}
+function confirmarCores(){
+  const mudou=coresMudaram();
+  if(mudou) saveState();
+  coresAntes=null;
+  document.getElementById('cores-modal').classList.remove('open');
+  const est=ESTILOS_CAL.find(e=>e.id===estiloCalAtual()).nome, pal=paletaAtual().nome;
+  mostrarToast(mudou ? `Cores salvas: ${est} · paleta ${pal}` : 'Nenhuma mudança');
+}
+function redesenharCores(){ renderCalActive(); renderConteudos(); renderMural(); if(document.getElementById('cores-modal').classList.contains('open')) renderCores(); }
+// Resumo embaixo da janela: o que está escolhido agora
+function resumoCores(){
+  const el=document.getElementById('cores-resumo'); if(!el) return;
+  const est=ESTILOS_CAL.find(e=>e.id===estiloCalAtual()).nome, pal=paletaAtual().nome;
+  el.innerHTML=`Estilo: <b>${est}</b> · Paleta: <b>${pal}</b>${coresMudaram()?' <span class="cores-pendente">· não salvo</span>':''}`;
+}
+function renderCores(){
+  migrarCursos();
+  const pal=paletaAtual();
+  const linha=(tipo,id,nome,cor)=>`<div class="cor-linha">
+      <label class="cor-amostra" style="background:${cor}" title="Escolher qualquer cor"><input type="color" value="${cor}" oninput="mudarCor('${tipo}','${id}',this.value,false)" onchange="mudarCor('${tipo}','${id}',this.value,true)" aria-label="Cor de ${escapeHtmlCarreira(nome)}"></label>
+      <div class="cor-info"><b>${escapeHtmlCarreira(nome)}</b>
+        <div class="cor-rapidas">${pal.cores.map(c=>`<button type="button" style="background:${c}" class="${c.toLowerCase()===String(cor).toLowerCase()?'sel':''}" onclick="mudarCor('${tipo}','${id}','${c}',true)" aria-label="Usar esta cor"></button>`).join('')}</div></div>
+    </div>`;
+  const cursos=(state.cursos||[]).map(c=>linha('curso',c.id,c.nome,corCurso(c))).join('');
+  const usadas=new Set(); Object.values(state.days||{}).forEach(d=>{ if(!d) return; const n=AREAS_ORDEM.filter(a=>d[a]&&a!=='eletiva').length; AREAS_ORDEM.forEach(a=>{ if(d[a]) usadas.add(a); }); if(n>1) usadas.add('multi'); });
+  const antigas=Object.keys(CORES_AREAS_PADRAO).filter(a=>usadas.has(a)).map(a=>linha('area',a,NOMES_AREAS[a],corArea(a))).join('');
+  // Prévia dos estilos com as cores da própria pessoa (ou da paleta, se ainda não tem nada)
+  const amostra=[...(state.cursos||[]).map(corCurso), ...pal.cores.filter((_,i)=>i%5===0)].slice(0,3);
+  const atual=estiloCalAtual();
+  const estilos=ESTILOS_CAL.map(es=>`<button type="button" class="estilo-op${es.id===atual?' sel':''}" onclick="mudarEstiloCal('${es.id}')" aria-pressed="${es.id===atual}">
+      <div class="estilo-previa">${amostra.map((c,i)=>{ const e=estiloDia(c,es.id); return `<span class="prev-dia${e.cls}" style="${e.style}">${12+i}</span>`; }).join('')}</div>
+      <span class="estilo-nome">${es.nome}</span></button>`).join('');
+  const abas=PALETAS.map(p=>`<button type="button" class="paleta-aba${p.id===pal.id?' sel':''}" onclick="mudarPaleta('${p.id}')"><span class="paleta-mini">${p.cores.slice(0,4).map(c=>`<i style="background:${c}"></i>`).join('')}</span>${p.nome}</button>`).join('');
+  document.getElementById('cores-lista').innerHTML =
+    `<section class="dia-secao"><h4>Como os dias aparecem no calendário</h4><div class="estilos-grade">${estilos}</div></section>`
+    +`<section class="dia-secao"><h4>Paletas de cores</h4><div class="paleta-abas">${abas}</div>`
+    +((state.cursos||[]).length?`<button type="button" class="paleta-aplicar" onclick="aplicarPaleta()">Usar a paleta ${pal.nome} em tudo</button>`:'')+`</section>`
+    +(cursos?`<section class="dia-secao"><h4>O que você está estudando</h4>${cursos}</section>`:'<div class="dia-vazio" style="padding:16px 0">Adicione o que você está estudando no + do calendário para escolher as cores.</div>')
+    +(antigas?`<section class="dia-secao"><h4>Registros antigos</h4>${antigas}</section>`:'');
+  resumoCores();
+}
+function mudarEstiloCal(id){ state.estiloCal=id; renderCalActive(); renderCores(); }
+function mudarPaleta(id){ state.paletaCores=id; renderCores(); }
+// Dá uma cor diferente da paleta escolhida para cada curso, em ordem
+function aplicarPaleta(){
+  const p=paletaAtual();   // pula de 5 em 5 (16 cores) para cores vizinhas não ficarem parecidas
+  (state.cursos||[]).forEach((c,i)=>{ c.cor=p.cores[(i*5)%p.cores.length]; });
+  redesenharCores();
+}
+// fim=false: enquanto arrasta na paleta completa; fim=true: escolheu (redesenha a janela).
+// Nada é gravado aqui — só no botão Confirmar.
+function mudarCor(tipo,id,cor,fim){
+  if(tipo==='curso'){ const c=(state.cursos||[]).find(x=>x.id===id); if(c) c.cor=cor; }
+  else { state.coresAreas=state.coresAreas||{}; state.coresAreas[id]=cor; }
+  renderCalActive(); renderMateriasEstudo();
+  if(fim) redesenharCores(); else resumoCores();
 }
 let calYearViewMode = 'cores'; // 'cores' ou 'fotos'
 
@@ -278,12 +431,12 @@ function renderYearCal(){
         if(temFotoVisivel(info)){
           cellContent = `<img src="${fotoDoDia(info)}" style="width:100%;height:100%;object-fit:cover;border-radius:4px">`;
           cellStyle = `position:relative;overflow:hidden;`+(color?`border-bottom:3px solid ${color};`:'');
-        } else {
-          cellStyle = color ? `background:${color}` : '';
+        } else if(color){
+          const e=estiloDia(color,null,true); cellStyle=e.style; cellClass+=e.cls;
         }
-      } else {
-        // Modo cores: só cores
-        cellStyle = color ? `background:${color}` : '';
+      } else if(color){
+        // Modo cores: só cores, no estilo escolhido na engrenagem
+        const e=estiloDia(color,null,true); cellStyle=e.style; cellClass+=e.cls;
       }
       
       cells += `<div class="${cellClass}" style="${cellStyle}" title="${key}${horasDoDia(info)?(' · '+horasDoDia(info)+'h'):''}" onclick="jumpToMonth(${state.year},${m},'${key}')">${cellContent}${!modoFoto?d:''}</div>`;
@@ -316,186 +469,122 @@ function addCalImg(input){
   });
 }
 
+// ──────────────── JANELA DO DIA (abre já pronta para editar) ────────────────
+// Estudos do dia · Foto do dia · Salvar. Dados antigos que a janela não mostra (Saúde, áreas antigas)
+// são guardados como estavam ao salvar — nada se perde.
+const DIA_SEMANA=['Domingo','Segunda-feira','Terça-feira','Quarta-feira','Quinta-feira','Sexta-feira','Sábado'];
+const DIA_AREAS_NOME={ciencia:'Ciência de Dados',sefaz:'SEFAZ SP',direito:'Direito',notario:'Notário e Registrador',eletiva:'Eletiva'};
+const DIA_ICO={
+  x:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>',
+  mais:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>',
+  foto:'<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="M21 16l-5-5-8 8"/></svg>',
+};
+let editEstudos=[], editImgSelecionada=null, editFotoMudou=false;
+
 function openDayModal(key){
   if(!calAtivo()) return;
   currentDate=key;
-  const [y,m,d]=key.split('-');
-  document.getElementById('day-modal-title').textContent=`${d}/${m}/${y}`;
-  const info=state.days[key];
-  let html='';
-  if(info){
-    if(info.saude) html+=`<div class="summary-item"><div class="summary-area">Saúde</div><div class="summary-detail">${info.saude}</div></div>`;
-    ['ciencia','sefaz','direito','notario'].forEach(area=>{
-      const nomes={ciencia:'Ciência de Dados',sefaz:'SEFAZ SP',direito:'Direito',notario:'Notário'};
-      if(info[area]){
-        const d=info[area];
-        const meta = AREA_META[area];
-        const matVal = meta ? d[meta.materialKey] : 0;
-        const matTxt = matVal ? ` · ${meta.materialIcon} ${matVal} ${meta.materialLabel.toLowerCase()}` : '';
-        html+=`<div class="summary-item">
-          <div class="summary-area"><span class="icon-emoji">📚</span> ${nomes[area]}</div>
-          <div class="summary-detail">${d.horas||0}h · ${d.assunto||'—'} · ${d.questoes||0} questões${matTxt}</div>
-        </div>`;
-      }
-    });
-    if(info.eletiva) html+=`<div class="summary-item"><div class="summary-area"><span class="icon-emoji">📚</span> Eletiva de Base</div><div class="summary-detail">${info.eletiva.horas||0}h · ${info.eletiva.assunto||'—'} · ${info.eletiva.questoes||0} questões${info.eletiva.horasLeitura?' · 📖 '+info.eletiva.horasLeitura+'h de leitura':''}</div></div>`;
-    (info.estudos||[]).forEach(e=>{ html+=`<div class="summary-item"><div class="summary-area"><span class="legend-dot" style="display:inline-block;background:${corCursoId(e.cursoId)}"></span> ${escapeHtmlCarreira(cursoNomeEst(e))}</div><div class="summary-detail">${materiaNome(e)?escapeHtmlCarreira(materiaNome(e))+' · ':''}${e.horas||0}h${e.questoes?' · '+e.questoes+' questões':''}</div></div>`; });
-    if(horasDoDia(info)) html+=`<div class="summary-item"><div class="summary-area">Total</div><div class="summary-detail"><strong>${horasDoDia(info)}h</strong></div></div>`;
-    if(temFotoVisivel(info)) html=`<img src="${fotoDoDia(info)}" style="width:100%;border-radius:8px;margin-bottom:12px">` + html;
-  } else {
-    html='<div style="font-size:13px;color:var(--text-muted);padding:16px 0">Nenhum registro para este dia.</div>';
-  }
-  document.getElementById('day-modal-content').innerHTML=html;
-  document.getElementById('day-modal-img-btn').onclick=()=>triggerCalImg(key);
+  const [y,m,d]=key.split('-').map(Number);
+  document.getElementById('day-modal-title').textContent=`${DIA_SEMANA[new Date(y,m-1,d).getDay()]}, ${d} de ${MESES[m-1].toLowerCase()} de ${y}`;
+  diaCarregar(key);
+  renderDayEditForm();
   document.getElementById('day-modal').classList.add('open');
 }
-function closeDayModal(){ document.getElementById('day-modal').classList.remove('open'); }
-
-// ──────────────── EDIÇÃO MANUAL DE UM DIA (sem IA) ────────────────
-let editEstudos=[], editUsarImg=false, editImgRef=0, editSaude='';
-function openDayEditForm(){
-  const key=currentDate; if(!key) return;
-  const d=state.days[key]||{};
-  editEstudos=JSON.parse(JSON.stringify(d.estudos||[]));
-  editImgSelecionada=fotoDoDia(d)||null;
-  editUsarImg=!!editImgSelecionada && d.usarImg!==false;
-  editImgRef=d.imgEstudo||0; editSaude=d.saude||'';
-  document.getElementById('day-edit-form').style.display='block';
-  renderDayEditForm();
+// Copia o dia salvo para a edição (o que a pessoa muda só vai para o dia ao clicar em Salvar)
+function diaCarregar(key){
+  const info=state.days[key]||{};
+  editEstudos=JSON.parse(JSON.stringify(info.estudos||[]));
+  editImgSelecionada=fotoDoDia(info)||null; editFotoMudou=false;
 }
-function editEstAdd(){ migrarCursos(); if(!state.cursos.length) return; editSaveSaude(); editEstudos.push({cursoId:state.cursos[0].id,materiaId:'',horas:0,questoes:0}); renderDayEditForm(); }
-function editEstRemover(i){ editSaveSaude(); editEstudos.splice(i,1); if(editImgRef>=editEstudos.length) editImgRef=0; renderDayEditForm(); }
-function editEstChange(i,campo,v){ editEstudos[i][campo]=v; if(campo==='cursoId') editEstudos[i].materiaId=''; editSaveSaude(); renderDayEditForm(); }
+function closeDayModal(){ document.getElementById('day-modal').classList.remove('open'); }
+// nomes antigos, mantidos para quem ainda chama (Registrar hoje, testes): sempre recarrega o dia certo
+function openDayEditForm(){ if(!currentDate) return; diaCarregar(currentDate); renderDayEditForm(); }
+function closeDayEditForm(){ closeDayModal(); }
+
+function editEstAdd(){ migrarCursos(); if(!state.cursos.length) return; editEstudos.push({cursoId:state.cursos[0].id,materiaId:'',horas:0,questoes:0}); renderDayEditForm(); }
+function editEstRemover(i){ editEstudos.splice(i,1); renderDayEditForm(); }
+function editEstChange(i,campo,v){ editEstudos[i][campo]=v; if(campo==='cursoId') editEstudos[i].materiaId=''; renderDayEditForm(); }
 function editEstNum(i,campo,v){
   const n=Math.max(0, parseFloat(String(v).replace(',','.'))||0);   // nunca negativo
   editEstudos[i][campo]= campo==='questoes' ? Math.round(n) : arred1(n);
+  diaAtualizarTotal();
 }
-function editSaveSaude(){ const sv=document.getElementById('edit-saude'); if(sv) editSaude=sv.value; }
-function editSetImg(v){ editSaveSaude(); editUsarImg=v; renderDayEditForm(); }
+// Registros antigos (áreas fixas) só aparecem para leitura e entram no total
+function diaAreasAntigas(info){
+  return AREAS_ORDEM.filter(a=>info[a]).map(a=>{
+    const o=typeof info[a]==='object'?info[a]:{};
+    let assunto=String(o.assunto||(a==='eletiva'?info.eletivaDesc:'')||'').trim();
+    if(/^[-—–\s.]*$/.test(assunto)) assunto='';
+    return {nome:DIA_AREAS_NOME[a], horas:Number(o.horas)||0, questoes:Number(o.questoes)||0, assunto};
+  });
+}
+function diaAtualizarTotal(){
+  const el=document.getElementById('dia-total'); if(!el) return;
+  const antigas=diaAreasAntigas(state.days[currentDate]||{});
+  const h=arred1(antigas.reduce((t,a)=>t+a.horas,0)+editEstudos.reduce((t,e)=>t+(Number(e.horas)||0),0));
+  const q=antigas.reduce((t,a)=>t+a.questoes,0)+editEstudos.reduce((t,e)=>t+(Number(e.questoes)||0),0);
+  el.innerHTML=`Total do dia: <b>${String(h).replace('.',',')}h</b> · <b>${q}</b> ${q===1?'questão':'questões'}`;
+}
 function renderDayEditForm(){
-  editSaveSaude(); migrarCursos();
-  const cursos=state.cursos||[];
-  const inp='padding:7px 8px;background:var(--surface-1);border:1px solid var(--border);border-radius:6px;color:var(--text-primary);font-size:12px;width:100%;text-align:center';
-  const titulo='font-weight:700;color:var(--text-primary);font-size:13px;margin-bottom:8px;text-align:center';
-  const caixa='border:1px solid var(--border);border-radius:var(--radius);padding:12px;background:var(--surface-2)';
-  let estHtml='';
-  if(!cursos.length){
-    estHtml='<div style="font-size:12px;color:var(--text-muted);text-align:center;padding:6px 0">Você ainda não tem cursos. Crie em Conteúdos (ou no + do calendário) para ligar aqui.</div>';
-  } else {
-    estHtml='<div style="display:grid;gap:12px">'+editEstudos.map((e,i)=>{
-      const mats=conteudosCustomDe(e.cursoId);
-      return `<div style="${caixa};background:var(--surface-1);display:grid;grid-template-columns:1fr 1fr;gap:6px;position:relative;border-left:4px solid ${corCursoId(e.cursoId)}">
-        <select onchange="editEstChange(${i},'cursoId',this.value)" style="${inp}">${cursos.map(c=>`<option value="${c.id}"${c.id===e.cursoId?' selected':''}>${escapeHtmlCarreira(c.nome)}</option>`).join('')}</select>
-        <select onchange="editEstChange(${i},'materiaId',this.value)" style="${inp}"><option value="">— matéria (opcional) —</option>${mats.map(m=>`<option value="${m.id}"${m.id===e.materiaId?' selected':''}>${escapeHtmlCarreira(m.nome)}</option>`).join('')}</select>
-        <input type="number" step="0.5" min="0" placeholder="Horas" value="${e.horas||''}" oninput="editEstNum(${i},'horas',this.value)" style="${inp}">
-        <input type="number" min="0" placeholder="Questões" value="${e.questoes||''}" oninput="editEstNum(${i},'questoes',this.value)" style="${inp}">
-        <button type="button" onclick="editEstRemover(${i})" title="Remover" style="position:absolute;top:-8px;right:-8px;width:22px;height:22px;border-radius:50%;border:1px solid var(--border);background:var(--surface-1);color:var(--text-muted);cursor:pointer;font-size:10px">✕</button>
-      </div>`; }).join('')+'</div><div style="text-align:center;margin-top:10px"><button type="button" class="de-btn" onclick="editEstAdd()"><span class="icon-emoji">➕</span> Adicionar estudo</button></div>';
-  }
-  let imgHtml=`<div style="display:flex;gap:8px;justify-content:center;margin-bottom:6px">
-      <button type="button" class="de-btn${editUsarImg?' sel':''}" onclick="editSetImg(true)">Sim, com imagem</button>
-      <button type="button" class="de-btn${!editUsarImg?' sel':''}" onclick="editSetImg(false)">Não, sem imagem</button></div>`;
-  if(editUsarImg){
-    imgHtml+=`<div id="edit-foto-galeria" style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:10px 0"></div>
-      <div style="text-align:center"><button type="button" class="de-btn" onclick="document.getElementById('edit-foto-upload').click()"><span class="icon-emoji">📤</span> Enviar nova foto</button>
-      <button type="button" class="de-btn" style="margin-left:6px" onclick="selecionarFotoDia(null)">Nenhuma</button></div>
-      <input type="file" id="edit-foto-upload" accept="image/*" style="display:none" onchange="uploadFotoDia(this)">`;
-    if(editEstudos.length>1){
-      imgHtml+=`<div style="margin-top:10px;text-align:center;font-size:12px;color:var(--text-secondary)">A imagem representa:
-        <select onchange="editImgRef=+this.value" style="${inp};width:auto;display:inline-block;margin-left:6px">${editEstudos.map((e,i)=>`<option value="${i}"${i===editImgRef?' selected':''}>${escapeHtmlCarreira(materiaNome(e)||cursoNomeEst(e))}</option>`).join('')}</select></div>`;
-    } else if(editEstudos.length===1){
-      imgHtml+=`<div style="margin-top:8px;text-align:center;font-size:11.5px;color:var(--text-muted)">A imagem vai representar: <strong>${escapeHtmlCarreira(materiaNome(editEstudos[0])||cursoNomeEst(editEstudos[0]))}</strong></div>`;
-    } else imgHtml+='<div style="margin-top:8px;text-align:center;font-size:11.5px;color:var(--text-muted)">Adicione um estudo acima para a imagem fazer referência a ele.</div>';
-  }
-  const wrap=document.getElementById('day-edit-form');
-  wrap.innerHTML=`<div style="display:grid;gap:14px;text-align:center">
-    <div style="${caixa}"><div style="${titulo}"><span class="icon-emoji">📚</span> O que você estudou neste dia</div>${estHtml}</div>
-    <div style="${caixa}"><div style="${titulo}"><svg class="ico-foto" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="M21 16l-5-5-8 8"/></svg> Colocar imagem neste dia?</div>${imgHtml}</div>
-    <div style="${caixa}"><div style="${titulo}">🏃 Saúde</div><input type="text" id="edit-saude" placeholder="Ex.: Acordou 7h · Banho ✓" value="${(editSaude||'').replace(/"/g,'&quot;')}" style="${inp}"></div>
-    <div style="display:flex;gap:8px;justify-content:center">
-      <button style="padding:10px 22px;background:var(--success);color:#fff;border:none;border-radius:var(--radius);cursor:pointer;font-size:13px;font-weight:600" onclick="saveDayEdit()"><span class="icon-emoji">💾</span> Salvar alterações</button>
-      <button style="padding:10px 16px;background:none;border:1px solid var(--border);border-radius:var(--radius);cursor:pointer;color:var(--text-secondary);font-size:13px" onclick="closeDayEditForm()">Cancelar</button></div></div>`;
-  if(editUsarImg) renderGaleriaFotos();
-}
-
-let editImgSelecionada = null;
-
-function fotosDisponiveis(){
-  const set = new Set(Object.values(state.fotos||{}));
-  Object.values(state.days||{}).forEach(d=>{ if(d && d.imgSrc) set.add(d.imgSrc); });
-  (state.mapas||[]).forEach(m=>{ if(m && m.src) set.add(m.src); });
-  return Array.from(set);
-}
-
-let galeriaFotos = [];
-function renderGaleriaFotos(){
-  const el = document.getElementById('edit-foto-galeria');
-  if(!el) return;
-  const fotos = fotosDisponiveis();
-  
-  // Adiciona a foto temporária (recém-enviada) à lista, se existir
-  let allFotos = [];
-  if(editImgSelecionada && !fotos.includes(editImgSelecionada)){
-    allFotos.push(editImgSelecionada); // foto temporária recém-enviada, aparece primeiro
-  }
-  allFotos = allFotos.concat(fotos); // depois as fotos já salvas
-  
-  if(allFotos.length===0){
-    el.innerHTML = '<span style="font-size:11.5px;color:var(--text-muted)">Nenhuma foto salva no site ainda — envie uma nova abaixo.</span>';
-    return;
-  }
-  galeriaFotos = allFotos;
-  el.innerHTML = allFotos.map((src,i)=>{
-    const sel = src===editImgSelecionada;
-    return `<img src="${src}" onclick="selecionarFotoDia(galeriaFotos[${i}])" style="width:56px;height:56px;object-fit:cover;border-radius:6px;cursor:pointer;border:3px solid ${sel?'var(--accent)':'var(--border)'}; opacity:${sel?'1':'.65'};transition:all .15s" title="${sel?'Selecionada':'Clique para selecionar'}">`;
+  migrarCursos();
+  const cursos=state.cursos||[], info=state.days[currentDate]||{};
+  const antigas=diaAreasAntigas(info);
+  let linhas=antigas.map(a=>`<div class="dia-linha dia-antiga"><div class="dia-antiga-nome"><b>${escapeHtmlCarreira(a.nome)}</b>${a.assunto?`<span>${escapeHtmlCarreira(a.assunto)}</span>`:''}</div>
+      <div class="dia-antiga-num">${String(a.horas).replace('.',',')}h${a.questoes?` · ${a.questoes}q`:''}</div></div>`).join('');
+  linhas+=editEstudos.map((e,i)=>{
+    const existe=cursos.some(c=>c.id===e.cursoId);
+    const opCursos=(existe?'':`<option value="${escapeHtmlCarreira(e.cursoId)}" selected>${escapeHtmlCarreira(cursoNomeEst(e))} (curso removido)</option>`)
+      +cursos.map(c=>`<option value="${c.id}"${c.id===e.cursoId?' selected':''}>${escapeHtmlCarreira(c.nome)}</option>`).join('');
+    const mats=conteudosCustomDe(e.cursoId);
+    const matExiste=!e.materiaId||mats.some(m=>m.id===e.materiaId);
+    const opMats='<option value="">Matéria (opcional)</option>'
+      +(matExiste?'':`<option value="${escapeHtmlCarreira(e.materiaId)}" selected>${escapeHtmlCarreira(materiaNome(e))}</option>`)
+      +mats.map(m=>`<option value="${m.id}"${m.id===e.materiaId?' selected':''}>${escapeHtmlCarreira(m.nome)}</option>`).join('');
+    return `<div class="dia-linha" style="--cor:${corCursoId(e.cursoId)}">
+      <select aria-label="Curso" onchange="editEstChange(${i},'cursoId',this.value)">${opCursos}</select>
+      <select aria-label="Matéria" onchange="editEstChange(${i},'materiaId',this.value)">${opMats}</select>
+      <label class="dia-num"><input type="number" step="0.5" min="0" inputmode="decimal" value="${e.horas||''}" placeholder="0" oninput="editEstNum(${i},'horas',this.value)" aria-label="Horas"><span>h</span></label>
+      <label class="dia-num"><input type="number" min="0" inputmode="numeric" value="${e.questoes||''}" placeholder="0" oninput="editEstNum(${i},'questoes',this.value)" aria-label="Questões"><span>q</span></label>
+      <button type="button" class="dia-rem" onclick="editEstRemover(${i})" title="Remover este estudo" aria-label="Remover este estudo">${DIA_ICO.x}</button>
+    </div>`;
   }).join('');
+  const estudosHtml = cursos.length
+    ? `${linhas||'<div class="dia-vazio">Nenhum estudo registrado neste dia.</div>'}
+       <button type="button" class="dia-link" onclick="editEstAdd()">${DIA_ICO.mais} Adicionar estudo</button>`
+    : `${linhas}<div class="dia-vazio">Para registrar, primeiro adicione o que você está estudando.</div>
+       <button type="button" class="dia-link" onclick="closeDayModal();abrirAddMateria()">${DIA_ICO.mais} Adicionar curso ou concurso</button>`;
+  const fotoHtml = editImgSelecionada
+    ? `<div class="dia-foto"><img src="${editImgSelecionada}" alt="Foto do dia"><div class="dia-foto-acoes">
+         <button type="button" class="dia-link" onclick="document.getElementById('dia-foto-input').click()">Trocar</button>
+         <button type="button" class="dia-link perigo" onclick="diaRemoverFoto()">Remover</button></div></div>`
+    : `<button type="button" class="dia-link" onclick="document.getElementById('dia-foto-input').click()">${DIA_ICO.foto} Adicionar foto</button>`;
+  const existe=!!state.days[currentDate];
+  document.getElementById('day-edit-form').innerHTML=`
+    <section class="dia-secao"><h4>Estudos do dia</h4>${estudosHtml}<div class="dia-total" id="dia-total"></div></section>
+    <section class="dia-secao"><h4>Foto do dia</h4>${fotoHtml}</section>
+    <div class="dia-rodape">
+      ${existe?`<button type="button" class="dia-link perigo" onclick="diaRemoverDia()">Remover dia</button>`:'<span></span>'}
+      <div class="dia-botoes"><button type="button" class="dia-btn" onclick="closeDayModal()">Cancelar</button>
+        <button type="button" class="dia-btn principal" id="dia-salvar" onclick="saveDayEdit()">Salvar</button></div>
+    </div>`;
+  diaAtualizarTotal();
 }
-
-function selecionarFotoDia(src){
-  editImgSelecionada = src;
-  renderGaleriaFotos();
-}
-
-function uploadFotoDia(input){
+function diaFotoEscolhida(input){
   if(!input.files[0]) return;
   const f=input.files[0]; input.value='';
-  comprimirImagem(f,src=>{ editImgSelecionada=src; renderGaleriaFotos(); });
+  comprimirImagem(f,src=>{ editImgSelecionada=src; editFotoMudou=true; renderDayEditForm(); });
 }
-
-
-function renderEditArea(area, label, g){
-  const meta = AREA_META[area] || {};
-  const isHoras = meta.materialTipo === 'horas';
-  return `
-    <div style="border:1px solid var(--border);border-radius:var(--radius);padding:10px;background:var(--surface-2)">
-      <div style="font-weight:600;color:var(--text-primary);margin-bottom:6px">${label}</div>
-      <div style="display:grid;grid-template-columns:70px 1fr 70px 90px;gap:6px">
-        <input type="number" step="0.5" min="0" id="edit-${area}-horas" placeholder="Horas" value="${g(area,'horas','')}" style="padding:6px 8px;background:var(--surface-1);border:1px solid var(--border);border-radius:6px;color:var(--text-primary);font-size:12px">
-        <input type="text" id="edit-${area}-assunto" placeholder="Assunto" value="${String(g(area,'assunto','')).replace(/"/g,'&quot;')}" style="padding:6px 8px;background:var(--surface-1);border:1px solid var(--border);border-radius:6px;color:var(--text-primary);font-size:12px">
-        <input type="number" min="0" id="edit-${area}-questoes" placeholder="Questões" value="${g(area,'questoes','')}" style="padding:6px 8px;background:var(--surface-1);border:1px solid var(--border);border-radius:6px;color:var(--text-primary);font-size:12px">
-        <input type="number" min="0" ${isHoras?'step="0.5"':''} id="edit-${area}-material" placeholder="${meta.materialLabel||'Material'}" value="${g(area,meta.materialKey,'')}" title="${meta.materialLabel||''}" style="padding:6px 8px;background:var(--surface-1);border:1px solid var(--border);border-radius:6px;color:var(--text-primary);font-size:12px">
-      </div>
-      <div style="font-size:10px;color:var(--text-muted);margin-top:4px">Horas · Assunto · Questões · ${meta.materialIcon||''} ${meta.materialLabel||''}</div>
-    </div>
-  `;
-}
-
-function closeDayEditForm(){
-  const wrap = document.getElementById('day-edit-form');
-  if(wrap){ wrap.style.display='none'; wrap.innerHTML=''; }
-}
+function diaRemoverFoto(){ editImgSelecionada=null; editFotoMudou=true; renderDayEditForm(); }
+async function diaRemoverDia(){ const k=currentDate; closeDayModal(); await deleteDay(k); }
 
 async function saveDayEdit(){
   const key=currentDate; if(!key) return;
-  editSaveSaude();
   const prev=state.days[key]||{};
   const novo={};
-  const saude=(editSaude||'').trim();
-  if(saude) novo.saude=saude;
+  if(prev.saude) novo.saude=prev.saude;                        // campo antigo: guardado como estava
   AREAS_ORDEM.forEach(a=>{ if(prev[a]) novo[a]=prev[a]; });
   if(prev.eletivaDesc) novo.eletivaDesc=prev.eletivaDesc;
   const kept=editEstudos.filter(e=>e.cursoId&&((e.horas||0)>0||(e.questoes||0)>0||e.materiaId));
-  const refObj=editEstudos[editImgRef];
   const est=kept.map(e=>({cursoId:e.cursoId,cursoNome:cursoNomeEst(e),materiaId:e.materiaId||'',materiaNome:materiaNome(e),horas:arred1(e.horas),questoes:Math.round(e.questoes||0)}));
   if(est.length) novo.estudos=est;
   novo.horasTotal=somaHorasPartes(novo);
@@ -505,13 +594,19 @@ async function saveDayEdit(){
     await customAlert(`O total deste dia ficou em ${novo.horasTotal}h, mas um dia tem no máximo ${HORAS_MAX_DIA}h. Confira as horas antes de salvar.`);
     return;
   }
-  if(editImgSelecionada){ novo.imgId=guardarFoto(editImgSelecionada); novo.usarImg=editUsarImg; novo.imgEstudo=Math.max(0,kept.indexOf(refObj)); }
+  if(editImgSelecionada){
+    if(editFotoMudou){ novo.imgId=guardarFoto(editImgSelecionada); novo.usarImg=true; novo.imgEstudo=0; }
+    else { // foto que já estava: guarda exatamente como era
+      if(prev.imgId) novo.imgId=prev.imgId; else if(prev.imgSrc) novo.imgSrc=prev.imgSrc;
+      if('usarImg' in prev) novo.usarImg=prev.usarImg;
+      if('imgEstudo' in prev) novo.imgEstudo = prev.imgEstudo < Math.max(1,est.length) ? prev.imgEstudo : 0;
+    }
+  }
   if(diaVazio(novo)) delete state.days[key];
   else state.days[key]=novo;
   salvarCalendario();
   updateFoguinho(); renderCalActive(); renderMural(); renderConteudos();
-  closeDayEditForm();
-  openDayModal(key);
+  closeDayModal();
 }
 
 function changeMonth(d){
@@ -545,7 +640,14 @@ document.getElementById('day-modal').addEventListener('click',function(e){ if(e.
 
 // ── Matérias que a pessoa está estudando (substitui a legenda fixa) ──
 const MATERIA_CORES=['#3b82f6','#22c55e','#f97316','#a855f7','#ec4899','#ef4444','#06b6d4','#eab308'];
-let materiaCorSel=MATERIA_CORES[0];
+// Cor automática para um curso novo: a primeira da paleta que ninguém usa; depois, cores novas bem espaçadas
+function proximaCor(){
+  const usadas=new Set((state.cursos||[]).map(c=>(c.cor||'').toLowerCase()));
+  const livre=MATERIA_CORES.find(c=>!usadas.has(c)); if(livre) return livre;
+  const h=Math.round(((state.cursos||[]).length*137.508)%360), s=.62, l=.5;   // ângulo de ouro: cores sempre diferentes
+  const f=n=>{ const k=(n+h/30)%12, a=s*Math.min(l,1-l); return Math.round(255*(l-a*Math.max(-1,Math.min(k-3,9-k,1)))).toString(16).padStart(2,'0'); };
+  return `#${f(0)}${f(8)}${f(4)}`;
+}
 function renderMateriasEstudo(){
   const el=document.getElementById('cal-materias'); if(!el) return;
   migrarCursos();
@@ -556,23 +658,20 @@ function renderMateriasEstudo(){
 }
 function abrirAddMateria(){
   document.getElementById('nova-materia-nome').value='';
-  catalogoChips('nova-materia-nome','catalogo-prev-materia','catalogo-chips-materia');
-  materiaCorSel=MATERIA_CORES[0]; desenharCoresMateria();
+  cursoDica('nova-materia-nome','dica-materia');
   document.getElementById('add-materia-modal').classList.add('open');
   setTimeout(()=>document.getElementById('nova-materia-nome').focus(),50);
 }
 function fecharAddMateria(){ document.getElementById('add-materia-modal').classList.remove('open'); }
-function desenharCoresMateria(){
-  document.getElementById('nova-materia-cores').innerHTML=MATERIA_CORES.map(c=>`<button type="button" onclick="materiaCorSel='${c}';desenharCoresMateria()" style="width:28px;height:28px;border-radius:50%;background:${c};cursor:pointer;border:3px solid ${c===materiaCorSel?'var(--text-primary)':'transparent'}"></button>`).join('');
-}
+// O que a pessoa digitou → nome reconhecido (curso de faculdade / concurso) ou como escreveu
 function criarMateria(){
-  const nome=document.getElementById('nova-materia-nome').value.trim();
-  if(!nome){ customAlert('Digite o nome do que você está estudando.'); return; }
+  const digitado=document.getElementById('nova-materia-nome').value.trim().replace(/\s+/g,' ');
+  if(!digitado){ customAlert('Digite o nome do que você está estudando.'); return; }
+  const r=cursoReconhecido(digitado), nome=r?r.nome:digitado;
   migrarCursos();
-  if(state.cursos.some(c=>bgNorm(c.nome)===bgNorm(nome))){ customAlert('Isso já está na sua lista (e em Conteúdos).'); return; }
-  const r=novoCursoCatalogo(nome,materiaCorSel);
-  saveState(); renderMateriasEstudo(); renderConteudos(); fecharAddMateria();
-  if(r.n) mostrarToast(`${r.n} matérias adicionadas automaticamente`);
+  if(state.cursos.some(c=>bgNorm(c.nome)===bgNorm(nome))){ customAlert(`"${nome}" já está na sua lista (e em Conteúdos).`); return; }
+  novoCursoCatalogo(nome);
+  saveState(); renderMateriasEstudo(); renderConteudos(); renderCalActive(); fecharAddMateria();
 }
 async function removerMateria(id){ await excluirCurso(id); }
 document.getElementById('add-materia-modal').addEventListener('click',function(e){ if(e.target===this) fecharAddMateria(); });

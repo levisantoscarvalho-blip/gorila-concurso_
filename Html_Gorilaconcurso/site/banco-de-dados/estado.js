@@ -57,14 +57,14 @@ function mostrarAvisoSalvamento(sucesso, esgotouTentativas){
     el.style.background = 'var(--success-bg)';
     el.style.color = 'var(--success)';
     el.style.border = '1px solid var(--success)';
-    el.innerHTML = '<span class="icon-emoji">✅</span> Salvo';
+    el.innerHTML = ICO.check+' Salvo';
   } else {
     el.style.background = 'var(--danger-bg)';
     el.style.color = 'var(--danger)';
     el.style.border = '1px solid var(--danger)';
     el.innerHTML = esgotouTentativas
-      ? '<span class="icon-emoji">⚠️</span> Não foi possível salvar após várias tentativas. Clique em "Exportar" na barra lateral para baixar um backup agora.'
-      : '<span class="icon-emoji">🔄</span> Falha ao salvar, tentando de novo...';
+      ? ICO.alerta+' Não foi possível salvar após várias tentativas. Clique em "Exportar" na barra lateral para baixar um backup agora.'
+      : ICO.repetir+' Falha ao salvar, tentando de novo...';
   }
   el.style.opacity = '1';
   clearTimeout(window._toastTimer);
@@ -130,6 +130,7 @@ async function loadState(){
 
 // Salva o progresso (veja banco-de-dados/armazenamento.js)
 async function saveState() {
+  if(typeof updateFoguinho === 'function') updateFoguinho(); // foguinho acende na hora em que o dia de hoje é registrado
   if(window.__guest) return true; // visitante: nada é gravado na conta
   if(window.__loadPromise && !window.__dadosProntos){ try{ await window.__loadPromise; }catch(e){} }
   let tentativa = 0;
@@ -144,7 +145,7 @@ async function saveState() {
   const payload = JSON.stringify(state);
   const tamanhoMB = payload.length / 1024 / 1024;
   if(tamanhoMB > 4){
-    mostrarToast(`⚠️ Seus dados estão em ${tamanhoMB.toFixed(1)}MB, perto do limite de 5MB. Considere remover fotos antigas do calendário.`);
+    mostrarToast(`Atenção: seus dados estão em ${tamanhoMB.toFixed(1)}MB, perto do limite de 5MB. Considere remover fotos antigas do calendário.`);
   }
 
   while (tentativa < maxTentativas) {
@@ -167,6 +168,21 @@ async function saveState() {
   mostrarAvisoSalvamento(false, true);
   return false;
 }
+
+// Duas abas abertas: quando OUTRA aba salva, esta aba traz a versão nova para a memória.
+// Sem isso, o próximo salvamento desta aba apagaria o que a outra fez.
+window.addEventListener('storage', async e=>{
+  if(e.key!==STORAGE_KEY || !e.newValue || window.__guest || !window.__logado) return;
+  try{
+    const novo = Object.assign(defaultState(), JSON.parse(e.newValue));
+    novo.month = state.month; novo.year = state.year;   // o mês aberto é só desta tela
+    state = novo;
+    if(typeof normalizarCalendario === 'function') normalizarCalendario();
+    if(typeof carregarFotos === 'function') await carregarFotos();
+    ['updateFoguinho','updateSidebarHours','renderMateriasEstudo','renderCalActive','renderMural','renderConteudos','renderTrilhasFixas','renderCarreirasCustom']
+      .forEach(f=>{ try{ if(typeof window[f]==='function') window[f](); }catch(err){} });
+  }catch(err){ console.warn('Não foi possível atualizar com os dados da outra aba:', err); }
+});
 
 // Baixa um arquivo .json com todo o progresso atual (backup manual)
 function exportBackup(){

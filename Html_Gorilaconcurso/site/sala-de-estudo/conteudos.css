@@ -17,3 +17,15 @@
 .check-item:hover{color:var(--text-primary)}
 .check-item.done{color:var(--text-muted);text-decoration:line-through}
 .check-item input[type=checkbox]{accent-color:var(--accent);cursor:pointer;min-width:14px;margin-top:1px}
+/* Nova matéria: sugestões enquanto digita */
+#materia-sugestoes{margin:-4px 0 12px}
+#materia-sugestoes .mat-ok{font-size:12.5px;color:var(--success);margin-bottom:6px}
+#materia-sugestoes .mat-sug{display:flex;flex-wrap:wrap;gap:6px}
+/* ícones dos botões do cartão do curso (adicionar matéria / excluir curso) */
+.card-add-btn{width:28px!important;height:28px!important;color:var(--text-secondary)}
+.ico-card{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.card-add-btn.perigo:hover{background:var(--danger-bg);color:var(--danger);border-color:var(--danger)}
+/* horas estudadas do curso em destaque */
+.prog-horas{font-weight:700;color:var(--accent-text)}
+/* aviso "Reconhecido: …" embaixo do campo de curso */
+.curso-dica{font-size:12.5px;color:var(--success);min-height:18px;margin:0 0 12px;display:flex;align-items:center;gap:5px}

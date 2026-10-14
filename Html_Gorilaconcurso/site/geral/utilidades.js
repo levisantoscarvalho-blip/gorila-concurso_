@@ -1,7 +1,26 @@
 /* ════════════════════════════════════════════
    GERAL — utilidades
-   Foguinho, janelas de confirmação/alerta, avisos (toast).
+   Ícones do site, foguinho, janelas de confirmação/alerta, avisos (toast).
    ════════════════════════════════════════════ */
+
+// ── Ícones do site: desenho de traço simples (no lugar de emojis). Uso: ICO.lixo ──
+const ICO = (()=>{
+  const s = d => `<svg class="ico" viewBox="0 0 24 24" aria-hidden="true">${d}</svg>`;
+  return {
+    mais:       s('<path d="M12 5v14M5 12h14"/>'),
+    lixo:       s('<path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13M10 11v6M14 11v6"/>'),
+    lapis:      s('<path d="M4 20h4L19 9l-4-4L4 16v4z"/><path d="M13.5 6.5l4 4"/>'),
+    check:      s('<path d="M5 12.5l4.5 4.5L19 7.5"/>'),
+    imagem:     s('<rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="M21 16l-5-5-8 8"/>'),
+    lupa:       s('<circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5"/>'),
+    calendario: s('<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>'),
+    grafico:    s('<path d="M4 20h16M7 16v-5M12 16V7M17 16v-8"/>'),
+    alerta:     s('<path d="M12 4l9 16H3z"/><path d="M12 10v4M12 17h.01"/>'),
+    repetir:    s('<path d="M20 12a8 8 0 1 1-2.3-5.6"/><path d="M20 4v5h-5"/>'),
+    mapa:       s('<circle cx="12" cy="5" r="2.5"/><circle cx="5" cy="19" r="2.5"/><circle cx="19" cy="19" r="2.5"/><path d="M12 7.5V12M12 12l-5.2 5.2M12 12l5.2 5.2"/>'),
+    engrenagem: s('<circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/>'),
+  };
+})();
 
 // ════════════════════════════════════════════
 // ════════════════════════════════════════════
@@ -165,45 +184,59 @@ function mostrarToast(msg){
   setTimeout(()=>el.remove(), 3000);
 }
 
+// ── Foguinho (estilo TikTok) ──
+// O número é o total de dias estudados e NUNCA zera (decisão do Levi).
+// Como no TikTok: a chama fica CINZA enquanto você não estudou hoje e ACENDE quando registra o dia.
+function fogoTotal(){ return Object.values(state.days || {}).filter(isStudyDay).length; }
+function fogoEstudouHoje(){ const d=new Date(); return isStudyDay((state.days||{})[mkKey(d.getFullYear(), d.getMonth()+1, d.getDate())]); }
+function fogoFaltaHoje(){
+  const agora=new Date(), fim=new Date(agora.getFullYear(), agora.getMonth(), agora.getDate()+1);
+  const min=Math.max(0, Math.floor((fim-agora)/60000));
+  return Math.floor(min/60)+'h '+String(min%60).padStart(2,'0')+'min';
+}
 function tocarFoguinho(box){
   const icon = box.querySelector('.foguinho-emoji');
-  if(icon){
-    icon.classList.remove('foguinho-pulo');
-    void icon.offsetWidth; // reinicia a animação
-    icon.classList.add('foguinho-pulo');
-  }
-  const totalDiasEstudados = Object.values(state.days || {}).filter(isStudyDay).length;
-  const frases = totalDiasEstudados > 0
-    ? [`🔥 ${totalDiasEstudados} dia(s) estudados no total. Continue assim!`,
-       `Cada dia registrado conta. Você já tem ${totalDiasEstudados} no seu histórico!`,
-       `Foguinho aceso! ${totalDiasEstudados} dias de estudo registrados.`]
-    : ['Registre seu primeiro dia de estudo para acender o foguinho! 🔥'];
-  mostrarToast(frases[Math.floor(Math.random()*frases.length)]);
+  if(icon && fogoEstudouHoje()) fogoAnimar(icon);
+  // abre/fecha o cartão
+  const aberto = document.querySelector('.fogo-cartao');
+  document.querySelectorAll('.fogo-cartao').forEach(c=>c.remove());
+  if(aberto && aberto.__dono===box) return;
+  const total=fogoTotal(), hoje=fogoEstudouHoje();
+  const status = hoje
+    ? `<div class="fogo-status ok">Você já estudou hoje. Foguinho aceso!</div>`
+    : total>0
+      ? `<div class="fogo-status">Estude hoje para acender o seu foguinho.<span class="fogo-tempo">O dia acaba em ${fogoFaltaHoje()}</span></div>`
+      : `<div class="fogo-status">Registre o seu primeiro dia de estudo para acender o foguinho.</div>`;
+  const c=document.createElement('div');
+  c.className='fogo-cartao'; c.setAttribute('role','dialog'); c.onclick=e=>e.stopPropagation();
+  c.innerHTML=`<span class="foguinho-emoji fogo-grande ${hoje?'fogo-aceso':'fogo-apagado'}"><svg class="fogo-svg" viewBox="0 0 24 28" aria-hidden="true"><use href="#fogoTT"/></svg></span>
+    <b>${total}</b><div class="fogo-rotulo">${total===1?'dia estudado':'dias estudados'}</div>${status}`;
+  // fica no <body> (por cima de tudo, sem ser cortado pela barra lateral), logo abaixo do foguinho
+  c.__dono=box; document.body.appendChild(c);
+  const r=box.getBoundingClientRect(), w=c.offsetWidth;
+  c.style.left=Math.max(8, Math.min(innerWidth-w-8, r.left+r.width/2-w/2))+'px';
+  c.style.top=(r.bottom+10)+'px';
 }
+// fecha o cartão ao clicar em qualquer outro lugar
+document.addEventListener('click', e=>{ if(!e.target.closest('.foguinho-box,.fogo-cartao')) document.querySelectorAll('.fogo-cartao').forEach(c=>c.remove()); });
 
+// animação de acender (depois volta a balançar normal)
+function fogoAnimar(el){ el.classList.remove('fogo-acendendo'); void el.offsetWidth; el.classList.add('fogo-acendendo'); el.addEventListener('animationend', ()=>el.classList.remove('fogo-acendendo'), {once:true}); }
+let fogoEstavaAceso = null;
 function updateFoguinho() {
-  // Fixo: soma TODOS os dias que já teve estudo registrado, sem quebrar nunca.
-  // Se você esquecer de entrar por dias/semanas, o número continua exatamente onde parou.
-  const totalDiasEstudados = Object.values(state.days || {}).filter(isStudyDay).length;
-
-  const ids = ['-home', '-sb'];
-  ids.forEach(suf => {
+  const total = fogoTotal(), aceso = fogoEstudouHoje();
+  const acendeuAgora = fogoEstavaAceso===false && aceso;   // registrou o estudo de hoje agora
+  fogoEstavaAceso = aceso;
+  ['-home', '-sb'].forEach(suf => {
     const fn = document.getElementById('foguinho-num' + suf);
     const fi = document.getElementById('foguinho-icon' + suf);
-    if(fn && fi) {
-      fn.textContent = totalDiasEstudados;
-      // Sempre aceso/colorido — nunca fica cinza ou apagado
-      let color = '#ff9900';
-      if(totalDiasEstudados >= 7)   color = '#ff6a00';
-      if(totalDiasEstudados >= 14)  color = '#ff3d00';
-      if(totalDiasEstudados >= 30)  color = '#ff1744';
-      if(totalDiasEstudados >= 60)  color = '#d500f9';
-      if(totalDiasEstudados >= 100) color = '#00e5ff';
-      const blur = 3 + Math.min(totalDiasEstudados / 8, 6);
-      const escala = 1 + Math.min(totalDiasEstudados / 150, 0.25);
-      fi.style.filter = `drop-shadow(0 0 ${blur}px ${color})`;
-      fi.style.transform = `scale(${escala})`;
-    }
+    if(!fn || !fi) return;
+    fn.textContent = total;
+    fi.classList.toggle('fogo-aceso', aceso);
+    fi.classList.toggle('fogo-apagado', !aceso);
+    const box = fi.closest('.foguinho-box');
+    if(box){ box.classList.toggle('apagado', !aceso); box.title = aceso ? `${total} dias estudados · aceso hoje` : `${total} dias estudados · estude hoje para acender`; }
+    if(acendeuAgora) fogoAnimar(fi);
   });
 }
 const bgNorm = s => String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();

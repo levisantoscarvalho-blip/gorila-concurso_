@@ -60,54 +60,60 @@ function updateProg(trilha, barId,lblId,pctId,unit){
 // ── Modal: Adicionar conteúdo (pergunta pra qual trilha vai) ──
 function fecharAddConteudo(){ document.getElementById('add-conteudo-modal').classList.remove('open'); }
 function criarConteudo(){
-  const nome = document.getElementById('novo-conteudo-nome').value.trim();
+  const digitado = document.getElementById('novo-conteudo-nome').value.trim().replace(/\s+/g,' ');
   const trilha = document.getElementById('novo-conteudo-trilha').value;
-  if(!nome){ customAlert('Digite um nome para o conteúdo.'); return; }
+  if(!digitado){ customAlert('Digite o nome da matéria.'); return; }
+  const conhecida = materiaReconhecida(digitado);
+  const nome = conhecida || digitado;           // matéria conhecida fica sempre com o mesmo nome
   state.conteudosCustom = state.conteudosCustom || [];
+  if(state.conteudosCustom.some(x=>x.trilha===trilha && bgNorm(x.nome)===bgNorm(nome))){
+    customAlert(`"${nome}" já está neste curso.`); return;
+  }
   state.conteudosCustom.push({ id:'ct_'+Date.now().toString(36)+Math.random().toString(36).slice(2,5), nome, trilha, feito:false });
   saveState();
   renderConteudos();
   fecharAddConteudo();
+  if(conhecida && bgNorm(conhecida)!==bgNorm(digitado)) mostrarToast(`Matéria reconhecida: ${conhecida}`);
 }
+
+// ── Matérias que o sistema reconhece (lista em banco-de-dados/catalogo-concursos.js) ──
+let _materiasConhecidas=null;
+function materiasConhecidas(){
+  if(_materiasConhecidas) return _materiasConhecidas;
+  const nomes=new Set(MATERIAS_EXTRAS);
+  CATALOGO.forEach(c=>(c.m||[]).forEach(m=>nomes.add(m)));
+  Object.keys(MATERIAS_APELIDOS).forEach(m=>nomes.add(m));
+  _materiasConhecidas=[...nomes].sort((a,b)=>a.localeCompare(b,'pt-BR')).map(nome=>({nome, chaves:[bgNorm(nome), ...(MATERIAS_APELIDOS[nome]||[]).map(bgNorm)]}));
+  return _materiasConhecidas;
+}
+// "portugues" → "Língua Portuguesa"; "matematica" → "Matemática"; nome desconhecido → null
+function materiaReconhecida(texto){
+  const n=bgNorm(texto||'').trim(); if(!n) return null;
+  const m=materiasConhecidas().find(x=>x.chaves.includes(n));
+  return m ? m.nome : null;
+}
+// Sugestões enquanto a pessoa digita (até 6)
+function materiaSugerir(){
+  const inp=document.getElementById('novo-conteudo-nome'), box=document.getElementById('materia-sugestoes'); if(!inp||!box) return;
+  const n=bgNorm(inp.value).trim();
+  if(n.length<2){ box.innerHTML=''; return; }
+  const exata=materiaReconhecida(inp.value);
+  const comeca=x=>x.chaves.some(k=>k.startsWith(n) || k.split(' ').some(p=>p.startsWith(n)));
+  const lista=materiasConhecidas().filter(x=>x.nome!==exata && comeca(x)).slice(0, exata?5:6);
+  box.innerHTML=(exata?`<div class="mat-ok">✓ Matéria reconhecida: <b>${escapeHtmlCarreira(exata)}</b></div>`:'')
+    +(lista.length?`<div class="mat-sug">${lista.map(x=>`<button type="button" class="np-chip" onclick="materiaEscolher(this.textContent)">${escapeHtmlCarreira(x.nome)}</button>`).join('')}</div>`:'');
+}
+function materiaEscolher(nome){ const inp=document.getElementById('novo-conteudo-nome'); inp.value=nome; materiaSugerir(); inp.focus(); }
 
 document.getElementById('add-conteudo-modal').addEventListener('click',function(e){ if(e.target===this) fecharAddConteudo(); });
 // ── Cursos e matérias (Conteúdos) — tudo definido pela própria pessoa ──
 
-function catalogoAcha(nome){ const n=bgNorm(nome||'').trim(); if(!n) return null; return CATALOGO.find(c=>bgNorm(c.nome)===n||(c.alias||[]).some(a=>bgNorm(a)===n))||null; }
-function aplicarCatalogo(curso){
-  const cat=catalogoAcha(curso.nome); if(!cat) return 0;
-  state.conteudosCustom=state.conteudosCustom||[];
-  let n=0;
-  cat.m.forEach(mn=>{
-    if(!state.conteudosCustom.some(x=>x.trilha===curso.id&&bgNorm(x.nome)===bgNorm(mn))){
-      state.conteudosCustom.push({id:'ct_'+Date.now().toString(36)+Math.random().toString(36).slice(2,6)+n,nome:mn,trilha:curso.id,feito:false,auto:true}); n++;
-    }
-  });
-  curso.catalogo=cat.nome;
-  return n;
-}
 function novoCursoCatalogo(nome,cor){
   migrarCursos();
-  const c={id:'cu_'+Date.now().toString(36)+Math.random().toString(36).slice(2,5),nome,cor:cor||MATERIA_CORES[state.cursos.length%MATERIA_CORES.length]};
+  const c={id:'cu_'+Date.now().toString(36)+Math.random().toString(36).slice(2,5),nome,cor:cor||proximaCor()};   // cor: muda na engrenagem do menu
   state.cursos.push(c);
-  return {curso:c,n:aplicarCatalogo(c)};
-}
-function catalogoPrev(inputId,prevId){
-  const el=document.getElementById(prevId), inp=document.getElementById(inputId); if(!el||!inp) return;
-  const v=inp.value.trim(), cat=catalogoAcha(v);
-  el.innerHTML = cat ? `✓ <b>${escapeHtmlCarreira(cat.nome)}</b> (${cat.t==='concurso'?'concurso':'faculdade'}): ${cat.m.length} matérias entram automaticamente.` : (v?'Não está na lista pronta — você poderá adicionar as matérias manualmente.':'');
-}
-function catalogoEscolher(i,inputId,prevId){ document.getElementById(inputId).value=CATALOGO[i].nome; catalogoPrev(inputId,prevId); }
-function catalogoChips(inputId,prevId,boxId){
-  const box=document.getElementById(boxId); if(!box) return;
-  const grupo=(t,rot)=>`<div class="np-sub" style="margin:8px 0 6px">${rot}</div><div class="np-chips" style="margin-bottom:6px">`+CATALOGO.map((c,i)=>c.t===t?`<button type="button" class="np-chip" onclick="catalogoEscolher(${i},'${inputId}','${prevId}')">${escapeHtmlCarreira(c.nome)}</button>`:'').join('')+'</div>';
-  box.innerHTML=grupo('concurso','Concursos')+grupo('faculdade','Faculdades');
-  catalogoPrev(inputId,prevId);
-}
-function carregarCatalogo(id){
-  const c=(state.cursos||[]).find(c=>c.id===id); if(!c) return;
-  const n=aplicarCatalogo(c); saveState(); renderConteudos();
-  mostrarToast(n?`${n} matérias adicionadas automaticamente`:'Todas as matérias já estavam na lista');
+  // As matérias NÃO entram sozinhas: cada instituição/edital tem a sua grade — a pessoa adiciona as dela.
+  return {curso:c,n:0};
 }
 
 function nomeCurso(id){ const c=(state.cursos||[]).find(c=>c.id===id); return c?c.nome:(CONTEUDO_TRILHAS[id]||id); }
@@ -130,7 +136,7 @@ function renderConteudos(){
   migrarCursos();
   const g=document.getElementById('cursos-grid'); if(!g) return;
   if(!state.cursos.length){
-    g.innerHTML='<div class="empty-state"><span class="icon-emoji">🎓</span><p>Nenhum curso ainda. Clique em "Adicionar curso" (ex: Direito, Psicologia) e depois adicione as matérias de cada um.</p></div>';
+    g.innerHTML='<div class="empty-state"><p>Nenhum curso ainda. Clique em "Adicionar curso" (ex: Direito, Psicologia) e depois adicione as matérias de cada um.</p></div>';
     return;
   }
   g.innerHTML=state.cursos.map(c=>{
@@ -138,28 +144,28 @@ function renderConteudos(){
     const pct=itens.length?Math.round(done/itens.length*100):0;
     const lista=itens.map(i=>`<label class="check-item${i.feito?' done':''}" style="display:flex;align-items:center;gap:8px"><input type="checkbox" ${i.feito?'checked':''} onchange="toggleConteudoCustom('${i.id}')"><span style="flex:1">${escapeHtmlCarreira(i.nome)}</span>${horasDe(c.id,i.id)?`<span style="font-size:11px;color:var(--accent-text);font-weight:700;white-space:nowrap">${horasDe(c.id,i.id)}h</span>`:''}<button type="button" onclick="event.preventDefault();excluirConteudoCustom('${i.id}')" style="background:none;border:none;color:var(--text-muted);cursor:pointer;font-size:13px;padding:2px 5px" title="Remover">✕</button></label>`).join('');
     return `<div class="content-card" style="margin-bottom:0">
-      <h3><span class="legend-dot" style="background:${corCurso(c)};flex-shrink:0"></span> ${escapeHtmlCarreira(c.nome)}<button type="button" class="card-add-btn" onclick="abrirAddConteudo('${c.id}')" title="Adicionar matéria"><span class="icon-emoji">➕</span></button>${(catalogoAcha(c.nome)&&!c.catalogo)?`<button type="button" class="card-add-btn" style="margin-left:6px" onclick="carregarCatalogo('${c.id}')" title="Carregar as matérias automáticas deste curso"><span class="icon-emoji">📥</span></button>`:''}<button type="button" class="card-add-btn" style="margin-left:6px" onclick="excluirCurso('${c.id}')" title="Excluir curso"><span class="icon-emoji">🗑️</span></button></h3>
-      <div class="prog-row"><span>${done} / ${itens.length} matérias${horasDe(c.id)?` · ${horasDe(c.id)}h estudadas`:''}</span><span>${pct}%</span></div>
+      <h3><span class="legend-dot" style="background:${corCurso(c)};flex-shrink:0"></span> ${escapeHtmlCarreira(c.nome)}<button type="button" class="card-add-btn" onclick="abrirAddConteudo('${c.id}')" title="Adicionar matéria" aria-label="Adicionar matéria"><svg class="ico-card" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button><button type="button" class="card-add-btn perigo" style="margin-left:6px" onclick="excluirCurso('${c.id}')" title="Excluir curso" aria-label="Excluir curso"><svg class="ico-card" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13M10 11v6M14 11v6"/></svg></button></h3>
+      <div class="prog-row"><span>${done} / ${itens.length} matérias${horasDe(c.id)?` · <b class="prog-horas">${horasDe(c.id)}h estudadas</b>`:''}</span><span>${pct}%</span></div>
       <div class="prog-bar-wrap"><div class="prog-bar" style="width:${pct}%"></div></div>
-      ${lista||'<div style="font-size:11px;color:var(--text-muted);margin-top:6px">Nenhuma matéria ainda — clique no ➕ do curso.</div>'}
+      ${lista||'<div style="font-size:11px;color:var(--text-muted);margin-top:6px">Nenhuma matéria ainda — clique no + do curso.</div>'}
     </div>`;
   }).join('');
 }
 function abrirAddCurso(){
   document.getElementById('novo-curso-nome').value='';
-  catalogoChips('novo-curso-nome','catalogo-prev-curso','catalogo-chips-curso');
+  cursoDica('novo-curso-nome','dica-curso');
   document.getElementById('add-curso-modal').classList.add('open');
   setTimeout(()=>document.getElementById('novo-curso-nome').focus(),50);
 }
 function fecharAddCurso(){ document.getElementById('add-curso-modal').classList.remove('open'); }
 function criarCurso(){
-  const nome=document.getElementById('novo-curso-nome').value.trim();
-  if(!nome){ customAlert('Digite o nome do curso.'); return; }
+  const digitado=document.getElementById('novo-curso-nome').value.trim().replace(/\s+/g,' ');
+  if(!digitado){ customAlert('Digite o nome do curso.'); return; }
+  const r=cursoReconhecido(digitado), nome=r?r.nome:digitado;   // reconhecido → nome padronizado
   migrarCursos();
-  if(state.cursos.some(c=>bgNorm(c.nome)===bgNorm(nome))){ customAlert('Esse curso já existe na sua lista.'); return; }
-  const r=novoCursoCatalogo(nome);
+  if(state.cursos.some(c=>bgNorm(c.nome)===bgNorm(nome))){ customAlert(`"${nome}" já está na sua lista.`); return; }
+  novoCursoCatalogo(nome);
   saveState(); renderConteudos(); renderMateriasEstudo(); fecharAddCurso();
-  if(r.n) mostrarToast(`${r.n} matérias adicionadas automaticamente`);
 }
 async function excluirCurso(id){
   const quer=await customConfirm(`Excluir o curso "${nomeCurso(id)}" e todas as matérias dele?`);
@@ -171,7 +177,7 @@ async function excluirCurso(id){
 function abrirAddConteudo(cursoId){
   migrarCursos();
   if(!state.cursos.length){ customAlert('Crie um curso primeiro (ex: Direito, Psicologia).'); abrirAddCurso(); return; }
-  document.getElementById('novo-conteudo-nome').value='';
+  document.getElementById('novo-conteudo-nome').value=''; materiaSugerir();
   const sel=document.getElementById('novo-conteudo-trilha');
   sel.innerHTML=state.cursos.map(c=>`<option value="${c.id}">${escapeHtmlCarreira(c.nome)}</option>`).join('');
   if(cursoId && state.cursos.some(c=>c.id===cursoId)) sel.value=cursoId;
