@@ -1,0 +1,28 @@
+/* ════════════════════════════════════════════
+   INSTITUCIONAL — Termos de uso, Política de privacidade, Contato
+   Páginas de texto abertas pelo rodapé da janela de acesso.
+   ════════════════════════════════════════════ */
+:root{--bg:#f0f2f8;--card:#fff;--borda:#d0d4e8;--texto:#1a1d2e;--suave:#4a5070;--fraco:#8890b0;--destaque:#3a6ff0;--destaque-txt:#1a50d0;--aviso-bg:#fff7e0;--aviso-borda:#f0d48a;--aviso-txt:#7a5a00}
+@media (prefers-color-scheme:dark){:root{--bg:#0f1117;--card:#1a1d27;--borda:#2e3350;--texto:#e8eaf0;--suave:#9aa0bc;--fraco:#5c6285;--destaque:#4f7ef7;--destaque-txt:#7fa4ff;--aviso-bg:#2a2410;--aviso-borda:#5a4a1a;--aviso-txt:#e8c96a}}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--texto);line-height:1.65}
+.topo{background:var(--card);border-bottom:1px solid var(--borda)}
+.topo-in{max-width:780px;margin:0 auto;padding:14px 16px;display:flex;align-items:center;gap:12px}
+.topo img{width:40px;height:40px;object-fit:contain}
+.topo b{font-size:15px}
+.topo span{display:block;font-size:12px;color:var(--fraco)}
+main{max-width:780px;margin:0 auto;padding:28px 16px 40px}
+h1{font-size:26px;letter-spacing:-.3px;margin-bottom:4px}
+.data{font-size:13px;color:var(--fraco);margin-bottom:20px}
+.aviso{background:var(--aviso-bg);border:1px solid var(--aviso-borda);color:var(--aviso-txt);border-radius:10px;padding:12px 14px;font-size:13.5px;margin-bottom:24px}
+section{background:var(--card);border:1px solid var(--borda);border-radius:12px;padding:20px 22px;margin-bottom:14px}
+h2{font-size:16.5px;margin-bottom:8px}
+p,li{font-size:14.5px;color:var(--suave)}
+p+p{margin-top:8px}
+ul{padding-left:20px;margin-top:6px}
+li+li{margin-top:4px}
+strong{color:var(--texto)}
+a{color:var(--destaque-txt);font-weight:600}
+.rodape{max-width:780px;margin:0 auto;padding:0 16px 40px;font-size:13px;color:var(--fraco);display:flex;gap:6px 14px;flex-wrap:wrap}
+.rodape a{font-weight:600}
+@media (max-width:500px){h1{font-size:22px}section{padding:16px}}

@@ -95,10 +95,9 @@
     <input id="busca-global" type="text" autocomplete="off" placeholder="Buscar dias, conteúdos, mapa mental ou concursos..." oninput="bgBuscar(this.value)" onkeydown="bgTecla(event)">
     <div id="busca-resultados"></div>
   </div>
-  <button id="tb-entrar" onclick="toggleMenuConta(event)" style="display:none">Entrar ▾</button>
+  <button id="tb-entrar" onclick="auAbrirLogin('login')" style="display:none">Entrar</button>
   <div id="tb-cal-switch" title="Calendário ativo"><span class="cal-switch-lbl" id="cal-ativo-lbl">Calendário ON</span><button type="button" class="cal-switch on" id="cal-ativo-btn" onclick="toggleCalendarioAtivo()" role="switch" aria-checked="true" aria-label="Calendário ativo"></button></div>
 </div>
-<div id="tb-conta-menu"><button type="button" onclick="auEscolher('login')">Entrar</button><button type="button" onclick="auEscolher('cadastro')">Criar conta</button><button type="button" id="tb-menu-visitante" onclick="auEscolher('visitante')" style="display:none;border-top:1px solid var(--border);border-radius:0 0 7px 7px;margin-top:4px;color:var(--text-secondary)">Continuar sem cadastro</button></div>
 <aside id="news-panel"></aside>
 
 <!-- ═══════════ BARRA DE ÍCONES DA DIREITA (Sala de estudos · Calendário · Notícias) → código em geral/navegacao.js ═══════════ -->
@@ -134,25 +133,36 @@
 <!-- ─── JANELA DE ACESSO: entrar / criar conta ─── -->
 <div id="auth-screen" style="display:none">
   <div id="auth-modal" class="auth-modal" onclick="if(event.target===this)auFecharLogin()">
-    <div class="auth-box" role="dialog" aria-modal="true" aria-labelledby="auth-titulo">
+    <div class="auth-box" role="dialog" aria-modal="true" aria-labelledby="au-titulo">
       <button type="button" class="au-fechar" onclick="auFecharLogin()" title="Fechar" aria-label="Fechar">&#10005;</button>
+      <button type="button" class="au-voltar" id="au-voltar" onclick="auPasso('inicio')" aria-label="Voltar às opções de acesso"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>Voltar</button>
 
       <div class="auth-marca">
         <img src="imagens/gorila.webp" alt="" class="auth-logo">
         <div>
-          <div class="auth-nome" id="auth-titulo">Gorila Concurso</div>
-          <div class="auth-slogan">Planejamento e controle da sua preparação</div>
+          <div class="auth-nome">Gorila Concurso</div>
+          <div class="auth-slogan">Do primeiro dia até a posse</div>
         </div>
       </div>
 
-      <div class="au-tabs" role="tablist">
-        <button type="button" role="tab" id="au-tab-login" onclick="configurarAuthModal('login')">Entrar</button>
-        <button type="button" role="tab" id="au-tab-cadastro" onclick="configurarAuthModal('cadastro')">Criar conta</button>
+      <h2 class="au-titulo" id="au-titulo">Crie sua conta grátis</h2>
+      <p class="au-subtitulo" id="au-subtitulo">Organize seus estudos e acompanhe sua evolução até a aprovação.</p>
+
+      <!-- PASSO 1: escolher como entrar -->
+      <div id="au-opcoes" class="au-opcoes">
+        <button type="button" class="au-opcao" onclick="auContinuarGoogle()">
+          <svg viewBox="0 0 48 48" aria-hidden="true" class="au-g"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.4-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.1 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-8l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C37 39.2 44 34 44 24c0-1.3-.1-2.4-.4-3.5z"/></svg>
+          Continuar com Google
+        </button>
+        <div class="au-ou"><span>ou</span></div>
+        <button type="button" class="au-opcao" onclick="auPasso('email')">
+          <svg viewBox="0 0 24 24" aria-hidden="true" class="au-mail"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+          Continuar com e-mail
+        </button>
       </div>
 
-      <!-- ENTRAR -->
+      <!-- PASSO 2a: ENTRAR com e-mail -->
       <form id="auth-login" class="auth-form" novalidate onsubmit="event.preventDefault();entrarLogin()">
-        <p class="auth-sub" id="auth-login-sub">Acesse sua área de estudos.</p>
         <div id="auth-login-erro" class="auth-error" role="alert"></div>
         <label class="auth-label" for="login-email">E-mail</label>
         <input type="email" id="login-email" class="auth-input" autocomplete="username" inputmode="email" maxlength="120">
@@ -165,9 +175,8 @@
         <div class="auth-links"><button type="button" class="auth-link" onclick="esqueciSenha()">Esqueci minha senha</button></div>
       </form>
 
-      <!-- CRIAR CONTA -->
+      <!-- PASSO 2b: CRIAR CONTA com e-mail -->
       <form id="auth-cadastro" class="auth-form" novalidate onsubmit="event.preventDefault();cadastrar()" style="display:none">
-        <p class="auth-sub">Crie sua conta para registrar e acompanhar seus estudos.</p>
         <div class="au-aviso" id="au-aviso-cadastro">Já existe uma conta neste navegador. Criar uma nova substitui o acesso atual; seu progresso de estudo continua salvo.</div>
         <div id="auth-cadastro-erro" class="auth-error" role="alert"></div>
         <label class="auth-label" for="auth-nome">Nome</label>
@@ -189,10 +198,11 @@
         <button type="submit" class="auth-btn" id="cadastro-btn">Criar conta</button>
       </form>
 
-      <div class="auth-rodape">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
-        <span>Seu progresso fica salvo neste computador. Acesse sempre pelo mesmo navegador para encontrar seus dados.</span>
-      </div>
+      <!-- trocar entre Entrar / Criar conta -->
+      <p class="au-trocar" id="au-trocar"></p>
+
+      <!-- rodapé: páginas do site → institucional/ -->
+      <p class="auth-rodape">Ao continuar, você concorda com os <a href="institucional/termos.html" target="_blank" rel="noopener">Termos de uso</a> e a <a href="institucional/privacidade.html" target="_blank" rel="noopener">Política de privacidade</a>.</p>
     </div>
   </div>
 </div>
@@ -316,10 +326,10 @@
       <div class="page-header"><div class="page-title">Calendário de estudos</div><div class="page-sub" id="cal-subtitle">Outubro 2026</div></div>
       <div id="cal-off-msg"><span class="icon-emoji co-ic">⏸️</span><div style="font-size:14px;font-weight:600;color:var(--text-primary);margin-bottom:4px">Calendário desligado</div><div style="font-size:12.5px">Seus registros continuam salvos. Ligue o botão acima para voltar a usar o calendário.</div></div>
       <div class="stats-row">
-        <div class="stat-card"><div class="stat-label">Dias estudados</div><div class="stat-val" id="stat-dias">0</div><div class="stat-sub">este mês</div></div>
-        <div class="stat-card"><div class="stat-label">Total de horas</div><div class="stat-val" id="stat-horas">0h</div><div class="stat-sub">este mês</div></div>
-        <div class="stat-card"><div class="stat-label">Média por dia</div><div class="stat-val" id="stat-media">0h</div><div class="stat-sub">dias com estudo</div></div>
-        <div class="stat-card"><div class="stat-label">Sequência atual</div><div class="stat-val" id="stat-seq">0</div><div class="stat-sub">dias seguidos</div></div>
+        <div class="stat-card"><div class="stat-label">Dias estudados <span class="stat-per">no total</span></div><div class="stat-val" id="stat-total">0</div></div>
+        <div class="stat-card"><div class="stat-label">Dias estudados <span class="stat-per" id="stat-dias-sub">este mês</span></div><div class="stat-val" id="stat-dias">0</div></div>
+        <div class="stat-card"><div class="stat-label">Sequência atual <span class="stat-per">de dias seguidos</span></div><div class="stat-val" id="stat-seq">0</div></div>
+        <div class="stat-card"><div class="stat-label">Média por dia estudado <span class="stat-per" id="stat-media-sub">este mês</span></div><div class="stat-val" id="stat-media">0h</div></div>
       </div>
       <div class="cal-header">
         <div style="display:flex;align-items:center;flex-wrap:wrap;gap:8px">
@@ -343,131 +353,7 @@
       <div class="cal-legend" id="cal-materias" style="align-items:center"></div>
       <div id="cal-month-view">
         <div class="cal-days-header" id="cal-days-header"><div class="cal-day-lbl">Dom</div><div class="cal-day-lbl">Seg</div><div class="cal-day-lbl">Ter</div><div class="cal-day-lbl">Qua</div><div class="cal-day-lbl">Qui</div><div class="cal-day-lbl">Sex</div><div class="cal-day-lbl">Sáb</div></div>
-        <div class="cal-grid" id="cal-grid"><div class="cal-cell empty"></div><div class="cal-cell empty"></div><div class="cal-cell empty"></div><div class="cal-cell empty"></div><div class="cal-cell no-study today" onclick="openDayModal('2026-10-01')">
-      
-      <div class="day-num">1</div>
-      <button class="cal-img-add" onclick="event.stopPropagation();triggerCalImg('2026-10-01')"><span class="icon-emoji">🖼️</span></button>
-    </div><div class="cal-cell no-study" onclick="openDayModal('2026-10-02')">
-      
-      <div class="day-num">2</div>
-      <button class="cal-img-add" onclick="event.stopPropagation();triggerCalImg('2026-10-02')"><span class="icon-emoji">🖼️</span></button>
-    </div><div class="cal-cell no-study" onclick="openDayModal('2026-10-03')">
-      
-      <div class="day-num">3</div>
-      <button class="cal-img-add" onclick="event.stopPropagation();triggerCalImg('2026-10-03')"><span class="icon-emoji">🖼️</span></button>
-    </div><div class="cal-cell no-study" onclick="openDayModal('2026-10-04')">
-      
-      <div class="day-num">4</div>
-      <button class="cal-img-add" onclick="event.stopPropagation();triggerCalImg('2026-10-04')"><span class="icon-emoji">🖼️</span></button>
-    </div><div class="cal-cell no-study" onclick="openDayModal('2026-10-05')">
-      
-      <div class="day-num">5</div>
-      <button class="cal-img-add" onclick="event.stopPropagation();triggerCalImg('2026-10-05')"><span class="icon-emoji">🖼️</span></button>
-    </div><div class="cal-cell no-study" onclick="openDayModal('2026-10-06')">
-      
-      <div class="day-num">6</div>
-      <button class="cal-img-add" onclick="event.stopPropagation();triggerCalImg('2026-10-06')"><span class="icon-emoji">🖼️</span></button>
-    </div><div class="cal-cell no-study" onclick="openDayModal('2026-10-07')">
-      
-      <div class="day-num">7</div>
-      <button class="cal-img-add" onclick="event.stopPropagation();triggerCalImg('2026-10-07')"><span class="icon-emoji">🖼️</span></button>
-    </div><div class="cal-cell no-study" onclick="openDayModal('2026-10-08')">
-      
-      <div class="day-num">8</div>
-      <button class="cal-img-add" onclick="event.stopPropagation();triggerCalImg('2026-10-08')"><span class="icon-emoji">🖼️</span></button>
-    </div><div class="cal-cell no-study" onclick="openDayModal('2026-10-09')">
-      
-      <div class="day-num">9</div>
-      <button class="cal-img-add" onclick="event.stopPropagation();triggerCalImg('2026-10-09')"><span class="icon-emoji">🖼️</span></button>
-    </div><div class="cal-cell no-study" onclick="openDayModal('2026-10-10')">
-      
-      <div class="day-num">10</div>
-      <button class="cal-img-add" onclick="event.stopPropagation();triggerCalImg('2026-10-10')"><span class="icon-emoji">🖼️</span></button>
-    </div><div class="cal-cell no-study" onclick="openDayModal('2026-10-11')">
-      
-      <div class="day-num">11</div>
-      <button class="cal-img-add" onclick="event.stopPropagation();triggerCalImg('2026-10-11')"><span class="icon-emoji">🖼️</span></button>
-    </div><div class="cal-cell no-study" onclick="openDayModal('2026-10-12')">
-      
-      <div class="day-num">12</div>
-      <button class="cal-img-add" onclick="event.stopPropagation();triggerCalImg('2026-10-12')"><span class="icon-emoji">🖼️</span></button>
-    </div><div class="cal-cell no-study" onclick="openDayModal('2026-10-13')">
-      
-      <div class="day-num">13</div>
-      <button class="cal-img-add" onclick="event.stopPropagation();triggerCalImg('2026-10-13')"><span class="icon-emoji">🖼️</span></button>
-    </div><div class="cal-cell no-study" onclick="openDayModal('2026-10-14')">
-      
-      <div class="day-num">14</div>
-      <button class="cal-img-add" onclick="event.stopPropagation();triggerCalImg('2026-10-14')"><span class="icon-emoji">🖼️</span></button>
-    </div><div class="cal-cell no-study" onclick="openDayModal('2026-10-15')">
-      
-      <div class="day-num">15</div>
-      <button class="cal-img-add" onclick="event.stopPropagation();triggerCalImg('2026-10-15')"><span class="icon-emoji">🖼️</span></button>
-    </div><div class="cal-cell no-study" onclick="openDayModal('2026-10-16')">
-      
-      <div class="day-num">16</div>
-      <button class="cal-img-add" onclick="event.stopPropagation();triggerCalImg('2026-10-16')"><span class="icon-emoji">🖼️</span></button>
-    </div><div class="cal-cell no-study" onclick="openDayModal('2026-10-17')">
-      
-      <div class="day-num">17</div>
-      <button class="cal-img-add" onclick="event.stopPropagation();triggerCalImg('2026-10-17')"><span class="icon-emoji">🖼️</span></button>
-    </div><div class="cal-cell no-study" onclick="openDayModal('2026-10-18')">
-      
-      <div class="day-num">18</div>
-      <button class="cal-img-add" onclick="event.stopPropagation();triggerCalImg('2026-10-18')"><span class="icon-emoji">🖼️</span></button>
-    </div><div class="cal-cell no-study" onclick="openDayModal('2026-10-19')">
-      
-      <div class="day-num">19</div>
-      <button class="cal-img-add" onclick="event.stopPropagation();triggerCalImg('2026-10-19')"><span class="icon-emoji">🖼️</span></button>
-    </div><div class="cal-cell no-study" onclick="openDayModal('2026-10-20')">
-      
-      <div class="day-num">20</div>
-      <button class="cal-img-add" onclick="event.stopPropagation();triggerCalImg('2026-10-20')"><span class="icon-emoji">🖼️</span></button>
-    </div><div class="cal-cell no-study" onclick="openDayModal('2026-10-21')">
-      
-      <div class="day-num">21</div>
-      <button class="cal-img-add" onclick="event.stopPropagation();triggerCalImg('2026-10-21')"><span class="icon-emoji">🖼️</span></button>
-    </div><div class="cal-cell no-study" onclick="openDayModal('2026-10-22')">
-      
-      <div class="day-num">22</div>
-      <button class="cal-img-add" onclick="event.stopPropagation();triggerCalImg('2026-10-22')"><span class="icon-emoji">🖼️</span></button>
-    </div><div class="cal-cell no-study" onclick="openDayModal('2026-10-23')">
-      
-      <div class="day-num">23</div>
-      <button class="cal-img-add" onclick="event.stopPropagation();triggerCalImg('2026-10-23')"><span class="icon-emoji">🖼️</span></button>
-    </div><div class="cal-cell no-study" onclick="openDayModal('2026-10-24')">
-      
-      <div class="day-num">24</div>
-      <button class="cal-img-add" onclick="event.stopPropagation();triggerCalImg('2026-10-24')"><span class="icon-emoji">🖼️</span></button>
-    </div><div class="cal-cell no-study" onclick="openDayModal('2026-10-25')">
-      
-      <div class="day-num">25</div>
-      <button class="cal-img-add" onclick="event.stopPropagation();triggerCalImg('2026-10-25')"><span class="icon-emoji">🖼️</span></button>
-    </div><div class="cal-cell no-study" onclick="openDayModal('2026-10-26')">
-      
-      <div class="day-num">26</div>
-      <button class="cal-img-add" onclick="event.stopPropagation();triggerCalImg('2026-10-26')"><span class="icon-emoji">🖼️</span></button>
-    </div><div class="cal-cell no-study" onclick="openDayModal('2026-10-27')">
-      
-      <div class="day-num">27</div>
-      <button class="cal-img-add" onclick="event.stopPropagation();triggerCalImg('2026-10-27')"><span class="icon-emoji">🖼️</span></button>
-    </div><div class="cal-cell no-study" onclick="openDayModal('2026-10-28')">
-      
-      <div class="day-num">28</div>
-      <button class="cal-img-add" onclick="event.stopPropagation();triggerCalImg('2026-10-28')"><span class="icon-emoji">🖼️</span></button>
-    </div><div class="cal-cell no-study" onclick="openDayModal('2026-10-29')">
-      
-      <div class="day-num">29</div>
-      <button class="cal-img-add" onclick="event.stopPropagation();triggerCalImg('2026-10-29')"><span class="icon-emoji">🖼️</span></button>
-    </div><div class="cal-cell no-study" onclick="openDayModal('2026-10-30')">
-      
-      <div class="day-num">30</div>
-      <button class="cal-img-add" onclick="event.stopPropagation();triggerCalImg('2026-10-30')"><span class="icon-emoji">🖼️</span></button>
-    </div><div class="cal-cell no-study" onclick="openDayModal('2026-10-31')">
-      
-      <div class="day-num">31</div>
-      <button class="cal-img-add" onclick="event.stopPropagation();triggerCalImg('2026-10-31')"><span class="icon-emoji">🖼️</span></button>
-    </div></div>
+        <div class="cal-grid" id="cal-grid"></div><!-- preenchido por renderCal() em calendario/calendario.js -->
       </div>
       <div id="cal-year-view" style="display:none">
         <div style="display:flex;gap:8px;margin-bottom:16px;justify-content:center">
@@ -705,7 +591,7 @@
     <div id="day-modal-content"></div>
     <div style="margin-top:14px;display:flex;gap:8px;flex-wrap:wrap">
       <button id="day-modal-edit-btn" style="flex:1;min-width:130px;padding:9px;background:var(--accent);color:#fff;border:none;border-radius:var(--radius);cursor:pointer;font-size:13px;font-weight:600" onclick="openDayEditForm()"><span class="icon-emoji">✏️</span> Editar manualmente</button>
-      <button id="day-modal-img-btn" style="padding:9px 14px;background:none;border:1px solid var(--border);border-radius:var(--radius);cursor:pointer;color:var(--text-secondary);font-size:13px" onclick="document.getElementById('cal-img-input').click()"><span class="icon-emoji">🖼️</span> Foto</button>
+      <button id="day-modal-img-btn" style="padding:9px 14px;background:none;border:1px solid var(--border);border-radius:var(--radius);cursor:pointer;color:var(--text-secondary);font-size:13px" onclick="document.getElementById('cal-img-input').click()"><svg class="ico-foto" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="M21 16l-5-5-8 8"/></svg> Foto</button>
     </div>
     <div id="day-edit-form" style="display:none;margin-top:14px;border-top:1px solid var(--border);padding-top:14px"></div>
   </div>

@@ -39,7 +39,8 @@ body.pre-login #tb-cal-switch{display:none}
 /* ─── STATS ─── */
 .stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:20px}
 .stat-card{background:var(--surface-1);border-radius:var(--radius);padding:14px;border:1px solid var(--border)}
-.stat-label{font-size:11px;color:var(--text-muted);margin-bottom:5px;font-weight:500}
+.stat-label{font-size:12px;color:var(--text-secondary);margin-bottom:6px;font-weight:600;line-height:1.35}
+.stat-per{font-weight:500;color:var(--text-muted)}
 .stat-val{font-size:24px;font-weight:600;color:var(--text-primary)}
 .stat-sub{font-size:11px;color:var(--text-muted);margin-top:2px}
 
@@ -75,7 +76,11 @@ body.light .cal-cell.no-study{background:#e8eaf2;color:#b0b8d0}
 .cal-cell .day-hours{font-size:9px;opacity:.9;margin-top:2px;font-weight:400;position:relative;z-index:2;text-shadow:0 1px 3px rgba(0,0,0,.85)}
 .cal-cell .cal-bg-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:1;z-index:1}
 .cal-cell .cal-bg-overlay{position:absolute;inset:0;z-index:1}
-.cal-img-add{position:absolute;bottom:3px;right:3px;background:rgba(0,0,0,.55);border:none;border-radius:4px;padding:3px 5px;cursor:pointer;color:#fff;font-size:10px;z-index:3;opacity:0;transition:opacity .15s}
+.cal-img-add{position:absolute;bottom:5px;right:5px;display:flex;align-items:center;justify-content:center;width:24px;height:20px;padding:0;background:rgba(15,20,35,.55);border:none;border-radius:5px;cursor:pointer;color:#fff;z-index:3;opacity:0;transition:opacity .15s,background .15s}
+.cal-img-add:hover{background:rgba(15,20,35,.8)}
+/* ícone de foto (traço simples, mesmo estilo da barra de ícones) */
+.ico-foto{width:14px;height:14px;flex-shrink:0;vertical-align:-2px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+#day-modal-img-btn .ico-foto{margin-right:4px}
 .cal-cell:hover .cal-img-add{opacity:1}
 .cal-cell.no-study .cal-img-add{opacity:.55}
 /* ─── Alternador de visualização ─── */

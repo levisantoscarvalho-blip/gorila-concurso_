@@ -33,6 +33,8 @@ site/
 │
 ├── noticias/                  ← 📰 ícone "Notícias"
 │
+├── institucional/             ← Termos de uso, Política de privacidade e Contato (links no rodapé da janela de acesso)
+│
 └── banco-de-dados/            ← como e onde os dados são salvos
     ├── LEIA-ME.md                explicação do banco de dados
     ├── ver-dados.html            👀 página para VER o que está salvo

@@ -175,7 +175,7 @@ function renderCal(){
     cells+=`<div class="${cls}"${borderStyle} onclick="openDayModal('${key}')">
       ${bg}
       <div class="day-num">${d}</div>${sub}
-      <button class="cal-img-add" onclick="event.stopPropagation();triggerCalImg('${key}')"><span class="icon-emoji">🖼️</span></button>
+      <button class="cal-img-add" onclick="event.stopPropagation();triggerCalImg('${key}')" title="Adicionar foto a este dia" aria-label="Adicionar foto a este dia"><svg class="ico-foto" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="M21 16l-5-5-8 8"/></svg></button>
     </div>`;
   }
   g.innerHTML=cells;
@@ -410,7 +410,7 @@ function renderDayEditForm(){
   const wrap=document.getElementById('day-edit-form');
   wrap.innerHTML=`<div style="display:grid;gap:14px;text-align:center">
     <div style="${caixa}"><div style="${titulo}"><span class="icon-emoji">📚</span> O que você estudou neste dia</div>${estHtml}</div>
-    <div style="${caixa}"><div style="${titulo}"><span class="icon-emoji">🖼️</span> Colocar imagem neste dia?</div>${imgHtml}</div>
+    <div style="${caixa}"><div style="${titulo}"><svg class="ico-foto" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="M21 16l-5-5-8 8"/></svg> Colocar imagem neste dia?</div>${imgHtml}</div>
     <div style="${caixa}"><div style="${titulo}">🏃 Saúde</div><input type="text" id="edit-saude" placeholder="Ex.: Acordou 7h · Banho ✓" value="${(editSaude||'').replace(/"/g,'&quot;')}" style="${inp}"></div>
     <div style="display:flex;gap:8px;justify-content:center">
       <button style="padding:10px 22px;background:var(--success);color:#fff;border:none;border-radius:var(--radius);cursor:pointer;font-size:13px;font-weight:600" onclick="saveDayEdit()"><span class="icon-emoji">💾</span> Salvar alterações</button>
@@ -525,13 +525,12 @@ function changeMonth(d){
 function updateStats(){
   const noAno = calView==='year';
   const { dias, horas } = resumoPeriodo(noAno ? String(state.year) : `${state.year}-${String(state.month+1).padStart(2,'0')}`);
-  const subs=document.querySelectorAll('#tab-calendario .stats-row .stat-sub');
-  if(subs.length>=2){ subs[0].textContent = subs[1].textContent = noAno ? 'neste ano' : 'este mês'; }
   const setEl=(id,v)=>{const el=document.getElementById(id);if(el)el.textContent=v;};
-  setEl('stat-dias',dias);
-  setEl('stat-horas',horas+'h');
-  setEl('stat-media',(dias?arred1(horas/dias):0)+'h');
+  const periodo = noAno ? 'neste ano' : 'este mês';
+  setEl('stat-total', Object.values(state.days||{}).filter(isStudyDay).length); // mesmo número do foguinho
+  setEl('stat-dias',dias);              setEl('stat-dias-sub', periodo);
   setEl('stat-seq', calcularSequenciaAtual());
+  setEl('stat-media',(dias?arred1(horas/dias):0)+'h'); setEl('stat-media-sub', periodo);
 }
 
 // "Horas este mês" da barra lateral — sempre do mês de HOJE

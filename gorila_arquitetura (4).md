@@ -15,14 +15,27 @@
   │ [index.html #auth-screen]  [login-e-carregamento/login.js ➔ mostrarAuth(), renderLanding()]
   │ [Carregamento em silêncio: carregamento.js ➔ iniciar(), entrarApp()]
   │
-  ├─► □ [Botão "Entrar ▾" (#tb-entrar) ➔ menu: Entrar · Criar conta · Continuar sem cadastro]
+  ├─► □ [Botão "Registrar grátis" no canto do topo (#tb-entrar) ➔ auAbrirLogin('cadastro')]
+  │     │  (visitante dentro do site: "Entrar" ➔ auAbrirLogin('login'); logado: "Sair")
   │     │
-  │     ├─ ▧ [Janela de acesso (#auth-modal), abas Entrar / Criar conta]
-  │     │     ├─ [Entrar ➔ entrarLogin()]  (5 tentativas erradas = espera de 30s)
-  │     │     ├─ [Criar conta ➔ cadastrar()]  (guarda o que o visitante já fez: juntarDadosDoVisitante())
-  │     │     └─ [Esqueci minha senha ➔ esqueciSenha()]
-  │     │
-  │     └─ ▧ [Continuar sem cadastro ➔ entrarComoVisitante()]  (visitante: nada é gravado)
+  │     └─ ▧ [Janela de acesso (#auth-modal), no centro]  (fecha no X, clicando fora ou Esc; estilo em login.css)
+  │           │  Marca + título: "Crie sua conta grátis" ou "Entrar na sua conta" (AU_TEXTOS, configurarAuthModal(modo))
+  │           │
+  │           ├─ [PASSO 1 (#au-opcoes) ➔ auPasso('inicio')]
+  │           │     ├─ [Continuar com Google ➔ auContinuarGoogle()]  (AINDA NÃO FUNCIONA: só avisa "em breve" ➔ ligar com Supabase)
+  │           │     └─ [Continuar com e-mail ➔ auPasso('email')]
+  │           │
+  │           ├─ [PASSO 2: formulário de e-mail + botão "Voltar" (#au-voltar)]
+  │           │     ├─ [Entrar (#auth-login) ➔ entrarLogin()]  (5 tentativas erradas = espera de 30s)
+  │           │     │     └─ [Esqueci minha senha ➔ esqueciSenha()]
+  │           │     └─ [Criar conta (#auth-cadastro) ➔ cadastrar()]  (guarda o que o visitante já fez: juntarDadosDoVisitante())
+  │           │
+  │           ├─ [Trocar: "Não tem uma conta? Criar conta grátis" / "Já tem uma conta? Entrar" (#au-trocar)]
+  │           └─ [Rodapé: "Ao continuar, você concorda com os Termos de uso e a Política de privacidade" ➔ institucional/]
+  │
+  ├─► □ [Ícones Calendário / Notícias SEM conta ➔ entrarComoVisitante()]
+  │     └─ (conhecer o site sem cadastro: tudo funciona, nada é salvo; aviso "modo visitante" + botão "Entrar" no topo)
+  │
   │
   └─► [Conta salva em PERFIL_KEY = guia_estudos_perfil_v1 (nome, e-mail, senha codificada)]
                 │
@@ -38,6 +51,8 @@
   ├─► □ [Ícone CALENDÁRIO (#tr-calendario) ➔ trAbrirCalendario() ➔ openSection('guia')]
   │     │
   │     ├─ ▧ [Aba 1: Calendário (#tab-calendario)]  [calendario/calendario.js]
+  │     │     ├─ [4 cartões ➔ updateStats(): Dias estudados no total (= foguinho) · Dias estudados este mês ·
+  │     │     │   Sequência atual (dias seguidos) · Média por dia estudado este mês]  (na visão Ano: "neste ano")
   │     │     ├─ [Visão Mês / Ano ➔ setCalView()]  [Ano: Cores / Fotos ➔ setCalYearView()]
   │     │     ├─ [Botão Registrar hoje ➔ registrarHoje()]
   │     │     ├─ [Clique no dia ➔ openDayModal(data_key) ➔ Editar ➔ saveDayEdit()]  (máx. 24h por dia)
@@ -60,6 +75,9 @@
   │
   └─► □ [Ícone NOTÍCIAS (#tr-noticias) ➔ trAbrirNoticias()]  [noticias/]
         └─ ▧ [Por enquanto só o botão "← Voltar ao calendário" (conteúdo a definir)]
+
+■ [PÁGINAS DO SITE]  [institucional/: termos.html · privacidade.html · contato.html · institucional.css]
+  └ (versão preliminar; Contato ainda sem e-mail ➔ trocar no comentário "TROCAR" de contato.html)
 
 ■ [DADOS]  [banco-de-dados/]
   │ [armazenamento.js] ➔ único arquivo que lê/grava (get, set, delete, list) ➔ trocar aqui ao ir para o Supabase

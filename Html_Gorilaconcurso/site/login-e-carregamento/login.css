@@ -37,23 +37,16 @@ body.pre-login #news-panel{display:none!important}
 #tb-visitante:hover{background:var(--accent-bg)}
 @media (max-width:700px){#tb-visitante{padding:8px 12px;font-size:12px}}
 
-#tb-conta-menu{position:fixed;z-index:1001;min-width:170px;background:var(--surface-1);border:1px solid var(--border-strong);border-radius:10px;box-shadow:0 12px 30px rgba(0,0,0,.25);padding:6px;display:none}
-#tb-conta-menu button{display:block;width:100%;text-align:left;background:none;border:none;color:var(--text-primary);font-size:13.5px;font-weight:600;padding:10px 12px;border-radius:7px;cursor:pointer}
-#tb-conta-menu button:hover{background:var(--accent-bg);color:var(--accent-text)}
-.au-tabs{display:flex;gap:6px;margin:0 0 18px;background:var(--surface-2);padding:4px;border-radius:10px}
-.au-tabs button{flex:1;border:none;background:none;color:var(--text-secondary);font-size:13px;font-weight:700;padding:9px;border-radius:7px;cursor:pointer}
-.au-tabs button.on{background:var(--accent);color:#fff}
 .au-aviso{font-size:11.5px;color:var(--text-muted);margin-bottom:10px;line-height:1.45;display:none}
 
 
 /* ─── JANELA DE ACESSO (entrar / criar conta) ─── */
 #auth-screen{display:none;position:fixed;inset:0;z-index:900;background:var(--bg);align-items:center;justify-content:center;padding:20px}
-.auth-box{position:relative;background:var(--surface-1);padding:30px 32px 24px;border-radius:14px;border:1px solid var(--border);width:100%;max-width:420px;max-height:calc(100vh - 40px);overflow-y:auto;text-align:left;box-shadow:0 18px 50px rgba(10,20,41,.28)}
+.auth-box{position:relative;background:var(--surface-1);padding:30px 40px 22px;border-radius:16px;border:1px solid var(--border);border-top:4px solid var(--accent);width:100%;max-width:460px;max-height:calc(100vh - 40px);overflow-y:auto;text-align:left;box-shadow:0 18px 50px rgba(10,20,41,.28)}
 .auth-marca{display:flex;align-items:center;gap:12px;margin-bottom:22px;padding-right:34px}
 .auth-logo{width:46px;height:46px;object-fit:contain;flex-shrink:0}
 .auth-nome{font-size:19px;font-weight:800;color:var(--text-primary);letter-spacing:-.2px}
 .auth-slogan{font-size:12.5px;color:var(--text-muted);margin-top:2px}
-.au-tabs{margin:0 0 18px}
 .auth-form{display:block}
 .auth-sub{color:var(--text-secondary);font-size:13.5px;margin:0 0 16px;line-height:1.45}
 .auth-label{display:block;font-size:12.5px;font-weight:700;color:var(--text-primary);margin:0 0 6px}
@@ -78,6 +71,29 @@ body.pre-login #news-panel{display:none!important}
 .auth-link:hover{text-decoration:underline}
 .auth-error{color:var(--danger);background:var(--danger-bg);border:1px solid var(--danger);border-radius:8px;padding:9px 12px;font-size:12.5px;line-height:1.4;margin-bottom:14px;display:none}
 .au-aviso{background:var(--surface-2);border-radius:8px;padding:9px 12px;color:var(--text-secondary);margin-bottom:14px}
-.auth-rodape{display:flex;gap:10px;align-items:flex-start;margin-top:20px;padding-top:16px;border-top:1px solid var(--border);font-size:12px;line-height:1.5;color:var(--text-muted)}
-.auth-rodape svg{width:16px;height:16px;flex-shrink:0;margin-top:1px;fill:none;stroke:var(--text-muted);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 @media (max-width:480px){.auth-box{padding:24px 18px 18px}.auth-modal{padding:12px}}
+
+/* ─── JANELA DE ACESSO: passo 1 (Google / e-mail) e passo 2 (formulário) ─── */
+.au-voltar{display:none;align-items:center;gap:4px;position:absolute;top:14px;left:14px;background:none;border:none;padding:6px 8px;border-radius:8px;color:var(--text-secondary);font-size:13px;font-weight:600;cursor:pointer}
+.au-voltar:hover{background:var(--surface-2);color:var(--text-primary)}
+.au-voltar svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+#auth-modal .auth-marca{justify-content:center;padding:0;margin:4px 0 20px}
+#auth-modal .auth-logo{width:40px;height:40px}
+.au-titulo{font-size:24px;font-weight:800;letter-spacing:-.4px;color:var(--text-primary);text-align:center;margin:0 0 6px}
+.au-subtitulo{font-size:14px;line-height:1.5;color:var(--text-secondary);text-align:center;margin:0 auto 24px;max-width:340px}
+.au-opcoes{margin-bottom:6px}
+.au-passo-email .au-subtitulo{display:none}
+.au-passo-email .au-titulo{margin-bottom:20px}
+.au-opcao{display:flex;align-items:center;justify-content:center;gap:12px;width:100%;padding:13px 16px;border-radius:10px;border:1px solid var(--border-strong);background:var(--surface-1);color:var(--text-primary);font-size:15px;font-weight:700;cursor:pointer;transition:background .15s,border-color .15s,box-shadow .15s}
+.au-opcao:hover{background:var(--surface-2);border-color:var(--accent);box-shadow:0 2px 10px rgba(10,20,41,.08)}
+.au-opcao:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.au-opcao svg{width:20px;height:20px;flex-shrink:0}
+.au-opcao .au-mail{fill:none;stroke:var(--text-secondary);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.au-ou{display:flex;align-items:center;gap:12px;margin:16px 0;font-size:12.5px;color:var(--text-muted)}
+.au-ou::before,.au-ou::after{content:"";flex:1;height:1px;background:var(--border)}
+.au-trocar{text-align:center;font-size:13.5px;color:var(--text-secondary);margin:20px 0 0;padding-top:18px;border-top:1px solid var(--border)}
+.au-trocar .auth-link{font-size:13.5px;font-weight:700}
+.auth-rodape{text-align:center;font-size:11.5px;line-height:1.5;color:var(--text-muted);margin:12px 0 0}
+.auth-rodape a{color:var(--text-secondary);text-decoration:underline}
+.auth-rodape a:hover{color:var(--accent-text)}
+@media (max-width:480px){.auth-box{padding:26px 20px 18px}.au-titulo{font-size:21px}.au-passo-email .auth-marca{margin-top:30px!important}}

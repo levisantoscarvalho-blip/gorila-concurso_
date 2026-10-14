@@ -87,7 +87,6 @@ function navIr(delta){
 async function trIrInicio(){
   try{ fecharTudo(); }catch(e){}
   const ns=document.getElementById('news-screen'); if(ns) ns.style.display='none';
-  const m=document.getElementById('tb-conta-menu'); if(m) m.style.display='none';
   if(window.__guest){
     // visitante: volta à tela inicial sem perder o que já fez nesta visita
     window.__logado=false; renderNewsPanel();
@@ -113,7 +112,7 @@ function trMarcarAtivo(id){
   document.querySelectorAll('#theme-rail .tr-item').forEach(b=>b.classList.toggle('ativo', b.id===id));
 }
 function trAbrirCalendario(){
-  if(!window.__logado){ entrarComoVisitante(); trMarcarAtivo('tr-calendario'); return; }
+  if(!window.__logado){ entrarComoVisitante(); trMarcarAtivo('tr-calendario'); return; } // sem conta: conhece o site (nada é salvo)
   openSection('guia'); trMarcarAtivo('tr-calendario');
 }
 function trAbrirNoticias(){

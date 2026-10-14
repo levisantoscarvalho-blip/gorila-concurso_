@@ -99,7 +99,7 @@ function mostrarAuth(){
   renderLanding(); auFecharLogin();
   const _b = document.getElementById('busca-global'); if(_b){ _b.value=''; _b.placeholder='Buscar concursos...'; }
   const _tv=document.getElementById('tb-visitante'); if(_tv) _tv.style.display='inline-block';
-  const _tb=document.getElementById('tb-entrar'); if(_tb){ _tb.textContent='Entrar ▾'; _tb.style.display='inline-block'; _tb.onclick=toggleMenuConta; }
+  const _tb=document.getElementById('tb-entrar'); if(_tb){ _tb.textContent='Registrar grátis'; _tb.style.display='inline-block'; _tb.onclick=()=>auAbrirLogin('cadastro'); }
   configurarAuthModal(perfilSalvo ? 'login' : 'cadastro');
 }
 
@@ -239,7 +239,7 @@ function atualizarBotaoConta(){
   const _tv=document.getElementById('tb-visitante'); if(_tv) _tv.style.display='none';
   const b=document.getElementById('tb-entrar'); if(!b) return;
   b.style.display='inline-block';
-  if(window.__guest){ b.textContent = 'Entrar ▾'; b.onclick=toggleMenuConta; }
+  if(window.__guest){ b.textContent = 'Entrar'; b.onclick=()=>auAbrirLogin('login'); }
   else { b.textContent='Sair'; b.onclick=sairDaSecao; }
 }
 function entrarComoVisitante(){
@@ -304,42 +304,54 @@ function auFiltrar(q){
     v.innerHTML = `Nenhum concurso da lista corresponde a "${escapeHtmlCarreira(q)}". <a href="${linkNoticias(q)}" target="_blank" rel="noopener">Ver notícias</a> · <a href="${linkPci(q)}" target="_blank" rel="noopener">Buscar no PCI Concursos</a>`;
   } else v.style.display='none';
 }
+// ── Janela de acesso: passo 1 (Google ou e-mail) → passo 2 (formulário de e-mail) ──
+const AU_TEXTOS = {
+  cadastro: { titulo:'Crie sua conta grátis', sub:'Organize seus estudos e acompanhe sua evolução até a aprovação.',
+              trocar:'Já tem uma conta? <button type="button" class="auth-link" onclick="configurarAuthModal(\'login\')">Entrar</button>' },
+  login:    { titulo:'Entrar na sua conta',   sub:'Que bom ter você de volta. Continue de onde parou.',
+              trocar:'Não tem uma conta? <button type="button" class="auth-link" onclick="configurarAuthModal(\'cadastro\')">Criar conta grátis</button>' }
+};
 function configurarAuthModal(modo){
   if(modo!=='login' && modo!=='cadastro') modo = perfilSalvo ? 'login' : 'cadastro';
-  document.getElementById('auth-login').style.display = modo==='login' ? 'block' : 'none';
-  document.getElementById('auth-cadastro').style.display = modo==='cadastro' ? 'block' : 'none';
-  document.getElementById('au-tab-login').classList.toggle('on', modo==='login');
-  document.getElementById('au-tab-cadastro').classList.toggle('on', modo==='cadastro');
-  document.getElementById('au-tab-login').setAttribute('aria-selected', modo==='login');
-  document.getElementById('au-tab-cadastro').setAttribute('aria-selected', modo==='cadastro');
+  const t = AU_TEXTOS[modo];
+  document.getElementById('au-titulo').textContent = t.titulo;
+  let sub = t.sub;
+  if(modo==='login' && perfilSalvo && perfilSalvo.nome) sub = `Que bom ter você de volta, ${primeiroNome(perfilSalvo.nome)}.`;
+  document.getElementById('au-subtitulo').textContent = sub;
+  document.getElementById('au-trocar').innerHTML = t.trocar;
   const av=document.getElementById('au-aviso-cadastro'); if(av) av.style.display = (modo==='cadastro' && perfilSalvo) ? 'block' : 'none';
-  const sub=document.getElementById('auth-login-sub');
-  if(sub) sub.textContent = perfilSalvo && perfilSalvo.nome ? `Bem-vindo de volta, ${primeiroNome(perfilSalvo.nome)}.` : 'Acesse sua área de estudos.';
   // e-mail da conta já preenchido no "Entrar"
   const le=document.getElementById('login-email'); if(le && perfilSalvo && !le.value) le.value = perfilSalvo.email || '';
   limparErrosAuth();
   window.__authModo = modo;
+  auPasso(window.__authPasso || 'inicio');
 }
-function auAbrirLogin(modo){
-  if(typeof modo!=='string') modo=undefined;
-  configurarAuthModal(modo);
-  document.getElementById('auth-modal').classList.add('open');
-  setTimeout(()=>{
+// 'inicio' = botões Google / e-mail · 'email' = formulário
+function auPasso(p){
+  window.__authPasso = p;
+  const email = p==='email', modo = window.__authModo;
+  document.getElementById('au-opcoes').style.display = email ? 'none' : 'block';
+  document.getElementById('auth-login').style.display = email && modo==='login' ? 'block' : 'none';
+  document.getElementById('auth-cadastro').style.display = email && modo==='cadastro' ? 'block' : 'none';
+  document.getElementById('au-voltar').style.display = email ? 'flex' : 'none';
+  document.querySelector('#auth-modal .auth-box').classList.toggle('au-passo-email', email); // formulário mais compacto
+  if(email) setTimeout(()=>{
     let id = 'auth-nome';
-    if(window.__authModo==='login') id = document.getElementById('login-email').value ? 'login-senha' : 'login-email';
+    if(modo==='login') id = document.getElementById('login-email').value ? 'login-senha' : 'login-email';
     const i=document.getElementById(id); if(i) i.focus();
   },50);
 }
-function toggleMenuConta(ev){
-  if(ev) ev.stopPropagation();
-  const m=document.getElementById('tb-conta-menu'), b=document.getElementById('tb-entrar'); if(!m||!b) return;
-  if(m.style.display==='block'){ m.style.display='none'; return; }
-  const mv=document.getElementById('tb-menu-visitante'); if(mv) mv.style.display=document.body.classList.contains('pre-login')?'block':'none';
-  const r=b.getBoundingClientRect();
-  m.style.top=(r.bottom+6)+'px'; m.style.left=Math.max(8,r.right-170)+'px'; m.style.display='block';
+function auAbrirLogin(modo){
+  if(typeof modo!=='string') modo=undefined;
+  window.__authPasso = 'inicio';
+  configurarAuthModal(modo);
+  document.getElementById('auth-modal').classList.add('open');
 }
-function auEscolher(modo){ const m=document.getElementById('tb-conta-menu'); if(m) m.style.display='none'; if(modo==='visitante'){ entrarComoVisitante(); return; } auAbrirLogin(modo); }
-document.addEventListener('click',e=>{ if(!e.target.closest('#tb-conta-menu') && !e.target.closest('#tb-entrar')){ const m=document.getElementById('tb-conta-menu'); if(m) m.style.display='none'; } });
+// TROCAR quando o Supabase estiver ligado: aqui entra o login de verdade com a conta Google
+function auContinuarGoogle(){
+  mostrarToast('Entrar com Google estará disponível em breve. Por enquanto, continue com seu e-mail.');
+}
+function auEscolher(modo){ if(modo==='visitante'){ entrarComoVisitante(); return; } auAbrirLogin(modo); }
 function auFecharLogin(){ const m = document.getElementById('auth-modal'); if(m) m.classList.remove('open'); }
 document.addEventListener('keydown', e=>{ if(e.key==='Escape') auFecharLogin(); });
 document.addEventListener('input', e=>{ if(e.target && e.target.id==='busca-global' && !window.__logado) auFiltrar(e.target.value); });
