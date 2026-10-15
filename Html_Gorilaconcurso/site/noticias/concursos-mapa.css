@@ -1,0 +1,143 @@
+/* ════════════════════════════════════════════
+   NOTÍCIAS — CONCURSOS PELO BRASIL · noticias/concursos-mapa.js
+   Mapa 3D: inclinado (perspective + rotateX), com "espessura" (camada escura deslocada) e sombra no chão.
+   Obs.: dentro do SVG as unidades são as do IBGE (graus x 10000) e o eixo vertical é invertido.
+   ════════════════════════════════════════════ */
+#news-screen{overflow:auto}
+.cm-wrap{max-width:1240px;margin:0 auto;padding:24px 24px 40px}
+@media (min-width:1100px){ .cm-wrap{padding-right:120px} }   /* espaço da barra de ícones da direita */
+.cm-cab h1{font-size:22px;font-weight:700;letter-spacing:-.02em;color:var(--text-primary)}
+.cm-cab p{font-size:13.5px;color:var(--text-secondary);margin-top:4px}
+.cm-demo{margin:14px 0 16px;padding:10px 14px;border-radius:10px;background:var(--surface-1);border:1px solid var(--border);border-left:3px solid #d97706;font-size:13px;color:var(--text-secondary)}
+.cm-demo b{color:var(--text-primary)}
+.cm-grade{display:flex;flex-direction:column;gap:18px}   /* mapa grande em cima, lista embaixo */
+.cm-cartao{background:var(--surface-1);border:1px solid var(--border);border-radius:14px;padding:18px}
+
+/* ── mapa 3D com bandeiras: blocos inclinados, com espessura, vão entre os estados e sombra no chão ── */
+.cm-palco{position:relative;perspective:1500px;padding:8px 10px 30px;max-width:860px;margin:0 auto}
+.cm-svg{position:relative;z-index:1;display:block;width:100%;height:auto;overflow:visible;transform:rotateX(32deg) rotateZ(-4deg);transform-origin:50% 60%}   /* sem filter: deixava o mapa pesado (a sombra fica no .cm-chao) */
+.cm-chao{position:absolute;left:10%;right:10%;bottom:6px;height:44px;border-radius:50%;background:radial-gradient(ellipse at center,rgba(16,24,40,.25),transparent 70%);z-index:0}
+body:not(.light) .cm-chao{background:radial-gradient(ellipse at center,rgba(0,0,0,.65),transparent 70%)}
+/* espessura de cada estado (0,6° para baixo) */
+.cm-lado{fill:#5d6472;stroke:#5d6472;stroke-width:2800;stroke-linejoin:round;transform:translateY(-6000px);transition:transform .28s cubic-bezier(.2,.8,.2,1),fill .25s}
+.cm-lado.sobe{transform:translateY(-3500px)}
+body:not(.light) .cm-lado{fill:#0b0b0b;stroke:#0b0b0b}
+/* topo: bandeira recortada no formato do estado + vão branco entre os estados */
+.cm-bloco{cursor:pointer;transition:transform .28s cubic-bezier(.2,.8,.2,1),opacity .25s}
+.cm-fundo{fill:#e5e7eb}
+.cm-borda{fill:none;stroke:#fff;stroke-width:700;stroke-linejoin:round}
+body:not(.light) .cm-borda{stroke:#1a1a1a}
+.cm-bloco.sobe,.cm-bloco.sel{transform:translateY(2500px)}
+/* com uma região escolhida, os outros estados ficam apagados */
+.cm-bloco.apagada{opacity:.32}   /* leve: só transparência (filtro de cinza travava o redesenho) */
+.cm-bloco.apagada.sobe{opacity:.75}
+.cm-lado.apagada{fill:#9ca3af;stroke:#9ca3af}
+body:not(.light) .cm-lado.apagada{fill:#222;stroke:#222}
+.cm-lado.sel{transform:translateY(-3500px)}
+/* legenda das regiões (também clicável) */
+.cm-legenda{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:4px}
+.cm-leg{display:inline-flex;align-items:center;gap:7px;height:34px;padding:0 12px;border-radius:8px;border:1px solid var(--border);background:var(--surface-1);color:var(--text-primary);font:inherit;font-size:13px;font-weight:600;cursor:pointer}
+.cm-leg i{width:11px;height:11px;border-radius:3px;background:var(--cor)}
+.cm-leg small{font-size:11.5px;font-weight:700;color:var(--text-muted);background:var(--surface-2);padding:1px 7px;border-radius:999px}
+.cm-leg:hover{border-color:var(--cor)}
+.cm-leg.sel{border-color:var(--cor);box-shadow:0 0 0 1px var(--cor) inset;background:color-mix(in srgb,var(--cor) 10%,var(--surface-1))}
+
+/* ── lista da região ── */
+.cm-lista-cab{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:12px}
+.cm-lista-cab h2{font-size:18px;font-weight:700;letter-spacing:-.015em;color:var(--text-primary)}
+.cm-lista-cab p{font-size:12.5px;color:var(--text-secondary);margin-top:2px}
+.cm-limpar{height:32px;padding:0 12px;border-radius:8px;border:1px solid var(--border);background:var(--surface-1);color:var(--text-secondary);font:inherit;font-size:12.5px;font-weight:600;cursor:pointer;white-space:nowrap}
+.cm-limpar:hover{color:var(--text-primary);background:var(--surface-2)}
+.cm-filtros{display:inline-flex;padding:3px;gap:2px;border-radius:9px;background:var(--surface-2);border:1px solid var(--border);margin-bottom:10px;flex-wrap:wrap}
+.cm-filtros button{height:30px;padding:0 12px;border:none;border-radius:7px;background:none;color:var(--text-secondary);font:inherit;font-size:12.5px;font-weight:600;cursor:pointer}
+.cm-filtros button small{font-weight:700;color:var(--text-muted);margin-left:2px}
+.cm-filtros button.ativo{background:var(--surface-1);color:var(--text-primary);box-shadow:0 1px 3px rgba(16,24,40,.12),0 0 0 1px var(--border)}
+.cm-ufs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.cm-ufs button{height:28px;min-width:40px;padding:0 9px;border-radius:7px;border:1px solid var(--border);background:var(--surface-1);color:var(--text-secondary);font:inherit;font-size:12px;font-weight:700;cursor:pointer}
+.cm-ufs button:hover{border-color:var(--accent);color:var(--text-primary)}
+.cm-ufs button.sel{background:var(--accent);border-color:var(--accent);color:#fff}
+.cm-lista{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.cm-item{border:1px solid var(--border);border-radius:10px;padding:12px 14px;background:var(--surface-1);transition:border-color .15s,box-shadow .15s}
+.cm-item:hover{border-color:var(--border-strong);box-shadow:0 4px 14px rgba(16,24,40,.06)}
+.cm-item-topo{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.cm-uf{font-size:11px;font-weight:800;color:var(--text-secondary);background:var(--surface-2);border:1px solid var(--border);padding:2px 6px;border-radius:5px}
+.cm-orgao{font-size:14px;font-weight:700;color:var(--text-primary);flex:1;min-width:180px}
+.cm-status{font-size:11px;font-weight:700;padding:2px 8px;border-radius:999px;white-space:nowrap}
+.cm-status.publicado{background:var(--success-bg);color:var(--success)}
+.cm-status.previsto{background:var(--accent-bg);color:var(--accent-text)}
+.cm-exemplo{font-size:10.5px;font-weight:700;color:#b45309;border:1px dashed #d97706;padding:1px 6px;border-radius:5px;white-space:nowrap}
+.cm-cargos{font-size:13px;color:var(--text-secondary);margin:6px 0 8px}
+.cm-info{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:12.5px;color:var(--text-secondary)}
+.cm-info b{color:var(--text-primary)}
+
+/* a lista entra deslizando ao trocar de região */
+@media (prefers-reduced-motion:no-preference){ .cm-lista-cartao.entra{animation:cmEntra .35s cubic-bezier(.2,.8,.2,1)} }
+@keyframes cmEntra{from{opacity:0;transform:translateX(16px)}to{opacity:1;transform:none}}
+
+@media (max-width:900px){ .cm-lista{grid-template-columns:1fr} }
+@media (max-width:600px){ .cm-wrap{padding:16px 12px 110px} .cm-cartao{padding:14px} }
+.cm-lista>.tela-vazia{grid-column:1/-1}
+.cm-mapa-cartao{padding:22px 18px 18px}
+
+/* ═══ PARTE 1: SÓ O MAPA (cabe inteiro na tela, logo abaixo da barra de cima) ═══ */
+.cm-so-mapa{padding:6px 24px 12px;height:calc(100vh - 64px);box-sizing:border-box;display:flex;justify-content:center;align-items:flex-start}
+@media (min-width:1100px){ .cm-so-mapa{padding-right:120px} }   /* espaço da barra de ícones da direita */
+.cm-so-mapa .cm-palco{position:relative;width:min(820px,100%);height:min(560px,calc(100vh - 82px));max-width:none;margin:0;padding:0;overflow:hidden;border-radius:14px;touch-action:none}
+.cm-zoom{width:100%;height:100%;transform-origin:0 0;transition:transform .12s ease-out;display:flex;align-items:center;justify-content:center}
+.cm-palco.arrastando .cm-zoom{transition:none}
+.cm-so-mapa .cm-svg{width:auto;height:94%;max-width:100%}
+.cm-palco.ampliado{cursor:grab}
+.cm-palco.arrastando{cursor:grabbing}
+.cm-so-mapa .cm-chao{bottom:4%;height:40px;left:18%;right:18%}
+/* botões + / − / Brasil inteiro */
+.cm-zoom-botoes{position:absolute;right:10px;top:10px;z-index:3;display:flex;flex-direction:column;gap:6px}
+.cm-zoom-botoes button{width:34px;height:34px;display:flex;align-items:center;justify-content:center;border-radius:8px;border:1px solid var(--border);background:var(--surface-1);color:var(--text-secondary);cursor:pointer;box-shadow:0 1px 3px rgba(16,24,40,.1)}
+.cm-zoom-botoes button:hover{color:var(--text-primary);background:var(--surface-2)}
+.cm-zoom-botoes svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.cm-bloco{cursor:default}
+@media (max-width:600px){ .cm-so-mapa{padding:8px 8px 100px;height:auto} .cm-so-mapa .cm-palco{height:70vh} }
+
+/* ═══ MAPA LEVE (canvas): cada estado é uma imagem pronta; subir/ampliar só movem as imagens ═══ */
+.cm-zoom{will-change:transform}
+.cm-mapa3d{position:relative;flex-shrink:0;transform:rotateX(42deg) rotateZ(-4deg);transform-origin:50% 55%}   /* inclinado: a parte de cima vai para o fundo */
+.cm-est{position:absolute;display:block;pointer-events:none;will-change:transform;transform-origin:50% 55%;transition:transform .25s cubic-bezier(.2,.8,.2,1)}
+/* mouse em cima: o estado fica MAIOR, sobe e passa por cima dos vizinhos */
+.cm-est.sobe{transform:translateY(-10px) scale(1.18);z-index:5}
+.cm-alvo{position:absolute;left:0;top:0;overflow:visible}
+.cm-alvo path{fill:transparent;stroke:none;pointer-events:all}
+
+/* ═══ mapa + ÁREA 3 (números do Brasil) lado a lado ═══ */
+.cm-so-mapa{gap:18px;align-items:center}
+.cm-so-mapa .cm-palco{width:min(760px,100%)}
+.cm-numeros{width:220px;flex-shrink:0;display:flex;flex-direction:column;gap:10px}
+.cm-numeros-cab{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:13px;color:var(--text-primary)}
+.cm-num{display:flex;align-items:center;gap:12px;padding:12px 14px;background:var(--surface-1);border:1px solid var(--border);border-radius:12px;box-shadow:0 1px 2px rgba(16,24,40,.04)}
+.cm-num-ico{width:36px;height:36px;flex-shrink:0;border-radius:10px;display:flex;align-items:center;justify-content:center;background:var(--accent-bg);color:var(--accent-text)}
+.cm-num-ico svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.cm-num span{display:block;font-size:12px;font-weight:500;color:var(--text-secondary)}
+.cm-num b{display:block;font-size:20px;font-weight:700;letter-spacing:-.02em;color:var(--text-primary);line-height:1.2}
+.cm-num small{display:block;font-size:11.5px;color:var(--text-muted)}
+.cm-zoom-botoes .cm-ajuda{font:inherit;font-size:15px;font-weight:700}
+@media (max-width:1000px){ .cm-so-mapa{flex-direction:column;align-items:center;height:auto} .cm-numeros{width:min(760px,100%);display:grid;grid-template-columns:repeat(2,1fr)} .cm-numeros-cab{grid-column:1/-1} }
+
+/* ═══ TOUR GUIADO (1ª visita) ═══ */
+.cm-tour-luz{position:fixed;z-index:1000;border-radius:14px;box-shadow:0 0 0 9999px rgba(10,15,30,.55);pointer-events:none;transition:all .3s cubic-bezier(.2,.8,.2,1)}
+.cm-tour-luz.cheia{left:50%;top:50%;width:0;height:0}
+.cm-tour{position:fixed;z-index:1001;width:300px;max-width:calc(100vw - 24px);padding:16px 16px 14px;border-radius:14px;background:var(--surface-1);border:1px solid var(--border);box-shadow:0 18px 44px rgba(0,0,0,.28);animation:janelaPop .26s cubic-bezier(.34,1.4,.64,1)}
+.cm-tour::before{content:'';position:absolute;top:28px;width:12px;height:12px;background:var(--surface-1);border:1px solid var(--border);transform:rotate(45deg);display:none}
+.cm-tour.seta-e::before{display:block;left:-7px;border-right:none;border-top:none}
+.cm-tour.seta-d::before{display:block;right:-7px;border-left:none;border-bottom:none}
+.cm-tour-passo{font-size:11.5px;font-weight:700;color:var(--accent-text);letter-spacing:.03em;margin-bottom:4px}
+.cm-tour h3{font-size:16px;font-weight:700;color:var(--text-primary);margin-bottom:6px}
+.cm-tour p{font-size:13.5px;line-height:1.5;color:var(--text-secondary)}
+.cm-tour-botoes{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:14px}
+.cm-tour-botoes span{display:flex;gap:6px}
+.cm-tour-botoes button{height:34px;padding:0 14px;border-radius:8px;font:inherit;font-size:13px;font-weight:600;cursor:pointer}
+.cm-tour-pular{border:none;background:none;color:var(--text-muted);padding:0 4px!important}
+.cm-tour-pular:hover{color:var(--text-primary)}
+.cm-tour-voltar{border:1px solid var(--border);background:var(--surface-1);color:var(--text-primary)}
+.cm-tour-prox{border:none;background:var(--accent);color:#fff}
+/* o mapa fica logo abaixo da barra de cima (os números ficam centralizados ao lado dele) */
+.cm-so-mapa{height:auto!important;align-items:center}
+.cm-num .cm-num-ico{display:flex;align-items:center;justify-content:center}   /* ícone no centro do quadradinho */
+.cm-num .cm-num-ico{color:var(--accent-text)}

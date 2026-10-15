@@ -127,7 +127,7 @@ function carregarEstadoUmaVez(){
 async function entrarApp(){
   document.getElementById('auth-screen').style.display='none';
   auFecharLogin(); document.body.classList.remove('pre-login');
-  const _bb = document.getElementById('busca-global'); if(_bb) _bb.placeholder='Buscar dias, conteúdos, mapa mental ou concursos...';
+  const _bb = document.getElementById('busca-global'); if(_bb) _bb.placeholder='Pesquise por concurso, matérias, edital...';
   // Os dados já foram carregados antes do login (iniciar). Só recarrega se aquela leitura não foi confirmada.
   let r = { pronto:true };
   if(!window.__estadoOk){
@@ -145,7 +145,6 @@ async function entrarApp(){
     mostrarToast('Conexão lenta: seus dados continuam carregando em segundo plano.');
     window.__loadPromise.then(()=>{
       applyTheme(); updateFoguinho(); renderTrilhasFixas(); renderCarreirasCustom(); renderNewsPanel(); renderNewsCal();
-      mostrarToast('Dados carregados!');
     });
   }
 }

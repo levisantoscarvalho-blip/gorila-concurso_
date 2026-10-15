@@ -115,22 +115,29 @@ function trAbrirCalendario(){
   if(!window.__logado){ entrarComoVisitante(); trMarcarAtivo('tr-calendario'); return; } // sem conta: conhece o site (nada é salvo)
   openSection('guia'); trMarcarAtivo('tr-calendario');
 }
+// Sala de estudos ainda não está pronta: abre a mesma tela em branco de Notícias (sem mensagem de "em breve")
+function trAbrirSala(){
+  if(!window.__logado){ entrarComoVisitante(); }
+  mostrarNoticias(true); trMarcarAtivo('tr-sala');
+}
 function trAbrirNoticias(){
   if(!window.__logado){ entrarComoVisitante(); }
   mostrarNoticias();
 }
 function fecharTudo(){
   document.querySelectorAll('.modal-overlay.open').forEach(m=>m.classList.remove('open'));
+  document.querySelectorAll('.cm-tour,.cm-tour-luz').forEach(e=>e.remove());   // balões do tour de Notícias
   const lb=document.getElementById('mm-lightbox-img'); if(lb) lb.src='';
 }
-function mostrarNoticias(){
+// emBranco=true: tela em branco (Sala de estudos, ainda não pronta) · senão: Concursos pelo Brasil (mapa 3D)
+function mostrarNoticias(emBranco){
   fecharTudo();
   document.getElementById('home-screen').style.display='none';
   document.getElementById('app-shell').style.display='none';
-  // Notícias ainda não está disponível: a tela fica em branco (sair pelos ícones da direita)
   const ns=document.getElementById('news-screen');
   ns.innerHTML='';
   ns.style.display='block';
+  if(emBranco!==true && typeof renderConcursosMapa==='function') renderConcursosMapa(true);
   currentSection='noticias';
   navRegistrar({section:'noticias', tab:'', area:''});
   trMarcarAtivo('tr-noticias');
@@ -164,7 +171,7 @@ function navClick(tab, area){
   document.querySelectorAll('.sidebar .nav-item').forEach(n=>n.classList.toggle('active', n.dataset.tab===tab));
   if(tab==='infografico') renderInfografico(area);
   else if(tab==='calendario') renderCalActive();
-  else if(tab==='mural') renderMural();
+  else if(tab==='mural'){ muralReiniciar(); renderMural(); }   // o Mural sempre começa no passo 1 (mês)
   else if(tab==='conteudos') renderConteudos();
   else if(tab==='carreira') renderCarreiraCustom(currentSection);
   else if(tab==='mindmap'){ abrirMindMap(); return; }

@@ -46,21 +46,36 @@ function bgBuscar(q){
     });
     if(mapa.length) grupos.push(['Mapa mental', mapa.slice(0,6)]);
   }
-  // concurso reconhecido (ex.: "tj sp" → Tribunal de Justiça SP) para pesquisar com o nome certo
-  const rec = typeof cursoReconhecido==='function' ? cursoReconhecido(q) : null;
-  const termo = rec ? rec.nome : q.trim();
-  grupos.push(['Pesquisar na internet', [
-    {icone:ICO.lupa, titulo:`Notícias sobre ${termo}`, sub:'Google Notícias', url:linkNoticias(termo)},
-    {icone:ICO.lupa, titulo:`Editais de ${termo}`, sub:'PCI Concursos', url:linkPci(termo)}
-  ]]);
+  // ── Tudo é resolvido DENTRO do site (nada vai para o Google) ──
+  // "edital do inss" / "editais tj sp": procura o concurso e mostra o aviso de editais
+  const querEdital = /\bedita(l|is)\b/.test(nq);
+  const termoQ = querEdital ? q.replace(/\b(editais|edital)\b/ig,'').replace(/\b(d[eoa]s?|para)\b/ig,' ').replace(/\s+/g,' ').trim() : q.trim();
+  const nt = bgNorm(termoQ);
+  // concursos e cursos de faculdade que o site conhece (ex.: "tj sp" → Tribunal de Justiça SP)
+  const concursos = bgConhecidos(termoQ);
+  // os que a pessoa já estuda aparecem em "Seus cursos"; aqui só os que ela ainda pode adicionar
+  const meus = new Set(window.__logado ? (state.cursos||[]).map(c=>bgNorm(c.nome)) : []);
+  const novos = concursos.filter(c=>!meus.has(bgNorm(c.nome)));
+  if(novos.length) grupos.push(['Concursos e cursos', novos.map(c=>({
+    icone:ICO.calendario, titulo:c.nome,
+    sub: c.tipo==='concurso' ? 'Concurso · adicionar aos meus estudos' : 'Faculdade · adicionar aos meus estudos',
+    acao: ()=>bgAdicionarCurso(c.nome) }))]);
+  // matérias que o site conhece (ex.: "port" → Língua Portuguesa)
+  const mats = nt.length>=2 && typeof materiasConhecidas==='function'
+    ? materiasConhecidas().filter(m=>m.chaves.some(k=>k.includes(nt))).slice(0,6) : [];
+  if(mats.length) grupos.push(['Matérias', mats.map(m=>({icone:ICO.check, titulo:m.nome, sub:'Adicione dentro de um curso em Conteúdos', acao:()=>bgIrConteudos()}))]);
+  // editais: ainda em preparação (TROCAR quando os editais estiverem no site)
+  if(querEdital) grupos.push(['Editais', [{icone:ICO.alerta, titulo:`Editais${concursos[0]?' de '+concursos[0].nome:''}`, sub:'Em breve no Gorila Concurso', info:true}]]);
+  // nada encontrado: dica do que dá para pesquisar (nunca uma lista vazia)
+  if(!grupos.length) grupos.push(['Nada encontrado', [{icone:ICO.lupa, titulo:`Nada encontrado para "${q.trim()}"`, sub:'Tente o nome do concurso (ex.: INSS, TJ SP) ou de uma matéria (ex.: Português)', info:true}]]);
   let h = '';
   grupos.forEach(([nome, itens])=>{
     h += `<div class="bg-grupo">${nome}</div>`;
     itens.forEach(it=>{
       const i = bgResultados.push(it)-1;
       const corpo = `<span class="bg-ico">${it.icone}</span><span class="bg-tit">${escapeHtmlCarreira(it.titulo)}</span><small>${escapeHtmlCarreira(it.sub||'')}</small>`;
-      h += it.url
-        ? `<a class="bg-item" data-i="${i}" href="${it.url}" target="_blank" rel="noopener">${corpo}</a>`
+      h += it.info
+        ? `<div class="bg-item bg-info" data-i="${i}">${corpo}</div>`
         : `<div class="bg-item" data-i="${i}" onclick="bgAbrir(${i})">${corpo}</div>`;
     });
   });
@@ -68,11 +83,29 @@ function bgBuscar(q){
 }
 function bgFechar(){ const b=document.getElementById('busca-resultados'); if(b) b.classList.remove('aberto'); }
 function bgAbrir(i){
-  const it = bgResultados[i]; if(!it) return;
+  const it = bgResultados[i]; if(!it || it.info) return;
   bgFechar();
   const inp=document.getElementById('busca-global'); if(inp){ inp.value=''; inp.blur(); }
-  if(it.url){ window.open(it.url,'_blank'); return; }
   if(it.acao) it.acao();
+}
+// Concursos/cursos que o site conhece: o reconhecido exato primeiro, depois os que contêm o que foi digitado
+function bgConhecidos(texto){
+  const nq = bgNorm(texto||'').trim().replace(/\s+/g,' ');
+  if(nq.length<2 || typeof cursosConhecidos!=='function') return [];
+  const lista = [];
+  const exato = cursoReconhecido(texto); if(exato) lista.push(exato);
+  cursosConhecidos().forEach(c=>{
+    if(lista.length>=6 || lista.some(x=>x.nome===c.nome)) return;
+    if(c.chaves.some(k=>k.startsWith(nq) || (nq.length>=3 && k.includes(nq)))) lista.push({nome:c.nome, tipo:c.tipo});
+  });
+  return lista;
+}
+// Abre "O que você está estudando?" já com o nome preenchido (a pessoa só confirma)
+function bgAdicionarCurso(nome){
+  if(!window.__logado) entrarComoVisitante();   // sem conta: conhece o site como visitante
+  bgGarantirApp(); navClick('calendario','');
+  abrirAddMateria();
+  const inp=document.getElementById('nova-materia-nome'); if(inp){ inp.value=nome; cursoDica('nova-materia-nome','dica-materia'); }
 }
 function bgMarcar(){
   document.querySelectorAll('#busca-resultados .bg-item').forEach(el=>el.classList.toggle('sel', Number(el.dataset.i)===bgSel));
@@ -84,7 +117,11 @@ function bgTecla(e){
   else if(e.key==='Enter'){ e.preventDefault(); if(bgResultados.length) bgAbrir(bgSel>=0?bgSel:0); }
   else if(e.key==='Escape'){ bgFechar(); e.target.blur(); }
 }
-function bgGarantirApp(){ if(document.getElementById('app-shell').style.display!=='block') openSection('guia'); trMarcarAtivo('tr-calendario'); }
+function bgGarantirApp(){
+  if(!window.__logado){ entrarComoVisitante(); return; }
+  if(document.getElementById('app-shell').style.display!=='block') openSection('guia');
+  trMarcarAtivo('tr-calendario');
+}
 function bgIrConteudos(){ bgGarantirApp(); navClick('conteudos',''); }
 function bgAbrirDia(k){
   bgGarantirApp(); navClick('calendario','');

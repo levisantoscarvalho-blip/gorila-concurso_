@@ -63,7 +63,7 @@ function mostrarAvisoSalvamento(sucesso, esgotouTentativas){
     el.style.color = 'var(--danger)';
     el.style.border = '1px solid var(--danger)';
     el.innerHTML = esgotouTentativas
-      ? ICO.alerta+' Não foi possível salvar após várias tentativas. Clique em "Exportar" na barra lateral para baixar um backup agora.'
+      ? ICO.alerta+' Não foi possível salvar após várias tentativas. Não feche esta página: tente de novo em alguns instantes.'   // (o botão "Exportar" não existe mais na barra lateral)
       : ICO.repetir+' Falha ao salvar, tentando de novo...';
   }
   el.style.opacity = '1';

@@ -23,6 +23,54 @@ const ICO = (()=>{
 })();
 
 // ════════════════════════════════════════════
+// TELA VAZIA — nunca mostrar um espaço vazio: desenho + frase útil + botão para começar
+// (como a Amazon faz quando não há nada para mostrar). Cores em geral/base.css (.iv-*)
+// ════════════════════════════════════════════
+// Estilo profissional: um "cartão" do próprio site em traço limpo, nas cores do site,
+// com o selo do gorila (marca) no canto. Nada de desenho infantil.
+const SELO_GORILA = (x,y) => `<circle cx="${x}" cy="${y}" r="17" class="iv-selo"/><image href="imagens/gorila.webp" x="${x-12}" y="${y-12}" width="24" height="24" preserveAspectRatio="xMidYMid meet"/>`;
+const DESENHOS = {
+  // lista de matérias com caixas marcadas e barra de progresso (= tela Conteúdos)
+  cursos: `<rect x="44" y="25" width="112" height="92" rx="10" class="iv-sombra-c"/><rect x="44" y="20" width="112" height="92" rx="10" class="iv-cartao"/>
+    <rect x="56" y="32" width="46" height="7" rx="3.5" class="iv-esq-forte"/><rect x="122" y="31" width="22" height="9" rx="4.5" class="iv-ac2"/>
+    <rect x="56" y="50" width="10" height="10" rx="2.5" class="iv-ac"/><path d="M58.6 55.2l1.8 1.8 3.4-3.6" class="iv-check"/><rect x="72" y="52" width="58" height="6" rx="3" class="iv-esq"/>
+    <rect x="56" y="66" width="10" height="10" rx="2.5" class="iv-ac"/><path d="M58.6 71.2l1.8 1.8 3.4-3.6" class="iv-check"/><rect x="72" y="68" width="44" height="6" rx="3" class="iv-esq"/>
+    <rect x="56" y="82" width="10" height="10" rx="2.5" class="iv-cb"/><rect x="72" y="84" width="52" height="6" rx="3" class="iv-esq"/>
+    <rect x="56" y="99" width="88" height="5" rx="2.5" class="iv-esq"/><rect x="56" y="99" width="58" height="5" rx="2.5" class="iv-ac"/>
+    ${SELO_GORILA(156,110)}`,
+  // tópico central ligado a subtópicos (= Mapa Mental)
+  mapa: `<path d="M86 60C70 52 66 40 62 34M114 60C130 50 134 38 140 32M88 76C72 86 66 96 62 102" class="iv-conector"/>
+    <rect x="22" y="22" width="44" height="22" rx="7" class="iv-cartao"/><rect x="30" y="30" width="28" height="6" rx="3" class="iv-esq"/>
+    <rect x="134" y="20" width="44" height="22" rx="7" class="iv-cartao"/><rect x="142" y="28" width="22" height="6" rx="3" class="iv-esq"/>
+    <rect x="26" y="94" width="44" height="22" rx="7" class="iv-cartao"/><rect x="34" y="102" width="26" height="6" rx="3" class="iv-esq"/>
+    <rect x="72" y="55" width="56" height="30" rx="9" class="iv-sombra-c" transform="translate(0 4)"/><rect x="72" y="52" width="56" height="30" rx="9" class="iv-ac"/>
+    <rect x="82" y="61" width="36" height="5" rx="2.5" class="iv-branco"/><rect x="82" y="70" width="22" height="5" rx="2.5" class="iv-branco" opacity=".7"/>
+    ${SELO_GORILA(158,104)}`,
+  // folha de calendário com dias marcados (= Mural / Calendário)
+  mural: `<rect x="46" y="25" width="108" height="92" rx="10" class="iv-sombra-c"/><rect x="46" y="20" width="108" height="92" rx="10" class="iv-cartao"/>
+    <path d="M46 30a10 10 0 0 1 10-10h88a10 10 0 0 1 10 10v10H46z" class="iv-ac"/><rect x="58" y="27" width="34" height="6" rx="3" class="iv-branco"/>
+    ${[0,1,2].map(l=>[0,1,2,3,4].map(c=>{ const marc={'0,1':'iv-ac','0,3':'iv-ac2','1,0':'iv-ac2','1,2':'iv-ac','2,1':'iv-ac','2,4':'iv-ac2'}[l+','+c]||'iv-esq'; return `<rect x="${56+c*18.5}" y="${50+l*18}" width="14" height="12" rx="3" class="${marc}"/>`; }).join('')).join('')}
+    ${SELO_GORILA(156,110)}`,
+  // calendário desligado: folha em cinza + chave desligada (no lugar do antigo emoji de pausa)
+  desligado: `<rect x="46" y="25" width="108" height="92" rx="10" class="iv-sombra-c"/><rect x="46" y="20" width="108" height="92" rx="10" class="iv-cartao"/>
+    <path d="M46 30a10 10 0 0 1 10-10h88a10 10 0 0 1 10 10v10H46z" class="iv-esq-forte"/><rect x="58" y="27" width="34" height="6" rx="3" class="iv-branco" opacity=".8"/>
+    ${[0,1,2].map(l=>[0,1,2,3,4].map(c=>`<rect x="${56+c*18.5}" y="${50+l*18}" width="14" height="12" rx="3" class="iv-esq"/>`).join('')).join('')}
+    <rect x="128" y="96" width="40" height="22" rx="11" class="iv-chave"/><circle cx="139" cy="107" r="8" class="iv-branco"/>`,
+  // folha do dia em branco com "+" (= registrar o dia)
+  dia: `<rect x="60" y="23" width="80" height="96" rx="10" class="iv-sombra-c"/><rect x="60" y="18" width="80" height="96" rx="10" class="iv-cartao"/>
+    <rect x="72" y="30" width="38" height="7" rx="3.5" class="iv-esq-forte"/>
+    <rect x="72" y="46" width="56" height="6" rx="3" class="iv-esq"/><rect x="72" y="58" width="44" height="6" rx="3" class="iv-esq"/>
+    <rect x="72" y="76" width="56" height="26" rx="7" class="iv-tracejado"/><path d="M100 84v10M95 89h10" class="iv-mais"/>
+    ${SELO_GORILA(144,108)}`,
+};
+// o: {desenho, titulo, texto, passos:[...], botao:'texto', acao:'código onclick', compacto:true}
+function telaVazia(o){
+  const svg = `<svg class="tv-desenho" viewBox="0 0 200 135" aria-hidden="true">${DESENHOS[o.desenho]||DESENHOS.dia}</svg>`;
+  const passos = (o.passos||[]).length ? `<ol class="tv-passos">${o.passos.map(p=>`<li>${p}</li>`).join('')}</ol>` : '';
+  const botao = o.botao ? `<button type="button" class="tv-botao" onclick="${o.acao}">${o.icone===false?'':ICO.mais+' '}${o.botao}</button>` : '';
+  return `<div class="tela-vazia${o.compacto?' compacta':''}">${svg}<h3>${o.titulo}</h3>${o.texto?`<p>${o.texto}</p>`:''}${passos}${botao}</div>`;
+}
+
 // ════════════════════════════════════════════
 // FOGUINHO (FIXO — nunca apaga, soma total de dias estudados)
 // ════════════════════════════════════════════
@@ -184,9 +232,9 @@ function mostrarToast(msg){
   setTimeout(()=>el.remove(), 3000);
 }
 
-// ── Foguinho (estilo TikTok) ──
-// O número é o total de dias estudados e NUNCA zera (decisão do Levi).
-// Como no TikTok: a chama fica CINZA enquanto você não estudou hoje e ACENDE quando registra o dia.
+// ── Foguinho (desenho estilo TikTok) ──
+// REGRA DO LEVI: o foguinho NUNCA apaga e NUNCA fica cinza — nem depois de 1 dia, 1 ano ou mais sem estudar.
+// O número é o total de dias estudados e NUNCA zera. Ao registrar o estudo de hoje, a chama dá um "pulo" (animação).
 function fogoTotal(){ return Object.values(state.days || {}).filter(isStudyDay).length; }
 function fogoEstudouHoje(){ const d=new Date(); return isStudyDay((state.days||{})[mkKey(d.getFullYear(), d.getMonth()+1, d.getDate())]); }
 function fogoFaltaHoje(){
@@ -203,13 +251,13 @@ function tocarFoguinho(box){
   if(aberto && aberto.__dono===box) return;
   const total=fogoTotal(), hoje=fogoEstudouHoje();
   const status = hoje
-    ? `<div class="fogo-status ok">Você já estudou hoje. Foguinho aceso!</div>`
+    ? `<div class="fogo-status ok">Você já estudou hoje. Mais um dia somado!</div>`
     : total>0
-      ? `<div class="fogo-status">Estude hoje para acender o seu foguinho.<span class="fogo-tempo">O dia acaba em ${fogoFaltaHoje()}</span></div>`
-      : `<div class="fogo-status">Registre o seu primeiro dia de estudo para acender o foguinho.</div>`;
+      ? `<div class="fogo-status">Estude hoje para somar mais um dia ao seu foguinho.<span class="fogo-tempo">O dia acaba em ${fogoFaltaHoje()}</span></div>`
+      : `<div class="fogo-status">Registre o seu primeiro dia de estudo e comece a contar.</div>`;
   const c=document.createElement('div');
   c.className='fogo-cartao'; c.setAttribute('role','dialog'); c.onclick=e=>e.stopPropagation();
-  c.innerHTML=`<span class="foguinho-emoji fogo-grande ${hoje?'fogo-aceso':'fogo-apagado'}"><svg class="fogo-svg" viewBox="0 0 24 28" aria-hidden="true"><use href="#fogoTT"/></svg></span>
+  c.innerHTML=`<span class="foguinho-emoji fogo-grande fogo-aceso"><svg class="fogo-svg" viewBox="0 0 24 28" aria-hidden="true"><use href="#fogoTT"/></svg></span>
     <b>${total}</b><div class="fogo-rotulo">${total===1?'dia estudado':'dias estudados'}</div>${status}`;
   // fica no <body> (por cima de tudo, sem ser cortado pela barra lateral), logo abaixo do foguinho
   c.__dono=box; document.body.appendChild(c);
@@ -222,21 +270,20 @@ document.addEventListener('click', e=>{ if(!e.target.closest('.foguinho-box,.fog
 
 // animação de acender (depois volta a balançar normal)
 function fogoAnimar(el){ el.classList.remove('fogo-acendendo'); void el.offsetWidth; el.classList.add('fogo-acendendo'); el.addEventListener('animationend', ()=>el.classList.remove('fogo-acendendo'), {once:true}); }
-let fogoEstavaAceso = null;
+let fogoJaEstudouHoje = null;
 function updateFoguinho() {
-  const total = fogoTotal(), aceso = fogoEstudouHoje();
-  const acendeuAgora = fogoEstavaAceso===false && aceso;   // registrou o estudo de hoje agora
-  fogoEstavaAceso = aceso;
+  const total = fogoTotal(), hoje = fogoEstudouHoje();
+  const somouAgora = fogoJaEstudouHoje===false && hoje;   // acabou de registrar o estudo de hoje
+  fogoJaEstudouHoje = hoje;
   ['-home', '-sb'].forEach(suf => {
     const fn = document.getElementById('foguinho-num' + suf);
     const fi = document.getElementById('foguinho-icon' + suf);
     if(!fn || !fi) return;
     fn.textContent = total;
-    fi.classList.toggle('fogo-aceso', aceso);
-    fi.classList.toggle('fogo-apagado', !aceso);
+    fi.classList.add('fogo-aceso'); fi.classList.remove('fogo-apagado');   // sempre aceso
     const box = fi.closest('.foguinho-box');
-    if(box){ box.classList.toggle('apagado', !aceso); box.title = aceso ? `${total} dias estudados · aceso hoje` : `${total} dias estudados · estude hoje para acender`; }
-    if(acendeuAgora) fogoAnimar(fi);
+    if(box){ box.classList.remove('apagado'); box.title = `${total} ${total===1?'dia estudado':'dias estudados'}`; }
+    if(somouAgora) fogoAnimar(fi);
   });
 }
 const bgNorm = s => String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();

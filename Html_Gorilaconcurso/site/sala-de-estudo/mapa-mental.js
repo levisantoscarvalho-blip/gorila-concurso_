@@ -31,7 +31,9 @@ function mmRenderLista(){
   if(!cont) return;
   const topicos = state.mindMap.topicos;
   if(topicos.length === 0){
-    cont.innerHTML = '<div style="text-align:center;color:var(--text-muted);font-size:13px;padding:40px 10px">Nenhum tópico ainda. Clique em "Novo tópico" para começar.</div>';
+    cont.innerHTML = telaVazia({desenho:'mapa', titulo:'Organize o que você aprendeu',
+      texto:'Crie tópicos (ex.: Direito Constitucional) e, dentro deles, subtópicos com o seu resumo e imagens. Ótimo para revisar antes da prova.',
+      botao:'Criar o primeiro tópico', acao:'mmNovoTopico()'});
     return;
   }
   cont.innerHTML = topicos.map(t => mmRenderTopico(t)).join('');

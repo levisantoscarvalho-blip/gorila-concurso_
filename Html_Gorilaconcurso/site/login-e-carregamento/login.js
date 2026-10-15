@@ -97,9 +97,9 @@ function mostrarAuth(){
   document.getElementById('auth-screen').style.display='flex';
   document.body.classList.add('pre-login');
   renderLanding(); auFecharLogin();
-  const _b = document.getElementById('busca-global'); if(_b){ _b.value=''; _b.placeholder='Pesquise um concurso'; }
+  const _b = document.getElementById('busca-global'); if(_b){ _b.value=''; _b.placeholder='Pesquise por concurso, matérias, edital...'; }
   const _tv=document.getElementById('tb-visitante'); if(_tv) _tv.style.display='inline-block';
-  const _tb=document.getElementById('tb-entrar'); if(_tb){ _tb.textContent='Entrar'; _tb.style.display='inline-block'; _tb.onclick=()=>auAbrirLogin('login'); }
+  const _tb=document.getElementById('tb-entrar'); if(_tb) _tb.style.display='none';   // sem "Entrar": a conta é aberta pelo Registrar grátis
   const _tc=document.getElementById('tb-cadastro'); if(_tc) _tc.style.display='inline-block';
   configurarAuthModal(perfilSalvo ? 'login' : 'cadastro');
 }
@@ -140,39 +140,118 @@ async function cadastrar(){
 }
 
 async function entrarDepoisDoCadastro(){
-  const temDadosSalvos = !!window.__estadoReal;
-  const eraVisitante = !!window.__guest;
-  if(eraVisitante){
-    window.__guest = false;
-    if(temDadosSalvos){ state = window.__estadoReal; window.__estadoOk = true; }
-    else {
-      // Carrega o que já estava salvo (ou os dados iniciais) e junta com o que a
-      // pessoa fez como visitante — antes, o visitante vazio apagava o progresso.
-      const visitante = state;
-      window.__estadoOk = false; window.__loadPromise = null;
-      await carregarEstadoUmaVez();
-      juntarDadosDoVisitante(visitante);
-      await saveState();
-    }
-  }
-  // Sem visitante, não salva nada aqui: o entrarApp() carrega os dados já salvos
-  // (ou os dados iniciais, no primeiro uso).
+  await levarVisitanteParaConta();
   await entrarApp();
 }
 
-// Junta o que foi feito no modo visitante com o progresso da conta (o do visitante vale por cima)
+// ════════════════════════════════════════════
+// VISITANTE ➔ CONTA
+// Quem mexeu no site como visitante e clica em Entrar / Registrar grátis recebe ANTES
+// a pergunta: salvar o que fez na conta ou descartar. Nada se perde sem a pessoa decidir.
+// ════════════════════════════════════════════
+// O que o visitante fez que vale a pena guardar
+function resumoVisitante(v){
+  v = v || state;
+  return {
+    dias: Object.values(v.days||{}).filter(d=>d && !diaVazio(d)).length,
+    cursos: (v.cursos||[]).length,
+    materias: (v.conteudosCustom||[]).length,
+    mapa: (((v.mindMap||{}).topicos)||[]).length,
+  };
+}
+function visitanteTemDados(){
+  if(!window.__guest) return false;
+  const r = resumoVisitante();
+  return r.dias + r.cursos + r.materias + r.mapa > 0;
+}
+let visitanteModoPendente = null;   // 'login' ou 'cadastro': para onde seguir depois da resposta
+function perguntarVisitante(modo){
+  visitanteModoPendente = modo;
+  const r = resumoVisitante(), plural = (n,um,varios)=>`${n} ${n===1?um:varios}`;
+  const itens = [
+    r.dias && plural(r.dias,'dia de estudo','dias de estudo'),
+    r.cursos && plural(r.cursos,'curso ou concurso','cursos ou concursos'),
+    r.materias && plural(r.materias,'matéria','matérias'),
+    r.mapa && plural(r.mapa,'tópico no mapa mental','tópicos no mapa mental'),
+  ].filter(Boolean);
+  document.getElementById('visitante-lista').innerHTML = itens.map(t=>`<li>${t}</li>`).join('');
+  document.getElementById('visitante-modal').classList.add('open');
+}
+function fecharPerguntaVisitante(){ document.getElementById('visitante-modal').classList.remove('open'); visitanteModoPendente = null; }
+function visitanteSalvar(){
+  const modo = visitanteModoPendente;
+  window.__visitanteDecidiu = true;           // não pergunta de novo nesta visita
+  fecharPerguntaVisitante();
+  abrirJanelaLogin(modo);
+}
+function visitanteDescartar(){
+  const modo = visitanteModoPendente;
+  // limpa o que foi feito como visitante (fotos só existiam na memória)
+  const tema = state.theme;
+  if(typeof fotosSoNaMemoria!=='undefined'){ fotosSoNaMemoria.forEach(id=>{ delete FOTOS[id]; }); fotosSoNaMemoria.clear(); }
+  state = defaultState(); state.theme = tema;
+  try{ renderCalActive(); renderConteudos(); renderMural(); updateFoguinho(); }catch(e){}
+  fecharPerguntaVisitante();
+  abrirJanelaLogin(modo);
+}
+// Depois que a senha confere / a conta é criada: carrega a conta e junta o que o visitante fez
+async function levarVisitanteParaConta(){
+  if(!window.__guest) return;
+  const visitante = visitanteTemDados() ? state : null;
+  window.__guest = false;
+  if(window.__estadoReal){ state = window.__estadoReal; window.__estadoOk = true; }
+  else { window.__estadoOk = false; window.__loadPromise = null; if(visitante) await carregarEstadoUmaVez(); }
+  window.__visitanteDecidiu = false;
+  if(visitante){ juntarDadosDoVisitante(visitante); await saveState(); }
+}
+
+// Junta o que foi feito no modo visitante com o progresso da conta, SEM apagar nada da conta:
+// - mesmo dia nos dois: os estudos são somados no mesmo dia
+// - curso/matéria com o mesmo nome: vira um só
 function juntarDadosDoVisitante(v){
   if(!v) return;
-  Object.assign(state.days, v.days || {});
-  ['cursos','conteudosCustom','trilhasCustom'].forEach(campo=>{
-    const lista = state[campo] || (state[campo] = []);
-    (v[campo] || []).forEach(item=>{ if(!lista.some(x=>x.id===item.id)) lista.push(item); });
+  const n = s => bgNorm(String(s||'')).trim();
+  // cursos (mapa: id do visitante ➔ id na conta)
+  const idCurso = {};
+  state.cursos = state.cursos || [];
+  (v.cursos||[]).forEach(c=>{
+    const igual = state.cursos.find(x=>x.id===c.id || n(x.nome)===n(c.nome));
+    if(igual) idCurso[c.id] = igual.id; else { state.cursos.push(c); idCurso[c.id] = c.id; }
   });
+  // matérias
+  const idMateria = {};
+  state.conteudosCustom = state.conteudosCustom || [];
+  (v.conteudosCustom||[]).forEach(m=>{
+    const trilha = idCurso[m.trilha] || m.trilha;
+    const igual = state.conteudosCustom.find(x=>x.id===m.id || (x.trilha===trilha && n(x.nome)===n(m.nome)));
+    if(igual) idMateria[m.id] = igual.id; else { state.conteudosCustom.push({...m, trilha}); idMateria[m.id] = m.id; }
+  });
+  (v.trilhasCustom||[]).forEach(t=>{ state.trilhasCustom = state.trilhasCustom || []; if(!state.trilhasCustom.some(x=>x.id===t.id)) state.trilhasCustom.push(t); });
+  // dias
+  state.days = state.days || {};
+  Object.entries(v.days||{}).forEach(([k,dv])=>{
+    if(!dv || diaVazio(dv)) return;
+    const estudosV = (dv.estudos||[]).map(e=>({...e, cursoId: idCurso[e.cursoId]||e.cursoId, materiaId: idMateria[e.materiaId]||e.materiaId}));
+    const da = state.days[k];
+    if(!da || diaVazio(da)){ state.days[k] = {...dv, estudos: estudosV.length ? estudosV : undefined}; if(!estudosV.length) delete state.days[k].estudos; }
+    else {
+      if(estudosV.length) da.estudos = (da.estudos||[]).concat(estudosV);
+      AREAS_ORDEM.forEach(a=>{ if(!da[a] && dv[a]) da[a] = dv[a]; });
+      const sa=String(da.saude||'').trim(), sv=String(dv.saude||'').trim();
+      if(sv && sv!==sa) da.saude = sa ? sa+' · '+sv : sv;
+      if(!da.imgId && dv.imgId){ da.imgId = dv.imgId; if('usarImg' in dv) da.usarImg = dv.usarImg; }
+    }
+    state.days[k].horasTotal = somaHorasPartes(state.days[k]);
+  });
+  // mapa mental
   const topicos = ((v.mindMap||{}).topicos) || [];
   if(topicos.length){
     if(!state.mindMap || !Array.isArray(state.mindMap.topicos)) state.mindMap = { topicos: [] };
-    topicos.forEach(t=>{ if(!state.mindMap.topicos.some(x=>x.id===t.id)) state.mindMap.topicos.push(t); });
+    topicos.forEach(t=>{ if(!state.mindMap.topicos.some(x=>x.id===t.id || n(x.nome)===n(t.nome))) state.mindMap.topicos.push(t); });
   }
+  // cores e estilo do calendário escolhidos como visitante
+  ['estiloCal','paletaCores'].forEach(c=>{ if(v[c]) state[c] = v[c]; });
+  if(v.coresAreas) state.coresAreas = {...(state.coresAreas||{}), ...v.coresAreas};
 }
 
 // Confere e-mail e senha (aceita também contas do formato antigo e as atualiza)
@@ -214,11 +293,7 @@ async function entrarLogin(){
       try{ await window.storage.set(PERFIL_KEY, JSON.stringify(atualizado), false); perfilSalvo = atualizado; }catch(e){}
     }
     document.getElementById('login-senha').value='';
-    if(window.__guest){
-      if(window.__estadoReal){ state = window.__estadoReal; window.__estadoOk = true; }
-      else { window.__estadoOk = false; window.__loadPromise = null; }
-      window.__guest = false;
-    }
+    await levarVisitanteParaConta();   // antes só trocava de dados e o que o visitante fez se perdia
     await entrarApp();
   } finally {
     authOcupado = false; botaoOcupado('login-btn', false, 'Entrar');
@@ -239,12 +314,12 @@ async function esqueciSenha(){
 function atualizarBotaoConta(){
   const _tv=document.getElementById('tb-visitante'); if(_tv) _tv.style.display='none';
   const b=document.getElementById('tb-entrar'); if(!b) return;
-  b.style.display='inline-block';
-  if(window.__guest){ b.textContent = 'Entrar'; b.onclick=()=>auAbrirLogin('login'); }
-  else { b.textContent='Sair'; b.onclick=sairDaSecao; }
+  // visitante: sem "Entrar" (fica só o Registrar grátis); logado: "Sair"
+  if(window.__guest){ b.style.display='none'; }
+  else { b.style.display='inline-block'; b.textContent='Sair'; b.onclick=sairDaSecao; }
   // "Registrar grátis" só para quem ainda não tem conta (visitante)
   const c=document.getElementById('tb-cadastro'); if(c) c.style.display = window.__guest ? 'inline-block' : 'none';
-  const bu=document.getElementById('busca-global'); if(bu) bu.placeholder='Pesquise matérias, concursos ou dias de estudo';
+  const bu=document.getElementById('busca-global'); if(bu) bu.placeholder='Pesquise por concurso, matérias, edital...';
 }
 function entrarComoVisitante(){
   const novo = !window.__guest;
@@ -344,8 +419,16 @@ function auPasso(p){
     const i=document.getElementById(id); if(i) i.focus();
   },50);
 }
+// Botão "Registrar-se grátis" do topo: quem JÁ tem conta neste navegador vai direto para "Entrar"
+// (antes caía no formulário de criar conta e podia criar outra por cima da antiga)
+function tbRegistrar(){ auAbrirLogin(perfilSalvo ? 'login' : 'cadastro'); }
 function auAbrirLogin(modo){
   if(typeof modo!=='string') modo=undefined;
+  // visitante que já fez algo: primeiro pergunta se quer salvar ou descartar
+  if(window.__guest && !window.__visitanteDecidiu && visitanteTemDados()){ perguntarVisitante(modo); return; }
+  abrirJanelaLogin(modo);
+}
+function abrirJanelaLogin(modo){
   window.__authPasso = 'inicio';
   configurarAuthModal(modo);
   document.getElementById('auth-modal').classList.add('open');

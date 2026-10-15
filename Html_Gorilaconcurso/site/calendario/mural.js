@@ -45,21 +45,34 @@ function muralCorDoDia(v){
   return ref ? corCursoId(ref.cursoId) : (getCellColor(v) || 'var(--accent)');
 }
 
+// ════════════════════════════════════════════
+// MURAL: meses à ESQUERDA · ao clicar num mês, aparece AO LADO o calendário dele
+// com o que a pessoa fez; clicando num dia, o que foi feito aparece logo embaixo.
+// ════════════════════════════════════════════
+let muralAnim='';          // 'mes' = painel do mês entra · 'dia' = detalhe do dia entra
+// Ao abrir o Mural pelo menu: já mostra o mês de hoje ao lado
+function muralReiniciar(){ const h=new Date(); muralAno=h.getFullYear(); muralMes=h.getMonth(); muralDia=null; muralAnim=''; }
+
 function renderMural(){
   const box=document.getElementById('mural-grid'); if(!box) return;
-  if(muralAno===null){ muralAno=state.year; muralMes=state.month; muralDia=muralUltimoDia(); }
+  if(muralAno===null) muralReiniciar();
   const sub=document.querySelector('#tab-mural .page-sub');
-  if(sub) sub.textContent='Escolha o mês e depois o dia para ver o que você fez.';
+  if(sub) sub.textContent='Clique em um mês para ver ao lado o que você fez.';
+  const anim=muralAnim; muralAnim='';
+  const hojeD=new Date();
 
-  // 1º — os 12 meses do ano, com quantos dias estudados em cada um
+  // esquerda — os 12 meses
   const meses=MESES.map((nome,i)=>{
-    const { dias }=resumoPeriodo(muralChave(muralAno,i));
-    const cls='mural-mes'+(i===muralMes?' ativo':'')+(dias?'':' vazio');
-    return `<button type="button" class="${cls}" onclick="muralEscolherMes(${i})" aria-pressed="${i===muralMes}">
-      <span class="mural-mes-nome">${nome}</span><span class="mural-mes-dias">${dias ? dias+(dias===1?' dia':' dias') : '—'}</span></button>`;
+    const { dias, horas }=resumoPeriodo(muralChave(muralAno,i));
+    const total=new Date(muralAno,i+1,0).getDate(), pct=Math.round(dias/total*100);
+    const ehHoje = muralAno===hojeD.getFullYear() && i===hojeD.getMonth();
+    return `<button type="button" class="mural-mes${i===muralMes?' ativo':''}${dias?'':' vazio'}" onclick="muralEscolherMes(${i})" aria-pressed="${i===muralMes}">
+      <span class="mural-mes-topo"><span class="mural-mes-nome">${nome}</span>${ehHoje?'<span class="mural-mes-selo">Este mês</span>':''}</span>
+      <span class="mural-mes-dias">${dias ? `${dias} ${dias===1?'dia':'dias'} · ${muralFmtHoras(horas)}` : 'Sem estudos'}</span>
+      <span class="mural-mes-barra"><i style="width:${pct}%"></i></span></button>`;
   }).join('');
 
-  // 2º — calendário do mês escolhido
+  // direita — o mês escolhido
   const pref=muralChave(muralAno,muralMes);
   const { dias:diasMes, horas:horasMes }=resumoPeriodo(pref);
   const inicio=new Date(muralAno,muralMes,1).getDay(), total=new Date(muralAno,muralMes+1,0).getDate();
@@ -70,42 +83,51 @@ function renderMural(){
     const k=mkKey(muralAno,muralMes+1,d), v=state.days[k], cor=muralCorDoDia(v);
     const cls='mural-dia'+(cor?' estudou':'')+(k===muralDia?' sel':'')+(k===hoje?' hoje':'');
     const titulo = cor ? `${d}: ${muralFmtHoras(horasDoDia(v))} de estudo` : `${d}: sem estudo`;
-    cels+=`<button type="button" class="${cls}"${cor?` style="--cor:${cor}"`:''} onclick="muralEscolherDia('${k}')" title="${titulo}">${d}</button>`;
+    cels+=`<button type="button" class="${cls}" style="${cor?`--cor:${cor};`:''}--i:${d}" onclick="muralEscolherDia('${k}')" title="${titulo}">${d}</button>`;
   }
 
-  box.innerHTML=`
-    <div class="mural-passo mural-meses-box">
-      <div class="mural-ano">
-        <button type="button" class="cal-nav-btn" onclick="muralMudarAno(-1)" aria-label="Ano anterior">‹</button>
-        <b>${muralAno}</b>
-        <button type="button" class="cal-nav-btn" onclick="muralMudarAno(1)" aria-label="Próximo ano">›</button>
-      </div>
+  box.innerHTML=`<div class="mural-lado">
+    <section class="mural-passo mural-lado-meses" aria-label="Meses">
+      <div class="mural-lado-cab"><h3>Meses</h3>
+        <div class="mural-ano">
+          <button type="button" class="cal-nav-btn" onclick="muralMudarAno(-1)" aria-label="Ano anterior"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
+          <b>${muralAno}</b>
+          <button type="button" class="cal-nav-btn" onclick="muralMudarAno(1)" aria-label="Próximo ano"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
+        </div></div>
       <div class="mural-meses">${meses}</div>
-    </div>
-    <div class="mural-corpo">
-      <section class="mural-passo mural-cal" aria-label="Calendário de ${MESES[muralMes]}">
-        <div class="mural-cab"><h3>${MESES[muralMes]} de ${muralAno}</h3>
-          <span>${diasMes} ${diasMes===1?'dia estudado':'dias estudados'} · ${muralFmtHoras(horasMes)}</span></div>
-        <div class="mural-grade">${cels}</div>
-        <p class="mural-dica">Clique em um dia para ver o que você fez.</p>
-      </section>
-      <section class="mural-passo mural-fez" id="mural-fez" aria-live="polite">${muralPainelDia()}</section>
-    </div>`;
+    </section>
+    <section class="mural-passo mural-lado-mes${anim==='mes'?' entra':''}" id="mural-fez" aria-live="polite">
+      <div class="mural-lado-cab"><div><h3>${MESES[muralMes]} de ${muralAno}</h3>
+        <p>${diasMes ? `${diasMes} ${diasMes===1?'dia estudado':'dias estudados'} · ${muralFmtHoras(horasMes)}` : 'Nenhum estudo neste mês'}</p></div></div>
+      <div class="mural-grade">${cels}</div>
+      <div class="mural-dia-detalhe${anim==='dia'?' entra':''}">${muralDetalhe()}</div>
+    </section>
+  </div>`;
 }
-
-// 3º — "Você fez": o dia escolhido
+// embaixo do calendário: o dia escolhido, ou uma dica
+function muralDetalhe(){
+  if(muralDia && muralDia.startsWith(muralChave(muralAno,muralMes)))
+    return `<div class="mural-data"><b>Você fez</b> · ${muralTituloDia()}</div>${muralPainelDia()}`;
+  const temEstudo = resumoPeriodo(muralChave(muralAno,muralMes)).dias>0;
+  const hoje=todayKey(), mesAtual=hoje.startsWith(muralChave(muralAno,muralMes));
+  return temEstudo
+    ? `<p class="mural-dica">Clique em um dia colorido para ver o que você fez.</p>`
+    : telaVazia({desenho:'mural', compacto:true, titulo:`Nenhum estudo em ${MESES[muralMes].toLowerCase()}`,
+        texto: mesAtual ? 'Registre o que estudou hoje e o seu mês começa a ganhar cor.' : 'Os dias que você estudar neste mês aparecem aqui.',
+        botao: mesAtual ? 'Registrar hoje' : '', acao:`openDayModal('${hoje}')`});
+}
+function muralTituloDia(){
+  if(!muralDia) return '';
+  const [y,m,d]=muralDia.split('-').map(Number), data=new Date(y,m-1,d);
+  return `${MURAL_DIAS_SEMANA[data.getDay()]}, ${d} de ${MESES[m-1].toLowerCase()} de ${y}`;
+}
+// ③ — conteúdo do dia escolhido
 function muralPainelDia(){
-  if(!muralDia || !muralDia.startsWith(muralChave(muralAno,muralMes)))
-    return `<h3>Você fez</h3><div class="mural-vazio">Escolha um dia no calendário ao lado.</div>`;
-  const [y,m,d]=muralDia.split('-').map(Number);
-  const data=new Date(y,m-1,d);
-  const titulo=`${MURAL_DIAS_SEMANA[data.getDay()]}, ${d} de ${MESES[m-1].toLowerCase()} de ${y}`;
   const v=state.days[muralDia];
   if(!v || diaVazio(v)){
-    return `<h3>Você fez</h3><div class="mural-data">${titulo}</div>
-      <div class="mural-vazio">Nada registrado neste dia.</div>
-      <button type="button" class="mural-acao principal" onclick="openDayModal('${muralDia}')">${MURAL_ICO.mais} Registrar este dia</button>`;
+    return telaVazia({desenho:'dia', compacto:true, titulo:'Nada registrado neste dia', texto:'Estudou e esqueceu de marcar? Dá tempo de registrar.', botao:'Registrar este dia', acao:`openDayModal('${muralDia}')`});
   }
+  const d=Number(muralDia.split('-')[2]);
   const itens=muralItensDoDia(v);
   const questoes=itens.reduce((t,i)=>t+i.questoes,0);
   const lista=itens.map(i=>`<li style="--cor:${i.cor}">
@@ -114,32 +136,25 @@ function muralPainelDia(){
       ${i.texto?`<div class="mural-item-texto">${escapeHtmlCarreira(i.texto)}</div>`:''}
     </li>`).join('');
   const saude=String(v.saude||'').trim();
-  const foto=temFotoVisivel(v)?`<img class="mural-foto" src="${fotoDoDia(v)}" alt="Foto do dia ${d}">`:'';
-  return `<h3>Você fez</h3><div class="mural-data">${titulo}</div>
-    <div class="mural-resumo"><div><b>${muralFmtHoras(horasDoDia(v))}</b><span>de estudo</span></div>
-      <div><b>${questoes}</b><span>${questoes===1?'questão':'questões'}</span></div></div>
-    ${foto}
-    ${lista?`<ul class="mural-lista">${lista}</ul>`:''}
-    ${saude?`<div class="mural-nota"><span>Anotação</span>${escapeHtmlCarreira(saude)}</div>`:''}
-    <div class="mural-acoes">
-      <button type="button" class="mural-acao principal" onclick="openDayModal('${muralDia}')">${MURAL_ICO.editar} Abrir / editar</button>
-      <button type="button" class="mural-acao perigo" onclick="deleteDay('${muralDia}')">${MURAL_ICO.lixo} Remover</button>
+  const foto=temFotoVisivel(v)?`<img class="mural-foto" src="${fotoDoDia(v)}" alt="Foto do dia ${d}" title="Clique para ver em tamanho grande" onclick="mmVerImagem(this.src)">`:'';
+  return `<div class="mural-fez-grade">
+      <div>
+        <div class="mural-resumo"><div><b>${muralFmtHoras(horasDoDia(v))}</b><span>de estudo</span></div>
+          <div><b>${questoes}</b><span>${questoes===1?'questão':'questões'}</span></div></div>
+        ${lista?`<ul class="mural-lista">${lista}</ul>`:''}
+        ${saude?`<div class="mural-nota"><span>Anotação</span>${escapeHtmlCarreira(saude)}</div>`:''}
+        <div class="mural-acoes">
+          <button type="button" class="mural-acao principal" onclick="openDayModal('${muralDia}')">${MURAL_ICO.editar} Abrir / editar</button>
+          <button type="button" class="mural-acao perigo" onclick="deleteDay('${muralDia}')">${MURAL_ICO.lixo} Remover</button>
+        </div>
+      </div>
+      ${foto?`<div>${foto}</div>`:''}
     </div>`;
 }
 
-// último dia estudado do mês escolhido (para o painel "Você fez" não começar vazio)
-function muralUltimoDia(){
-  const ks=Object.keys(state.days||{}).filter(k=>k.startsWith(muralChave(muralAno,muralMes)) && isStudyDay(state.days[k])).sort();
-  return ks.length ? ks[ks.length-1] : null;
-}
-function muralEscolherMes(i){ muralMes=i; muralDia=muralUltimoDia(); renderMural(); }
-function muralMudarAno(delta){ muralAno+=delta; muralEscolherMes(muralMes); }
-function muralEscolherDia(k){
-  muralDia=k;
-  document.querySelectorAll('#mural-grid .mural-dia').forEach(b=>b.classList.toggle('sel', b.getAttribute('onclick').includes(`'${k}'`)));
-  const p=document.getElementById('mural-fez'); if(p) p.innerHTML=muralPainelDia();
-}
-
+function muralEscolherMes(i){ muralMes=i; muralDia=null; muralAnim='mes'; renderMural(); }
+function muralMudarAno(delta){ muralAno+=delta; renderMural(); }
+function muralEscolherDia(k){ muralDia=k; muralAnim='dia'; renderMural(); }
 async function deleteDay(key){
   const quer = await customConfirm('Remover o registro do dia '+key.split('-').reverse().join('/')+'?');
   if(quer){ delete state.days[key]; salvarCalendario(); renderMural(); renderCalActive(); updateFoguinho(); }

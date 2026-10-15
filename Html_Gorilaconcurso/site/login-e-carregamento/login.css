@@ -98,3 +98,22 @@ body.light .auth-modal{background:rgba(10,20,41,.55)}
 .auth-rodape a{color:var(--text-secondary);text-decoration:underline}
 .auth-rodape a:hover{color:var(--accent-text)}
 @media (max-width:480px){.auth-box{padding:26px 20px 18px}.au-titulo{font-size:21px}.au-passo-email .auth-marca{margin-top:30px!important}}
+
+/* ─── VISITANTE ➔ CONTA: "Quer salvar o que você fez?" ─── */
+#visitante-modal{z-index:996!important}
+.visitante-janela{max-width:420px!important;padding:28px 28px 22px!important;text-align:center;background:var(--surface-1)!important}
+.visitante-x{position:absolute;top:12px;right:12px}
+.visitante-icone{width:52px;height:52px;margin:0 auto 12px;border-radius:14px;background:var(--accent-bg);color:var(--accent-text);display:flex;align-items:center;justify-content:center}
+.visitante-icone svg{width:26px;height:26px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.visitante-janela h3{font-size:19px;color:var(--text-primary);margin-bottom:8px}
+.visitante-janela p{font-size:13.5px;color:var(--text-secondary)}
+#visitante-lista{list-style:none;margin:12px 0 14px;padding:12px 14px;border-radius:10px;background:var(--surface-2);text-align:left}
+#visitante-lista li{font-size:14px;font-weight:600;color:var(--text-primary);padding:3px 0 3px 22px;position:relative}
+#visitante-lista li::before{content:'';position:absolute;left:4px;top:50%;width:8px;height:8px;margin-top:-4px;border-radius:50%;background:var(--accent)}
+.visitante-nota{font-size:12.5px!important;color:var(--text-muted)!important;margin-bottom:18px}
+.visitante-botoes{display:flex;gap:10px}
+.visitante-botoes button{flex:1;padding:11px 12px;border-radius:10px;font:inherit;font-size:14px;font-weight:700;cursor:pointer}
+.visitante-descartar{background:var(--surface-2);color:var(--text-secondary);border:1px solid var(--border)}
+.visitante-descartar:hover{color:var(--danger);border-color:var(--danger)}
+.visitante-salvar{flex:1.4!important;background:var(--accent);color:#fff;border:none;box-shadow:0 4px 12px rgba(59,130,246,.3)}
+.visitante-salvar:hover{filter:brightness(1.07)}

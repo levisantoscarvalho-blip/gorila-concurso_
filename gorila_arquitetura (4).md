@@ -28,22 +28,25 @@
   │           ├─ [PASSO 2: formulário de e-mail + botão "Voltar" (#au-voltar)]
   │           │     ├─ [Entrar (#auth-login) ➔ entrarLogin()]  (5 tentativas erradas = espera de 30s)
   │           │     │     └─ [Esqueci minha senha ➔ esqueciSenha()]
-  │           │     └─ [Criar conta (#auth-cadastro) ➔ cadastrar()]  (guarda o que o visitante já fez: juntarDadosDoVisitante())
+  │           │     └─ [Criar conta (#auth-cadastro) ➔ cadastrar()]  (o que o visitante fez entra na conta: levarVisitanteParaConta() + juntarDadosDoVisitante() — também no Entrar)
   │           │
   │           ├─ [Trocar: "Não tem uma conta? Criar conta grátis" / "Já tem uma conta? Entrar" (#au-trocar)]
   │           └─ [Rodapé: "Ao continuar, você concorda com os Termos de uso e a Política de privacidade" ➔ institucional/]
   │
   ├─► □ [Ícones Calendário / Notícias SEM conta ➔ entrarComoVisitante()]
   │     └─ (conhecer o site sem cadastro: tudo funciona, nada é salvo; aviso "modo visitante" + botão "Entrar" no topo)
+  │     └─ [Visitante que mexeu em algo clica Entrar / Registrar grátis ➔ ANTES pergunta "Quer salvar o que você fez?" (#visitante-modal, login.js)]
+  │           ├─ Salvar na minha conta ➔ login/cadastro ➔ junta com a conta sem apagar nada (mesmo dia: soma os estudos; curso de mesmo nome: vira um só)
+  │           └─ Descartar ➔ limpa o visitante ➔ login/cadastro
   │
   │
   └─► [Conta salva em PERFIL_KEY = guia_estudos_perfil_v1 (nome, e-mail, senha codificada)]
                 │
                 ▼
 ■ [TELA 2: APP]  ➔ abre direto no Guia Geral (Calendário)
-  │ [Barra superior (barra-superior/): logo ➔ volta à Tela 1 (trIrInicio()) · BUSCA (busca.js: seus cursos, matérias, dias, mapa mental + notícias/editais na internet) · Ajuda (institucional/ajuda.html) · Planos (institucional/planos.html) · Entrar/Sair · Registrar grátis (só sem conta) · Calendário ON/OFF (só aparece na tela do Calendário) · fundo levemente escuro + linha cinza em volta, igual ao cartão de ícones]
-  │ [Barra de ícones FIXA à direita (#theme-rail: Sala · Calendário · Notícias; Notícias abre uma tela EM BRANCO — ainda não disponível) — NÃO MOVER (layout.css; .main reserva 84px, menos a grade do mês, que passa por baixo da barra para ter o tamanho da versão antiga)]
-  │ [Barra lateral: foguinho estilo TikTok (chama desenhada #fogoTT + total de dias, nunca zera; CINZA se ainda não estudou hoje, ACENDE com animação ao registrar o dia; clique ➔ cartão com contagem e tempo até o fim do dia — geral/utilidades.js) · horas do mês + ENGRENAGEM ➔ abrirCores(): "Cores do calendário" (estilo dos dias: Sólido/Degradê/Suave/Contorno/Faixa/Brilho ➔ state.estiloCal · 8 paletas ➔ state.paletaCores + "usar em tudo" · a sombra das FOTOS dos dias segue a cor e o estilo (sombraFoto) · cor de cada curso e registro antigo; paleta completa; tudo é PRÉVIA até o botão Confirmar — fechar/Cancelar desfaz) · tema claro/escuro]
+  │ [Barra superior (barra-superior/): logo ➔ volta à Tela 1 (trIrInicio()) · BUSCA "Pesquise por concurso, matérias, edital..." (busca.js: tudo DENTRO do site, nada vai ao Google — reconhece concursos/cursos (reconhecimento.js) e matérias (catálogo); clicar num concurso ➔ janela de adicionar já preenchida; seus cursos, dias, mapa mental; "edital" ➔ aviso Em breve, TROCAR quando houver editais) · Ajuda (institucional/ajuda.html: o que cada parte faz e para que serve) · Equipe de suporte (institucional/suporte.html) · VER PLANOS (azul-marinho, cantos arredondados, nunca maior que o Registrar-se) · Registrar-se grátis (sem conta; a janela tem "Já tem conta? Entrar") · Sair (só logado; não há botão Entrar no topo) · fundo levemente escuro + linha cinza em volta, igual ao cartão de ícones]
+  │ [Barra de ícones FIXA à direita (#theme-rail: Sala · Calendário · Notícias; Sala abre tela EM BRANCO, sem mensagem; Notícias abre o MAPA 3D do Brasil (noticias/concursos-mapa.js + .css; contornos do IBGE em noticias/mapa-brasil.js; bandeiras em noticias/bandeiras/UF.png, domínio público). Mapa LEVE: cada estado é um canvas desenhado uma vez (cmDesenharMapaLeve) + camada invisível para o mouse; inclinado; estado AUMENTA com o mouse; rodinha amplia, arrastar move, botões + − Brasil inteiro e ?. Ao lado: NÚMEROS DO BRASIL (cmNumerosHTML, exemplo). 1ª visita: TOUR GUIADO de 5 passos (cmTour; lembra em localStorage 'gorila_tour_noticias_v1'; o ? mostra de novo). PARTE 1 = só o mapa; a lista de concursos por região (cmListaHTML/cmAtualizar, dados de EXEMPLO em CONCURSOS_EXEMPLO) fica pronta para a próxima parte) — NÃO MOVER (layout.css; .main reserva 84px, menos a grade do mês, que passa por baixo da barra para ter o tamanho da versão antiga)]
+  │ [Barra lateral: foguinho estilo TikTok (chama desenhada #fogoTT + total de dias, nunca zera; CINZA se ainda não estudou hoje, ACENDE com animação ao registrar o dia; clique ➔ cartão com contagem e tempo até o fim do dia — geral/utilidades.js) · horas do mês + ENGRENAGEM ➔ abrirCores(): "Cores do calendário" (estilo dos dias: Sólido/Degradê/Suave/Contorno/Faixa/Brilho ➔ state.estiloCal · 20 paletas ➔ state.paletaCores + "usar em tudo" · a sombra das FOTOS dos dias segue a cor e o estilo (sombraFoto) · cor de cada curso e registro antigo; paleta completa; tudo é PRÉVIA até o botão Confirmar — fechar/Cancelar desfaz) · tema claro/escuro]
   │
   ├─► □ [Ícone SALA DE ESTUDOS (#tr-sala)]  ➔ por enquanto só mostra "em breve"
   │     └─ (código pronto em sala-de-estudo/: trilhas.js, painel.js — ainda sem botão na tela)
@@ -51,8 +54,9 @@
   ├─► □ [Ícone CALENDÁRIO (#tr-calendario) ➔ trAbrirCalendario() ➔ openSection('guia')]
   │     │
   │     ├─ ▧ [Aba 1: Calendário (#tab-calendario)]  [calendario/calendario.js]
-  │     │     ├─ [4 cartões ➔ updateStats(): Dias estudados no total (= foguinho) · Dias estudados este mês ·
-  │     │     │   Sequência atual (dias seguidos) · Média por dia estudado este mês]  (na visão Ano: "neste ano")
+  │     │     ├─ [Linha do título: "Calendário de estudos" + interruptor "Calendário ligado/desligado" à direita (#tb-cal-switch); desligado ➔ tela com desenho + "Ligar o calendário"]
+  │     │     ├─ [Mês · Ano · ESTATÍSTICAS (PRO) ➔ calendario/estatisticas.js + estatisticas.css: gráfico em L (horas por dia, 7/30/90 dias, linha da média, mira com o valor) + números (total, média, constância, melhor dia, tendência, questões); teste grátis de 3 dias (state.estatisticas.testeInicio), botão para desativar (não cobra), depois borrado com cadeado + Ver planos; TROCAR: state.pro virá da assinatura]
+  │     │     ├─ [4 cartões ➔ updateStats(): Dias estudados no total (= foguinho) · Dias estudados no MÊS DE HOJE · Horas estudadas no total · Média de horas por dia (horas do mês de hoje ÷ todos os dias do mês)]  (na visão Ano: "neste ano")
   │     │     ├─ [Visão Mês / Ano ➔ setCalView()]  [Ano: Cores / Fotos ➔ setCalYearView()]
   │     │     ├─ [Botão Registrar hoje ➔ registrarHoje()]
   │     │     ├─ [+ "O que você está estudando?" ➔ criarMateria(): só digitar; reconhece cursos e concursos (banco-de-dados/reconhecimento.js: cursoReconhecido, "pc sp" = Polícia Civil SP); cor automática (proximaCor)]
@@ -68,10 +72,10 @@
   │     │     │     └─ [No calendário (renderCal): filtro da versão antiga com a cor do dia escurecida (escurecerCor); sem curso = azul-marinho; ícone de foto só ao passar o mouse]
   │     │     └─ [Interruptor ON/OFF ➔ toggleCalendarioAtivo() ➔ state.calendarioAtivo]  (OFF só esconde, não apaga)
   │     │
-  │     ├─ ▧ [Aba 2: Mural do mês (#tab-mural)]  [calendario/mural.js ➔ renderMural() · mural.css]
-  │     │     ├─ [1º Meses do ano (12 botões com nº de dias) + ‹ ano › ➔ muralEscolherMes(i), muralMudarAno()]
-  │     │     ├─ [2º Calendário do mês: dias estudados na cor do curso ➔ muralEscolherDia(data_key)]
-  │     │     └─ [3º "Você fez" (#mural-fez) ➔ muralPainelDia(): horas, questões, foto, o que estudou, assunto e Saúde (se escritos)]
+  │     ├─ ▧ [Aba 2: Mural do mês (#tab-mural)]  [calendario/mural.js ➔ renderMural() · mural.css] — meses à ESQUERDA, mês escolhido AO LADO
+  │     │     ├─ [Esquerda: 12 meses (cartões com dias, horas, barrinha, selo "Este mês") + ‹ ano › ➔ muralEscolherMes(i) · abre já no mês de hoje (muralReiniciar)]
+  │     │     ├─ [Ao lado: calendário do mês (entra animado) ➔ muralEscolherDia(k)]
+  │     │     └─ [Embaixo do calendário: "Você fez" do dia (muralDetalhe/muralPainelDia): horas, questões, o que estudou, anotação, foto]
   │     │           └─ [Abrir / editar ➔ openDayModal() · Remover ➔ deleteDay() · dia vazio: Registrar este dia]
   │     │
   │     ├─ ▧ [Aba 3: Conteúdos (#tab-conteudos)]  [sala-de-estudo/conteudos.js ➔ renderConteudos()]
@@ -89,12 +93,15 @@
         └─ ▧ [Por enquanto só o botão "← Voltar ao calendário" (conteúdo a definir)]
 
 ■ [TEMA CLARO / ESCURO]  [botão "Tema escuro/claro" na barra lateral ➔ toggleTheme() em geral/tema.js ➔ state.theme]
+  │ [Acabamento visual: geral/acabamento.css (ÚLTIMO CSS; fonte Inter, botões 8px, menu, interruptor "Calendário ligado", Mês/Ano, etiquetas de curso + "Adicionar", ícones da direita 52px, barra de cima com linha só embaixo) — só aparência, nada muda de lugar]
+  │ [Celular (até 760px): barra lateral vira faixa em cima com o menu em abas; conteúdo em largura total (layout.css)]
+  │ [Telas vazias: telaVazia() (geral/utilidades.js) ➔ desenho estilo interface com o selo do gorila + frase + botão em Conteúdos, Mapa Mental, Mural e janela de cores; nada fica vazio (exceto Notícias, de propósito)]
   │ [Animações de toque: geral/base.css ➔ tudo que se clica sobe ao passar o mouse e afunda ao clicar; janelas abrem com "pop"]
   │ [Cores: geral/base.css ➔ :root = escuro (cinza neutro, estilo YouTube; azul só nos botões), body.light = claro]  (usar sempre as variáveis --bg, --surface-*, --text-*)
   └ [No escuro, o logo do gorila ganha fundo claro redondo (barra-superior.css) e os ícones da direita ficam azul-claro (layout.css)]
 
-■ [PÁGINAS DO SITE]  [institucional/: ajuda.html · planos.html · termos.html · privacidade.html · contato.html · institucional.css]
-  └ (versão preliminar; Contato ainda sem e-mail ➔ trocar no comentário "TROCAR" de contato.html; Planos ainda sem preços ➔ "TROCAR" de planos.html)
+■ [PÁGINAS DO SITE]  [institucional/: ajuda.html · suporte.html · planos.html · termos.html · privacidade.html · contato.html · institucional.css]
+  └ (versão preliminar; Contato ainda sem e-mail ➔ trocar no comentário "TROCAR" de contato.html; Planos ainda sem preços ➔ "TROCAR" de planos.html; Suporte ainda sem canal ➔ "TROCAR" de suporte.html)
 
 ■ [DADOS]  [banco-de-dados/]
   │ [armazenamento.js] ➔ único arquivo que lê/grava (get, set, delete, list) ➔ trocar aqui ao ir para o Supabase

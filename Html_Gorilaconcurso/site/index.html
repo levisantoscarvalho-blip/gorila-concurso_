@@ -9,14 +9,20 @@
 <link rel="stylesheet" href="login-e-carregamento/carregamento.css">
 <link rel="stylesheet" href="barra-superior/barra-superior.css">
 <link rel="stylesheet" href="noticias/noticias.css">
+<link rel="stylesheet" href="noticias/concursos-mapa.css">
 <link rel="stylesheet" href="login-e-carregamento/login.css">
 <link rel="stylesheet" href="sala-de-estudo/trilhas.css">
 <link rel="stylesheet" href="calendario/calendario.css">
 <link rel="stylesheet" href="calendario/mural.css">
+<link rel="stylesheet" href="calendario/estatisticas.css">
 <link rel="stylesheet" href="sala-de-estudo/conteudos.css">
 <link rel="stylesheet" href="sala-de-estudo/mapa-mental.css">
 <link rel="stylesheet" href="sala-de-estudo/painel.css">
 <link rel="stylesheet" href="geral/layout.css">
+<!-- fonte profissional (Inter) + acabamento visual: SEMPRE o último CSS -->
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="geral/acabamento.css">
 </head>
 <body class="light accent-azul">
 
@@ -114,45 +120,32 @@
   <img id="tb-logo" alt="Gorila" src="" title="Voltar ao início">
   <span class="tb-title" title="Voltar ao início">Gorila Concurso</span>
   <div class="tb-search">
-    <input id="busca-global" type="search" autocomplete="off" placeholder="Pesquise matérias, concursos ou dias de estudo" aria-label="Pesquisar" oninput="bgBuscar(this.value)" onkeydown="bgTecla(event)">
+    <input id="busca-global" type="search" autocomplete="off" placeholder="Pesquise por concurso, matérias, edital..." aria-label="Pesquisar" oninput="bgBuscar(this.value)" onkeydown="bgTecla(event)">
     <svg class="tb-lupa" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5"/></svg>
     <div id="busca-resultados"></div>
   </div>
   <nav class="tb-links" aria-label="Links">
     <a href="institucional/ajuda.html" target="_blank" rel="noopener">Ajuda</a>
-    <a href="institucional/planos.html" target="_blank" rel="noopener">Planos</a>
+    <a href="institucional/suporte.html" target="_blank" rel="noopener">Equipe de suporte</a>
   </nav>
+  <a id="tb-planos" href="institucional/planos.html" target="_blank" rel="noopener">Ver planos</a>
+  <!-- tb-entrar: só aparece como "Sair" para quem está logado (quem não tem conta entra pelo Registrar grátis) -->
   <button id="tb-entrar" onclick="auAbrirLogin('login')" style="display:none">Entrar</button>
-  <button id="tb-cadastro" type="button" onclick="auAbrirLogin('cadastro')" style="display:none">Registrar grátis</button>
-  <div id="tb-cal-switch" title="Calendário ativo"><span class="cal-switch-lbl" id="cal-ativo-lbl">Calendário ON</span><button type="button" class="cal-switch on" id="cal-ativo-btn" onclick="toggleCalendarioAtivo()" role="switch" aria-checked="true" aria-label="Calendário ativo"></button></div>
+  <button id="tb-cadastro" type="button" onclick="tbRegistrar()" style="display:none">Registrar-se grátis</button>
 </div>
 <aside id="news-panel"></aside>
 
 <!-- ═══════════ BARRA DE ÍCONES DA DIREITA (Sala de estudos · Calendário · Notícias) → código em geral/navegacao.js ═══════════ -->
   <!-- BARRA VERTICAL DE TEMAS PRINCIPAIS (visível antes e depois do login) -->
   <nav id="theme-rail" aria-label="Temas principais">
-    <button class="tr-item" id="tr-sala" title="Sala de estudos" aria-label="Sala de estudos" onclick="mostrarToast('Sala de estudos — em breve!')">
-      <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sala de estudos">
-        <path d="M6 44h52M12 44v13M52 44v13"/>
-        <rect x="12" y="20" width="26" height="17" rx="2"/>
-        <path d="M8 41h34"/>
-        <path d="M51 44V31l-4-13"/>
-        <path d="M42 15l9-5 4 8-9 5z"/>
-      </svg>
+    <button class="tr-item" id="tr-sala" title="Sala de estudos" aria-label="Sala de estudos" onclick="trAbrirSala()">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 8.5L12 4l10 4.5-10 4.5z"/><path d="M6 10.4V15c0 1.7 2.7 3 6 3s6-1.3 6-3v-4.6"/><path d="M22 8.5v5"/></svg>
     </button>
     <button class="tr-item" id="tr-calendario" title="Calendário de estudos" aria-label="Calendário de estudos" onclick="trAbrirCalendario()">
-      <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Calendário de estudos">
-        <rect x="8" y="12" width="48" height="44" rx="6"/>
-        <path d="M8 26h48M20 6v12M44 6v12"/>
-        <path d="M22 44l7 7 13-14"/>
-      </svg>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M3.5 9.5h17M8 3v4M16 3v4"/><path d="M9 14.5l2 2 4-4"/></svg>
     </button>
     <button class="tr-item" id="tr-noticias" title="Notícias de concursos" aria-label="Notícias de concursos" onclick="trAbrirNoticias()">
-      <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Notícias de concursos">
-        <path d="M14 10h36a4 4 0 0 1 4 4v36a4 4 0 0 1-4 4H14a4 4 0 0 1-4-4V14a4 4 0 0 1 4-4z"/>
-        <rect x="18" y="18" width="16" height="12" rx="1"/>
-        <path d="M40 20h8M40 28h8M18 38h30M18 46h30"/>
-      </svg>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4.5h11.5a1.5 1.5 0 0 1 1.5 1.5v12.5a2 2 0 0 0 2 2H6a2.5 2.5 0 0 1-2.5-2.5V6A1.5 1.5 0 0 1 5 4.5z"/><path d="M18 9h2v9.5a2 2 0 0 1-2 2"/><path d="M7 8.5h7M7 12h7M7 15.5h4"/></svg>
     </button>
   </nav>
 
@@ -248,7 +241,7 @@
     </div>
     <div class="home-actions">
       <div class="foguinho-box" title="Dias estudados" onclick="tocarFoguinho(this)">
-        <span id="foguinho-icon-home" class="foguinho-emoji fogo-apagado"><svg class="fogo-svg" viewBox="0 0 24 28" aria-hidden="true"><use href="#fogoTT"/></svg></span>
+        <span id="foguinho-icon-home" class="foguinho-emoji fogo-aceso"><svg class="fogo-svg" viewBox="0 0 24 28" aria-hidden="true"><use href="#fogoTT"/></svg></span>
         <span id="foguinho-num-home" class="fogo-num">0</span>
       </div>
       <button class="theme-toggle" onclick="toggleTheme()" id="theme-btn"><svg class="ico-tema" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg> Tema escuro</button>
@@ -332,7 +325,7 @@
           <div class="logo-sub" id="sidebar-section-sub">Calendário · Mural · Conteúdos</div>
         </div>
         <div class="foguinho-box foguinho-sb" title="Dias estudados" onclick="tocarFoguinho(this)">
-          <span id="foguinho-icon-sb" class="foguinho-emoji fogo-apagado"><svg class="fogo-svg" viewBox="0 0 24 28" aria-hidden="true"><use href="#fogoTT"/></svg></span>
+          <span id="foguinho-icon-sb" class="foguinho-emoji fogo-aceso"><svg class="fogo-svg" viewBox="0 0 24 28" aria-hidden="true"><use href="#fogoTT"/></svg></span>
           <span id="foguinho-num-sb" class="fogo-num">0</span>
         </div>
       </div>
@@ -351,29 +344,32 @@
 
 <!-- ═══════════ ABA CALENDÁRIO → código em calendario/calendario.js ═══════════ -->
     <div class="tab-content active" id="tab-calendario">
-      <div class="page-header"><div class="page-title">Calendário de estudos</div><div class="page-sub" id="cal-subtitle">Outubro 2026</div></div>
-      <div id="cal-off-msg"><span class="icon-emoji co-ic">⏸️</span><div style="font-size:14px;font-weight:600;color:var(--text-primary);margin-bottom:4px">Calendário desligado</div><div style="font-size:12.5px">Seus registros continuam salvos. Ligue o botão acima para voltar a usar o calendário.</div></div>
+      <div class="page-header cal-cabecalho"><div><div class="page-title">Calendário de estudos</div><div class="page-sub" id="cal-subtitle">Outubro 2026</div></div>
+        <!-- liga/desliga o calendário: na linha do título (antes ficava na barra de cima) -->
+        <div id="tb-cal-switch" title="Calendário ativo"><span class="cal-switch-lbl" id="cal-ativo-lbl">Calendário ligado</span><button type="button" class="cal-switch on" id="cal-ativo-btn" onclick="toggleCalendarioAtivo()" role="switch" aria-checked="true" aria-label="Calendário ativo"></button></div></div>
+      <div id="cal-off-msg"></div><!-- preenchido por aplicarCalendarioAtivo() (calendario.js) -->
       <div class="stats-row">
         <div class="stat-card"><div class="stat-label">Dias estudados <span class="stat-per">no total</span></div><div class="stat-val" id="stat-total">0</div></div>
         <div class="stat-card"><div class="stat-label">Dias estudados <span class="stat-per" id="stat-dias-sub">este mês</span></div><div class="stat-val" id="stat-dias">0</div></div>
-        <div class="stat-card"><div class="stat-label">Sequência atual <span class="stat-per">de dias seguidos</span></div><div class="stat-val" id="stat-seq">0</div></div>
-        <div class="stat-card"><div class="stat-label">Média por dia estudado <span class="stat-per" id="stat-media-sub">este mês</span></div><div class="stat-val" id="stat-media">0h</div></div>
+        <div class="stat-card"><div class="stat-label">Horas estudadas <span class="stat-per">no total</span></div><div class="stat-val" id="stat-horas-total">0h</div></div>
+        <div class="stat-card"><div class="stat-label">Média de horas por dia <span class="stat-per" id="stat-media-sub">este mês</span></div><div class="stat-val" id="stat-media">0h</div></div>
       </div>
       <div class="cal-header">
         <div style="display:flex;align-items:center;flex-wrap:wrap;gap:8px">
           <div class="cal-view-switch" role="tablist" aria-label="Visualização do calendário">
             <button class="cal-view-btn active" id="cal-view-month-btn" onclick="setCalView('month')"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg> Mês</button>
             <button class="cal-view-btn" id="cal-view-year-btn" onclick="setCalView('year')"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h16M7 16v-5M12 16V7M17 16v-8"/></svg> Ano</button>
+            <button class="cal-view-btn" id="cal-view-stats-btn" onclick="setCalView('stats')"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4v16h16"/><path d="M7.5 14.5l3.5-4 3 2.5 4.5-6"/></svg> Estatísticas <span class="pro-selo">PRO</span></button>
           </div>
           <div class="cal-nav" id="cal-nav-month">
-            <button class="cal-nav-btn" onclick="changeMonth(-1)"><span class="icon-emoji">‹</span></button>
+            <button class="cal-nav-btn" onclick="changeMonth(-1)"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
             <div class="cal-month" id="cal-month-label">Outubro de 2026</div>
-            <button class="cal-nav-btn" onclick="changeMonth(1)"><span class="icon-emoji">›</span></button>
+            <button class="cal-nav-btn" onclick="changeMonth(1)"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
           </div>
           <div class="cal-nav" id="cal-nav-year" style="display:none">
-            <button class="cal-nav-btn" onclick="changeYear(-1)"><span class="icon-emoji">‹</span></button>
+            <button class="cal-nav-btn" onclick="changeYear(-1)"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
             <div class="cal-month" id="cal-year-label">—</div>
-            <button class="cal-nav-btn" onclick="changeYear(1)"><span class="icon-emoji">›</span></button>
+            <button class="cal-nav-btn" onclick="changeYear(1)"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
           </div>
         </div>
         <button class="cal-reg-btn" onclick="registrarHoje()"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg> Registrar hoje</button>
@@ -390,6 +386,7 @@
         </div>
         <div class="cal-year-grid" id="cal-year-grid"></div>
       </div>
+      <div id="cal-stats-view" style="display:none"></div><!-- Estatísticas (Pro): calendario/estatisticas.js -->
       <input type="file" id="cal-img-input" accept="image/*" style="display:none" onchange="addCalImg(this)">
     </div>
 
@@ -622,6 +619,22 @@
 <input type="file" id="dia-foto-input" accept="image/*" style="display:none" onchange="diaFotoEscolhida(this)">
 
 <!-- ─── CORES DO CALENDÁRIO (engrenagem ao lado de "Horas este mês") → calendario/calendario.js ─── -->
+<!-- Visitante que mexeu no site e vai entrar / criar conta: salvar ou descartar? → login-e-carregamento/login.js -->
+<div class="modal-overlay" id="visitante-modal" onclick="if(event.target===this)fecharPerguntaVisitante()">
+  <div class="modal-inner visitante-janela" role="dialog" aria-modal="true" aria-labelledby="visitante-titulo">
+    <button type="button" class="dia-fechar visitante-x" onclick="fecharPerguntaVisitante()" aria-label="Fechar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <div class="visitante-icone"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h11l3 3v13H5z"/><path d="M8 4v5h7V4M8 20v-6h8v6"/></svg></div>
+    <h3 id="visitante-titulo">Quer salvar o que você fez?</h3>
+    <p>Enquanto visitava o site, você adicionou:</p>
+    <ul id="visitante-lista"></ul>
+    <p class="visitante-nota">Se salvar, isso vai para a sua conta assim que você entrar ou criar a conta. Nada do que já está na sua conta é apagado.</p>
+    <div class="visitante-botoes">
+      <button type="button" class="visitante-descartar" onclick="visitanteDescartar()">Descartar</button>
+      <button type="button" class="visitante-salvar" onclick="visitanteSalvar()">Salvar na minha conta</button>
+    </div>
+  </div>
+</div>
+
 <div class="modal-overlay" id="cores-modal" onclick="if(event.target===this)fecharCores()">
   <div class="modal-inner cores-janela" role="dialog" aria-modal="true" aria-labelledby="cores-titulo">
     <div class="dia-cab"><div><div class="dia-titulo" id="cores-titulo">Cores do calendário</div><div class="cores-sub">Clique na cor para abrir a paleta completa e escolher qualquer cor.</div></div>
@@ -678,12 +691,15 @@
 <script src="login-e-carregamento/login.js"></script>
 <script src="barra-superior/busca.js"></script>
 <script src="noticias/noticias.js"></script>
+<script src="noticias/mapa-brasil.js"></script>
+<script src="noticias/concursos-mapa.js"></script>
 <script src="sala-de-estudo/trilhas.js"></script>
 <script src="sala-de-estudo/conteudos.js"></script>
 <script src="sala-de-estudo/mapa-mental.js"></script>
 <script src="sala-de-estudo/painel.js"></script>
 <script src="calendario/calendario.js"></script>
 <script src="calendario/mural.js"></script>
+<script src="calendario/estatisticas.js"></script>
 <script src="geral/iniciar.js"></script>
 </body>
 </html>

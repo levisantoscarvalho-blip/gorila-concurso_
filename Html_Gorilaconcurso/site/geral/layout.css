@@ -19,8 +19,10 @@
 #topbar{z-index:990!important}
 #mindmap-modal{top:64px!important}
 #news-screen{position:fixed;top:64px;left:0;right:0;bottom:0;z-index:960;background:var(--bg);display:none}
-.tr-item.ativo{filter:drop-shadow(0 0 6px rgba(47,107,255,.6))}
+/* ícone da tela atual: traço mais grosso + tracinho azul embaixo (sem brilho, que manchava o fundo do cartão) */
+.tr-item{position:relative}
 .tr-item.ativo svg{stroke-width:3.6}
+.tr-item.ativo::after{content:'';position:absolute;left:50%;bottom:-8px;width:18px;height:3px;margin-left:-9px;border-radius:2px;background:var(--tr-cor,#2f6bff)}
 #topbar{cursor:pointer}
 #tb-logo,.tb-title{cursor:pointer;transition:opacity .15s}
 #tb-logo:hover,.tb-title:hover{opacity:.75}
@@ -44,3 +46,26 @@
 @media (max-width:1099px){#theme-rail{top:auto;bottom:16px;right:16px;transform:none;flex-direction:row;gap:20px}}
 /* ícones da direita: no escuro, um azul mais claro para não sumir */
 body:not(.light){--tr-cor:#7aa2ff}
+
+/* ─── CELULAR (até 760px): a barra lateral vira uma faixa em cima e o conteúdo usa a tela toda ───
+   (no computador nada muda; a barra de ícones continua no mesmo lugar de sempre no celular: embaixo) */
+@media (max-width:760px){
+  #app-shell .app{flex-direction:column}
+  #app-shell .sidebar{width:100%;min-width:0;height:auto;flex-shrink:0;border-right:none;border-bottom:1px solid var(--border);overflow:visible}
+  #app-shell .sidebar-logo{padding:10px 14px;gap:0}
+  #app-shell .sidebar-logo .logo-sub{display:none}
+  #sidebar-nav{display:flex;gap:6px;padding:8px 12px;overflow-x:auto;scrollbar-width:none}
+  #sidebar-nav::-webkit-scrollbar{display:none}
+  #sidebar-nav .nav-item{flex-shrink:0;white-space:nowrap;border-left:none;border-radius:20px;padding:7px 13px;background:var(--surface-2)}
+  #sidebar-nav .nav-item.active{background:var(--accent-bg);color:var(--accent-text)}
+  #app-shell .sidebar-footer{display:flex;align-items:center;flex-wrap:wrap;gap:8px 10px;padding:8px 14px;margin-top:0;border-top:1px solid var(--border)}
+  #app-shell .sidebar-footer .footer-label{margin:0}
+  #app-shell .sidebar-footer .footer-linha{gap:8px}
+  #app-shell .sidebar-footer .footer-val{font-size:16px}
+  #app-shell .sidebar-footer .sb-btn{width:auto;margin:0 0 0 auto;padding:6px 12px}
+  #app-shell .main{flex:1;min-height:0;padding-bottom:110px}   /* espaço para os ícones de baixo não cobrirem nada */
+  #app-shell .tab-content{padding:16px 12px}
+  .stats-row{grid-template-columns:repeat(2,1fr);gap:8px}
+  /* no celular não existe "passar o mouse": o ícone de foto cobria o número do dia (a foto é colocada abrindo o dia) */
+  #cal-grid .cal-img-add{display:none}
+}

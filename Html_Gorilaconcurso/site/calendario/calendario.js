@@ -24,15 +24,15 @@ function materiaNome(e){ const m=(state.conteudosCustom||[]).find(x=>x.id===e.ma
 function dayRefEstudo(info){ const es=(info&&info.estudos)||[]; return es[info.imgEstudo||0]||es[0]||null; }
 function horasDe(cursoId,materiaId){ let t=0; Object.values(state.days||{}).forEach(d=>{ ((d&&d.estudos)||[]).forEach(e=>{ if(e.cursoId===cursoId&&(!materiaId||e.materiaId===materiaId)) t+=Number(e.horas)||0; }); }); return Math.round(t*10)/10; }
 // Foto do dia: guarda a ORIGINAL (qualidade total, como na versão antiga).
-// Só reduz se for muito grande (acima de 4 MB), e mesmo assim em alta qualidade.
+// Só reduz se for enorme (acima de 10 MB), e mesmo assim em altíssima qualidade (3200 px, 96%).
 function comprimirImagem(file,cb){
   const r=new FileReader();
   r.onload=e=>{
-    if(file.size <= 4*1024*1024) return cb(e.target.result);
+    if(file.size <= 10*1024*1024) return cb(e.target.result);
     const img=new Image();
-    img.onload=()=>{ const MAX=2400; const k=Math.min(1,MAX/Math.max(img.width,img.height)); const w=Math.round(img.width*k), h=Math.round(img.height*k);
+    img.onload=()=>{ const MAX=3200; const k=Math.min(1,MAX/Math.max(img.width,img.height)); const w=Math.round(img.width*k), h=Math.round(img.height*k);
       const c=document.createElement('canvas'); c.width=w; c.height=h; const x=c.getContext('2d'); x.imageSmoothingEnabled=true; x.imageSmoothingQuality='high'; x.drawImage(img,0,0,w,h);
-      cb(c.toDataURL('image/jpeg',0.93)); };
+      cb(c.toDataURL('image/jpeg',0.96)); };
     img.onerror=()=>cb(e.target.result); img.src=e.target.result; };
   r.readAsDataURL(file);
 }
@@ -197,9 +197,10 @@ function atualizarAvisoVisitante(){
   let av=document.getElementById('cal-visitante-aviso');
   if(window.__guest){
     if(!av){
-      av=document.createElement('div'); av.id='cal-visitante-aviso';
-      av.style.cssText='display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:16px;padding:12px 16px;border-radius:var(--radius);background:var(--accent-bg);border:1px solid var(--accent);color:var(--text-primary);font-size:13px';
-      av.innerHTML='<span style="flex:1;min-width:220px"><strong>Você está no modo visitante.</strong> Os números começam zerados e nada é salvo. Entre na sua conta para ver o seu progresso.</span><button type="button" onclick="auEscolher(\'login\')" style="padding:8px 16px;border:none;border-radius:8px;background:var(--accent);color:#fff;font-weight:700;cursor:pointer">Entrar</button>';
+      av=document.createElement('div'); av.id='cal-visitante-aviso'; av.className='aviso-visitante';   // visual em geral/acabamento.css
+      av.innerHTML='<span class="av-icone"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg></span>'
+        +'<span class="av-texto"><strong>Você está no modo visitante.</strong> Pode testar à vontade: ao criar a sua conta grátis, você escolhe se quer guardar o que fez aqui.</span>'
+        +'<button type="button" class="av-botao" onclick="tbRegistrar()">Criar conta grátis</button>';
       const header=tab.querySelector('.page-header');
       header.insertAdjacentElement('afterend', av);
     }
@@ -270,23 +271,29 @@ function aplicarCalendarioAtivo(){
   const on = calAtivo();
   const tab = document.getElementById('tab-calendario'); if(tab) tab.classList.toggle('cal-off', !on);
   const b = document.getElementById('cal-ativo-btn'); if(b){ b.classList.toggle('on', on); b.setAttribute('aria-checked', on); }
-  const l = document.getElementById('cal-ativo-lbl'); if(l) l.textContent = on ? 'Calendário ON' : 'Calendário OFF';
+  const l = document.getElementById('cal-ativo-lbl'); if(l) l.textContent = on ? 'Calendário ligado' : 'Calendário desligado';
+  // calendário desligado: desenho + frase + botão (no lugar do antigo emoji de pausa)
+  const msg = document.getElementById('cal-off-msg');
+  if(msg) msg.innerHTML = on ? '' : telaVazia({desenho:'desligado', compacto:true, titulo:'Calendário desligado', texto:'Seus registros continuam salvos. Ligue de novo quando quiser voltar a usar o calendário.', botao:'Ligar o calendário', icone:false, acao:'toggleCalendarioAtivo()'});
   const s = document.getElementById('cal-ativo-sub'); if(s) s.textContent = on ? 'Ligado: você pode ver e registrar seus dias de estudo.' : 'Desligado: o calendário fica oculto. Seus dados continuam salvos.';
 }
 function toggleCalendarioAtivo(){
   state.calendarioAtivo = !calAtivo();
   saveState(); renderCalActive();
-  mostrarToast(calAtivo() ? 'Calendário ligado' : 'Calendário desligado');
 }
-function renderCalActive(){ aplicarCalendarioAtivo(); atualizarAvisoVisitante(); if(!calAtivo()) return; if(calView==='year') renderYearCal(); else renderCal(); if(typeof renderMateriasEstudo==='function') renderMateriasEstudo(); }
+function renderCalActive(){ aplicarCalendarioAtivo(); atualizarAvisoVisitante(); if(!calAtivo()) return; if(calView==='year') renderYearCal(); else renderCal(); if(calView==='stats' && typeof renderEstatisticas==='function') renderEstatisticas(); if(typeof renderMateriasEstudo==='function') renderMateriasEstudo(); }
+// 'month' · 'year' · 'stats' (Estatísticas — Pro, em calendario/estatisticas.js)
 function setCalView(v){
   calView = v;
   document.getElementById('cal-view-month-btn').classList.toggle('active', v==='month');
   document.getElementById('cal-view-year-btn').classList.toggle('active', v==='year');
+  const sb=document.getElementById('cal-view-stats-btn'); if(sb) sb.classList.toggle('active', v==='stats');
   document.getElementById('cal-month-view').style.display = v==='month' ? '' : 'none';
   document.getElementById('cal-year-view').style.display = v==='year' ? '' : 'none';
+  const sv=document.getElementById('cal-stats-view'); if(sv) sv.style.display = v==='stats' ? '' : 'none';
   document.getElementById('cal-nav-month').style.display = v==='month' ? '' : 'none';
   document.getElementById('cal-nav-year').style.display = v==='year' ? '' : 'none';
+  const cm=document.getElementById('cal-materias'); if(cm) cm.style.display = v==='stats' ? 'none' : '';
   renderCalActive();
 }
 function changeYear(delta){ state.year += delta; renderCalActive(); }
@@ -314,6 +321,18 @@ const PALETAS=[
   {id:'oceano',   nome:'Oceano',   cores:['#03045e','#023e8a','#0077b6','#0096c7','#00b4d8','#48cae4','#90e0ef','#0a9396','#005f73','#94d2bd','#2a9d8f','#264653','#3a86ff','#4361ee','#4cc9f0','#7209b7']},
   {id:'por-do-sol',nome:'Pôr do sol',cores:['#ffbe0b','#fb8500','#ffb703','#f77f00','#fb5607','#e85d04','#d62828','#9d0208','#ff006e','#f72585','#b5179e','#8338ec','#560bad','#3a0ca3','#ef476f','#ffd166']},
   {id:'cinza',    nome:'Cinzas',   cores:['#f8fafc','#e2e8f0','#cbd5e1','#94a3b8','#64748b','#475569','#334155','#1e293b','#0f172a','#000000','#a8a29e','#78716c','#57534e','#44403c','#d4d4d8','#71717a']},
+  {id:'profissional',nome:'Profissional',cores:['#1e3a8a','#1d4ed8','#0369a1','#0f766e','#15803d','#4d7c0f','#a16207','#b45309','#b91c1c','#9f1239','#86198f','#6b21a8','#4338ca','#334155','#0f172a','#525252']},
+  {id:'floresta', nome:'Floresta', cores:['#052e16','#14532d','#166534','#15803d','#16a34a','#22c55e','#4ade80','#86efac','#365314','#4d7c0f','#65a30d','#84cc16','#3f6212','#1a2e05','#a3e635','#bef264']},
+  {id:'lavanda',  nome:'Lavanda',  cores:['#2e1065','#4c1d95','#5b21b6','#6d28d9','#7c3aed','#8b5cf6','#a78bfa','#c4b5fd','#ddd6fe','#581c87','#7e22ce','#9333ea','#a855f7','#c084fc','#d8b4fe','#e9d5ff']},
+  {id:'vinho',    nome:'Vinho',    cores:['#450a0a','#7f1d1d','#991b1b','#b91c1c','#881337','#9f1239','#be123c','#e11d48','#4a044e','#701a75','#86198f','#a21caf','#831843','#9d174d','#be185d','#db2777']},
+  {id:'cafe',     nome:'Café',     cores:['#1c1917','#292524','#3b2a20','#4a3426','#5c4033','#6f4e37','#7f5539','#8d6748','#9c7a5b','#a98467','#b99470','#c8a27c','#d6b38f','#e3c6a6','#efdcc6','#f7ede2']},
+  {id:'doces',    nome:'Doces',    cores:['#ff8fab','#ffb3c6','#ffc8dd','#fb6f92','#cdb4db','#bde0fe','#a2d2ff','#caffbf','#9bf6ff','#fdffb6','#ffd6a5','#ffadad','#e0aaff','#c77dff','#72efdd','#80ffdb']},
+  {id:'retro',    nome:'Retrô',    cores:['#264653','#2a9d8f','#e9c46a','#f4a261','#e76f51','#606c38','#dda15e','#bc6c25','#8d99ae','#2b2d42','#ef233c','#d90429','#588157','#a3b18a','#3a5a40','#344e41']},
+  {id:'nordico',  nome:'Nórdico',  cores:['#2e3440','#3b4252','#434c5e','#4c566a','#5e81ac','#81a1c1','#88c0d0','#8fbcbb','#a3be8c','#ebcb8b','#d08770','#bf616a','#b48ead','#d8dee9','#e5e9f0','#eceff4']},
+  {id:'primavera',nome:'Primavera',cores:['#ffbe0b','#ff006e','#8338ec','#3a86ff','#06d6a0','#ef476f','#ffd166','#118ab2','#73d2de','#ff9f1c','#2ec4b6','#cbf3f0','#ffbf69','#e5989b','#b5838d','#6d6875']},
+  {id:'outono',   nome:'Outono',   cores:['#7c2d12','#9a3412','#c2410c','#ea580c','#f97316','#fb923c','#b45309','#d97706','#f59e0b','#fbbf24','#78350f','#92400e','#a16207','#ca8a04','#713f12','#854d0e']},
+  {id:'metalicas',nome:'Metálicas',cores:['#b08d57','#d4af37','#c0c0c0','#a8a9ad','#cd7f32','#b87333','#8c7853','#e5e4e2','#71706e','#aaa9ad','#d6c6a5','#9c7c38','#7a7a7a','#bdbdbd','#5c5c5c','#e0c097']},
+  {id:'arcoiris', nome:'Arco-íris',cores:['#e81416','#ff6d00','#ffa500','#faeb36','#c6e03b','#79c314','#00b16a','#00c2c7','#00a3e0','#487de7','#4b369d','#70369d','#a03ea8','#d63aaf','#ff4f9a','#ff7b89']},
 ];
 function paletaAtual(){ return PALETAS.find(p=>p.id===state.paletaCores) || PALETAS[0]; }
 // Enquanto a janela está aberta tudo é só PRÉVIA; "Confirmar" salva, fechar sem confirmar desfaz.
@@ -329,7 +348,6 @@ function fecharCores(){
     if(a.coresAreas) state.coresAreas=a.coresAreas; else delete state.coresAreas;
     a.cursos.forEach(([id,cor])=>{ const c=(state.cursos||[]).find(x=>x.id===id); if(c) c.cor=cor; });
     redesenharCores();
-    mostrarToast('Nada foi alterado');
   }
   coresAntes=null;
   document.getElementById('cores-modal').classList.remove('open');
@@ -340,7 +358,7 @@ function confirmarCores(){
   coresAntes=null;
   document.getElementById('cores-modal').classList.remove('open');
   const est=ESTILOS_CAL.find(e=>e.id===estiloCalAtual()).nome, pal=paletaAtual().nome;
-  mostrarToast(mudou ? `Cores salvas: ${est} · paleta ${pal}` : 'Nenhuma mudança');
+  if(mudou) mostrarToast(`Cores salvas: ${est} · paleta ${pal}`);   // só confirma quando algo mudou
 }
 function redesenharCores(){ renderCalActive(); renderConteudos(); renderMural(); if(document.getElementById('cores-modal').classList.contains('open')) renderCores(); }
 // Resumo embaixo da janela: o que está escolhido agora
@@ -371,7 +389,7 @@ function renderCores(){
     `<section class="dia-secao"><h4>Como os dias aparecem no calendário</h4><div class="estilos-grade">${estilos}</div></section>`
     +`<section class="dia-secao"><h4>Paletas de cores</h4><div class="paleta-abas">${abas}</div>`
     +((state.cursos||[]).length?`<button type="button" class="paleta-aplicar" onclick="aplicarPaleta()">Usar a paleta ${pal.nome} em tudo</button>`:'')+`</section>`
-    +(cursos?`<section class="dia-secao"><h4>O que você está estudando</h4>${cursos}</section>`:'<div class="dia-vazio" style="padding:16px 0">Adicione o que você está estudando no + do calendário para escolher as cores.</div>')
+    +(cursos?`<section class="dia-secao"><h4>O que você está estudando</h4>${cursos}</section>`:telaVazia({desenho:'cursos', compacto:true, titulo:'Escolha as cores dos seus cursos', texto:'Adicione o que você está estudando e depois escolha uma cor para cada um.', botao:'Adicionar curso ou concurso', acao:'fecharCores();abrirAddMateria()'}))
     +(antigas?`<section class="dia-secao"><h4>Registros antigos</h4>${antigas}</section>`:'');
   resumoCores();
 }
@@ -554,7 +572,7 @@ function renderDayEditForm(){
     : `${linhas}<div class="dia-vazio">Para registrar, primeiro adicione o que você está estudando.</div>
        <button type="button" class="dia-link" onclick="closeDayModal();abrirAddMateria()">${DIA_ICO.mais} Adicionar curso ou concurso</button>`;
   const fotoHtml = editImgSelecionada
-    ? `<div class="dia-foto"><img src="${editImgSelecionada}" alt="Foto do dia"><div class="dia-foto-acoes">
+    ? `<div class="dia-foto"><img src="${editImgSelecionada}" alt="Foto do dia" title="Clique para ver em tamanho grande" style="cursor:zoom-in" onclick="mmVerImagem(this.src)"><div class="dia-foto-acoes">
          <button type="button" class="dia-link" onclick="document.getElementById('dia-foto-input').click()">Trocar</button>
          <button type="button" class="dia-link perigo" onclick="diaRemoverFoto()">Remover</button></div></div>`
     : `<button type="button" class="dia-link" onclick="document.getElementById('dia-foto-input').click()">${DIA_ICO.foto} Adicionar foto</button>`;
@@ -617,15 +635,28 @@ function changeMonth(d){
 }
 
 // Números do topo do calendário — do mês aberto (visão Mês) ou do ano inteiro (visão Ano)
+// Os 4 cartões do topo do calendário (decisão do Levi):
+// 1) Dias estudados no total — todos os dias com estudo, nunca zera (= foguinho)
+// 2) Dias estudados este mês — SEMPRE o mês de hoje (não muda ao navegar no calendário)
+// 3) Horas estudadas no total — soma de TODAS as horas registradas, nunca zera
+// 4) Média de horas por dia — horas do mês de hoje ÷ TODOS os dias do mês (30/31)
 function updateStats(){
-  const noAno = calView==='year';
-  const { dias, horas } = resumoPeriodo(noAno ? String(state.year) : `${state.year}-${String(state.month+1).padStart(2,'0')}`);
+  const hoje = new Date();
+  const { dias, horas } = resumoPeriodo(`${hoje.getFullYear()}-${String(hoje.getMonth()+1).padStart(2,'0')}`);
+  const diasDoMes = new Date(hoje.getFullYear(), hoje.getMonth()+1, 0).getDate();
+  const horasTotal = Object.values(state.days||{}).reduce((t,v)=>t+horasDoDia(v),0);
   const setEl=(id,v)=>{const el=document.getElementById(id);if(el)el.textContent=v;};
-  const periodo = noAno ? 'neste ano' : 'este mês';
   setEl('stat-total', Object.values(state.days||{}).filter(isStudyDay).length); // mesmo número do foguinho
-  setEl('stat-dias',dias);              setEl('stat-dias-sub', periodo);
-  setEl('stat-seq', calcularSequenciaAtual());
-  setEl('stat-media',(dias?arred1(horas/dias):0)+'h'); setEl('stat-media-sub', periodo);
+  setEl('stat-dias',dias);              setEl('stat-dias-sub', 'em '+MESES[hoje.getMonth()].toLowerCase());
+  setEl('stat-horas-total', formatarHoras(horasTotal));
+  setEl('stat-media', formatarHoras(horas/diasDoMes)); setEl('stat-media-sub', 'em '+MESES[hoje.getMonth()].toLowerCase());
+}
+// 3h → "3h" · 0,5h → "30min" · 1,25h → "1h 15min"
+function formatarHoras(h){
+  const min = Math.round((Number(h)||0)*60);
+  if(min===0) return '0h';
+  const hh = Math.floor(min/60), mm = min%60;
+  return hh && mm ? `${hh}h ${mm}min` : hh ? `${hh}h` : `${mm}min`;
 }
 
 // "Horas este mês" da barra lateral — sempre do mês de HOJE
@@ -652,9 +683,9 @@ function renderMateriasEstudo(){
   const el=document.getElementById('cal-materias'); if(!el) return;
   migrarCursos();
   const lista=state.cursos||[];
-  el.innerHTML=lista.map(m=>`<div class="legend-item" style="background:var(--surface-1);border:1px solid var(--border);border-radius:16px;padding:4px 6px 4px 10px;gap:7px"><div class="legend-dot" style="background:${corCurso(m)}"></div>${escapeHtmlCarreira(m.nome)}<button onclick="removerMateria('${m.id}')" title="Remover (também sai de Conteúdos)" style="background:none;border:none;color:var(--text-muted);cursor:pointer;font-size:11px;padding:0 3px">✕</button></div>`).join('')
-   +`<button onclick="abrirAddMateria()" title="Adicionar o que você está estudando (também aparece em Conteúdos)" style="width:30px;height:30px;border-radius:50%;border:1px dashed var(--border-strong);background:var(--surface-1);color:var(--accent-text);font-size:18px;font-weight:700;cursor:pointer;line-height:1">+</button>`
-   +(lista.length?'':'<span style="font-size:12px;color:var(--text-muted)">Clique no + para adicionar o que você está estudando</span>');
+  // cursos como "etiquetas" + botão claro para adicionar (antes era um "+" solto)
+  el.innerHTML=lista.map(m=>`<div class="curso-chip"><span class="curso-chip-cor" style="background:${corCurso(m)}"></span>${escapeHtmlCarreira(m.nome)}<button type="button" class="curso-chip-x" onclick="removerMateria('${m.id}')" title="Remover (também sai de Conteúdos)" aria-label="Remover ${escapeHtmlCarreira(m.nome)}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7l10 10M17 7L7 17"/></svg></button></div>`).join('')
+   +`<button type="button" class="cal-add-curso" onclick="abrirAddMateria()" title="Adicionar o que você está estudando (também aparece em Conteúdos)">${ICO.mais} ${lista.length?'Adicionar':'Adicionar o que você está estudando'}</button>`;
 }
 function abrirAddMateria(){
   document.getElementById('nova-materia-nome').value='';

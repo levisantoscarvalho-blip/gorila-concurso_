@@ -43,7 +43,8 @@
 .mural-resumo div{background:var(--surface-2);border-radius:9px;padding:10px 12px}
 .mural-resumo b{display:block;font-size:20px;color:var(--text-primary)}
 .mural-resumo span{font-size:11.5px;color:var(--text-muted)}
-.mural-foto{width:100%;max-height:180px;object-fit:cover;border-radius:9px;margin-bottom:14px;display:block}
+/* foto inteira (sem cortar nem espremer); clique abre em tamanho grande */
+.mural-foto{width:100%;height:auto;max-height:340px;object-fit:contain;background:var(--surface-2);border-radius:9px;margin-bottom:14px;display:block;cursor:zoom-in;image-rendering:auto}
 .mural-lista{list-style:none;margin:0 0 12px;padding:0;display:flex;flex-direction:column;gap:8px}
 .mural-lista li{border:1px solid var(--border);border-left:4px solid var(--cor);border-radius:8px;padding:9px 11px;background:var(--surface-2)}
 .mural-item-topo{display:flex;justify-content:space-between;gap:10px;font-size:13.5px}
@@ -62,3 +63,52 @@
 
 @media (max-width:900px){.mural-corpo{grid-template-columns:1fr}.mural-meses{grid-template-columns:repeat(4,1fr)}}
 @media (max-width:480px){.mural-meses{grid-template-columns:repeat(3,1fr)}.mural-passo{padding:12px}}
+
+/* ═══ MESES À ESQUERDA · MÊS ESCOLHIDO AO LADO ═══ */
+.mural-lado{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:16px;align-items:start}
+.mural-lado .mural-passo{padding:18px}
+.mural-lado-cab{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px;flex-wrap:wrap}
+.mural-lado-cab h3{font-size:16px!important;font-weight:700;letter-spacing:-.01em}
+.mural-lado-cab p{font-size:12.5px;color:var(--text-secondary);margin-top:2px}
+.mural-lado .mural-ano{margin:0;gap:10px}
+.mural-lado .mural-ano b{font-size:15px;min-width:40px}
+/* meses: cartões compactos com dias, horas e barrinha */
+.mural-lado .mural-meses{grid-template-columns:repeat(3,1fr);gap:8px}
+.mural-lado .mural-mes{align-items:stretch;text-align:left;gap:4px;padding:10px 11px;border-radius:10px;background:var(--surface-1);border:1px solid var(--border)}
+.mural-lado .mural-mes:hover{border-color:var(--accent)}
+.mural-mes-topo{display:flex;align-items:center;justify-content:space-between;gap:4px}
+.mural-lado .mural-mes-nome{font-size:13.5px;font-weight:700;color:var(--text-primary)}
+.mural-lado .mural-mes-dias{font-size:11.5px;color:var(--text-secondary)}
+.mural-lado .mural-mes.vazio .mural-mes-dias{color:var(--text-muted)}
+.mural-mes-selo{font-size:9.5px;font-weight:700;color:var(--accent-text);background:var(--accent-bg);padding:2px 6px;border-radius:999px;white-space:nowrap}
+.mural-mes-barra{display:block;height:3px;border-radius:2px;background:var(--surface-3);overflow:hidden;margin-top:3px}
+.mural-mes-barra i{display:block;height:100%;background:var(--accent);border-radius:2px}
+.mural-lado .mural-mes.ativo{background:var(--accent);border-color:var(--accent)}
+.mural-lado .mural-mes.ativo .mural-mes-nome,.mural-lado .mural-mes.ativo .mural-mes-dias{color:#fff}
+.mural-lado .mural-mes.ativo .mural-mes-barra{background:rgba(255,255,255,.3)}
+.mural-lado .mural-mes.ativo .mural-mes-barra i{background:#fff}
+.mural-lado .mural-mes.ativo .mural-mes-selo{background:rgba(255,255,255,.2);color:#fff}
+/* mês ao lado: calendário + o que fez */
+.mural-lado .mural-grade{gap:6px}
+.mural-lado .mural-dia{border-radius:8px}
+.mural-dia-detalhe{margin-top:16px;padding-top:14px;border-top:1px solid var(--border)}
+.mural-dia-detalhe .mural-data{font-size:13px;color:var(--text-secondary);margin-bottom:12px}
+.mural-dia-detalhe .mural-data b{color:var(--text-primary)}
+.mural-dia-detalhe .mural-dica{margin:0}
+.mural-lado .mural-fez-grade{display:block}
+.mural-lado .mural-fez-grade .mural-foto{margin:12px 0 0}
+
+@media (max-width:1000px){ .mural-lado{grid-template-columns:1fr} .mural-lado .mural-meses{grid-template-columns:repeat(4,1fr)} }
+@media (max-width:600px){ .mural-lado .mural-meses{grid-template-columns:repeat(3,1fr)} .mural-lado .mural-passo{padding:14px} }
+
+/* animação: o mês aparece ao lado deslizando; o dia aparece embaixo */
+@media (prefers-reduced-motion:no-preference){
+  .mural-lado-mes.entra{animation:muralAparece .38s cubic-bezier(.2,.8,.2,1)}
+  .mural-lado-mes.entra .mural-dia{animation:muralDiaEntra .3s ease both;animation-delay:calc(var(--i) * 10ms)}
+  .mural-dia-detalhe.entra{animation:muralSobe .32s cubic-bezier(.2,.8,.2,1)}
+  .mural-dia.sel{animation:muralSel .35s cubic-bezier(.34,1.56,.64,1)}
+}
+@keyframes muralAparece{from{opacity:0;transform:translateX(-18px)}to{opacity:1;transform:none}}
+@keyframes muralDiaEntra{from{opacity:0;transform:scale(.85)}to{opacity:1;transform:none}}
+@keyframes muralSobe{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@keyframes muralSel{0%{transform:scale(.9)}60%{transform:scale(1.1)}100%{transform:scale(1)}}

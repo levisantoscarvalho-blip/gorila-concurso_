@@ -73,7 +73,6 @@ function criarConteudo(){
   saveState();
   renderConteudos();
   fecharAddConteudo();
-  if(conhecida && bgNorm(conhecida)!==bgNorm(digitado)) mostrarToast(`Matéria reconhecida: ${conhecida}`);
 }
 
 // ── Matérias que o sistema reconhece (lista em banco-de-dados/catalogo-concursos.js) ──
@@ -136,7 +135,10 @@ function renderConteudos(){
   migrarCursos();
   const g=document.getElementById('cursos-grid'); if(!g) return;
   if(!state.cursos.length){
-    g.innerHTML='<div class="empty-state"><p>Nenhum curso ainda. Clique em "Adicionar curso" (ex: Direito, Psicologia) e depois adicione as matérias de cada um.</p></div>';
+    g.innerHTML=telaVazia({desenho:'cursos', titulo:'Monte a sua lista de estudos',
+      texto:'Organize o que você estuda e acompanhe o quanto já avançou em cada matéria.',
+      passos:['Adicione o curso ou concurso (ex.: INSS, Direito)','Coloque as matérias de cada um','Marque o que já estudou e veja o progresso'],
+      botao:'Adicionar curso', acao:'abrirAddCurso()'});
     return;
   }
   g.innerHTML=state.cursos.map(c=>{
@@ -147,7 +149,7 @@ function renderConteudos(){
       <h3><span class="legend-dot" style="background:${corCurso(c)};flex-shrink:0"></span> ${escapeHtmlCarreira(c.nome)}<button type="button" class="card-add-btn" onclick="abrirAddConteudo('${c.id}')" title="Adicionar matéria" aria-label="Adicionar matéria"><svg class="ico-card" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button><button type="button" class="card-add-btn perigo" style="margin-left:6px" onclick="excluirCurso('${c.id}')" title="Excluir curso" aria-label="Excluir curso"><svg class="ico-card" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13M10 11v6M14 11v6"/></svg></button></h3>
       <div class="prog-row"><span>${done} / ${itens.length} matérias${horasDe(c.id)?` · <b class="prog-horas">${horasDe(c.id)}h estudadas</b>`:''}</span><span>${pct}%</span></div>
       <div class="prog-bar-wrap"><div class="prog-bar" style="width:${pct}%"></div></div>
-      ${lista||'<div style="font-size:11px;color:var(--text-muted);margin-top:6px">Nenhuma matéria ainda — clique no + do curso.</div>'}
+      ${lista||`<button type="button" class="vazio-mini" onclick="abrirAddConteudo('${c.id}')">${ICO.mais} Adicionar a primeira matéria</button>`}
     </div>`;
   }).join('');
 }

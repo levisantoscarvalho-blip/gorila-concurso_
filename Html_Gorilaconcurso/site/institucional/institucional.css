@@ -33,6 +33,12 @@ summary::-webkit-details-marker{display:none}
 summary::after{content:'+';color:var(--destaque-txt);font-weight:700;font-size:17px;line-height:1}
 details[open] summary::after{content:'–'}
 details p{margin-top:8px}
+/* Ajuda: cada parte do site (o que faz + para que serve) */
+.partes{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px;margin-top:10px}
+.parte{border:1px solid var(--borda);border-left:4px solid var(--destaque);border-radius:10px;padding:12px 14px}
+.parte h3{font-size:15px;margin-bottom:6px}
+.parte p{font-size:13.5px}
+.parte p+p{margin-top:5px}
 /* Planos */
 .plano{position:relative;border:2px solid var(--destaque)}
 .plano-selo{display:inline-block;font-size:11.5px;font-weight:700;color:var(--destaque-txt);background:color-mix(in srgb,var(--destaque) 14%,transparent);padding:3px 10px;border-radius:20px;margin-bottom:8px}

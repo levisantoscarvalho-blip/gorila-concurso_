@@ -1,0 +1,157 @@
+/* ════════════════════════════════════════════
+   ACABAMENTO — visual profissional (carregado por ÚLTIMO, depois de todos os outros CSS)
+   Só muda a APARÊNCIA: nada sai do lugar. Para desfazer, basta remover o <link> deste arquivo.
+   Padrão: fonte Inter · botões com cantos de 8px · ícones de traço fino · cores sóbrias.
+   ════════════════════════════════════════════ */
+
+/* ─── Tipografia ─── */
+body,button,input,select,textarea{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
+body{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;letter-spacing:-.005em}
+.page-title{font-size:22px;font-weight:700;letter-spacing:-.02em;line-height:1.25}
+.page-sub{font-size:13px;margin-top:4px}
+.tb-title{font-weight:700;letter-spacing:-.015em}
+
+/* ─── Botões da barra de cima: mesmo formato e altura ─── */
+#tb-cadastro,#tb-planos,#topbar #tb-entrar{height:38px;border-radius:8px;font-size:13.5px;font-weight:600;letter-spacing:-.005em;box-shadow:0 1px 2px rgba(16,24,40,.08)}
+#tb-cadastro{padding:0 18px}
+#topbar #tb-entrar{display:inline-flex;align-items:center;padding:0 18px}
+.tb-links a{font-weight:500}
+
+/* ─── Interruptor "Calendário ligado/desligado" ─── */
+.cal-switch-lbl{font-size:12.5px;font-weight:500;color:var(--text-secondary);white-space:nowrap}
+.cal-switch{width:40px!important;height:22px!important;border-radius:11px;background:var(--border-strong)}
+.cal-switch::after{top:3px!important;left:3px!important;width:16px!important;height:16px!important;box-shadow:0 1px 2px rgba(0,0,0,.25)}
+.cal-switch.on::after{transform:translateX(18px)!important}
+
+/* ─── Barra lateral (menu) ─── */
+.sidebar-logo .logo-title{font-size:14px;font-weight:700;letter-spacing:-.01em}
+.sidebar-logo .logo-sub{font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:128px}
+.nav-item{margin:2px 10px;padding:9px 12px;border-left:none;border-radius:8px;font-size:13.5px;font-weight:500;gap:10px;position:relative}
+.nav-item:hover{background:var(--surface-2);color:var(--text-primary)}
+.nav-item.active{background:var(--accent-bg);color:var(--accent-text);font-weight:600}
+.nav-item.active::before{content:'';position:absolute;left:-10px;top:8px;bottom:8px;width:3px;border-radius:0 3px 3px 0;background:var(--accent)}
+.nav-icon svg,.nav-item svg{width:18px;height:18px;stroke-width:1.75}
+.sidebar-footer .footer-label{font-size:11.5px;font-weight:500}
+.sidebar-footer .footer-val{font-size:20px;font-weight:700;letter-spacing:-.02em}
+.sb-btn{border-radius:8px;font-weight:500;font-size:12.5px;padding:8px 0}
+
+/* ─── Foguinho: selo discreto com borda ─── */
+.foguinho-box.foguinho-sb{padding:4px 10px 4px 8px!important;border:1px solid var(--border)!important;border-radius:999px;background:var(--surface-1)!important;gap:5px}
+.foguinho-sb .foguinho-emoji .fogo-svg{width:15px;height:18px}
+.foguinho-sb .fogo-num{font-size:13px;font-weight:700}
+
+/* ─── Faixa do modo visitante: cartão sóbrio com ícone ─── */
+.aviso-visitante{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:16px;padding:12px 14px 12px 16px;border-radius:10px;background:var(--surface-1);border:1px solid var(--border);border-left:3px solid var(--accent);color:var(--text-secondary);font-size:13px;line-height:1.5}
+.aviso-visitante strong{color:var(--text-primary);font-weight:600}
+.av-icone{display:flex;color:var(--accent)}
+.av-icone svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}
+.av-texto{flex:1;min-width:220px}
+.av-botao{height:34px;padding:0 14px;border-radius:8px;border:1px solid var(--accent);background:transparent;color:var(--accent-text);font:inherit;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap}
+.av-botao:hover{background:var(--accent-bg)}
+
+/* ─── Quadros de números ─── */
+.stat-card{border-radius:10px;padding:16px;box-shadow:0 1px 2px rgba(16,24,40,.04)}
+.stat-label{font-size:12.5px;font-weight:500}
+.stat-val{font-size:26px!important;font-weight:700!important;letter-spacing:-.02em;margin-top:6px}
+
+/* ─── Mês/Ano: controle segmentado ─── */
+.cal-view-toggle,.cal-view-btns,#cal-view-month-btn{}
+#cal-view-month-btn,#cal-view-year-btn{height:30px;padding:0 12px;border-radius:7px;font-size:12.5px;font-weight:600;color:var(--text-secondary)}
+#cal-view-month-btn.active,#cal-view-year-btn.active{background:var(--surface-1);color:var(--text-primary);box-shadow:0 1px 3px rgba(16,24,40,.12),0 0 0 1px var(--border)}
+#cal-view-month-btn .ico,#cal-view-year-btn .ico{width:15px;height:15px}
+
+/* ─── Setas e "Registrar hoje" ─── */
+.cal-nav-btn{width:32px;height:32px;padding:0;display:inline-flex;align-items:center;justify-content:center;border-radius:8px;background:var(--surface-1)}
+.cal-nav-btn .ico{width:16px;height:16px;vertical-align:0}
+.cal-reg-btn{height:38px;padding:0 16px;border-radius:8px;font-size:13.5px;font-weight:600;box-shadow:0 1px 2px rgba(16,24,40,.12)}
+.cal-reg-btn:hover{opacity:1;filter:brightness(1.06)}
+
+/* ─── Cursos (etiquetas) + botão Adicionar ─── */
+#cal-materias{display:flex;flex-wrap:wrap;gap:8px}
+.curso-chip{display:inline-flex;align-items:center;gap:8px;height:32px;padding:0 6px 0 12px;border-radius:8px;background:var(--surface-1);border:1px solid var(--border);font-size:13px;font-weight:500;color:var(--text-primary)}
+.curso-chip-cor{width:10px;height:10px;border-radius:3px;flex-shrink:0}
+.curso-chip-x{display:flex;width:22px;height:22px;align-items:center;justify-content:center;border:none;border-radius:6px;background:none;color:var(--text-muted);cursor:pointer}
+.curso-chip-x:hover{background:var(--surface-2);color:var(--danger)}
+.curso-chip-x svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}
+.cal-add-curso{display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 12px;border-radius:8px;border:1px dashed var(--border-strong);background:transparent;color:var(--accent-text);font:inherit;font-size:13px;font-weight:600;cursor:pointer}
+.cal-add-curso:hover{background:var(--accent-bg);border-color:var(--accent);border-style:solid}
+
+/* ─── Ícones da direita: traço fino, quadradinho de destaque na tela atual ─── */
+#theme-rail{gap:6px!important;padding:8px!important;border-radius:14px!important}
+.tr-item{width:44px;height:44px;border-radius:10px;color:var(--text-secondary)}
+.tr-item svg{width:24px!important;height:24px!important;stroke-width:1.75!important}
+.tr-item:hover{transform:none;filter:none;background:var(--surface-2);color:var(--text-primary)}
+body.light .tr-item:hover{background:#e6e8ec}
+.tr-item.ativo{background:var(--accent-bg);color:var(--accent-text)}
+.tr-item.ativo svg{stroke-width:2!important}
+.tr-item.ativo::after{display:none}
+@media (max-width:1099px){#theme-rail{gap:4px!important}}
+
+/* ─── Janelas e cartões: cantos e sombras consistentes ─── */
+.modal-inner{border-radius:14px}
+.content-card,.mural-passo{border-radius:12px}
+
+/* ─── Desenhos das telas vazias (DESENHOS em geral/utilidades.js): estilo de interface, sóbrio ─── */
+.tv-desenho{animation:none!important;width:230px}
+.tela-vazia.compacta .tv-desenho{width:150px}
+.iv-cartao{fill:var(--surface-1);stroke:var(--border-strong);stroke-width:1.2}
+.iv-sombra-c{fill:rgba(16,24,40,.07)}
+body:not(.light) .iv-sombra-c{fill:rgba(0,0,0,.45)}
+.iv-esq{fill:var(--surface-3)}
+.iv-esq-forte{fill:var(--border-strong)}
+.iv-ac{fill:var(--accent)}
+.iv-ac2{fill:var(--accent-bg)}
+.iv-branco{fill:#fff}
+.iv-cb{fill:var(--surface-1);stroke:var(--border-strong);stroke-width:1.2}
+.iv-check{fill:none;stroke:#fff;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.iv-conector{fill:none;stroke:var(--border-strong);stroke-width:1.4;stroke-dasharray:3 3}
+.iv-tracejado{fill:none;stroke:var(--border-strong);stroke-width:1.2;stroke-dasharray:4 3}
+.iv-mais{fill:none;stroke:var(--accent);stroke-width:2;stroke-linecap:round}
+.iv-selo{fill:var(--surface-1);stroke:var(--border);stroke-width:1.2}
+body:not(.light) .iv-selo{fill:#f1f1f1}
+
+/* ─── Janela de cores (ficou alta com as 20 paletas): nunca fica atrás da barra de cima.
+       SÓ ela — as outras janelas (ex.: Mapa Mental em tela cheia) continuam como eram. ─── */
+#cores-modal{padding:76px 12px 12px;box-sizing:border-box}
+#cores-modal .modal-inner{max-height:calc(100vh - 92px)!important}
+
+/* ─── Celular: o interruptor do calendário mostra só a chave (o texto não cabe) ─── */
+
+
+/* ═══ BARRA DE CIMA — padrão de sites profissionais ═══ */
+#topbar{height:64px;padding:0 24px!important;gap:20px;border:none!important;border-bottom:1px solid #d9dce1!important;box-shadow:0 1px 3px rgba(16,24,40,.06)!important}
+body:not(.light) #topbar{border-bottom-color:#2e2e2e!important;box-shadow:0 1px 3px rgba(0,0,0,.4)!important}
+#tb-logo{height:40px}
+.tb-title{font-size:17px;font-weight:800;letter-spacing:-.025em;margin-left:-6px}
+/* busca: lupa à esquerda, altura confortável, foco com anel */
+.tb-search{max-width:520px;margin:0 8px 0 12px}
+#busca-global{height:40px;padding:0 14px 0 40px!important;border-radius:10px!important;font-size:14px;border:1px solid #d1d5db!important;transition:border-color .15s,box-shadow .15s}
+body:not(.light) #busca-global{border-color:#3a3a3a!important}
+#busca-global::placeholder{color:#8a919e}
+#busca-global:focus{border-color:var(--accent)!important;box-shadow:0 0 0 3px var(--accent-bg)}
+.tb-lupa{left:14px;right:auto!important;width:17px;height:17px}
+#busca-resultados{top:48px!important;border-radius:12px}
+/* links + divisória antes dos botões */
+.tb-links{gap:2px}
+.tb-links a{font-size:14px;font-weight:500;color:var(--text-secondary);padding:8px 12px}
+.tb-links a:hover{color:var(--text-primary)}
+.tb-links::after{content:'';width:1px;height:24px;background:var(--border-strong);opacity:.7;margin-left:10px}
+/* botões com a mesma altura da busca */
+#tb-cadastro,#tb-planos,#topbar #tb-entrar{height:40px;font-size:14px}
+#tb-planos{padding:0 18px}
+#tb-cadastro{padding:0 20px}
+
+/* ═══ ÍCONES DA DIREITA — maiores ═══ */
+#theme-rail{gap:8px!important;padding:10px!important;border-radius:16px!important}
+.tr-item{width:52px!important;height:52px!important;border-radius:12px}
+.tr-item svg{width:28px!important;height:28px!important}
+@media (min-width:1100px){#app-shell .main{padding-right:100px}#app-shell #cal-month-view{margin-right:-100px}}
+/* notebook (até 1440px): a busca precisa de espaço para o texto inteiro — o interruptor mostra só a chave */
+@media (max-width:1440px){ #topbar{gap:14px} .tb-search{min-width:340px} }
+@media (max-width:1180px){ .tb-search{min-width:0} }
+
+/* ─── Interruptor do calendário: na linha do título "Calendário de estudos", à direita ─── */
+.cal-cabecalho{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+#tab-calendario #tb-cal-switch{margin:0;display:flex;align-items:center;gap:10px;padding:8px 12px;border:1px solid var(--border);border-radius:10px;background:var(--surface-1)}
+#tab-calendario #tb-cal-switch.fora-do-cal{visibility:visible}.iv-chave{fill:var(--border-strong)}
+#cal-off-msg .tela-vazia{padding:22px 10px 18px}
