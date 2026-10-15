@@ -1,4 +1,4 @@
-# UF|status|órgão|cargo|vagas|quando|banca|data da fonte|fonte nome|fonte url
+﻿# UF|status|órgão|cargo|vagas|quando|banca|data da fonte|fonte nome|fonte url
 AC|previsto|Polícia Civil do AC|Oficial investigador, perito e delegado|139|Novo concurso anunciado||01/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-ac/
 AC|previsto|Polícia Militar do AC|Soldado|260|Grupo de estudos formado||01/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-ac/
 AC|previsto|Assembleia Legislativa do AC|Técnico, analista e polícia legislativa|50|Edital esperado após contratar a banca|IDECAN|01/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-ac/
@@ -10,7 +10,7 @@ AP|previsto|Polícia Penal do AP|Policial penal, técnico e especialista|0|Deve 
 AP|previsto|TCE-AP|Auditor de controle externo|0|Orçamento do concurso aprovado||02/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-ap/
 AP|previsto|SEED-AP (Educação)|Analista, especialista e auxiliar educacional|319|Banca definida|FGV|02/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-ap/
 AM|previsto|TJ-AM|A definir|400|Concurso esperado para o próximo ano||09/09/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-am/
-AM|previsto|SEDUC-AM (Educação)|Níveis médio e superior|7862|Comissão formada|Cesgranrio|09/09/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-am/
+AM|previsto|SEDUC-AM (Educação)|Professor, pedagogo e apoio|7862|Autorizado em 30/07; banca Cesgranrio definida; edital sem data|Cesgranrio|09/09/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-am/
 AM|previsto|TCE-AM|Auditor de controle externo e TI|0|Abertura autorizada||09/09/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-am/
 AM|previsto|Defensoria Pública do AM|Diversos|5|Banca definida|FCC|09/09/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-am/
 AM|previsto|SES-AM (Saúde)|A definir|0|Comissão especial criada||09/09/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-am/
@@ -24,9 +24,9 @@ CE|previsto|Polícia Penal do CE|Policial penal|0|Concurso anunciado||07/09/2026
 CE|previsto|SOP-CE|Contador e analista de infraestrutura|63|Banca contratada|Instituto Avalia|07/09/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-ce/
 CE|previsto|SRH-CE|Nível superior|50|Comissão formada||07/09/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-ce/
 CE|previsto|SESA-CE (Saúde)|Níveis médio e superior|0|Novo edital solicitado||07/09/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-ce/
-DF|previsto|Polícia Militar do DF|Soldado|2000|Banca definida|Cebraspe|15/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-df/
+DF|previsto|Polícia Militar do DF|Soldado|2000|Banca Cebraspe contratada; cerca de 2 mil vagas estimadas, ainda sem autorização definitiva|Cebraspe|15/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-df/
 DF|previsto|Polícia Civil do DF|Perito e papiloscopista|105|Concurso autorizado||15/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-df/
-DF|previsto|SEEDF (Educação)|Professor e outros cargos|10604|Banca definida|Quadrix|15/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-df/
+DF|previsto|SEEDF (Educação)|Professor e outros cargos|10604|Autorizado (Portaria 825/2025: 2.650 imediatas + 7.954 cadastro); banca em definição; edital previsto para nov–dez/2026||23/09/2026|Focus Concursos|https://noticias.focusconcursos.com.br/noticias/concurso-sedf-2026-banca-entra-em-definicao-para-10604-vagas
 DF|previsto|SEFAZ-DF|Auditor fiscal|115|Banca definida|Cebraspe|15/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-df/
 DF|previsto|SES-DF (Saúde)|Especialista em saúde|2379|Concurso solicitado||15/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-df/
 DF|previsto|Câmara Legislativa do DF|Analista, assistente e técnico|90|Grupo de estudos formado||15/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-df/
@@ -106,8 +106,7 @@ RR|previsto|SEFAZ-RR|Área fiscal|0|Concurso anunciado||14/08/2026|Estratégia C
 RS|previsto|SEFAZ-RS|Auditor fiscal e analista tributário|0|Banca definida|FCC|15/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-rs/
 RS|previsto|TJ-RS|Analista judiciário|0|Concurso autorizado; comissão formada||15/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-rs/
 RS|previsto|PGE-RS|A definir|0|Comissão formada||15/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-rs/
-SC|previsto|Polícia Militar de SC|Soldado|1000|Banca definida|Instituto AOCP|09/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-sc/
-SC|previsto|SED-SC (Educação)|Professor e intérprete|10000|Concurso previsto||09/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-sc/
+SC|previsto|Polícia Militar de SC|Soldado|500|Banca contratada em jun/2026 para 500 vagas; governador anunciou mais 1.000 (sem edital)|Instituto AOCP|09/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-sc/
 SC|previsto|MP-SC|A definir|0|Concurso previsto||09/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-sc/
 SC|previsto|SAP-SC|Agente de segurança socioeducativo|0|Concurso previsto||09/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-sc/
 SE|previsto|Polícia Civil de SE|Oficial investigador|0|Em estudos pelo governo||28/05/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-se/

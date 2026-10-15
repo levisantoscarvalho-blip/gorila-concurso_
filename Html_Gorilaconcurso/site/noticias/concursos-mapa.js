@@ -777,13 +777,16 @@ function cmCarregarMuni(uf){
 const cmNum=n=>Math.round(n).toLocaleString('pt-BR');
 async function cmDemografia(caixa, r, s, uf){
   const lista=await cmCarregarMuni(uf); if(!lista || !caixa.isConnected) return;
+  await cmCarregarCidades(uf); if(!caixa.isConnected) return;   // concursos de cada cidade (PCI), se o arquivo do estado existir
   const munis=lista.filter(m=>m.me===r.cod && m.d && m.p>0); if(!munis.length) return;
   const b=r.b, vbx=b.x*1e-4, vby=-(b.y+b.height)*1e-4, W=b.width*1e-4*s, H=b.height*1e-4*s;
   const px=(gx,gy)=>[(gx*1e-4-vbx)*s, (-gy*1e-4-vby)*s];   // coordenada do IBGE ➔ pixel no quadro
   // microrregiões: cada uma num tom da cor da região (do mais escuro ao mais claro)
   const micros=[...new Set(munis.map(m=>m.mi))].sort((a,c)=>a.localeCompare(c,'pt-BR'));
   const escuro=!document.body.classList.contains('light');
-  const tom=j=>{ const t=micros.length<2?0:j/(micros.length-1); return escuro ? cmMesoMistura(r.cor,'#000000',.15+t*.45) : cmMesoMistura(cmMesoMistura(r.cor,'#000000',.12),'#ffffff',t*.62); };
+  // fundo NEUTRO (cinza-areia), não a cor da região: assim as cores dos pontinhos (verde, vermelho, azul, laranja) se destacam sempre
+  const BASE=escuro?'#6e6e6e':'#bdb6a6';
+  const tom=j=>{ const t=micros.length<2?0:j/(micros.length-1); return escuro ? cmMesoMistura(BASE,'#000000',.15+t*.4) : cmMesoMistura(BASE,'#ffffff',.15+t*.55); };
   const corMicro=Object.fromEntries(micros.map((m,j)=>[m,tom(j)]));
   // centro de cada município (para o quadrado): o meio da caixa dele, ou o ponto de dentro mais perto do meio
   const ns='http://www.w3.org/2000/svg', med=document.createElementNS(ns,'svg'), ctx=document.createElement('canvas').getContext('2d');
@@ -796,14 +799,20 @@ async function cmDemografia(caixa, r, s, uf){
     [m.x,m.y]=px(cx,cy); });
   med.remove();
   // PONTINHOS = CONCURSOS (pedido do Levi): UM PONTO POR CONCURSO, na cidade onde ele acontece, na COR da situação dele
-  // (verde inscrições abertas · roxo inscrições encerradas/provas · azul previsto · laranja sem previsão). Vários concursos
+  // (verde inscrições abertas · VERMELHO inscrições encerradas (não disponível) · azul previsto · laranja sem previsão). Vários concursos
   // na mesma cidade = pontos agrupados em volta dela. Concursos do ESTADO (PM, SEFAZ, TJ...) ficam na CAPITAL, a sede.
-  const capCod=lista.find(m=>m.n===CM_CAPITAL[uf])?.c, est=cmConcursosEstaduais(uf).map(c=>({...c, estadual:true}));
+  const slugsCid=cmSlugsCidades(uf);   // concurso estadual que o PCI já pôs numa cidade aparece lá, não repete na capital
+  const capCod=lista.find(m=>m.n===CM_CAPITAL[uf])?.c, est=cmConcursosEstaduais(uf).filter(c=>!slugsCid.has(c.fonte.url)).map(c=>({...c, estadual:true}));
   const conc=m=>[...cmConcursosCidade(m.c), ...(m.c===capCod ? est : [])];
   const R_PONTO=3.8, PASSO=5, raio=n=>n ? PASSO*Math.sqrt(n-1)+R_PONTO : 0;
-  const ladoM=m=>2*raio(conc(m).length);
-  const pontos=munis.flatMap((m,j)=>conc(m).map((c,k)=>{ const r=PASSO*Math.sqrt(k), a=k*2.39996;   // espiral de girassol: pontos sem encostar
-    return `<circle cx="${(m.x+r*Math.cos(a)).toFixed(1)}" cy="${(m.y+r*Math.sin(a)).toFixed(1)}" r="${R_PONTO}" class="sit-${cmCorPonto(c)}" data-j="${j}" data-k="${k}"/>`; })).join('');
+  const ladoM=m=>2*Math.min(raio(conc(m).length), 14+R_PONTO);
+  // espiral de girassol em volta da cidade; cidade com MUITOS concursos fica num cacho compacto (raio máx. ~14px) que
+  // se abre com o zoom. Ordem de desenho: vermelhos embaixo, depois laranja, azul e VERDE POR CIMA (o que está aberto aparece).
+  const CAMADA_COR={andamento:0, semprevisao:1, previsto:2, aberto:3};
+  const pontos=munis.flatMap((m,j)=>{ const l=conc(m), passo=Math.min(PASSO, 14/Math.sqrt(Math.max(1,l.length)));
+      return l.map((c,k)=>{ const r=passo*Math.sqrt(k), a=k*2.39996, cor=cmCorPonto(c);
+        return {cor, svg:`<circle cx="${(m.x+r*Math.cos(a)).toFixed(1)}" cy="${(m.y+r*Math.sin(a)).toFixed(1)}" r="${R_PONTO}" class="sit-${cor}" data-j="${j}" data-k="${k}"/>`}; }); })
+    .sort((a,b)=>CAMADA_COR[a.cor]-CAMADA_COR[b.cor]).map(p=>p.svg).join('');
   // nomes escritos: as cidades mais populosas (até 5), pulando as que encostariam num nome já escrito
   const ordem=[...munis].sort((a,c)=>c.p-a.p), destaques=[], caixas=[];
   for(const m of ordem){ if(destaques.length>=Math.min(5, Math.max(1, Math.round(munis.length/10)+1))) break;
@@ -826,7 +835,8 @@ async function cmDemografia(caixa, r, s, uf){
   const dicaFora=camada.querySelector('.cm-dm-dica'); caixa.appendChild(dicaFora);   // o balão fica fora do zoom (não aumenta)
   mapa.insertAdjacentHTML('beforeend', `<div class="cm-rz-ctrl"><button type="button" data-z="1" title="Aproximar">+</button><button type="button" data-z="-1" title="Afastar">−</button><button type="button" data-z="0" title="Ver a região inteira">⟲</button></div>`);
   const Z={z:1,x:0,y:0};
-  const aplicar=()=>{ Z.z=Math.max(1,Math.min(10,Z.z)); Z.x=Math.min(0,Math.max(W-W*Z.z,Z.x)); Z.y=Math.min(0,Math.max(H-H*Z.z,Z.y));
+  // sem borda (pedido do Levi): o mapa pode ser arrastado para onde a pessoa quiser — só não some (metade fica à vista)
+  const aplicar=()=>{ Z.z=Math.max(1,Math.min(10,Z.z)); Z.x=Math.min(W*0.5,Math.max(W*0.5-W*Z.z,Z.x)); Z.y=Math.min(H*0.5,Math.max(H*0.5-H*Z.z,Z.y));
     zw.style.transform=`translate(${Z.x}px,${Z.y}px) scale(${Z.z})`;
     const r=(R_PONTO*(1+(Z.z-1)*0.25)/Z.z).toFixed(2); camada.querySelectorAll('.cm-dm-pontos circle').forEach(c=>c.setAttribute('r',r));
     camada.querySelectorAll('.cm-dm-cidade').forEach(s=>s.style.transform=`translateY(-50%) scale(${1/Z.z})`);
@@ -837,7 +847,7 @@ async function cmDemografia(caixa, r, s, uf){
   mapa.querySelector('.cm-rz-ctrl').onclick=ev=>{ const d=ev.target.dataset?.z; if(d===undefined) return; ev.stopPropagation();
     if(d==='0'){ Z.z=1; Z.x=0; Z.y=0; aplicar(); } else zoomEm(d==='1'?1.5:1/1.5, W/2, H/2); };
   let arrasto=null, arrastou=false;
-  mapa.onpointerdown=ev=>{ if(Z.z<=1.001 || ev.button!==0 || ev.target.closest('.cm-rz-ctrl')) return; arrasto={x:ev.clientX,y:ev.clientY,x0:Z.x,y0:Z.y}; arrastou=false; mapa.setPointerCapture?.(ev.pointerId); };
+  mapa.onpointerdown=ev=>{ if(ev.button!==0 || ev.target.closest('.cm-rz-ctrl')) return; arrasto={x:ev.clientX,y:ev.clientY,x0:Z.x,y0:Z.y}; arrastou=false; mapa.setPointerCapture?.(ev.pointerId); };
   mapa.addEventListener('pointermove', ev=>{ if(!arrasto) return; const dx=ev.clientX-arrasto.x, dy=ev.clientY-arrasto.y;
     if(Math.abs(dx)+Math.abs(dy)>3) arrastou=true; if(arrastou){ Z.x=arrasto.x0+dx; Z.y=arrasto.y0+dy; aplicar(); mapa.classList.add('arrastando'); dicaFora.hidden=true; } });
   const soltar=()=>{ arrasto=null; mapa.classList.remove('arrastando'); }; mapa.onpointerup=soltar; mapa.onpointercancel=soltar;
@@ -856,7 +866,7 @@ async function cmDemografia(caixa, r, s, uf){
         `<span class="sem">${c.estadual?`Órgão do estado · sede em ${m.n} · vale para todo o estado`:m.n} · clique para ver detalhes</span>`;
     } else {             // em cima da cidade: quantos concursos de cada situação
       const n=s=>cs.filter(c=>cmCorPonto(c)===s).length;
-      const linhas=[['aberto','com inscrições abertas'],['andamento','com inscrições encerradas / provas'],['previsto','previstos'],['semprevisao','sem previsão']]
+      const linhas=[['aberto','com inscrições abertas'],['andamento','encerrados (não disponíveis)'],['previsto','previstos'],['semprevisao','sem previsão']]
         .filter(([s])=>n(s)).map(([s,t])=>`<span class="st st-${s}">● ${n(s)} ${t}</span>`).join('');
       dica.innerHTML=`<b>${m.n}</b>${linhas?linhas+'<span class="sem">Clique para ver a lista</span>':'<span class="sem">Nenhum concurso no levantamento</span>'}`;
     }
@@ -874,7 +884,7 @@ async function cmDemografia(caixa, r, s, uf){
   // embaixo do mapa: a legenda com QUANTOS pontos de cada cor há na região (pedido do Levi)
   const todosC=munis.flatMap(conc), nCor=s=>todosC.filter(c=>cmCorPonto(c)===s).length;
   const info=caixa.querySelector('#cm-dm-info');
-  info.innerHTML=`<div class="cm-dm-leg1 cm-dm-legp">${[['aberto','Inscrições abertas'],['andamento','Encerradas / provas'],['previsto','Previstos'],['semprevisao','Sem previsão']]
+  info.innerHTML=`<div class="cm-dm-leg1 cm-dm-legp">${[['aberto','Inscrições abertas'],['andamento','Encerrados (não disponíveis)'],['previsto','Previstos'],['semprevisao','Sem previsão']]
       .map(([s,t])=>`<span class="${nCor(s)?'':'zero'}"><i class="sit-${s}"></i>${t} <b>${nCor(s)}</b></span>`).join('')}</div>
     <div class="cm-dm-leg1-dica">1 ponto = 1 concurso · rodinha do mouse aproxima · clique num ponto para ver os detalhes</div>`;
   requestAnimationFrame(()=>info.classList.add('aparece'));
@@ -918,7 +928,7 @@ function cmCartao(uf, m, cs, k){
       ${pci?`<a class="cm-rz-pci" href="${pci.url}" target="_blank" rel="noopener">${pci.txt} ›</a>`:''}
       ${!ehPci(c)?`<a class="cm-rz-fonte" href="${c.fonte.url}" target="_blank" rel="noopener">Ler a notícia (${c.fonte.nome})</a>`:''}
     </div>
-    <div class="cm-rz-rod">Fonte: ${c.fonte.nome} · levantamento de 15/10/2026. Confira sempre o edital oficial.</div>`;
+    <div class="cm-rz-rod">Fonte: ${c.fonte.nome} · levantamento de ${(ehPci(c) && CONC_CIDADES[uf]?.atualizado) || cmFontes()[1][uf]?.atualizado || '15/10/2026'}. Confira sempre o edital oficial.</div>`;
   el._volta=()=>cmCartao(uf, m, cs, null);
 }
 // ── PAINEL DE CONCURSOS DA REGIÃO (direita): números grandes + lista por situação, cada concurso com a fonte.
@@ -1002,7 +1012,7 @@ const CM_SITUACOES = {
   semdados:   {nome:'Ainda sem dados'},
 };
 // nome de cada situação no texto ("edital publicado" e "em andamento" usam a mesma cor verde de "acontecendo")
-const CM_SIT_NOME = {aberto:'Inscrições abertas', edital:'Edital publicado', andamento:'Em andamento', previsto:'Previsto', semprevisao:'Sem previsão'};
+const CM_SIT_NOME = {aberto:'Inscrições abertas', edital:'Edital publicado', andamento:'Inscrições encerradas', previsto:'Previsto', semprevisao:'Sem previsão'};
 // cor do PONTO de cada concurso no mapa da região (a situação de hoje)
 function cmCorPonto(c){ const s=cmConcursoHoje(c).status; return s==='edital' ? 'aberto' : s; }
 // (a capital de cada estado — onde ficam os pontos dos concursos do estado — vem de CM_CAPITAL, mais abaixo)
@@ -1018,9 +1028,32 @@ function cmConcursoHoje(c){
 }
 const CM_ORDEM_SIT = {aberto:0, edital:1, andamento:2, previsto:3, semprevisao:4};
 const cmOrdenar = l=>l.map(cmConcursoHoje).sort((a,b)=>(CM_ORDEM_SIT[a.status]-CM_ORDEM_SIT[b.status]) || (a.ate||'').localeCompare(b.ate||''));
-// concursos da PREFEITURA (e câmara, autarquias) da cidade
+// ── CONCURSOS DE CADA CIDADE, página por página do PCI Concursos (pedido do Levi: "literalmente todos" de cada
+// microrregião, abertos e já encerrados, últimos 12 meses). Um arquivo por estado em noticias/concursos-cidades/UF.js,
+// carregado só quando o estado é aberto; gerado por levantamento-concursos/baixar-pci-cidades.ps1 + gerar-cidades.ps1.
+const CONC_CIDADES = {};
+const CM_UF_IBGE = {11:'RO',12:'AC',13:'AM',14:'RR',15:'PA',16:'AP',17:'TO',21:'MA',22:'PI',23:'CE',24:'RN',25:'PB',26:'PE',27:'AL',28:'SE',29:'BA',
+  31:'MG',32:'ES',33:'RJ',35:'SP',41:'PR',42:'SC',43:'RS',50:'MS',51:'MT',52:'GO',53:'DF'};
+function cmCarregarCidades(uf){
+  if(CONC_CIDADES[uf] || CONC_CIDADES[uf]===null) return Promise.resolve(CONC_CIDADES[uf]);
+  return new Promise(ok=>{ const sc=document.createElement('script'); sc.src=`noticias/concursos-cidades/${uf}.js`;
+    sc.onload=()=>ok(CONC_CIDADES[uf]||null); sc.onerror=()=>{ CONC_CIDADES[uf]=null; ok(null); }; document.head.appendChild(sc); });
+}
+const CM_PCI = 'https://www.pciconcursos.com.br/noticias/';
+// item compacto do arquivo da cidade ➔ concurso (a situação de hoje vem da data, em cmConcursoHoje)
+function cmDaCidade(a){
+  const [orgao,cargo,nivel,vagas,cr,de,ate,slug]=a, br=d=>d.split('-').reverse().join('/');
+  return {orgao, cargo:cargo+(nivel?` (${nivel})`:''), vagas, status:'aberto', ate, ...(de?{de}:{}),
+    quando:(de?`de ${br(de)} a ${br(ate)}`:`até ${br(ate)}`)+(cr?' · cadastro de reserva':''), fonte:{nome:'PCI Concursos', url:CM_PCI+slug}};
+}
+// todos os links do PCI que já estão em alguma cidade do estado (para não repetir o mesmo concurso em outro lugar)
+function cmSlugsCidades(uf){ const d=CONC_CIDADES[uf]; if(!d) return new Set(); if(!d._slugs) d._slugs=new Set(Object.values(d.c).flatMap(l=>l.map(a=>CM_PCI+a[7]))); return d._slugs; }
+// concursos da cidade: página da cidade no PCI (se o arquivo do estado já carregou) + previstos municipais + levantamento manual
 function cmConcursosCidade(cod){
-  return cmOrdenar([...(CONCURSOS_CIDADE[cod]||[]), ...cmFontes().flatMap(f=>Object.values(f).flatMap(e=>e.municipais?.[cod]||[]))]);
+  const uf=CM_UF_IBGE[String(cod).slice(0,2)], pc=CONC_CIDADES[uf];
+  let base=[...(CONCURSOS_CIDADE[cod]||[]), ...cmFontes().flatMap(f=>Object.values(f).flatMap(e=>e.municipais?.[cod]||[]))];
+  if(pc){ const s=cmSlugsCidades(uf); base=base.filter(c=>!s.has(c.fonte.url) && !/pciconcursos\.com\.br/.test(c.fonte.url)); }
+  return cmOrdenar([...base, ...(pc?.c[cod]||[]).map(cmDaCidade)]);
 }
 // concursos do ESTADO e órgãos federais no estado (PM, Polícia Civil, Fazenda, universidades...): valem para todas as cidades
 function cmConcursosEstaduais(uf){ return cmOrdenar(cmFontes().flatMap(f=>f[uf]?.estaduais||[])); }
@@ -1050,10 +1083,12 @@ function cmNoEstadoVoltar(uf){ return cmDoEstado(uf).replace(/^do /,'ao ').repla
 // ── BUSCA QUE DESCE (pedido do Levi): com a região aberta, a barra de pesquisa do topo desce até o lugar do letreiro
 // (que some) e fica lá; ao voltar ao estado, sobe de novo. O topo e o letreiro só ficam invisíveis (nada muda de lugar).
 // O que essa busca vai procurar ainda será definido com o Levi — por enquanto o campo diz "(Definir com o Claude)".
+// lugar da busca = a faixa de baixo da tela (onde ficam o rótulo + letreiro, ~76px). Medido pela tela e não pelo
+// letreiro, porque o letreiro é TROCADO quando o estado abre (cmFaixaTrocar) e a medida antiga ficava errada.
 function cmBuscaAlvo(){
-  const rot=document.querySelector('.cm-faixa-rotulo'), fx=document.querySelector('.cm-faixa'); if(!rot||!fx) return null;
-  const a=rot.getBoundingClientRect(), b=fx.getBoundingClientRect(), w=Math.min(640, (b.right-a.left)-120), h=44;
-  return {left:a.left+((b.right-a.left)-w)/2, top:a.top+((b.bottom-a.top)-h)/2, width:w, height:h, rot, fx};
+  const ns=document.getElementById('news-screen'); if(!ns) return null;
+  const a=ns.getBoundingClientRect(), ALT=76, w=Math.min(640, a.width-120), h=44;
+  return {left:a.left+(a.width-w)/2, top:a.bottom-ALT+(ALT-h)/2, width:w, height:h, ns};
 }
 function cmBuscaDescer(){
   const tb=document.querySelector('#topbar .tb-search'), alvo=cmBuscaAlvo(); if(!tb||!alvo||document.getElementById('cm-busca-baixo')) return;
@@ -1062,7 +1097,7 @@ function cmBuscaDescer(){
   el.innerHTML=`<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5"/></svg><input type="search" autocomplete="off" placeholder="Busque um concurso, cargo ou cidade" aria-label="Pesquisar">`;
   el.style.cssText=`left:${A.left}px;top:${A.top}px;width:${A.width}px;height:${A.height}px`;
   (document.getElementById('news-screen')||document.body).appendChild(el);   // dentro da tela de Notícias: as Configurações (camada por cima) cobrem a busca também
-  tb.style.visibility='hidden'; alvo.rot.style.visibility='hidden'; alvo.fx.style.visibility='hidden';
+  tb.style.visibility='hidden'; alvo.ns.classList.add('cm-busca-desceu');   // esconde rótulo + letreiro (mesmo se forem trocados)
   requestAnimationFrame(()=>requestAnimationFrame(()=>{ el.classList.add('anda');
     el.style.cssText=`left:${alvo.left}px;top:${alvo.top}px;width:${alvo.width}px;height:${alvo.height}px`; }));
   window.addEventListener('resize', cmBuscaReposicionar);
@@ -1074,7 +1109,7 @@ function cmBuscaSubir(semAnimar){
   const el=document.getElementById('cm-busca-baixo'), tb=document.querySelector('#topbar .tb-search');
   window.removeEventListener('resize', cmBuscaReposicionar);
   const volta=()=>{ el?.remove(); if(document.getElementById('cm-busca-baixo')) return; if(tb) tb.style.visibility='';
-    document.querySelectorAll('.cm-faixa-rotulo,.cm-faixa').forEach(e=>e.style.visibility=''); };
+    document.getElementById('news-screen')?.classList.remove('cm-busca-desceu'); };
   if(!el || semAnimar || !tb){ volta(); return; }
   const A=tb.getBoundingClientRect(); el.id='';   // deixa abrir outra região enquanto esta ainda sobe
   el.classList.add('anda'); el.style.cssText=`left:${A.left}px;top:${A.top}px;width:${A.width}px;height:${A.height}px`;

@@ -1,5 +1,5 @@
-# Concursos PREVISTOS de prefeituras, câmaras, guardas e autarquias municipais (cada um tem cidade ➔ ponto azul no mapa)
-# UF|órgão|cidade|cargo|vagas (0 = a definir)|situação|banca|data da notícia|link da fonte
+﻿# Concursos PREVISTOS de prefeituras, câmaras, guardas e autarquias municipais (cada um tem cidade ➔ ponto azul no mapa)
+# UF|órgão|cidade|cargo|vagas (0 = a definir)|situação|banca|data da notícia|link da fonte|status (opcional: previsto ou semprevisao; padrão previsto)
 SP|Câmara de Jundiaí|Jundiaí|Níveis médio e superior|0|Banca definida|Vunesp|13/10/2026|https://concursos.estrategia.com/portal/concursos-sp/
 SP|Câmara de Olímpia|Olímpia|Diversos|1|Banca definida|Vunesp|13/10/2026|https://concursos.estrategia.com/portal/concursos-sp/
 SP|Prefeitura de São Carlos|São Carlos|A definir|0|Banca definida|Indepac|13/10/2026|https://concursos.estrategia.com/portal/concursos-sp/
@@ -35,11 +35,11 @@ BA|ISS Juazeiro|Juazeiro|Auditor fiscal e agente de tributos|0|Previsto para 202
 BA|Prefeitura de Ilhéus|Ilhéus|A definir|0|Comissão formada||13/10/2026|https://concursos.estrategia.com/portal/concursos-ba/
 BA|ISS Vitória da Conquista|Vitória da Conquista|Atendente, técnico e auditor fazendário|24|Comissão formada||13/10/2026|https://concursos.estrategia.com/portal/concursos-ba/
 CE|Guarda Municipal de Fortaleza|Fortaleza|Guarda civil municipal|0|Comissão formada||07/09/2026|https://concursos.estrategia.com/portal/concursos-ce/
-CE|Prefeitura de Boa Viagem|Boa Viagem|Diversos|903|Concurso autorizado||07/09/2026|https://concursos.estrategia.com/portal/concursos-ce/
+CE|Prefeitura de Boa Viagem|Boa Viagem|Diversos|903|Autorizado: Lei Municipal 1.753/2026 (sancionada em 01/07/2026) criou 903 vagas||07/09/2026|https://concursos.estrategia.com/portal/concursos-ce/
 CE|Prefeitura de Fortaleza (Saúde)|Fortaleza|A definir|0|Concurso previsto||07/09/2026|https://concursos.estrategia.com/portal/concursos-ce/
-CE|Prefeitura de Itaitinga|Itaitinga|Diversos|1402|Concurso previsto||07/09/2026|https://concursos.estrategia.com/portal/concursos-ce/
+CE|Prefeitura de Itaitinga|Itaitinga|Diversos|1402|Previsto: lei de dez/2025 criou 1.402 cargos; edital ainda sem data||07/09/2026|https://concursos.estrategia.com/portal/concursos-ce/
 CE|Prefeitura de Fortaleza (Educação)|Fortaleza|Professor|0|Concurso anunciado||07/09/2026|https://concursos.estrategia.com/portal/concursos-ce/
-CE|Prefeitura de Quixadá|Quixadá|A definir|0|Concurso previsto||07/09/2026|https://concursos.estrategia.com/portal/concursos-ce/
+CE|Prefeitura de Quixadá|Quixadá|A definir|0|Anunciado em maio/2025; ainda sem cargos e vagas||07/09/2026|https://concursos.estrategia.com/portal/concursos-ce/
 ES|Câmara de Cachoeiro de Itapemirim|Cachoeiro de Itapemirim|Procurador, analista e auditor|15|Banca definida|Access|15/10/2026|https://concursos.estrategia.com/portal/concursos-es/
 ES|Câmara de Aracruz|Aracruz|Diversos|9|Banca definida|Instituto Referência|15/10/2026|https://concursos.estrategia.com/portal/concursos-es/
 ES|CODEG Guarapari|Guarapari|A definir|0|Comissão formada||15/10/2026|https://concursos.estrategia.com/portal/concursos-es/
@@ -62,7 +62,7 @@ MG|Prefeitura de Pará de Minas|Pará de Minas|A definir|0|Comissão formada||15
 MG|Prefeitura de Araguari|Araguari|A definir|0|Comissão formada||15/10/2026|https://concursos.estrategia.com/portal/concursos-mg/
 MG|Prefeitura de Belo Horizonte (SMPOG)|Belo Horizonte|Agente governamental, analista e técnico|0|Comissão formada||15/10/2026|https://concursos.estrategia.com/portal/concursos-mg/
 MS|Prefeitura de Campo Grande (Educação)|Campo Grande|Níveis médio e superior|2000|Comissão formada||06/10/2026|https://concursos.estrategia.com/portal/concursos-ms/
-MS|Prefeitura de Campo Grande|Campo Grande|A definir|4500|Concurso anunciado||06/10/2026|https://concursos.estrategia.com/portal/concursos-ms/
+MS|Prefeitura de Campo Grande|Campo Grande|A definir|0|Prefeitura (GECAV) informou que não há previsão; as 4.500 vagas que circulam (ainda citadas pela Estratégia em out/2026) não foram confirmadas||26/06/2026|https://blog.grancursosonline.com.br/concurso-campo-grande-ms/|semprevisao
 MS|Prefeitura de Campo Grande (Saúde)|Campo Grande|A definir|0|Concurso autorizado||06/10/2026|https://concursos.estrategia.com/portal/concursos-ms/
 MS|Câmara de Campo Grande|Campo Grande|A definir|20|Concurso previsto (20 a 40 vagas)||06/10/2026|https://concursos.estrategia.com/portal/concursos-ms/
 MT|Câmara de Cuiabá|Cuiabá|Vários cargos|26|Banca definida|Selecon|15/10/2026|https://concursos.estrategia.com/portal/concursos-mt/

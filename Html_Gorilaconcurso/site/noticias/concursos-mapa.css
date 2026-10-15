@@ -628,20 +628,20 @@ body:not(.light) .cm-busca-baixo input{background:#121212;border-color:#303030}
 .cm-dm-pontos circle{stroke:#fff;stroke-width:1;cursor:pointer;transition:r .12s}
 body:not(.light) .cm-dm-pontos circle{stroke:#111}
 .cm-dm-pontos circle.sit-aberto{fill:#16a34a}
-.cm-dm-pontos circle.sit-andamento{fill:#7c3aed}
+.cm-dm-pontos circle.sit-andamento{fill:#dc2626}
 .cm-dm-pontos circle.sit-previsto{fill:#2563eb}
 .cm-dm-pontos circle.sit-semprevisao{fill:#f59e0b}
 .cm-dm-pontos circle.sel{r:5;stroke:#111;stroke-width:1.5}
 body:not(.light) .cm-dm-pontos circle.sel{stroke:#fff}
 .cm-dm-legp i{border-radius:50%}
-.cm-dm-leg1 i.sit-andamento{background:#7c3aed}
+.cm-dm-leg1 i.sit-andamento{background:#dc2626}
 .cm-dm-dica .st{opacity:1;font-weight:600}
-.cm-dm-dica .st-aberto{color:#4ade80}.cm-dm-dica .st-andamento{color:#c4b5fd}.cm-dm-dica .st-previsto{color:#93c5fd}.cm-dm-dica .st-semprevisao{color:#fcd34d}
-body:not(.light) .cm-dm-dica .st-aberto{color:#15803d}body:not(.light) .cm-dm-dica .st-andamento{color:#6d28d9}body:not(.light) .cm-dm-dica .st-previsto{color:#1d4ed8}body:not(.light) .cm-dm-dica .st-semprevisao{color:#b45309}
+.cm-dm-dica .st-aberto{color:#4ade80}.cm-dm-dica .st-andamento{color:#fca5a5}.cm-dm-dica .st-previsto{color:#93c5fd}.cm-dm-dica .st-semprevisao{color:#fcd34d}
+body:not(.light) .cm-dm-dica .st-aberto{color:#15803d}body:not(.light) .cm-dm-dica .st-andamento{color:#b91c1c}body:not(.light) .cm-dm-dica .st-previsto{color:#1d4ed8}body:not(.light) .cm-dm-dica .st-semprevisao{color:#b45309}
 .cm-dm-dica{white-space:normal;max-width:300px}
 /* zoom e arrastar no mapa da região */
-.cm-ev-regiao-mapa.cm-rz-vista{pointer-events:auto;overflow:hidden;overflow:clip;overflow-clip-margin:24px}
-.cm-ev-regiao-mapa.ampliado{overflow:hidden;cursor:grab;border-radius:6px;box-shadow:inset 0 0 0 1px var(--border)}
+.cm-ev-regiao-mapa.cm-rz-vista{pointer-events:auto;overflow:visible;cursor:grab}
+.cm-ev-regiao-mapa.ampliado{overflow:visible}
 .cm-ev-regiao-mapa.arrastando{cursor:grabbing}
 .cm-rz{position:relative;width:100%;height:100%;transform-origin:0 0}
 .cm-dm-cidade{transform-origin:left center}
@@ -666,9 +666,9 @@ body:not(.light) .cm-dm-pontos circle.fixo{stroke:#fff}
 .cm-rz-volta{display:block;margin:-4px 0 10px;padding:0;font:inherit;font-size:12.5px;font-weight:600;color:var(--accent-text);background:none;border:0;cursor:pointer}
 .cm-rz-st{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;font-size:12px;font-weight:700;border-radius:20px;background:var(--surface-2)}
 .cm-rz-st i,.cm-rz-lista i{width:10px;height:10px;border-radius:50%;flex-shrink:0}
-.cm-rz-card i.sit-aberto{background:#16a34a}.cm-rz-card i.sit-andamento{background:#7c3aed}.cm-rz-card i.sit-previsto{background:#2563eb}.cm-rz-card i.sit-semprevisao{background:#f59e0b}
-.cm-rz-card .st-aberto{color:#15803d}.cm-rz-card .st-andamento{color:#6d28d9}.cm-rz-card .st-previsto{color:#1d4ed8}.cm-rz-card .st-semprevisao{color:#b45309}
-body:not(.light) .cm-rz-card .st-aberto{color:#4ade80}body:not(.light) .cm-rz-card .st-andamento{color:#c4b5fd}body:not(.light) .cm-rz-card .st-previsto{color:#93c5fd}body:not(.light) .cm-rz-card .st-semprevisao{color:#fcd34d}
+.cm-rz-card i.sit-aberto{background:#16a34a}.cm-rz-card i.sit-andamento{background:#dc2626}.cm-rz-card i.sit-previsto{background:#2563eb}.cm-rz-card i.sit-semprevisao{background:#f59e0b}
+.cm-rz-card .st-aberto{color:#15803d}.cm-rz-card .st-andamento{color:#b91c1c}.cm-rz-card .st-previsto{color:#1d4ed8}.cm-rz-card .st-semprevisao{color:#b45309}
+body:not(.light) .cm-rz-card .st-aberto{color:#4ade80}body:not(.light) .cm-rz-card .st-andamento{color:#fca5a5}body:not(.light) .cm-rz-card .st-previsto{color:#93c5fd}body:not(.light) .cm-rz-card .st-semprevisao{color:#fcd34d}
 .cm-rz-org{margin-top:10px;font-size:20px;font-weight:800;letter-spacing:-.01em;color:var(--text-primary);padding-right:24px}
 .cm-rz-cargo{margin-top:2px;font-size:14px;color:var(--text-secondary)}
 .cm-rz-dados{margin:14px 0 0;display:grid;gap:8px}
@@ -689,3 +689,11 @@ body:not(.light) .cm-rz-card .st-aberto{color:#4ade80}body:not(.light) .cm-rz-ca
 .cm-rz-lista b{display:block;font-size:13px;color:var(--text-primary)}
 .cm-rz-lista small{display:block;font-size:11.5px;color:var(--text-secondary)}
 .cm-rz-lista em{font-style:normal;font-size:11.5px;font-weight:700;white-space:nowrap}
+/* o mapa arrastado/ampliado passa POR BAIXO do nome da região e da legenda (que continuam legíveis) */
+.cm-ev-regiao-nome,.cm-dm-info{position:relative;z-index:2}
+.cm-ev-regiao-mapa.cm-rz-vista{z-index:1}
+/* o mapa arrastado passa por baixo do botão "Voltar" e a legenda ganha fundo para ler por cima do mapa */
+.cm-ev-topo{z-index:4!important}
+.cm-ev-regiao-nome{padding:0 10px;border-radius:8px;background:color-mix(in srgb,var(--bg) 80%,transparent)}
+.cm-dm-info .cm-dm-legp,.cm-dm-info .cm-dm-leg1-dica{padding:4px 10px;border-radius:8px;background:color-mix(in srgb,var(--bg) 85%,transparent)}
+#news-screen.cm-busca-desceu .cm-faixa,#news-screen.cm-busca-desceu .cm-faixa-rotulo{visibility:hidden}

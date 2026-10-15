@@ -11,3 +11,8 @@ municipais-previstos.txt = previstos de prefeituras, câmaras e guardas (cada um
 Para atualizar: editar as tabelas e rodar no PowerShell, dentro desta pasta:
   .\gerar.ps1 -Site ..\site -Dir .
 O script avisa ("NAO ACHOU") se alguma cidade não bater com a lista do IBGE.
+CONCURSOS DE CADA CIDADE (todos os da página da cidade no PCI, últimos 12 meses — abertos e encerrados):
+  1) .\baixar-pci-cidades.ps1            (baixa as ~5.570 páginas de cidade; demora ~1 hora; retoma de onde parou)
+     .\baixar-pci-cidades.ps1 -Ufs SP,MG (só alguns estados)
+     Para baixar de novo do zero, apague a pasta pci-cidades.
+  2) .\gerar-cidades.ps1                 (gera site\noticias\concursos-cidades\<UF>.js)

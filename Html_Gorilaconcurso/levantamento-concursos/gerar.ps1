@@ -63,8 +63,9 @@ if(Test-Path "$Dir\municipais-previstos.txt"){
   foreach($l in [IO.File]::ReadAllLines("$Dir\municipais-previstos.txt", $utf8)){
     if(-not $l.Trim() -or $l.StartsWith('#')){ continue }
     $f = $l.Split('|'); $uf=$f[0]; $org=$f[1]; $cid=$f[2]; $cargo=$f[3]; $v=[int]$f[4]; $q=$f[5]; $banca=$f[6]; $dt=$f[7]; $fu=$f[8]
-    $fn = if($fu -match 'oliberal'){ 'O Liberal' } else { 'Estratégia Concursos' }
-    $item = "{orgao:$(Js $org),cargo:$(Js $cargo),status:""previsto"",vagas:$v"
+    $fn = if($fu -match 'oliberal'){ 'O Liberal' } elseif($fu -match 'grancursos'){ 'Gran Cursos' } else { 'Estratégia Concursos' }
+    $st = if($f.Count -gt 9 -and $f[9]){ $f[9] } else { 'previsto' }
+    $item = "{orgao:$(Js $org),cargo:$(Js $cargo),status:""$st"",vagas:$v"
     if($banca){ $item += ",banca:$(Js $banca)" }
     $item += ",quando:$(Js "$q (notícia de $dt)"),fonte:{nome:$(Js $fn),url:$(Js $fu)}}"
     $cod = Codigo $uf $cid
