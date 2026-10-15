@@ -42,7 +42,7 @@ function mmRenderLista(){
 function mmRenderTopico(t){
   const aberto = !!t.aberto;
   const subs = t.subtopicos || [];
-  const feitos = subs.filter(s => (s.texto && s.texto.trim()) || s.imagem).length;
+  const feitos = subs.filter(s => (s.texto && s.texto.trim()) || mmImg(s)).length;
   return `
   <div class="mm-topico-card" style="background:var(--surface-1);border:1px solid var(--border);border-radius:14px;margin-bottom:16px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.08)">
     <div style="display:flex;align-items:center;gap:12px;padding:16px 20px;cursor:pointer" onclick="mmToggleTopico('${t.id}')">
@@ -65,7 +65,8 @@ function mmRenderTopico(t){
 function mmRenderSubtopico(topicoId, s){
   const aberto = !!s.aberto;
   const temTexto = !!(s.texto && s.texto.trim());
-  const temConteudo = temTexto || s.imagem;
+  const temConteudo = temTexto || mmImg(s);
+  const img = mmImg(s);
   const editando = s.editando !== false && !temTexto ? true : !!s.editando;
   const marcador = temConteudo
     ? `<span style="width:20px;height:20px;border-radius:6px;background:var(--success);color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0">✓</span>`
@@ -75,7 +76,7 @@ function mmRenderSubtopico(topicoId, s){
     <div style="display:flex;align-items:center;gap:12px;padding:13px 20px;cursor:pointer" onclick="mmToggleSubtopico('${topicoId}','${s.id}')">
       ${marcador}
       <div style="flex:1;font-size:14px;color:var(--text-primary)">${mmEscape(s.nome)}</div>
-      ${s.imagem ? `<button title="Ver imagem" onclick="event.stopPropagation();mmVerImagem('${s.imagem.replace(/'/g,"\\'")}')" style="background:none;border:none;color:var(--accent-text);cursor:pointer;font-size:14px;padding:2px">${ICO.imagem}</button>` : ''}
+      ${img ? `<button title="Ver imagem" onclick="event.stopPropagation();mmVerImagemSub('${topicoId}','${s.id}')" style="background:none;border:none;color:var(--accent-text);cursor:pointer;font-size:14px;padding:2px">${ICO.imagem}</button>` : ''}
       <button title="Renomear" onclick="event.stopPropagation();mmRenomearSubtopico('${topicoId}','${s.id}')" style="background:none;border:none;color:var(--text-muted);cursor:pointer;font-size:12px;padding:2px">${ICO.lapis}</button>
       <button title="Excluir subtópico" onclick="event.stopPropagation();mmExcluirSubtopico('${topicoId}','${s.id}')" style="background:none;border:none;color:var(--text-muted);cursor:pointer;font-size:12px;padding:2px">${ICO.lixo}</button>
       <span style="font-size:15px;color:var(--accent-text);transform:rotate(${aberto ? '90deg' : '0deg'});transition:transform .15s;display:inline-block">›</span>
@@ -93,10 +94,10 @@ function mmRenderSubtopico(topicoId, s){
       <button onclick="mmEditarTexto('${topicoId}','${s.id}')" style="padding:8px 16px;background:var(--surface-1);color:var(--text-secondary);border:1px solid var(--border);border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;width:fit-content">${ICO.lapis} Editar texto</button>
       `}
       <div>
-        ${s.imagem ? `<div style="position:relative;display:inline-block"><img src="${s.imagem}" style="max-width:100%;max-height:200px;border-radius:8px;display:block;cursor:zoom-in" onclick="mmVerImagem('${s.imagem.replace(/'/g,"\\'")}')"><button onclick="event.stopPropagation();mmVerImagem('${s.imagem.replace(/'/g,"\\'")}')" style="position:absolute;top:6px;right:66px;background:rgba(0,0,0,.6);border:none;color:#fff;border-radius:6px;padding:3px 7px;font-size:11px;cursor:pointer">${ICO.lupa} Ver imagem</button><button onclick="event.stopPropagation();mmRemoverImagem('${topicoId}','${s.id}')" style="position:absolute;top:6px;right:6px;background:rgba(0,0,0,.6);border:none;color:#fff;border-radius:6px;padding:3px 7px;font-size:11px;cursor:pointer">remover</button></div>` : ''}
+        ${img ? `<div style="position:relative;display:inline-block"><img src="${img}" alt="" style="max-width:100%;max-height:200px;border-radius:8px;display:block;cursor:zoom-in" onclick="mmVerImagem(this.src)"><button onclick="event.stopPropagation();mmVerImagemSub('${topicoId}','${s.id}')" style="position:absolute;top:6px;right:66px;background:rgba(0,0,0,.6);border:none;color:#fff;border-radius:6px;padding:3px 7px;font-size:11px;cursor:pointer">${ICO.lupa} Ver imagem</button><button onclick="event.stopPropagation();mmRemoverImagem('${topicoId}','${s.id}')" style="position:absolute;top:6px;right:6px;background:rgba(0,0,0,.6);border:none;color:#fff;border-radius:6px;padding:3px 7px;font-size:11px;cursor:pointer">remover</button></div>` : ''}
       </div>
       <label style="display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--text-secondary);cursor:pointer;background:var(--surface-1);border:1px solid var(--border);border-radius:8px;padding:7px 12px;width:fit-content">
-        ${ICO.imagem} ${s.imagem ? 'Trocar imagem' : 'Adicionar imagem'}
+        ${ICO.imagem} ${img ? 'Trocar imagem' : 'Adicionar imagem'}
         <input type="file" accept="image/*" style="display:none" onchange="mmUploadImagem('${topicoId}','${s.id}', this)">
       </label>
     </div>` : ''}
@@ -168,7 +169,8 @@ function mmUploadImagem(topicoId, subId, input){
     if(!t) return;
     const s = (t.subtopicos||[]).find(s=>s.id===subId);
     if(!s) return;
-    s.imagem = e.target.result;
+    s.imgId = guardarFoto(e.target.result);   // imagem vai para o IndexedDB (com as fotos do calendário), não para o localStorage de 5 MB
+    delete s.imagem;
     saveState();
     mmRenderLista();
   };
@@ -179,11 +181,17 @@ function mmRemoverImagem(topicoId, subId){
   if(!t) return;
   const s = (t.subtopicos||[]).find(s=>s.id===subId);
   if(!s) return;
-  s.imagem = null;
+  delete s.imagem; delete s.imgId;
   saveState();
   mmRenderLista();
 }
 
+// imagem do subtópico: fica no IndexedDB (s.imgId); s.imagem é o formato antigo, ainda aceito até ser migrado
+function mmImg(s){ return s ? (s.imgId ? (FOTOS[s.imgId]||'') : (s.imagem||'')) : ''; }
+function mmVerImagemSub(topicoId, subId){
+  const t = state.mindMap.topicos.find(t=>t.id===topicoId), s = t && (t.subtopicos||[]).find(s=>s.id===subId);
+  const src = mmImg(s); if(src) mmVerImagem(src);
+}
 function mmVerImagem(src){
   document.getElementById('mm-lightbox-img').src = src;
   document.getElementById('mm-lightbox-modal').classList.add('open');

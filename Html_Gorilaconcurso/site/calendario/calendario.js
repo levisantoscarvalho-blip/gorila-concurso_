@@ -161,6 +161,8 @@ function temFotoVisivel(info){ return !!fotoDoDia(info) && info.usarImg!==false;
 function limparFotosSemUso(){
   if(window.__guest || !fotosCarregadas) return;
   const usadas=new Set(Object.values(state.days||{}).map(d=>d&&d.imgId).filter(Boolean));
+  // imagens do mapa mental também ficam no IndexedDB: nunca apagar as que estão em uso
+  (((state.mindMap||{}).topicos)||[]).forEach(t=>(t.subtopicos||[]).forEach(sb=>{ if(sb&&sb.imgId) usadas.add(sb.imgId); }));
   // fotos feitas no modo visitante que passaram para a conta: grava agora
   fotosSoNaMemoria.forEach(id=>{ if(usadas.has(id)&&FOTOS[id]) gravarFoto(id,FOTOS[id]); });
   fotosSoNaMemoria.clear();
@@ -174,10 +176,50 @@ async function carregarFotos(){
 }
 
 // Arruma dados antigos ou repetidos (roda ao carregar e ao importar backup). Não muda horas.
+// Confere os dados que vêm de fora (backup importado, dados antigos) antes de irem para a tela:
+// identificadores e cores entram em botões e estilos, então um backup estragado ou mexido não pode quebrar a página.
+function sanearDados(){
+  const idOk = x => typeof x==='string' && /^[\w-]{1,80}$/.test(x);
+  const idLimpo = x => idOk(x) ? x : (String(x??'').replace(/[^\w-]/g,'').slice(0,80) || 'x');
+  const corOk = c => typeof c==='string' && /^#[0-9a-f]{3,8}$/i.test(c);
+  const num = (v,inteiro) => { const n=Math.max(0, Number(v)||0); return inteiro ? Math.round(n) : arred1(n); };
+  const lista = k => { if(!Array.isArray(state[k])) state[k]=[]; return state[k]=state[k].filter(x=>x&&typeof x==='object'); };
+  if(!state.days || typeof state.days!=='object' || Array.isArray(state.days)) state.days={};
+  Object.keys(state.days).forEach(k=>{
+    const v=state.days[k];
+    if(!/^\d{4}-\d{2}-\d{2}$/.test(k) || !v || typeof v!=='object'){ delete state.days[k]; return; }
+    if('imgId' in v && !idOk(v.imgId)) delete v.imgId;
+    if('estudos' in v){
+      v.estudos=(Array.isArray(v.estudos)?v.estudos:[]).filter(e=>e&&typeof e==='object').map(e=>({...e,
+        cursoId:idLimpo(e.cursoId), materiaId:e.materiaId?idLimpo(e.materiaId):'', horas:num(e.horas), questoes:num(e.questoes,true)}));
+    }
+    AREAS_ORDEM.forEach(a=>{ const o=v[a]; if(o&&typeof o==='object'){ ['horas','horasLeitura'].forEach(c=>{ if(c in o) o[c]=num(o[c]); }); if('questoes' in o) o.questoes=num(o.questoes,true); } });
+  });
+  lista('cursos').forEach(c=>{ c.id=idLimpo(c.id); c.nome=String(c.nome??''); if('cor' in c && !corOk(c.cor)) delete c.cor; });
+  lista('conteudosCustom').forEach(c=>{ c.id=idLimpo(c.id); c.trilha=idLimpo(c.trilha); c.nome=String(c.nome??''); });
+  lista('trilhasCustom').forEach(t=>{ t.id=idLimpo(t.id); t.nome=String(t.nome??'');
+    t.disciplinas=(Array.isArray(t.disciplinas)?t.disciplinas:[]).filter(d=>d&&typeof d==='object'); t.disciplinas.forEach(d=>{ d.id=idLimpo(d.id); d.nome=String(d.nome??''); }); });
+  if(!state.mindMap || !Array.isArray(state.mindMap.topicos)) state.mindMap={topicos:[]};
+  state.mindMap.topicos=state.mindMap.topicos.filter(t=>t&&typeof t==='object');
+  state.mindMap.topicos.forEach(t=>{ t.id=idLimpo(t.id); t.nome=String(t.nome??'');
+    t.subtopicos=(Array.isArray(t.subtopicos)?t.subtopicos:[]).filter(s=>s&&typeof s==='object');
+    t.subtopicos.forEach(s=>{ s.id=idLimpo(s.id); s.nome=String(s.nome??''); if('imgId' in s && !idOk(s.imgId)) delete s.imgId; if(s.imagem && !/^data:image\//.test(s.imagem)) delete s.imagem; }); });
+  if(state.coresAreas && typeof state.coresAreas==='object') Object.keys(state.coresAreas).forEach(k=>{ if(!corOk(state.coresAreas[k])) delete state.coresAreas[k]; });
+}
 function normalizarCalendario(){
+  sanearDados();
   const days=state.days||(state.days={});
   // Fotos que vieram dentro dos dados (versão anterior ou backup) vão para o IndexedDB
   if(state.fotos){ Object.values(state.fotos).forEach(src=>guardarFoto(src)); delete state.fotos; }
+  // Imagens do mapa mental guardadas DENTRO dos dados (formato antigo) vão para o IndexedDB:
+  // uma foto de celular sozinha podia lotar os 5 MB do localStorage e travar todos os salvamentos.
+  // A imagem antiga só sai dos dados DEPOIS que a gravação no IndexedDB deu certo (se falhar, nada se perde).
+  (((state.mindMap||{}).topicos)||[]).forEach(t=>(t.subtopicos||[]).forEach(sb=>{
+    if(!sb || !sb.imagem || window.__guest) return;
+    const src=sb.imagem, id=idDaFoto(src);
+    FOTOS[id]=src; sb.imgId=id;
+    fotosDB.set(id,src).then(()=>{ if(sb.imagem===src){ delete sb.imagem; saveState(); } }).catch(e=>console.error('Imagem do mapa mental continua nos dados:',e));
+  }));
   Object.entries(days).forEach(([k,v])=>{
     if(!v||typeof v!=='object'){ delete days[k]; return; }
     if('imgSrc' in v){ if(v.imgSrc) v.imgId=guardarFoto(v.imgSrc); delete v.imgSrc; }
@@ -608,6 +650,11 @@ async function saveDayEdit(){
   novo.horasTotal=somaHorasPartes(novo);
   // Só bloqueia o que a pessoa digitou agora (registros antigos acima de 24h continuam editáveis)
   const horasDigitadas=est.reduce((t,e)=>t+e.horas,0);
+  // Dia que ainda não chegou: não dá para registrar estudo (inflaria o foguinho, os dias estudados e as estatísticas)
+  if(key>todayKey() && est.length){
+    await customAlert('Este dia ainda não chegou. Registre seus estudos no dia em que estudar.');
+    return;
+  }
   if(horasDigitadas>0 && novo.horasTotal>HORAS_MAX_DIA){
     await customAlert(`O total deste dia ficou em ${novo.horasTotal}h, mas um dia tem no máximo ${HORAS_MAX_DIA}h. Confira as horas antes de salvar.`);
     return;

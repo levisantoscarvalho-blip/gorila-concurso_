@@ -432,7 +432,7 @@
       </div>
       <div id="carreira-lista" style="display:flex;flex-direction:column;gap:8px;margin-bottom:16px"></div>
       <div style="display:flex;gap:8px">
-        <input type="text" id="carreira-nova-disciplina" placeholder="Nome da nova disciplina..." style="flex:1;padding:10px 12px;border-radius:8px;border:1px solid var(--border);background:var(--surface-1);color:var(--text-primary);font-size:13px" onkeydown="if(event.key==='Enter')adicionarDisciplinaCarreira()">
+        <input type="text" id="carreira-nova-disciplina" maxlength="80" placeholder="Nome da nova disciplina..." style="flex:1;padding:10px 12px;border-radius:8px;border:1px solid var(--border);background:var(--surface-1);color:var(--text-primary);font-size:13px" onkeydown="if(event.key==='Enter')adicionarDisciplinaCarreira()">
         <button style="background:var(--accent);color:#fff;border:none;border-radius:8px;padding:0 16px;cursor:pointer;font-weight:600;font-size:13px" onclick="adicionarDisciplinaCarreira()">Adicionar</button>
       </div>
     </div>
@@ -540,7 +540,7 @@
     <button class="modal-close" onclick="fecharAddMateria()"><span class="icon-emoji">✕</span></button>
     <div style="font-size:16px;font-weight:700;color:var(--text-primary);margin-bottom:14px">O que você está estudando?</div>
     <div style="font-size:11.5px;color:var(--text-muted);margin:-8px 0 12px">Vale para o Calendário e para Conteúdos (é a mesma lista).</div>
-    <input type="text" id="nova-materia-nome" autocomplete="off" oninput="cursoDica('nova-materia-nome','dica-materia')" placeholder="Ex.: Direito, INSS, Polícia Civil SP, Ciência de Dados" style="width:100%;padding:10px 12px;margin-bottom:8px;border-radius:8px;border:1px solid var(--border);background:var(--surface-2);color:var(--text-primary);font-size:13px" onkeydown="if(event.key==='Enter')criarMateria()">
+    <input type="text" id="nova-materia-nome" maxlength="80" autocomplete="off" oninput="cursoDica('nova-materia-nome','dica-materia')" placeholder="Ex.: Direito, INSS, Polícia Civil SP, Ciência de Dados" style="width:100%;padding:10px 12px;margin-bottom:8px;border-radius:8px;border:1px solid var(--border);background:var(--surface-2);color:var(--text-primary);font-size:13px" onkeydown="if(event.key==='Enter')criarMateria()">
     <div id="dica-materia" class="curso-dica"></div>
     <button style="width:100%;padding:10px;background:var(--accent);color:#fff;border:none;border-radius:8px;cursor:pointer;font-weight:600;font-size:13px" onclick="criarMateria()">Adicionar</button>
   </div>
@@ -550,7 +550,7 @@
   <div class="modal-inner" style="max-width:360px">
     <button class="modal-close" onclick="fecharAddCurso()"><span class="icon-emoji">✕</span></button>
     <div style="font-size:16px;font-weight:700;color:var(--text-primary);margin-bottom:14px">Novo curso</div>
-    <input type="text" id="novo-curso-nome" autocomplete="off" oninput="cursoDica('novo-curso-nome','dica-curso')" placeholder="Ex.: Direito, INSS, Polícia Civil SP, Ciência de Dados" style="width:100%;padding:10px 12px;margin-bottom:8px;border-radius:8px;border:1px solid var(--border);background:var(--surface-2);color:var(--text-primary);font-size:13px" onkeydown="if(event.key==='Enter')criarCurso()">
+    <input type="text" id="novo-curso-nome" maxlength="80" autocomplete="off" oninput="cursoDica('novo-curso-nome','dica-curso')" placeholder="Ex.: Direito, INSS, Polícia Civil SP, Ciência de Dados" style="width:100%;padding:10px 12px;margin-bottom:8px;border-radius:8px;border:1px solid var(--border);background:var(--surface-2);color:var(--text-primary);font-size:13px" onkeydown="if(event.key==='Enter')criarCurso()">
     <div id="dica-curso" class="curso-dica"></div>
     <button style="width:100%;padding:10px;background:var(--accent);color:#fff;border:none;border-radius:8px;cursor:pointer;font-weight:600;font-size:13px" onclick="criarCurso()">Criar curso</button>
   </div>
@@ -560,7 +560,7 @@
   <div class="modal-inner" style="max-width:380px">
     <button class="modal-close" onclick="fecharAddConteudo()"><span class="icon-emoji">✕</span></button>
     <div style="font-size:16px;font-weight:700;color:var(--text-primary);margin-bottom:14px">Nova matéria</div>
-    <input type="text" id="novo-conteudo-nome" autocomplete="off" oninput="materiaSugerir()" onkeydown="if(event.key==='Enter')criarConteudo()" placeholder="Nome da matéria (ex: Português, Matemática)" style="width:100%;padding:10px 12px;margin-bottom:10px;border-radius:8px;border:1px solid var(--border);background:var(--surface-2);color:var(--text-primary);font-size:13px" onkeydown="if(event.key==='Enter')criarConteudo()">
+    <input type="text" id="novo-conteudo-nome" maxlength="80" autocomplete="off" oninput="materiaSugerir()" onkeydown="if(event.key==='Enter')criarConteudo()" placeholder="Nome da matéria (ex: Português, Matemática)" style="width:100%;padding:10px 12px;margin-bottom:10px;border-radius:8px;border:1px solid var(--border);background:var(--surface-2);color:var(--text-primary);font-size:13px" onkeydown="if(event.key==='Enter')criarConteudo()">
     <div id="materia-sugestoes"></div>
     <div style="font-size:11px;color:var(--text-muted);margin-bottom:6px">Para qual curso vai essa matéria?</div>
     <select id="novo-conteudo-trilha" style="width:100%;padding:10px 12px;margin-bottom:16px;border-radius:8px;border:1px solid var(--border);background:var(--surface-2);color:var(--text-primary);font-size:13px"></select>
@@ -596,7 +596,7 @@
   <div class="modal-inner" style="max-width:360px">
     <button class="modal-close" onclick="mmFecharNomeModal()"><span class="icon-emoji">✕</span></button>
     <div id="mm-nome-titulo" style="font-size:16px;font-weight:700;color:var(--text-primary);margin-bottom:14px">Novo tópico</div>
-    <input type="text" id="mm-nome-input" placeholder="Nome" style="width:100%;padding:10px 12px;margin-bottom:16px;border-radius:8px;border:1px solid var(--border);background:var(--surface-2);color:var(--text-primary);font-size:13px" onkeydown="if(event.key==='Enter')mmConfirmarNome()">
+    <input type="text" id="mm-nome-input" maxlength="100" placeholder="Nome" style="width:100%;padding:10px 12px;margin-bottom:16px;border-radius:8px;border:1px solid var(--border);background:var(--surface-2);color:var(--text-primary);font-size:13px" onkeydown="if(event.key==='Enter')mmConfirmarNome()">
     <button style="width:100%;padding:10px;background:var(--accent);color:#fff;border:none;border-radius:8px;cursor:pointer;font-weight:600;font-size:13px" onclick="mmConfirmarNome()">Salvar</button>
   </div>
 </div>
@@ -605,7 +605,7 @@
   <div class="modal-inner" style="max-width:380px">
     <button class="modal-close" onclick="fecharAddCarreira()"><span class="icon-emoji">✕</span></button>
     <div style="font-size:16px;font-weight:700;color:var(--text-primary);margin-bottom:14px">Nova carreira</div>
-    <input type="text" id="nova-carreira-nome" placeholder="Nome da carreira (ex: Concurso TRT)" style="width:100%;padding:10px 12px;margin-bottom:10px;border-radius:8px;border:1px solid var(--border);background:var(--surface-2);color:var(--text-primary);font-size:13px" onkeydown="if(event.key==='Enter')criarCarreira()">
+    <input type="text" id="nova-carreira-nome" maxlength="80" placeholder="Nome da carreira (ex: Concurso TRT)" style="width:100%;padding:10px 12px;margin-bottom:10px;border-radius:8px;border:1px solid var(--border);background:var(--surface-2);color:var(--text-primary);font-size:13px" onkeydown="if(event.key==='Enter')criarCarreira()">
     <div style="font-size:11px;color:var(--text-muted);margin-bottom:8px">Escolha um ícone</div>
     <div id="nova-carreira-icones" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px"></div>
     <div id="reativar-trilhas-box" style="display:none;margin-bottom:16px;padding:10px;background:var(--surface-2);border-radius:8px"></div>
@@ -675,21 +675,6 @@
     <div id="custom-dialog-buttons" style="display:flex;gap:10px;justify-content:flex-end"></div>
   </div>
 </div>
-<div class="modal-overlay" id="atualizar-sistema-modal">
-  <div class="modal-inner" style="max-width:600px">
-    <button class="modal-close" onclick="fecharAtualizarSistema()"><span class="icon-emoji">✕</span></button>
-    <div style="font-size:16px;font-weight:700;color:var(--text-primary);margin-bottom:8px">🔧 Atualizar sistema</div>
-    <div style="font-size:12.5px;color:var(--text-muted);margin-bottom:14px;line-height:1.5">
-      Cole aqui o código HTML completo e atualizado (o arquivo inteiro que o Claude te enviar no chat). Ao aplicar, seus dados atuais são salvos primeiro e continuam intactos — só o código do site é substituído.
-    </div>
-    <textarea id="atualizar-sistema-textarea" placeholder="Cole aqui todo o código HTML novo (desde &lt;!DOCTYPE html&gt; até &lt;/html&gt;)..." style="width:100%;height:220px;padding:10px 12px;border-radius:8px;border:1px solid var(--border);background:var(--surface-2);color:var(--text-primary);font-size:12px;font-family:monospace;resize:vertical;margin-bottom:14px"></textarea>
-    <div style="display:flex;gap:10px;justify-content:flex-end">
-      <button onclick="fecharAtualizarSistema()" style="padding:9px 16px;background:var(--surface-2);color:var(--text-primary);border:1px solid var(--border);border-radius:8px;cursor:pointer;font-size:13px;font-weight:600">Cancelar</button>
-      <button onclick="aplicarAtualizacaoSistema()" style="padding:9px 16px;background:var(--accent);color:#fff;border:none;border-radius:8px;cursor:pointer;font-size:13px;font-weight:600">Aplicar atualização</button>
-    </div>
-  </div>
-</div>
-
 <div id="save-toast" style="position: fixed; bottom: 18px; right: 18px; z-index: 3000; padding: 10px 16px; border-radius: 8px; font-size: 12px; font-weight: 600; display: flex; align-items: center; gap: 7px; transition: opacity 0.3s; box-shadow: rgba(0, 0, 0, 0.3) 0px 4px 14px; max-width: 320px; background: var(--success-bg); color: var(--success); border: 1px solid var(--success); opacity: 0;"><span class="icon-emoji">✅</span> Salvo</div></body></html>
 
 <!-- ═══════════ CÓDIGO (a ORDEM importa: dados primeiro, iniciar.js por último) ═══════════ -->

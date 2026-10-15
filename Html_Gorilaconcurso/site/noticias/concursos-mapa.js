@@ -171,7 +171,7 @@ function renderConcursosMapa(){
         </div>
       </div>
     </div>${cmFaixaHTML()}`;   // bandeiras EMBAIXO do mapa (pedido do Levi)
-  cmDesenharMapaLeve(); cmAplicarZoom();   // controle já começa em 100% (− e mira apagados)
+  cmDesenharMapaLeve(); cmVistaInicial();   // começa AMPLIADO ao lado do quadro da estrela (pedido do Levi); a mira mostra o Brasil inteiro
   cmTourPrimeira = false;
   if(!cmTourVisto()) setTimeout(()=>{ cmTourPrimeira = true; cmTour(0); }, 500);   // 1ª visita: tour guiado (do "?") e, ao terminar, o quadro da estrela
   else cmSobreAlternar(true);   // demais visitas: o quadro da estrela já aparece aberto (pedido do Levi); some ao mexer no mapa
@@ -207,6 +207,23 @@ function cmRoda(ev){
 }
 function cmZoomPasso(dir){ const r=document.getElementById('cm-palco').getBoundingClientRect(); cmZoomEm(cmZoom.z*(dir>0?1.4:1/1.4), r.width/2, r.height/2); }
 function cmZoomReset(){ cmZoom={z:1,x:0,y:0}; cmAplicarZoom(); }
+// vista inicial (pedido do Levi, igual ao print dele): o Brasil ampliado ocupando ~73% do espaço entre o quadro da estrela e os botões
+// (no notebook dele, 1366x600, dá 164%), com o topo encostado no topo da área e começando logo
+// à direita do quadro. Em telas estreitas (celular/tablet) começa com o Brasil inteiro.
+const CM_OCUPA_INICIAL = 0.727;   // fração do espaço livre que o Brasil ocupa na vista inicial
+function cmVistaInicial(){
+  const pal=document.getElementById('cm-palco'), mapa=document.getElementById('cm-mapa3d'), sobre=pal?.querySelector('.cm-sobre');
+  if(!pal || !mapa || pal.clientWidth<1000){ cmZoomReset(); return; }
+  cmZoom={z:1,x:0,y:0}; document.getElementById('cm-zoom').style.transform='none';
+  const P=pal.getBoundingClientRect(), m=mapa.getBoundingClientRect(), ctrl=pal.querySelector('.cm-controles')?.getBoundingClientRect();
+  const L0=m.left-P.left, T0=m.top-P.top, W0=m.width;
+  const fimQuadro=(sobre ? sobre.getBoundingClientRect().left-P.left : 28) + 340;    // borda direita do quadro da estrela
+  const espaco=(ctrl ? ctrl.left-P.left : P.width) - fimQuadro;
+  const z=Math.min(3, Math.max(1, Math.round(CM_OCUPA_INICIAL*espaco/W0*100)/100));
+  const alvoEsq=fimQuadro + W0*z*0.33;                                                // onde a ponta oeste do Brasil começa
+  cmZoom={ z, x:alvoEsq-L0*z, y:-T0*z };
+  const el=document.getElementById('cm-zoom'); el.style.transition='none'; cmAplicarZoom(); void el.offsetWidth; el.style.transition='';
+}
 function cmArrastaInicio(ev){
   cmSobreAlternar(false);   // clicou ou arrastou o mapa: o quadro da estrela some
   cmArrastou = false;

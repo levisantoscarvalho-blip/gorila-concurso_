@@ -190,37 +190,6 @@ function baixarCopiaHtml(){
   }
 }
 
-// ── Atualizar sistema: cola um HTML novo (dado pelo Claude no chat) e aplica na hora ──
-function abrirAtualizarSistema(){
-  document.getElementById('atualizar-sistema-textarea').value = '';
-  document.getElementById('atualizar-sistema-modal').classList.add('open');
-}
-function fecharAtualizarSistema(){
-  document.getElementById('atualizar-sistema-modal').classList.remove('open');
-}
-async function aplicarAtualizacaoSistema(){
-  const novoCodigo = document.getElementById('atualizar-sistema-textarea').value.trim();
-  if(!novoCodigo){ await customAlert('Cole o código novo antes de aplicar.'); return; }
-
-  if(!novoCodigo.includes('<script') || !/<\/html>\s*$/i.test(novoCodigo)){
-    await customAlert('O código colado não parece ser um arquivo HTML completo e válido. Verifique se você copiou o arquivo inteiro, do início (<!DOCTYPE html>) até o fim (</html>).');
-    return;
-  }
-
-  const quer = await customConfirm('Isso vai recarregar o site com o código novo. Seus dados atuais serão salvos antes, e devem continuar intactos depois da atualização. Deseja continuar?');
-  if(!quer) return;
-
-  try{
-    // Garante que o progresso atual está salvo na nuvem antes de trocar o código,
-    // assim o código novo (que também lê da mesma nuvem) encontra tudo certinho.
-    await saveState();
-    document.open();
-    document.write(novoCodigo);
-    document.close();
-  }catch(e){
-    await customAlert('Não foi possível aplicar a atualização: ' + e.message);
-  }
-}
 
 function mostrarToast(msg){
   const wrap = document.getElementById('toast-wrap');

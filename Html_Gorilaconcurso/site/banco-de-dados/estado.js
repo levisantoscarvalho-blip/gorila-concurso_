@@ -82,7 +82,16 @@ async function loadState(){
     try{
       const result = await window.storage.get(STORAGE_KEY, false);
       if(result && result.value){
-        state = Object.assign(defaultState(), JSON.parse(result.value));
+        let lido;
+        try{ lido = JSON.parse(result.value); }
+        catch(errLeitura){
+          // Dados guardados estragados: NÃO abre em branco por cima deles (o próximo salvamento apagaria tudo).
+          // Trava os salvamentos desta visita e avisa; os dados originais ficam intactos no navegador.
+          window.__dadosIlegiveis = true;
+          console.error('Os dados salvos não puderam ser lidos:', errLeitura);
+          carregou = true; break;
+        }
+        state = Object.assign(defaultState(), (lido && typeof lido==='object' && !Array.isArray(lido)) ? lido : {});
       } else {
         // Nada salvo ainda nesta conta/artifact. Se houver progresso embutido
         // no próprio arquivo (seed de uma versão anterior), usa ele como ponto
@@ -132,6 +141,10 @@ async function loadState(){
 async function saveState() {
   if(typeof updateFoguinho === 'function') updateFoguinho(); // foguinho acende na hora em que o dia de hoje é registrado
   if(window.__guest) return true; // visitante: nada é gravado na conta
+  if(window.__dadosIlegiveis){   // dados salvos estragados: não grava por cima (veja loadState)
+    if(!window.__avisouIlegivel){ window.__avisouIlegivel = true; customAlert('Não conseguimos ler o seu progresso salvo neste navegador. Para não apagar nada, as mudanças desta visita não serão salvas. Fale com a Equipe de suporte.'); }
+    return false;
+  }
   if(window.__loadPromise && !window.__dadosProntos){ try{ await window.__loadPromise; }catch(e){} }
   let tentativa = 0;
   const maxTentativas = 3;
