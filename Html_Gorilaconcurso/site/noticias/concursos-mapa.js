@@ -720,6 +720,7 @@ function cmMesoDicaMove(ev){
 // do lugar dela no mapa até o lado ESQUERDO (onde fica a bandeira). O lado direito fica vazio por enquanto.
 // Em cima, "Voltar a <estado>" (ou Esc) desfaz e volta ao estado dividido. ──
 let cmRegiaoAberta=-1, cmTopoAntes='';
+const CM_PAINEL_LIGADO = false;   // painel de concursos à direita da região (siglas + números) — desligado por enquanto
 function cmMesoAbrir(i){
   if(cmEvArrastou || cmRegiaoAberta>=0) return;           // soltou depois de arrastar (não é clique) ou já tem região aberta
   const v=document.getElementById('cm-estado-vista'), alvo=document.getElementById('cm-ev-mapa'); if(!v||!alvo?._regs) return;
@@ -729,7 +730,7 @@ function cmMesoAbrir(i){
   const V=v.getBoundingClientRect(), de=p.getBoundingClientRect();
   // destino: a área da bandeira (no celular, sem bandeira, a área do mapa)
   const band=v.querySelector('.cm-ev-bandeira'), base=(band && band.offsetWidth ? band : alvo).getBoundingClientRect();
-  const b=r.b, wd=b.width*1e-4, hd=b.height*1e-4, ALT_NOME=165;   // embaixo: nome + 3 números + legenda + fonte
+  const b=r.b, wd=b.width*1e-4, hd=b.height*1e-4, ALT_NOME=70;    // embaixo: nome + legenda dos pontos
   const s=Math.min(base.width*0.92/wd, (base.height-ALT_NOME)*0.92/hd), W=wd*s, H=hd*s;
   const x=base.left-V.left+(base.width-W)/2, y=base.top-V.top+(base.height-ALT_NOME-H)/2;
   const caixa=document.createElement('div'); caixa.className='cm-ev-regiao'; caixa.id='cm-ev-regiao';
@@ -737,6 +738,18 @@ function cmMesoAbrir(i){
   caixa.innerHTML=`<div class="cm-ev-regiao-mapa" style="width:${W}px;height:${H}px"><svg viewBox="${b.x*1e-4} ${-(b.y+b.height)*1e-4} ${wd} ${hd}" width="${W}" height="${H}" aria-hidden="true"><g transform="scale(0.0001,-0.0001)"><path d="${r.d}" fill="${r.cor}"/></g></svg></div>
     <div class="cm-ev-regiao-nome">${r.nome}</div><div class="cm-dm-info" id="cm-dm-info"></div>`;
   v.appendChild(caixa);
+  // À DIREITA (onde ficava o estado): o PAINEL DE CONCURSOS da região (pedido do Levi: só dado de concurso, nada de
+  // população). No celular, sem bandeira, o painel vai embaixo do mapa.
+  // ⚠ DESLIGADO a pedido do Levi (2026-10-15: "vamos tratar isso aos poucos") — o painel não aparece; o código fica
+  // guardado para voltar. Para religar: CM_PAINEL_LIGADO=true.
+  const painel=document.createElement('div'); painel.className='cm-ev-painel'; painel.id='cm-ev-painel';
+  if(!CM_PAINEL_LIGADO){ /* sem painel */ }
+  else if(band && band.offsetWidth){ const A=alvo.getBoundingClientRect();
+    painel.style.cssText=`left:${A.left-V.left}px;top:${A.top-V.top}px;width:${A.width}px;max-height:${A.height}px`; v.appendChild(painel); }
+  else { painel.classList.add('embaixo'); caixa.appendChild(painel); }
+  painel._uf=cmVendoEstado; painel._nome=r.nome; painel._munis=[];
+  cmPainelConcursos();
+  cmBuscaDescer();
   // começa EXATAMENTE em cima da região no mapa e desliza até o lugar final
   const k0=de.width/W, svg=caixa.querySelector('svg'), nome=caixa.querySelector('.cm-ev-regiao-nome');
   svg.style.transform=`translate(${de.left-V.left-x}px,${de.top-V.top-y}px) scale(${k0})`;
@@ -782,14 +795,15 @@ async function cmDemografia(caixa, r, s, uf){
       if(melhor){ cx=melhor[0]; cy=melhor[1]; } }
     [m.x,m.y]=px(cx,cy); });
   med.remove();
-  // quadrados: ÁREA proporcional à população (lado ∝ raiz da população); o maior tem até 16% do lado menor do mapa
-  // PONTOS = CONCURSOS (pedido do Levi): a COR é a situação (acontecendo / previsto / sem previsão) e o TAMANHO é o nº de
-  // vagas. Enquanto não houver o cadastro real (CONCURSOS_CIDADE vazio), todos ficam cinza: "ainda sem dados".
-  const conc=m=>cmConcursosCidade(m.c), vagasMax=Math.max(1, ...munis.map(m=>conc(m).reduce((t,c)=>t+(c.vagas||0),0)));
-  const LADO_MAX=Math.max(14, Math.min(40, Math.min(W,H)*0.14)), LADO_SEM=4.5;
-  const ladoVagas=v=>Math.max(4, LADO_MAX*Math.sqrt(v/vagasMax));
-  const ladoM=m=>{ const l=conc(m); return l.length ? ladoVagas(l.reduce((t,c)=>t+(c.vagas||0),0)) : LADO_SEM; };
-  const sitM=m=>cmSituacaoCidade(conc(m));
+  // PONTINHOS = CONCURSOS (pedido do Levi): UM PONTO POR CONCURSO, na cidade onde ele acontece, na COR da situação dele
+  // (verde inscrições abertas · roxo inscrições encerradas/provas · azul previsto · laranja sem previsão). Vários concursos
+  // na mesma cidade = pontos agrupados em volta dela. Concursos do ESTADO (PM, SEFAZ, TJ...) ficam na CAPITAL, a sede.
+  const capCod=lista.find(m=>m.n===CM_CAPITAL[uf])?.c, est=cmConcursosEstaduais(uf).map(c=>({...c, estadual:true}));
+  const conc=m=>[...cmConcursosCidade(m.c), ...(m.c===capCod ? est : [])];
+  const R_PONTO=3.8, PASSO=5, raio=n=>n ? PASSO*Math.sqrt(n-1)+R_PONTO : 0;
+  const ladoM=m=>2*raio(conc(m).length);
+  const pontos=munis.flatMap((m,j)=>conc(m).map((c,k)=>{ const r=PASSO*Math.sqrt(k), a=k*2.39996;   // espiral de girassol: pontos sem encostar
+    return `<circle cx="${(m.x+r*Math.cos(a)).toFixed(1)}" cy="${(m.y+r*Math.sin(a)).toFixed(1)}" r="${R_PONTO}" class="sit-${cmCorPonto(c)}" data-j="${j}" data-k="${k}"/>`; })).join('');
   // nomes escritos: as cidades mais populosas (até 5), pulando as que encostariam num nome já escrito
   const ordem=[...munis].sort((a,c)=>c.p-a.p), destaques=[], caixas=[];
   for(const m of ordem){ if(destaques.length>=Math.min(5, Math.max(1, Math.round(munis.length/10)+1))) break;
@@ -800,38 +814,111 @@ async function cmDemografia(caixa, r, s, uf){
   const camada=document.createElement('div'); camada.className='cm-dm'; camada.style.cssText=`width:${W}px;height:${H}px`;
   camada.innerHTML=`<svg class="cm-dm-munis" viewBox="${vbx} ${vby} ${b.width*1e-4} ${b.height*1e-4}" width="${W}" height="${H}"><g transform="scale(0.0001,-0.0001)">${
       munis.map((m,j)=>`<path d="${m.d}" fill="${corMicro[m.mi]}" data-j="${j}"/>`).join('')}</g></svg>
-    <svg class="cm-dm-quadros" width="${W}" height="${H}">${ordem.map(m=>{ const l=ladoM(m), j=munis.indexOf(m);
-      return `<rect x="${(m.x-l/2).toFixed(1)}" y="${(m.y-l/2).toFixed(1)}" width="${l.toFixed(1)}" height="${l.toFixed(1)}" class="sit-${sitM(m)}" data-j="${j}"/>`; }).join('')}</svg>
+    <svg class="cm-dm-quadros cm-dm-pontos" width="${W}" height="${H}">${pontos}</svg>
     ${destaques.map(m=>`<span class="cm-dm-cidade" style="left:${(m.x+ladoM(m)/2+4).toFixed(1)}px;top:${m.y.toFixed(1)}px">${m.n}</span>`).join('')}
     <div class="cm-dm-dica" hidden></div>`;
   mapa.appendChild(camada);
   requestAnimationFrame(()=>camada.classList.add('aparece'));
-  // mouse em cima de um município ou quadrado: os números dele
+  // mouse em cima de uma cidade: os concursos dela (só concurso — pedido do Levi); CLIQUE = painel da direita mostra a cidade
   const dica=camada.querySelector('.cm-dm-dica');
-  camada.onpointermove=ev=>{ const j=ev.target.dataset?.j; if(j===undefined){ dica.hidden=true; camada.querySelector('.sel')?.classList.remove('sel'); return; }
+  const vg=c=>c.vagas?` · ${cmNum(c.vagas)} ${c.vagas===1?'vaga':'vagas'}`:'';
+  camada.onpointermove=ev=>{ const j=ev.target.dataset?.j, k=ev.target.dataset?.k; if(j===undefined){ dica.hidden=true; camada.querySelectorAll('.sel').forEach(e=>e.classList.remove('sel')); return; }
     const m=munis[+j], q=camada.getBoundingClientRect();
-    camada.querySelectorAll('.sel').forEach(e=>e.classList.remove('sel')); camada.querySelectorAll(`[data-j="${j}"]`).forEach(e=>e.classList.add('sel'));
-    const cs=conc(m), sit=CM_SITUACOES[sitM(m)];
-    const lista=cs.length ? cs.map(c=>`<span>• ${c.orgao}${c.vagas?` — ${cmNum(c.vagas)} vagas`:''} (${CM_SITUACOES[c.status]?.nome||''})</span>`).join('') : `<span class="sem">Concursos: ainda sem dados</span>`;
-    dica.innerHTML=`<b>${m.n}</b><span>${cmNum(m.p)} habitantes · ${m.de.toLocaleString('pt-BR',{maximumFractionDigits:1})} pessoas por km²</span><span>Microrregião ${m.mi}</span>${lista}`;
+    camada.querySelectorAll('.sel').forEach(e=>e.classList.remove('sel')); (k!==undefined?[ev.target]:camada.querySelectorAll(`[data-j="${j}"]`)).forEach(e=>e.classList.add('sel'));
+    const cs=conc(m);
+    if(k!==undefined){   // em cima de UM ponto: o concurso dele
+      const c=cs[+k];
+      dica.innerHTML=`<b>${c.orgao}</b><span>${c.cargo}${vg(c)}${c.banca?` · ${c.banca}`:''}</span><span class="st st-${cmCorPonto(c)}">${CM_SIT_NOME[c.status]||''}: ${c.quando}</span>`+
+        `<span class="sem">${c.estadual?`Órgão do estado · sede em ${m.n} · vale para todo o estado`:m.n} · fonte: ${c.fonte.nome}</span>`;
+    } else {             // em cima da cidade: quantos concursos de cada situação
+      const n=s=>cs.filter(c=>cmCorPonto(c)===s).length;
+      const linhas=[['aberto','com inscrições abertas'],['andamento','com inscrições encerradas / provas'],['previsto','previstos'],['semprevisao','sem previsão']]
+        .filter(([s])=>n(s)).map(([s,t])=>`<span class="st st-${s}">● ${n(s)} ${t}</span>`).join('');
+      dica.innerHTML=`<b>${m.n}</b>${linhas||'<span class="sem">Nenhum concurso no levantamento</span>'}`;
+    }
     dica.hidden=false; dica.style.left=(ev.clientX-q.left)+'px'; dica.style.top=(ev.clientY-q.top)+'px'; };
   camada.onpointerleave=()=>{ dica.hidden=true; camada.querySelectorAll('.sel').forEach(e=>e.classList.remove('sel')); };
-  // embaixo: os números da região, a legenda e a fonte
-  const pop=munis.reduce((t,m)=>t+m.p,0), area=munis.reduce((t,m)=>t+m.a,0), comDados=munis.filter(m=>conc(m).length).length;
+  camada.onclick=ev=>{ const j=ev.target.dataset?.j; const p=document.getElementById('cm-ev-painel'); if(!p) return;
+    camada.querySelectorAll('.fixo').forEach(e=>e.classList.remove('fixo'));
+    if(j===undefined || p._sel===munis[+j]){ p._sel=null; cmPainelConcursos(); return; }
+    camada.querySelectorAll(`[data-j="${j}"]`).forEach(e=>e.classList.add('fixo'));
+    p._sel=munis[+j]; cmPainelConcursos(); };
+  // embaixo do mapa: só a legenda dos pontos (os números e a lista ficam no painel da direita)
   const info=caixa.querySelector('#cm-dm-info');
-  // embaixo, SÓ O ESSENCIAL (pedido do Levi: estava confuso): 3 números grandes, a legenda dos pontos numa linha e a fonte
-  // com link. A microrregião de cada cidade aparece ao passar o mouse (não tem mais legenda própria).
-  const fmt=n=>n.toLocaleString('pt-BR',{maximumFractionDigits:1});
-  info.innerHTML=`<div class="cm-dm-cards">
-      <div><b>${cmNum(pop)}</b><span>habitantes</span></div>
-      <div><b>${munis.length}</b><span>municípios</span></div>
-      <div title="Densidade demográfica: habitantes por km²"><b>${fmt(pop/area)}</b><span>pessoas por km²</span></div>
-    </div>
-    <div class="cm-dm-leg1"><span class="cm-dm-leg1-tit">Concursos por cidade:</span>${Object.entries(CM_SITUACOES).map(([id,s])=>`<span><i class="sit-${id}"></i>${s.nome}</span>`).join('')}</div>
-    ${comDados ? '' : `<div class="cm-dm-aviso1">Os concursos de cada cidade ainda estão sendo cadastrados.</div>`}
-    <div class="cm-dm-fonte">Fonte: <a href="https://sidra.ibge.gov.br/tabela/4714" target="_blank" rel="noopener">IBGE — Censo Demográfico 2022</a> · método: <a href="https://journals.openedition.org/confins/61191?lang=pt" target="_blank" rel="noopener">Hervé Théry (Confins, 2025)</a></div>`;
+  info.innerHTML=`<div class="cm-dm-leg1 cm-dm-legp"><span><i class="sit-aberto"></i>Inscrições abertas</span><span><i class="sit-andamento"></i>Inscrições encerradas / provas</span><span><i class="sit-previsto"></i>Previsto</span><span><i class="sit-semprevisao"></i>Sem previsão</span><span class="cm-dm-leg1-dica">1 ponto = 1 concurso</span></div>`;
   requestAnimationFrame(()=>info.classList.add('aparece'));
+  const p=document.getElementById('cm-ev-painel'); if(p){ p._munis=munis; cmPainelConcursos(); }
 }
+// ── PAINEL DE CONCURSOS DA REGIÃO (direita): números grandes + lista por situação, cada concurso com a fonte.
+// Mostra a região toda ou, depois de clicar numa cidade, só o que vale para quem mora nela (prefeitura + estado).
+function cmPainelConcursos(){
+  const p=document.getElementById('cm-ev-painel'); if(!p) return;
+  const uf=p._uf, sel=p._sel, munis=sel ? [sel] : p._munis;
+  const mun=munis.flatMap(m=>cmConcursosCidade(m.c).map(c=>({...c, cidade:m.n})));
+  const est=cmConcursosEstaduais(uf), todos=cmOrdenar([...mun, ...est]);
+  const abertos=todos.filter(c=>c.status==='aberto'), vagas=abertos.reduce((t,c)=>t+(c.vagas||0),0);
+  const temCR=abertos.some(c=>!c.vagas), previstos=todos.filter(c=>c.status==='previsto');
+  // SIGLAS (pedido do Levi, no estilo da grade de estados da Estratégia): uma etiqueta por órgão com concurso na área
+  // (PM-MA, SEFAZ-MA, TCE-MA, Pref. São Luís...). Cor = situação; mouse em cima = detalhes; clique = abre a notícia (fonte).
+  const etiquetas=cmEtiquetas(todos, uf);
+  const chip=e=>`<a class="cm-pc-chip sit-${e.sit}" href="${e.lista[0].fonte.url}" target="_blank" rel="noopener" title="${cmAttr(e.lista.map(c=>`${c.orgao}${c.cidade?` (${c.cidade})`:''} — ${c.cargo}${c.vagas?` · ${cmNum(c.vagas)} ${c.vagas===1?'vaga':'vagas'}`:''}\n${CM_SIT_NOME[c.status]}: ${c.quando}`).join('\n\n'))}">${e.sigla}${e.lista.length>1?`<small>${e.lista.length}</small>`:''}</a>`;
+  const porCargo=p._porCargo;
+  const grade=porCargo
+    ? CM_AREAS.map(([nome])=>{ const l=etiquetas.filter(e=>e.area===nome); return l.length?`<div class="cm-pc-area">${nome} <span>${l.length}</span></div><div class="cm-pc-chips">${l.map(chip).join('')}</div>`:''; }).join('')
+    : `<div class="cm-pc-chips">${etiquetas.map(chip).join('')}</div>`;
+  const lev=cmFontes().map(f=>f[uf]).find(e=>e?.atualizado), todosLink=cmFontes()[1][uf]?.todos;
+  p.innerHTML=`<div class="cm-pc-topo">
+      <div class="cm-pc-tit">${sel?`Concursos para quem mora em <b>${sel.n}</b>`:`Concursos na região <b>${p._nome}</b>`} <span>${etiquetas.length} ${etiquetas.length===1?'órgão':'órgãos'}</span></div>
+      ${sel?`<button type="button" class="cm-pc-regiao" onclick="cmPainelRegiao()">Ver a região toda</button>`:''}
+    </div>
+    <div class="cm-pc-grade">${etiquetas.length?grade:`<p class="cm-pc-vazio">Nenhum concurso encontrado no levantamento.</p>`}</div>
+    <div class="cm-pc-nums">
+      <div class="verde"><b>${abertos.length}</b><span>com inscrições abertas</span></div>
+      <div class="verde"><b>${cmNum(vagas)}</b><span>vagas abertas${temCR?' + cadastro de reserva':''}</span></div>
+      <div class="azul"><b>${previstos.length}</b><span>previstos</span></div>
+    </div>
+    <button type="button" class="cm-pc-porcargo" onclick="cmPainelPorCargo()">${porCargo?'Ver todos os concursos por órgão':'Ver todos os concursos por cargo'} ›</button>
+    <div class="cm-pc-rodape">${lev?`Levantamento de ${lev.atualizado} · datas mudam, confira sempre a fonte.`:''}${todosLink?` <a href="${todosLink}" target="_blank" rel="noopener">Ver todos os editais</a>`:''}
+      <span>Mapa: <a href="https://sidra.ibge.gov.br/tabela/4714" target="_blank" rel="noopener">IBGE</a></span></div>`;
+  requestAnimationFrame(()=>p.classList.add('aparece'));
+}
+function cmPainelPorCargo(){ const p=document.getElementById('cm-ev-painel'); if(!p) return; p._porCargo=!p._porCargo; cmPainelConcursos(); }
+const cmAttr=s=>String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;');
+// TIPO DE CARGO de cada concurso (para "ver por cargo"): a primeira regra que bate, olhando órgão + cargo
+const CM_AREAS = [
+  ['Policial e segurança', /pol[íi]cia|bombeiro|penal|seap|sejus|ssp-|guarda|socioeducativo|marinha|militar/i],
+  ['Trânsito', /detran|tr[âa]nsito/i],
+  ['Tribunais e jurídico', /\btj|tribunal|trt|\bmp-|minist[ée]rio p|defensoria|\bpge|procurad|advogad|juiz|jur[íi]dic/i],
+  ['Controle e legislativo', /\btce|\bcge|controle|assembleia|c[âa]mara|legislativ/i],
+  ['Fiscal e fazenda', /sefaz|sefin|fazend|fiscal|auditor|tribut|receita|finan[çc]/i],
+  ['Saúde', /sa[úu]de|\bses|sesa|sesau|hospital|m[ée]dic|enferm|endemias|farmac|odont|psic[óo]log|nutricion|fisioterap|fonoaud/i],
+  ['Educação', /professor|educa|seduc|\bseed|\bsed-|\bsee|docente|pedagog|escolar|univers|\bue[a-z]+\b|\buf[a-z]*\b|\bif[a-z]*\b|unesp|unicamp|\busp|cefet|unila|unifal|unifei|unimontes|unilab/i],
+  ['Prefeituras e outros cargos', /./],
+];
+// SIGLA de cada órgão (Polícia Militar do MA ➔ PM-MA; Prefeitura de Bauru ➔ Pref. Bauru; SEFAZ-MA continua SEFAZ-MA)
+const CM_SIGLAS = [[/^Pol[íi]cia Militar/i,'PM'],[/^Pol[íi]cia Civil/i,'PC'],[/^Pol[íi]cia Penal/i,'Polícia Penal'],[/^Pol[íi]cia Cient[íi]fica/i,'Polícia Científica'],
+  [/^Corpo de Bombeiros/i,'CBM'],[/^Defensoria P[úu]blica/i,'DPE'],[/^Assembleia Legislativa/i,'AL'],[/^Secretaria da Fazenda/i,'SEFAZ'],[/^Secretaria de Sa[úu]de/i,'SES']];
+function cmSiglas(c, uf){
+  const o=c.orgao.replace(/\s*\([^)]*\)/g,'').trim();
+  if(/^Pol[íi]cia Militar, Pol[íi]cia Civil e Bombeiros/i.test(o)) return [`PM-${uf}`,`PC-${uf}`,`CBM-${uf}`];
+  for(const [re,s] of CM_SIGLAS) if(re.test(o)) return [s.includes(' ') ? `${s} ${uf}` : `${s}-${uf}`];
+  if(/^(Prefeitura|Munic[íi]pio|Procuradoria do Munic|Hospital S[ãa]o Lucas|Hospital Municipal)/i.test(o) && c.cidade) return [`Pref. ${c.cidade}`];
+  if(/^C[âa]mara/i.test(o) && !/Legislativa/i.test(o)) return [`Câmara ${c.cidade||o.replace(/^C[âa]mara( de Vereadores)?( d[eoa]s?)?\s*/i,'')}`];
+  if(c.cidade){ const w=o.split(' ')[0]; return [/^[A-Z]{3,}$/.test(w) ? `${w} ${c.cidade}` : o]; }   // SAAE de Pirapora ➔ SAAE Pirapora
+  if(/^Marinha/i.test(o)) return ['Marinha'];
+  return [o];
+}
+// junta os concursos por sigla: cada etiqueta guarda a lista, a situação "mais forte" e o tipo de cargo
+function cmEtiquetas(todos, uf){
+  const m=new Map();
+  todos.forEach(c=>cmSiglas(c,uf).forEach(s=>{ if(!m.has(s)) m.set(s,{sigla:s, lista:[]}); m.get(s).lista.push(c); }));
+  const ordem={aberto:0, edital:1, andamento:2, previsto:3, semprevisao:4}, cor={aberto:'aberto', edital:'aberto', andamento:'andamento', previsto:'previsto', semprevisao:'semprevisao'};
+  return [...m.values()].map(e=>{ const melhor=e.lista.reduce((a,b)=>ordem[b.status]<ordem[a.status]?b:a);
+      return {...e, st:ordem[melhor.status], sit:cor[melhor.status], area:CM_AREAS.find(([,re])=>e.lista.some(c=>re.test(`${c.orgao} ${c.cargo}`)))[0]}; })
+    .sort((a,b)=>a.st-b.st || a.sigla.localeCompare(b.sigla,'pt-BR'));
+}
+function cmPainelRegiao(){ const p=document.getElementById('cm-ev-painel'); if(!p) return; p._sel=null;
+  document.querySelectorAll('.cm-dm .fixo').forEach(e=>e.classList.remove('fixo')); cmPainelConcursos(); }
 // ── CONCURSOS POR CIDADE — situação de cada um e de onde vêm os dados ──
 // CONCURSOS_CIDADE: { 'código IBGE do município': [ {orgao, status:'aberto'|'previsto'|'semprevisao', vagas} ] }
 // ⚠ VAZIO de propósito (decisão do Levi): só entra dado REAL, com fonte, quando houver o cadastro de concursos (Supabase).
@@ -842,18 +929,92 @@ const CM_SITUACOES = {
   semprevisao:{nome:'Sem previsão'},
   semdados:   {nome:'Ainda sem dados'},
 };
-function cmConcursosCidade(cod){ return CONCURSOS_CIDADE[cod] || []; }
-// a cor do ponto é a situação "mais forte" da cidade: acontecendo > previsto > sem previsão
+// nome de cada situação no texto ("edital publicado" e "em andamento" usam a mesma cor verde de "acontecendo")
+const CM_SIT_NOME = {aberto:'Inscrições abertas', edital:'Edital publicado', andamento:'Em andamento', previsto:'Previsto', semprevisao:'Sem previsão'};
+// cor do PONTO de cada concurso no mapa da região (a situação de hoje)
+function cmCorPonto(c){ const s=cmConcursoHoje(c).status; return s==='edital' ? 'aberto' : s; }
+// (a capital de cada estado — onde ficam os pontos dos concursos do estado — vem de CM_CAPITAL, mais abaixo)
+// as duas fontes de dados reais: concursos-dados.js (SP, manual) e concursos-levantamento.js (todos os estados)
+const cmFontes = ()=>[typeof CONCURSOS_REAIS!=='undefined'?CONCURSOS_REAIS:{}, typeof CONCURSOS_LEVANTAMENTO!=='undefined'?CONCURSOS_LEVANTAMENTO:{}];
+// a situação de HOJE: quem tem data de inscrição muda sozinho — antes do início = edital publicado, depois do fim = encerradas
+function cmConcursoHoje(c){
+  if(c.status!=='aberto' || !c.ate) return c;
+  const hoje=new Date().toLocaleDateString('sv-SE'), br=d=>d.split('-').reverse().join('/');
+  if(hoje>c.ate) return {...c, status:'andamento', quando:`Inscrições encerradas em ${br(c.ate)}`};
+  if(c.de && hoje<c.de) return {...c, status:'edital', quando:`inscrições ${c.quando}`};
+  return c;
+}
+const CM_ORDEM_SIT = {aberto:0, edital:1, andamento:2, previsto:3, semprevisao:4};
+const cmOrdenar = l=>l.map(cmConcursoHoje).sort((a,b)=>(CM_ORDEM_SIT[a.status]-CM_ORDEM_SIT[b.status]) || (a.ate||'').localeCompare(b.ate||''));
+// concursos da PREFEITURA (e câmara, autarquias) da cidade
+function cmConcursosCidade(cod){
+  return cmOrdenar([...(CONCURSOS_CIDADE[cod]||[]), ...cmFontes().flatMap(f=>Object.values(f).flatMap(e=>e.municipais?.[cod]||[]))]);
+}
+// concursos do ESTADO e órgãos federais no estado (PM, Polícia Civil, Fazenda, universidades...): valem para todas as cidades
+function cmConcursosEstaduais(uf){ return cmOrdenar(cmFontes().flatMap(f=>f[uf]?.estaduais||[])); }
+// a cor do ponto é a situação "mais forte" da cidade: acontecendo (inscrições abertas, edital publicado ou provas em andamento) > previsto > sem previsão
 function cmSituacaoCidade(lista){
   if(!lista.length) return 'semdados';
-  return ['aberto','previsto','semprevisao'].find(s=>lista.some(c=>c.status===s)) || 'semdados';
+  if(lista.some(c=>['aberto','edital','andamento'].includes(cmConcursoHoje(c).status))) return 'aberto';
+  return ['previsto','semprevisao'].find(s=>lista.some(c=>c.status===s)) || 'semdados';
+}
+// uma linha de concurso com a fonte (pedido do Levi: só dado real, sempre com de onde veio)
+function cmLinhaConcurso(c){
+  return `<li><i class="sit-${cmSituacaoCidade([c])}"></i><span><b>${c.orgao}</b> — ${c.cargo}${c.vagas?` · ${cmNum(c.vagas)} ${c.vagas===1?'vaga':'vagas'}`:''}${c.banca?` · ${c.banca}`:''}
+    <em>${CM_SIT_NOME[c.status]||''}: ${c.quando}</em></span>
+    <a href="${c.fonte.url}" target="_blank" rel="noopener">${c.fonte.nome}</a></li>`;
+}
+// lista embaixo do mapa da região: concursos das prefeituras daqui + os do estado, cada um com a fonte
+function cmBlocoConcursos(municipais, uf, comDados){
+  const est=cmConcursosEstaduais(uf), lev=cmFontes().map(f=>f[uf]).find(e=>e?.atualizado), todos=cmFontes()[1][uf]?.todos;
+  if(!est.length && !municipais.length) return `<div class="cm-dm-aviso1">Os concursos de cada cidade ainda estão sendo cadastrados.</div>`;
+  return `<div class="cm-dm-conc">
+    ${municipais.length ? `<div class="cm-dm-conc-tit">Prefeituras e câmaras desta região</div><ul>${cmOrdenar(municipais).map(cmLinhaConcurso).join('')}</ul>` : ''}
+    ${est.length ? `<div class="cm-dm-conc-tit">Estado e órgãos federais <span>(valem para todas as cidades)</span></div><ul>${est.map(cmLinhaConcurso).join('')}</ul>` : ''}
+    ${lev ? `<div class="cm-dm-aviso1">Levantamento de ${lev.atualizado}. Datas mudam: confira sempre a fonte.${comDados?'':' Nenhuma prefeitura desta região com edital aberto no levantamento.'}${todos?` <a href="${todos}" target="_blank" rel="noopener">Ver todos os editais da região</a>`:''}</div>` : ''}
+  </div>`;
 }
 function cmNoEstadoVoltar(uf){ return cmDoEstado(uf).replace(/^do /,'ao ').replace(/^da /,'à ').replace(/^de /,'a '); }   // "ao Tocantins", "à Bahia", "a São Paulo"
+// ── BUSCA QUE DESCE (pedido do Levi): com a região aberta, a barra de pesquisa do topo desce até o lugar do letreiro
+// (que some) e fica lá; ao voltar ao estado, sobe de novo. O topo e o letreiro só ficam invisíveis (nada muda de lugar).
+// O que essa busca vai procurar ainda será definido com o Levi — por enquanto o campo diz "(Definir com o Claude)".
+function cmBuscaAlvo(){
+  const rot=document.querySelector('.cm-faixa-rotulo'), fx=document.querySelector('.cm-faixa'); if(!rot||!fx) return null;
+  const a=rot.getBoundingClientRect(), b=fx.getBoundingClientRect(), w=Math.min(640, (b.right-a.left)-120), h=44;
+  return {left:a.left+((b.right-a.left)-w)/2, top:a.top+((b.bottom-a.top)-h)/2, width:w, height:h, rot, fx};
+}
+function cmBuscaDescer(){
+  const tb=document.querySelector('#topbar .tb-search'), alvo=cmBuscaAlvo(); if(!tb||!alvo||document.getElementById('cm-busca-baixo')) return;
+  const A=tb.getBoundingClientRect();
+  const el=document.createElement('div'); el.id='cm-busca-baixo'; el.className='cm-busca-baixo';
+  el.innerHTML=`<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5"/></svg><input type="search" autocomplete="off" placeholder="Busque um concurso, cargo ou cidade" aria-label="Pesquisar">`;
+  el.style.cssText=`left:${A.left}px;top:${A.top}px;width:${A.width}px;height:${A.height}px`;
+  (document.getElementById('news-screen')||document.body).appendChild(el);   // dentro da tela de Notícias: as Configurações (camada por cima) cobrem a busca também
+  tb.style.visibility='hidden'; alvo.rot.style.visibility='hidden'; alvo.fx.style.visibility='hidden';
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{ el.classList.add('anda');
+    el.style.cssText=`left:${alvo.left}px;top:${alvo.top}px;width:${alvo.width}px;height:${alvo.height}px`; }));
+  window.addEventListener('resize', cmBuscaReposicionar);
+}
+function cmBuscaReposicionar(){ const el=document.getElementById('cm-busca-baixo'), a=cmBuscaAlvo(); if(!el||!a) return;
+  el.classList.remove('anda'); el.style.cssText=`left:${a.left}px;top:${a.top}px;width:${a.width}px;height:${a.height}px`; }
+// semAnimar: some na hora (trocou de tela); senão sobe de volta ao topo e só então o topo e o letreiro reaparecem
+function cmBuscaSubir(semAnimar){
+  const el=document.getElementById('cm-busca-baixo'), tb=document.querySelector('#topbar .tb-search');
+  window.removeEventListener('resize', cmBuscaReposicionar);
+  const volta=()=>{ el?.remove(); if(document.getElementById('cm-busca-baixo')) return; if(tb) tb.style.visibility='';
+    document.querySelectorAll('.cm-faixa-rotulo,.cm-faixa').forEach(e=>e.style.visibility=''); };
+  if(!el || semAnimar || !tb){ volta(); return; }
+  const A=tb.getBoundingClientRect(); el.id='';   // deixa abrir outra região enquanto esta ainda sobe
+  el.classList.add('anda'); el.style.cssText=`left:${A.left}px;top:${A.top}px;width:${A.width}px;height:${A.height}px`;
+  setTimeout(volta, 560);
+}
 function cmMesoFechar(semAnimar){
   if(cmRegiaoAberta<0) return;
   cmRegiaoAberta=-1;
   const v=document.getElementById('cm-estado-vista'); if(!v) return;
   document.getElementById('cm-ev-regiao')?.remove();
+  document.getElementById('cm-ev-painel')?.remove();
+  cmBuscaSubir(semAnimar);
   v.classList.remove('cm-ev-foco');
   const topo=v.querySelector('.cm-ev-topo'); if(topo && cmTopoAntes) topo.innerHTML=cmTopoAntes;
 }

@@ -1,0 +1,524 @@
+CE|SEDUC-CE|-|2000|Professor|15/10/2026|seduc-e-seplag-ce-abrem-concurso-publico-com-vagas-para-professores
+CE|Câmara de Graça|Graça|22|Vários cargos|25/10/2026|camara-de-graca-ce-reabre-inscricoes-para-concurso-publico-com-salarios-de-ate-4300
+CE|Câmara de São Benedito|São Benedito|11|Vários cargos|30/10/2026|camara-de-sao-benedito-ce-abre-concurso-publico-para-niveis-fundamental-e-medio
+CE|IFCE|-|2|Professor substituto|21/10/2026>31/10/2026|ifce-abre-selecao-para-professores-substitutos-no-campus-limoeiro-do-norte
+CE|Prefeitura de Acaraú|Acaraú|266|Vários cargos|20/10/2026|prefeitura-de-acarau-ce-retifica-concurso-com-vagas-para-diversos-niveis-de-escolaridade
+CE|Prefeitura de Alto Santo|Alto Santo|4|Nível superior|19/10/2026|prefeitura-de-alto-santo-ce-retifica-concurso-para-cargos-de-nivel-superior
+CE|Prefeitura de Aracati|Aracati|127|Vários cargos|06/11/2026|prefeitura-de-aracati-ce-abre-concurso-publico-com-salarios-de-ate-5431
+CE|Prefeitura de Aracati|Aracati|60|Agente de saúde e intérprete de Libras|24/11/2026>07/01/2027|prefeitura-de-aracati-ce-abre-concursos-para-agente-comunitario-de-saude-e-interprete-de-libras
+CE|Prefeitura de Itarema|Itarema|203|Vários cargos|28/10/2026|prefeitura-de-itarema-ce-abre-concurso-publico-com-salarios-de-ate-5622
+CE|Prefeitura de Meruoca|Meruoca|49|Educação (seleção)|16/10/2026|prefeitura-de-meruoca-ce-abre-processo-seletivo-para-a-secretaria-de-educacao
+CE|Prefeitura de Piquet Carneiro|Piquet Carneiro|100|Vários cargos|26/10/2026|prefeitura-de-piquet-carneiro-ce-prorroga-inscricoes-para-concurso-publico
+CE|Prefeitura de Poranga|Poranga|98|Vários cargos|19/10/2026|prefeitura-de-poranga-ce-reabre-inscricoes-para-concursos-publicos
+CE|Prefeitura de Ubajara|Ubajara|60|Vários cargos|01/11/2026|prefeitura-de-ubajara-ce-publica-retificacao-de-concurso-publico
+CE|Prefeitura de Sobral|Sobral|CR|Professores temporários|17/10/2026>23/10/2026|prefeitura-de-sobral-ce-abre-processo-seletivo-para-professores-temporarios
+CE|UFC|-|5|Professor EBTT|31/10/2026>10/11/2026|ufc-ce-abre-concurso-com-vagas-para-professores-de-ensino-basico-tecnico-e-tecnologico
+CE|UNILAB|-|15|Professor do magistério superior|03/11/2026|unilab-ce-abre-concurso-publico-com-vagas-para-a-carreira-de-magisterio-superior
+MA|Prefeitura de Formosa da Serra Negra|Formosa da Serra Negra|60|Professor|16/11/2026|prefeitura-de-formosa-da-serra-negra-ma-abre-concurso-publico-com-vagas-para-professores
+MA|Prefeitura de Itinga do Maranhão|Itinga do Maranhão|33|Professor (seleção)|02/01/2027>15/01/2027|prefeitura-de-itinga-do-maranhao-ma-abre-processo-seletivo-para-professores
+MA|SEAP-MA|-|CR|Agente penitenciário (seleção)|23/10/2026|seap-ma-abre-selecao-para-agente-penitenciario-em-godofredo-viana
+MA|SEAP-MA|-|CR|Auxiliar penitenciário (seleção)|23/10/2026|seap-ma-abre-selecoes-para-auxiliares-penitenciarios-em-diferentes-unidades
+MA|UEMA|-|3|Professor substituto|21/10/2026|uema-abre-processo-seletivo-para-professores-substitutos-no-campus-pinheiro
+MA|UEMA|-|1|Professor substituto|20/10/2026>28/10/2026|uema-abre-processo-seletivo-para-professor-substituto-de-administracao-em-pinheiro
+PI|Câmara de Dom Expedito Lopes|Dom Expedito Lopes|5|Vários cargos|18/10/2026|camara-de-dom-expedito-lopes-pi-abre-concurso-publico-com-cinco-vagas-imediatas
+PI|Prefeitura de Bela Vista do Piauí|Bela Vista do Piauí|64|Vários cargos|26/10/2026|prefeitura-de-bela-vista-do-piaui-pi-abre-concurso-publico-para-diversos-cargos
+PI|Prefeitura de Brasileira|Brasileira|44|Professor e psicopedagogo (seleção)|23/10/2026|prefeitura-de-brasileira-pi-abre-processo-seletivo-com-vagas-para-professores-e-psicopedagogos
+PI|Prefeitura de Francisco Macedo|Francisco Macedo|49|Vários cargos|14/11/2026|prefeitura-de-francisco-macedo-pi-abre-concurso-publico-com-vagas-imediatas-e-cadastro-de-reserva
+PI|Prefeitura de São João da Varjota|São João da Varjota|64|Vários cargos|02/11/2026|prefeitura-de-sao-joao-da-varjota-pi-abre-concurso-publico-para-diversos-cargos
+RN|Câmara de Acari|Acari|2|Assessor jurídico e auditor|27/10/2026|camara-de-acari-rn-abre-concurso-publico-para-assessor-juridico-e-auditor-de-controle-interno
+RN|Câmara de Cerro Corá|Cerro Corá|1|Controlador interno|27/10/2026|camara-de-cerro-cora-rn-abre-concurso-publico-para-o-cargo-de-controlador-interno
+RN|Câmara de Mossoró|Mossoró|24|Vários cargos|12/11/2026|camara-de-mossoro-rn-abre-concurso-publico-com-salarios-de-ate-8810
+RN|Câmara de Pau dos Ferros|Pau dos Ferros|5|Vários cargos|15/10/2026|camara-de-pau-dos-ferros-rn-abre-concurso-publico-com-salarios-de-ate-4714
+RN|Câmara de Santana do Seridó|Santana do Seridó|4|Vários cargos|27/10/2026|camara-de-santana-do-serido-rn-abre-concurso-publico-com-quatro-vagas-imediatas
+RN|Câmara de São João do Sabugi|São João do Sabugi|3|Vários cargos|27/10/2026|camara-de-sao-joao-do-sabugi-rn-abre-concurso-publico-para-cargos-efetivos
+RN|Câmara de Tibau do Sul|Tibau do Sul|8|Vários cargos|06/11/2026|camara-de-tibau-do-sul-rn-abre-concurso-publico-com-oito-vagas-imediatas
+RN|Prefeitura de Acari|Acari|20|Vários cargos|27/10/2026|prefeitura-de-acari-rn-abre-concurso-publico-com-salarios-de-ate-3847
+RN|Prefeitura de Jucurutu|Jucurutu|144|Vários cargos|27/10/2026|prefeitura-de-jucurutu-rn-publica-edital-de-concurso-com-salarios-de-ate-4867
+RN|Prefeitura de Marcelino Vieira|Marcelino Vieira|106|Vários cargos (seleção)|19/10/2026>30/10/2026|prefeitura-de-marcelino-vieira-rn-abre-processo-seletivo-com-salarios-de-ate-13266
+RN|Prefeitura de São Fernando|São Fernando|22|Vários cargos|27/10/2026|prefeitura-de-sao-fernando-rn-retifica-edital-de-concurso-publico-com-salarios-de-ate-4101
+RN|Prefeitura de Timbaúba dos Batistas|Timbaúba dos Batistas|18|Professor|27/10/2026|prefeitura-de-timbauba-dos-batistas-rn-abre-concurso-publico-para-professores
+RN|UFRN|-|9|Professor do magistério superior|23/10/2026|ufrn-abre-concurso-para-professores-do-magisterio-superior
+RN|UFRN|-|9|Professor EBTT|05/11/2026|ufrn-abre-concurso-publico-para-professores-de-ensino-basico-tecnico-e-tecnologico
+AL|SEFAZ-AL|-|40|Auditor fiscal|21/10/2026|sefaz-al-abre-concurso-publico-com-vagas-para-o-cargo-de-auditor-fiscal
+AL|ADEAL|-|20|Fiscal estadual agropecuário|20/10/2026|adeal-abre-concurso-publico-para-cargos-de-fiscal-estadual-agropecuario
+AL|Corpo de Bombeiros de AL|-|172|Oficial e soldado|26/10/2026|cbm-al-reabre-inscricoes-de-concurso-publico
+AL|Polícia Militar de AL|-|530|Oficial e soldado|16/10/2026|pm-al-reabre-concurso-para-soldado-do-quadro-de-pracas-e-oficial-de-estado-maior
+AL|Prefeitura de Chã Preta|Chã Preta|76|Vários cargos|01/11/2026|prefeitura-de-cha-preta-al-abre-concursos-com-salarios-de-ate-7256
+AL|UFAL|-|CR|Professor substituto|28/10/2026|ufal-abre-editais-de-selecao-para-professores-substitutos
+PB|Defensoria Pública da PB|-|20|Vários cargos|13/11/2026|dpe-pb-abre-concurso-publico-com-salarios-de-ate-5197
+PB|Câmara de Guarabira|Guarabira|5|Vários cargos|21/10/2026>22/11/2026|camara-de-guarabira-pb-abre-concurso-publico-com-salarios-de-ate-3354
+PB|Prefeitura de Água Branca|Água Branca|24|Vários cargos|15/11/2026|prefeitura-de-agua-branca-pb-republica-editais-de-concursos-publicos
+PB|Prefeitura de Cruz do Espírito Santo|Cruz do Espírito Santo|202|Vários cargos|05/10/2026|prefeitura-de-cruz-do-espirito-santo-pb-prorroga-inscricoes-de-concurso-publico
+PB|Prefeitura de Pedra Lavrada|Pedra Lavrada|3|Agentes de saúde e endemias|16/10/2026>23/10/2026|prefeitura-de-pedra-lavrada-pb-abre-vagas-para-agentes-de-saude-e-de-endemias
+PB|Prefeitura de Poço Dantas|Poço Dantas|84|Vários cargos|20/10/2026|prefeitura-de-poco-dantas-pb-prorroga-inscricoes-de-concurso-publico
+PB|Prefeitura de São José do Sabugi|São José do Sabugi|48|Vários cargos|07/11/2026|prefeitura-de-sao-jose-do-sabugi-pb-abre-concurso-para-diversos-cargos
+PE|Prefeitura de Trindade|Trindade|353|Vários cargos|19/10/2026|prefeitura-de-trindade-pe-divulga-retificacao-em-concurso-com-vagas-para-diversos-niveis
+PE|Corpo de Bombeiros de PE|-|570|Soldado e 2º tenente|23/11/2026|secretaria-de-defesa-social-pe-retifica-concurso-com-570-vagas-para-bombeiros
+PE|Polícia Militar de PE|-|1320|Soldado e 2º tenente|23/11/2026|pmpe-altera-periodo-de-inscricao-para-concurso-publico-de-soldados-e-oficiais
+PE|Prefeitura de Belo Jardim|Belo Jardim|151|Vários cargos|04/10/2026|prefeitura-de-belo-jardim-pe-abre-concurso-publico-com-vagas-para-diversas-secretarias
+PE|Prefeitura de Caruaru|Caruaru|20|Auditor e analista fiscal|08/10/2026|prefeitura-de-caruaru-pe-retifica-concurso-publico-para-auditores-e-analistas-fiscais
+PE|Prefeitura de Ferreiros|Ferreiros|57|Vários cargos|19/10/2026>19/11/2026|prefeitura-de-ferreiros-pe-abre-concurso-publico-com-vagas-para-diversas-areas
+PE|Prefeitura de Floresta|Floresta|431|Vários cargos|22/10/2026|prefeitura-de-floresta-pe-publica-edital-retificado-de-concurso-publico
+PE|Prefeitura de Goiana|Goiana|166|Vários cargos (seleção)|17/11/2026|prefeitura-de-goiana-pe-abre-selecao-com-salarios-de-ate-8926
+PE|Prefeitura do Recife|Recife|45|Músico|28/10/2026|prefeitura-do-recife-pe-abre-concurso-publico-com-vagas-para-musicos
+PE|Polícia Civil de PE|-|1315|Agente, delegado e escrivão|16/12/2026|secretaria-de-defesa-social-e-de-administracao-pe-abrem-concurso-com-1315-vagas-para-a-policia-civil
+PE|UFPE|-|1|Professor titular|17/10/2026|ufpe-abre-concurso-para-docente-na-area-de-eletromagnetismo-fotonica
+PE|UPE|-|2|Advogado|02/11/2026|universidade-de-pernambuco-abre-concurso-publico-para-o-cargo-de-advogado
+BA|UFBA|-|139|Técnico-administrativo|29/10/2026|ufba-ba-publica-edital-de-concurso-publico-para-tecnicos-administrativos-em-educacao
+BA|Câmara de Ourolândia|Ourolândia|9|Vários cargos|30/10/2026|camara-de-ourolandia-ba-publica-edital-de-concurso-publico-para-diversos-cargos
+BA|Marinha do Brasil (2º Distrito Naval)|-|18|Oficiais temporários|10/11/2026|marinha-do-brasil-2-distrito-naval-abre-selecao-para-oficiais-temporarios-rm2-na-bahia
+BA|Prefeitura de Catu|Catu|148|Vários cargos|12/11/2026|prefeitura-de-catu-ba-prorroga-inscricoes-do-concurso-publico-para-diversos-cargos
+BA|Prefeitura de Firmino Alves|Firmino Alves|210|Vários cargos|09/11/2026|prefeitura-de-firmino-alves-ba-abre-concurso-publico-com-salarios-de-ate-4867
+BA|Prefeitura de Firmino Alves|Firmino Alves|50|Vários cargos (seleção)|09/11/2026|prefeitura-de-firmino-alves-ba-abre-selecao-com-salarios-de-ate-8000
+BA|Prefeitura de Palmas de Monte Alto|Palmas de Monte Alto|7|Agente comunitário de saúde|30/10/2026|prefeitura-de-palmas-de-monte-alto-ba-abre-concurso-para-agentes-comunitarios-de-saude
+BA|Prefeitura de Rio Real|Rio Real|148|Vários cargos|21/10/2026|prefeitura-de-rio-real-ba-retifica-editais-de-concursos-e-de-processo-seletivo
+BA|Prefeitura de Salvador|Salvador|50|Guarda civil municipal|30/10/2026|prefeitura-de-salvador-ba-abre-concurso-publico-para-guardas-civis-municipais
+BA|SAEB-BA|-|50|Especialista em políticas públicas|16/10/2026>11/11/2026|saeb-ba-abre-concurso-publico-para-especialista-em-politicas-publicas-e-gestao-governamental
+SE|CRO-SE|-|3|Vários cargos|26/10/2026|cro-se-abre-concurso-publico-com-salarios-de-ate-4504
+SE|IFS|-|4|Professor substituto|19/10/2026>28/10/2026|ifs-se-abre-processo-seletivo-para-professores-substitutos-de-informatica
+AM|CRA-AM|-|10|Vários cargos|15/10/2026|cra-am-abre-concurso-publico-com-salarios-de-ate-3683-em-manaus
+AM|Manaus Previdência|Manaus|17|Analista e técnico previdenciário|01/10/2026|manaus-previdencia-am-prorroga-inscricoes-de-concurso-publico
+AC|Câmara de Rio Branco|Rio Branco|13|Agente e analista legislativo|13/10/2026|camara-de-rio-branco-ac-abre-concurso-publico-com-13-vagas-imediatas
+AC|Câmara de Rio Branco|Rio Branco|3|Procurador e polícia legislativa|15/10/2026|camara-de-rio-branco-ac-abre-concursos-publicos-para-procuradores-e-agentes-legislativos
+AC|TCE-AC|-|1|Auditor (conselheiro substituto)|26/10/2026|tce-ac-reabre-concurso-para-auditor-conselheiro-substituto
+AP|Polícia Civil do AP|-|396|Delegado e oficial investigador|19/10/2026|sead-ap-publica-edital-retificado-de-concurso-para-delegado-e-oficial-investigador-de-policia-civil
+AP|CAU-AP|-|2|Assistente e agente de fiscalização|09/11/2026|conselho-de-arquitetura-e-urbanismo-do-amapa-abre-concurso-publico-em-macapa
+AP|IFAP|-|23|Técnico-administrativo|29/10/2026|ifap-abre-concurso-para-cargos-de-tecnico-administrativo-em-educacao
+AP|Prefeitura de Santana|Santana|50|Guarda civil municipal|09/11/2026|prefeitura-de-santana-ap-publica-edital-de-concurso-publico-para-guardas-civis-municipais
+AP|SEAD-AP|-|358|Assistente administrativo e analista|29/10/2026|sead-ap-abre-concursos-para-assistentes-administrativos-e-analistas
+AP|SESA-AP (Saúde)|-|4208|Vários cargos|16/10/2026|governo-do-estado-do-amapa-ap-retifica-edital-de-concurso-publico
+AP|TJAP|-|15|Juiz de direito substituto|13/11/2026|tjap-ap-abre-concurso-publico-para-o-cargo-de-juiz-de-direito-substituto
+PA|Hospital Gaspar Vianna (FHCGV)|-|215|Vários cargos|22/10/2026|seplad-e-fhcgv-pa-anunciam-concurso-publico-com-vagas-imediatas-e-formacao-de-cadastro-de-reserva
+PA|ALEPA|-|135|Vários cargos|04/11/2026|assembleia-legislativa-do-estado-do-para-retifica-concursos-para-diversos-cargos
+PA|IFPA|-|65|Técnico-administrativo|20/10/2026|ifpa-abre-concurso-publico-para-cargos-tecnico-administrativos-em-educacao
+PA|Prefeitura de Bujaru|Bujaru|100|Vários cargos|12/11/2026|prefeitura-de-bujaru-pa-abre-concurso-publico-com-salarios-de-ate-4543
+PA|SEDUC-PA|-|2000|Vários cargos|07/10/2026|seplad-e-seduc-pa-retificam-concurso-publico-com-vagas-para-diversas-areas-de-atuacao
+PA|TRT 8ª Região|-|CR|Analista e técnico judiciário|05/11/2026|trt-8-pa-ap-publica-edital-de-concurso-para-tecnicos-e-analistas-judiciarios
+PA|UEPA|-|CR|Professor formador (seleção)|23/10/2026|uepa-abre-selecao-para-professores-formadores-com-bolsas-de-ate-1850
+RO|Câmara de Candeias do Jamari|Candeias do Jamari|17|Vários cargos|20/10/2026|camara-de-candeias-do-jamari-ro-abre-concurso-com-vagas-imediatas-e-cadastro-de-reserva
+RO|Prefeitura de Porto Velho|Porto Velho|265|Educação|11/11/2026|prefeitura-de-porto-velho-ro-retifica-concurso-com-vagas-para-a-educacao
+RO|Prefeitura de Porto Velho|Porto Velho|2098|Vários cargos|11/11/2026|prefeitura-de-porto-velho-ro-retifica-concurso-com-vagas-imediatas-e-cadastro-de-reserva
+RO|Prefeitura de Rio Crespo|Rio Crespo|1|Farmacêutico (seleção)|16/10/2026|prefeitura-de-rio-crespo-ro-abre-processo-seletivo-para-farmaceutico
+RO|Prefeitura de Vilhena|Vilhena|30|Agentes de saúde e endemias|13/10/2026|prefeitura-de-vilhena-ro-retifica-o-edital-de-processo-seletivo-para-agentes-de-saude-e-de-endemias
+RR|UERR|-|1|Professor visitante|03/11/2026|uerr-abre-selecao-para-professor-visitante-com-salario-de-16993
+TO|CAU-TO|-|3|Vários cargos|09/11/2026|cau-to-abre-concurso-publico-com-salarios-de-ate-9726
+TO|UFNT|-|6|Professor substituto|16/10/2026>30/10/2026|ufnt-to-abre-processo-seletivo-para-professores-substitutos
+DF|CGU|-|60|Auditor federal de finanças e controle|04/11/2026|cgu-abre-concurso-publico-com-vagas-para-auditores-federais-de-financas-e-controle
+GO|Prefeitura de Caldas Novas|Caldas Novas|15|Guarda civil municipal|09/11/2026|prefeitura-de-caldas-novas-go-divulga-retificacao-do-concurso-publico-para-guardas-civis-municipais
+GO|TCE-GO|-|16|Técnico de controle externo|06/11/2026|tce-go-retifica-concurso-publico-para-tecnicos-de-controle-externo
+GO|Câmara de Cristalina|Cristalina|36|Vários cargos|29/10/2026>18/11/2026|camara-de-cristalina-go-abre-concurso-publico-com-salarios-de-ate-8383
+GO|Câmara de Pires do Rio|Pires do Rio|12|Vários cargos|19/10/2026>18/11/2026|camara-de-pires-do-rio-go-abre-concurso-publico-com-salarios-de-ate-6523
+GO|Câmara de Vila Boa|Vila Boa|6|Vários cargos|28/10/2026>18/11/2026|camara-de-vila-boa-go-abre-concurso-publico-com-vagas-imediatas-e-cadastro-de-reserva
+GO|COMURG|Goiânia|10|Analista de governança (seleção)|20/10/2026|comurg-go-abre-processo-seletivo-para-analistas-de-governanca
+GO|Prefeitura de Alto Paraíso de Goiás|Alto Paraíso de Goiás|15|Agentes de saúde e endemias|09/11/2026>30/11/2026|prefeitura-de-alto-paraiso-de-goias-go-abre-selecao-para-agentes-de-saude-e-de-endemias
+GO|Prefeitura de Aparecida de Goiânia|Aparecida de Goiânia|2956|Educação|09/11/2026>09/12/2026|prefeitura-de-aparecida-de-goiania-go-abre-concurso-publico-com-vagas-na-area-da-educacao
+GO|Prefeitura de Carmo do Rio Verde|Carmo do Rio Verde|6|Professor|26/10/2026|prefeitura-de-carmo-do-rio-verde-go-abre-concurso-publico-com-vagas-para-professores
+GO|Prefeitura de Heitoraí|Heitoraí|82|Vários cargos|20/10/2026|prefeitura-de-heitorai-go-abre-concurso-publico-com-vagas-para-diversas-areas
+GO|Prefeitura de Hidrolina|Hidrolina|80|Vários cargos|20/10/2026|prefeitura-de-hidrolina-go-retifica-concurso-com-vagas-imediatas-e-cadastro-de-reserva
+GO|Prefeitura de Mineiros|Mineiros|74|Educação (seleção)|16/10/2026|prefeitura-de-mineiros-go-abre-processo-seletivo-para-a-secretaria-de-educacao
+GO|Prefeitura de Nova Aurora|Nova Aurora|4|Vários cargos|19/10/2026>09/11/2026|prefeitura-de-nova-aurora-go-abre-concurso-publico-com-vagas-de-ate-3737
+GO|Prefeitura de Professor Jamil|Professor Jamil|6|Agente de fiscalização|09/11/2026>30/11/2026|prefeitura-de-professor-jamil-go-abre-concurso-para-agente-de-fiscalizacao-publica
+GO|Prefeitura de Rio Verde|Rio Verde|8|Agente de trânsito e vistoriador|19/10/2026|prefeitura-de-rio-verde-go-abre-concurso-para-agente-de-transito-e-vistoriador-de-veiculos
+GO|Prefeitura de Rio Verde|Rio Verde|5|Auditor fiscal|22/10/2026|prefeitura-de-rio-verde-go-abre-concurso-publico-para-auditor-fiscal-da-receita-municipal
+GO|Prefeitura de Santa Rita do Araguaia|Santa Rita do Araguaia|41|Educação (seleção)|23/10/2026|prefeitura-de-santa-rita-do-araguaia-go-abre-processo-seletivo-para-a-educacao
+GO|Prefeitura de São Luís de Montes Belos|São Luís de Montes Belos|138|Vários cargos|26/10/2026>25/11/2026|prefeitura-de-sao-luis-de-montes-belos-go-abre-concurso-publico-com-salarios-de-ate-5559
+GO|Prefeitura de Uirapuru|Uirapuru|21|Vários cargos|09/11/2026>30/11/2026|prefeitura-de-uirapuru-go-abre-concurso-publico-com-salarios-de-ate-4428
+GO|Prefeitura de Uruana|Uruana|2|Analista ambiental|28/10/2026|prefeitura-de-uruana-go-abre-concurso-publico-para-analista-ambiental
+MS|Câmara de Paraíso das Águas|Paraíso das Águas|2|Contador e assistente legislativo|02/11/2026|camara-de-paraiso-das-aguas-ms-abre-concurso-publico-para-contador-e-assistente-legislativo
+MS|Câmara de Ponta Porã|Ponta Porã|19|Vários cargos|01/10/2026|camara-de-ponta-pora-ms-retifica-edital-de-concurso-publico
+MS|Prefeitura de Caracol|Caracol|65|Educação (seleção)|15/10/2026|prefeitura-de-caracol-ms-abre-selecao-para-cargos-na-educacao
+MS|Prefeitura de Caracol|Caracol|2|Psicólogo, assistente social e professor|16/10/2026|prefeitura-de-caracol-ms-abre-processo-seletivo-para-profissionais-de-nivel-superior
+MS|Prefeitura de Guia Lopes da Laguna|Guia Lopes da Laguna|CR|Motorista, gari e auxiliar (seleção)|26/10/2026>29/10/2026|prefeitura-de-guia-lopes-da-laguna-ms-abre-selecoes-para-motorista-gari-e-auxiliar-de-servicos-diversos
+MS|Prefeitura de Nova Alvorada do Sul|Nova Alvorada do Sul|CR|Educação (seleção)|06/11/2026|prefeitura-de-nova-alvorada-do-sul-ms-abre-selecao-para-a-secretaria-de-educacao
+MS|UEMS|-|CR|Professor (seleção)|20/10/2026|uems-abre-selecao-para-professores-em-diferentes-campi
+MS|UEMS|-|CR|Professor de Biologia e Pedagogia (seleção)|20/10/2026|uems-abre-processo-seletivo-para-docentes-de-ciencias-biologicas-e-pedagogia
+MS|UEMS|-|CR|Professor de Direito, Pedagogia e Libras (seleção)|20/10/2026|uems-abre-processos-seletivos-para-contratacao-de-professores-em-paranaiba-e-cassilandia
+MS|UEMS|-|CR|Intérprete de Libras (seleção)|20/10/2026|uems-abre-processo-seletivo-para-o-cargo-de-tradutor-e-interprete-de-libras
+MS|UEMS|-|CR|Professor de AEE (seleção)|20/10/2026|uems-abre-processo-seletivo-para-professor-de-atendimento-educacional-especializado
+MS|UFMS|-|42|Professor do magistério superior|25/10/2026|ufms-publica-edital-de-concurso-publico-para-a-carreira-do-magisterio-superior
+MT|Câmara de Colniza|Colniza|3|Auxiliar administrativo e procurador|20/10/2026|camara-de-colniza-mt-abre-concurso-publico-para-auxiliar-administrativo-e-procurador-juridico
+MT|Prefeitura de Alta Taquari|Alto Taquari|CR|Vários cargos (seleção)|30/10/2026|prefeitura-de-alta-taquari-mt-abre-processo-seletivo-para-cadastro-de-reserva
+MT|Prefeitura de Boa Esperança do Norte|Boa Esperança do Norte|13|Professor e monitor (seleção)|26/10/2026|prefeitura-de-boa-esperanca-do-norte-mt-abre-processo-seletivo-com-salarios-de-ate-5895
+MT|Prefeitura de Colniza|Colniza|CR|Vários cargos (seleção)|25/10/2026|prefeitura-de-colniza-mt-abre-processo-seletivo-para-cadastro-de-reserva-em-varias-areas
+MT|Prefeitura de Comodoro|Comodoro|56|Professor|22/10/2026|prefeitura-de-comodoro-mt-abre-concurso-publico-para-o-cargo-de-professor-pii
+MT|Prefeitura de Conquista D'Oeste|Conquista D'Oeste|2|Farmacêutico e técnico em higiene dental (seleção)|16/10/2026>23/10/2026|prefeitura-de-conquista-doeste-mt-abre-selecao-para-farmaceutico-e-tecnico-em-higiene-dental
+MT|Prefeitura de Juína|Juína|108|Vários cargos (seleção)|22/10/2026>30/10/2026|prefeitura-de-juina-mt-abre-processo-seletivo-com-diversas-vagas-e-cadastro-de-reserva
+MT|Prefeitura de Novo Mundo|Novo Mundo|132|Vários cargos (seleção)|26/10/2026>19/11/2026|prefeitura-de-novo-mundo-mt-abre-processo-seletivo-com-salarios-de-ate-7342
+MT|Prefeitura de Novo Santo Antônio|Novo Santo Antônio|3|Psicólogo e nutricionista (seleção)|15/10/2026|prefeitura-de-novo-santo-antonio-mt-abre-processo-seletivo-para-psicologo-e-nutricionista
+MT|Prefeitura de Várzea Grande|Várzea Grande|5156|Educação (seleção)|20/10/2026>09/11/2026|prefeitura-de-varzea-grande-mt-abre-processo-seletivo-com-vagas-para-a-educacao
+MT|Prefeitura e Câmara de Comodoro|Comodoro|1|Procurador jurídico|22/10/2026|prefeitura-e-camara-de-comodoro-mt-lancam-concursos-publicos-para-procuradores-juridicos
+MT|Prefeitura, Câmara e Previdência de Comodoro|Comodoro|219|Vários cargos|22/10/2026|prefeitura-de-comodoro-mt-abre-novos-editais-de-concurso-e-processo-seletivo
+MT|SAAE de Chapada dos Guimarães|Chapada dos Guimarães|134|Vários cargos|15/10/2026|prefeitura-de-chapada-dos-guimaraes-mt-divulga-retificacao-de-concurso-publico
+MT|SEMA-MT|-|CR|Analista de meio ambiente|14/10/2026|sema-mt-abre-concurso-para-analistas-de-meio-ambiente-e-de-desenvolvimento-economico-e-social
+MT|UNEMAT|-|27|Professor (seleção)|01/11/2026|unemat-mt-abre-processo-seletivo-para-professores-de-ensino-superior-em-alto-araguaia
+PR|Prefeitura de Curitiba|Curitiba|348|Vários cargos|05/11/2026|prefeitura-de-curitiba-pr-retifica-concursos-publicos-com-vagas-imediatas-e-cadastro-de-reserva
+PR|Câmara de Cantagalo|Cantagalo|1|Assessor jurídico|28/10/2026|camara-de-cantagalo-pr-abre-concurso-publico-para-o-cargo-de-assessor-juridico
+PR|Câmara de Jundiaí do Sul|Jundiaí do Sul|1|Auxiliar de serviços gerais (seleção)|27/10/2026|camara-de-jundiai-do-sul-pr-abre-processo-seletivo-para-auxiliar-de-servicos-gerais
+PR|Câmara de Quatro Barras|Quatro Barras|17|Vários cargos|03/11/2026|camara-de-quatro-barras-pr-abre-concurso-publico-com-salarios-de-ate-5403
+PR|Câmara de Rio Azul|Rio Azul|1|Vários cargos|26/10/2026|camara-de-rio-azul-pr-abre-concurso-com-salarios-de-ate-5275
+PR|CREA-PR|-|7|Vários cargos|15/10/2026|crea-pr-publica-edital-de-concurso-publico-com-vagas-imediatas-e-formacao-de-cadastro-de-reserva
+PR|CRQ 9ª Região|-|3|Vários cargos|21/10/2026|crq-da-9-regiao-do-parana-abre-concurso-publico-com-salarios-de-ate-10727
+PR|Município e Câmara de Nova Prata do Iguaçu|Nova Prata do Iguaçu|79|Vários cargos|29/10/2026|municipio-e-camara-de-nova-prata-do-iguacu-pr-abrem-concursos-com-salarios-de-ate-12823
+PR|Prefeitura de Ângulo|Ângulo|26|Vários cargos|20/10/2026|prefeitura-de-angulo-pr-abre-concurso-com-salarios-de-ate-6771
+PR|Prefeitura de Apucarana|Apucarana|9|Vários cargos|21/10/2026>09/11/2026|prefeitura-de-apucarana-pr-abre-concurso-publico-com-salarios-de-ate-16381
+PR|Prefeitura de Boa Vista da Aparecida|Boa Vista da Aparecida|4|Assistente social e mãe social (seleção)|27/10/2026|prefeitura-de-boa-vista-da-aparecida-pr-abre-processo-seletivo-para-assistente-social-e-mae-social
+PR|Prefeitura de Cascavel|Cascavel|10|Professor e monitor (seleção)|03/11/2026|prefeitura-de-cascavel-pr-abre-teste-seletivo-com-salarios-de-ate-7477
+PR|Prefeitura de Colombo|Colombo|470|Vários cargos (seleção)|18/10/2026|prefeitura-de-colombo-pr-abre-processo-seletivo-com-salarios-de-ate-8040
+PR|Prefeitura de Curitiba|Curitiba|1443|Professor (seleção)|02/11/2026|prefeitura-de-curitiba-pr-abre-processo-seletivo-com-vagas-para-professores
+PR|Prefeitura de Flor da Serra do Sul|Flor da Serra do Sul|6|Vários cargos (seleção)|15/10/2026|prefeitura-de-flor-da-serra-do-sul-pr-abre-processo-seletivo-com-salarios-de-ate-4969
+PR|Prefeitura de Francisco Alves|Francisco Alves|20|Professor (seleção)|21/10/2026|prefeitura-de-francisco-alves-pr-publica-edital-de-processo-seletivo-para-professores
+PR|Prefeitura de Itapejara D'Oeste|Itapejara d'Oeste|11|Vários cargos (seleção)|15/10/2026|prefeitura-de-itapejara-doeste-pr-abre-processo-seletivo-para-diversos-cargos-de-nivel-fundamental
+PR|Prefeitura de Itapejara D'Oeste|Itapejara d'Oeste|20|Professor (seleção)|20/10/2026|prefeitura-de-itapejara-doeste-pr-abre-selecao-com-20-vagas-para-o-cargo-de-professor-i
+PR|Prefeitura de Lobato|Lobato|16|Vários cargos (seleção)|23/10/2026|prefeitura-de-lobato-pr-abre-processo-seletivo-com-vagas-imediatas-e-cadastro-de-reserva
+PR|Prefeitura de Nova Tebas|Nova Tebas|37|Vários cargos|15/10/2026|prefeitura-de-nova-tebas-pr-divulga-retificacoes-de-concurso-publico
+PR|Prefeitura de Piraquara|Piraquara|1|Professor (seleção)|30/10/2026|prefeitura-de-piraquara-pr-abre-selecao-para-o-cargo-de-professor
+PR|Prefeitura de Renascença|Renascença|3|Professor (seleção)|22/10/2026|prefeitura-de-renascenca-pr-abre-processo-seletivo-para-professores
+PR|Prefeitura de São Jorge do Patrocínio|São Jorge do Patrocínio|1|Professor|05/11/2026|prefeitura-de-sao-jorge-do-patrocinio-pr-abre-concurso-publico-para-professor
+PR|Prefeitura de Teixeira Soares|Teixeira Soares|3|Assistente social e psicólogo (seleção)|20/10/2026>23/10/2026|prefeitura-de-teixeira-soares-pr-abre-processo-seletivo-para-assistente-social-e-psicologo-ii
+PR|Prefeitura de Tijucas do Sul|Tijucas do Sul|2|Psicólogo e técnico em segurança|19/10/2026>10/11/2026|prefeitura-de-tijucas-do-sul-pr-abre-vagas-para-psicologo-e-tecnico-em-seguranca-do-trabalho
+PR|Prefeitura e Câmara de Siqueira Campos|Siqueira Campos|51|Vários cargos|27/10/2026|camara-e-municipio-de-siqueira-campos-pr-retificam-concursos-publicos
+PR|UEM|-|3|Vários cargos (seleção)|27/10/2026|uem-pr-abre-testes-seletivos-com-salarios-de-ate-7997
+PR|UEM|-|9|Técnicos e médicos (seleção)|27/10/2026|uem-pr-abre-selecao-para-cargos-tecnicos-e-medicos-com-salarios-de-ate-7997
+PR|UEPG|-|5|Agente universitário (seleção)|19/10/2026>28/10/2026|uepg-pr-abre-selecao-para-agentes-universitarios
+PR|UNILA|-|CR|Professor visitante (seleção)|18/10/2026|unila-pr-abre-processo-seletivo-para-professor-visitante-na-area-de-quimica
+PR|UNILA|-|3|Professor do magistério superior|27/10/2026|unila-pr-abre-concurso-publico-unificado-para-professores-do-magisterio-superior
+PR|UNIOESTE|-|15|Agente universitário (seleção)|30/11/2026|unioeste-pr-abre-processo-seletivo-para-agentes-universitarios-no-huop
+PR|UTFPR|-|1|Professor substituto|26/10/2026|utfpr-abre-processo-seletivo-para-professor-substituto-de-linguistica-e-ingles-em-curitiba
+PR|UTFPR|-|1|Professor substituto|22/10/2026|utfpr-abre-vaga-para-professor-substituto-de-astronomia-e-fisica-em-ponta-grossa
+RS|Prefeitura de Alvorada|Alvorada|CR|Vários cargos|18/10/2026|prefeitura-de-alvorada-rs-retifica-concurso-publico-com-salarios-de-ate-18974
+RS|Câmara de Bagé|Bagé|9|Vários cargos|06/11/2026|camara-de-bage-rs-abre-concurso-com-vagas-para-diversas-areas
+RS|Marinha do Brasil (5º Distrito Naval)|-|5|Oficiais médicos temporários|10/11/2026|marinha-do-brasil-5-distrito-naval-abre-selecao-para-oficiais-medicos-temporarios-no-rs
+RS|Hospital de Clínicas de Porto Alegre|-|CR|Vários cargos (seleção)|11/11/2026|hospital-de-clinicas-de-porto-alegre-rs-abre-selecoes-para-diversos-cargos
+RS|IFSul|-|1|Professor substituto|23/10/2026|ifsul-rs-abre-processo-seletivo-para-professor-substituto-em-santana-do-livramento
+RS|Prefeitura de Alvorada|Alvorada|CR|Saúde e SAMU (seleção)|20/10/2026|prefeitura-de-alvorada-rs-abre-processo-seletivo-para-formacao-de-cadastro-de-reserva
+RS|Prefeitura de Arvorezinha|Arvorezinha|CR|Fiscal ambiental e sanitário|13/11/2026|prefeitura-de-arvorezinha-rs-retoma-concurso-publico-para-fiscal-ambiental-e-fiscal-sanitario
+RS|Prefeitura de Barão de Cotegipe|Barão de Cotegipe|26|Vários cargos|30/10/2026|prefeitura-de-barao-de-cotegipe-rs-altera-periodo-de-inscricoes-para-concurso-publico
+RS|Prefeitura de Capão do Leão|Capão do Leão|1|Fonoaudiólogo (seleção)|19/10/2026>23/10/2026|prefeitura-de-capao-do-leao-rs-abre-processo-seletivo-para-fonoaudiologo
+RS|Prefeitura de Carlos Barbosa|Carlos Barbosa|CR|Vários cargos (seleção)|23/10/2026|prefeitura-de-carlos-barbosa-rs-abre-processo-seletivo-para-cadastro-de-reserva-em-diversas-areas
+RS|Prefeitura de Colinas|Colinas|15|Vários cargos|05/11/2026|prefeitura-de-colinas-rs-abre-concurso-publico-com-salarios-de-ate-15103
+RS|Prefeitura de Coqueiro Baixo|Coqueiro Baixo|13|Vários cargos|29/10/2026|prefeitura-de-coqueiro-baixo-rs-abre-concurso-com-vagas-imediatas-e-cadastro-de-reserva
+RS|Prefeitura de Erechim|Erechim|2|Médico clínico geral (seleção)|15/10/2026|prefeitura-de-erechim-rs-abre-processo-seletivo-para-medicos-clinico-geral
+RS|Prefeitura de Feliz|Feliz|2|Motorista (seleção)|18/10/2026|prefeitura-de-feliz-rs-abre-processo-seletivo-para-o-cargo-de-motorista
+RS|Prefeitura de Garibaldi|Garibaldi|CR|Vários cargos (seleção)|28/10/2026|prefeitura-de-garibaldi-rs-abre-processo-seletivo-para-formacao-de-cadastro-de-reserva
+RS|Prefeitura de Gramado|Gramado|4|Agente de defesa civil (seleção)|15/10/2026|prefeitura-de-gramado-rs-abre-selecao-para-agente-de-defesa-civil
+RS|Prefeitura de Igrejinha|Igrejinha|CR|Professor de Matemática (seleção)|15/10/2026|prefeitura-de-igrejinha-rs-abre-selecao-para-professor-de-matematica
+RS|Prefeitura de Itapuca|Itapuca|51|Vários cargos|05/11/2026|prefeitura-de-itapuca-rs-abre-concurso-publico-com-salarios-de-ate-9495
+RS|Prefeitura de Ivoti|Ivoti|18|Vários cargos|15/10/2026|prefeitura-de-ivoti-rs-divulga-retificacao-de-concurso-publico
+RS|Prefeitura de Jacutinga|Jacutinga|1|Operador de máquinas|19/10/2026|prefeitura-de-jacutinga-rs-abre-concurso-publico-para-operador-de-maquinas-e-equipamentos-rodoviarios
+RS|Prefeitura de Jacutinga|Jacutinga|CR|Agente comunitário de saúde|19/10/2026|prefeitura-de-jacutinga-rs-abre-concurso-para-agentes-comunitarios-de-saude
+RS|Prefeitura de Lajeado|Lajeado|CR|Professor de Matemática (seleção)|19/10/2026|prefeitura-de-lajeado-rs-abre-selecao-para-professor-de-matematica
+RS|Prefeitura de Maquiné|Maquiné|CR|Professor de Educação Física (seleção)|19/10/2026|prefeitura-de-maquine-rs-abre-processo-seletivo-para-professor-de-educacao-fisica
+RS|Prefeitura de Maratá|Maratá|29|Vários cargos|06/11/2026|prefeitura-de-marata-rs-abre-concurso-publico-com-salarios-de-ate-10165
+RS|Prefeitura de Marau|Marau|CR|Vários cargos (seleção)|21/10/2026|prefeitura-de-marau-rs-abre-processo-seletivo-para-diversos-cargos
+RS|Prefeitura de Monte Alegre dos Campos|Monte Alegre dos Campos|2|Médico e nutricionista (seleção)|19/10/2026|prefeitura-de-monte-alegre-dos-campos-rs-abre-selecoes-para-medico-e-nutricionista
+RS|Prefeitura de Monte Alegre dos Campos|Monte Alegre dos Campos|1|Professor de Educação Física (seleção)|21/10/2026|prefeitura-de-monte-alegre-dos-campos-rs-abre-selecao-para-professor-de-educacao-fisica
+RS|Prefeitura de Montenegro|Montenegro|84|Vários cargos|13/11/2026|prefeitura-de-montenegro-rs-abre-concurso-publico-com-salarios-de-ate-9848
+RS|Prefeitura de Nonoai|Nonoai|CR|Professor (seleção)|29/10/2026|prefeitura-de-nonoai-rs-abre-processo-seletivo-para-cadastro-de-reserva-de-professores
+RS|Prefeitura de Nova Boa Vista|Nova Boa Vista|20|Vários cargos|10/11/2026|prefeitura-de-nova-boa-vista-rs-abre-concurso-publico-com-salarios-de-ate-12039
+RS|Prefeitura de Nova Prata|Nova Prata|10|Servente (seleção)|21/10/2026|prefeitura-de-nova-prata-rs-abre-processo-seletivo-para-serventes
+RS|Prefeitura de Panambi|Panambi|31|Vários cargos|28/10/2026|prefeitura-de-panambi-rs-abre-concurso-publico-com-salarios-de-ate-5388
+RS|Prefeitura de Passo Fundo|Passo Fundo|CR|Agente de combate às endemias (seleção)|19/10/2026>30/10/2026|prefeitura-de-passo-fundo-rs-abre-selecao-para-agente-de-combate-as-endemias
+RS|Prefeitura de Pinhal da Serra|Pinhal da Serra|6|Vários cargos|16/10/2026|prefeitura-de-pinhal-da-serra-rs-abre-concurso-com-salarios-de-ate-22223
+RS|Prefeitura de Porto Alegre|Porto Alegre|12|Nível superior|03/11/2026|prefeitura-de-porto-alegre-rs-abre-concurso-para-cargos-de-nivel-superior
+RS|Prefeitura de Porto Alegre|Porto Alegre|15|Agente comunitário de saúde (seleção)|03/11/2026|prefeitura-de-porto-alegre-rs-abre-selecao-para-agentes-comunitarios-de-saude
+RS|Prefeitura de Porto Alegre|Porto Alegre|19|Vários cargos|05/11/2026|prefeitura-de-porto-alegre-rs-publica-concurso-publico-com-salarios-de-ate-9135
+RS|Prefeitura de Restinga Sêca|Restinga Sêca|CR|Professor (seleção)|16/10/2026|prefeitura-de-restinga-seca-rs-abre-selecao-para-cadastro-de-reserva-de-professores
+RS|Prefeitura de Restinga Sêca|Restinga Sêca|CR|Oficial administrativo e servente (seleção)|23/10/2026|prefeitura-de-restinga-seca-rs-abre-selecao-para-oficial-administrativo-secretario-de-escola-e-servente-de-escola
+RS|Prefeitura de Rio Grande|Rio Grande|8|Saúde bucal (seleção)|20/10/2026|prefeitura-de-rio-grande-rs-abre-selecao-para-auxiliar-de-saude-bucal-e-odontologo
+RS|Prefeitura de Santa Cruz do Sul|Santa Cruz do Sul|2|Instalador e técnico (seleção)|16/10/2026|prefeitura-de-santa-cruz-do-sul-rs-abre-selecoes-para-instalador-hidraulico-e-tecnico-de-estradas-e-topografia
+RS|Prefeitura de São Pedro do Sul|São Pedro do Sul|1|Agente comunitário de saúde (seleção)|19/10/2026>23/10/2026|prefeitura-de-sao-pedro-do-sul-rs-abre-selecao-para-agente-comunitario-de-saude
+RS|Prefeitura de Tio Hugo|Tio Hugo|66|Vários cargos|16/10/2026>16/11/2026|prefeitura-de-tio-hugo-rs-abre-concurso-com-vagas-imediatas-e-cadastro-de-reserva
+RS|Prefeitura de Torres|Torres|CR|Vários cargos (seleção)|22/10/2026|prefeitura-de-torres-rs-anuncia-selecoes-para-cadastro-de-reserva
+RS|Prefeitura de Três Forquilhas|Três Forquilhas|53|Vários cargos|20/10/2026|prefeitura-de-tres-forquilhas-rs-abre-concurso-publico-com-salarios-de-ate-7045
+RS|Prefeitura de Vale Real|Vale Real|27|Vários cargos|16/10/2026|prefeitura-de-vale-real-rs-abre-concurso-publico-com-vagas-imediatas-e-cadastro-de-reserva
+RS|Prefeitura de Vicente Dutra|Vicente Dutra|CR|Vários cargos|05/11/2026|prefeitura-de-vicente-dutra-rs-abre-concurso-publico-com-salarios-de-ate-9089
+RS|Prefeitura de Vila Nova do Sul|Vila Nova do Sul|1|Fiscal de tributos (seleção)|19/10/2026|prefeitura-de-vila-nova-do-sul-rs-abre-selecao-para-fiscal-de-tributos
+SC|Prefeitura de São José|São José|300|Auxiliar de educação especial|16/10/2026|prefeitura-de-sao-jose-sc-abre-concurso-com-300-vagas-para-auxiliares-de-educacao-especial
+SC|Câmara de Capinzal|Capinzal|5|Nível superior|28/10/2026|camara-de-capinzal-sc-anuncia-concurso-publico-para-cargos-de-nivel-superior
+SC|Câmara de Descanso|Descanso|3|Vários cargos|26/10/2026|camara-de-descanso-sc-abre-concurso-com-salarios-de-ate-4300
+SC|Câmara de Fraiburgo|Fraiburgo|4|Vários cargos|05/11/2026|camara-de-fraiburgo-sc-abre-concurso-publico-com-remuneracoes-de-ate-6747
+SC|Câmara de Jaborá|Jaborá|1|Controle interno|29/10/2026|camara-de-jabora-sc-abre-concurso-para-coordenador-de-controle-interno
+SC|Câmara de Marema|Marema|1|Faxineira|06/11/2026|camara-de-marema-sc-abre-concurso-publico-para-o-cargo-de-faxineira
+SC|Câmara de Pomerode|Pomerode|2|Assistente e analista|26/10/2026>24/11/2026|camara-de-pomerode-sc-abre-concurso-publico-para-assistente-legislativo-e-analista-administrativo
+SC|Câmara de Ituporanga|Ituporanga|1|Procurador legislativo (seleção)|26/10/2026>11/11/2026|camara-de-ituporanga-sc-abre-processo-seletivo-para-procurador-legislativo
+SC|CASAN|-|CR|Vários cargos|09/10/2026|casan-sc-retifica-editais-de-concursos-publicos
+SC|Fundação Catarinense de Cultura|-|8|Analista (seleção)|09/11/2026|fundacao-catarinense-de-cultura-sc-abre-processo-seletivo-para-analista-contador
+SC|HEMOSC|-|1|Técnico em enfermagem (seleção)|15/10/2026|fahece-sc-abre-processo-seletivo-para-tecnico-em-enfermagem-i-no-municipio-de-joinville
+SC|Hospital São Lucas (Major Vieira)|Major Vieira|CR|Vários cargos (seleção)|22/10/2026|prefeitura-de-major-vieira-sc-abre-processo-seletivo-para-formacao-de-cadastro-de-reserva-no-hospital-sao-lucas
+SC|Procuradoria do Município de Blumenau|Blumenau|5|Residente jurídico (seleção)|29/10/2026|prefeitura-de-blumenau-sc-abre-selecao-para-o-programa-de-residencia-juridica
+SC|Prefeitura de Corupá|Corupá|31|Vários cargos|03/11/2026|prefeitura-de-corupa-sc-abre-concurso-com-salarios-de-ate-13778
+SC|Prefeitura de Agrolândia|Agrolândia|CR|Vários cargos (seleção)|03/11/2026|prefeitura-de-agrolandia-sc-abre-processo-seletivo-para-formacao-de-cadastro-de-reserva-em-diversas-areas
+SC|Prefeitura de Águas Mornas|Águas Mornas|CR|Vários cargos|31/10/2026|prefeitura-de-aguas-mornas-sc-abre-concurso-e-processo-seletivo-com-salarios-de-ate-10109
+SC|Prefeitura de Apiúna|Apiúna|CR|Vários cargos (seleção)|16/10/2026|prefeitura-de-apiuna-sc-abre-processo-seletivo-com-salarios-de-ate-5130
+SC|Prefeitura de Araquari|Araquari|2|Professor (seleção)|21/10/2026|prefeitura-de-araquari-sc-retifica-processo-seletivo-para-professores
+SC|Prefeitura de Caçador|Caçador|CR|Educação (seleção)|22/10/2026|prefeitura-de-cacador-sc-abre-selecao-para-cadastro-de-reserva-na-educacao
+SC|Prefeitura de Campos Novos|Campos Novos|59|Vários cargos|03/11/2026|prefeitura-de-campos-novos-sc-publica-editais-de-concurso-publico-e-processo-seletivo
+SC|Prefeitura de Chapecó|Chapecó|10|Atendente da Central do Cidadão|29/10/2026|prefeitura-de-chapeco-sc-abre-concurso-publico-para-atendente-de-central-do-cidadao
+SC|Prefeitura de Chapecó|Chapecó|CR|Instrutor (seleção)|05/11/2026|prefeitura-de-chapeco-sc-abre-selecao-para-instrutores-em-diversas-areas
+SC|Prefeitura de Chapecó|Chapecó|CR|Professor (seleção)|11/11/2026|prefeitura-de-chapeco-sc-abre-processo-seletivo-para-professores
+SC|Prefeitura de Cordilheira Alta|Cordilheira Alta|1|Fisioterapeuta (seleção)|16/10/2026>21/10/2026|prefeitura-de-cordilheira-alta-sc-abre-selecao-para-fisioterapeuta
+SC|Prefeitura de Descanso|Descanso|CR|Vários cargos (seleção)|30/10/2026|prefeitura-de-descanso-sc-abre-processos-seletivos-com-salarios-de-ate-21965
+SC|Prefeitura de Dionísio Cerqueira|Dionísio Cerqueira|CR|Vários cargos (seleção)|23/10/2026|prefeitura-de-dionisio-cerqueira-sc-abre-selecoes-com-salarios-de-ate-25523
+SC|Prefeitura de Fraiburgo|Fraiburgo|CR|Médicos (seleção)|25/10/2026|prefeitura-de-fraiburgo-sc-abre-processo-seletivo-com-vagas-para-medicos
+SC|Prefeitura de Fraiburgo|Fraiburgo|20|Vários cargos (seleção)|05/11/2026|municipio-de-fraiburgo-sc-abre-processo-seletivo-com-salarios-de-ate-5146
+SC|Prefeitura de Gaspar|Gaspar|38|Educação|22/10/2026|prefeitura-de-gaspar-sc-abre-concurso-com-vagas-para-a-area-da-educacao
+SC|Prefeitura de Guaramirim|Guaramirim|CR|Vários cargos (seleção)|09/11/2026|prefeitura-de-guaramirim-sc-abre-processo-seletivo-com-salarios-de-ate-6522
+SC|Prefeitura de Ilhota|Ilhota|36|Vários cargos|16/10/2026>14/11/2026|prefeitura-de-ilhota-sc-publica-edital-de-concurso-publico-com-salarios-de-ate-21113
+SC|Prefeitura de Imbituba|Imbituba|8|Vários cargos|11/11/2026|prefeitura-de-imbituba-sc-abre-concurso-publico-com-salarios-de-ate-4807
+SC|Prefeitura de Imbuia|Imbuia|CR|Vários cargos (seleção)|06/11/2026|prefeitura-de-imbuia-sc-abre-processo-seletivo-com-salarios-de-ate-7362
+SC|Prefeitura de Ipumirim|Ipumirim|9|Vários cargos|19/10/2026|prefeitura-de-ipumirim-sc-divulga-retificacao-de-concurso-publico-com-salarios-de-ate-6990
+SC|Prefeitura de Itajaí|Itajaí|CR|Educação (seleção)|30/10/2026|prefeitura-de-itajai-sc-abre-processo-seletivo-para-cadastro-de-reserva-na-educacao
+SC|Prefeitura de Jaborá|Jaborá|34|Vários cargos|16/10/2026|prefeitura-de-jabora-sc-divulga-retificacoes-de-concurso-publico
+SC|Prefeitura de José Boiteux|José Boiteux|CR|Educação (seleção)|15/10/2026|prefeitura-de-jose-boiteux-sc-abre-processo-seletivo-para-a-educacao
+SC|Prefeitura de Lontras|Lontras|CR|Vários cargos (seleção)|27/10/2026|prefeitura-de-lontras-sc-abre-processo-seletivo-com-salarios-de-ate-8105
+SC|Prefeitura de Major Vieira|Major Vieira|12|Vários cargos|19/10/2026|prefeitura-de-major-vieira-sc-abre-concurso-publico-com-salarios-de-ate-8442
+SC|Prefeitura de Major Vieira|Major Vieira|CR|Vários cargos (seleção)|22/10/2026|prefeitura-de-major-vieira-sc-abre-processo-seletivo-para-diversos-cargos
+SC|Prefeitura de Maravilha|Maravilha|11|Vários cargos|03/11/2026|prefeitura-de-maravilha-sc-retifica-concurso-com-salarios-de-ate-15748
+SC|Prefeitura de Marema|Marema|12|Vários cargos|06/11/2026|prefeitura-de-marema-sc-abre-concurso-com-salarios-de-ate-8976
+SC|Prefeitura de Pinhalzinho|Pinhalzinho|CR|Educação (seleção)|26/10/2026|prefeitura-de-pinhalzinho-sc-abre-processo-seletivo-para-profissionais-da-educacao
+SC|Prefeitura de Ponte Alta|Ponte Alta|CR|Vários cargos (seleção)|18/10/2026|prefeitura-de-ponte-alta-sc-abre-processo-seletivo-com-salarios-de-ate-17248
+SC|Prefeitura de Porto União|Porto União|CR|Educação (seleção)|04/11/2026|prefeitura-de-porto-uniao-sc-abre-processo-seletivo-na-area-da-educacao
+SC|Prefeitura de Rio das Antas|Rio das Antas|CR|Nutricionista (seleção)|21/10/2026|prefeitura-de-rio-das-antas-sc-abre-processo-seletivo-para-o-cargo-de-nutricionista
+SC|Prefeitura de Rio do Campo|Rio do Campo|CR|Educação (seleção)|13/11/2026|prefeitura-de-rio-do-campo-sc-abre-processo-seletivo-para-profissionais-da-educacao
+SC|Prefeitura de Rio do Sul|Rio do Sul|79|Professor (seleção)|16/10/2026|prefeitura-de-rio-do-sul-sc-abre-processo-seletivo-para-professores
+SC|Prefeitura de Rio Negrinho|Rio Negrinho|1|Médico psiquiatra (seleção)|16/10/2026|prefeitura-de-rio-negrinho-sc-abre-vaga-para-medico-psiquiatra
+SC|Prefeitura de Rodeio|Rodeio|4|Vários cargos (seleção)|13/11/2026|prefeitura-de-rodeio-sc-abre-processos-seletivos-para-diversos-cargos
+SC|Prefeitura de Saltinho|Saltinho|13|Vários cargos|05/11/2026|prefeitura-de-saltinho-sc-abre-concurso-publico-com-salarios-de-ate-5022
+SC|Prefeitura de São Domingos|São Domingos|36|Vários cargos|28/10/2026|prefeitura-de-sao-domingos-sc-abre-concurso-publico-com-salarios-de-ate-7949
+SC|Prefeitura de São Domingos|São Domingos|CR|Vários cargos (seleção)|13/11/2026|prefeitura-de-sao-domingos-sc-abre-processo-seletivo-para-cadastro-de-reserva
+SC|Prefeitura de São João Batista|São João Batista|CR|Vários cargos (seleção)|08/11/2026|municipio-de-sao-joao-batista-sc-abre-processos-seletivos-para-diversos-cargos
+SC|Prefeitura de São João do Oeste|São João do Oeste|CR|Professor (seleção)|15/10/2026|prefeitura-de-sao-joao-do-oeste-sc-abre-processo-seletivo-para-cadastro-de-reserva-de-professores
+SC|Prefeitura de São Joaquim|São Joaquim|1|Vários cargos|18/10/2026|prefeitura-de-sao-joaquim-sc-abre-concurso-publico-com-vagas-imediatas-e-cadastro-de-reserva
+SC|Prefeitura de São Lourenço do Oeste|São Lourenço do Oeste|5|Orientador social (seleção)|21/10/2026|municipio-de-sao-lourenco-do-oeste-sc-abre-processo-seletivo-com-vagas-imediatas-e-cadastro-de-reserva
+SC|Prefeitura de Serra Alta|Serra Alta|23|Vários cargos|30/10/2026|prefeitura-de-serra-alta-sc-retifica-concurso-com-salarios-de-ate-9903
+SC|Prefeitura de Tijucas|Tijucas|250|Educação|13/11/2026|prefeitura-de-tijucas-sc-abre-concurso-publico-com-vagas-para-a-educacao
+SC|Prefeitura de Trombudo Central|Trombudo Central|10|Vários cargos|22/10/2026|prefeitura-de-trombudo-central-sc-retifica-edital-de-concurso-publico
+SC|Prefeitura de Tunápolis|Tunápolis|1|Fiscal de obras e posturas|16/10/2026|prefeitura-de-tunapolis-sc-abre-concurso-publico-para-fiscal-de-obras-e-posturas
+SC|Prefeitura de Tunápolis|Tunápolis|CR|Vários cargos (seleção)|16/10/2026|prefeitura-de-tunapolis-sc-abre-processo-seletivo-para-formacao-de-cadastro-de-reserva
+SC|Prefeitura de Urussanga|Urussanga|20|Vários cargos (seleção)|08/11/2026|prefeitura-de-urussanga-sc-abre-processo-seletivo-com-salarios-de-ate-23930
+SC|Prefeitura de Witmarsum|Witmarsum|10|Vários cargos|05/11/2026|prefeitura-de-witmarsum-sc-abre-concurso-publico-e-processo-seletivo-para-diversos-cargos
+SC|Prefeitura e Câmara de Benedito Novo|Benedito Novo|55|Vários cargos|27/10/2026|prefeitura-e-camara-de-benedito-novo-sc-abrem-concursos-e-processos-seletivos-com-diversas-vagas
+SC|SEFAZ-SC|-|50|Auditor estadual de finanças públicas|05/10/2026|sefaz-sc-abre-concurso-publico-para-o-cargo-de-auditor-estadual-de-financas-publicas
+SC|Secretaria de Saúde de SC|-|5|Técnicos e engenheiro (seleção)|16/10/2026|ses-sc-abre-processo-seletivo-com-salarios-de-ate-5670
+SC|Secretaria de Saúde de SC|-|1|Técnico em enfermagem (seleção)|27/10/2026|ses-sc-abre-processo-seletivo-para-tecnico-em-enfermagem-em-florianopolis
+SC|TJSC|-|15|Juiz substituto|26/11/2026|tjsc-abre-concurso-publico-para-o-cargo-de-juiz-substituto
+SC|UDESC|-|146|Professor substituto (seleção)|26/10/2026|udesc-sc-abre-processo-seletivo-para-professores-substitutos-em-diversas-areas-do-conhecimento
+RJ|Prefeitura de São Gonçalo|São Gonçalo|101|Guarda municipal|18/11/2026|prefeitura-de-sao-goncalo-rj-abre-concursos-para-guardas-municipais
+RJ|Corpo de Bombeiros do RJ|-|192|1º tenente temporário (seleção)|19/10/2026>09/11/2026|cbmerj-rj-abre-processo-seletivo-para-1-tenente-temporario
+RJ|CREMERJ|-|26|Vários cargos|29/10/2026|cremerj-retifica-concurso-com-salarios-de-ate-18000-para-diversos-cargos
+RJ|Prefeitura de Arraial do Cabo|Arraial do Cabo|100|Agentes de saúde e endemias (seleção)|21/10/2026|prefeitura-de-arraial-do-cabo-rj-retifica-processo-seletivo-para-agentes-de-saude-e-de-endemias
+RJ|Prefeitura de Engenheiro Paulo de Frontin|Engenheiro Paulo de Frontin|143|Vários cargos|15/10/2026|prefeitura-de-engenheiro-paulo-de-frontin-rj-prorroga-inscricoes-para-concurso-publico
+RJ|Prefeitura de Queimados|Queimados|463|Vários cargos|13/10/2026|prefeitura-de-queimados-rj-abre-concurso-publico-com-salarios-de-ate-11567
+RJ|Prefeitura de Valença|Valença|100|Professor|05/10/2026|prefeitura-de-valenca-rj-abre-concurso-publico-para-professores
+RJ|SEPLAG-RJ|-|60|Especialista e analista de planejamento|08/10/2026|seplag-rj-publica-retificacoes-do-concurso-com-60-vagas-para-cargos-de-nivel-superior
+RJ|Prefeitura do Rio de Janeiro (Educação)|Rio de Janeiro|103|Professor (seleção)|20/10/2026|secretaria-municipal-de-educacao-do-rio-de-janeiro-rj-abre-processo-seletivo-para-professores
+RJ|UERJ|-|1|Professor adjunto|31/01/2027|uerj-abre-concurso-publico-para-professor-adjunto-de-ciencia-da-computacao
+RJ|UERJ|-|1|Professor adjunto|20/10/2026|uerj-rj-abre-vaga-para-professor-adjunto-de-cardiologia-em-cabo-frio
+RJ|UERJ|-|1|Professor adjunto|30/10/2026|uerj-abre-concurso-publico-com-vaga-para-professor-adjunto-de-bioquimica
+RJ|UERJ|-|1|Professor adjunto|30/10/2026|uerj-abre-concurso-para-professor-adjunto-na-area-de-engenharia-economica
+RJ|UERJ|-|1|Professor adjunto|30/10/2026|uerj-abre-concurso-para-professor-adjunto-de-metodologia-e-tecnicas-de-computacao
+RJ|UERJ|-|2|Professor adjunto|19/10/2026|uerj-abre-concursos-para-professores-adjuntos-no-departamento-de-engenharia-eletrica
+RJ|UERJ|-|1|Professor adjunto|16/10/2026|uerj-abre-vaga-para-professor-adjunto-no-instituto-de-letras
+RJ|UERJ|-|1|Professor adjunto|20/10/2026|uerj-rj-abre-vaga-para-professor-adjunto-no-instituto-de-psicologia
+RJ|UERJ|-|1|Professor adjunto|23/10/2026|uerj-abre-vaga-para-professor-adjunto-no-instituto-de-nutricao
+RJ|UERJ|-|1|Professor adjunto|05/11/2026|uerj-abre-concurso-publico-para-professor-adjunto-na-area-de-saude-coletiva
+MG|EMATER-MG|-|120|Vários cargos|30/10/2026|emater-mg-anuncia-retificacao-de-concurso-publico-com-salarios-de-ate-7321
+MG|Polícia Militar de MG|-|90|Cadete (formação de oficiais)|10/11/2026>10/12/2026|pmmg-abre-concurso-com-90-vagas-para-o-curso-de-formacao-de-oficiais
+MG|Prefeitura de Contagem|Contagem|272|Vários cargos|19/10/2026>17/11/2026|prefeitura-de-contagem-mg-abre-concurso-publico-com-salarios-de-ate-13305
+MG|Câmara de Bocaina de Minas|Bocaina de Minas|3|Vários cargos|28/10/2026>26/11/2026|camara-de-bocaina-de-minas-mg-abre-concurso-publico-com-salarios-de-1621
+MG|Câmara de Cajuri|Cajuri|4|Vários cargos|20/10/2026>18/11/2026|camara-de-cajuri-mg-abre-concurso-publico-com-vagas-de-nivel-fundamental-e-medio
+MG|Câmara de Capela Nova|Capela Nova|3|Vários cargos|14/12/2026>14/01/2027|camara-de-capela-nova-mg-abre-concurso-publico-para-diferentes-niveis-de-escolaridade
+MG|Câmara de Capelinha|Capelinha|27|Vários cargos|21/10/2026|camara-de-capelinha-mg-retifica-edital-do-concurso-publico-com-salarios-de-ate-4527
+MG|Câmara de Capinópolis|Capinópolis|5|Vários cargos|10/11/2026|camara-de-capinopolis-mg-retifica-edital-de-concurso-publico-com-salarios-de-ate-5800
+MG|Câmara de Caratinga|Caratinga|1|Contador|07/12/2026>05/01/2027|camara-de-caratinga-mg-abre-concurso-publico-para-o-cargo-de-contador
+MG|Câmara de Carmo da Cachoeira|Carmo da Cachoeira|1|Agente de apoio operacional|14/12/2026>14/01/2027|camara-de-carmo-da-cachoeira-mg-abre-vaga-para-agente-de-apoio-operacional
+MG|Câmara de Divisa Nova|Divisa Nova|2|Agente de contratação e contador|10/11/2026|camara-de-divisa-nova-mg-abre-concurso-publico-para-agente-de-contratacao-e-contador
+MG|Câmara de Dores do Indaiá|Dores do Indaiá|5|Vários cargos|03/11/2026|camara-de-dores-do-indaia-mg-abre-concurso-publico-com-salarios-de-ate-4500
+MG|Câmara de Jacuí|Jacuí|3|Auxiliar administrativo|28/10/2026|camara-de-jacui-mg-abre-vagas-para-auxiliares-administrativos
+MG|Câmara de João Monlevade|João Monlevade|12|Nível médio|16/10/2026|camara-de-joao-monlevade-mg-abre-concurso-publico-para-cargos-de-nivel-medio
+MG|Câmara de Lajinha|Lajinha|1|Controlador interno|30/11/2026>29/12/2026|camara-de-lajinha-mg-abre-concurso-publico-para-o-cargo-de-controlador-interno
+MG|Câmara de Lambari|Lambari|8|Vários cargos|20/10/2026>18/11/2026|camara-de-lambari-mg-abre-concurso-publico-com-salarios-de-ate-5500
+MG|Câmara de Natércia|Natércia|1|Serviços gerais e oficial legislativo|11/11/2026>11/12/2026|camara-de-natercia-mg-abre-concurso-publico-para-auxiliar-de-servicos-gerais-e-oficial-legislativo
+MG|Câmara de Nova Módica|Nova Módica|1|Ouvidor|30/11/2026>28/12/2026|camara-de-nova-modica-mg-abre-concurso-publico-para-ouvidor
+MG|Câmara de Nova Ponte|Nova Ponte|5|Vários cargos|27/10/2026>26/11/2026|camara-de-nova-ponte-mg-reabre-concurso-publico-para-profissionais-de-nivel-medio-e-superior
+MG|Câmara de Pedras de Maria da Cruz|Pedras de Maria da Cruz|4|Vários cargos|04/11/2026|camara-de-pedras-de-maria-da-cruz-mg-abre-concurso-publico-para-niveis-fundamental-e-medio
+MG|Câmara de Serranos|Serranos|3|Vários cargos|01/12/2026>04/01/2027|camara-de-serranos-mg-abre-vagas-para-agente-administrativo-auxiliar-tecnico-legislativo-e-contador
+MG|Câmara de Tiradentes|Tiradentes|2|Controlador interno e tesoureiro|26/10/2026>24/11/2026|camara-de-tiradentes-mg-abre-concurso-publico-para-controlador-interno-e-tesoureiro
+MG|Câmara de Tupaciguara|Tupaciguara|10|Vários cargos|07/11/2026>07/12/2026|camara-de-tupaciguara-mg-abre-concurso-publico-com-10-vagas
+MG|Câmara de Unaí|Unaí|2|Analista|30/10/2026>01/12/2026|camara-de-unai-mg-abre-concurso-publico-com-remuneracao-de-9193
+MG|CEFET-MG|-|1|Professor substituto|18/10/2026|cefet-mg-abre-vaga-para-professor-substituto-de-engenharia-civil-em-varginha
+MG|DEMLURB (Juiz de Fora)|Juiz de Fora|CR|Auxiliar e operador (seleção)|16/10/2026|demlurb-juiz-de-fora-mg-abre-selecoes-para-auxiliar-de-servicos-e-operador-de-maquinas-i
+MG|FUMEP (Sete Lagoas)|Sete Lagoas|39|Vários cargos|19/10/2026>18/11/2026|fumep-de-sete-lagoas-mg-retifica-concurso-publico-para-diversos-niveis-de-escolaridade
+MG|Hospital Odilon Behrens|Belo Horizonte|CR|Agente e médicos (seleção)|17/10/2026|hob-mg-abre-selecoes-para-agente-executivo-governamental-e-medicos
+MG|Hospital Municipal Dr. Gil Alves|Bocaiúva|183|Vários cargos|27/11/2026>28/12/2026|hospital-municipal-dr-gil-alves-mg-abre-concurso-com-salarios-de-ate-7950
+MG|IFMG|-|33|Professor EBTT|13/11/2026|ifmg-retifica-concurso-publico-para-o-cargo-de-professor-do-ensino-basico-tecnico-e-tecnologico
+MG|IFMG|-|1|Professor substituto|19/10/2026|ifmg-abre-processo-seletivo-para-professor-substituto-de-eletroeletronica-em-ribeirao-das-neves
+MG|Prefeitura de Alvinópolis|Alvinópolis|172|Vários cargos|16/11/2026>15/12/2026|prefeitura-de-alvinopolis-mg-publica-edital-de-concurso-publico-com-salarios-de-ate-17954
+MG|Prefeitura de Antônio Prado de Minas|Antônio Prado de Minas|33|Vários cargos|03/11/2026>02/12/2026|prefeitura-de-antonio-prado-de-minas-mg-abre-concurso-publico-para-diversos-cargos
+MG|Prefeitura de Baldim|Baldim|10|Saúde|12/11/2026|prefeitura-de-baldim-mg-abre-concurso-publico-para-profissionais-de-saude
+MG|Prefeitura de Belo Vale|Belo Vale|30|Agentes de saúde e endemias (seleção)|21/10/2026|prefeitura-de-belo-vale-mg-publica-edital-de-processo-seletivo-para-agentes-de-saude-e-de-endemias
+MG|Prefeitura de Belo Vale|Belo Vale|179|Vários cargos|03/11/2026|prefeitura-de-belo-vale-mg-abre-concurso-publico-com-diversas-vagas-e-salarios-de-ate-8000
+MG|Prefeitura de Berizal|Berizal|11|Agente comunitário de saúde (seleção)|13/11/2026|prefeitura-de-berizal-mg-retifica-processo-seletivo-para-agentes-comunitarios-de-saude
+MG|Prefeitura de Carmo da Cachoeira|Carmo da Cachoeira|2|Agentes de saúde e endemias (seleção)|17/11/2026>17/12/2026|prefeitura-de-carmo-da-cachoeira-mg-abre-selecao-para-agentes-de-saude-e-de-endemias
+MG|Prefeitura de Catas Altas|Catas Altas|CR|Cozinheiro (seleção)|16/10/2026|prefeitura-de-catas-altas-mg-abre-selecao-para-o-cargo-de-cozinheiro
+MG|Prefeitura de Cláudio|Cláudio|35|Pedagogo e professor|14/12/2026>04/01/2027|prefeitura-de-claudio-mg-abre-concurso-publico-para-cargos-de-nivel-superior-na-educacao
+MG|Prefeitura de Conceição do Mato Dentro|Conceição do Mato Dentro|264|Vários cargos|06/11/2026|prefeitura-de-conceicao-do-mato-dentro-mg-retifica-edital-de-concurso-publico
+MG|Prefeitura de Indaiabira|Indaiabira|10|Agentes de saúde e endemias (seleção)|13/11/2026|prefeitura-de-indaiabira-mg-retifica-o-edital-do-processo-seletivo-para-agentes-de-saude-e-de-endemias
+MG|Prefeitura de Inimutaba|Inimutaba|1|Agente comunitário de saúde (seleção)|15/10/2026|prefeitura-de-inimutaba-mg-abre-selecao-para-agente-comunitario-de-saude
+MG|Prefeitura de Itabira|Itabira|88|Vários cargos (seleção)|19/10/2026>23/10/2026|prefeitura-de-itabira-mg-abre-processo-seletivo-com-salarios-de-ate-4040
+MG|Prefeitura de Itanhandu|Itanhandu|1|Agente de endemias (seleção)|20/10/2026|prefeitura-de-itanhandu-mg-abre-selecao-para-agente-de-combate-as-endemias
+MG|Prefeitura de João Monlevade|João Monlevade|1|Médico ESF (seleção)|15/10/2026|prefeitura-de-joao-monlevade-mg-abre-vaga-para-medico-esf
+MG|Prefeitura de Lagoa da Prata|Lagoa da Prata|105|Vários cargos|03/11/2026|prefeitura-de-lagoa-da-prata-mg-altera-periodo-de-inscricoes-do-concurso-publico-com-salarios-de-ate-21-mil
+MG|Prefeitura de Lagoa Santa|Lagoa Santa|277|Vários cargos (seleção)|16/10/2026|prefeitura-de-lagoa-santa-mg-abre-processo-seletivo-com-salarios-de-ate-5185
+MG|Prefeitura de Lagoa Santa|Lagoa Santa|79|Vários cargos|16/12/2026>18/01/2027|prefeitura-de-lagoa-santa-mg-abre-concurso-publico-com-salarios-de-ate-8860
+MG|Prefeitura de Leopoldina|Leopoldina|CR|Educação (seleção)|16/10/2026|prefeitura-de-leopoldina-mg-abre-selecao-para-cadastro-de-reserva-na-educacao
+MG|Prefeitura de Luislândia|Luislândia|88|Vários cargos|10/12/2026>06/01/2027|prefeitura-de-luislandia-mg-abre-concurso-publico-com-vagas-em-diversas-areas
+MG|Prefeitura de Munhoz|Munhoz|6|Nível superior|23/11/2026>22/12/2026|prefeitura-de-munhoz-mg-abre-concurso-publico-para-cargos-de-nivel-superior
+MG|Prefeitura de Paiva|Paiva|13|Vários cargos|19/10/2026>18/11/2026|prefeitura-de-paiva-mg-abre-concurso-publico-com-salarios-de-ate-11715
+MG|Prefeitura de Paraguaçu|Paraguaçu|100|Vários cargos|21/12/2026>19/01/2027|prefeitura-de-paraguacu-mg-abre-concurso-publico-com-salarios-de-ate-20128
+MG|Prefeitura de Patis|Patis|154|Vários cargos|03/12/2026>30/12/2026|prefeitura-de-patis-mg-abre-concurso-publico-com-salarios-de-ate-13500
+MG|Prefeitura de Pedro Teixeira|Pedro Teixeira|120|Vários cargos|30/10/2026|prefeitura-de-pedro-teixeira-mg-publica-edital-retificado-de-concurso-publico
+MG|Prefeitura de Piracema|Piracema|132|Vários cargos|20/10/2026>18/11/2026|prefeitura-de-piracema-mg-abre-concurso-e-processo-seletivo-com-diversas-vagas
+MG|Prefeitura de Piranguinho|Piranguinho|1|Agente de endemias (seleção)|23/10/2026|prefeitura-de-piranguinho-mg-reabre-processo-seletivo-para-agente-de-combate-as-endemias
+MG|Prefeitura de Ponte Nova|Ponte Nova|CR|Educação (seleção)|16/12/2026>29/12/2026|prefeitura-de-ponte-nova-mg-abre-processo-seletivo-para-profissionais-da-educacao-basica
+MG|Prefeitura de Porto Firme|Porto Firme|19|Vários cargos|17/11/2026>17/12/2026|prefeitura-de-porto-firme-mg-abre-novo-concurso-publico-com-salarios-de-ate-3873
+MG|Prefeitura de Prata|Prata|CR|Professor (seleção)|14/11/2026>14/12/2026|prefeitura-de-prata-mg-abre-selecao-para-cadastro-de-reserva-de-professores
+MG|Prefeitura de Rio Acima|Rio Acima|10|Agentes de saúde e endemias (seleção)|26/10/2026>24/11/2026|prefeitura-de-rio-acima-mg-abre-selecao-para-agentes-de-saude-e-de-endemias
+MG|Prefeitura de Salto da Divisa|Salto da Divisa|21|Agentes de saúde e endemias (seleção)|01/12/2026>04/01/2027|prefeitura-de-salto-da-divisa-mg-abre-selecao-para-agentes-de-saude-e-de-endemias
+MG|Prefeitura de Santa Luzia|Santa Luzia|454|Vários cargos|17/12/2026>15/01/2027|prefeitura-de-santa-luzia-mg-abre-concurso-publico-com-salarios-de-ate-8628
+MG|Prefeitura de Santana de Pirapama|Santana de Pirapama|79|Vários cargos|10/11/2026|prefeitura-de-santana-de-pirapama-mg-abre-concurso-com-salarios-de-ate-6221
+MG|Prefeitura de São João del-Rei|São João del-Rei|74|Vários cargos|12/11/2026|prefeitura-de-sao-joao-del-rei-mg-abre-concurso-publico-com-salarios-de-ate-15164
+MG|Prefeitura e DAMAE de São João del-Rei|São João del-Rei|116|Vários cargos|12/11/2026|prefeitura-de-sao-joao-del-rei-e-damae-mg-abrem-concursos-com-salarios-de-ate-6469
+MG|Prefeitura de São João do Paraíso|São João do Paraíso|14|Agente comunitário de saúde (seleção)|13/11/2026|prefeitura-de-sao-joao-do-paraiso-mg-retifica-o-edital-do-processo-seletivo-para-agentes-comunitarios-de-saude
+MG|Prefeitura de São Pedro da União|São Pedro da União|29|Vários cargos|28/11/2026>28/12/2026|prefeitura-de-sao-pedro-da-uniao-mg-abre-concurso-publico-com-salarios-de-ate-17612
+MG|Prefeitura de São Romão|São Romão|CR|Agentes de saúde e endemias (seleção)|30/11/2026>30/12/2026|prefeitura-de-sao-romao-mg-abre-selecao-para-agentes-de-saude-e-agentes-de-combate-as-endemias
+MG|Prefeitura de São Sebastião do Rio Verde|São Sebastião do Rio Verde|15|Vários cargos|19/10/2026|prefeitura-de-sao-sebastiao-do-rio-verde-mg-abre-concurso-publico-com-salarios-de-ate-12642
+MG|Prefeitura de São Tomás de Aquino|São Tomás de Aquino|4|Educação (seleção)|09/11/2026>19/11/2026|prefeitura-de-sao-tomas-de-aquino-mg-abre-processo-seletivo-na-area-da-educacao
+MG|Prefeitura de São Vicente de Minas|São Vicente de Minas|35|Vários cargos|05/11/2026|prefeitura-de-sao-vicente-de-minas-mg-abre-concurso-publico-com-salarios-de-ate-15142
+MG|Prefeitura de Tocos do Moji|Tocos do Moji|1|Agente comunitário de saúde (seleção)|30/11/2026>30/12/2026|prefeitura-de-tocos-do-moji-mg-retifica-edital-de-processo-seletivo-para-agente-comunitario-de-saude
+MG|Prefeitura de Uberlândia|Uberlândia|6|Vários cargos (seleção)|19/10/2026>06/11/2026|prefeitura-de-uberlandia-mg-abre-selecao-com-salarios-de-ate-4499
+MG|Prefeitura de Urucânia|Urucânia|CR|Vários cargos (seleção)|16/10/2026|prefeitura-de-urucania-mg-abre-processo-seletivo-com-salarios-de-ate-13696
+MG|Prefeitura de Viçosa|Viçosa|129|Vários cargos (seleção)|21/10/2026|prefeitura-de-vicosa-mg-abre-processo-seletivo-com-salarios-de-ate-5-6-mil
+MG|SAAE de Itambacuri|Itambacuri|6|Vários cargos|28/10/2026>26/11/2026|saae-itambacuri-mg-publica-edital-de-concurso-publico-com-seis-vagas-imediatas
+MG|SAAE de Pirapora|Pirapora|9|Vários cargos|20/10/2026>18/11/2026|saae-de-pirapora-mg-abre-concurso-publico-com-salarios-de-ate-4848
+MG|Prefeitura de Belo Horizonte (Educação)|Belo Horizonte|112|Professor|21/12/2026>19/01/2027|secretaria-municipal-de-educacao-de-belo-horizonte-mg-abre-concurso-para-professor-municipal
+MG|UFMG|-|1|Professor|20/10/2026|ufmg-mg-abre-concurso-para-cargo-de-professor-na-area-de-citologia
+MG|UFMG|-|2|Professor|23/11/2026|ufmg-abre-concurso-para-professor-de-magisterio-superior-na-area-de-medicina
+MG|UFMG|-|1|Professor|28/12/2026|ufmg-abre-concurso-para-docente-na-area-de-nutricao-em-esporte-e-exercicio-fisico
+MG|UFMG|-|1|Professor|02/11/2026|ufmg-abre-vaga-para-professor-assistente-de-dermatologia
+MG|UFMG|-|1|Professor|20/11/2026|ufmg-abre-concurso-publico-para-professor-assistente-na-faculdade-de-letras
+MG|UFMG|-|1|Professor|30/11/2026|ufmg-abre-concurso-publico-para-professor-na-faculdade-de-medicina
+MG|UFSJ|-|1|Professor titular|22/10/2026|ufsj-mg-abre-concurso-publico-para-professor-titular-livre-na-area-de-medicina
+MG|UFU|-|15|Professor do magistério superior|28/10/2026|ufu-mg-abre-concurso-publico-para-professores-do-magisterio-superior
+MG|UFV|-|1|Técnico em Libras|16/10/2026|ufv-mg-abre-vaga-para-profissional-tecnico-especializado-em-linguagem-de-sinais
+MG|UFV|-|3|Professor|14/11/2026|ufv-mg-abre-concursos-publicos-para-professores-de-magisterio-superior
+MG|UFV|-|1|Professor|29/11/2026|ufv-mg-abre-concurso-publico-para-docente-na-area-de-representacao-grafica
+MG|UNIFAL|-|1|Médico|19/10/2026|unifal-mg-abre-concurso-publico-para-medico-ginecologista-e-obstetra
+MG|UNIFEI|-|5|Professor do magistério superior|08/11/2026|unifei-mg-abre-concurso-publico-para-o-cargo-de-professor-de-magisterio-superior
+MG|Unimontes|-|17|Professor|28/10/2026|unimontes-mg-abre-concurso-publico-para-professores-na-area-de-educacao-fisica
+ES|CRECI-ES|-|24|Vários cargos|10/11/2026|creci-es-abre-concurso-publico-com-salarios-de-ate-8250
+ES|CREF22-ES|-|2|Nível superior|20/10/2026|cref22-es-abre-concurso-publico-para-cargos-de-nivel-superior
+ES|Prefeitura de Iconha|Iconha|55|Professor e pedagogo|16/10/2026>30/10/2026|prefeitura-de-iconha-es-abre-concurso-publico-para-professores
+ES|Prefeitura de Irupi|Irupi|CR|Cuidador escolar (seleção)|19/10/2026>03/11/2026|prefeitura-de-irupi-es-abre-selecao-para-cuidador-escolar
+ES|Prefeitura de Iúna|Iúna|CR|Vários cargos (seleção)|06/11/2026|prefeitura-de-iuna-e-santa-casa-es-abrem-processo-seletivo-para-diversos-cargos
+ES|Prefeitura de Montanha|Montanha|CR|Vários cargos (seleção)|20/10/2026>26/10/2026|prefeitura-de-montanha-es-abre-processo-seletivo-para-profissionais-de-diversas-areas
+ES|Prefeitura de Santa Maria de Jetibá|Santa Maria de Jetibá|30|Guarda municipal|21/10/2026|prefeitura-de-santa-maria-de-jetiba-es-abre-concurso-publico-com-vagas-para-guardas-municipais
+ES|Prefeitura de Santa Maria de Jetibá|Santa Maria de Jetibá|CR|Vários cargos (seleção)|16/10/2026>28/10/2026|prefeitura-de-santa-maria-de-jetiba-es-abre-processo-seletivo-para-formacao-de-cadastro-de-reserva
+ES|SAAE de Iconha|Iconha|14|Vários cargos|26/10/2026>10/11/2026|saae-de-iconha-es-abre-concurso-publico-com-salarios-de-ate-3236
+ES|Prefeitura de Vila Velha (Meio Ambiente)|Vila Velha|10|Vários cargos (seleção)|21/10/2026|prefeitura-de-vila-velha-es-republica-edital-de-processo-seletivo
+SP|Câmara de Itanhaém|Itanhaém|27|Vários cargos|19/10/2026|camara-de-itanhaem-sp-abre-concurso-publico-com-salarios-de-ate-7097
+SP|Câmara de Barão de Antonina|Barão de Antonina|1|Advogado|21/10/2026|camara-de-barao-de-antonina-sp-abre-concurso-publico-para-o-cargo-de-advogado
+SP|Câmara de Boituva|Boituva|7|Vários cargos|09/11/2026|camara-de-boituva-sp-abre-concursos-com-salarios-de-ate-8595
+SP|Câmara de Cesário Lange|Cesário Lange|3|Vários cargos|02/11/2026|camara-de-cesario-lange-sp-abre-concurso-publico-com-salarios-de-ate-3774
+SP|Câmara de Clementina|Clementina|1|Controlador interno|26/10/2026|camara-de-clementina-sp-abre-concurso-para-o-cargo-de-controlador-interno
+SP|Câmara de Dois Córregos|Dois Córregos|4|Vários cargos|22/10/2026|camara-de-dois-corregos-sp-abre-concurso-publico-com-salarios-de-ate-7114
+SP|Câmara de Estrela do Norte|Estrela do Norte|2|Encarregado administrativo e contínuo|18/10/2026|camara-de-estrela-do-norte-sp-abre-concurso-publico-para-continuo-e-encarregado-administrativo
+SP|Câmara de Jarinu|Jarinu|7|Vários cargos|29/10/2026|camara-de-jarinu-sp-abre-concurso-publico-com-salarios-de-ate-10744
+SP|Câmara de Paulistânia|Paulistânia|2|Assistente contábil e consultor jurídico|17/10/2026|camara-de-paulistania-sp-abre-concurso-publico-com-vagas-para-assistente-contabil-e-consultor-juridico
+SP|Câmara de Torre de Pedra|Torre de Pedra|1|Procurador legislativo|22/10/2026>23/11/2026|camara-de-torre-de-pedra-sp-abre-concurso-publico-para-procurador-legislativo
+SP|COMDERP|São José do Rio Pardo|3|Vários cargos (seleção)|26/10/2026|comderp-sp-abre-processo-seletivo-com-vagas-imediatas-e-cadastro-de-reserva
+SP|Defensoria Pública de SP|-|70|Defensor público|11/11/2026|defensoria-publica-de-sp-abre-concurso-para-defensor-publico
+SP|Detran-SP|-|145|Agente estadual de trânsito|13/10/2026|detran-sp-prorroga-inscricoes-do-concurso-com-145-vagas-para-agentes-estaduais-de-transito
+SP|Fundação José Pedro de Oliveira|Campinas|4|Vários cargos|12/11/2026|fundacao-jose-pedro-de-oliveira-sp-abre-concurso-publico-com-salarios-de-ate-8991
+SP|HC de Ribeirão Preto (USP)|-|2|Médico|23/10/2026|hcfmrp-usp-sp-abre-concursos-para-medicos-em-duas-especialidades-cirurgicas
+SP|HC de Ribeirão Preto (USP)|-|6|Médico|19/10/2026>06/11/2026|hcfmrp-usp-sp-abre-concursos-publicos-com-vagas-para-medicos-em-diversas-especialidades
+SP|IFSP|-|45|Professor EBTT|17/11/2026|ifsp-retifica-edital-de-concurso-publico-para-o-cargo-de-professor-do-ensino-basico-tecnico-e-tecnologico
+SP|IPSM de São José dos Campos|São José dos Campos|17|Nível superior|30/10/2026|ipsm-de-sao-jose-dos-campos-sp-abre-concurso-para-diversos-cargos-de-nivel-superior
+SP|Marinha do Brasil (8º Distrito Naval)|-|36|Oficiais temporários|10/11/2026|marinha-do-brasil-8-distrito-naval-abre-vagas-para-oficiais-rm2-em-sp
+SP|Prefeitura de Praia Grande|Praia Grande|28|Residência em saúde (seleção)|05/11/2026|prefeitura-de-praia-grande-sp-abre-processo-seletivo-para-residencia-multiprofissional
+SP|SETEC Campinas|Campinas|39|Vários cargos|04/12/2026|setec-campinas-sp-abre-concurso-publico-com-salarios-de-ate-10428
+SP|SETEC Campinas|Campinas|1|Procurador|04/12/2026|setec-campinas-sp-abre-concurso-publico-para-o-cargo-de-procurador
+SP|Prefeitura de Nuporanga|Nuporanga|5|Vários cargos|18/10/2026|prefeitura-de-nuporanga-sp-abre-concurso-com-salarios-de-ate-6209
+SP|Prefeitura de Ibitinga|Ibitinga|5|Vários cargos|18/10/2026|prefeitura-de-ibitinga-sp-abre-concurso-publico-com-vagas-em-diversas-areas
+SP|Prefeitura de São Roque|São Roque|CR|Educação (seleção)|05/11/2026|prefeitura-de-sao-roque-sp-abre-processo-seletivo-para-profissionais-da-educacao
+SP|Prefeitura de São Roque|São Roque|CR|Médico do trabalho (seleção)|05/11/2026|prefeitura-de-sao-roque-sp-abre-selecao-para-o-cargo-de-medico-do-trabalho
+SP|Prefeitura de Álvares Machado|Álvares Machado|CR|Enfermeiro e psicólogo (seleção)|18/10/2026|prefeitura-de-alvares-machado-sp-abre-processo-seletivo-para-enfermeiros-e-psicologos
+SP|Prefeitura de Amparo|Amparo|CR|Professor (seleção)|26/10/2026|prefeitura-de-amparo-sp-abre-processo-seletivo-para-professores
+SP|Prefeitura de Aparecida|Aparecida|21|Vários cargos|26/10/2026|prefeitura-de-aparecida-sp-abre-concurso-publico-com-vagas-imediatas-e-cadastro-de-reserva
+SP|Prefeitura de Araçoiaba da Serra|Araçoiaba da Serra|CR|Educação (seleção)|26/10/2026|prefeitura-de-aracoiaba-da-serra-sp-abre-selecao-para-cadastro-de-reserva-na-area-da-educacao
+SP|Prefeitura de Artur Nogueira|Artur Nogueira|CR|Professor (seleção)|20/10/2026|prefeitura-de-artur-nogueira-sp-abre-processo-seletivo-para-professores
+SP|Prefeitura de Birigui|Birigui|10|Professor auxiliar|29/10/2026|prefeitura-de-birigui-sp-prorroga-inscricoes-de-concurso-publico-para-professores-auxiliares
+SP|Prefeitura de Buritizal|Buritizal|CR|Educação (seleção)|25/10/2026|prefeitura-de-buritizal-sp-abre-processo-seletivo-para-a-area-da-educacao
+SP|Prefeitura de Cabreúva|Cabreúva|2|Guarda municipal|09/11/2026|prefeitura-de-cabreuva-sp-abre-concurso-publico-para-guarda-municipal
+SP|Prefeitura de Cachoeira Paulista|Cachoeira Paulista|36|Vários cargos (seleção)|19/10/2026|prefeitura-de-cachoeira-paulista-sp-abre-processo-seletivo-com-salarios-de-ate-10073
+SP|Prefeitura de Caiabu|Caiabu|CR|Vários cargos|18/10/2026|prefeitura-de-caiabu-sp-abre-concurso-publico-com-salarios-de-ate-5825
+SP|Prefeitura de Cerquilho|Cerquilho|23|Vários cargos (seleção)|03/11/2026|prefeitura-de-cerquilho-sp-abre-selecao-com-vagas-imediatas-e-cadastro-de-reserva
+SP|Prefeitura de Cosmópolis|Cosmópolis|CR|Professor de educação especial (seleção)|05/11/2026|prefeitura-de-cosmopolis-sp-abre-selecao-para-professores-na-area-de-educacao-especial
+SP|Prefeitura de Cosmorama|Cosmorama|3|Vários cargos|26/10/2026|prefeitura-de-cosmorama-sp-abre-concurso-com-salarios-de-ate-4980
+SP|Prefeitura de Echaporã|Echaporã|CR|Professor (seleção)|20/10/2026|prefeitura-de-echapora-sp-abre-processo-seletivo-para-professores
+SP|Prefeitura de Embaúba|Embaúba|51|Vários cargos|05/11/2026|prefeitura-de-embauba-sp-abre-concurso-publico-com-salarios-de-ate-5600
+SP|Prefeitura de Floreal|Floreal|12|Vários cargos|05/11/2026|prefeitura-de-floreal-sp-abre-concurso-publico-com-salarios-de-ate-10500
+SP|Prefeitura de General Salgado|General Salgado|5|Educação|22/10/2026|prefeitura-de-general-salgado-sp-abre-concurso-para-cargos-na-educacao
+SP|Prefeitura de Guarulhos|Guarulhos|200|Guarda civil municipal|15/10/2026|prefeitura-de-guarulhos-sp-abre-concurso-publico-com-200-vagas-para-guardas-civis-municipais
+SP|Prefeitura de Guarulhos|Guarulhos|22|Residência em saúde (seleção)|29/10/2026|prefeitura-de-guarulhos-sp-abre-vagas-para-programas-de-residencia-multiprofissional-em-saude
+SP|Prefeitura de Guzolândia|Guzolândia|3|Vários cargos (seleção)|23/10/2026|prefeitura-de-guzolandia-sp-abre-processo-seletivo-com-salarios-de-ate-5352
+SP|Prefeitura de Holambra|Holambra|18|Vários cargos|05/11/2026|prefeitura-de-holambra-sp-abre-concurso-com-salarios-de-ate-8431
+SP|Prefeitura de Icém|Icém|1|Vários cargos|23/10/2026|prefeitura-de-icem-sp-abre-novo-concurso-publico-para-diversos-cargos
+SP|Prefeitura de Itapecerica da Serra|Itapecerica da Serra|1|Motorista de caminhão|26/10/2026|prefeitura-de-itapecerica-da-serra-sp-abre-concurso-para-motorista-de-caminhao
+SP|Prefeitura de Itapeva|Itapeva|CR|Professor (seleção)|10/11/2026|prefeitura-de-itapeva-sp-abre-processo-seletivo-para-professores
+SP|Prefeitura de Itatiba|Itatiba|CR|Professor (seleção)|22/10/2026|prefeitura-de-itatiba-sp-abre-selecao-para-professores
+SP|Prefeitura de Itatiba|Itatiba|CR|Apoio na educação (seleção)|05/11/2026|prefeitura-de-itatiba-sp-abre-processo-seletivo-para-profissionais-de-apoio-na-educacao
+SP|Prefeitura de Jaborandi|Jaborandi|31|Vários cargos|05/11/2026|prefeitura-de-jaborandi-sp-abre-concurso-publico-com-salarios-de-ate-5325
+SP|Prefeitura de Lençóis Paulista|Lençóis Paulista|5|Diretor e professores|03/11/2026|prefeitura-de-lencois-paulista-sp-abre-concurso-publico-para-cargos-de-nivel-superior-na-educacao
+SP|Prefeitura de Lençóis Paulista|Lençóis Paulista|14|Vários cargos|15/11/2026|prefeitura-de-lencois-paulista-sp-abre-concurso-publico-com-salarios-de-ate-5044
+SP|Prefeitura de Lençóis Paulista|Lençóis Paulista|CR|Professor (seleção)|08/11/2026|prefeitura-de-lencois-paulista-sp-abre-processo-seletivo-para-professores
+SP|Prefeitura de Lins|Lins|5|Professor (seleção)|16/10/2026|prefeitura-de-lins-sp-prorroga-as-inscricoes-do-processo-seletivo-para-professores
+SP|Prefeitura de Lorena|Lorena|3|Vários cargos|03/11/2026|prefeitura-de-lorena-sp-abre-concurso-com-salarios-de-ate-8890
+SP|Prefeitura de Lucélia|Lucélia|4|Vários cargos|30/10/2026|prefeitura-de-lucelia-sp-abre-concurso-publico-e-processo-seletivo-para-diversos-cargos
+SP|Prefeitura de Mairinque|Mairinque|CR|Vários cargos (seleção)|19/10/2026|prefeitura-de-mairinque-sp-abre-processo-seletivo-para-formacao-de-cadastro-de-reserva
+SP|Prefeitura de Marabá Paulista|Marabá Paulista|1|Psicólogo|02/11/2026|prefeitura-de-maraba-paulista-sp-abre-concurso-publico-para-psicologo
+SP|Prefeitura de Matão|Matão|44|Vários cargos|29/10/2026|prefeitura-de-matao-sp-abre-concurso-publico-com-salarios-de-ate-17433
+SP|Prefeitura de Matão|Matão|CR|Professores temporários (seleção)|29/10/2026|prefeitura-de-matao-sp-abre-processo-seletivo-para-professores-temporarios
+SP|Prefeitura de Mauá|Mauá|3|Médicos (seleção)|27/10/2026|prefeitura-de-maua-sp-abre-processo-seletivo-para-medicos-de-diversas-especialidades
+SP|Prefeitura de Mauá|Mauá|100|Guarda civil municipal|08/10/2026|prefeitura-de-maua-sp-abre-concurso-com-100-vagas-para-guardas-civis-municipais
+SP|Prefeitura de Mongaguá|Mongaguá|90|Apoio escolar (seleção)|19/11/2026|prefeitura-de-mongagua-sp-abre-processo-seletivo-para-profissional-de-apoio-escolar-e-atendente-de-educacao-i
+SP|Prefeitura de Morro Agudo|Morro Agudo|7|Vários cargos|05/11/2026|prefeitura-de-morro-agudo-sp-abre-concurso-com-salarios-de-ate-5815
+SP|Prefeitura de Murutinga do Sul|Murutinga do Sul|15|Vários cargos|16/11/2026|prefeitura-de-murutinga-do-sul-sp-publica-edital-de-concurso-com-15-vagas-imediatas
+SP|Prefeitura de Nova Campina|Nova Campina|10|Auxiliar e técnico de enfermagem|27/10/2026|prefeitura-de-nova-campina-sp-abre-concurso-para-auxiliar-de-enfermagem-e-tecnico-em-enfermagem
+SP|Prefeitura de Piedade|Piedade|20|Vários cargos|09/11/2026|prefeitura-de-piedade-sp-publica-edital-de-concurso-publico-com-salarios-de-ate-17397
+SP|Prefeitura de Pilar do Sul|Pilar do Sul|6|Educação (seleção)|28/10/2026|prefeitura-de-pilar-do-sul-sp-abre-processo-seletivo-para-a-area-da-educacao
+SP|Prefeitura de Pindorama|Pindorama|CR|Professor (seleção)|18/10/2026|prefeitura-de-pindorama-sp-abre-processo-seletivo-para-professores-de-diferentes-areas
+SP|Prefeitura de Piracicaba|Piracicaba|120|Professor substituto (seleção)|03/11/2026|prefeitura-de-piracicaba-sp-abre-selecao-para-professores-substitutos
+SP|Prefeitura de Porto Feliz|Porto Feliz|CR|Vários cargos|05/11/2026|prefeitura-de-porto-feliz-sp-publica-editais-de-concursos-para-cadastro-de-reserva-em-diversas-areas
+SP|Prefeitura de Santa Adélia|Santa Adélia|11|Educação (seleção)|18/10/2026|prefeitura-de-santa-adelia-sp-abre-selecao-para-profissionais-da-educacao
+SP|Prefeitura de Santa Adélia|Santa Adélia|1|Assistente social|18/10/2026|prefeitura-de-santa-adelia-sp-abre-concurso-para-assistente-social
+SP|Prefeitura de São Carlos|São Carlos|45|Vários cargos|29/10/2026|prefeitura-de-sao-carlos-sp-abre-concurso-com-salarios-de-ate-9833
+SP|Prefeitura de São Joaquim da Barra|São Joaquim da Barra|22|Vários cargos|20/10/2026|prefeitura-de-sao-joaquim-da-barra-sp-abre-concurso-publico-para-diversos-cargos
+SP|Prefeitura de São Sebastião|São Sebastião|CR|Professor (seleção)|15/10/2026|prefeitura-de-sao-sebastiao-sp-abre-processo-seletivo-para-formacao-de-cadastro-de-reserva-de-professores
+SP|Prefeitura de São Simão|São Simão|CR|Ajudante geral e jardineiro (seleção)|15/10/2026|prefeitura-de-sao-simao-sp-abre-processo-seletivo-para-ajudante-geral-e-jardineiro
+SP|Prefeitura de Sarapuí|Sarapuí|1|Procurador jurídico|30/10/2026|prefeitura-de-sarapui-sp-abre-concurso-publico-para-o-cargo-de-procurador-juridico
+SP|Prefeitura de Taquaritinga|Taquaritinga|2|Vários cargos|05/11/2026|prefeitura-de-taquaritinga-sp-abre-concurso-publico-para-diversos-cargos
+SP|Prefeitura de Taquarituba|Taquarituba|22|Vários cargos|23/10/2026|prefeitura-de-taquarituba-sp-divulga-retificacao-do-concurso-publico-com-salarios-de-ate-22537
+SP|Prefeitura de Tarumã|Tarumã|CR|Vários cargos (seleção)|19/10/2026|prefeitura-de-taruma-sp-abre-processo-seletivo-com-salarios-de-ate-23539
+SP|Prefeitura de Tatuí|Tatuí|107|Nível fundamental e médio|13/10/2026|prefeitura-de-tatui-sp-abre-concurso-publico-para-cargos-de-nivel-fundamental-e-medio
+SP|Prefeitura de Urânia|Urânia|2|Coordenador e orientador do CRAS|15/10/2026|prefeitura-de-urania-sp-prorroga-inscricoes-de-concurso-publico-para-coordenador-e-orientador-social-do-cras
+SP|Prefeitura de Carapicuíba|Carapicuíba|CR|Vários cargos|30/10/2026|prefeitura-de-carapicuiba-sp-abre-novos-concursos-para-cadastro-de-reserva-em-diversas-areas
+SP|PRUDENCO|Presidente Prudente|2|Coletor e motorista|02/11/2026|prudenco-sp-abre-concurso-publico-para-coletor-e-motorista
+SP|PRUDENPREV|Presidente Prudente|10|Vários cargos|10/11/2026|prudenprev-sp-abre-concurso-publico-com-salarios-de-ate-11102
+SP|SEFAZ-SP|-|60|Analista de finanças públicas|03/11/2026|sefaz-sp-abre-concurso-publico-para-analista-em-planejamento-orcamento-e-financas-publicas
+SP|UNESP|-|CR|Professores (vários campi)|14/12/2026|unesp-abre-concurso-para-professor-titular-no-departamento-de-ciencias-biologicas-de-bauru-sp
+SP|UNICAMP|-|1|Professor doutor|29/10/2026|unicamp-sp-abre-concurso-publico-para-professor-doutor-na-area-de-ortodontia
+SP|UNICAMP|-|1|Professor doutor|11/11/2026|unicamp-sp-prorroga-inscricoes-de-concurso-publico-para-professor-doutor-na-faculdade-de-engenharia-mecanica
+SP|UNICAMP|-|1|Professor doutor|30/10/2026|unicamp-sp-abre-concurso-para-professor-doutor-na-area-de-fisica-geral
+SP|UNIFESP|-|1|Professor substituto|02/11/2026|unifesp-abre-processo-seletivo-para-professor-substituto-na-area-de-fisiologia-engenharia-biomedica
+SP|USP|-|CR|Professores (várias unidades)|16/04/2027|usp-abre-concursos-publicos-para-professores-titulares-em-diversas-areas-de-atuacao

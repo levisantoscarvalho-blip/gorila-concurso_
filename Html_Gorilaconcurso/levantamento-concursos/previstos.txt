@@ -1,0 +1,120 @@
+# UF|status|órgão|cargo|vagas|quando|banca|data da fonte|fonte nome|fonte url
+AC|previsto|Polícia Civil do AC|Oficial investigador, perito e delegado|139|Novo concurso anunciado||01/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-ac/
+AC|previsto|Polícia Militar do AC|Soldado|260|Grupo de estudos formado||01/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-ac/
+AC|previsto|Assembleia Legislativa do AC|Técnico, analista e polícia legislativa|50|Edital esperado após contratar a banca|IDECAN|01/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-ac/
+AC|previsto|PGE-AC|Área administrativa|0|Comissão formada||01/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-ac/
+AL|previsto|Polícia Penal de AL|Policial penal|350|Autorização solicitada ao governo||25/08/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-al/
+AL|previsto|TJ-AL|Oficial de justiça avaliador|0|Comissão formada||25/08/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-al/
+AL|previsto|Defensoria Pública de AL|A definir|0|Edital previsto desde 2024||25/08/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-al/
+AP|previsto|Polícia Penal do AP|Policial penal, técnico e especialista|0|Deve ser realizado em breve||02/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-ap/
+AP|previsto|TCE-AP|Auditor de controle externo|0|Orçamento do concurso aprovado||02/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-ap/
+AP|previsto|SEED-AP (Educação)|Analista, especialista e auxiliar educacional|319|Banca definida|FGV|02/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-ap/
+AM|previsto|TJ-AM|A definir|400|Concurso esperado para o próximo ano||09/09/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-am/
+AM|previsto|SEDUC-AM (Educação)|Níveis médio e superior|7862|Comissão formada|Cesgranrio|09/09/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-am/
+AM|previsto|TCE-AM|Auditor de controle externo e TI|0|Abertura autorizada||09/09/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-am/
+AM|previsto|Defensoria Pública do AM|Diversos|5|Banca definida|FCC|09/09/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-am/
+AM|previsto|SES-AM (Saúde)|A definir|0|Comissão especial criada||09/09/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-am/
+BA|previsto|Polícia Militar da BA|A definir|0|Concurso anunciado, sem data||13/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-ba/
+BA|previsto|SEFAZ-BA|Auditor fiscal e agente de tributos|200|Edital esperado em 2026|Cesgranrio|13/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-ba/
+BA|previsto|PGE-BA|Analista e assistente|115|Edital esperado em 2026|FCC|13/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-ba/
+BA|previsto|TJ-BA|A definir|0|Prioridade na LDO 2026||13/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-ba/
+BA|previsto|Assembleia Legislativa da BA|A definir|135|Esperado em breve||13/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-ba/
+BA|previsto|Defensoria Pública da BA|A definir|0|Comissão formada; edital em preparação||13/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-ba/
+CE|previsto|Polícia Penal do CE|Policial penal|0|Concurso anunciado||07/09/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-ce/
+CE|previsto|SOP-CE|Contador e analista de infraestrutura|63|Banca contratada|Instituto Avalia|07/09/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-ce/
+CE|previsto|SRH-CE|Nível superior|50|Comissão formada||07/09/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-ce/
+CE|previsto|SESA-CE (Saúde)|Níveis médio e superior|0|Novo edital solicitado||07/09/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-ce/
+DF|previsto|Polícia Militar do DF|Soldado|2000|Banca definida|Cebraspe|15/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-df/
+DF|previsto|Polícia Civil do DF|Perito e papiloscopista|105|Concurso autorizado||15/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-df/
+DF|previsto|SEEDF (Educação)|Professor e outros cargos|10604|Banca definida|Quadrix|15/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-df/
+DF|previsto|SEFAZ-DF|Auditor fiscal|115|Banca definida|Cebraspe|15/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-df/
+DF|previsto|SES-DF (Saúde)|Especialista em saúde|2379|Concurso solicitado||15/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-df/
+DF|previsto|Câmara Legislativa do DF|Analista, assistente e técnico|90|Grupo de estudos formado||15/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-df/
+DF|previsto|Detran-DF|Agente de trânsito|182|Concurso anunciado||15/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-df/
+ES|previsto|SESA-ES (Saúde)|Níveis médio, técnico e superior|688|Comissão formada||15/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-es/
+ES|previsto|Detran-ES|Assistente e analista de trânsito|94|Comissão formada||15/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-es/
+ES|previsto|Corpo de Bombeiros do ES|Soldado|100|Concurso anunciado||15/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-es/
+ES|previsto|Polícia Científica do ES|A definir|0|Concurso anunciado||15/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-es/
+ES|previsto|TJ-ES|Tecnologia da informação|0|Autorização em breve||15/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-es/
+ES|previsto|Defensoria Pública do ES|A definir|0|Concurso previsto||15/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-es/
+GO|previsto|Polícia Militar de GO|Oficial e soldado|0|Concurso previsto, sem data||24/08/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-go/
+GO|previsto|Polícia Civil de GO|A definir|0|Concurso previsto, sem data||24/08/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-go/
+GO|previsto|SEDUC-GO (Educação)|Professor|0|Concurso previsto, sem data||24/08/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-go/
+GO|previsto|TJ-GO|Analista judiciário|0|Concurso autorizado||24/08/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-go/
+GO|previsto|MP-GO|Técnico ministerial|0|Concurso confirmado||24/08/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-go/
+MA|previsto|Polícia Militar, Polícia Civil e Bombeiros do MA|Diversos (Segurança Pública)|2292|Previsto no orçamento de 2026||06/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-ma/
+MA|previsto|SEDUC-MA (Educação)|Diversos|2300|Banca definida|FCC|06/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-ma/
+MA|previsto|SES-MA (Saúde)|A definir|189|Banca definida|FCC|06/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-ma/
+MA|previsto|SEAP-MA (Polícia Penal)|A definir|203|Previsto no orçamento de 2026||06/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-ma/
+MA|previsto|Detran-MA|A definir|121|Comissão formada||06/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-ma/
+MA|previsto|SEFAZ-MA|Auditor fiscal|10|Previsto no orçamento de 2026||06/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-ma/
+MA|previsto|Defensoria Pública do MA|A definir|0|Deve sair do papel em 2026||06/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-ma/
+MG|previsto|Polícia Militar de MG|A definir|2500|Concurso previsto||15/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-mg/
+MG|previsto|Polícia Civil de MG|A definir|3000|Concurso autorizado||15/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-mg/
+MG|previsto|Secretaria da Fazenda de MG|Gestor fazendário|50|Concurso previsto (50 a 250 vagas)||15/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-mg/
+MG|previsto|TJ-MG|A definir|0|Previsto para os próximos meses||15/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-mg/
+MS|previsto|SED-MS (Educação)|Professor|2000|Comissão formada||06/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-ms/
+MS|previsto|Polícia Penal de MS|A definir|1000|Concurso solicitado||06/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-ms/
+MS|previsto|FUNSAU-MS (Saúde)|Técnico de enfermagem|194|Comissão formada||06/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-ms/
+MS|previsto|Detran-MS|A definir|0|Justiça determinou novo edital||06/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-ms/
+MS|semprevisao|MP-MS|Técnico|0|Comissão do concurso revogada||06/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-ms/
+MT|previsto|Polícia Civil de MT|A definir|0|Comissão formada||15/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-mt/
+MT|previsto|Polícia Militar de MT|A definir|0|Concurso previsto||15/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-mt/
+MT|previsto|Corpo de Bombeiros de MT|A definir|0|Concurso previsto||15/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-mt/
+MT|previsto|Assembleia Legislativa de MT|Analista e técnico legislativo|100|Concurso previsto||15/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-mt/
+MT|previsto|MP-MT|A definir|0|Em estudos||15/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-mt/
+PA|previsto|Polícia Civil do PA|Escrivão e cargos administrativos|237|Comissão formada; banca em contratação||07/10/2026|O Liberal|https://www.oliberal.com/concurso/concursos-publicos-no-para-veja-editais-abertos-e-selecoes-previstas-com-salarios-de-ate-r-7-7-mil-1.1137016
+PA|previsto|MP-PA|Servidores|0|Grupo de trabalho criado||07/10/2026|O Liberal|https://www.oliberal.com/concurso/concursos-publicos-no-para-veja-editais-abertos-e-selecoes-previstas-com-salarios-de-ate-r-7-7-mil-1.1137016
+PB|previsto|Polícia Penal da PB|Policial penal|1000|Será realizado em breve|IDECAN|02/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-pb/
+PB|previsto|Polícia Civil da PB|Nível superior|0|TCE recomendou novo concurso||02/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-pb/
+PB|previsto|TJ-PB|Analista judiciário|56|Banca definida|FGV|02/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-pb/
+PB|previsto|Assembleia Legislativa da PB|A definir|0|Autorizado; comissão formada||02/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-pb/
+PB|previsto|PGE-PB|Níveis médio e superior|0|Autorizado||02/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-pb/
+PB|previsto|TCE-PB|Auditor de controle externo|0|Edital deve ficar para 2027||02/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-pb/
+PE|previsto|Polícia Penal de PE|Policial penal|700|Banca definida|Cebraspe|30/09/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-pe/
+PE|previsto|SES-PE (Saúde)|Assistente, analista e fiscal|2000|Comissão formada||30/09/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-pe/
+PE|previsto|MP-PE|Analista e técnico ministerial|35|Comissão formada||30/09/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-pe/
+PE|previsto|Assembleia Legislativa de PE|Analista, técnico e agente legislativo|0|TCE determinou concurso em até 360 dias||30/09/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-pe/
+PE|previsto|Detran-PE|A definir|0|Novo edital solicitado||30/09/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-pe/
+PI|previsto|Corpo de Bombeiros do PI|Oficial|40|Autorizado; comissão formada||07/08/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-pi/
+PI|previsto|SSP-PI (Segurança Pública)|Agente técnico e superior de serviço|0|Comissão formada||07/08/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-pi/
+PI|previsto|TJ-PI|Analista judiciário|25|Previsto no orçamento de 2027||07/08/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-pi/
+PR|previsto|Polícia Militar do PR|A definir|0|Concurso anunciado||15/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-pr/
+PR|previsto|Corpo de Bombeiros do PR|A definir|0|Concurso anunciado||15/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-pr/
+PR|previsto|SEED-PR (Educação)|A definir|0|Previsto no orçamento de 2026||15/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-pr/
+PR|previsto|PGE-PR|A definir|0|Previsto no orçamento de 2026||15/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-pr/
+PR|previsto|Detran-PR|A definir|0|Comissão formada||15/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-pr/
+RJ|previsto|Polícia Militar do RJ|Oficial (2º tenente)|100|Banca definida|Cesgranrio|06/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-rj/
+RJ|previsto|Polícia Militar do RJ|Soldado|2000|Concurso solicitado||06/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-rj/
+RJ|previsto|Polícia Civil do RJ|Perito e piloto policial|329|Banca definida|FGV|06/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-rj/
+RJ|previsto|Detran-RJ|A definir|552|Comissão formada||06/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-rj/
+RJ|previsto|TCE-RJ|Auditor de controle externo|40|Comissão formada||06/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-rj/
+RJ|previsto|PGE-RJ|Analista|3|Concurso autorizado||06/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-rj/
+RN|previsto|PGE-RN|Analista|0|Previsto no orçamento de 2027||07/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-rn/
+RN|previsto|Defensoria Pública do RN|A definir|0|Previsto no orçamento de 2027||07/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-rn/
+RN|previsto|MP-RN|Servidores|0|Previsto no orçamento de 2027||07/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-rn/
+RO|previsto|SESAU-RO (Saúde)|Níveis médio, técnico e superior|2395|Edital deve sair ainda em 2026|IDECAN|30/09/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-ro/
+RO|previsto|SEJUS-RO|A definir|0|Comissão formada||30/09/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-ro/
+RO|previsto|Detran-RO|A definir|0|Comissão com prazo de 90 dias para o edital||30/09/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-ro/
+RO|previsto|PGE-RO|Carreira de apoio|0|Previsto no orçamento de 2026||30/09/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-ro/
+RO|previsto|SEFIN-RO|Auditor fiscal|0|Sindicato prevê concurso em 2026||30/09/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-ro/
+RR|previsto|Polícia Militar de RR|Oficial|45|Banca definida|UERR|14/08/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-rr/
+RR|previsto|Polícia Militar de RR|Soldado|600|Concurso anunciado para 2026||14/08/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-rr/
+RR|previsto|SEED-RR (Educação)|A definir|0|Anunciado pelo governador para 2026||14/08/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-rr/
+RR|previsto|SESAU-RR (Saúde)|A definir|0|Governo confirmou próximo edital||14/08/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-rr/
+RR|previsto|SEFAZ-RR|Área fiscal|0|Concurso anunciado||14/08/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-rr/
+RS|previsto|SEFAZ-RS|Auditor fiscal e analista tributário|0|Banca definida|FCC|15/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-rs/
+RS|previsto|TJ-RS|Analista judiciário|0|Concurso autorizado; comissão formada||15/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-rs/
+RS|previsto|PGE-RS|A definir|0|Comissão formada||15/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-rs/
+SC|previsto|Polícia Militar de SC|Soldado|1000|Banca definida|Instituto AOCP|09/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-sc/
+SC|previsto|SED-SC (Educação)|Professor e intérprete|10000|Concurso previsto||09/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-sc/
+SC|previsto|MP-SC|A definir|0|Concurso previsto||09/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-sc/
+SC|previsto|SAP-SC|Agente de segurança socioeducativo|0|Concurso previsto||09/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-sc/
+SE|previsto|Polícia Civil de SE|Oficial investigador|0|Em estudos pelo governo||28/05/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-se/
+SE|previsto|TCE-SE|Analista de controle externo|0|Previsão para 2026||28/05/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-se/
+SE|previsto|Detran-SE|Assistente de trânsito|0|Concurso previsto||28/05/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-se/
+TO|previsto|Polícia Civil do TO|Delegado, perito e oficial investigador|452|Autorizado; edital previsto para o 2º semestre de 2026||11/06/2026|JC Concursos|https://jcconcursos.com.br/noticia/concursos/concurso-pc-to-edital-para-452-vagas-deve-ser-publicado-no-segundo-semestre-143230
+TO|previsto|Polícia Militar do TO|A definir|0|Crédito suplementar aberto||15/06/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-to/
+TO|previsto|Polícia Penal do TO|Policial penal|0|Comissão formada||15/06/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-to/
+TO|previsto|SEFAZ-TO|Auditor fiscal|100|Concurso autorizado||15/06/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-to/
+TO|previsto|Detran-TO|Agente de trânsito|0|Comissão formada||15/06/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-to/

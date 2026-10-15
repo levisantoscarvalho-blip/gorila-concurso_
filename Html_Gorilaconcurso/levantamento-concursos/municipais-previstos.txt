@@ -1,0 +1,152 @@
+# Concursos PREVISTOS de prefeituras, câmaras, guardas e autarquias municipais (cada um tem cidade ➔ ponto azul no mapa)
+# UF|órgão|cidade|cargo|vagas (0 = a definir)|situação|banca|data da notícia|link da fonte
+SP|Câmara de Jundiaí|Jundiaí|Níveis médio e superior|0|Banca definida|Vunesp|13/10/2026|https://concursos.estrategia.com/portal/concursos-sp/
+SP|Câmara de Olímpia|Olímpia|Diversos|1|Banca definida|Vunesp|13/10/2026|https://concursos.estrategia.com/portal/concursos-sp/
+SP|Prefeitura de São Carlos|São Carlos|A definir|0|Banca definida|Indepac|13/10/2026|https://concursos.estrategia.com/portal/concursos-sp/
+SP|IPSSC Cajamar|Cajamar|Níveis médio e superior|12|Banca definida|Indepac|13/10/2026|https://concursos.estrategia.com/portal/concursos-sp/
+SP|Prefeitura de Valinhos|Valinhos|A definir|0|Banca definida|ABCP|13/10/2026|https://concursos.estrategia.com/portal/concursos-sp/
+SP|Prefeitura de Caçapava (Saúde)|Caçapava|Diversos|11|Banca definida|Avança SP|13/10/2026|https://concursos.estrategia.com/portal/concursos-sp/
+SP|Prefeitura de Caçapava|Caçapava|Diversos|56|Banca definida|Avança SP|13/10/2026|https://concursos.estrategia.com/portal/concursos-sp/
+SP|Prefeitura de Caçapava (Educação)|Caçapava|Diversos|30|Banca definida|Avança SP|13/10/2026|https://concursos.estrategia.com/portal/concursos-sp/
+SP|Guarda Municipal de Capão Bonito|Capão Bonito|Guarda municipal|25|Banca definida|Vunesp|13/10/2026|https://concursos.estrategia.com/portal/concursos-sp/
+SP|Guarda Municipal de São Roque|São Roque|Guarda municipal|0|Banca definida|ABCP|13/10/2026|https://concursos.estrategia.com/portal/concursos-sp/
+SP|Guarda Municipal de Valinhos|Valinhos|Guarda municipal|0|Banca definida||13/10/2026|https://concursos.estrategia.com/portal/concursos-sp/
+SP|Prefeitura de Tupã|Tupã|A definir|0|Concurso previsto||13/10/2026|https://concursos.estrategia.com/portal/concursos-sp/
+SP|Guarda Municipal de Campinas|Campinas|Guarda municipal|0|Banca definida|Vunesp|13/10/2026|https://concursos.estrategia.com/portal/concursos-sp/
+SP|Câmara de Taboão da Serra|Taboão da Serra|Diversos|0|Banca em definição||13/10/2026|https://concursos.estrategia.com/portal/concursos-sp/
+SP|Sanasa Campinas|Campinas|A definir|0|Banca definida|FCC|13/10/2026|https://concursos.estrategia.com/portal/concursos-sp/
+SP|Câmara de Guarulhos|Guarulhos|Níveis médio e superior|40|Concurso autorizado||13/10/2026|https://concursos.estrategia.com/portal/concursos-sp/
+SP|Câmara de Itaquaquecetuba|Itaquaquecetuba|Diversos|19|Concurso previsto||13/10/2026|https://concursos.estrategia.com/portal/concursos-sp/
+SP|Câmara de Guarujá|Guarujá|Níveis médio e superior|0|Concurso previsto||13/10/2026|https://concursos.estrategia.com/portal/concursos-sp/
+SP|Câmara de Carapicuíba|Carapicuíba|Oficial de manutenção e técnico em TI|2|Concurso previsto||13/10/2026|https://concursos.estrategia.com/portal/concursos-sp/
+AL|Câmara de Pilar|Pilar|Vários cargos|0|Banca definida|Fundepes|25/08/2026|https://concursos.estrategia.com/portal/concursos-al/
+AL|Prefeitura de Maceió|Maceió|A definir|0|Comissão formada||25/08/2026|https://concursos.estrategia.com/portal/concursos-al/
+AL|Prefeitura de Maragogi|Maragogi|A definir|0|Comissão formada||25/08/2026|https://concursos.estrategia.com/portal/concursos-al/
+AM|Prefeitura de Parintins|Parintins|Diversos (59 cargos)|328|Banca definida|FGV|09/09/2026|https://concursos.estrategia.com/portal/concursos-am/
+AM|ISS Parintins|Parintins|Fiscal de tributos|0|Banca definida|FGV|09/09/2026|https://concursos.estrategia.com/portal/concursos-am/
+AM|Ageman Manaus|Manaus|Analista e especialista em regulação|0|Anunciado para 2026||09/09/2026|https://concursos.estrategia.com/portal/concursos-am/
+BA|Câmara de Ilhéus|Ilhéus|A definir|0|Concurso previsto||13/10/2026|https://concursos.estrategia.com/portal/concursos-ba/
+BA|Câmara de Feira de Santana|Feira de Santana|A definir|0|Concurso anunciado||13/10/2026|https://concursos.estrategia.com/portal/concursos-ba/
+BA|Câmara de Porto Seguro|Porto Seguro|Diversos|17|Banca em contratação||13/10/2026|https://concursos.estrategia.com/portal/concursos-ba/
+BA|Prefeitura de Paulo Afonso (Educação)|Paulo Afonso|Professor|0|Concurso autorizado||13/10/2026|https://concursos.estrategia.com/portal/concursos-ba/
+BA|Prefeitura de Feira de Santana (Educação)|Feira de Santana|Professor|1000|Concurso anunciado||13/10/2026|https://concursos.estrategia.com/portal/concursos-ba/
+BA|Prefeitura de Juazeiro|Juazeiro|Diversos|0|Editais previstos em 2026 e 2027||13/10/2026|https://concursos.estrategia.com/portal/concursos-ba/
+BA|ISS Juazeiro|Juazeiro|Auditor fiscal e agente de tributos|0|Previsto para 2027||13/10/2026|https://concursos.estrategia.com/portal/concursos-ba/
+BA|Prefeitura de Ilhéus|Ilhéus|A definir|0|Comissão formada||13/10/2026|https://concursos.estrategia.com/portal/concursos-ba/
+BA|ISS Vitória da Conquista|Vitória da Conquista|Atendente, técnico e auditor fazendário|24|Comissão formada||13/10/2026|https://concursos.estrategia.com/portal/concursos-ba/
+CE|Guarda Municipal de Fortaleza|Fortaleza|Guarda civil municipal|0|Comissão formada||07/09/2026|https://concursos.estrategia.com/portal/concursos-ce/
+CE|Prefeitura de Boa Viagem|Boa Viagem|Diversos|903|Concurso autorizado||07/09/2026|https://concursos.estrategia.com/portal/concursos-ce/
+CE|Prefeitura de Fortaleza (Saúde)|Fortaleza|A definir|0|Concurso previsto||07/09/2026|https://concursos.estrategia.com/portal/concursos-ce/
+CE|Prefeitura de Itaitinga|Itaitinga|Diversos|1402|Concurso previsto||07/09/2026|https://concursos.estrategia.com/portal/concursos-ce/
+CE|Prefeitura de Fortaleza (Educação)|Fortaleza|Professor|0|Concurso anunciado||07/09/2026|https://concursos.estrategia.com/portal/concursos-ce/
+CE|Prefeitura de Quixadá|Quixadá|A definir|0|Concurso previsto||07/09/2026|https://concursos.estrategia.com/portal/concursos-ce/
+ES|Câmara de Cachoeiro de Itapemirim|Cachoeiro de Itapemirim|Procurador, analista e auditor|15|Banca definida|Access|15/10/2026|https://concursos.estrategia.com/portal/concursos-es/
+ES|Câmara de Aracruz|Aracruz|Diversos|9|Banca definida|Instituto Referência|15/10/2026|https://concursos.estrategia.com/portal/concursos-es/
+ES|CODEG Guarapari|Guarapari|A definir|0|Comissão formada||15/10/2026|https://concursos.estrategia.com/portal/concursos-es/
+ES|Prefeitura de Vila Velha|Vila Velha|Professor, pedagogo e auditor fiscal|0|Concurso anunciado||15/10/2026|https://concursos.estrategia.com/portal/concursos-es/
+GO|Prefeitura de Campo Limpo de Goiás|Campo Limpo de Goiás|Diversos|352|Banca definida|ITAME|24/08/2026|https://concursos.estrategia.com/portal/concursos-go/
+GO|Prefeitura de Santo Antônio do Descoberto|Santo Antônio do Descoberto|A definir|193|Banca em definição||24/08/2026|https://concursos.estrategia.com/portal/concursos-go/
+GO|Prefeitura de Aparecida de Goiânia (Saúde)|Aparecida de Goiânia|Diversos|0|Concurso autorizado||24/08/2026|https://concursos.estrategia.com/portal/concursos-go/
+GO|Câmara de Aparecida de Goiânia|Aparecida de Goiânia|A definir|0|Comissão formada||24/08/2026|https://concursos.estrategia.com/portal/concursos-go/
+GO|Guarda Municipal de Goiânia|Goiânia|Guarda municipal|100|Comissão formada||24/08/2026|https://concursos.estrategia.com/portal/concursos-go/
+GO|Guarda Municipal de Luziânia|Luziânia|Guarda municipal|0|Concurso previsto||24/08/2026|https://concursos.estrategia.com/portal/concursos-go/
+GO|ISS Goiânia|Goiânia|Auditor de tributos|43|Recomendado pelo Ministério Público||24/08/2026|https://concursos.estrategia.com/portal/concursos-go/
+MA|Prefeitura de Tutóia|Tutóia|Diversos|204|Banca definida (edital suspenso)|ISCJK|06/10/2026|https://concursos.estrategia.com/portal/concursos-ma/
+MA|ISS São Luís|São Luís|Auditor fiscal de tributos|0|Concurso autorizado||06/10/2026|https://concursos.estrategia.com/portal/concursos-ma/
+MG|FMC Belo Horizonte|Belo Horizonte|Analista de políticas públicas e produtor cultural|0|Banca definida|IBGP|15/10/2026|https://concursos.estrategia.com/portal/concursos-mg/
+MG|SAAE Itaúna|Itaúna|A definir|0|Banca definida|IBGP|15/10/2026|https://concursos.estrategia.com/portal/concursos-mg/
+MG|Prefeitura de Leopoldina|Leopoldina|Diversos|150|Banca definida|IBGP|15/10/2026|https://concursos.estrategia.com/portal/concursos-mg/
+MG|ISS Belo Horizonte|Belo Horizonte|Analista fazendário|0|Comissão formada||15/10/2026|https://concursos.estrategia.com/portal/concursos-mg/
+MG|ISS Juiz de Fora|Juiz de Fora|Auditor fiscal|0|Comissão formada||15/10/2026|https://concursos.estrategia.com/portal/concursos-mg/
+MG|Prefeitura de Pará de Minas|Pará de Minas|A definir|0|Comissão formada||15/10/2026|https://concursos.estrategia.com/portal/concursos-mg/
+MG|Prefeitura de Araguari|Araguari|A definir|0|Comissão formada||15/10/2026|https://concursos.estrategia.com/portal/concursos-mg/
+MG|Prefeitura de Belo Horizonte (SMPOG)|Belo Horizonte|Agente governamental, analista e técnico|0|Comissão formada||15/10/2026|https://concursos.estrategia.com/portal/concursos-mg/
+MS|Prefeitura de Campo Grande (Educação)|Campo Grande|Níveis médio e superior|2000|Comissão formada||06/10/2026|https://concursos.estrategia.com/portal/concursos-ms/
+MS|Prefeitura de Campo Grande|Campo Grande|A definir|4500|Concurso anunciado||06/10/2026|https://concursos.estrategia.com/portal/concursos-ms/
+MS|Prefeitura de Campo Grande (Saúde)|Campo Grande|A definir|0|Concurso autorizado||06/10/2026|https://concursos.estrategia.com/portal/concursos-ms/
+MS|Câmara de Campo Grande|Campo Grande|A definir|20|Concurso previsto (20 a 40 vagas)||06/10/2026|https://concursos.estrategia.com/portal/concursos-ms/
+MT|Câmara de Cuiabá|Cuiabá|Vários cargos|26|Banca definida|Selecon|15/10/2026|https://concursos.estrategia.com/portal/concursos-mt/
+MT|Prefeitura de Barra do Garças|Barra do Garças|A definir|0|Banca definida|Selecon|15/10/2026|https://concursos.estrategia.com/portal/concursos-mt/
+MT|Prefeitura de Campo Verde|Campo Verde|A definir|27|Concurso autorizado||15/10/2026|https://concursos.estrategia.com/portal/concursos-mt/
+MT|Prefeitura de Várzea Grande|Várzea Grande|Diversos|5000|Concurso previsto (5 a 6 mil vagas)||15/10/2026|https://concursos.estrategia.com/portal/concursos-mt/
+PA|ISS Belém|Belém|Auditor fiscal|20|Concurso autorizado||07/10/2026|https://www.oliberal.com/concurso/concursos-publicos-no-para-veja-editais-abertos-e-selecoes-previstas-com-salarios-de-ate-r-7-7-mil-1.1137016
+PB|Câmara de João Pessoa|João Pessoa|Vários cargos|0|Concurso anunciado||02/10/2026|https://concursos.estrategia.com/portal/concursos-pb/
+PB|Prefeitura de Cabedelo|Cabedelo|A definir|0|Concurso anunciado||02/10/2026|https://concursos.estrategia.com/portal/concursos-pb/
+PB|Prefeitura de João Pessoa|João Pessoa|A definir|0|TCE determinou novo edital||02/10/2026|https://concursos.estrategia.com/portal/concursos-pb/
+PB|Prefeitura de João Pessoa (Saúde)|João Pessoa|A definir|2000|Concurso anunciado||02/10/2026|https://concursos.estrategia.com/portal/concursos-pb/
+PR|Câmara de Castro|Castro|Diversos|4|Banca em contratação||15/10/2026|https://concursos.estrategia.com/portal/concursos-pr/
+PR|Câmara de Maringá|Maringá|A definir|0|Banca definida|FADEP|15/10/2026|https://concursos.estrategia.com/portal/concursos-pr/
+PR|Prefeitura de Araucária (Saúde)|Araucária|Diversos|1|Banca definida|FAFIPA|15/10/2026|https://concursos.estrategia.com/portal/concursos-pr/
+PR|Prefeitura de Araucária|Araucária|Diversos|1|Banca contratada|FAFIPA|15/10/2026|https://concursos.estrategia.com/portal/concursos-pr/
+PR|Prefeitura de São José dos Pinhais|São José dos Pinhais|Diversos|0|Comissão formada||15/10/2026|https://concursos.estrategia.com/portal/concursos-pr/
+PR|Guarda Municipal de Sarandi|Sarandi|Guarda municipal|20|Concurso anunciado||15/10/2026|https://concursos.estrategia.com/portal/concursos-pr/
+PE|Guarda Municipal do Recife|Recife|Guarda municipal|400|Banca definida|Instituto AOCP|30/09/2026|https://concursos.estrategia.com/portal/concursos-pe/
+PE|Guarda Municipal de Petrolina|Petrolina|Guarda civil municipal|240|Concurso previsto||30/09/2026|https://concursos.estrategia.com/portal/concursos-pe/
+PE|Câmara de Petrolina|Petrolina|Diversos|17|Banca definida|Idecan|30/09/2026|https://concursos.estrategia.com/portal/concursos-pe/
+PE|Câmara do Recife|Recife|A definir|0|TCE determinou novo concurso||30/09/2026|https://concursos.estrategia.com/portal/concursos-pe/
+PE|Câmara de Petrolândia|Petrolândia|Diversos|23|Concurso previsto||30/09/2026|https://concursos.estrategia.com/portal/concursos-pe/
+PE|Câmara de Carpina|Carpina|A definir|0|Comissão formada||30/09/2026|https://concursos.estrategia.com/portal/concursos-pe/
+PE|ISS Vitória de Santo Antão|Vitória de Santo Antão|Auditor fiscal|7|Concurso autorizado||30/09/2026|https://concursos.estrategia.com/portal/concursos-pe/
+PE|ISS Goiana|Goiana|Auditor fiscal|0|Comissão formada||30/09/2026|https://concursos.estrategia.com/portal/concursos-pe/
+PE|URB Recife|Recife|Vários cargos|162|Banca definida|IBFC|30/09/2026|https://concursos.estrategia.com/portal/concursos-pe/
+PE|EMLURB Recife|Recife|Vários cargos|82|Banca definida|IBFC|30/09/2026|https://concursos.estrategia.com/portal/concursos-pe/
+PI|Guarda Municipal de Teresina|Teresina|Guarda municipal|300|Concurso previsto||07/08/2026|https://concursos.estrategia.com/portal/concursos-pi/
+PI|Câmara de Teresina|Teresina|Diversos|18|Comissão formada||07/08/2026|https://concursos.estrategia.com/portal/concursos-pi/
+PI|Prefeitura de Teresina (Saúde)|Teresina|A definir|0|Concurso anunciado||07/08/2026|https://concursos.estrategia.com/portal/concursos-pi/
+RJ|Câmara de Angra dos Reis|Angra dos Reis|Auxiliar legislativo, designer e procurador|10|Banca definida|Instituto Seletiva|06/10/2026|https://concursos.estrategia.com/portal/concursos-rj/
+RJ|Câmara de Itaperuna|Itaperuna|Vários cargos|8|Banca definida|Instituto Ação|06/10/2026|https://concursos.estrategia.com/portal/concursos-rj/
+RJ|Theatro Municipal do Rio|Rio de Janeiro|Diversos|110|Banca definida|Instituto Avalia|06/10/2026|https://concursos.estrategia.com/portal/concursos-rj/
+RJ|Câmara de São Pedro da Aldeia|São Pedro da Aldeia|Vários cargos|12|Banca definida|IBAM|06/10/2026|https://concursos.estrategia.com/portal/concursos-rj/
+RJ|Prefeitura de Maricá (Saúde)|Maricá|Agentes de saúde e endemias|836|Banca definida|UFF|06/10/2026|https://concursos.estrategia.com/portal/concursos-rj/
+RJ|Prefeitura de Teresópolis|Teresópolis|Vários cargos|0|Banca definida|Instituto Seleção|06/10/2026|https://concursos.estrategia.com/portal/concursos-rj/
+RJ|FeSaúde Niterói|Niterói|Agente comunitário de saúde|0|Banca definida|Selecon|06/10/2026|https://concursos.estrategia.com/portal/concursos-rj/
+RJ|Prefeitura de Búzios|Armação dos Búzios|Diversos|0|Banca definida|IBAM|06/10/2026|https://concursos.estrategia.com/portal/concursos-rj/
+RJ|Prefeitura de Saquarema|Saquarema|Diversos|446|Banca definida|IBAM|06/10/2026|https://concursos.estrategia.com/portal/concursos-rj/
+RJ|Guarda Municipal de Saquarema|Saquarema|Guarda municipal|100|Banca definida|IBAM|06/10/2026|https://concursos.estrategia.com/portal/concursos-rj/
+RJ|Prefeitura de Saquarema (Saúde)|Saquarema|Agentes de saúde e endemias|217|Banca definida|IBAM|06/10/2026|https://concursos.estrategia.com/portal/concursos-rj/
+RJ|Clin Niterói|Niterói|Diversos|217|Banca definida|Selecon|06/10/2026|https://concursos.estrategia.com/portal/concursos-rj/
+RJ|Prefeitura de Araruama|Araruama|A definir|0|Comissão formada||06/10/2026|https://concursos.estrategia.com/portal/concursos-rj/
+RJ|Prefeitura de Itaguaí|Itaguaí|A definir|0|Comissão formada||06/10/2026|https://concursos.estrategia.com/portal/concursos-rj/
+RJ|Prefeitura de Rio das Ostras (Educação)|Rio das Ostras|A definir|0|Comissão formada||06/10/2026|https://concursos.estrategia.com/portal/concursos-rj/
+RJ|Prefeitura de Campos (Saúde)|Campos dos Goytacazes|Diversos|0|Comissão formada||06/10/2026|https://concursos.estrategia.com/portal/concursos-rj/
+RJ|Prefeitura de Volta Redonda|Volta Redonda|Nível superior|400|Concurso autorizado||06/10/2026|https://concursos.estrategia.com/portal/concursos-rj/
+RJ|Procon Niterói|Niterói|Fiscal de consumidor|5|Concurso autorizado||06/10/2026|https://concursos.estrategia.com/portal/concursos-rj/
+RJ|SAAE Volta Redonda|Volta Redonda|Nível superior|118|Concurso solicitado||06/10/2026|https://concursos.estrategia.com/portal/concursos-rj/
+RJ|Prefeitura de Barra do Piraí|Barra do Piraí|A definir|0|Concurso solicitado||06/10/2026|https://concursos.estrategia.com/portal/concursos-rj/
+RJ|Câmara de Petrópolis|Petrópolis|A definir|0|Concurso solicitado||06/10/2026|https://concursos.estrategia.com/portal/concursos-rj/
+RJ|Câmara de Nova Friburgo|Nova Friburgo|A definir|0|Concurso solicitado||06/10/2026|https://concursos.estrategia.com/portal/concursos-rj/
+RJ|Guarda Municipal de Maricá|Maricá|Guarda civil municipal|0|Concurso solicitado||06/10/2026|https://concursos.estrategia.com/portal/concursos-rj/
+RJ|Prefeitura de Iguaba Grande|Iguaba Grande|A definir|0|Concurso solicitado||06/10/2026|https://concursos.estrategia.com/portal/concursos-rj/
+RJ|ISS Niterói|Niterói|Auditor, fiscal de posturas e agente fazendário|0|Concurso solicitado||06/10/2026|https://concursos.estrategia.com/portal/concursos-rj/
+RJ|Prefeitura de Miguel Pereira|Miguel Pereira|Diversos|91|Concurso solicitado||06/10/2026|https://concursos.estrategia.com/portal/concursos-rj/
+RJ|Câmara de Niterói|Niterói|A definir|0|Concurso solicitado||06/10/2026|https://concursos.estrategia.com/portal/concursos-rj/
+RJ|Prefeitura de Petrópolis|Petrópolis|Nível superior|129|Concurso solicitado||06/10/2026|https://concursos.estrategia.com/portal/concursos-rj/
+RJ|Guarda Municipal de Petrópolis|Petrópolis|Guarda municipal|110|Concurso solicitado||06/10/2026|https://concursos.estrategia.com/portal/concursos-rj/
+RN|Prefeitura de Extremoz|Extremoz|Diversos|0|Comissão formada||07/10/2026|https://concursos.estrategia.com/portal/concursos-rn/
+RN|STTU Natal|Natal|Agente de mobilidade|120|Comissão formada||07/10/2026|https://concursos.estrategia.com/portal/concursos-rn/
+RS|Prefeitura de Porto Alegre (Educação)|Porto Alegre|Professor, monitor e bibliotecário|0|Banca definida|Fundação La Salle|15/10/2026|https://concursos.estrategia.com/portal/concursos-rs/
+RS|Guarda Municipal de Novo Hamburgo|Novo Hamburgo|Guarda municipal|0|Banca definida|Fundatec|15/10/2026|https://concursos.estrategia.com/portal/concursos-rs/
+RS|Prefeitura de Porto Alegre (Saúde)|Porto Alegre|Assistente social, psicólogo, dentista e fono|0|Banca definida|Fundação La Salle|15/10/2026|https://concursos.estrategia.com/portal/concursos-rs/
+RS|Guarda Municipal de Sapucaia do Sul|Sapucaia do Sul|Guarda municipal|10|Banca definida|INQC|15/10/2026|https://concursos.estrategia.com/portal/concursos-rs/
+RS|Prefeitura de Pelotas (Saúde)|Pelotas|Vários cargos|67|Banca definida|Legalle|15/10/2026|https://concursos.estrategia.com/portal/concursos-rs/
+RS|Sanep Pelotas|Pelotas|A definir|0|Comissão formada||15/10/2026|https://concursos.estrategia.com/portal/concursos-rs/
+RS|Prefeitura de Venâncio Aires|Venâncio Aires|A definir|0|Comissão formada||15/10/2026|https://concursos.estrategia.com/portal/concursos-rs/
+RS|ISS Pelotas|Pelotas|Auditor fiscal|0|Banca definida|Legalle|15/10/2026|https://concursos.estrategia.com/portal/concursos-rs/
+RS|Prefeitura de Pelotas|Pelotas|Vários cargos|271|Banca definida|Legalle|15/10/2026|https://concursos.estrategia.com/portal/concursos-rs/
+RS|Prefeitura de Ijuí|Ijuí|Vários cargos|200|Concurso previsto||15/10/2026|https://concursos.estrategia.com/portal/concursos-rs/
+RO|IPAM Porto Velho|Porto Velho|Analista e técnico autárquico|25|Banca definida|IBADE|30/09/2026|https://concursos.estrategia.com/portal/concursos-ro/
+RR|Câmara de Boa Vista|Boa Vista|Diversos|70|Comissão formada||14/08/2026|https://concursos.estrategia.com/portal/concursos-rr/
+RR|Prefeitura de Boa Vista|Boa Vista|Saúde, educação e quadro geral|0|Concurso anunciado||14/08/2026|https://concursos.estrategia.com/portal/concursos-rr/
+SC|Guarda Municipal de Joinville|Joinville|Guarda municipal e agente de trânsito|0|Banca definida|AOCP|09/10/2026|https://concursos.estrategia.com/portal/concursos-sc/
+SC|Prefeitura de Blumenau|Blumenau|Diversos|64|Banca contratada|FURB|09/10/2026|https://concursos.estrategia.com/portal/concursos-sc/
+SC|ISS Blumenau|Blumenau|Auditor fiscal|1|Banca contratada|FURB|09/10/2026|https://concursos.estrategia.com/portal/concursos-sc/
+SC|Prefeitura de Blumenau (Educação)|Blumenau|Professor|17|Banca definida|FURB|09/10/2026|https://concursos.estrategia.com/portal/concursos-sc/
+SC|Prefeitura de Araranguá|Araranguá|Diversos|0|Banca definida|Instituto Legalle|09/10/2026|https://concursos.estrategia.com/portal/concursos-sc/
+SC|Câmara de Florianópolis|Florianópolis|Vários cargos|8|Comissão formada||09/10/2026|https://concursos.estrategia.com/portal/concursos-sc/
+SC|Prefeitura de Criciúma|Criciúma|Agente de trânsito e engenheiro de tráfego|0|Comissão formada||09/10/2026|https://concursos.estrategia.com/portal/concursos-sc/
+SC|Prefeitura de Chapecó|Chapecó|Diversos|41|Concurso anunciado||09/10/2026|https://concursos.estrategia.com/portal/concursos-sc/
+SC|Guarda Municipal de Balneário Camboriú|Balneário Camboriú|Guarda municipal|0|Concurso anunciado||09/10/2026|https://concursos.estrategia.com/portal/concursos-sc/
+SC|Guarda Municipal de Florianópolis|Florianópolis|Guarda municipal|25|Concurso anunciado||09/10/2026|https://concursos.estrategia.com/portal/concursos-sc/
+SE|Câmara de Aracaju|Aracaju|A definir|0|Comissão formada||28/05/2026|https://concursos.estrategia.com/portal/concursos-se/
+SE|Prefeitura de Aracaju (Saúde)|Aracaju|A definir|0|Concurso anunciado||28/05/2026|https://concursos.estrategia.com/portal/concursos-se/
+SE|Prefeitura de São Cristóvão (Educação)|São Cristóvão|A definir|0|Comissão formada||28/05/2026|https://concursos.estrategia.com/portal/concursos-se/

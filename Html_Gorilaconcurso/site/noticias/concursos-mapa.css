@@ -548,3 +548,94 @@ body:not(.light) .cm-dm-dica{background:#f1f1f1;color:#0f0f0f}
 .cm-dm-fonte{font-size:11px}
 .cm-dm-fonte a{color:var(--accent-text);text-decoration:none;font-weight:600;pointer-events:auto}
 .cm-dm-fonte a:hover{text-decoration:underline}
+/* lista de concursos reais embaixo do mapa da região (cada um com a fonte) */
+.cm-dm-conc{display:flex;flex-direction:column;gap:6px;width:100%;max-width:760px;max-height:92px;overflow-y:auto;margin:0 auto;padding-right:4px;text-align:left;pointer-events:auto}
+.cm-dm-conc-tit{font-size:12px;font-weight:700;color:var(--text-primary)}
+.cm-dm-conc-tit span{font-weight:400;color:var(--text-muted)}
+.cm-dm-conc ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:4px}
+.cm-dm-conc li{display:grid;grid-template-columns:10px 1fr auto;gap:8px;align-items:start;font-size:12px;color:var(--text-primary);padding:6px 9px;border-radius:6px;background:var(--surface-2)}
+.cm-dm-conc li>i{width:9px;height:9px;border-radius:2px;margin-top:4px}
+.cm-dm-conc li i.sit-aberto{background:#16a34a}.cm-dm-conc li i.sit-previsto{background:#2563eb}.cm-dm-conc li i.sit-semprevisao{background:#f59e0b}
+.cm-dm-conc li em{display:block;font-style:normal;font-size:11px;color:var(--text-secondary)}
+.cm-dm-conc li a{font-size:11px;color:var(--accent-text);text-decoration:none;font-weight:600;white-space:nowrap;pointer-events:auto}
+.cm-dm-conc li a:hover{text-decoration:underline}
+.cm-dm-conc .cm-dm-aviso1{text-align:center}
+.cm-dm-conc .cm-dm-aviso1 a{color:var(--accent-text);font-weight:600;font-style:normal;text-decoration:none;pointer-events:auto}
+.cm-dm-conc li i.sit-andamento,.cm-dm-conc li i.sit-edital{background:#16a34a}
+/* ── PAINEL DE CONCURSOS DA REGIÃO (à direita do mapa da região; no celular, embaixo) ── */
+.cm-ev-painel{position:absolute;z-index:3;display:flex;flex-direction:column;gap:12px;padding:18px 20px 12px;box-sizing:border-box;
+  background:var(--surface-1);border:1px solid var(--border);box-shadow:0 10px 30px rgba(16,24,40,.10);opacity:0;transition:opacity .4s ease .35s;min-height:0}
+.cm-ev-painel.aparece{opacity:1}
+.cm-ev-painel.embaixo{position:static;width:100%;max-height:none;pointer-events:auto}
+.cm-ev-painel.embaixo .cm-pc-lista{max-height:none;overflow:visible}
+.cm-pc-topo{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.cm-pc-tit{font-size:15px;color:var(--text-secondary)}
+.cm-pc-tit b{color:var(--text-primary);font-weight:800}
+.cm-pc-regiao{flex-shrink:0;font:inherit;font-size:12px;font-weight:600;padding:6px 12px;border:1px solid var(--border-strong);background:var(--surface-2);color:var(--text-primary);cursor:pointer}
+.cm-pc-regiao:hover{background:var(--surface-3)}
+.cm-pc-nums{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.cm-pc-nums div{display:flex;flex-direction:column;padding:10px 12px;background:var(--surface-2);border-left:3px solid #16a34a}
+.cm-pc-nums div.azul{border-left-color:#2563eb}
+.cm-pc-nums b{font-size:24px;font-weight:800;line-height:1.1;color:var(--text-primary);letter-spacing:-.02em}
+.cm-pc-nums span{font-size:11.5px;color:var(--text-secondary)}
+.cm-pc-lista{flex:1;min-height:0;overflow-y:auto;padding-right:4px}
+.cm-pc-vazio{margin:0 0 10px;padding:8px 10px;font-size:12px;color:var(--text-secondary);background:var(--surface-2)}
+.cm-pc-grupo{position:sticky;top:0;z-index:1;margin:6px 0 4px;padding:4px 0;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;color:var(--text-primary);background:var(--surface-1)}
+.cm-pc-grupo span{font-weight:600;color:var(--text-muted)}
+.cm-pc-lista ul{list-style:none;margin:0 0 6px;padding:0;display:flex;flex-direction:column;gap:4px}
+.cm-pc-lista li{display:grid;grid-template-columns:10px 1fr auto;gap:9px;align-items:start;padding:7px 9px;font-size:12.5px;color:var(--text-primary);background:var(--surface-2)}
+.cm-pc-lista li>i{width:9px;height:9px;margin-top:4px}
+.cm-pc-lista li i.sit-aberto{background:#16a34a}.cm-pc-lista li i.sit-previsto{background:#2563eb}.cm-pc-lista li i.sit-semprevisao{background:#f59e0b}
+.cm-pc-lista li small{font-size:11px;font-weight:600;color:var(--text-muted)}
+.cm-pc-lista li .cargo{display:block;color:var(--text-secondary)}
+.cm-pc-lista li em{display:block;font-style:normal;font-size:11.5px;color:var(--text-muted)}
+.cm-pc-lista li a,.cm-pc-rodape a{font-size:11.5px;font-weight:600;color:var(--accent-text);text-decoration:none;white-space:nowrap}
+.cm-pc-lista li a:hover,.cm-pc-rodape a:hover{text-decoration:underline}
+.cm-pc-rodape{display:flex;flex-wrap:wrap;gap:4px 10px;font-size:11px;color:var(--text-muted)}
+.cm-pc-rodape span{margin-left:auto}
+.cm-dm-leg1-dica{color:var(--text-muted)}
+.cm-dm-munis path.fixo{filter:brightness(1.25);stroke:#111;stroke-width:1.6}
+.cm-dm-quadros rect.fixo{stroke:#111;stroke-width:2}
+/* siglas dos órgãos com concurso (estilo grade de estados da Estratégia) */
+.cm-pc-tit span{margin-left:6px;font-size:12px;color:var(--text-muted)}
+.cm-pc-grade{min-height:0;overflow-y:auto;padding:2px 4px 2px 0}
+.cm-pc-chips{display:flex;flex-wrap:wrap;gap:8px}
+.cm-pc-chip{position:relative;display:inline-flex;align-items:center;gap:5px;min-width:44px;justify-content:center;padding:8px 12px;
+  font-size:13px;font-weight:700;color:var(--text-primary);text-decoration:none;white-space:nowrap;background:var(--surface-0);
+  border:1px solid var(--border);border-radius:6px;box-shadow:0 1px 2px rgba(16,24,40,.06);border-bottom:3px solid #6b7280;transition:transform .12s,box-shadow .12s}
+.cm-pc-chip:hover{transform:translateY(-1px);box-shadow:0 4px 10px rgba(16,24,40,.12)}
+.cm-pc-chip.sit-aberto{border-bottom-color:#16a34a}.cm-pc-chip.sit-andamento{border-bottom-color:#86c99c}
+.cm-pc-chip.sit-previsto{border-bottom-color:#2563eb}.cm-pc-chip.sit-semprevisao{border-bottom-color:#f59e0b}
+.cm-pc-chip small{font-size:10.5px;font-weight:700;padding:0 5px;border-radius:8px;background:var(--surface-3);color:var(--text-secondary)}
+.cm-pc-area{margin:10px 0 6px;font-size:11.5px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;color:var(--text-primary)}
+.cm-pc-area:first-child{margin-top:0}
+.cm-pc-area span{font-weight:600;color:var(--text-muted)}
+.cm-pc-porcargo{align-self:flex-start;font:inherit;font-size:13px;font-weight:700;padding:0;border:0;background:none;color:var(--accent-text);cursor:pointer}
+.cm-pc-porcargo:hover{text-decoration:underline}
+.cm-pc-nums{flex-shrink:0}
+/* busca que desce do topo até o lugar do letreiro quando a região está aberta (cmBuscaDescer) */
+.cm-busca-baixo{position:fixed;z-index:60;box-sizing:border-box}
+.cm-busca-baixo.anda{transition:left .55s cubic-bezier(.22,.8,.2,1),top .55s cubic-bezier(.22,.8,.2,1),width .55s cubic-bezier(.22,.8,.2,1),height .55s cubic-bezier(.22,.8,.2,1)}
+.cm-busca-baixo input{width:100%;height:100%;box-sizing:border-box;padding:0 16px 0 42px;font:inherit;font-size:14px;color:var(--text-primary);
+  background:#fff;border:1px solid #d1d5db;border-radius:10px;outline:none;box-shadow:0 6px 18px rgba(16,24,40,.10);transition:border-color .15s,box-shadow .15s}
+.cm-busca-baixo input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(37,99,235,.15)}
+.cm-busca-baixo input::placeholder{color:#8a919e}
+.cm-busca-baixo input::-webkit-search-cancel-button{display:none}
+body:not(.light) .cm-busca-baixo input{background:#121212;border-color:#303030}
+.cm-busca-baixo svg{position:absolute;left:14px;top:50%;width:18px;height:18px;transform:translateY(-50%);fill:none;stroke:#8a919e;stroke-width:2;stroke-linecap:round;pointer-events:none}
+@media (prefers-reduced-motion:reduce){ .cm-busca-baixo.anda{transition:none} }
+/* PONTINHOS = 1 por concurso, na cor da situação (mapa da região) */
+.cm-dm-pontos circle{stroke:#fff;stroke-width:1;cursor:pointer;transition:r .12s}
+body:not(.light) .cm-dm-pontos circle{stroke:#111}
+.cm-dm-pontos circle.sit-aberto{fill:#16a34a}
+.cm-dm-pontos circle.sit-andamento{fill:#7c3aed}
+.cm-dm-pontos circle.sit-previsto{fill:#2563eb}
+.cm-dm-pontos circle.sit-semprevisao{fill:#f59e0b}
+.cm-dm-pontos circle.sel{r:5;stroke:#111;stroke-width:1.5}
+body:not(.light) .cm-dm-pontos circle.sel{stroke:#fff}
+.cm-dm-legp i{border-radius:50%}
+.cm-dm-leg1 i.sit-andamento{background:#7c3aed}
+.cm-dm-dica .st{opacity:1;font-weight:600}
+.cm-dm-dica .st-aberto{color:#4ade80}.cm-dm-dica .st-andamento{color:#c4b5fd}.cm-dm-dica .st-previsto{color:#93c5fd}.cm-dm-dica .st-semprevisao{color:#fcd34d}
+body:not(.light) .cm-dm-dica .st-aberto{color:#15803d}body:not(.light) .cm-dm-dica .st-andamento{color:#6d28d9}body:not(.light) .cm-dm-dica .st-previsto{color:#1d4ed8}body:not(.light) .cm-dm-dica .st-semprevisao{color:#b45309}
+.cm-dm-dica{white-space:normal;max-width:300px}

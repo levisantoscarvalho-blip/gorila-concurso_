@@ -1,0 +1,13 @@
+﻿LEVANTAMENTO DE CONCURSOS (gera site/noticias/concursos-levantamento.js)
+
+abertos.txt   = inscrições abertas (fonte: pciconcursos.com.br/concursos/<região>/)
+                UF|órgão|cidade (ou - se for órgão estadual/federal)|vagas (número ou CR)|cargo|até (ou início>fim)|final do link da notícia
+previstos.txt = concursos previstos (fonte: concursos.estrategia.com/portal/concursos-<uf>/)
+                UF|status|órgão|cargo|vagas (0 = a definir)|situação|banca|data da notícia|nome da fonte|link
+
+municipais-previstos.txt = previstos de prefeituras, câmaras e guardas (cada um vira um ponto azul na cidade)
+                UF|órgão|cidade|cargo|vagas|situação|banca|data da notícia|link
+
+Para atualizar: editar as tabelas e rodar no PowerShell, dentro desta pasta:
+  .\gerar.ps1 -Site ..\site -Dir .
+O script avisa ("NAO ACHOU") se alguma cidade não bater com a lista do IBGE.

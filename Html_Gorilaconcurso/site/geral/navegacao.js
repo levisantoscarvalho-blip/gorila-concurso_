@@ -260,6 +260,10 @@ function fecharTudo(){
   if(typeof cfgEsconder==='function') cfgEsconder();   // abriu outra tela: as Configurações (e a prévia de tema Pro) fecham
   document.querySelectorAll('.modal-overlay.open').forEach(m=>m.classList.remove('open'));
   document.querySelectorAll('.cm-tour,.cm-tour-luz').forEach(e=>e.remove());   // balões do tour de Notícias
+  // mapa de concursos: trocou de tela ➔ fecha estado/região aberta (senão, ao voltar, a região não abria mais)
+  // e a busca que desceu volta ao topo
+  if(typeof cmVendoEstado!=='undefined' && cmVendoEstado && typeof cmFecharEstado==='function') cmFecharEstado();
+  if(typeof cmBuscaSubir==='function') cmBuscaSubir(true);
   const lb=document.getElementById('mm-lightbox-img'); if(lb) lb.src='';
 }
 // emBranco=true: tela em branco (Sala de estudos, ainda não pronta) · senão: Concursos pelo Brasil (mapa 3D)

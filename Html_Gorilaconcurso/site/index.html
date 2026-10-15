@@ -142,7 +142,7 @@
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 8.5L12 4l10 4.5-10 4.5z"/><path d="M6 10.4V15c0 1.7 2.7 3 6 3s6-1.3 6-3v-4.6"/><path d="M22 8.5v5"/></svg>
     </button>
     <button class="tr-item" id="tr-questoes" title="Questões" aria-label="Questões" onclick="trAbrirQuestoes()">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="4" width="14" height="17" rx="2.5"/><path d="M9 4V3h6v1"/><path d="M8.5 10l1.5 1.5L13 8.5M8.5 15.5l1.5 1.5 3-3"/><path d="M15 10.5h1.5M15 16h1.5"/></svg>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5.5" cy="5.5" r="1.6"/><circle cx="5.5" cy="12" r="1.6" fill="currentColor"/><circle cx="5.5" cy="18.5" r="1.6"/><path d="M10.5 5.5h9.5M10.5 12h9.5M10.5 18.5h6.5"/></svg>
     </button>
     <button class="tr-item" id="tr-calendario" title="Calendário de estudos" aria-label="Calendário de estudos" onclick="trAbrirCalendario()">
       <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M3.5 9.5h17M8 3v4M16 3v4"/><path d="M9 14.5l2 2 4-4"/></svg>
@@ -674,7 +674,7 @@
     <div id="custom-dialog-buttons" style="display:flex;gap:10px;justify-content:flex-end"></div>
   </div>
 </div>
-<div id="save-toast" style="position: fixed; bottom: 18px; right: 18px; z-index: 3000; padding: 10px 16px; border-radius: 8px; font-size: 12px; font-weight: 600; display: flex; align-items: center; gap: 7px; transition: opacity 0.3s; box-shadow: rgba(0, 0, 0, 0.3) 0px 4px 14px; max-width: 320px; background: var(--success-bg); color: var(--success); border: 1px solid var(--success); opacity: 0;"><span class="icon-emoji">✅</span> Salvo</div></body></html>
+<div id="save-toast" style="position: fixed; bottom: 18px; right: 18px; z-index: 3000; padding: 10px 16px; border-radius: 8px; font-size: 12px; font-weight: 600; display: flex; align-items: center; gap: 7px; transition: opacity 0.3s; box-shadow: rgba(0, 0, 0, 0.3) 0px 4px 14px; max-width: 320px; background: var(--success-bg); color: var(--success); border: 1px solid var(--success); opacity: 0;"><span class="icon-emoji">✅</span> Salvo</div>
 
 <!-- ═══════════ CÓDIGO (a ORDEM importa: dados primeiro, iniciar.js por último) ═══════════ -->
 <script src="banco-de-dados/armazenamento.js"></script>
@@ -692,6 +692,8 @@
 <script src="barra-superior/busca.js"></script>
 <script src="noticias/noticias.js"></script>
 <script src="noticias/mapa-brasil.js"></script>
+<script src="noticias/concursos-dados.js"></script>
+<script src="noticias/concursos-levantamento.js"></script>
 <script src="noticias/concursos-mapa.js"></script>
 <script src="noticias/historia-brasil.js"></script>
 <script src="sala-de-estudo/trilhas.js"></script>
