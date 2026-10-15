@@ -174,6 +174,7 @@ function renderConcursosMapa(){
   cmDesenharMapaLeve(); cmAplicarZoom();   // controle já começa em 100% (− e mira apagados)
   cmTourPrimeira = false;
   if(!cmTourVisto()) setTimeout(()=>{ cmTourPrimeira = true; cmTour(0); }, 500);   // 1ª visita: tour guiado (do "?") e, ao terminar, o quadro da estrela
+  else cmSobreAlternar(true);   // demais visitas: o quadro da estrela já aparece aberto (pedido do Levi); some ao mexer no mapa
 }
 // ── ampliar com a rodinha do mouse (aproxima no ponto onde o mouse está) e arrastar para mover ──
 let cmNitidezT=null;
@@ -199,6 +200,7 @@ function cmZoomEm(novo, cx, cy){
   cmAplicarZoom();
 }
 function cmRoda(ev){
+  cmSobreAlternar(false);   // mexeu no mapa: o quadro da estrela some
   ev.preventDefault();   // não rola a página: amplia o mapa
   const r=document.getElementById('cm-palco').getBoundingClientRect();
   cmZoomEm(cmZoom.z * (ev.deltaY<0 ? 1.18 : 1/1.18), ev.clientX - r.left, ev.clientY - r.top);
@@ -206,6 +208,7 @@ function cmRoda(ev){
 function cmZoomPasso(dir){ const r=document.getElementById('cm-palco').getBoundingClientRect(); cmZoomEm(cmZoom.z*(dir>0?1.4:1/1.4), r.width/2, r.height/2); }
 function cmZoomReset(){ cmZoom={z:1,x:0,y:0}; cmAplicarZoom(); }
 function cmArrastaInicio(ev){
+  cmSobreAlternar(false);   // clicou ou arrastou o mapa: o quadro da estrela some
   cmArrastou = false;
   if(cmZoom.z<=1) return;
   ev.preventDefault(); document.body.classList.add('cm-sem-selecao');   // arrastar move o mapa, não seleciona texto
