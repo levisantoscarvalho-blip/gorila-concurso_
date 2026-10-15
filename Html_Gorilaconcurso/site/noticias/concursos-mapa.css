@@ -476,3 +476,14 @@ body:not(.light) .cm-ev-quadro path.sobre{stroke:#fff;filter:drop-shadow(0 6px 1
 .cm-ev-rot{transition:color .18s ease,transform .18s ease}
 .cm-ev-rot.ativo{transform:translate(-50%,-50%) scale(1.06)}
 .cm-ev-dica{transition:opacity .12s ease}
+/* região aberta (clique numa região): bandeira e mapa somem; a região desliza até o lado esquerdo */
+.cm-ev-bandeira,.cm-ev-mapa{transition:opacity .3s ease}
+.cm-ev-foco .cm-ev-bandeira,.cm-ev-foco .cm-ev-mapa{opacity:0;pointer-events:none}
+.cm-ev-regiao{position:absolute;z-index:2;display:flex;flex-direction:column;align-items:center;gap:14px;pointer-events:none}
+.cm-ev-regiao svg{display:block;overflow:visible;transform-origin:0 0;filter:drop-shadow(0 14px 18px rgba(16,24,40,.22))}
+body:not(.light) .cm-ev-regiao svg{filter:drop-shadow(0 14px 20px rgba(0,0,0,.6))}
+.cm-ev-regiao svg.vai{transition:transform .7s cubic-bezier(.22,.8,.2,1)}
+.cm-ev-regiao path{stroke:rgba(35,35,45,.75);stroke-width:1.4;vector-effect:non-scaling-stroke;stroke-linejoin:round}
+.cm-ev-regiao-nome{font-size:20px;font-weight:800;letter-spacing:-.01em;text-align:center;color:var(--text-primary);transition:opacity .4s ease .45s}
+@media (prefers-reduced-motion:reduce){ .cm-ev-regiao svg.vai{transition:none} }
+.cm-ev-regiao-nome{white-space:nowrap}

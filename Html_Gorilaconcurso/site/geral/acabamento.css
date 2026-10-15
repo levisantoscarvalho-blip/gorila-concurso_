@@ -328,5 +328,8 @@ body:not(.light) .cfg-pro-dica{background:#f1f1f1;color:#0f0f0f}
 .cfg-mais-cores::before{width:13px;height:13px}
 .cfg-mais-cores:hover,.cfg-mais-cores.aberto{filter:brightness(1.1);box-shadow:0 4px 12px rgba(36,83,196,.35)}
 /* "Ajuda" / "Equipe de suporte" e os ícones da barra da direita um pouco mais escuros no tema claro (pedido do Levi) */
-body.light .tb-links a{color:#353b52}
-body.light .tr-item{color:#353b52}
+body.light .tb-links a{color:#1f2433}
+body.light .tr-item{color:#1f2433}
+/* fundo da barra de cima e da barra de ícones da direita um pouco mais escuro no tema claro (pedido do Levi) */
+body.light:not(.tema-pers) #topbar{background:#e8eaee!important}
+body.light:not(.tema-pers) #theme-rail{background:#e8eaee!important;border-color:#c4c7cc!important}

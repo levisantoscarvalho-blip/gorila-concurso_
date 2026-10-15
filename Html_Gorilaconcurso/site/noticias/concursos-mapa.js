@@ -469,7 +469,7 @@ async function cmDesenharEstadoGrande(cv, uf){
       if(ctx.isPointInPath(p, x*R, y*R)){ px=x; py=y; break achar; } }
     cur.style.left=(px/Wc*100)+'%'; cur.style.top=(py/Hc*100)+'%'; }
 }
-document.addEventListener('keydown', e=>{ if(e.key==='Escape' && cmSel && !document.querySelector('.modal-overlay.open')){ if(cmVendoEstado) cmFecharEstado(); else cmFecharDestaque(); } });
+document.addEventListener('keydown', e=>{ if(e.key==='Escape' && cmSel && !document.querySelector('.modal-overlay.open')){ if(cmRegiaoAberta>=0) cmMesoFechar(); else if(cmVendoEstado) cmFecharEstado(); else cmFecharDestaque(); } });
 // ════════════════════════════════════════════
 // 2º CLIQUE NO ESTADO (pedido do Levi): o mapa do Brasil dá lugar ao ESTADO ABERTO
 //  • em cima: "Voltar ao Brasil" + "Estado · N regiões" (o título da página some)
@@ -548,6 +548,7 @@ function cmBandeiraOndular(uf){
   if(img.complete && img.naturalWidth) comecar(); else img.onload=comecar;
 }
 function cmFecharEstado(){
+  cmMesoFechar(true);
   cancelAnimationFrame(cmOndaRaf);
   cmVendoEstado=null;
   document.getElementById('cm-estado-vista')?.remove();
@@ -681,7 +682,7 @@ function cmDesenharMeso(uf){
   const mover={cima:'translate(-50%,-100%)', baixo:'translate(-50%,0)', esq:'translate(-100%,-50%)', dir:'translate(0,-50%)'};
   alvo.innerHTML=`<div class="cm-ev-quadro" style="width:${W}px;height:${H}px;margin-left:${desloca*2}px" onpointermove="cmMesoDicaMove(event)" onpointerleave="cmMesoSobre(-1)">
     <svg class="cm-ev-svg" viewBox="${vbTexto}" width="${W}" height="${H}" role="img" aria-label="Regiões ${cmDoEstado(uf)}"><g transform="scale(0.0001,-0.0001)">${
-      regs.map((r,i)=>`<path d="${r.d}" fill="${r.cor}" data-i="${i}" onpointerenter="cmMesoSobre(${i})"></path>`).join('')}</g></svg>
+      regs.map((r,i)=>`<path d="${r.d}" fill="${r.cor}" data-i="${i}" onpointerenter="cmMesoSobre(${i})" onclick="cmMesoAbrir(${i})"></path>`).join('')}</g></svg>
     <svg class="cm-ev-linhas" width="${W}" height="${H}" aria-hidden="true">${fora.map(r=>{ const [px,py]=ponta(r);
       return `<line data-i="${regs.indexOf(r)}" x1="${r.ax}" y1="${r.ay}" x2="${px}" y2="${py}"/><circle data-i="${regs.indexOf(r)}" cx="${r.ax}" cy="${r.ay}" r="2.5"/>`; }).join('')}</svg>
     ${regs.map((r,i)=>!fora.includes(r) && r.fonte<MIN_DENTRO ? '' : r.fonte<MIN_DENTRO
@@ -715,11 +716,52 @@ function cmMesoDicaMove(ev){
   dica.style.left=((ev.clientX-q.left)/z)+'px'; dica.style.top=((ev.clientY-q.top)/z)+'px';
   dica.style.transform=`translate(14px,-130%) scale(${1/z})`; dica.style.transformOrigin='0 100%';   // o balão não cresce com o zoom
 }
+// ── CLICAR NUMA REGIÃO (pedido do Levi): a bandeira e o mapa somem e só a região clicada DESLIZA, com animação,
+// do lugar dela no mapa até o lado ESQUERDO (onde fica a bandeira). O lado direito fica vazio por enquanto.
+// Em cima, "Voltar a <estado>" (ou Esc) desfaz e volta ao estado dividido. ──
+let cmRegiaoAberta=-1, cmTopoAntes='';
+function cmMesoAbrir(i){
+  if(cmEvArrastou || cmRegiaoAberta>=0) return;           // soltou depois de arrastar (não é clique) ou já tem região aberta
+  const v=document.getElementById('cm-estado-vista'), alvo=document.getElementById('cm-ev-mapa'); if(!v||!alvo?._regs) return;
+  const r=alvo._regs[i], p=alvo.querySelector(`path[data-i="${i}"]`); if(!r||!p) return;
+  cmMesoSobre(-1);
+  cmRegiaoAberta=i;
+  const V=v.getBoundingClientRect(), de=p.getBoundingClientRect();
+  // destino: a área da bandeira (no celular, sem bandeira, a área do mapa)
+  const band=v.querySelector('.cm-ev-bandeira'), base=(band && band.offsetWidth ? band : alvo).getBoundingClientRect();
+  const b=r.b, wd=b.width*1e-4, hd=b.height*1e-4, ALT_NOME=56;
+  const s=Math.min(base.width*0.92/wd, (base.height-ALT_NOME)*0.92/hd), W=wd*s, H=hd*s;
+  const x=base.left-V.left+(base.width-W)/2, y=base.top-V.top+(base.height-ALT_NOME-H)/2;
+  const caixa=document.createElement('div'); caixa.className='cm-ev-regiao'; caixa.id='cm-ev-regiao';
+  caixa.style.cssText=`left:${x}px;top:${y}px;width:${W}px`;
+  caixa.innerHTML=`<svg viewBox="${b.x*1e-4} ${-(b.y+b.height)*1e-4} ${wd} ${hd}" width="${W}" height="${H}" aria-hidden="true"><g transform="scale(0.0001,-0.0001)"><path d="${r.d}" fill="${r.cor}"/></g></svg>
+    <div class="cm-ev-regiao-nome">${r.nome}</div>`;
+  v.appendChild(caixa);
+  // começa EXATAMENTE em cima da região no mapa e desliza até o lugar final
+  const k0=de.width/W, svg=caixa.querySelector('svg'), nome=caixa.querySelector('.cm-ev-regiao-nome');
+  svg.style.transform=`translate(${de.left-V.left-x}px,${de.top-V.top-y}px) scale(${k0})`;
+  nome.style.opacity='0';
+  v.classList.add('cm-ev-foco');
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{ svg.classList.add('vai'); svg.style.transform='none'; nome.style.opacity=''; }));
+  // em cima: voltar ao estado + nome da região
+  const topo=v.querySelector('.cm-ev-topo'); cmTopoAntes=topo.innerHTML;
+  topo.innerHTML=`<button type="button" class="cm-ev-voltar" onclick="cmMesoFechar()"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>Voltar ${cmNoEstadoVoltar(cmVendoEstado)}</button>
+    <span class="cm-ev-titulo">${r.nome}</span>`;
+}
+function cmNoEstadoVoltar(uf){ return cmDoEstado(uf).replace(/^do /,'ao ').replace(/^da /,'à ').replace(/^de /,'a '); }   // "ao Tocantins", "à Bahia", "a São Paulo"
+function cmMesoFechar(semAnimar){
+  if(cmRegiaoAberta<0) return;
+  cmRegiaoAberta=-1;
+  const v=document.getElementById('cm-estado-vista'); if(!v) return;
+  document.getElementById('cm-ev-regiao')?.remove();
+  v.classList.remove('cm-ev-foco');
+  const topo=v.querySelector('.cm-ev-topo'); if(topo && cmTopoAntes) topo.innerHTML=cmTopoAntes;
+}
 // ── ZOOM DO ESTADO ABERTO (pedido do Levi, igual ao mapa do Brasil): rodinha do mouse amplia no ponto do mouse,
 // arrastar move (quando ampliado), duplo clique volta ao tamanho normal.
 // Enquanto a rodinha gira, a imagem só é esticada (rápido); quando para, o mapa é REDESENHADO no tamanho novo
 // (bordas finas e nítidas, e os nomes que agora cabem aparecem dentro das regiões).
-let cmEvZoom={z:1,x:0,y:0}, cmEvDesenhado={z:1,x:0,y:0}, cmEvRedesenhoT=null;
+let cmEvZoom={z:1,x:0,y:0}, cmEvDesenhado={z:1,x:0,y:0}, cmEvRedesenhoT=null, cmEvArrastou=false;
 // posiciona o quadro desenhado para mostrar o estado cmEvZoom (x,y = deslocamento a partir do centro da área)
 function cmEvMostrar(){
   const a=document.getElementById('cm-ev-mapa'), q=a?.querySelector('.cm-ev-quadro'); if(!q||!a._W1) return;
@@ -744,11 +786,12 @@ function cmEvRoda(ev){
   clearTimeout(cmEvRedesenhoT); cmEvRedesenhoT=setTimeout(()=>cmDesenharMeso(cmVendoEstado), 220);
 }
 function cmEvArrastaInicio(ev){
+  cmEvArrastou=false;
   if(cmEvZoom.z<=1) return;
   ev.preventDefault();
   const ini={x:ev.clientX, y:ev.clientY, ox:cmEvZoom.x, oy:cmEvZoom.y}, alvo=document.getElementById('cm-ev-mapa');
   alvo?.classList.add('arrastando');
-  const mover=e=>{ cmEvZoom.x=ini.ox+(e.clientX-ini.x); cmEvZoom.y=ini.oy+(e.clientY-ini.y); cmEvLimitar(); cmEvMostrar(); };
+  const mover=e=>{ if(Math.abs(e.clientX-ini.x)+Math.abs(e.clientY-ini.y)>4) cmEvArrastou=true; cmEvZoom.x=ini.ox+(e.clientX-ini.x); cmEvZoom.y=ini.oy+(e.clientY-ini.y); cmEvLimitar(); cmEvMostrar(); };
   const soltar=()=>{ window.removeEventListener('pointermove',mover); window.removeEventListener('pointerup',soltar); alvo?.classList.remove('arrastando'); };
   window.addEventListener('pointermove',mover); window.addEventListener('pointerup',soltar);
 }
