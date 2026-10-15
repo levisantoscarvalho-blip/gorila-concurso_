@@ -697,3 +697,15 @@ body:not(.light) .cm-rz-card .st-aberto{color:#4ade80}body:not(.light) .cm-rz-ca
 .cm-ev-regiao-nome{padding:0 10px;border-radius:8px;background:color-mix(in srgb,var(--bg) 80%,transparent)}
 .cm-dm-info .cm-dm-legp,.cm-dm-info .cm-dm-leg1-dica{padding:4px 10px;border-radius:8px;background:color-mix(in srgb,var(--bg) 85%,transparent)}
 #news-screen.cm-busca-desceu .cm-faixa,#news-screen.cm-busca-desceu .cm-faixa-rotulo{visibility:hidden}
+/* LEQUE: cacho cheio espalhado (pontos maiores, agrupados por cor) — fica aberto até clicar fora */
+.cm-dm-leque{position:absolute;left:0;top:0;overflow:visible;z-index:2}
+.cm-dm-leque circle{stroke:#fff;stroke-width:1.5;vector-effect:non-scaling-stroke;cursor:pointer;filter:drop-shadow(0 1px 2px rgba(0,0,0,.25))}
+.cm-dm-leque circle.fundo{fill:var(--surface-1);fill-opacity:.94;stroke:var(--border-strong);stroke-width:1;filter:drop-shadow(0 6px 16px rgba(16,24,40,.22));cursor:default}
+.cm-dm-leque circle.sit-aberto{fill:#16a34a}.cm-dm-leque circle.sit-andamento{fill:#dc2626}
+.cm-dm-leque circle.sit-previsto{fill:#2563eb}.cm-dm-leque circle.sit-semprevisao{fill:#f59e0b}
+.cm-dm-leque circle.sel{stroke:#111;stroke-width:2.5}
+.cm-dm-leque circle.fixo{stroke:#111;stroke-width:3}
+body:not(.light) .cm-dm-leque circle{stroke:#111}
+body:not(.light) .cm-dm-leque circle.sel,body:not(.light) .cm-dm-leque circle.fixo{stroke:#fff}
+.cm-dm-pontos circle.escondido{opacity:0;pointer-events:none}
+.cm-ev-regiao-mapa.cm-rz-vista.leque-aberto{z-index:3}

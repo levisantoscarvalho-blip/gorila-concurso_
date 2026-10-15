@@ -836,11 +836,12 @@ async function cmDemografia(caixa, r, s, uf){
   mapa.insertAdjacentHTML('beforeend', `<div class="cm-rz-ctrl"><button type="button" data-z="1" title="Aproximar">+</button><button type="button" data-z="-1" title="Afastar">−</button><button type="button" data-z="0" title="Ver a região inteira">⟲</button></div>`);
   const Z={z:1,x:0,y:0};
   // sem borda (pedido do Levi): o mapa pode ser arrastado para onde a pessoa quiser — só não some (metade fica à vista)
+  let lequeRedesenha=null;   // leque aberto (cacho espalhado) é redesenhado quando o zoom muda, para manter o tamanho na tela
   const aplicar=()=>{ Z.z=Math.max(1,Math.min(10,Z.z)); Z.x=Math.min(W*0.5,Math.max(W*0.5-W*Z.z,Z.x)); Z.y=Math.min(H*0.5,Math.max(H*0.5-H*Z.z,Z.y));
     zw.style.transform=`translate(${Z.x}px,${Z.y}px) scale(${Z.z})`;
     const r=(R_PONTO*(1+(Z.z-1)*0.25)/Z.z).toFixed(2); camada.querySelectorAll('.cm-dm-pontos circle').forEach(c=>c.setAttribute('r',r));
     camada.querySelectorAll('.cm-dm-cidade').forEach(s=>s.style.transform=`translateY(-50%) scale(${1/Z.z})`);
-    mapa.classList.toggle('ampliado', Z.z>1.001); };
+    mapa.classList.toggle('ampliado', Z.z>1.001); lequeRedesenha?.(); };
   const zoomEm=(fator,mx,my)=>{ const z0=Z.z, z1=Math.max(1,Math.min(10,z0*fator)); Z.x=mx-(mx-Z.x)*(z1/z0); Z.y=my-(my-Z.y)*(z1/z0); Z.z=z1; aplicar(); };
   mapa.onwheel=ev=>{ ev.preventDefault(); ev.stopPropagation(); const q=mapa.getBoundingClientRect(); zoomEm(ev.deltaY<0?1.25:0.8, ev.clientX-q.left, ev.clientY-q.top); };
   mapa.ondblclick=ev=>{ ev.stopPropagation(); Z.z=1; Z.x=0; Z.y=0; aplicar(); };
@@ -863,7 +864,7 @@ async function cmDemografia(caixa, r, s, uf){
     if(k!==undefined){   // em cima de UM ponto: o concurso dele
       const c=cs[+k];
       dica.innerHTML=`<b>${c.orgao}</b><span>${c.cargo}${vg(c)}${c.banca?` · ${c.banca}`:''}</span><span class="st st-${cmCorPonto(c)}">${CM_SIT_NOME[c.status]||''}: ${c.quando}</span>`+
-        `<span class="sem">${c.estadual?`Órgão do estado · sede em ${m.n} · vale para todo o estado`:m.n} · clique para ver detalhes</span>`;
+        `<span class="sem">${c.estadual?`Órgão estadual ou federal · sede em ${m.n} · vale para todo o estado`:m.n} · clique para ver detalhes</span>`;
     } else {             // em cima da cidade: quantos concursos de cada situação
       const n=s=>cs.filter(c=>cmCorPonto(c)===s).length;
       const linhas=[['aberto','com inscrições abertas'],['andamento','encerrados (não disponíveis)'],['previsto','previstos'],['semprevisao','sem previsão']]
@@ -873,11 +874,35 @@ async function cmDemografia(caixa, r, s, uf){
     dica.hidden=false; dica.style.left=(ev.clientX-q.left)+'px'; dica.style.top=(ev.clientY-q.top)+'px'; };
   camada.onpointerleave=()=>{ dica.hidden=true; camada.querySelectorAll('.sel').forEach(e=>e.classList.remove('sel')); };
   // CLIQUE: num ponto = cartão com os detalhes daquele concurso + botão para o PCI Concursos; na cidade = lista dela
+  // LEQUE (pedido do Levi: cacho com muitos pontos ficava ilegível, ex.: Brasília com 79). Clicar num cacho com mais de
+  // 5 concursos ESPALHA os pontos dele em volta da cidade, MAIORES e agrupados por cor (verdes no meio, depois azuis,
+  // laranjas e vermelhos). O leque FICA ABERTO enquanto a pessoa escolhe; só fecha ao clicar fora ou abrir outra cidade.
+  const LEQUE_MIN=6, R_LEQUE=7.5, ORDEM_LEQUE={aberto:0, previsto:1, semprevisao:2, andamento:3};
+  let lequeJ=null;
+  const lequeFechar=()=>{ mapa.classList.remove('leque-aberto'); camada.querySelector('.cm-dm-leque')?.remove(); camada.querySelectorAll('.cm-dm-pontos circle.escondido').forEach(c=>c.classList.remove('escondido')); lequeJ=null; lequeRedesenha=null; };
+  const lequeAbrir=j=>{
+    lequeFechar(); lequeJ=j; mapa.classList.add('leque-aberto'); const m=munis[j], cs=conc(m);
+    const ordem=cs.map((c,k)=>({k, cor:cmCorPonto(c)})).sort((a,b)=>ORDEM_LEQUE[a.cor]-ORDEM_LEQUE[b.cor] || a.k-b.k);
+    camada.querySelectorAll(`.cm-dm-pontos circle[data-j="${j}"]`).forEach(c=>c.classList.add('escondido'));
+    const ns='http://www.w3.org/2000/svg', svg=document.createElementNS(ns,'svg'); svg.setAttribute('class','cm-dm-leque'); svg.setAttribute('width',W); svg.setAttribute('height',H);
+    camada.appendChild(svg);
+    lequeRedesenha=()=>{   // tamanhos em pixels de TELA: divide pelo zoom atual
+      const z=Z.z, r=R_LEQUE/z, passo=(2*R_LEQUE+3)/z*0.98, raioMax=passo*Math.sqrt(ordem.length-1)+r;
+      svg.innerHTML=`<circle class="fundo" cx="${m.x}" cy="${m.y}" r="${(raioMax+8/z).toFixed(2)}"/>`+
+        ordem.map((o,i)=>{ const d=passo*Math.sqrt(i), a=i*2.39996;
+          return `<circle cx="${(m.x+d*Math.cos(a)).toFixed(2)}" cy="${(m.y+d*Math.sin(a)).toFixed(2)}" r="${r.toFixed(2)}" class="sit-${o.cor}" data-j="${j}" data-k="${o.k}"/>`; }).join('');
+    };
+    lequeRedesenha();
+  };
   camada.onclick=ev=>{ if(arrastou){ arrastou=false; return; }
-    const j=ev.target.dataset?.j, k=ev.target.dataset?.k;
+    const j=ev.target.dataset?.j, k=ev.target.dataset?.k, noLeque=!!ev.target.closest('.cm-dm-leque');
     camada.querySelectorAll('.fixo').forEach(e=>e.classList.remove('fixo'));
-    if(j===undefined){ cmCartaoFechar(); return; }
-    const m=munis[+j], cs=conc(m); if(!cs.length){ cmCartaoFechar(); return; }
+    if(ev.target.classList.contains('fundo')) return;   // clique no fundo do leque: não fecha
+    if(j===undefined){ lequeFechar(); cmCartaoFechar(); return; }
+    const m=munis[+j], cs=conc(m); if(!cs.length){ lequeFechar(); cmCartaoFechar(); return; }
+    if(noLeque){ ev.target.classList.add('fixo'); cmCartao(uf, m, cs, +k); dica.hidden=true; return; }   // escolheu um ponto do leque
+    if(cs.length>=LEQUE_MIN && lequeJ!==+j){ lequeAbrir(+j); cmCartao(uf, m, cs, null); dica.hidden=true; return; }   // cacho cheio: abre o leque
+    if(lequeJ!==null && lequeJ!==+j) lequeFechar();
     if(k!==undefined){ ev.target.classList.add('fixo'); cmCartao(uf, m, cs, +k); }
     else { camada.querySelectorAll(`circle[data-j="${j}"]`).forEach(e=>e.classList.add('fixo')); cmCartao(uf, m, cs, null); }
     dica.hidden=true; };
@@ -922,7 +947,7 @@ function cmCartao(uf, m, cs, k){
       <div><dt>Vagas</dt><dd>${vagas(c)}</dd></div>
       ${c.banca?`<div><dt>Banca</dt><dd>${c.banca}</dd></div>`:''}
       <div><dt>${c.status==='previsto'||c.status==='semprevisao'?'Situação':'Inscrições'}</dt><dd>${c.quando}</dd></div>
-      <div><dt>Onde</dt><dd>${c.estadual?`Órgão do estado (sede em ${m.n}) — vale para todo o estado`:m.n}</dd></div>
+      <div><dt>Onde</dt><dd>${c.estadual?`Órgão estadual ou federal com sede em ${m.n} — vale para todo o estado`:m.n}</dd></div>
     </dl>
     <div class="cm-rz-botoes">
       ${pci?`<a class="cm-rz-pci" href="${pci.url}" target="_blank" rel="noopener">${pci.txt} ›</a>`:''}
