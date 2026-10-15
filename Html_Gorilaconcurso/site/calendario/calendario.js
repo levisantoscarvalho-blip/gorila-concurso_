@@ -639,17 +639,17 @@ function changeMonth(d){
 // 1) Dias estudados no total — todos os dias com estudo, nunca zera (= foguinho)
 // 2) Dias estudados este mês — SEMPRE o mês de hoje (não muda ao navegar no calendário)
 // 3) Horas estudadas no total — soma de TODAS as horas registradas, nunca zera
-// 4) Média de horas por dia — horas do mês de hoje ÷ TODOS os dias do mês (30/31)
+// 4) Média de horas por dia — horas do mês de hoje ÷ dias do mês que JÁ passaram (hoje dia 14 → ÷ 14; decisão do Levi)
 function updateStats(){
   const hoje = new Date();
   const { dias, horas } = resumoPeriodo(`${hoje.getFullYear()}-${String(hoje.getMonth()+1).padStart(2,'0')}`);
-  const diasDoMes = new Date(hoje.getFullYear(), hoje.getMonth()+1, 0).getDate();
+  const diasPassados = hoje.getDate();   // não divide pelos dias que ainda não chegaram
   const horasTotal = Object.values(state.days||{}).reduce((t,v)=>t+horasDoDia(v),0);
   const setEl=(id,v)=>{const el=document.getElementById(id);if(el)el.textContent=v;};
   setEl('stat-total', Object.values(state.days||{}).filter(isStudyDay).length); // mesmo número do foguinho
   setEl('stat-dias',dias);              setEl('stat-dias-sub', 'em '+MESES[hoje.getMonth()].toLowerCase());
   setEl('stat-horas-total', formatarHoras(horasTotal));
-  setEl('stat-media', formatarHoras(horas/diasDoMes)); setEl('stat-media-sub', 'em '+MESES[hoje.getMonth()].toLowerCase());
+  setEl('stat-media', formatarHoras(horas/diasPassados)); setEl('stat-media-sub', 'em '+MESES[hoje.getMonth()].toLowerCase());
 }
 // 3h → "3h" · 0,5h → "30min" · 1,25h → "1h 15min"
 function formatarHoras(h){

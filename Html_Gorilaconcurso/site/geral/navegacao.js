@@ -120,6 +120,45 @@ function trAbrirSala(){
   if(!window.__logado){ entrarComoVisitante(); }
   mostrarNoticias(true); trMarcarAtivo('tr-sala');
 }
+// Questões (lugar onde a pessoa vai resolver questões) — ainda não pronta: tela em branco, sem mensagem
+function trAbrirQuestoes(){
+  if(!window.__logado){ entrarComoVisitante(); }
+  mostrarNoticias(true); trMarcarAtivo('tr-questoes');
+}
+
+// Configurações (engrenagem) — ainda vamos desenvolver (decisão do Levi): por enquanto tela em branco, sem janela e sem mensagem
+function trAbrirConfig(){
+  if(!window.__logado){ entrarComoVisitante(); }
+  mostrarNoticias(true); trMarcarAtivo('tr-config');
+}
+
+// ── janela de CONFIGURAÇÕES — guardada para quando formos desenvolver (a engrenagem NÃO abre isto hoje) ──
+function abrirConfig(){ renderConfig(); document.getElementById('config-modal').classList.add('open'); }
+function fecharConfig(){ document.getElementById('config-modal').classList.remove('open'); }
+function configMudarTema(tema){ if(state.theme!==tema){ toggleTheme(); if(document.getElementById('cm-mapa3d')) cmDesenharMapaLeve(); } renderConfig(); }
+function renderConfig(){
+  const el=document.getElementById('config-lista'); if(!el) return;
+  const escuro = state.theme==='dark', temConta = window.__logado && !window.__guest;
+  const linha = (titulo, texto, acao) => `<div class="cfg-linha"><div><b>${titulo}</b><span>${texto}</span></div>${acao}</div>`;
+  el.innerHTML = `
+    <section class="dia-secao"><h4>Aparência</h4>
+      ${linha('Tema', 'Claro ou escuro, como preferir.', `<div class="cfg-seg" role="group" aria-label="Tema">
+        <button type="button" class="${!escuro?'ativo':''}" onclick="configMudarTema('light')">Claro</button>
+        <button type="button" class="${escuro?'ativo':''}" onclick="configMudarTema('dark')">Escuro</button></div>`)}
+    </section>
+    <section class="dia-secao"><h4>Calendário</h4>
+      ${linha('Cores do calendário', 'Estilo dos dias, paletas e a cor de cada curso.', `<button type="button" class="cfg-botao" onclick="fecharConfig();if(!window.__logado)entrarComoVisitante();abrirCores()">Abrir</button>`)}
+    </section>
+    <section class="dia-secao"><h4>Ajuda</h4>
+      ${linha('Tour do mapa de Notícias', 'Veja de novo como usar o mapa dos concursos.', `<button type="button" class="cfg-botao" onclick="fecharConfig();trAbrirNoticias();setTimeout(()=>cmTour(0),400)">Ver tour</button>`)}
+      ${linha('Central de ajuda', 'O que cada parte do site faz.', `<a class="cfg-botao" href="institucional/ajuda.html" target="_blank" rel="noopener">Abrir</a>`)}
+    </section>
+    <section class="dia-secao"><h4>Conta</h4>
+      ${temConta
+        ? linha('Sair da conta', 'Seus dados continuam salvos.', `<button type="button" class="cfg-botao perigo" onclick="fecharConfig();sairDaSecao()">Sair</button>`)
+        : linha('Sua conta', 'Crie sua conta grátis para guardar o seu progresso.', `<button type="button" class="cfg-botao principal" onclick="fecharConfig();tbRegistrar()">Registrar-se grátis</button>`)}
+    </section>`;
+}
 function trAbrirNoticias(){
   if(!window.__logado){ entrarComoVisitante(); }
   mostrarNoticias();

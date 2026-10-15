@@ -12,13 +12,14 @@
 
 const ESTAT_TESTE_DIAS = 3;
 let estatPeriodo = 30;   // dias mostrados no gráfico: 7, 30 ou 90
+let estatCache = {};
 
 function estatConfig(){ return state.estatisticas || (state.estatisticas = { ativo:true, testeInicio:null }); }
 // quantos dias de teste ainda restam (3, 2, 1, 0)
 function estatDiasRestantes(){
   const c = estatConfig(); if(!c.testeInicio) return ESTAT_TESTE_DIAS;
   const [y,m,d] = c.testeInicio.split('-').map(Number);
-  const passou = Math.floor((new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate()) - new Date(y,m-1,d)) / 86400000);
+  const passou = Math.round((new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate()) - new Date(y,m-1,d)) / 86400000);   // round: um dia com horário de verão tem 23h ou 25h
   return Math.max(0, ESTAT_TESTE_DIAS - passou);
 }
 function estatAlternar(){
@@ -32,23 +33,31 @@ function estatSerie(n){
   for(let i=n-1;i>=0;i--){
     const d = new Date(hoje.getFullYear(), hoje.getMonth(), hoje.getDate()-i);
     const k = mkKey(d.getFullYear(), d.getMonth()+1, d.getDate());
-    out.push({ k, d, h: horasDoDia(state.days[k]) });
+    out.push({ k, d, h: horasDoDia(state.days[k]), estudou: isStudyDay(state.days[k]) });
   }
   return out;
 }
 const estatFmtH = h => formatarHoras(h);
+// série de DEMONSTRAÇÃO (só para o fundo borrado de quem não tem acesso): não usa dados da pessoa
+function estatSerieDemo(n){ const hoje=new Date(), out=[]; for(let i=n-1;i>=0;i--){ const d=new Date(hoje.getFullYear(),hoje.getMonth(),hoje.getDate()-i); const h=[2,0,3,1.5,0,4,2.5,0,1,3][i%10]; out.push({k:'demo-'+i, d, h, estudou:h>0}); } return out; }
 const estatData = d => `${String(d.getDate()).padStart(2,'0')}/${String(d.getMonth()+1).padStart(2,'0')}`;
 // os números do desempenho ("dados matemáticos")
 function estatNumeros(serie){
   const n = serie.length, total = serie.reduce((t,p)=>t+p.h,0);
-  const estudados = serie.filter(p=>p.h>0).length;
+  const estudados = serie.filter(p=>p.estudou).length;   // mesma regra de "Dias estudados" (antes contava só dias com horas > 0)
   const melhor = serie.reduce((a,p)=>p.h>a.h?p:a, serie[0]);
   const meio = Math.floor(n/2);
   const m1 = serie.slice(0,meio).reduce((t,p)=>t+p.h,0) / Math.max(1,meio);
   const m2 = serie.slice(meio).reduce((t,p)=>t+p.h,0) / Math.max(1,n-meio);
-  const tend = m1>0 ? Math.round((m2-m1)/m1*100) : (m2>0 ? 100 : 0);
-  const questoes = serie.reduce((t,p)=>t+((state.days[p.k]&&state.days[p.k].estudos)||[]).reduce((q,e)=>q+(Number(e.questoes)||0),0),0);
-  return { total, media: total/n, estudados, constancia: Math.round(estudados/n*100), melhor, tend, questoes };
+  // tendência: % só quando dá para comparar; de zero para algo é "subindo" (não existe +100% de zero)
+  const tend = m1>0 ? Math.round((m2-m1)/m1*100) : null;
+  const tendTipo = m1>0 ? (tend>0?'sobe':tend<0?'desce':'igual') : (m2>0 ? 'comecou' : 'sem');
+  // questões: dos estudos de hoje E dos registros antigos por área (antes ficavam de fora)
+  const questoes = serie.reduce((t,p)=>{ const v=state.days[p.k]; if(!v) return t;
+    let q=(v.estudos||[]).reduce((s,e)=>s+(Number(e.questoes)||0),0);
+    AREAS_ORDEM.forEach(a=>{ if(v[a]&&typeof v[a]==='object') q+=Number(v[a].questoes)||0; });
+    return t+q; },0);
+  return { total, media: total/n, estudados, constancia: Math.round(estudados/n*100), melhor, tend, tendTipo, questoes };
 }
 
 // ── gráfico em L: eixo vertical (horas) + eixo horizontal (dias), linha com área, linha da média ──
@@ -58,6 +67,7 @@ function estatGrafico(serie, media){
   const maxH = Math.max(...serie.map(p=>p.h), media, 1);
   const passo = maxH<=2 ? .5 : maxH<=4 ? 1 : maxH<=8 ? 2 : maxH<=16 ? 4 : 6;
   const topo = Math.ceil(maxH/passo)*passo;
+  estatCache = { serie, topo };   // a mira do mouse reaproveita
   const x = i => mE + (n===1 ? w/2 : i*w/(n-1));
   const y = v => mT + h - v/topo*h;
   // grade horizontal discreta + rótulos do eixo vertical
@@ -90,11 +100,10 @@ function estatMira(ev){
   const svg = ev.currentTarget.ownerSVGElement, box = svg.closest('.estat-grafico'), dica = box.querySelector('.estat-dica');
   const r = svg.getBoundingClientRect(), esc = 760 / r.width;
   const px = ((ev.touches ? ev.touches[0].clientX : ev.clientX) - r.left) * esc;
-  const serie = estatSerie(estatPeriodo), n = serie.length, mE=44, w=760-44-16;
+  const serie = estatCache.serie || estatSerie(estatPeriodo), n = serie.length, mE=44, w=760-44-16;
   const i = Math.max(0, Math.min(n-1, Math.round((px-mE)/w*(n-1))));
   const p = serie[i], cx = mE + (n===1?w/2:i*w/(n-1));
-  const maxH = Math.max(...serie.map(q=>q.h), estatNumeros(serie).media, 1);
-  const passo = maxH<=2 ? .5 : maxH<=4 ? 1 : maxH<=8 ? 2 : maxH<=16 ? 4 : 6, topo = Math.ceil(maxH/passo)*passo;
+  const topo = estatCache.topo;
   const cy = 16 + (280-16-34) - p.h/topo*(280-16-34);
   const mira = svg.querySelector('.eg-mira'), ponto = svg.querySelector('.eg-ponto');
   mira.setAttribute('x1',cx); mira.setAttribute('x2',cx); mira.style.display='';
@@ -136,9 +145,9 @@ function renderEstatisticas(){
   }
   const bloqueado = !pro && !window.__guest && restam<=0;
 
-  const serie = estatSerie(estatPeriodo), num = estatNumeros(serie);
-  const tendTxt = num.tend>0 ? `+${num.tend}%` : `${num.tend}%`;
-  const tendCls = num.tend>0 ? 'sobe' : num.tend<0 ? 'desce' : '';
+  const serie = bloqueado ? estatSerieDemo(estatPeriodo) : estatSerie(estatPeriodo), num = estatNumeros(serie);
+  const tendTxt = {sobe:`+${num.tend}%`, desce:`${num.tend}%`, igual:'0%', comecou:'Subindo', sem:'—'}[num.tendTipo];
+  const tendCls = num.tendTipo==='sobe'||num.tendTipo==='comecou' ? 'sobe' : num.tendTipo==='desce' ? 'desce' : '';
   const periodos = [7,30,90].map(p=>`<button type="button" class="${p===estatPeriodo?'ativo':''}" onclick="estatMudarPeriodo(${p})">${p} dias</button>`).join('');
   const conteudo = `
     <div class="estat-cab">

@@ -99,7 +99,7 @@ body:not(.light) .cm-lado.apagada{fill:#222;stroke:#222}
 
 /* ═══ MAPA LEVE (canvas): cada estado é uma imagem pronta; subir/ampliar só movem as imagens ═══ */
 .cm-zoom{will-change:transform}
-.cm-mapa3d{position:relative;flex-shrink:0;transform:rotateX(42deg) rotateZ(-4deg);transform-origin:50% 55%}   /* inclinado: a parte de cima vai para o fundo */
+.cm-mapa3d{position:relative;flex-shrink:0;transform:rotateX(22deg) rotateZ(-3deg);transform-origin:50% 55%}   /* inclinação leve: o Brasil fica com a proporção certa (42° achatava o mapa) */
 .cm-est{position:absolute;display:block;pointer-events:none;will-change:transform;transform-origin:50% 55%;transition:transform .25s cubic-bezier(.2,.8,.2,1)}
 /* mouse em cima: o estado fica MAIOR, sobe e passa por cima dos vizinhos */
 .cm-est.sobe{transform:translateY(-10px) scale(1.18);z-index:5}
@@ -141,3 +141,198 @@ body:not(.light) .cm-lado.apagada{fill:#222;stroke:#222}
 .cm-so-mapa{height:auto!important;align-items:center}
 .cm-num .cm-num-ico{display:flex;align-items:center;justify-content:center}   /* ícone no centro do quadradinho */
 .cm-num .cm-num-ico{color:var(--accent-text)}
+
+/* ═══ FAIXA DAS BANDEIRAS (logo abaixo da barra de cima) ═══ */
+.cm-faixa{position:relative;overflow:hidden;height:46px;background:var(--surface-1);border-bottom:1px solid var(--border);
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent)}
+.cm-faixa-trilho,.cm-faixa-copia{display:flex;align-items:center}
+.cm-faixa-trilho{width:max-content;height:100%;will-change:transform;animation:cmFaixa 90s linear infinite}
+.cm-faixa:hover .cm-faixa-trilho{animation-play-state:paused}   /* mouse em cima: pausa para ler */
+.cm-faixa-item{display:flex;align-items:center;gap:9px;height:46px;padding:0 20px;font-size:13px;font-weight:600;color:var(--text-secondary);white-space:nowrap;border-right:1px solid var(--border)}
+.cm-faixa-item img{width:30px;height:21px;object-fit:cover;border-radius:3px;box-shadow:0 0 0 1px rgba(16,24,40,.14)}
+@keyframes cmFaixa{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){ .cm-faixa{overflow-x:auto} .cm-faixa-trilho{animation:none} .cm-faixa-copia{display:none} }
+/* o mapa diminui um pouco para continuar cabendo inteiro com a faixa */
+.cm-so-mapa .cm-palco{height:min(540px,calc(100vh - 132px))}
+
+/* ═══ área do mapa até a borda esquerda da tela (arrastar não "corta" mais no meio) ═══ */
+.cm-so-mapa{padding-left:0!important;align-items:stretch!important}
+.cm-so-mapa .cm-palco{flex:1;width:auto!important;border-radius:0 14px 14px 0}
+.cm-numeros{align-self:center}
+.cm-zoom{position:relative}
+.cm-zoom .cm-chao{position:absolute;left:22%;right:22%;bottom:3%;height:40px}   /* a sombra acompanha o mapa */
+
+/* ═══ controles do mapa: um grupo só (+ · 100% · −), mira (Brasil inteiro) e ? ═══ */
+.cm-controles{position:absolute;right:14px;top:14px;z-index:3;display:flex;flex-direction:column;align-items:center;gap:8px}
+.cm-ctrl-grupo{display:flex;flex-direction:column;align-items:stretch;background:var(--surface-1);border:1px solid var(--border);border-radius:10px;box-shadow:0 2px 8px rgba(16,24,40,.08);overflow:hidden}
+.cm-ctrl-grupo button,.cm-ctrl-solo{width:38px;height:36px;display:flex;align-items:center;justify-content:center;border:none;background:var(--surface-1);color:var(--text-primary);cursor:pointer;font:inherit}
+.cm-ctrl-grupo button:hover:not(:disabled),.cm-ctrl-solo:hover:not(:disabled){background:var(--surface-2)}
+.cm-ctrl-nivel{display:flex;align-items:center;justify-content:center;height:24px;font-size:11px;font-weight:700;color:var(--text-secondary);border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--surface-2);font-variant-numeric:tabular-nums}
+.cm-ctrl-solo{border:1px solid var(--border);border-radius:10px;box-shadow:0 2px 8px rgba(16,24,40,.08)}
+.cm-controles svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.cm-controles button:disabled{color:var(--text-muted);opacity:.45;cursor:default}
+.cm-controles .cm-ajuda{font-size:15px;font-weight:700}
+.cm-palco,.cm-faixa{user-select:none;-webkit-user-select:none}
+body.cm-sem-selecao,body.cm-sem-selecao *{user-select:none!important;-webkit-user-select:none!important}
+
+/* área 4: chamada no canto de cima do mapa */
+.cm-chamada{position:absolute;left:28px;top:20px;z-index:3;pointer-events:none;display:flex;flex-direction:column;gap:2px;max-width:360px}
+.cm-chamada b{font-size:20px;font-weight:800;letter-spacing:-.02em;color:var(--text-primary);line-height:1.2}
+.cm-chamada span{font-size:14px;font-weight:600;color:var(--accent-text)}
+@media (max-width:600px){ .cm-chamada{left:14px;top:12px} .cm-chamada b{font-size:16px} }
+
+/* botão "Ler a história do Brasil" (embaixo do "Acompanhe!") */
+.cm-chamada-botao{pointer-events:auto;align-self:flex-start;margin-top:10px;display:inline-flex;align-items:center;gap:8px;height:38px;padding:0 16px;border-radius:9px;border:none;background:var(--accent);color:#fff;font:inherit;font-size:13.5px;font-weight:700;cursor:pointer;box-shadow:0 4px 12px rgba(58,111,240,.28)}
+.cm-chamada-botao:hover{filter:brightness(1.07)}
+.cm-chamada-botao svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+/* ═══ janela de leitura: HISTÓRIA DO BRASIL ═══
+   Ocupa toda a área de leitura: da barra de cima até embaixo, até a barra de ícones (que fica por cima, fixa).
+   Linha do tempo em coluna à esquerda; o texto rola à direita numa largura boa de ler. */
+#historia-modal{padding:76px 120px 16px 16px;box-sizing:border-box;align-items:stretch;justify-content:stretch}
+.hb-janela{max-width:none!important;width:100%!important;height:100%;max-height:none!important;padding:0!important;overflow:hidden!important;background:var(--surface-1)!important;
+  display:grid!important;grid-template-columns:260px minmax(0,1fr);grid-template-rows:auto minmax(0,1fr)}
+.hb-cab{grid-column:1 / -1;display:flex;align-items:flex-start;justify-content:space-between;gap:16px;padding:20px 28px 16px;border-bottom:1px solid var(--border)}
+.hb-sobre{font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--accent-text)}
+.hb-cab h2{font-size:24px;font-weight:800;letter-spacing:-.02em;color:var(--text-primary);margin-top:2px}
+.hb-cab p{font-size:13.5px;color:var(--text-secondary);margin-top:4px}
+/* linha do tempo (coluna da esquerda) */
+.hb-linha{display:flex;flex-direction:column;gap:4px;overflow-y:auto;padding:16px 14px;border-right:1px solid var(--border);background:var(--surface-2)}
+.hb-linha button{position:relative;flex-shrink:0;display:flex;flex-direction:column;align-items:flex-start;gap:2px;width:100%;padding:9px 12px 9px 26px;border-radius:9px;border:1px solid transparent;background:transparent;cursor:pointer;font:inherit;text-align:left}
+.hb-linha button::before{content:"";position:absolute;left:11px;top:15px;width:7px;height:7px;border-radius:50%;background:var(--border-strong)}
+.hb-linha button b{font-size:12px;font-weight:700;color:var(--text-muted)}
+.hb-linha button span{font-size:13.5px;font-weight:600;color:var(--text-primary);line-height:1.3}
+.hb-linha button:hover{background:var(--surface-1);border-color:var(--border)}
+.hb-linha button.atual{background:var(--accent);border-color:var(--accent)}
+.hb-linha button.atual::before{background:#fff}
+.hb-linha button.atual b,.hb-linha button.atual span{color:#fff}
+/* texto (coluna da direita) */
+.hb-texto{overflow-y:auto;min-height:0;padding:8px 32px 32px;scroll-behavior:smooth}
+.hb-texto>*{max-width:760px;margin-left:auto!important;margin-right:auto!important}
+.hb-periodo{padding:22px 0 24px;border-bottom:1px solid var(--border)}
+.hb-periodo:last-of-type{border-bottom:none}
+.hb-data{display:inline-block;font-size:12px;font-weight:700;color:var(--accent-text);background:var(--accent-bg);padding:3px 10px;border-radius:999px}
+.hb-periodo h3{font-size:21px;font-weight:700;letter-spacing:-.015em;color:var(--text-primary);margin:10px 0 10px}
+.hb-periodo p{font-size:15.5px;line-height:1.75;color:var(--text-secondary);margin-bottom:12px}
+.hb-prova{margin-top:8px;padding:12px 16px;border-radius:10px;background:var(--surface-2);border-left:3px solid #16a34a;font-size:14px;line-height:1.55;color:var(--text-primary)}
+.hb-prova b{display:block;font-size:11.5px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#16a34a;margin-bottom:3px}
+.hb-fim{font-size:12px!important;color:var(--text-muted)!important;text-align:center;margin-top:16px}
+/* telas baixas (notebook): lista mais compacta para os 8 períodos caberem sem rolar */
+@media (min-width:901px) and (max-height:720px){
+  .hb-cab{padding:14px 28px 12px}
+  .hb-linha{gap:2px;padding:12px 12px}
+  .hb-linha button{padding:5px 10px 5px 24px;gap:0}
+  .hb-linha button::before{top:11px;left:10px}
+}
+/* telas menores: a barra de ícones vai para baixo; a linha do tempo vira uma grade em cima do texto (sem rolar de lado) */
+@media (max-width:1099px){ #historia-modal{padding:76px 16px 96px} }
+@media (max-width:900px){
+  .hb-janela{grid-template-columns:minmax(0,1fr);grid-template-rows:auto auto minmax(0,1fr)}
+  .hb-linha{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;overflow:visible;border-right:none;border-bottom:1px solid var(--border);padding:10px 16px}
+  .hb-linha button{padding:7px 8px 7px 10px}
+  .hb-linha button::before{display:none}
+  .hb-linha button span{font-size:12px}
+  .hb-texto{padding:4px 20px 24px}
+}
+@media (max-width:600px){
+  #historia-modal{padding:68px 8px 92px}
+  .hb-cab{padding:16px 16px 12px} .hb-cab h2{font-size:20px}
+  .hb-linha{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .hb-texto{padding:4px 16px 20px}
+  .hb-periodo p{font-size:15px}
+}
+/* referências de cada período */
+.hb-fontes{margin-top:12px;font-size:12.5px;line-height:1.55;color:var(--text-muted)}
+.hb-fontes b{display:block;font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;margin-bottom:4px}
+.hb-fontes ul{margin:0;padding-left:18px}
+.hb-fontes li{margin:2px 0}
+.hb-periodo q{font-style:italic;color:var(--text-primary)}
+
+/* ═══ clique num estado: quadro com o estado GRANDE ao lado do mapa + linha ligando ═══ */
+.cm-alvo path{cursor:pointer}
+.cm-palco.ampliado .cm-alvo path{cursor:grab}
+.cm-destaque{position:absolute;z-index:6;width:236px;box-sizing:border-box;padding:14px 14px 12px;border-radius:14px;background:var(--surface-1);border:1px solid var(--border);box-shadow:0 12px 32px rgba(16,24,40,.18),0 2px 6px rgba(16,24,40,.08);display:flex;flex-direction:column;align-items:center;text-align:center;cursor:default;transition:left .25s cubic-bezier(.2,.8,.2,1),top .25s cubic-bezier(.2,.8,.2,1)}
+body:not(.light) .cm-destaque{box-shadow:0 12px 32px rgba(0,0,0,.55)}
+.cm-destaque.entra{animation:cmDestaqueEntra .32s cubic-bezier(.34,1.3,.64,1)}
+@keyframes cmDestaqueEntra{from{opacity:0;transform:scale(.88)}to{opacity:1;transform:none}}
+.cm-destaque-x{position:absolute;right:8px;top:8px;width:28px;height:28px;display:flex;align-items:center;justify-content:center;border:none;border-radius:8px;background:transparent;color:var(--text-muted);cursor:pointer}
+.cm-destaque-x:hover{background:var(--surface-2);color:var(--text-primary)}
+.cm-destaque-x svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}
+.cm-destaque-img{width:200px;height:160px;margin-top:6px;filter:drop-shadow(0 6px 10px rgba(16,24,40,.22))}
+.cm-destaque-nome{margin-top:8px;font-size:18px;font-weight:800;letter-spacing:-.015em;color:var(--text-primary)}
+.cm-destaque-reg{font-size:12.5px;color:var(--text-muted);margin-top:1px}
+.cm-destaque-aviso{margin-top:12px;display:flex;align-items:flex-start;gap:8px;padding:9px 11px;border-radius:10px;background:var(--accent-bg);color:var(--accent-text);font-size:12.5px;font-weight:600;line-height:1.4;text-align:left}
+.cm-destaque-aviso svg{width:18px;height:18px;flex-shrink:0;margin-top:1px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;animation:cmCliqueAviso 1.6s ease-in-out infinite}
+@keyframes cmCliqueAviso{0%,60%,100%{transform:none}30%{transform:translate(1px,1px) scale(.88)}}
+.cm-ligacao{position:absolute;left:0;top:0;z-index:5;pointer-events:none;overflow:visible;transition:opacity .15s}
+.cm-ligacao-linha{fill:none;stroke:var(--accent);stroke-width:2;stroke-dasharray:5 5;stroke-linecap:round;animation:cmLigacaoAnda 1s linear infinite}
+@keyframes cmLigacaoAnda{to{stroke-dashoffset:-10}}
+.cm-ligacao-ponto{fill:var(--accent);stroke:#fff;stroke-width:2.5}
+@media (prefers-reduced-motion:reduce){ .cm-destaque.entra,.cm-destaque-aviso svg,.cm-ligacao-linha{animation:none} }
+/* sem caixa: só o estado grande flutuando ao lado do mapa (pedido do Levi) */
+.cm-destaque{width:290px;padding:0;background:transparent;border:none;box-shadow:none!important;pointer-events:none}
+.cm-destaque-aviso{pointer-events:auto}
+.cm-destaque-img{width:290px;height:230px;margin-top:0;filter:drop-shadow(0 14px 16px rgba(16,24,40,.28))}
+body:not(.light) .cm-destaque-img{filter:drop-shadow(0 14px 18px rgba(0,0,0,.6))}
+.cm-destaque-nome{margin-top:4px}
+.cm-destaque-aviso{margin-top:8px;padding:7px 12px;border-radius:999px;font-size:12px;align-items:center;box-shadow:0 2px 8px rgba(16,24,40,.08)}
+.cm-destaque-aviso svg{width:16px;height:16px;margin-top:0}
+/* celular/tablet: o mapa estava com altura quase zero (flex:1 em coluna) — volta a ter altura de verdade */
+@media (max-width:1000px){ .cm-so-mapa .cm-palco{flex:none;width:100%!important;height:min(540px,70vh);border-radius:14px} }
+@media (max-width:640px){ .cm-so-mapa .cm-palco{height:min(660px,80vh)} .cm-destaque{width:240px} .cm-destaque-img{width:150px;height:105px} .cm-destaque-nome{font-size:16px;margin-top:2px} .cm-destaque-reg{display:none} .cm-destaque-aviso{margin-top:6px;font-size:11.5px} }
+/* estado grande FLUTUANDO: sobe e desce devagar; a sombra embaixo diminui quando ele sobe */
+.cm-destaque{width:320px}
+.cm-destaque-img{width:100%;height:280px;display:block}
+.cm-destaque-voo{width:100%;display:flex;justify-content:center;will-change:transform;animation:cmFlutua 3.2s ease-in-out infinite}
+.cm-destaque-sombra{width:58%;height:18px;margin-top:-4px;border-radius:50%;background:radial-gradient(ellipse at center,rgba(16,24,40,.30),transparent 70%);animation:cmFlutuaSombra 3.2s ease-in-out infinite}
+body:not(.light) .cm-destaque-sombra{background:radial-gradient(ellipse at center,rgba(0,0,0,.7),transparent 70%)}
+@keyframes cmFlutua{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+@keyframes cmFlutuaSombra{0%,100%{transform:scaleX(1);opacity:1}50%{transform:scaleX(.8);opacity:.6}}
+@media (max-width:640px){ .cm-destaque{width:240px} .cm-destaque-img{width:150px;height:105px} .cm-destaque-sombra{width:40%;height:12px}
+  .cm-zoom{align-items:flex-start;padding-top:118px;box-sizing:border-box} .cm-zoom .cm-chao{display:none} }   /* celular: mapa logo abaixo do "Conheça", sobra espaço embaixo para o estado grande */
+@media (prefers-reduced-motion:reduce){ .cm-destaque-voo,.cm-destaque-sombra{animation:none} }
+/* ═══ faixa de AVISO acima das bandeiras: "Concursos de cada estado" ═══ */
+.cm-aviso{display:flex;align-items:center;justify-content:center;gap:9px;min-height:40px;padding:8px 20px;box-sizing:border-box;background:var(--accent-bg);border-bottom:1px solid var(--border);color:var(--text-primary);font-size:13.5px;line-height:1.35;text-align:center}
+.cm-aviso b{font-weight:700;color:var(--accent-text)}
+.cm-aviso svg{width:18px;height:18px;flex-shrink:0;fill:none;stroke:var(--accent-text);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+@media (min-width:1001px){ .cm-so-mapa .cm-palco{height:min(540px,calc(100vh - 172px))} }   /* +40px da faixa de aviso (celular/tablet têm altura própria) */
+@media (max-width:600px){ .cm-aviso{font-size:12.5px;padding:8px 14px;justify-content:flex-start;text-align:left} }
+/* celular: o mapa termina antes da barra de ícones de baixo, e o estado grande cabe embaixo do mapa */
+@media (max-width:640px){
+  .cm-so-mapa .cm-palco{height:max(470px,calc(100vh - 250px))}
+  .cm-zoom{padding-top:100px}
+  .cm-destaque-img{width:124px;height:88px}
+  .cm-destaque-nome{font-size:15px}
+}
+/* estado flutuando é clicável + cursor do mouse "clicando" nele (3 vezes, depois para; some com o mouse em cima) */
+.cm-destaque-voo{position:relative;pointer-events:auto;cursor:pointer;border-radius:12px;outline:none}
+.cm-destaque-voo .cm-destaque-img{transition:transform .2s ease}
+.cm-destaque-voo:hover .cm-destaque-img{transform:scale(1.03)}
+.cm-destaque-voo:focus-visible{box-shadow:0 0 0 3px var(--accent)}
+.cm-cursor{position:absolute;left:55%;top:50%;width:30px;height:30px;margin:-4px 0 0 -6px;pointer-events:none;transition:opacity .2s}
+.cm-cursor svg{position:relative;width:30px;height:30px;fill:#fff;stroke:#111827;stroke-width:1.5;stroke-linejoin:round;filter:drop-shadow(0 2px 3px rgba(0,0,0,.35));transform-origin:20% 15%;animation:cmCursorClica 2.4s ease-in-out .5s 3}
+.cm-cursor-onda{position:absolute;left:6px;top:4px;width:34px;height:34px;margin:-17px 0 0 -17px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 2px rgba(37,99,235,.55);opacity:0;animation:cmCursorOnda 2.4s ease-out .5s 3}
+@keyframes cmCursorClica{0%,30%,100%{transform:translate(0,0) scale(1)}42%{transform:translate(-2px,-2px) scale(.84)}55%{transform:translate(0,0) scale(1)}}
+@keyframes cmCursorOnda{0%,40%{opacity:0;transform:scale(.3)}46%{opacity:1;transform:scale(.45)}80%,100%{opacity:0;transform:scale(1.3)}}
+.cm-destaque-voo:hover .cm-cursor{opacity:0}
+@media (prefers-reduced-motion:reduce){ .cm-cursor svg,.cm-cursor-onda{animation:none} }
+@media (max-width:640px){ .cm-cursor,.cm-cursor svg{width:24px;height:24px} }
+/* faixa das bandeiras EMBAIXO do mapa: linha em cima em vez de embaixo */
+.cm-so-mapa + .cm-faixa{border-bottom:none;border-top:1px solid var(--border)}
+@media (max-width:1099px){ .cm-so-mapa{padding-bottom:10px!important} .cm-so-mapa + .cm-faixa{margin-bottom:96px} }   /* celular/tablet: espaço da barra de ícones de baixo fica depois das bandeiras */
+/* ═══ cabeçalho da página (substitui a faixa azul de aviso): título + explicação à esquerda, 2 passos à direita ═══ */
+.cm-aviso{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:0;padding:12px 28px;box-sizing:border-box;background:var(--surface-1);border-bottom:1px solid var(--border);text-align:left}
+@media (min-width:1100px){ .cm-aviso{padding-right:120px} }   /* não fica atrás da barra de ícones */
+.cm-aviso-tit{display:flex;align-items:center;gap:12px;min-width:0}
+.cm-aviso-ico{width:36px;height:36px;flex-shrink:0;display:flex;align-items:center;justify-content:center;border-radius:10px;background:var(--accent-bg)}
+.cm-aviso-ico svg{width:19px;height:19px;fill:none;stroke:var(--accent-text);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.cm-aviso h2{margin:0;font-size:16px;font-weight:800;letter-spacing:-.015em;color:var(--text-primary);line-height:1.25}
+.cm-aviso p{margin:1px 0 0;font-size:13px;color:var(--text-secondary);line-height:1.35}
+.cm-aviso-passos{display:flex;align-items:center;gap:8px;margin:0;padding:0;list-style:none;flex-shrink:0}
+.cm-aviso-passos li{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--text-primary);white-space:nowrap}
+.cm-aviso-passos i{width:22px;height:22px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:var(--accent);color:#fff;font-style:normal;font-size:12px;font-weight:700}
+.cm-aviso-seta svg{width:16px;height:16px;fill:none;stroke:var(--text-muted);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+@media (min-width:1001px){ .cm-so-mapa .cm-palco{height:min(540px,calc(100vh - 192px))} }   /* cabeçalho ~60px + bandeiras 46px */
+@media (max-width:760px){ .cm-aviso{padding:10px 14px} .cm-aviso-passos{display:none} .cm-aviso p{font-size:12.5px} }
+/* sem a chamada da história no canto: no celular o mapa sobe */
+@media (max-width:640px){ .cm-zoom{padding-top:56px} }

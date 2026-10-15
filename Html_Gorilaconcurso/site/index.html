@@ -141,11 +141,18 @@
     <button class="tr-item" id="tr-sala" title="Sala de estudos" aria-label="Sala de estudos" onclick="trAbrirSala()">
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 8.5L12 4l10 4.5-10 4.5z"/><path d="M6 10.4V15c0 1.7 2.7 3 6 3s6-1.3 6-3v-4.6"/><path d="M22 8.5v5"/></svg>
     </button>
+    <button class="tr-item" id="tr-questoes" title="Questões" aria-label="Questões" onclick="trAbrirQuestoes()">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="4" width="14" height="17" rx="2.5"/><path d="M9 4V3h6v1"/><path d="M8.5 10l1.5 1.5L13 8.5M8.5 15.5l1.5 1.5 3-3"/><path d="M15 10.5h1.5M15 16h1.5"/></svg>
+    </button>
     <button class="tr-item" id="tr-calendario" title="Calendário de estudos" aria-label="Calendário de estudos" onclick="trAbrirCalendario()">
       <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M3.5 9.5h17M8 3v4M16 3v4"/><path d="M9 14.5l2 2 4-4"/></svg>
     </button>
     <button class="tr-item" id="tr-noticias" title="Notícias de concursos" aria-label="Notícias de concursos" onclick="trAbrirNoticias()">
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4.5h11.5a1.5 1.5 0 0 1 1.5 1.5v12.5a2 2 0 0 0 2 2H6a2.5 2.5 0 0 1-2.5-2.5V6A1.5 1.5 0 0 1 5 4.5z"/><path d="M18 9h2v9.5a2 2 0 0 1-2 2"/><path d="M7 8.5h7M7 12h7M7 15.5h4"/></svg>
+    </button>
+    <span class="tr-divisor" aria-hidden="true"></span>
+    <button class="tr-item" id="tr-config" title="Configurações" aria-label="Configurações" onclick="trAbrirConfig()">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>
     </button>
   </nav>
 
@@ -635,6 +642,15 @@
   </div>
 </div>
 
+<!-- Configurações (engrenagem da barra da direita) → geral/navegacao.js -->
+<div class="modal-overlay" id="config-modal" onclick="if(event.target===this)fecharConfig()">
+  <div class="modal-inner config-janela" role="dialog" aria-modal="true" aria-labelledby="config-titulo">
+    <div class="dia-cab"><div><div class="dia-titulo" id="config-titulo">Configurações</div><div class="cores-sub">Ajuste o Gorila Concurso do seu jeito.</div></div>
+      <button type="button" class="dia-fechar" onclick="fecharConfig()" aria-label="Fechar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+    <div id="config-lista"></div>
+  </div>
+</div>
+
 <div class="modal-overlay" id="cores-modal" onclick="if(event.target===this)fecharCores()">
   <div class="modal-inner cores-janela" role="dialog" aria-modal="true" aria-labelledby="cores-titulo">
     <div class="dia-cab"><div><div class="dia-titulo" id="cores-titulo">Cores do calendário</div><div class="cores-sub">Clique na cor para abrir a paleta completa e escolher qualquer cor.</div></div>
@@ -693,6 +709,7 @@
 <script src="noticias/noticias.js"></script>
 <script src="noticias/mapa-brasil.js"></script>
 <script src="noticias/concursos-mapa.js"></script>
+<script src="noticias/historia-brasil.js"></script>
 <script src="sala-de-estudo/trilhas.js"></script>
 <script src="sala-de-estudo/conteudos.js"></script>
 <script src="sala-de-estudo/mapa-mental.js"></script>

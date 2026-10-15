@@ -155,3 +155,22 @@ body:not(.light) #busca-global{border-color:#3a3a3a!important}
 #tab-calendario #tb-cal-switch{margin:0;display:flex;align-items:center;gap:10px;padding:8px 12px;border:1px solid var(--border);border-radius:10px;background:var(--surface-1)}
 #tab-calendario #tb-cal-switch.fora-do-cal{visibility:visible}.iv-chave{fill:var(--border-strong)}
 #cal-off-msg .tela-vazia{padding:22px 10px 18px}
+
+/* ─── barra da direita: divisória antes da engrenagem de Configurações ─── */
+.tr-divisor{display:block;width:28px;height:1px;background:var(--border);margin:2px auto}
+@media (max-width:1099px){ .tr-divisor{width:1px;height:28px;margin:auto 2px} }
+
+/* ─── janela de Configurações ─── */
+.config-janela{max-width:520px!important;width:94%;padding:0!important;background:var(--surface-1)!important}
+#config-lista{padding:0 20px 18px}
+.cfg-linha{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:12px 0;border-bottom:1px solid var(--border)}
+.dia-secao .cfg-linha:last-child{border-bottom:none}
+.cfg-linha b{display:block;font-size:14px;font-weight:600;color:var(--text-primary)}
+.cfg-linha span{display:block;font-size:12.5px;color:var(--text-secondary);margin-top:2px}
+.cfg-seg{display:inline-flex;padding:3px;gap:2px;border-radius:9px;background:var(--surface-2);border:1px solid var(--border);flex-shrink:0}
+.cfg-seg button{height:30px;padding:0 14px;border:none;border-radius:7px;background:none;color:var(--text-secondary);font:inherit;font-size:13px;font-weight:600;cursor:pointer}
+.cfg-seg button.ativo{background:var(--surface-1);color:var(--text-primary);box-shadow:0 1px 3px rgba(16,24,40,.12),0 0 0 1px var(--border)}
+.cfg-botao{flex-shrink:0;display:inline-flex;align-items:center;height:34px;padding:0 14px;border-radius:8px;border:1px solid var(--border);background:var(--surface-1);color:var(--text-primary);font:inherit;font-size:13px;font-weight:600;cursor:pointer;text-decoration:none;white-space:nowrap}
+.cfg-botao:hover{background:var(--surface-2)}
+.cfg-botao.principal{background:#16a34a;border-color:#16a34a;color:#fff}
+.cfg-botao.perigo{color:var(--danger);border-color:var(--danger)}
