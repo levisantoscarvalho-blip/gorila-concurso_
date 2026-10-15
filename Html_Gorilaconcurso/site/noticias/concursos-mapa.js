@@ -817,37 +817,109 @@ async function cmDemografia(caixa, r, s, uf){
     <svg class="cm-dm-quadros cm-dm-pontos" width="${W}" height="${H}">${pontos}</svg>
     ${destaques.map(m=>`<span class="cm-dm-cidade" style="left:${(m.x+ladoM(m)/2+4).toFixed(1)}px;top:${m.y.toFixed(1)}px">${m.n}</span>`).join('')}
     <div class="cm-dm-dica" hidden></div>`;
-  mapa.appendChild(camada);
+  // ZOOM E ARRASTAR (pedido do Levi, igual ao mapa do Brasil): o contorno da região e a camada dos pontos vão para um
+  // "palco" que amplia com a rodinha (no ponto do mouse), arrasta com o mouse quando ampliado, volta com duplo clique ou
+  // com os botões + / − / ⟲. Os pontinhos e os nomes NÃO incham junto (ficam quase do mesmo tamanho; os pontos se afastam).
+  const zw=document.createElement('div'); zw.className='cm-rz';
+  const svgReg=mapa.querySelector(':scope > svg'); if(svgReg) zw.appendChild(svgReg);
+  zw.appendChild(camada); mapa.appendChild(zw); mapa.classList.add('cm-rz-vista');
+  const dicaFora=camada.querySelector('.cm-dm-dica'); caixa.appendChild(dicaFora);   // o balão fica fora do zoom (não aumenta)
+  mapa.insertAdjacentHTML('beforeend', `<div class="cm-rz-ctrl"><button type="button" data-z="1" title="Aproximar">+</button><button type="button" data-z="-1" title="Afastar">−</button><button type="button" data-z="0" title="Ver a região inteira">⟲</button></div>`);
+  const Z={z:1,x:0,y:0};
+  const aplicar=()=>{ Z.z=Math.max(1,Math.min(10,Z.z)); Z.x=Math.min(0,Math.max(W-W*Z.z,Z.x)); Z.y=Math.min(0,Math.max(H-H*Z.z,Z.y));
+    zw.style.transform=`translate(${Z.x}px,${Z.y}px) scale(${Z.z})`;
+    const r=(R_PONTO*(1+(Z.z-1)*0.25)/Z.z).toFixed(2); camada.querySelectorAll('.cm-dm-pontos circle').forEach(c=>c.setAttribute('r',r));
+    camada.querySelectorAll('.cm-dm-cidade').forEach(s=>s.style.transform=`translateY(-50%) scale(${1/Z.z})`);
+    mapa.classList.toggle('ampliado', Z.z>1.001); };
+  const zoomEm=(fator,mx,my)=>{ const z0=Z.z, z1=Math.max(1,Math.min(10,z0*fator)); Z.x=mx-(mx-Z.x)*(z1/z0); Z.y=my-(my-Z.y)*(z1/z0); Z.z=z1; aplicar(); };
+  mapa.onwheel=ev=>{ ev.preventDefault(); ev.stopPropagation(); const q=mapa.getBoundingClientRect(); zoomEm(ev.deltaY<0?1.25:0.8, ev.clientX-q.left, ev.clientY-q.top); };
+  mapa.ondblclick=ev=>{ ev.stopPropagation(); Z.z=1; Z.x=0; Z.y=0; aplicar(); };
+  mapa.querySelector('.cm-rz-ctrl').onclick=ev=>{ const d=ev.target.dataset?.z; if(d===undefined) return; ev.stopPropagation();
+    if(d==='0'){ Z.z=1; Z.x=0; Z.y=0; aplicar(); } else zoomEm(d==='1'?1.5:1/1.5, W/2, H/2); };
+  let arrasto=null, arrastou=false;
+  mapa.onpointerdown=ev=>{ if(Z.z<=1.001 || ev.button!==0 || ev.target.closest('.cm-rz-ctrl')) return; arrasto={x:ev.clientX,y:ev.clientY,x0:Z.x,y0:Z.y}; arrastou=false; mapa.setPointerCapture?.(ev.pointerId); };
+  mapa.addEventListener('pointermove', ev=>{ if(!arrasto) return; const dx=ev.clientX-arrasto.x, dy=ev.clientY-arrasto.y;
+    if(Math.abs(dx)+Math.abs(dy)>3) arrastou=true; if(arrastou){ Z.x=arrasto.x0+dx; Z.y=arrasto.y0+dy; aplicar(); mapa.classList.add('arrastando'); dicaFora.hidden=true; } });
+  const soltar=()=>{ arrasto=null; mapa.classList.remove('arrastando'); }; mapa.onpointerup=soltar; mapa.onpointercancel=soltar;
   requestAnimationFrame(()=>camada.classList.add('aparece'));
-  // mouse em cima de uma cidade: os concursos dela (só concurso — pedido do Levi); CLIQUE = painel da direita mostra a cidade
-  const dica=camada.querySelector('.cm-dm-dica');
+  // mouse em cima de um ponto = aquele concurso; em cima da cidade = quantos de cada cor. CLIQUE = cartão com detalhes à direita
+  const dica=dicaFora;
   const vg=c=>c.vagas?` · ${cmNum(c.vagas)} ${c.vagas===1?'vaga':'vagas'}`:'';
-  camada.onpointermove=ev=>{ const j=ev.target.dataset?.j, k=ev.target.dataset?.k; if(j===undefined){ dica.hidden=true; camada.querySelectorAll('.sel').forEach(e=>e.classList.remove('sel')); return; }
-    const m=munis[+j], q=camada.getBoundingClientRect();
+  camada.onpointermove=ev=>{ const j=ev.target.dataset?.j, k=ev.target.dataset?.k; if(arrasto && arrastou) return;
+    if(j===undefined){ dica.hidden=true; camada.querySelectorAll('.sel').forEach(e=>e.classList.remove('sel')); return; }
+    const m=munis[+j], q=caixa.getBoundingClientRect();
     camada.querySelectorAll('.sel').forEach(e=>e.classList.remove('sel')); (k!==undefined?[ev.target]:camada.querySelectorAll(`[data-j="${j}"]`)).forEach(e=>e.classList.add('sel'));
     const cs=conc(m);
     if(k!==undefined){   // em cima de UM ponto: o concurso dele
       const c=cs[+k];
       dica.innerHTML=`<b>${c.orgao}</b><span>${c.cargo}${vg(c)}${c.banca?` · ${c.banca}`:''}</span><span class="st st-${cmCorPonto(c)}">${CM_SIT_NOME[c.status]||''}: ${c.quando}</span>`+
-        `<span class="sem">${c.estadual?`Órgão do estado · sede em ${m.n} · vale para todo o estado`:m.n} · fonte: ${c.fonte.nome}</span>`;
+        `<span class="sem">${c.estadual?`Órgão do estado · sede em ${m.n} · vale para todo o estado`:m.n} · clique para ver detalhes</span>`;
     } else {             // em cima da cidade: quantos concursos de cada situação
       const n=s=>cs.filter(c=>cmCorPonto(c)===s).length;
       const linhas=[['aberto','com inscrições abertas'],['andamento','com inscrições encerradas / provas'],['previsto','previstos'],['semprevisao','sem previsão']]
         .filter(([s])=>n(s)).map(([s,t])=>`<span class="st st-${s}">● ${n(s)} ${t}</span>`).join('');
-      dica.innerHTML=`<b>${m.n}</b>${linhas||'<span class="sem">Nenhum concurso no levantamento</span>'}`;
+      dica.innerHTML=`<b>${m.n}</b>${linhas?linhas+'<span class="sem">Clique para ver a lista</span>':'<span class="sem">Nenhum concurso no levantamento</span>'}`;
     }
     dica.hidden=false; dica.style.left=(ev.clientX-q.left)+'px'; dica.style.top=(ev.clientY-q.top)+'px'; };
   camada.onpointerleave=()=>{ dica.hidden=true; camada.querySelectorAll('.sel').forEach(e=>e.classList.remove('sel')); };
-  camada.onclick=ev=>{ const j=ev.target.dataset?.j; const p=document.getElementById('cm-ev-painel'); if(!p) return;
+  // CLIQUE: num ponto = cartão com os detalhes daquele concurso + botão para o PCI Concursos; na cidade = lista dela
+  camada.onclick=ev=>{ if(arrastou){ arrastou=false; return; }
+    const j=ev.target.dataset?.j, k=ev.target.dataset?.k;
     camada.querySelectorAll('.fixo').forEach(e=>e.classList.remove('fixo'));
-    if(j===undefined || p._sel===munis[+j]){ p._sel=null; cmPainelConcursos(); return; }
-    camada.querySelectorAll(`[data-j="${j}"]`).forEach(e=>e.classList.add('fixo'));
-    p._sel=munis[+j]; cmPainelConcursos(); };
-  // embaixo do mapa: só a legenda dos pontos (os números e a lista ficam no painel da direita)
+    if(j===undefined){ cmCartaoFechar(); return; }
+    const m=munis[+j], cs=conc(m); if(!cs.length){ cmCartaoFechar(); return; }
+    if(k!==undefined){ ev.target.classList.add('fixo'); cmCartao(uf, m, cs, +k); }
+    else { camada.querySelectorAll(`circle[data-j="${j}"]`).forEach(e=>e.classList.add('fixo')); cmCartao(uf, m, cs, null); }
+    dica.hidden=true; };
+  // embaixo do mapa: a legenda com QUANTOS pontos de cada cor há na região (pedido do Levi)
+  const todosC=munis.flatMap(conc), nCor=s=>todosC.filter(c=>cmCorPonto(c)===s).length;
   const info=caixa.querySelector('#cm-dm-info');
-  info.innerHTML=`<div class="cm-dm-leg1 cm-dm-legp"><span><i class="sit-aberto"></i>Inscrições abertas</span><span><i class="sit-andamento"></i>Inscrições encerradas / provas</span><span><i class="sit-previsto"></i>Previsto</span><span><i class="sit-semprevisao"></i>Sem previsão</span><span class="cm-dm-leg1-dica">1 ponto = 1 concurso</span></div>`;
+  info.innerHTML=`<div class="cm-dm-leg1 cm-dm-legp">${[['aberto','Inscrições abertas'],['andamento','Encerradas / provas'],['previsto','Previstos'],['semprevisao','Sem previsão']]
+      .map(([s,t])=>`<span class="${nCor(s)?'':'zero'}"><i class="sit-${s}"></i>${t} <b>${nCor(s)}</b></span>`).join('')}</div>
+    <div class="cm-dm-leg1-dica">1 ponto = 1 concurso · rodinha do mouse aproxima · clique num ponto para ver os detalhes</div>`;
   requestAnimationFrame(()=>info.classList.add('aparece'));
   const p=document.getElementById('cm-ev-painel'); if(p){ p._munis=munis; cmPainelConcursos(); }
+}
+// ── CARTÃO DE DETALHES (clique num pontinho; pedido do Levi): fica à direita, no espaço livre ao lado da região.
+// Um concurso: situação, órgão, cargo, vagas, banca, datas, onde, fonte e o botão para o PCI Concursos — direto no
+// edital quando o dado veio do PCI; senão, na lista de concursos daquele estado no PCI (página da região, já no estado).
+// Uma cidade (clique fora dos pontos): a lista dos concursos dela; clicar num item abre os detalhes.
+function cmCartaoFechar(){ document.getElementById('cm-rz-card')?.remove(); document.querySelectorAll('.cm-dm .fixo').forEach(e=>e.classList.remove('fixo')); }
+function cmCartao(uf, m, cs, k){
+  const v=document.getElementById('cm-estado-vista'), alvo=document.getElementById('cm-ev-mapa'), band=v?.querySelector('.cm-ev-bandeira'); if(!v) return;
+  let el=document.getElementById('cm-rz-card');
+  if(!el){ el=document.createElement('div'); el.id='cm-rz-card'; el.className='cm-rz-card';
+    if(band && band.offsetWidth && alvo){ const V=v.getBoundingClientRect(), A=alvo.getBoundingClientRect();
+      el.style.cssText=`left:${A.left-V.left+Math.max(0,(A.width-460)/2)}px;top:${A.top-V.top+20}px;width:${Math.min(460,A.width)}px;max-height:${A.height-40}px`; v.appendChild(el); }
+    else { el.classList.add('embaixo'); document.getElementById('cm-ev-regiao')?.appendChild(el); }
+    el.onpointerdown=e=>e.stopPropagation(); el.onwheel=e=>e.stopPropagation(); }
+  const todosPci=cmFontes()[1][uf]?.todos, ehPci=c=>/pciconcursos\.com\.br/.test(c.fonte.url);
+  const vagas=c=>c.vagas?`${cmNum(c.vagas)} ${c.vagas===1?'vaga':'vagas'}`:'Vagas a definir';
+  const fechar=`<button type="button" class="cm-rz-x" onclick="cmCartaoFechar()" aria-label="Fechar">×</button>`;
+  if(k===null){   // lista da cidade
+    el.innerHTML=`${fechar}<div class="cm-rz-cid">${m.n}</div><div class="cm-rz-sub">${cs.length} ${cs.length===1?'concurso':'concursos'} · clique para ver os detalhes</div>
+      <ul class="cm-rz-lista">${cs.map((c,i)=>`<li data-i="${i}"><i class="sit-${cmCorPonto(c)}"></i><span><b>${c.orgao}</b><small>${c.cargo} · ${vagas(c)}</small></span><em class="st-${cmCorPonto(c)}">${CM_SIT_NOME[cmConcursoHoje(c).status]||''}</em></li>`).join('')}</ul>`;
+    el.querySelectorAll('.cm-rz-lista li').forEach(li=>li.onclick=()=>cmCartao(uf, m, cs, +li.dataset.i));
+    return;
+  }
+  const c=cmConcursoHoje(cs[k]), cor=cmCorPonto(c);
+  const pci=ehPci(c) ? {url:c.fonte.url, txt:'Ver edital no PCI Concursos'} : todosPci ? {url:`${todosPci}#${uf}`, txt:`Ver concursos ${cmDoEstado(uf)} no PCI Concursos`} : null;
+  el.innerHTML=`${fechar}${cs.length>1?`<button type="button" class="cm-rz-volta" onclick="this.closest('.cm-rz-card')._volta()">‹ ${m.n}: todos os ${cs.length}</button>`:''}
+    <span class="cm-rz-st st-${cor}"><i class="sit-${cor}"></i>${CM_SIT_NOME[c.status]||''}</span>
+    <div class="cm-rz-org">${c.orgao}</div>
+    <div class="cm-rz-cargo">${c.cargo}</div>
+    <dl class="cm-rz-dados">
+      <div><dt>Vagas</dt><dd>${vagas(c)}</dd></div>
+      ${c.banca?`<div><dt>Banca</dt><dd>${c.banca}</dd></div>`:''}
+      <div><dt>${c.status==='previsto'||c.status==='semprevisao'?'Situação':'Inscrições'}</dt><dd>${c.quando}</dd></div>
+      <div><dt>Onde</dt><dd>${c.estadual?`Órgão do estado (sede em ${m.n}) — vale para todo o estado`:m.n}</dd></div>
+    </dl>
+    <div class="cm-rz-botoes">
+      ${pci?`<a class="cm-rz-pci" href="${pci.url}" target="_blank" rel="noopener">${pci.txt} ›</a>`:''}
+      ${!ehPci(c)?`<a class="cm-rz-fonte" href="${c.fonte.url}" target="_blank" rel="noopener">Ler a notícia (${c.fonte.nome})</a>`:''}
+    </div>
+    <div class="cm-rz-rod">Fonte: ${c.fonte.nome} · levantamento de 15/10/2026. Confira sempre o edital oficial.</div>`;
+  el._volta=()=>cmCartao(uf, m, cs, null);
 }
 // ── PAINEL DE CONCURSOS DA REGIÃO (direita): números grandes + lista por situação, cada concurso com a fonte.
 // Mostra a região toda ou, depois de clicar numa cidade, só o que vale para quem mora nela (prefeitura + estado).
@@ -1014,6 +1086,7 @@ function cmMesoFechar(semAnimar){
   const v=document.getElementById('cm-estado-vista'); if(!v) return;
   document.getElementById('cm-ev-regiao')?.remove();
   document.getElementById('cm-ev-painel')?.remove();
+  document.getElementById('cm-rz-card')?.remove();
   cmBuscaSubir(semAnimar);
   v.classList.remove('cm-ev-foco');
   const topo=v.querySelector('.cm-ev-topo'); if(topo && cmTopoAntes) topo.innerHTML=cmTopoAntes;
