@@ -471,14 +471,17 @@ async function cmDesenharEstadoGrande(cv, uf){
 }
 document.addEventListener('keydown', e=>{ if(e.key==='Escape' && cmSel && !document.querySelector('.modal-overlay.open')){ if(cmVendoEstado) cmFecharEstado(); else cmFecharDestaque(); } });
 // ════════════════════════════════════════════
-// 2º CLIQUE NO ESTADO (pedido do Levi): o mapa do Brasil dá lugar ao estado GRANDE, dividido nas
-// mesorregiões do IBGE — cada uma com uma cor e o nome escrito em cima, como num mapa escolar.
-// O estado com a bandeira continua flutuando à esquerda. "Voltar ao Brasil" (ou Esc) volta ao mapa.
-// Contornos: noticias/mesorregioes/UF.js (um arquivo por estado, carregado só na hora em que abre).
+// 2º CLIQUE NO ESTADO (pedido do Levi): o mapa do Brasil dá lugar ao ESTADO ABERTO
+//  • em cima: "Voltar ao Brasil" + "Estado · N regiões" (o título da página some)
+//  • esquerda: a bandeira do estado tremulando, grande
+//  • direita: o estado dividido nas mesorregiões do IBGE ("regiões" na tela), cada uma com uma cor SÓ DELA e o nome
+//    escrito — dentro, quando cabe; senão do lado de fora, com uma linha apontando.
+// Contornos (+ lista de cidades de cada região, guardada para depois): noticias/mesorregioes/UF.js (IBGE; um arquivo por estado, carregado na hora).
 // ════════════════════════════════════════════
 const MESO_BR = {};
 let cmVendoEstado = null;
-const CM_MESO_CORES = ['#c39bb0','#c8bd72','#df6b70','#9b9bd1','#8dcb8b','#e5a66a','#7fb9c9','#b8a07e','#d39ad0','#a3c46a','#e08f9e','#8fa8d8'];
+// 15 cores bem diferentes entre si (São Paulo, o estado com mais regiões, tem 15): nenhuma região repete cor
+const CM_MESO_CORES = ['#e06c6f','#7cc47f','#8e9be0','#eda15f','#5fb8c4','#c792b5','#d8c055','#6cc9a6','#b99b78','#b07fd0','#b2cf5e','#ef93b0','#7fb2ea','#a8a35a','#c4775a'];
 function cmCarregarMeso(uf){
   if(MESO_BR[uf]) return Promise.resolve(MESO_BR[uf]);
   return new Promise(ok=>{ const s=document.createElement('script'); s.src=`noticias/mesorregioes/${uf}.js`;
@@ -499,11 +502,10 @@ async function cmAbrirEstado(uf){
     palco.parentElement.appendChild(v);   // fora do palco: pode usar a altura toda até as bandeiras de baixo
   }
   const n=dados.regioes.length;
-  // lado esquerdo: a bandeira do estado TREMULANDO ao vento, com as cores reais (pedido do Levi)
-  v.innerHTML=`<canvas class="cm-ev-bandeira" id="cm-ev-bandeira" role="img" aria-label="Bandeira ${cmDoEstado(uf)}"></canvas>
-    <div class="cm-ev-topo">
+  v.innerHTML=`<div class="cm-ev-topo">
       <button type="button" class="cm-ev-voltar" onclick="cmFecharEstado()"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>Voltar ao Brasil</button>
-      <span class="cm-ev-titulo">${CM_UF_NOME[uf]} · ${n} ${n===1?'mesorregião':'mesorregiões'}</span></div>
+      <span class="cm-ev-titulo">${CM_UF_NOME[uf]} · ${n} ${n===1?'região':'regiões'}</span></div>
+    <canvas class="cm-ev-bandeira" id="cm-ev-bandeira" role="img" aria-label="Bandeira ${cmDoEstado(uf)}"></canvas>
     <div class="cm-ev-mapa" id="cm-ev-mapa"></div>`;
   cmLayoutEstado();
   v.classList.remove('entra'); void v.offsetWidth; v.classList.add('entra');
@@ -554,15 +556,13 @@ function cmFecharEstado(){
   cmFaixaTrocar(null);
   cmPosicionarDestaque();
 }
-// o "Voltar ao Brasil" fica em cima à esquerda (no lugar da estrela) e o estado dividido fica na METADE DIREITA
-// (pedido do Levi); a metade esquerda fica livre para a próxima etapa. Em tela estreita, o estado ocupa a tela toda.
+// a vista do estado ocupa a tela toda, do topo da página até o letreiro de baixo (computador: 2 colunas; celular: 1)
 function cmLayoutEstado(){
   const palco=document.getElementById('cm-palco'), v=document.getElementById('cm-estado-vista');
   if(!palco||!v) return;
   const estreito=palco.clientWidth<760;
   palco.classList.toggle('cm-estreito', estreito);
   v.classList.toggle('cm-ev-direita', !estreito);
-  // sem o título, o estado usa a tela toda: do topo da página até o letreiro de baixo
   const P=palco.getBoundingClientRect(), A=palco.parentElement.getBoundingClientRect();
   const N=document.getElementById('news-screen').getBoundingClientRect(), topo=N.top+12;
   const fim=document.querySelector('.cm-faixa-rotulo')?.getBoundingClientRect().top || innerHeight;
@@ -571,21 +571,25 @@ function cmLayoutEstado(){
   cmDesenharMeso(cmVendoEstado);
   cmBandeiraOndular(cmVendoEstado);
 }
+// ── MAPA DO ESTADO DIVIDIDO EM REGIÕES ──
 function cmDesenharMeso(uf){
   const dados=MESO_BR[uf], alvo=document.getElementById('cm-ev-mapa'); if(!dados||!alvo) return;
   const [vx,vy,vw,vh]=dados.viewBox.split(' ').map(Number);
-  const k=Math.min(alvo.clientWidth*0.98/vw, alvo.clientHeight*0.98/vh), W=vw*k, H=vh*k;   // px por grau (o maior que couber)
   const escuro=!document.body.classList.contains('light');
   // tamanho de cada mesorregião (mesma técnica do mapa do Brasil)
   const ns='http://www.w3.org/2000/svg', med=document.createElementNS(ns,'svg');
   med.setAttribute('style','position:absolute;left:-9999px;top:0;width:10px;height:10px;visibility:hidden'); document.body.appendChild(med);
   const regs=dados.regioes.map(r=>{ const p=document.createElementNS(ns,'path'); p.setAttribute('d',r.d); med.appendChild(p); return {...r, b:p.getBBox(), p2:new Path2D(r.d)}; });
   med.remove();
-  // cores: duas mesorregiões que se encostam nunca ficam com a mesma cor
+  // cores: cada região ganha uma cor SÓ DELA; entre as livres, a mais diferente das vizinhas que já têm cor
   const toca=(a,b)=>a.x<=b.x+b.width && b.x<=a.x+a.width && a.y<=b.y+b.height && b.y<=a.y+a.height;
-  // (até 12 mesorregiões, cada uma ganha uma cor só dela; acima disso, as que se encostam nunca repetem)
-  regs.forEach((r,i)=>{ const usadas=regs.slice(0,i).filter(o=>toca(o.b,r.b)).map(o=>o.ci);
-    r.ci = regs.length<=CM_MESO_CORES.length ? i : ([...CM_MESO_CORES.keys()].find(c=>!usadas.includes(c)) ?? i%CM_MESO_CORES.length);
+  const rgb=h=>[1,3,5].map(i=>parseInt(h.slice(i,i+2),16)), dif=(a,b)=>{ const x=rgb(a), y=rgb(b); return Math.hypot(x[0]-y[0],x[1]-y[1],x[2]-y[2]); };
+  const usadas=new Set();
+  regs.forEach((r,i)=>{
+    const viz=regs.slice(0,i).filter(o=>toca(o.b,r.b)).map(o=>CM_MESO_CORES[o.ci]);
+    const livres=[...CM_MESO_CORES.keys()].filter(c=>!usadas.has(c));
+    r.ci = (livres.length ? livres : [...CM_MESO_CORES.keys()]).reduce((m,c)=>{ const d=viz.length?Math.min(...viz.map(v=>dif(v,CM_MESO_CORES[c]))):999; return d>m.d?{c,d}:m; }, {c:i%CM_MESO_CORES.length,d:-1}).c;
+    usadas.add(r.ci);
     r.cor=escuro ? cmMesoMistura(CM_MESO_CORES[r.ci], '#1f1f1f', .2) : CM_MESO_CORES[r.ci]; });
   // onde escrever o nome: o ponto mais "fundo" dentro da mesorregião (o mais longe de todas as bordas).
   // Grade de quadradinhos + distância de cada um até a borda (andando também na diagonal, para medir de verdade).
@@ -601,31 +605,71 @@ function cmDesenharMeso(uf){
       dist[q]=Math.min(dist[q], v(i-1,j)+1, v(i,j-1)+1, v(i-1,j-1)+D2, v(i+1,j-1)+D2); }
     for(let j=ny-1;j>=0;j--) for(let i=nx-1;i>=0;i--){ const q=j*nx+i; if(!dentro[q]) continue;    // volta
       dist[q]=Math.min(dist[q], v(i+1,j)+1, v(i,j+1)+1, v(i+1,j+1)+D2, v(i-1,j+1)+D2); }
-    // nome em 1 ou 2 linhas; o tamanho do texto é MEDIDO (letra de 1px) para testar se o bloco cabe
     const corte=r.nome.lastIndexOf(' ');
     r.linhas=corte>0 ? [r.nome.slice(0,corte), r.nome.slice(corte+1)] : [r.nome];
     ctx.font=`700 100px ${fonteMapa}`;
-    const larg1=Math.max(...r.linhas.map(l=>ctx.measureText(l.toUpperCase()).width/100 + l.length*0.02)), alt1=r.linhas.length*1.12;
-    // o bloco de texto (tamanho f, centro no quadradinho q) cabe INTEIRO dentro da mesorregião? (testa a borda do bloco)
-    const px2raw=1/(k*1e-4), cx=q=>x+(q%nx+.5)*lado, cy=q=>y+((q-q%nx)/nx+.5)*lado;
-    const cabe=(q,f)=>{ const hw=(larg1*f/2+2)*px2raw, hh=(alt1*f/2+1)*px2raw, X=cx(q), Y=cy(q);
+    r.larg1=Math.max(...r.linhas.map(l=>ctx.measureText(l.toUpperCase()).width/100 + l.length*0.02)); r.alt1=r.linhas.length*1.12;
+    r.larg1linha=ctx.measureText(r.nome.toUpperCase()).width/100 + r.nome.length*0.02;   // nome numa linha só (rótulo de fora)
+    r.cand=[...dist.keys()].filter(q=>dentro[q]).sort((a,b)=>dist[b]-dist[a]).slice(0,60);
+    r.cx=q=>x+(q%nx+.5)*lado; r.cy=q=>y+((q-q%nx)/nx+.5)*lado;
+  });
+  // para cada tamanho do mapa (k = px por grau): o nome cabe INTEIRO dentro da região? com que letra (8 a 14px)?
+  const medir=k=>regs.forEach(r=>{
+    const px2raw=1/(k*1e-4);
+    const cabe=(q,f)=>{ const hw=(r.larg1*f/2+2)*px2raw, hh=(r.alt1*f/2+1)*px2raw, X=r.cx(q), Y=r.cy(q);
       for(let s=0;s<=4;s++){ const a=-1+s/2;
         if(!ctx.isPointInPath(r.p2, X+a*hw, Y-hh) || !ctx.isPointInPath(r.p2, X+a*hw, Y+hh) ||
            !ctx.isPointInPath(r.p2, X-hw, Y+a*hh) || !ctx.isPointInPath(r.p2, X+hw, Y+a*hh)) return false; }
       return true; };
-    // candidatos: os 20 pontos mais "fundos"; em cada um, a maior letra (até 14px) com que o nome cabe
-    const cand=[...dist.keys()].filter(q=>dentro[q]).sort((a,b)=>dist[b]-dist[a]).slice(0,60);
-    let melhor={q:cand[0]??0, f:0};
-    cand.forEach(q=>{ if(!cabe(q,8)) return; let lo=8, hi=14;
+    let melhor={q:r.cand[0]??0, f:0};
+    r.cand.forEach(q=>{ if(!cabe(q,8)) return; let lo=8, hi=14;
       if(cabe(q,hi)) lo=hi; else for(let t=0;t<6;t++){ const mid=(lo+hi)/2; if(cabe(q,mid)) lo=mid; else hi=mid; }
       if(lo>melhor.f) melhor={q,f:lo}; });
-    r.lx=(cx(melhor.q)*1e-4-vx)*k; r.ly=(-cy(melhor.q)*1e-4-vy)*k;
-    r.fonte=melhor.f;   // 0 = o nome não cabe: aparece só no balão, ao passar o mouse
+    r.lx=(r.cx(melhor.q)*1e-4-vx)*k; r.ly=(-r.cy(melhor.q)*1e-4-vy)*k; r.fonte=melhor.f;
+    const q0=r.cand[0]??0; r.ax=(r.cx(q0)*1e-4-vx)*k; r.ay=(-r.cy(q0)*1e-4-vy)*k;   // ponto da linha (nome do lado de fora)
   });
+  const Wa=alvo.clientWidth, Ha=alvo.clientHeight;
+  let k=Math.min(Wa*0.98/vw, Ha*0.98/vh);   // px por grau (o maior que couber)
+  medir(k);
+  // NOMES DE FORA (pedido do Levi: toda região com nome): em cima/embaixo do estado, ou dos lados — onde sobrar espaço.
+  // Só diminui o mapa se não sobrar espaço nenhum em volta.
+  const sobraV=k=>(Ha-vh*k)/2, sobraH=k=>(Wa-vw*k)/2;
+  if(regs.some(r=>r.fonte<8) && sobraV(k)<40 && sobraH(k)<130){ k*=0.84; medir(k); }
+  const W=vw*k, H=vh*k, fora=regs.filter(r=>r.fonte<8);
+  const FONTE_FORA=10.5, folgaV=sobraV(k), folgaH=sobraH(k), vertical=folgaV>=40 || folgaH<130;
+  fora.forEach(r=>{ r.w=r.larg1linha*FONTE_FORA+16; r.lado = vertical ? (r.ay<H/2?'cima':'baixo') : (r.ax<W/2?'esq':'dir'); });
+  ['cima','baixo','esq','dir'].forEach(lado=>{
+    const grupo=fora.filter(r=>r.lado===lado);
+    if(lado==='cima'||lado==='baixo'){
+      // da esquerda para a direita, sem um encostar no outro e sem sair da área do mapa (não invade a lista);
+      // se não couber numa linha, abre uma 2ª linha
+      const ini=-folgaH+4, lim=W+folgaH-4; grupo.sort((a,b)=>a.ax-b.ax);
+      let fim=ini, linha=0, naLinha=[];
+      grupo.forEach(r=>{
+        let x=Math.max(r.ax, fim+r.w/2+8, ini+r.w/2);
+        if(x+r.w/2>lim){
+          const falta=x+r.w/2-lim, livre=naLinha.length ? (naLinha[0].fx-naLinha[0].w/2)-ini : 0;
+          if(livre>=falta){ naLinha.forEach(o=>o.fx-=falta); x-=falta; }           // empurra a linha para a esquerda e cabe
+          else if(naLinha.length){ linha++; naLinha=[]; x=Math.max(r.ax, ini+r.w/2); x=Math.min(x, lim-r.w/2); }   // abre outra linha
+          else x=lim-r.w/2;
+        }
+        r.fx=x; fim=x+r.w/2; naLinha.push(r); r.fy = lado==='cima' ? -16-linha*18 : H+16+linha*18; });
+    } else {
+      grupo.sort((a,b)=>a.ay-b.ay); let fim=-1e9;
+      grupo.forEach(r=>{ r.fy=Math.max(r.ay, fim+24); fim=r.fy; r.fx = lado==='esq' ? -18 : W+18; r.max=folgaH-26; });
+      const sobra=fim-(H-6); if(sobra>0) grupo.forEach(r=>r.fy-=sobra);
+    }
+  });
+  const ponta=r=>({cima:[r.fx, r.fy+4], baixo:[r.fx, r.fy-4], esq:[r.fx+4, r.fy], dir:[r.fx-4, r.fy]})[r.lado];
+  const mover={cima:'translate(-50%,-100%)', baixo:'translate(-50%,0)', esq:'translate(-100%,-50%)', dir:'translate(0,-50%)'};
   alvo.innerHTML=`<div class="cm-ev-quadro" style="width:${W}px;height:${H}px" onpointermove="cmMesoDicaMove(event)" onpointerleave="cmMesoSobre(-1)">
-    <svg viewBox="${dados.viewBox}" width="${W}" height="${H}" role="img" aria-label="Mesorregiões de ${CM_UF_NOME[uf]}"><g transform="scale(0.0001,-0.0001)">${
+    <svg viewBox="${dados.viewBox}" width="${W}" height="${H}" role="img" aria-label="Regiões ${cmDoEstado(uf)}"><g transform="scale(0.0001,-0.0001)">${
       regs.map((r,i)=>`<path d="${r.d}" fill="${r.cor}" data-i="${i}" onpointerenter="cmMesoSobre(${i})"></path>`).join('')}</g></svg>
-    ${regs.map((r,i)=>r.fonte<8 ? '' : `<div class="cm-ev-rot" data-i="${i}" style="left:${r.lx}px;top:${r.ly}px;font-size:${r.fonte.toFixed(1)}px">${r.linhas.join('<br>')}</div>`).join('')}
+    <svg class="cm-ev-linhas" width="${W}" height="${H}" aria-hidden="true">${fora.map(r=>{ const [px,py]=ponta(r);
+      return `<line data-i="${regs.indexOf(r)}" x1="${r.ax}" y1="${r.ay}" x2="${px}" y2="${py}"/><circle data-i="${regs.indexOf(r)}" cx="${r.ax}" cy="${r.ay}" r="2.5"/>`; }).join('')}</svg>
+    ${regs.map((r,i)=>r.fonte<8
+      ? `<div class="cm-ev-fora" data-i="${i}" style="left:${r.fx}px;top:${r.fy}px;transform:${mover[r.lado]}${r.max?`;max-width:${r.max}px;white-space:normal`:''}"><b style="background:${r.cor}"></b>${r.nome}</div>`
+      : `<div class="cm-ev-rot" data-i="${i}" style="left:${r.lx}px;top:${r.ly}px;font-size:${r.fonte.toFixed(1)}px">${r.linhas.join('<br>')}</div>`).join('')}
     <div class="cm-ev-dica" id="cm-ev-dica" hidden></div>
   </div>`;
   alvo._regs=regs; alvo._sobre=-1;
@@ -634,12 +678,12 @@ function cmDesenharMeso(uf){
 function cmMesoSobre(i){
   const alvo=document.getElementById('cm-ev-mapa'); if(!alvo?._regs) return;
   const ant=alvo._sobre; if(ant===i) return;
-  if(ant>=0){ const ra=alvo._regs[ant]; alvo.querySelector(`path[data-i="${ant}"]`)?.setAttribute('fill', ra.cor); alvo.querySelector(`.cm-ev-rot[data-i="${ant}"]`)?.classList.remove('ativo'); }
+  if(ant>=0){ const ra=alvo._regs[ant]; alvo.querySelector(`path[data-i="${ant}"]`)?.setAttribute('fill', ra.cor); alvo.querySelectorAll(`.cm-ev-rot[data-i="${ant}"],.cm-ev-fora[data-i="${ant}"]`).forEach(e=>e.classList.remove('ativo')); }
   alvo._sobre=i;
   const dica=document.getElementById('cm-ev-dica'), r=alvo._regs[i];
   if(!r){ if(dica) dica.hidden=true; return; }
   alvo.querySelector(`path[data-i="${i}"]`)?.setAttribute('fill', cmMesoMistura(r.cor, '#ffffff', .22));
-  alvo.querySelector(`.cm-ev-rot[data-i="${i}"]`)?.classList.add('ativo');
+  alvo.querySelectorAll(`.cm-ev-rot[data-i="${i}"],.cm-ev-fora[data-i="${i}"]`).forEach(e=>e.classList.add('ativo'));
   if(dica){ dica.textContent=r.nome; dica.hidden=false; }
 }
 function cmMesoDicaMove(ev){
