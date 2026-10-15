@@ -374,3 +374,25 @@ body:not(.light) .cm-sobre-painel{box-shadow:0 14px 36px rgba(0,0,0,.6)}
 .cm-pagina{padding-top:14px;padding-bottom:4px}
 @media (min-width:1001px){ .cm-so-mapa .cm-palco{height:min(540px,calc(100vh - 224px))} }
 @media (max-width:640px){ .cm-so-mapa .cm-palco{height:max(450px,calc(100vh - 280px))} }
+
+/* ═══ DICA: mouse "clicando" acima do mapa + balão "Clique em um estado do mapa" (some ao clicar num estado) ═══ */
+.cm-so-mapa{position:relative}
+.cm-dica{position:absolute;z-index:4;width:0;height:0;pointer-events:none;animation:cmDicaEntra .4s ease .6s both}
+.cm-dica-cursor{position:absolute;left:0;top:0;width:30px;height:30px}
+.cm-dica-cursor svg{position:relative;width:30px;height:30px;margin:-3px 0 0 -6px;fill:#fff;stroke:#111827;stroke-width:1.5;stroke-linejoin:round;filter:drop-shadow(0 2px 4px rgba(0,0,0,.45));transform-origin:20% 15%;animation:cmCursorClica 2.4s ease-in-out 1s infinite}
+.cm-dica-onda{position:absolute;left:0;top:0;width:34px;height:34px;margin:-17px 0 0 -17px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 2px rgba(37,99,235,.55);opacity:0;animation:cmCursorOnda 2.4s ease-out 1s infinite}
+.cm-dica-balao{position:absolute;bottom:30px;white-space:nowrap;padding:8px 14px;border-radius:10px;background:#1f2937;color:#fff;font-size:13px;font-weight:600;letter-spacing:-.005em;box-shadow:0 6px 18px rgba(16,24,40,.22)}
+.cm-dica-balao::after{content:'';position:absolute;left:18px;bottom:-5px;width:10px;height:10px;background:inherit;transform:rotate(45deg);border-radius:0 0 2px 0}
+body:not(.light) .cm-dica-balao{background:#f1f1f1;color:#0f0f0f;box-shadow:0 6px 18px rgba(0,0,0,.5)}
+@keyframes cmDicaEntra{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){ .cm-dica,.cm-dica-cursor svg,.cm-dica-onda{animation:none} }
+@media (max-width:1000px){ .cm-dica{display:none} }   /* tablet/celular: o mapa fica em outra posição e não tem mouse */
+
+/* ═══ FAIXA FINA "Concursos procurados em cada estado", de ponta a ponta, em cima do letreiro (explica o que é o letreiro).
+       O mapa ficou 28px mais baixo para o letreiro continuar exatamente no mesmo lugar. ═══ */
+.cm-faixa-rotulo{display:flex;align-items:center;gap:7px;height:28px;padding:0 28px;box-sizing:border-box;background:var(--surface-1);border-top:1px solid var(--border);font-size:12px;font-weight:600;color:var(--text-secondary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cm-faixa-rotulo svg{width:14px;height:14px;flex-shrink:0;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.cm-faixa-rotulo + .cm-faixa{border-bottom:none;border-top:1px solid var(--border)}
+@media (min-width:1001px){ .cm-so-mapa .cm-palco{height:min(540px,calc(100vh - 252px))} }
+@media (max-width:640px){ .cm-faixa-rotulo{padding:0 14px;font-size:11.5px} .cm-so-mapa .cm-palco{height:max(450px,calc(100vh - 308px))} }
+@media (max-width:1099px){ .cm-faixa-rotulo + .cm-faixa{margin-bottom:96px} }

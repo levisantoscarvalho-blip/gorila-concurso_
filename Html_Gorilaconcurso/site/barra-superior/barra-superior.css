@@ -7,7 +7,7 @@
 #topbar{position:fixed;top:0;left:0;right:0;height:64px;z-index:950;display:flex;align-items:center;gap:14px;padding:0 20px;background:var(--surface-1);border-bottom:1px solid var(--border);box-shadow:0 2px 12px rgba(0,0,0,.3)}
 body.light #topbar{background:#ffffff;border-bottom:1px solid #d0d4e8;box-shadow:0 2px 8px rgba(16,24,40,.10)}
 /* Barra de cima: fundo um pouquinho mais escuro e linha fina cinza em volta (igual ao cartão de ícones da direita) */
-#topbar{background:#191919;border:1px solid #3d3d3d}
+#topbar{background:#0f0f0f;border:none;border-bottom:1px solid #222}
 body.light #topbar{background:#f3f4f6;border:1px solid #c4c7cc}
 #tb-logo{height:46px;width:auto;object-fit:contain;flex-shrink:0}
 /* modo escuro: o gorila é azul-escuro, então ganha um fundo claro redondo para aparecer */

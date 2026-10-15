@@ -3,7 +3,7 @@
    Páginas de texto abertas pelo rodapé da janela de acesso.
    ════════════════════════════════════════════ */
 :root{--bg:#f0f2f8;--card:#fff;--borda:#d0d4e8;--texto:#1a1d2e;--suave:#4a5070;--fraco:#8890b0;--destaque:#3a6ff0;--destaque-txt:#1a50d0;--aviso-bg:#fff7e0;--aviso-borda:#f0d48a;--aviso-txt:#7a5a00}
-@media (prefers-color-scheme:dark){:root{--bg:#121212;--card:#1c1c1c;--borda:#303030;--texto:#f1f1f1;--suave:#b4b4b4;--fraco:#8a8a8a;--destaque:#5b8cff;--destaque-txt:#93b4ff;--aviso-bg:#2a2410;--aviso-borda:#5a4a1a;--aviso-txt:#e8c96a}}
+@media (prefers-color-scheme:dark){:root{--bg:#0f0f0f;--card:#181818;--borda:#2c2c2c;--texto:#f1f1f1;--suave:#aaaaaa;--fraco:#7a7a7a;--destaque:#2563eb;--destaque-txt:#3ea6ff;--aviso-bg:#2a2410;--aviso-borda:#5a4a1a;--aviso-txt:#e8c96a}}
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--texto);line-height:1.65}
 .topo{background:var(--card);border-bottom:1px solid var(--borda)}

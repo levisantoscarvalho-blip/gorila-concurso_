@@ -120,13 +120,13 @@ body:not(.light) .iv-selo{fill:#f1f1f1}
 
 /* ═══ BARRA DE CIMA — padrão de sites profissionais ═══ */
 #topbar{height:64px;padding:0 24px!important;gap:20px;border:none!important;border-bottom:1px solid #d9dce1!important;box-shadow:0 1px 3px rgba(16,24,40,.06)!important}
-body:not(.light) #topbar{border-bottom-color:#2e2e2e!important;box-shadow:0 1px 3px rgba(0,0,0,.4)!important}
+body:not(.light) #topbar{border-bottom-color:#222!important;box-shadow:none!important}
 #tb-logo{height:40px}
 .tb-title{font-size:17px;font-weight:800;letter-spacing:-.025em;margin-left:-6px}
 /* busca: lupa à esquerda, altura confortável, foco com anel */
 .tb-search{max-width:520px;margin:0 8px 0 12px}
 #busca-global{height:40px;padding:0 14px 0 40px!important;border-radius:10px!important;font-size:14px;border:1px solid #d1d5db!important;transition:border-color .15s,box-shadow .15s}
-body:not(.light) #busca-global{border-color:#3a3a3a!important}
+body:not(.light) #busca-global{background:#121212;border-color:#303030!important}
 #busca-global::placeholder{color:#8a919e}
 #busca-global:focus{border-color:var(--accent)!important;box-shadow:0 0 0 3px var(--accent-bg)}
 .tb-lupa{left:14px;right:auto!important;width:17px;height:17px}
@@ -174,3 +174,68 @@ body:not(.light) #busca-global{border-color:#3a3a3a!important}
 .cfg-botao:hover{background:var(--surface-2)}
 .cfg-botao.principal{background:#16a34a;border-color:#16a34a;color:#fff}
 .cfg-botao.perigo{color:var(--danger);border-color:var(--danger)}
+
+/* ═══ MODO ESCURO — acabamento estilo YouTube (só no escuro; o claro não muda) ═══
+   · títulos pequenos de seção em cinza (nada de azul-claro "lavanda")
+   · item ativo = fundo cinza + texto branco, sem tinta azul nem contorno claro
+   · números de passo em cinza; botões de janelinhas = pílula branca com texto preto (como "Inscrever-se") */
+body:not(.light) .cm-pagina-secao,
+body:not(.light) .cm-sobre-tit,
+body:not(.light) .hb-sobre,
+body:not(.light) .cm-tour-passo{color:var(--text-secondary)}
+
+/* estrela: botão redondo-quadrado cinza; aberto = cinza um pouco mais claro (sem anel azul) */
+body:not(.light) .cm-sobre-botao{background:var(--surface-2);border-color:transparent;box-shadow:none}
+body:not(.light) .cm-sobre-botao:hover{background:var(--surface-3);border-color:transparent;box-shadow:none}
+body:not(.light) .cm-sobre-botao.ativo{background:#3f3f3f;border-color:transparent;box-shadow:none}
+
+/* números 1, 2… dos passos */
+body:not(.light) .cm-sobre-lista i,
+body:not(.light) .cm-aviso-passos i{background:#3f3f3f;color:#f1f1f1}
+
+/* botões "Entendi" / "Próximo" das janelinhas: pílula branca */
+body:not(.light) .cm-sobre-ok,
+body:not(.light) .cm-tour-prox{background:#f1f1f1;color:#0f0f0f;border-radius:18px;font-weight:600}
+body:not(.light) .cm-sobre-ok:hover,
+body:not(.light) .cm-tour-prox:hover{background:#d9d9d9;filter:none}
+body:not(.light) .cm-tour-voltar{background:transparent;border-color:var(--border-strong);border-radius:18px}
+body:not(.light) .cm-tour-voltar:hover{background:var(--surface-3)}
+
+/* sem o contorno branco do navegador ao clicar (só aparece navegando pelo teclado, e discreto) */
+.tr-item:focus,.cm-sobre-botao:focus,.cm-sobre-ok:focus,.cm-tour-prox:focus,.cm-tour-voltar:focus,.cm-tour-pular:focus{outline:none}
+body:not(.light) .tr-item:focus-visible,body:not(.light) .cm-sobre-botao:focus-visible{background:var(--surface-3)}
+
+/* ícones da direita: cinza; o da tela atual fica branco sobre fundo cinza */
+body:not(.light) .tr-item{color:var(--text-secondary)}
+body:not(.light) .tr-item:hover{background:var(--surface-3);color:var(--text-primary)}
+body:not(.light) .tr-item.ativo{background:var(--surface-3);color:var(--text-primary)}
+body:not(.light) .tr-divisor{background:var(--border-strong)}
+
+/* menu da esquerda: item ativo cinza com texto branco (sem a barrinha azul) */
+body:not(.light) .nav-item{color:var(--text-primary)}
+body:not(.light) .nav-item:hover{background:var(--surface-3)}
+body:not(.light) .nav-item.active{background:var(--surface-3);color:var(--text-primary);font-weight:600}
+body:not(.light) .nav-item.active::before{display:none}
+body:not(.light) .nav-icon{color:var(--text-primary)}
+
+/* Mês / Ano / Estatísticas: segmento ativo cinza claro */
+body:not(.light) #cal-view-month-btn.active,body:not(.light) #cal-view-year-btn.active{background:var(--surface-3);box-shadow:none}
+body:not(.light) .cfg-seg button.ativo{background:var(--surface-3);box-shadow:none}
+
+/* botões com contorno (ex.: "Criar conta grátis"): borda cinza + texto azul, como "Fazer login" do YouTube */
+body:not(.light) .av-botao{border-color:var(--border-strong);border-radius:18px}
+body:not(.light) .av-botao:hover{background:rgba(62,166,255,.12);border-color:transparent}
+body:not(.light) .aviso-visitante{border-left-color:#3ea6ff}
+body:not(.light) .cal-add-curso:hover{background:rgba(62,166,255,.1);border-color:#3ea6ff}
+
+/* cartões e campos: sem sombra (no escuro sombra vira mancha), borda bem discreta */
+body:not(.light) .stat-card{box-shadow:none}
+body:not(.light) #busca-global::placeholder{color:#888}
+body:not(.light) #busca-global:focus{border-color:#3ea6ff!important;box-shadow:none}
+body:not(.light) .foguinho-box.foguinho-sb{background:var(--surface-2)!important;border-color:transparent!important}
+/* fundos escurecidos e botões de segmento: preto/cinza neutros (sem o tom azul-marinho) */
+body:not(.light) .cm-tour-luz{box-shadow:0 0 0 9999px rgba(0,0,0,.6)}
+body:not(.light) .cal-img-add{background:rgba(0,0,0,.55)}
+body:not(.light) .cal-img-add:hover{background:rgba(0,0,0,.8)}
+body:not(.light) .estat-periodos button.ativo,body:not(.light) .cm-filtros button.ativo{background:var(--surface-3);box-shadow:none}
+@media (max-width:760px){ body:not(.light) #sidebar-nav .nav-item{background:var(--surface-2)} body:not(.light) #sidebar-nav .nav-item.active{background:#f1f1f1;color:#0f0f0f} body:not(.light) #sidebar-nav .nav-item.active .nav-icon{color:#0f0f0f} }   /* celular: chips como os do YouTube (ativo = branco) */

@@ -153,9 +153,26 @@ function cmAtualizar(animar){
 // A lista de concursos (cmListaHTML / cmLegendaHTML / cmAtualizar) fica pronta para a próxima parte.
 // ════════════════════════════════════════════
 let cmZoom = { z:1, x:0, y:0 };
+// ── DICA "Clique em um estado do mapa": mouse clicando no espaço livre acima do mapa (à esquerda do zoom) + balão
+//    (pedido do Levi). Some quando a pessoa clica num estado; volta na próxima vez que abrir a tela. ──
+let cmDica = true;
+function cmDicaHTML(){
+  return `<div class="cm-dica" id="cm-dica" aria-hidden="true">
+      <div class="cm-dica-balao">Clique em um estado do mapa</div>
+      <span class="cm-dica-cursor"><i class="cm-dica-onda"></i><svg viewBox="0 0 24 24"><path d="M5 2.5v16.2l4.3-4 2.9 6.4 2.7-1.2-2.9-6.3 5.9-.3z"/></svg></span>
+    </div>`;
+}
+// posição: a ponta do mouse fica 140px à esquerda do grupo de zoom; o balão termina alinhado à direita do zoom, logo acima do mouse
+function cmPosicionarDica(){
+  const d=document.getElementById('cm-dica'), so=d?.parentElement, ctrl=document.querySelector('.cm-ctrl-grupo'); if(!d||!so||!ctrl) return;
+  const r=so.getBoundingClientRect(), c=ctrl.getBoundingClientRect(), bal=d.querySelector('.cm-dica-balao');
+  const x=c.left-140-r.left, y=c.top+8-r.top;
+  d.style.left=x+'px'; d.style.top=y+'px';
+  bal.style.left=Math.max(-16, c.right+14-r.left-x-bal.offsetWidth)+'px';
+}
 function renderConcursosMapa(){
   const ns = document.getElementById('news-screen'); if(!ns) return;
-  cmZoom = { z:1, x:0, y:0 }; cmSel = null;
+  cmZoom = { z:1, x:0, y:0 }; cmSel = null; cmDica = true;
   ns.innerHTML = `${cmAvisoHTML()}<div class="cm-so-mapa">
       <div class="cm-palco" id="cm-palco" onwheel="cmRoda(event)" onpointerdown="cmArrastaInicio(event)" ondblclick="cmZoomReset()" onclick="cmCliquePalco(event)">
         <div class="cm-zoom" id="cm-zoom"><div class="cm-mapa3d" id="cm-mapa3d"></div><div class="cm-chao"></div></div>
@@ -170,8 +187,9 @@ function renderConcursosMapa(){
           <button type="button" class="cm-ctrl-solo cm-ajuda" onclick="cmTour(0)" aria-label="Como usar o mapa" title="Como usar o mapa">?</button>
         </div>
       </div>
-    </div>${cmFaixaHTML()}`;   // bandeiras EMBAIXO do mapa (pedido do Levi)
-  cmDesenharMapaLeve(); cmVistaInicial();   // começa AMPLIADO ao lado do quadro da estrela (pedido do Levi); a mira mostra o Brasil inteiro
+      ${cmDica?cmDicaHTML():''}
+    </div><div class="cm-faixa-rotulo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg>Concursos procurados em cada estado</div>${cmFaixaHTML()}`;   // bandeiras EMBAIXO do mapa (pedido do Levi)
+  cmDesenharMapaLeve(); cmVistaInicial(); cmPosicionarDica(); cmFaixaVelocidade();   // começa AMPLIADO ao lado do quadro da estrela (pedido do Levi); a mira mostra o Brasil inteiro
   cmTourPrimeira = false;
   if(!cmTourVisto()) setTimeout(()=>{ cmTourPrimeira = true; cmTour(0); }, 500);   // 1ª visita: tour guiado (do "?") e, ao terminar, o quadro da estrela
   else cmSobreAlternar(true);   // demais visitas: o quadro da estrela já aparece aberto (pedido do Levi); some ao mexer no mapa
@@ -332,6 +350,7 @@ function cmCliquePalco(ev){
 }
 function cmMostrarDestaque(uf){
   const palco=document.getElementById('cm-palco'); if(!palco) return;
+  cmDica=false; document.getElementById('cm-dica')?.remove();   // já clicou num estado: o mouse de dica some (volta na próxima visita)
   const ant=cmSel; cmSel=uf;
   if(ant && ant!==uf) cmSobe(ant,false);
   cmSobe(uf,true);
@@ -451,7 +470,7 @@ async function cmDesenharEstadoGrande(cv, uf){
 document.addEventListener('keydown', e=>{ if(e.key==='Escape' && cmSel && !document.querySelector('.modal-overlay.open')) cmFecharDestaque(); });
 // mudou o tamanho da janela ou o tema: desenha de novo (só nessas horas)
 let cmRedesenhoT=null;
-window.addEventListener('resize',()=>{ if(!document.getElementById('cm-mapa3d')) return; clearTimeout(cmRedesenhoT); cmRedesenhoT=setTimeout(cmDesenharMapaLeve,250); });
+window.addEventListener('resize',()=>{ if(!document.getElementById('cm-mapa3d')) return; clearTimeout(cmRedesenhoT); cmRedesenhoT=setTimeout(()=>{ cmDesenharMapaLeve(); cmPosicionarDica(); },250); });
 // ════════════════════════════════════════════
 // ÁREA 3 — NÚMEROS DO BRASIL (dados de EXEMPLO) — RETIRADO da tela a pedido do Levi; fica guardado para usar depois
 // ════════════════════════════════════════════
@@ -528,10 +547,26 @@ function cmAvisoHTML(){
     <p>Escolha um estado no mapa para ver os concursos abertos, previstos e encerrados.</p>
   </header>`;
 }
+// LETREIRO de baixo: um concurso muito procurado de cada estado, com a bandeira do estado (pedido do Levi).
+// Só o NOME do concurso — sem datas, vagas ou "edital aberto", porque ainda não temos dados reais (lista escolhida à mão;
+// quando houver contas no servidor, dá para trocar pelos concursos que as pessoas mais marcam como interesse).
+const CM_FAIXA_CONCURSOS = {
+  AC:'Polícia Militar do Acre', AL:'Polícia Civil de Alagoas', AP:'Polícia Militar do Amapá', AM:'Polícia Civil do Amazonas',
+  BA:'Tribunal de Justiça da Bahia', CE:'SEFAZ Ceará', DF:'Polícia Civil do Distrito Federal', ES:'Polícia Militar do Espírito Santo',
+  GO:'Tribunal de Justiça de Goiás', MA:'Polícia Militar do Maranhão', MT:'Polícia Civil de Mato Grosso', MS:'SEFAZ Mato Grosso do Sul',
+  MG:'Polícia Militar de Minas Gerais', PA:'Polícia Militar do Pará', PB:'Polícia Civil da Paraíba', PR:'Polícia Militar do Paraná',
+  PE:'Polícia Civil de Pernambuco', PI:'Polícia Militar do Piauí', RJ:'Polícia Civil do Rio de Janeiro', RN:'Polícia Militar do Rio Grande do Norte',
+  RS:'Brigada Militar do Rio Grande do Sul', RO:'Polícia Civil de Rondônia', RR:'Polícia Militar de Roraima', SC:'Tribunal de Justiça de Santa Catarina',
+  SP:'Tribunal de Justiça de São Paulo', SE:'Polícia Militar de Sergipe', TO:'Polícia Civil do Tocantins'
+};
 function cmFaixaHTML(){
   const ufs = Object.keys(CM_UF_NOME).sort((a,b)=>CM_UF_NOME[a].localeCompare(CM_UF_NOME[b],'pt-BR'));
-  const itens = ufs.map(u=>`<span class="cm-faixa-item"><img src="noticias/bandeiras/${u}.png" alt="" loading="lazy" decoding="async">${CM_UF_NOME[u]}</span>`).join('');
-  return `<div class="cm-faixa" aria-label="Bandeiras dos estados brasileiros"><div class="cm-faixa-trilho">${itens}<span class="cm-faixa-copia" aria-hidden="true">${itens}</span></div></div>`;
+  const itens = ufs.map(u=>`<span class="cm-faixa-item" title="${CM_UF_NOME[u]}"><img src="noticias/bandeiras/${u}.png" alt="Bandeira de ${CM_UF_NOME[u]}" loading="lazy" decoding="async">${CM_FAIXA_CONCURSOS[u]||CM_UF_NOME[u]}</span>`).join('');
+  return `<div class="cm-faixa" aria-label="Concursos procurados em cada estado"><div class="cm-faixa-trilho">${itens}<span class="cm-faixa-copia" aria-hidden="true">${itens}</span></div></div>`;
+}
+// mesma velocidade de leitura de antes (~43 px por segundo), qualquer que seja o tamanho dos nomes
+function cmFaixaVelocidade(){
+  const t=document.querySelector('.cm-faixa-trilho'); if(t && t.scrollWidth) t.style.animationDuration=Math.round(t.scrollWidth/2/43)+'s';
 }
 // ════════════════════════════════════════════
 // ESTRELA (canto de cima à esquerda do mapa) ➔ quadrado explicando o que a seção "Concursos e notícias" faz.
