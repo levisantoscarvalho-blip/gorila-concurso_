@@ -19,6 +19,13 @@
   --danger:#e06464; --danger-bg:#2d1618;
 }
 
+/* ─── TEMA CINZA ESCURO (opção "Cinza escuro" nas Configurações) ───
+   Igual ao escuro, só que em cinza-grafite mais claro (fundos e cartões um degrau acima). */
+body.tema-cinza{
+  --bg:#212121; --surface-0:#212121; --surface-1:#2a2a2a; --surface-2:#323232;
+  --surface-3:#3a3a3a; --border:#3a3a3a; --border-strong:#4d4d4d; --accent-bg:#3a3a3a;
+}
+
 /* ─── TEMA CLARO ─── */
 body.light{
   --bg:#f0f2f8; --surface-0:#f0f2f8; --surface-1:#ffffff; --surface-2:#eef0f7;
@@ -27,6 +34,32 @@ body.light{
   --accent:#3a6ff0; --accent-bg:#dde8ff; --accent-text:#1a50d0;
   --success:#1a6035; --success-bg:#d4f0e0; --danger:#b03030; --danger-bg:#fde8e8;
 }
+
+/* ─── TEMAS DO GORILA PRO (Configurações ➔ botão "Mais cores no Pro") — PROPOSTA, a lista final é decidida com o Levi ───
+   Os claros usam o visual do tema claro (body.light) e os escuros o do escuro; aqui só trocam as cores de fundo,
+   cartões, bordas e textos. O azul dos botões e links continua o mesmo em todos. */
+/* tons de branco */
+body.tema-papel{ --bg:#f4f4f5; --surface-0:#f4f4f5; --surface-1:#ffffff; --surface-2:#ececee; --surface-3:#e2e2e5;
+  --border:#d9d9de; --border-strong:#bdbdc4; --text-primary:#18181b; --text-secondary:#52525b; --text-muted:#8e8e96; --accent-bg:#e0e8fb; }
+body.tema-gelo{ --bg:#eef2f6; --surface-0:#eef2f6; --surface-1:#fbfdff; --surface-2:#e6ebf1; --surface-3:#dbe2ea;
+  --border:#cfd8e3; --border-strong:#b3c0cf; --text-primary:#18212d; --text-secondary:#46566a; --text-muted:#8593a5; --accent-bg:#dbe7fb; }
+body.tema-sepia{ --bg:#f4ecdd; --surface-0:#f4ecdd; --surface-1:#fbf6ec; --surface-2:#ede3cf; --surface-3:#e3d6bd;
+  --border:#ddcfb4; --border-strong:#c6b394; --text-primary:#3b2f1e; --text-secondary:#5f4f37; --text-muted:#8a7759; --accent-bg:#e4e6f2; }
+/* tons de cinza */
+body.tema-nevoa{ --bg:#e4e6ea; --surface-0:#e4e6ea; --surface-1:#f4f5f7; --surface-2:#dcdfe4; --surface-3:#d1d5db;
+  --border:#c8ccd3; --border-strong:#a9afb9; --text-primary:#1c1f24; --text-secondary:#4a4f58; --text-muted:#868c96; --accent-bg:#d9e3f7; }
+/* tons de preto e cinza escuro */
+body.tema-preto{ --bg:#000000; --surface-0:#000000; --surface-1:#0d0d0d; --surface-2:#161616; --surface-3:#1f1f1f;
+  --border:#222222; --border-strong:#333333; --accent-bg:#1f1f1f; }
+body.tema-carvao{ --bg:#1c1917; --surface-0:#1c1917; --surface-1:#26221f; --surface-2:#2f2a26; --surface-3:#38322d;
+  --border:#3a342e; --border-strong:#4f4740; --text-primary:#f5f0eb; --text-secondary:#b8aea4; --text-muted:#857a70; --accent-bg:#38322d; }
+body.tema-grafite{ --bg:#2b2b2b; --surface-0:#2b2b2b; --surface-1:#353535; --surface-2:#3e3e3e; --surface-3:#474747;
+  --border:#474747; --border-strong:#5a5a5a; --accent-bg:#474747; }
+/* escuros com cor */
+body.tema-meianoite{ --bg:#0b1220; --surface-0:#0b1220; --surface-1:#111a2b; --surface-2:#172238; --surface-3:#1e2b45;
+  --border:#22304a; --border-strong:#33456a; --text-primary:#e8eef8; --text-secondary:#a6b3c8; --text-muted:#71809a; --accent-bg:#1e2b45; }
+body.tema-roxo{ --bg:#130f1f; --surface-0:#130f1f; --surface-1:#1b162b; --surface-2:#231c37; --surface-3:#2c2444;
+  --border:#2e2646; --border-strong:#45396a; --text-primary:#efebf8; --text-secondary:#b3aac9; --text-muted:#7d7494; --accent-bg:#2c2444; }
 
 /* ─── CORES DE DESTAQUE (independem de claro/escuro) ─── */
 body.accent-azul{ --accent:#2563eb; --accent-text:#3ea6ff; }

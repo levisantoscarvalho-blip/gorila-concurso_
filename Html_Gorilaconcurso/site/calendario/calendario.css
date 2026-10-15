@@ -211,3 +211,4 @@ body.light .cal-cell.no-study{background:#e8eaf2;color:#7d87a6}
 .cores-confirmar{display:flex;align-items:center;gap:6px;padding:9px 18px;border:none;border-radius:9px;background:var(--accent);color:#fff;font:inherit;font-size:13px;font-weight:700;cursor:pointer;box-shadow:0 4px 12px rgba(59,130,246,.3)}
 .cores-confirmar:hover{filter:brightness(1.08)}
 .cores-confirmar svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+body.light.tema-pers .cal-cell.no-study{background:var(--surface-2);color:var(--text-muted)}   /* temas claros do Pro (Papel, Gelo, Sépia, Névoa): dia sem estudo acompanha a cor do tema */

@@ -126,10 +126,103 @@ function trAbrirQuestoes(){
   mostrarNoticias(true); trMarcarAtivo('tr-questoes');
 }
 
-// Configurações (engrenagem) — ainda vamos desenvolver (decisão do Levi): por enquanto tela em branco, sem janela e sem mensagem
+// Configurações (engrenagem) — layout pedido pelo Levi: MENU à esquerda (como a barra lateral do calendário) e, à direita,
+// aparece o que foi clicado. Por enquanto o menu tem só "Configuração do sistema", com o "Modo noturno" (claro / escuro /
+// cinza escuro — o tema saiu da barra lateral) e as "Cores do sistema" (Pro).
+// As Configurações abrem POR CIMA da tela em que a pessoa estava (#cfg-screen), sem apagá-la: o botão "Voltar"
+// (embaixo, à direita, sob a barra de ícones) só fecha esta camada e a pessoa volta exatamente para o que fazia.
+let cfgVoltar=null;
 function trAbrirConfig(){
-  if(!window.__logado){ entrarComoVisitante(); }
-  mostrarNoticias(true); trMarcarAtivo('tr-config');
+  let tela=document.getElementById('cfg-screen');
+  if(!tela){ tela=document.createElement('div'); tela.id='cfg-screen'; document.body.appendChild(tela); }
+  if(tela.style.display!=='block'){
+    cfgVoltar={ ativo: document.querySelector('#theme-rail .tr-item.ativo')?.id || null, tema: temaAtual() };
+    // (sem "entrarComoVisitante" aqui: ele abria o calendário por baixo — era o erro do "Voltar" que caía no calendário)
+    tela.style.display='block';
+  }
+  trMarcarAtivo('tr-config');
+  renderTelaConfig();
+}
+// fecha a camada das Configurações (sem mexer na tela de baixo)
+function cfgEsconder(){
+  const tela=document.getElementById('cfg-screen'); if(!tela || tela.style.display!=='block') return false;
+  tela.style.display='none'; tela.innerHTML=''; cfgMaisAberto=false; cfgDicaPro=false;
+  if(temaPrevia){ temaPrevia=null; applyTheme(); }   // a prévia de tema Pro acaba
+  return true;
+}
+function renderTelaConfig(){
+  const ns=document.getElementById('cfg-screen'); if(!ns || ns.style.display!=='block') return;
+  const tema=temaPrevia ? null : temaAtual();
+  const opcao=(valor, nome)=>`<button type="button" class="${tema===valor?'ativo':''}" aria-pressed="${tema===valor}" onclick="cfgMudarTema('${valor}')">${nome}</button>`;
+  // MAIS CORES NO PRO: o botão azul abre o painel com quadradinhos de cada variação; sem o Pro, cadeado + prévia ao clicar
+  const cadeado='<svg class="cfg-tema-cadeado" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>';
+  const quadro=id=>{ const t=TEMAS[id], ativo=(temaPrevia||temaAtual())===id;
+    return `<button type="button" class="cfg-tema${ativo?' ativo':''}" aria-pressed="${ativo}" onclick="cfgEscolherTema('${id}')" title="${t.nome}">
+      <span class="cfg-tema-amostra" style="background:${t.amostra[0]}"><i style="background:${t.amostra[1]}"></i><b></b>${state.pro?'':cadeado}</span>
+      <span class="cfg-tema-nome">${t.nome}</span></button>`; };
+  const grupo=(g, titulo)=>`<h5>${titulo}</h5><div class="cfg-temas-grade">${Object.keys(TEMAS).filter(id=>TEMAS[id].grupo===g).map(quadro).join('')}</div>`;
+  ns.innerHTML=`<div class="cfg-layout">
+    <nav class="cfg-menu" aria-label="Configurações">
+      <div class="cfg-menu-titulo">Configurações</div>
+      <button type="button" class="nav-item active" aria-current="page">Configuração do sistema</button>
+    </nav>
+    <div class="cfg-conteudo">
+      <h1>Configuração do sistema</h1>
+      <section class="cfg-cartao">
+        <div class="cfg-linha"><div><b>Modo noturno</b><span>Claro, escuro ou cinza escuro, como preferir.</span></div>
+          <div class="cfg-linha-acoes">
+            <div class="cfg-seg" role="group" aria-label="Modo noturno">${opcao('light','Claro')}${opcao('dark','Escuro')}${opcao('cinza','Cinza escuro')}</div>
+            <span class="cfg-pro-wrap"><button type="button" class="cfg-mais-cores${cfgMaisAberto?' aberto':''}" aria-describedby="cfg-pro-dica" onclick="cfgBotaoPro()">PRO</button>
+              <span class="cfg-pro-dica${cfgDicaPro?' fixa':''}" id="cfg-pro-dica" role="tooltip">Novas cores só no plano Pro</span></span>
+          </div></div>
+      </section>
+      ${cfgMaisAberto ? `<section class="cfg-mais-painel" aria-label="Mais cores no Pro">
+        <div class="cfg-mais-cab"><div><b>Mais cores no Pro <span class="pro-selo">PRO</span></b>
+          <span>${state.pro ? 'Variações de branco, cinza e preto para o site inteiro. Clique para usar.'
+            : 'Variações de branco, cinza e preto para o site inteiro. Clique numa cor para ver como o site fica — usar de verdade é um recurso do Gorila Pro.'}</span></div>
+          <button type="button" class="cfg-mais-x" onclick="cfgMaisCores(false)" aria-label="Fechar">✕</button></div>
+        ${grupo('branco','Tons de branco')}${grupo('cinza','Tons de cinza')}${grupo('preto','Tons de preto')}${grupo('cor','Escuros com cor')}
+        ${temaPrevia ? `<div class="cfg-previa"><div><b>Prévia: ${TEMAS[temaPrevia].nome}</b><span>Você está vendo como o site fica com essa cor. Ela não foi salva — é um recurso do Gorila Pro.</span></div>
+          <div class="cfg-previa-botoes"><button type="button" class="cfg-botao" onclick="cfgFecharPrevia()">Voltar ao meu tema</button>
+            <a class="cfg-botao principal" href="institucional/planos.html" target="_blank" rel="noopener">Ver planos</a></div></div>` : ''}
+      </section>` : ''}
+    </div>
+  </div>
+  <button type="button" class="cfg-voltar-fixo" onclick="cfgVoltarAnterior()"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>Voltar</button>`;
+}
+// troca o tema: claro, escuro (preto estilo YouTube) ou cinza escuro (cinza-grafite mais claro)
+function cfgMudarTema(tema){
+  temaPrevia=null;
+  if(state.theme!==tema){ state.theme=tema; state.temaEscolhido=true; saveState(); }
+  applyTheme(); renderTelaConfig();
+}
+// cores do sistema: com o Pro, escolhe e salva; sem o Pro, mostra a PRÉVIA (o site muda de cor) + a explicação do recurso pago
+function cfgEscolherTema(id){
+  if(state.pro){ cfgMudarTema(id); return; }
+  temaPrevia=id; applyTheme(); renderTelaConfig();
+}
+function cfgFecharPrevia(){ temaPrevia=null; applyTheme(); renderTelaConfig(); }
+// botão "Mais cores no Pro": abre/fecha o painel das variações (fechar também desfaz a prévia)
+let cfgMaisAberto=false, cfgDicaPro=false;
+// botão "PRO" ao lado do Modo noturno: com o Pro, abre as cores; sem o Pro, mostra a mensagem "Novas cores só no plano Pro"
+// (ela também aparece ao passar o mouse). Clicar de novo, ou fora, esconde.
+function cfgBotaoPro(){
+  if(state.pro){ cfgMaisCores(); return; }
+  cfgDicaPro=!cfgDicaPro; renderTelaConfig();
+}
+document.addEventListener("click", e=>{ if(cfgDicaPro && !e.target.closest(".cfg-pro-wrap")){ cfgDicaPro=false; renderTelaConfig(); } });
+function cfgMaisCores(abrir){
+  cfgMaisAberto = abrir===undefined ? !cfgMaisAberto : abrir;
+  if(!cfgMaisAberto && temaPrevia){ temaPrevia=null; applyTheme(); }
+  renderTelaConfig();
+}
+// "Voltar": fecha as Configurações e a pessoa continua EXATAMENTE onde estava (a tela de baixo nunca foi apagada)
+function cfgVoltarAnterior(){
+  const o=cfgVoltar||{}; cfgVoltar=null;
+  cfgEsconder();
+  trMarcarAtivo(o.ativo || '');
+  // mudou o tema enquanto estava aqui: o mapa (desenhado em imagem) é redesenhado com as cores novas
+  if(o.tema!==temaAtual()) window.dispatchEvent(new Event('resize'));
 }
 
 // ── janela de CONFIGURAÇÕES — guardada para quando formos desenvolver (a engrenagem NÃO abre isto hoje) ──
@@ -164,6 +257,7 @@ function trAbrirNoticias(){
   mostrarNoticias();
 }
 function fecharTudo(){
+  if(typeof cfgEsconder==='function') cfgEsconder();   // abriu outra tela: as Configurações (e a prévia de tema Pro) fecham
   document.querySelectorAll('.modal-overlay.open').forEach(m=>m.classList.remove('open'));
   document.querySelectorAll('.cm-tour,.cm-tour-luz').forEach(e=>e.remove());   // balões do tour de Notícias
   const lb=document.getElementById('mm-lightbox-img'); if(lb) lb.src='';

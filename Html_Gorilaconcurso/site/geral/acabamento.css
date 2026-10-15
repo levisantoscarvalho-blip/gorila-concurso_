@@ -239,3 +239,94 @@ body:not(.light) .cal-img-add{background:rgba(0,0,0,.55)}
 body:not(.light) .cal-img-add:hover{background:rgba(0,0,0,.8)}
 body:not(.light) .estat-periodos button.ativo,body:not(.light) .cm-filtros button.ativo{background:var(--surface-3);box-shadow:none}
 @media (max-width:760px){ body:not(.light) #sidebar-nav .nav-item{background:var(--surface-2)} body:not(.light) #sidebar-nav .nav-item.active{background:#f1f1f1;color:#0f0f0f} body:not(.light) #sidebar-nav .nav-item.active .nav-icon{color:#0f0f0f} }   /* celular: chips como os do YouTube (ativo = branco) */
+/* tela de Configurações (engrenagem da barra da direita): um CARTÃO grande na página (pedido do Levi), com o menu à esquerda e o conteúdo à direita */
+.cfg-layout{display:flex;height:calc(100vh - 64px - 48px);min-height:360px;margin:24px 28px;box-sizing:border-box;background:var(--surface-1);border:1px solid var(--border);border-radius:0;overflow:hidden;box-shadow:0 1px 3px rgba(16,24,40,.06)}   /* cantos retos, com ponta (pedido do Levi) */
+@media (min-width:1100px){ .cfg-layout{margin-right:120px} }   /* espaço da barra de ícones da direita */
+.cfg-menu{width:230px;min-width:230px;box-sizing:border-box;display:flex;flex-direction:column;padding:16px 0 12px;background:var(--surface-0);border-right:1px solid var(--border)}
+.cfg-menu-titulo{padding:2px 22px 10px;font-size:15px;font-weight:700;color:var(--text-primary)}
+.cfg-menu .nav-item{border:none;background:none;font-family:inherit;text-align:left;width:calc(100% - 20px)}
+.cfg-menu .nav-item.active{background:var(--accent-bg)}
+.cfg-menu .nav-item svg{width:17px;height:17px;flex-shrink:0;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.cfg-conteudo{flex:1;min-width:0;overflow:auto;padding:24px 32px 32px}
+.cfg-conteudo h1{margin:0 0 16px;font-size:24px;font-weight:800;letter-spacing:-.02em;color:var(--text-primary)}
+.cfg-conteudo > p{margin:4px 0 16px;font-size:14px;color:var(--text-secondary)}
+.cfg-cartao{max-width:640px;background:var(--surface-1);border:1px solid var(--border);border-radius:12px;padding:4px 20px}
+.cfg-cartao .cfg-linha:last-child{border-bottom:none}
+@media (max-width:760px){ .cfg-layout{flex-direction:column;height:auto;min-height:0;margin:12px} .cfg-menu{width:auto;min-width:0;border-right:none;border-bottom:1px solid var(--border);flex-direction:row;flex-wrap:wrap;align-items:center;padding:8px 6px} .cfg-menu-titulo{display:none} .cfg-menu .nav-item{width:auto} }
+/* temas além do claro/escuro padrão (cinza escuro e os do Pro): a barra de cima e a busca acompanham as cores do tema */
+body.tema-pers:not(.light) #topbar{background:var(--bg);border-bottom-color:var(--border)}
+body.tema-pers.light #topbar{background:var(--surface-1);border-bottom-color:var(--border)}
+body.tema-pers:not(.light) #busca-global{background:var(--surface-1);border-color:var(--border-strong)!important}
+/* Configurações ➔ botão "Mais cores no Pro" e o painel com as variações (quadradinhos com a amostra de cada tema) */
+.cfg-mais-painel h5{margin:12px 0 8px;font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--text-muted)}
+.cfg-temas-grade{display:flex;flex-wrap:wrap;gap:10px}
+.cfg-tema{display:flex;flex-direction:column;align-items:center;gap:6px;width:92px;padding:0;border:none;background:none;cursor:pointer;font-family:inherit}
+.cfg-tema-amostra{position:relative;display:block;width:92px;height:58px;border:1px solid var(--border-strong);box-sizing:border-box;overflow:hidden;transition:transform .15s,box-shadow .15s}
+.cfg-tema-amostra i{position:absolute;left:10px;top:12px;right:10px;bottom:-1px;border:1px solid rgba(127,127,127,.25);border-bottom:none}
+.cfg-tema-amostra b{position:absolute;left:18px;top:21px;width:30px;height:6px;border-radius:3px;background:var(--accent)}
+.cfg-tema:hover .cfg-tema-amostra{transform:translateY(-2px);box-shadow:0 6px 14px rgba(16,24,40,.15)}
+.cfg-tema.ativo .cfg-tema-amostra{box-shadow:0 0 0 2px var(--accent)}
+.cfg-tema-nome{font-size:12px;font-weight:600;color:var(--text-secondary)}
+.cfg-tema.ativo .cfg-tema-nome{color:var(--text-primary)}
+.cfg-tema-cadeado{position:absolute;right:5px;top:5px;width:15px;height:15px;padding:2px;border-radius:5px;background:rgba(0,0,0,.55);fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+/* aviso da prévia (quem não é Pro): dentro do painel, com "Voltar ao meu tema" e "Ver planos" */
+.cfg-previa{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:50;display:flex;align-items:center;gap:14px;width:min(720px,calc(100vw - 32px));box-sizing:border-box;padding:14px 16px;background:var(--surface-1);border:1px solid var(--border-strong);box-shadow:0 16px 40px rgba(0,0,0,.28)}
+.cfg-previa > div:not(.cfg-previa-botoes){flex:1;min-width:0}
+.cfg-previa b{display:block;font-size:14px;color:var(--text-primary)}
+.cfg-previa span:not(.pro-selo){display:block;margin-top:2px;font-size:12.5px;line-height:1.4;color:var(--text-secondary)}
+.cfg-previa-botoes{display:flex;gap:8px;flex-shrink:0}
+@media (max-width:760px){ .cfg-previa{flex-wrap:wrap;bottom:100px} .cfg-previa-botoes{width:100%;justify-content:flex-end} }
+.cfg-linha .pro-selo,.cfg-previa .pro-selo{display:inline-flex!important;margin:0;color:#fff!important}   /* o texto do selo PRO fica branco (a regra do cfg-linha span o deixava cinza) */
+/* camada das Configurações: abre POR CIMA da tela em que a pessoa estava (que continua lá embaixo, intacta) */
+#cfg-screen{display:none;position:fixed;top:64px;left:0;right:0;bottom:0;z-index:970;overflow:auto;background:var(--bg)}
+/* "Voltar": embaixo, à direita, sob a barra de ícones (pedido do Levi) */
+.cfg-voltar-fixo{position:fixed;right:28px;bottom:20px;z-index:2;display:inline-flex;align-items:center;gap:6px;height:38px;padding:0 16px 0 12px;border:1px solid var(--border-strong);background:var(--surface-1);color:var(--text-primary);font-family:inherit;font-size:13.5px;font-weight:600;cursor:pointer;box-shadow:0 4px 12px rgba(16,24,40,.12)}
+.cfg-voltar-fixo:hover{background:var(--surface-2)}
+.cfg-voltar-fixo svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+@media (max-width:1099px){ .cfg-voltar-fixo{bottom:100px} }   /* celular/tablet: acima da barra de ícones de baixo */
+.cfg-linha-acoes{display:flex;align-items:center;justify-content:flex-end;gap:10px;flex-wrap:wrap}
+.cfg-mais-cores{height:34px;padding:0 14px;border:1px solid #2563eb;background:transparent;color:#2563eb;font-family:inherit;font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap}
+.cfg-mais-cores:hover,.cfg-mais-cores.aberto{background:#2563eb;color:#fff}
+.cfg-mais-painel{max-width:640px;margin-top:14px;padding:4px 20px 16px;box-sizing:border-box;background:var(--surface-1);border:1px solid var(--border)}
+.cfg-mais-cab{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:12px 0 2px}
+.cfg-mais-cab b{display:flex;align-items:center;gap:6px;font-size:14px;color:var(--text-primary)}
+.cfg-mais-cab span:not(.pro-selo){display:block;margin-top:3px;font-size:12.5px;line-height:1.4;color:var(--text-secondary)}
+.cfg-mais-cab .pro-selo{color:#fff;margin:0}
+.cfg-mais-x{flex-shrink:0;width:30px;height:30px;border:none;background:none;color:var(--text-muted);font-size:15px;cursor:pointer}
+.cfg-mais-x:hover{background:var(--surface-2);color:var(--text-primary)}
+.cfg-mais-painel .cfg-previa{position:static;transform:none;width:auto;margin-top:16px;box-shadow:none;border:1px solid var(--accent);padding:12px 14px}
+/* menu das Configurações: só texto, numa linha, como um menu de produto (sem ícone — pedido do Levi) */
+.cfg-menu .nav-item{white-space:nowrap;padding:10px 14px;font-size:14px}
+.cfg-menu-titulo{padding:4px 24px 14px;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted)}
+/* "Mais cores no Pro" na MESMA linha, logo à direita do Claro/Escuro/Cinza escuro (pedido do Levi): o cartão fica mais largo */
+.cfg-conteudo .cfg-cartao,.cfg-mais-painel{max-width:860px}
+.cfg-linha-acoes{flex-wrap:nowrap}
+.cfg-mais-cores{height:38px}
+/* botão "Voltar" (canto de baixo à direita) — versão mais profissional: pílula, seta num círculo, sombra suave e leve movimento ao passar o mouse */
+.cfg-voltar-fixo{height:44px;padding:0 18px 0 6px;gap:10px;border-radius:999px;border:1px solid var(--border);background:var(--surface-1);
+  font-size:14px;font-weight:600;letter-spacing:-.005em;box-shadow:0 1px 2px rgba(16,24,40,.06),0 8px 24px rgba(16,24,40,.12);transition:transform .15s,box-shadow .15s,background .15s}
+.cfg-voltar-fixo svg{width:32px;height:32px;padding:8px;box-sizing:border-box;border-radius:50%;background:var(--surface-2);stroke-width:2.4;transition:transform .15s,background .15s}
+.cfg-voltar-fixo:hover{background:var(--surface-1);transform:translateY(-1px);box-shadow:0 2px 4px rgba(16,24,40,.08),0 12px 28px rgba(16,24,40,.16)}
+.cfg-voltar-fixo:hover svg{transform:translateX(-2px);background:var(--accent);stroke:#fff}
+.cfg-voltar-fixo:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+body:not(.light) .cfg-voltar-fixo{box-shadow:0 8px 24px rgba(0,0,0,.45)}
+/* mensagem "Novas cores só no plano Pro": aparece ao passar o mouse e fica ao clicar */
+.cfg-pro-wrap{position:relative;display:inline-flex}
+.cfg-pro-dica{position:absolute;right:0;top:calc(100% + 10px);z-index:5;white-space:nowrap;padding:8px 12px;border-radius:8px;background:#111827;color:#fff;font-size:12.5px;font-weight:600;
+  box-shadow:0 8px 24px rgba(16,24,40,.25);opacity:0;visibility:hidden;transform:translateY(-4px);transition:opacity .15s,transform .15s,visibility .15s;pointer-events:none}
+.cfg-pro-dica::before{content:'';position:absolute;right:22px;top:-5px;width:10px;height:10px;background:inherit;transform:rotate(45deg)}
+.cfg-pro-wrap:hover .cfg-pro-dica,.cfg-pro-dica.fixa{opacity:1;visibility:visible;transform:none}
+body:not(.light) .cfg-pro-dica{background:#f1f1f1;color:#0f0f0f}
+.cfg-linha .cfg-pro-dica{display:block;margin:0;color:#fff;font-size:12.5px}  body:not(.light) .cfg-linha .cfg-pro-dica{color:#0f0f0f}   /* a regra geral dos textos da linha deixava a mensagem cinza */
+/* ═══ TUDO QUE É PRO — opção 2 escolhida pelo Levi: degradê marinho ➔ azul, cantos 6px, coroinha dourada ═══
+   Vale para o selo "PRO" em qualquer lugar do site e para o botão "PRO" das Configurações. */
+.pro-selo,.cfg-mais-cores{display:inline-flex!important;align-items:center;gap:5px;color:#fff!important;border:none!important;border-radius:6px!important;
+  background:linear-gradient(90deg,#0b1d52,#2453c4)!important;font-weight:800!important;letter-spacing:.08em;box-shadow:none}
+.pro-selo::before,.cfg-mais-cores::before{content:'';flex-shrink:0;width:10px;height:10px;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23ffd36b' d='M3 8l4.5 4L12 5l4.5 7L21 8l-2 11H5z'/%3E%3C/svg%3E") center/contain no-repeat}
+.cfg-mais-cores{height:34px;padding:0 14px;font-size:12px;gap:6px;cursor:pointer;transition:filter .15s,box-shadow .15s}
+.cfg-mais-cores::before{width:13px;height:13px}
+.cfg-mais-cores:hover,.cfg-mais-cores.aberto{filter:brightness(1.1);box-shadow:0 4px 12px rgba(36,83,196,.35)}
+/* "Ajuda" / "Equipe de suporte" e os ícones da barra da direita um pouco mais escuros no tema claro (pedido do Levi) */
+body.light .tb-links a{color:#353b52}
+body.light .tr-item{color:#353b52}

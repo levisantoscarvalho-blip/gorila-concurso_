@@ -455,3 +455,24 @@ body:not(.light) .cm-ev-bandeira{filter:drop-shadow(0 14px 18px rgba(0,0,0,.6))}
 .cm-ev-fora{position:absolute;display:flex;align-items:center;gap:6px;font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.02em;line-height:1.2;color:var(--text-secondary);white-space:nowrap;pointer-events:none;transition:opacity .2s,color .15s}
 .cm-ev-fora b{width:9px;height:9px;border-radius:3px;flex-shrink:0}
 .cm-ev-fora.ativo{color:var(--text-primary)}
+.cm-ev-quadro svg.cm-ev-svg{overflow:hidden}   /* ilhas longe (ex.: Fernando de Noronha) ficam fora do quadro */
+/* nomes de fora mais legíveis (notebook de 14"): letra maior, até 2 linhas, em colunas dos lados do estado */
+.cm-ev-fora{font-size:11.5px;line-height:1.25;letter-spacing:.01em;color:var(--text-primary)}
+.cm-ev-fora b{width:10px;height:10px}
+.cm-ev-linhas line{stroke:var(--text-secondary);stroke-width:1;opacity:.7}
+/* o mapa ganha mais espaço que a bandeira */
+.cm-estado-vista.cm-ev-direita{grid-template-columns:minmax(0,.78fr) minmax(0,1.22fr)}   /* bandeira um pouco menor e o estado maior (pedido do Levi) */
+/* zoom do estado aberto: o mapa amplia dentro da sua área (não invade a bandeira) */
+.cm-ev-mapa{overflow:hidden;touch-action:none}
+.cm-ev-quadro{transform-origin:0 0;will-change:transform}
+.cm-ev-mapa.ampliado .cm-ev-quadro path{cursor:grab}
+.cm-ev-mapa.arrastando,.cm-ev-mapa.arrastando .cm-ev-quadro path{cursor:grabbing}
+.cm-ev-mapa.arrastando{user-select:none}
+/* passar o mouse numa região: contorno forte, sombra e transição suave (pedido do Levi: "renderizar melhor") */
+.cm-ev-quadro svg.cm-ev-svg{shape-rendering:geometricPrecision}
+.cm-ev-quadro path{transition:fill .18s ease,stroke .18s ease,stroke-width .18s ease}
+.cm-ev-quadro path.sobre{stroke:#111827;stroke-width:2.4;filter:drop-shadow(0 6px 10px rgba(16,24,40,.28))}
+body:not(.light) .cm-ev-quadro path.sobre{stroke:#fff;filter:drop-shadow(0 6px 12px rgba(0,0,0,.6))}
+.cm-ev-rot{transition:color .18s ease,transform .18s ease}
+.cm-ev-rot.ativo{transform:translate(-50%,-50%) scale(1.06)}
+.cm-ev-dica{transition:opacity .12s ease}

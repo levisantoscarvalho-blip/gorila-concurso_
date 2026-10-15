@@ -568,13 +568,29 @@ function cmLayoutEstado(){
   const fim=document.querySelector('.cm-faixa-rotulo')?.getBoundingClientRect().top || innerHeight;
   v.style.left=(P.left-A.left)+'px'; v.style.width=Math.round(P.width)+'px';
   v.style.top=(topo-A.top)+'px'; v.style.height=Math.max(300, fim-topo-8)+'px';
-  cmDesenharMeso(cmVendoEstado);
+  cmEvZoom={z:1,x:0,y:0}; cmDesenharMeso(cmVendoEstado);   // abriu o estado ou mudou o tamanho da tela: volta ao tamanho normal
   cmBandeiraOndular(cmVendoEstado);
+}
+// ── ENQUADRAMENTO: o tamanho e o centro do mapa contam só o "continente" do estado. Ilhas pequenas e LONGE dele
+// (ex.: Fernando de Noronha, em Pernambuco) ficam de fora — senão o estado aparece pequeno e fora do meio. ──
+function cmMesoEnquadrar(dados){
+  if(dados._vb) return dados._vb;
+  const ns="http://www.w3.org/2000/svg", med=document.createElementNS(ns,"svg");
+  med.setAttribute("style","position:absolute;left:-9999px;top:0;width:10px;height:10px;visibility:hidden"); document.body.appendChild(med);
+  const partes=[];
+  dados.regioes.forEach(r=>r.d.split(/(?=M)/).forEach(s=>{ const p=document.createElementNS(ns,"path"); p.setAttribute("d",s); med.appendChild(p); partes.push(p.getBBox()); }));
+  med.remove();
+  const uniao=l=>{ const x=Math.min(...l.map(b=>b.x)), y=Math.min(...l.map(b=>b.y)); return {x, y, w:Math.max(...l.map(b=>b.x+b.width))-x, h:Math.max(...l.map(b=>b.y+b.height))-y}; };
+  const maior=Math.max(...partes.map(b=>b.width*b.height));
+  const c=uniao(partes.filter(b=>b.width*b.height>=maior*0.01));                    // só os pedaços grandes
+  const perto=b=>b.x+b.width>=c.x-c.w*0.1 && b.x<=c.x+c.w*1.1 && b.y+b.height>=c.y-c.h*0.1 && b.y<=c.y+c.h*1.1;
+  const u=uniao(partes.filter(perto)), pad=Math.max(u.w,u.h)*0.02;                   // + ilhas pequenas coladas no litoral
+  return dados._vb=`${u.x*1e-4-pad*1e-4} ${-(u.y+u.h)*1e-4-pad*1e-4} ${(u.w+2*pad)*1e-4} ${(u.h+2*pad)*1e-4}`;
 }
 // ── MAPA DO ESTADO DIVIDIDO EM REGIÕES ──
 function cmDesenharMeso(uf){
   const dados=MESO_BR[uf], alvo=document.getElementById('cm-ev-mapa'); if(!dados||!alvo) return;
-  const [vx,vy,vw,vh]=dados.viewBox.split(' ').map(Number);
+  const vbTexto=cmMesoEnquadrar(dados), [vx,vy,vw,vh]=vbTexto.split(" ").map(Number);   // enquadra o continente (sem ilhas distantes)
   const escuro=!document.body.classList.contains('light');
   // tamanho de cada mesorregião (mesma técnica do mapa do Brasil)
   const ns='http://www.w3.org/2000/svg', med=document.createElementNS(ns,'svg');
@@ -605,91 +621,136 @@ function cmDesenharMeso(uf){
       dist[q]=Math.min(dist[q], v(i-1,j)+1, v(i,j-1)+1, v(i-1,j-1)+D2, v(i+1,j-1)+D2); }
     for(let j=ny-1;j>=0;j--) for(let i=nx-1;i>=0;i--){ const q=j*nx+i; if(!dentro[q]) continue;    // volta
       dist[q]=Math.min(dist[q], v(i+1,j)+1, v(i,j+1)+1, v(i+1,j+1)+D2, v(i-1,j+1)+D2); }
-    const corte=r.nome.lastIndexOf(' ');
-    r.linhas=corte>0 ? [r.nome.slice(0,corte), r.nome.slice(corte+1)] : [r.nome];
+    // jeitos de escrever o nome: 1, 2 ou 3 linhas (a quebra mais equilibrada); o que der a MAIOR letra dentro da região ganha
     ctx.font=`700 100px ${fonteMapa}`;
-    r.larg1=Math.max(...r.linhas.map(l=>ctx.measureText(l.toUpperCase()).width/100 + l.length*0.02)); r.alt1=r.linhas.length*1.12;
-    r.larg1linha=ctx.measureText(r.nome.toUpperCase()).width/100 + r.nome.length*0.02;   // nome numa linha só (rótulo de fora)
+    const mede=l=>ctx.measureText(l.toUpperCase()).width/100 + l.length*0.02;
+    const pal=r.nome.split(' '), opc=[[r.nome]];
+    for(let a=1;a<pal.length;a++) opc.push([pal.slice(0,a).join(' '), pal.slice(a).join(' ')]);
+    for(let a=1;a<pal.length;a++) for(let b=a+1;b<pal.length;b++) opc.push([pal.slice(0,a).join(' '), pal.slice(a,b).join(' '), pal.slice(b).join(' ')]);
+    const melhorPorN={}; opc.forEach(ls=>{ const w=Math.max(...ls.map(mede)); if(!melhorPorN[ls.length] || w<melhorPorN[ls.length].larg1) melhorPorN[ls.length]={linhas:ls, larg1:w, alt1:ls.length*1.12}; });
+    r.opcoes=Object.values(melhorPorN);
+    r.linhas=r.opcoes[0].linhas;
+    r.larg1linha=mede(r.nome);   // nome numa linha só (rótulo de fora)
     r.cand=[...dist.keys()].filter(q=>dentro[q]).sort((a,b)=>dist[b]-dist[a]).slice(0,60);
     r.cx=q=>x+(q%nx+.5)*lado; r.cy=q=>y+((q-q%nx)/nx+.5)*lado;
   });
-  // para cada tamanho do mapa (k = px por grau): o nome cabe INTEIRO dentro da região? com que letra (8 a 14px)?
+  // para cada tamanho do mapa (k = px por grau): o nome cabe INTEIRO dentro da região? com que letra (9,5 a 15px)?
+  const MIN_DENTRO=8.5;   // menor letra aceita dentro da região (abaixo disso, fica ilegível)
   const medir=k=>regs.forEach(r=>{
     const px2raw=1/(k*1e-4);
-    const cabe=(q,f)=>{ const hw=(r.larg1*f/2+2)*px2raw, hh=(r.alt1*f/2+1)*px2raw, X=r.cx(q), Y=r.cy(q);
+    const cabe=(q,f,o)=>{ const hw=(o.larg1*f/2+1.5)*px2raw, hh=(o.alt1*f/2+1)*px2raw, X=r.cx(q), Y=r.cy(q);
       for(let s=0;s<=4;s++){ const a=-1+s/2;
         if(!ctx.isPointInPath(r.p2, X+a*hw, Y-hh) || !ctx.isPointInPath(r.p2, X+a*hw, Y+hh) ||
            !ctx.isPointInPath(r.p2, X-hw, Y+a*hh) || !ctx.isPointInPath(r.p2, X+hw, Y+a*hh)) return false; }
       return true; };
-    let melhor={q:r.cand[0]??0, f:0};
-    r.cand.forEach(q=>{ if(!cabe(q,8)) return; let lo=8, hi=14;
-      if(cabe(q,hi)) lo=hi; else for(let t=0;t<6;t++){ const mid=(lo+hi)/2; if(cabe(q,mid)) lo=mid; else hi=mid; }
-      if(lo>melhor.f) melhor={q,f:lo}; });
+    let melhor={q:r.cand[0]??0, f:0, o:r.opcoes[0]};
+    r.opcoes.forEach(o=>r.cand.forEach(q=>{ if(!cabe(q,MIN_DENTRO,o)) return; let lo=MIN_DENTRO, hi=15;
+      if(cabe(q,hi,o)) lo=hi; else for(let t=0;t<6;t++){ const mid=(lo+hi)/2; if(cabe(q,mid,o)) lo=mid; else hi=mid; }
+      if(lo>melhor.f+0.3) melhor={q,f:lo,o}; }));   // empate: fica a opção com menos linhas
+    r.linhas=melhor.o.linhas;
     r.lx=(r.cx(melhor.q)*1e-4-vx)*k; r.ly=(-r.cy(melhor.q)*1e-4-vy)*k; r.fonte=melhor.f;
     const q0=r.cand[0]??0; r.ax=(r.cx(q0)*1e-4-vx)*k; r.ay=(-r.cy(q0)*1e-4-vy)*k;   // ponto da linha (nome do lado de fora)
   });
-  const Wa=alvo.clientWidth, Ha=alvo.clientHeight;
-  let k=Math.min(Wa*0.98/vw, Ha*0.98/vh);   // px por grau (o maior que couber)
+  // NOMES (pedido do Levi: toda região com nome e fácil de ler até num notebook de 14"):
+  //  • dentro da região só se couber com letra de pelo menos 9,5px;
+  //  • os outros vão para COLUNAS ao lado do estado (esquerda/direita, do lado mais perto da região), em ordem de
+  //    cima para baixo — assim as linhas não se cruzam. O mapa diminui só o necessário para as colunas caberem.
+  const Wa=alvo.clientWidth, Ha=alvo.clientHeight, FONTE_FORA=11.5, GAP=22;
+  const CAP=Wa<560?120:165, larguraRot=r=>Math.min(CAP, r.larg1linha*FONTE_FORA+24);
+  const linhasRot=r=>Math.ceil((r.larg1linha*FONTE_FORA+24)/CAP);   // nomes compridos quebram em 2 linhas
+  // ampliado com a rodinha (cmEvZoom.z>1): redesenha no tamanho maior, nítido; nomes que agora cabem vão para dentro,
+  // e os que ainda não cabem aparecem só no balão do mouse (sem colunas de fora)
+  const ampliado = cmEvZoom.z>1 && alvo._kBase;
+  // O ESTADO FICA SEMPRE NO MAIOR TAMANHO POSSÍVEL (pedido do Levi). Nomes que não cabem dentro vão para o lado
+  // só se houver espaço livre ali; senão aparecem ao passar o mouse (balão) ou ao ampliar com a rodinha.
+  const k=ampliado ? alvo._kBase*cmEvZoom.z : Math.min(Wa*0.98/vw, Ha*0.96/vh);
   medir(k);
-  // NOMES DE FORA (pedido do Levi: toda região com nome): em cima/embaixo do estado, ou dos lados — onde sobrar espaço.
-  // Só diminui o mapa se não sobrar espaço nenhum em volta.
-  const sobraV=k=>(Ha-vh*k)/2, sobraH=k=>(Wa-vw*k)/2;
-  if(regs.some(r=>r.fonte<8) && sobraV(k)<40 && sobraH(k)<130){ k*=0.84; medir(k); }
-  const W=vw*k, H=vh*k, fora=regs.filter(r=>r.fonte<8);
-  const FONTE_FORA=10.5, folgaV=sobraV(k), folgaH=sobraH(k), vertical=folgaV>=40 || folgaH<130;
-  fora.forEach(r=>{ r.w=r.larg1linha*FONTE_FORA+16; r.lado = vertical ? (r.ay<H/2?'cima':'baixo') : (r.ax<W/2?'esq':'dir'); });
-  ['cima','baixo','esq','dir'].forEach(lado=>{
-    const grupo=fora.filter(r=>r.lado===lado);
-    if(lado==='cima'||lado==='baixo'){
-      // da esquerda para a direita, sem um encostar no outro e sem sair da área do mapa (não invade a lista);
-      // se não couber numa linha, abre uma 2ª linha
-      const ini=-folgaH+4, lim=W+folgaH-4; grupo.sort((a,b)=>a.ax-b.ax);
-      let fim=ini, linha=0, naLinha=[];
-      grupo.forEach(r=>{
-        let x=Math.max(r.ax, fim+r.w/2+8, ini+r.w/2);
-        if(x+r.w/2>lim){
-          const falta=x+r.w/2-lim, livre=naLinha.length ? (naLinha[0].fx-naLinha[0].w/2)-ini : 0;
-          if(livre>=falta){ naLinha.forEach(o=>o.fx-=falta); x-=falta; }           // empurra a linha para a esquerda e cabe
-          else if(naLinha.length){ linha++; naLinha=[]; x=Math.max(r.ax, ini+r.w/2); x=Math.min(x, lim-r.w/2); }   // abre outra linha
-          else x=lim-r.w/2;
-        }
-        r.fx=x; fim=x+r.w/2; naLinha.push(r); r.fy = lado==='cima' ? -16-linha*18 : H+16+linha*18; });
-    } else {
-      grupo.sort((a,b)=>a.ay-b.ay); let fim=-1e9;
-      grupo.forEach(r=>{ r.fy=Math.max(r.ay, fim+24); fim=r.fy; r.fx = lado==='esq' ? -18 : W+18; r.max=folgaH-26; });
-      const sobra=fim-(H-6); if(sobra>0) grupo.forEach(r=>r.fy-=sobra);
-    }
+  const W=vw*k, H=vh*k, livreLado=(Wa-W)/2;
+  const fora=ampliado ? [] : regs.filter(r=>r.fonte<MIN_DENTRO && larguraRot(r)+GAP<=livreLado);
+  fora.forEach(r=>{ r.lado = r.ax<W/2 ? 'esq' : 'dir'; r.w=larguraRot(r); });
+  ['esq','dir'].forEach(lado=>{
+    const grupo=fora.filter(r=>r.lado===lado).sort((a,b)=>a.ay-b.ay); if(!grupo.length) return;
+    const alt=r=>linhasRot(r)*14+8, total=grupo.reduce((t,r)=>t+alt(r),0), folgaV=Math.max(10,(Ha-H)/2-6), aperta=Math.min(1,(H+2*folgaV)/total); let fim=-1e9, altAnt=0;
+    grupo.forEach(r=>{ r.fy=Math.max(r.ay, fim+(altAnt+alt(r))/2*aperta); fim=r.fy; altAnt=alt(r); r.fx = lado==='esq' ? -GAP+6 : W+GAP-6; r.max=r.w; });
+    const sobra=fim+alt(grupo[grupo.length-1])/2-(H+folgaV); if(sobra>0) grupo.forEach(r=>r.fy-=sobra);
+    const falta=-folgaV+alt(grupo[0])/2-grupo[0].fy; if(falta>0) grupo.forEach(r=>r.fy+=falta);
   });
+  const desloca=0;
+  if(!ampliado){ alvo._kBase=k; alvo._W1=W; alvo._H1=H; }
   const ponta=r=>({cima:[r.fx, r.fy+4], baixo:[r.fx, r.fy-4], esq:[r.fx+4, r.fy], dir:[r.fx-4, r.fy]})[r.lado];
   const mover={cima:'translate(-50%,-100%)', baixo:'translate(-50%,0)', esq:'translate(-100%,-50%)', dir:'translate(0,-50%)'};
-  alvo.innerHTML=`<div class="cm-ev-quadro" style="width:${W}px;height:${H}px" onpointermove="cmMesoDicaMove(event)" onpointerleave="cmMesoSobre(-1)">
-    <svg viewBox="${dados.viewBox}" width="${W}" height="${H}" role="img" aria-label="Regiões ${cmDoEstado(uf)}"><g transform="scale(0.0001,-0.0001)">${
+  alvo.innerHTML=`<div class="cm-ev-quadro" style="width:${W}px;height:${H}px;margin-left:${desloca*2}px" onpointermove="cmMesoDicaMove(event)" onpointerleave="cmMesoSobre(-1)">
+    <svg class="cm-ev-svg" viewBox="${vbTexto}" width="${W}" height="${H}" role="img" aria-label="Regiões ${cmDoEstado(uf)}"><g transform="scale(0.0001,-0.0001)">${
       regs.map((r,i)=>`<path d="${r.d}" fill="${r.cor}" data-i="${i}" onpointerenter="cmMesoSobre(${i})"></path>`).join('')}</g></svg>
     <svg class="cm-ev-linhas" width="${W}" height="${H}" aria-hidden="true">${fora.map(r=>{ const [px,py]=ponta(r);
       return `<line data-i="${regs.indexOf(r)}" x1="${r.ax}" y1="${r.ay}" x2="${px}" y2="${py}"/><circle data-i="${regs.indexOf(r)}" cx="${r.ax}" cy="${r.ay}" r="2.5"/>`; }).join('')}</svg>
-    ${regs.map((r,i)=>r.fonte<8
-      ? `<div class="cm-ev-fora" data-i="${i}" style="left:${r.fx}px;top:${r.fy}px;transform:${mover[r.lado]}${r.max?`;max-width:${r.max}px;white-space:normal`:''}"><b style="background:${r.cor}"></b>${r.nome}</div>`
+    ${regs.map((r,i)=>!fora.includes(r) && r.fonte<MIN_DENTRO ? '' : r.fonte<MIN_DENTRO
+      ? (ampliado ? '' : `<div class="cm-ev-fora" data-i="${i}" style="left:${r.fx}px;top:${r.fy}px;transform:${mover[r.lado]}${r.max?`;width:max-content;max-width:${r.max}px;white-space:normal`:''}"><b style="background:${r.cor}"></b>${r.nome}</div>`)
       : `<div class="cm-ev-rot" data-i="${i}" style="left:${r.lx}px;top:${r.ly}px;font-size:${r.fonte.toFixed(1)}px">${r.linhas.join('<br>')}</div>`).join('')}
     <div class="cm-ev-dica" id="cm-ev-dica" hidden></div>
   </div>`;
   alvo._regs=regs; alvo._sobre=-1;
+  alvo.onwheel=cmEvRoda; alvo.onpointerdown=cmEvArrastaInicio; alvo.ondblclick=()=>{ cmEvZoom={z:1,x:0,y:0}; cmDesenharMeso(cmVendoEstado); };
+  alvo.classList.toggle('ampliado', cmEvZoom.z>1);
+  cmEvDesenhado={...cmEvZoom}; cmEvMostrar();
 }
 // mouse em cima de uma mesorregião: ela clareia e o NOME dela aparece num balão junto do mouse (em todas, grandes ou pequenas)
 function cmMesoSobre(i){
   const alvo=document.getElementById('cm-ev-mapa'); if(!alvo?._regs) return;
   const ant=alvo._sobre; if(ant===i) return;
-  if(ant>=0){ const ra=alvo._regs[ant]; alvo.querySelector(`path[data-i="${ant}"]`)?.setAttribute('fill', ra.cor); alvo.querySelectorAll(`.cm-ev-rot[data-i="${ant}"],.cm-ev-fora[data-i="${ant}"]`).forEach(e=>e.classList.remove('ativo')); }
+  if(ant>=0){ const ra=alvo._regs[ant], pa=alvo.querySelector(`path[data-i="${ant}"]`); if(pa){ pa.setAttribute('fill', ra.cor); pa.classList.remove('sobre'); }
+    alvo.querySelectorAll(`.cm-ev-rot[data-i="${ant}"],.cm-ev-fora[data-i="${ant}"]`).forEach(e=>e.classList.remove('ativo')); }
   alvo._sobre=i;
   const dica=document.getElementById('cm-ev-dica'), r=alvo._regs[i];
   if(!r){ if(dica) dica.hidden=true; return; }
-  alvo.querySelector(`path[data-i="${i}"]`)?.setAttribute('fill', cmMesoMistura(r.cor, '#ffffff', .22));
+  // região sob o mouse: vem para a frente dos vizinhos, clareia um pouco e ganha contorno forte + sombra (fica "levantada")
+  const p=alvo.querySelector(`path[data-i="${i}"]`);
+  if(p){ p.parentNode.appendChild(p); p.setAttribute('fill', cmMesoMistura(r.cor, '#ffffff', .14)); p.classList.add('sobre'); }
   alvo.querySelectorAll(`.cm-ev-rot[data-i="${i}"],.cm-ev-fora[data-i="${i}"]`).forEach(e=>e.classList.add('ativo'));
   if(dica){ dica.textContent=r.nome; dica.hidden=false; }
 }
 function cmMesoDicaMove(ev){
   const dica=document.getElementById('cm-ev-dica'); if(!dica || dica.hidden) return;
-  const q=dica.parentElement.getBoundingClientRect();
-  dica.style.left=(ev.clientX-q.left)+'px'; dica.style.top=(ev.clientY-q.top)+'px';
+  const q=dica.parentElement.getBoundingClientRect(), z=(cmEvZoom.z/cmEvDesenhado.z)||1;   // o quadro pode estar esticado (rodinha girando)
+  dica.style.left=((ev.clientX-q.left)/z)+'px'; dica.style.top=((ev.clientY-q.top)/z)+'px';
+  dica.style.transform=`translate(14px,-130%) scale(${1/z})`; dica.style.transformOrigin='0 100%';   // o balão não cresce com o zoom
+}
+// ── ZOOM DO ESTADO ABERTO (pedido do Levi, igual ao mapa do Brasil): rodinha do mouse amplia no ponto do mouse,
+// arrastar move (quando ampliado), duplo clique volta ao tamanho normal.
+// Enquanto a rodinha gira, a imagem só é esticada (rápido); quando para, o mapa é REDESENHADO no tamanho novo
+// (bordas finas e nítidas, e os nomes que agora cabem aparecem dentro das regiões).
+let cmEvZoom={z:1,x:0,y:0}, cmEvDesenhado={z:1,x:0,y:0}, cmEvRedesenhoT=null;
+// posiciona o quadro desenhado para mostrar o estado cmEvZoom (x,y = deslocamento a partir do centro da área)
+function cmEvMostrar(){
+  const a=document.getElementById('cm-ev-mapa'), q=a?.querySelector('.cm-ev-quadro'); if(!q||!a._W1) return;
+  const d=cmEvDesenhado, z=cmEvZoom, s=z.z/d.z;
+  const Wd=a._W1*d.z, Hd=a._H1*d.z, Wn=a._W1*z.z, Hn=a._H1*z.z;
+  q.style.transform=`translate(${z.x+(Wd-Wn)/2}px,${z.y+(Hd-Hn)/2}px) scale(${s})`;
+}
+function cmEvLimitar(){
+  const a=document.getElementById('cm-ev-mapa'); if(!a?._W1) return;
+  if(cmEvZoom.z<=1){ cmEvZoom={z:1,x:0,y:0}; return; }
+  const Wn=a._W1*cmEvZoom.z, Hn=a._H1*cmEvZoom.z;   // o estado nunca some da tela ao arrastar
+  cmEvZoom.x=Math.max(-Wn/2, Math.min(Wn/2, cmEvZoom.x)); cmEvZoom.y=Math.max(-Hn/2, Math.min(Hn/2, cmEvZoom.y));
+}
+function cmEvRoda(ev){
+  const a=document.getElementById('cm-ev-mapa'), q=a?.querySelector('.cm-ev-quadro'); if(!q||!a._W1) return;
+  ev.preventDefault();
+  const z0=cmEvZoom.z, z=Math.min(6, Math.max(1, z0*(ev.deltaY<0 ? 1.18 : 1/1.18))); if(z===z0) return;
+  const r=q.getBoundingClientRect(), u=ev.clientX-r.left, v=ev.clientY-r.top;   // ponto do mouse dentro do estado (na escala atual)
+  const W0=a._W1*z0, H0=a._H1*z0, Wn=a._W1*z, Hn=a._H1*z;
+  cmEvZoom={ z, x:cmEvZoom.x+u*(1-z/z0)+(Wn-W0)/2, y:cmEvZoom.y+v*(1-z/z0)+(Hn-H0)/2 };
+  cmEvLimitar(); cmEvMostrar(); a.classList.toggle('ampliado', cmEvZoom.z>1);
+  clearTimeout(cmEvRedesenhoT); cmEvRedesenhoT=setTimeout(()=>cmDesenharMeso(cmVendoEstado), 220);
+}
+function cmEvArrastaInicio(ev){
+  if(cmEvZoom.z<=1) return;
+  ev.preventDefault();
+  const ini={x:ev.clientX, y:ev.clientY, ox:cmEvZoom.x, oy:cmEvZoom.y}, alvo=document.getElementById('cm-ev-mapa');
+  alvo?.classList.add('arrastando');
+  const mover=e=>{ cmEvZoom.x=ini.ox+(e.clientX-ini.x); cmEvZoom.y=ini.oy+(e.clientY-ini.y); cmEvLimitar(); cmEvMostrar(); };
+  const soltar=()=>{ window.removeEventListener('pointermove',mover); window.removeEventListener('pointerup',soltar); alvo?.classList.remove('arrastando'); };
+  window.addEventListener('pointermove',mover); window.addEventListener('pointerup',soltar);
 }
 // mistura duas cores "#rrggbb" ou "rgb(r,g,b)" (t=0 ➔ a, t=1 ➔ b)
 function cmMesoMistura(a, b, t){
@@ -806,7 +867,7 @@ function cmConcursosDoEstado(uf){
   CONCURSOS_EXEMPLO.filter(c=>c.uf===uf).forEach(c=>por(c.orgao.replace(/\s*\(.*\)$/,''), c.status==='publicado'?'alta':'previsto'));
   if(CM_FAIXA_CONCURSOS[uf]) por(CM_FAIXA_CONCURSOS[uf],'alta');
   const df=uf==='DF';
-  [`Tribunal de Justiça ${de}`, `Polícia Civil ${de}`, df?'Secretaria de Educação do Distrito Federal':`Prefeitura de ${CM_CAPITAL[uf]}`, df?'Secretaria de Economia do Distrito Federal':`SEFAZ ${CM_UF_NOME[uf]}`].forEach(n=>por(n,'alta'));
+  [`Tribunal de Justiça ${de}`, `Polícia Civil ${de}`, df?'Secretaria de Educação do Distrito Federal':`Prefeitura ${({RJ:"do",PE:"do",RN:"do"})[uf]||"de"} ${CM_CAPITAL[uf]}`, df?'Secretaria de Economia do Distrito Federal':`SEFAZ ${CM_UF_NOME[uf]}`].forEach(n=>por(n,'alta'));
   [uf==='RS'?'Brigada Militar do Rio Grande do Sul':`Polícia Militar ${de}`, `Ministério Público ${de}`, `Detran-${uf}`, `Corpo de Bombeiros ${de}`,
    df?'Câmara Legislativa do Distrito Federal':`Assembleia Legislativa ${de}`].forEach(n=>por(n,'previsto'));
   // intercala: em alta, previsto, em alta, previsto...
