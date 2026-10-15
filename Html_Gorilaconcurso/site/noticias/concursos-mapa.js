@@ -729,13 +729,13 @@ function cmMesoAbrir(i){
   const V=v.getBoundingClientRect(), de=p.getBoundingClientRect();
   // destino: a área da bandeira (no celular, sem bandeira, a área do mapa)
   const band=v.querySelector('.cm-ev-bandeira'), base=(band && band.offsetWidth ? band : alvo).getBoundingClientRect();
-  const b=r.b, wd=b.width*1e-4, hd=b.height*1e-4, ALT_NOME=56;
+  const b=r.b, wd=b.width*1e-4, hd=b.height*1e-4, ALT_NOME=165;   // embaixo: nome + 3 números + legenda + fonte
   const s=Math.min(base.width*0.92/wd, (base.height-ALT_NOME)*0.92/hd), W=wd*s, H=hd*s;
   const x=base.left-V.left+(base.width-W)/2, y=base.top-V.top+(base.height-ALT_NOME-H)/2;
   const caixa=document.createElement('div'); caixa.className='cm-ev-regiao'; caixa.id='cm-ev-regiao';
-  caixa.style.cssText=`left:${x}px;top:${y}px;width:${W}px`;
-  caixa.innerHTML=`<svg viewBox="${b.x*1e-4} ${-(b.y+b.height)*1e-4} ${wd} ${hd}" width="${W}" height="${H}" aria-hidden="true"><g transform="scale(0.0001,-0.0001)"><path d="${r.d}" fill="${r.cor}"/></g></svg>
-    <div class="cm-ev-regiao-nome">${r.nome}</div>`;
+  caixa.style.cssText=`left:${base.left-V.left}px;top:${y}px;width:${base.width}px`;   // o mapa fica centrado (x); o texto embaixo usa a largura toda
+  caixa.innerHTML=`<div class="cm-ev-regiao-mapa" style="width:${W}px;height:${H}px"><svg viewBox="${b.x*1e-4} ${-(b.y+b.height)*1e-4} ${wd} ${hd}" width="${W}" height="${H}" aria-hidden="true"><g transform="scale(0.0001,-0.0001)"><path d="${r.d}" fill="${r.cor}"/></g></svg></div>
+    <div class="cm-ev-regiao-nome">${r.nome}</div><div class="cm-dm-info" id="cm-dm-info"></div>`;
   v.appendChild(caixa);
   // começa EXATAMENTE em cima da região no mapa e desliza até o lugar final
   const k0=de.width/W, svg=caixa.querySelector('svg'), nome=caixa.querySelector('.cm-ev-regiao-nome');
@@ -743,10 +743,110 @@ function cmMesoAbrir(i){
   nome.style.opacity='0';
   v.classList.add('cm-ev-foco');
   requestAnimationFrame(()=>requestAnimationFrame(()=>{ svg.classList.add('vai'); svg.style.transform='none'; nome.style.opacity=''; }));
+  // quando a região chega à esquerda, vira o mapa DEMOGRÁFICO (municípios, microrregiões e população — IBGE, Censo 2022)
+  const ufAgora=cmVendoEstado; setTimeout(()=>{ if(cmRegiaoAberta===i && cmVendoEstado===ufAgora) cmDemografia(caixa, r, s, ufAgora); }, 760);
   // em cima: voltar ao estado + nome da região
   const topo=v.querySelector('.cm-ev-topo'); cmTopoAntes=topo.innerHTML;
   topo.innerHTML=`<button type="button" class="cm-ev-voltar" onclick="cmMesoFechar()"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>Voltar ${cmNoEstadoVoltar(cmVendoEstado)}</button>
     <span class="cm-ev-titulo">${r.nome}</span>`;
+}
+// ── MAPA DEMOGRÁFICO DA REGIÃO (pedido do Levi; referência: Hervé Théry, "Cartografias das densidades demográficas
+// no Brasil", Confins 66, 2025). Só DADOS REAIS do IBGE: contorno dos municípios, microrregiões (cada uma num tom da
+// cor da região) e um QUADRADO em cada município, com a ÁREA proporcional à população (Censo 2022, Sidra tabela 4714).
+// As cidades mais populosas ganham o nome escrito. Mouse em cima: nome, população, densidade e microrregião.
+// Dados: noticias/municipios/UF.js (carregado só quando abre).
+const MUNI_BR = {};
+function cmCarregarMuni(uf){
+  if(MUNI_BR[uf]) return Promise.resolve(MUNI_BR[uf]);
+  return new Promise(ok=>{ const sc=document.createElement('script'); sc.src=`noticias/municipios/${uf}.js`;
+    sc.onload=()=>ok(MUNI_BR[uf]||null); sc.onerror=()=>ok(null); document.head.appendChild(sc); });
+}
+const cmNum=n=>Math.round(n).toLocaleString('pt-BR');
+async function cmDemografia(caixa, r, s, uf){
+  const lista=await cmCarregarMuni(uf); if(!lista || !caixa.isConnected) return;
+  const munis=lista.filter(m=>m.me===r.cod && m.d && m.p>0); if(!munis.length) return;
+  const b=r.b, vbx=b.x*1e-4, vby=-(b.y+b.height)*1e-4, W=b.width*1e-4*s, H=b.height*1e-4*s;
+  const px=(gx,gy)=>[(gx*1e-4-vbx)*s, (-gy*1e-4-vby)*s];   // coordenada do IBGE ➔ pixel no quadro
+  // microrregiões: cada uma num tom da cor da região (do mais escuro ao mais claro)
+  const micros=[...new Set(munis.map(m=>m.mi))].sort((a,c)=>a.localeCompare(c,'pt-BR'));
+  const escuro=!document.body.classList.contains('light');
+  const tom=j=>{ const t=micros.length<2?0:j/(micros.length-1); return escuro ? cmMesoMistura(r.cor,'#000000',.15+t*.45) : cmMesoMistura(cmMesoMistura(r.cor,'#000000',.12),'#ffffff',t*.62); };
+  const corMicro=Object.fromEntries(micros.map((m,j)=>[m,tom(j)]));
+  // centro de cada município (para o quadrado): o meio da caixa dele, ou o ponto de dentro mais perto do meio
+  const ns='http://www.w3.org/2000/svg', med=document.createElementNS(ns,'svg'), ctx=document.createElement('canvas').getContext('2d');
+  med.setAttribute('style','position:absolute;left:-9999px;top:0;width:10px;height:10px;visibility:hidden'); document.body.appendChild(med);
+  munis.forEach(m=>{ const p=document.createElementNS(ns,'path'); p.setAttribute('d',m.d); med.appendChild(p); const bb=p.getBBox(), p2=new Path2D(m.d);
+    let cx=bb.x+bb.width/2, cy=bb.y+bb.height/2;
+    if(!ctx.isPointInPath(p2,cx,cy)){ let melhor=null, dm=1e18;
+      for(let j=1;j<10;j++) for(let k=1;k<10;k++){ const tx=bb.x+bb.width*j/10, ty=bb.y+bb.height*k/10; if(ctx.isPointInPath(p2,tx,ty)){ const dd=(tx-cx)**2+(ty-cy)**2; if(dd<dm){ dm=dd; melhor=[tx,ty]; } } }
+      if(melhor){ cx=melhor[0]; cy=melhor[1]; } }
+    [m.x,m.y]=px(cx,cy); });
+  med.remove();
+  // quadrados: ÁREA proporcional à população (lado ∝ raiz da população); o maior tem até 16% do lado menor do mapa
+  // PONTOS = CONCURSOS (pedido do Levi): a COR é a situação (acontecendo / previsto / sem previsão) e o TAMANHO é o nº de
+  // vagas. Enquanto não houver o cadastro real (CONCURSOS_CIDADE vazio), todos ficam cinza: "ainda sem dados".
+  const conc=m=>cmConcursosCidade(m.c), vagasMax=Math.max(1, ...munis.map(m=>conc(m).reduce((t,c)=>t+(c.vagas||0),0)));
+  const LADO_MAX=Math.max(14, Math.min(40, Math.min(W,H)*0.14)), LADO_SEM=4.5;
+  const ladoVagas=v=>Math.max(4, LADO_MAX*Math.sqrt(v/vagasMax));
+  const ladoM=m=>{ const l=conc(m); return l.length ? ladoVagas(l.reduce((t,c)=>t+(c.vagas||0),0)) : LADO_SEM; };
+  const sitM=m=>cmSituacaoCidade(conc(m));
+  // nomes escritos: as cidades mais populosas (até 5), pulando as que encostariam num nome já escrito
+  const ordem=[...munis].sort((a,c)=>c.p-a.p), destaques=[], caixas=[];
+  for(const m of ordem){ if(destaques.length>=Math.min(5, Math.max(1, Math.round(munis.length/10)+1))) break;
+    const l=ladoM(m), x0=m.x+l/2+4, w=m.n.length*6.6+4, cx={x0, x1:x0+w, y0:m.y-9, y1:m.y+9};
+    if(caixas.some(o=>cx.x0<o.x1 && o.x0<cx.x1 && cx.y0<o.y1 && o.y0<cx.y1)) continue;
+    caixas.push(cx); destaques.push(m); }
+  const mapa=caixa.querySelector('.cm-ev-regiao-mapa');
+  const camada=document.createElement('div'); camada.className='cm-dm'; camada.style.cssText=`width:${W}px;height:${H}px`;
+  camada.innerHTML=`<svg class="cm-dm-munis" viewBox="${vbx} ${vby} ${b.width*1e-4} ${b.height*1e-4}" width="${W}" height="${H}"><g transform="scale(0.0001,-0.0001)">${
+      munis.map((m,j)=>`<path d="${m.d}" fill="${corMicro[m.mi]}" data-j="${j}"/>`).join('')}</g></svg>
+    <svg class="cm-dm-quadros" width="${W}" height="${H}">${ordem.map(m=>{ const l=ladoM(m), j=munis.indexOf(m);
+      return `<rect x="${(m.x-l/2).toFixed(1)}" y="${(m.y-l/2).toFixed(1)}" width="${l.toFixed(1)}" height="${l.toFixed(1)}" class="sit-${sitM(m)}" data-j="${j}"/>`; }).join('')}</svg>
+    ${destaques.map(m=>`<span class="cm-dm-cidade" style="left:${(m.x+ladoM(m)/2+4).toFixed(1)}px;top:${m.y.toFixed(1)}px">${m.n}</span>`).join('')}
+    <div class="cm-dm-dica" hidden></div>`;
+  mapa.appendChild(camada);
+  requestAnimationFrame(()=>camada.classList.add('aparece'));
+  // mouse em cima de um município ou quadrado: os números dele
+  const dica=camada.querySelector('.cm-dm-dica');
+  camada.onpointermove=ev=>{ const j=ev.target.dataset?.j; if(j===undefined){ dica.hidden=true; camada.querySelector('.sel')?.classList.remove('sel'); return; }
+    const m=munis[+j], q=camada.getBoundingClientRect();
+    camada.querySelectorAll('.sel').forEach(e=>e.classList.remove('sel')); camada.querySelectorAll(`[data-j="${j}"]`).forEach(e=>e.classList.add('sel'));
+    const cs=conc(m), sit=CM_SITUACOES[sitM(m)];
+    const lista=cs.length ? cs.map(c=>`<span>• ${c.orgao}${c.vagas?` — ${cmNum(c.vagas)} vagas`:''} (${CM_SITUACOES[c.status]?.nome||''})</span>`).join('') : `<span class="sem">Concursos: ainda sem dados</span>`;
+    dica.innerHTML=`<b>${m.n}</b><span>${cmNum(m.p)} habitantes · ${m.de.toLocaleString('pt-BR',{maximumFractionDigits:1})} pessoas por km²</span><span>Microrregião ${m.mi}</span>${lista}`;
+    dica.hidden=false; dica.style.left=(ev.clientX-q.left)+'px'; dica.style.top=(ev.clientY-q.top)+'px'; };
+  camada.onpointerleave=()=>{ dica.hidden=true; camada.querySelectorAll('.sel').forEach(e=>e.classList.remove('sel')); };
+  // embaixo: os números da região, a legenda e a fonte
+  const pop=munis.reduce((t,m)=>t+m.p,0), area=munis.reduce((t,m)=>t+m.a,0), comDados=munis.filter(m=>conc(m).length).length;
+  const info=caixa.querySelector('#cm-dm-info');
+  // embaixo, SÓ O ESSENCIAL (pedido do Levi: estava confuso): 3 números grandes, a legenda dos pontos numa linha e a fonte
+  // com link. A microrregião de cada cidade aparece ao passar o mouse (não tem mais legenda própria).
+  const fmt=n=>n.toLocaleString('pt-BR',{maximumFractionDigits:1});
+  info.innerHTML=`<div class="cm-dm-cards">
+      <div><b>${cmNum(pop)}</b><span>habitantes</span></div>
+      <div><b>${munis.length}</b><span>municípios</span></div>
+      <div title="Densidade demográfica: habitantes por km²"><b>${fmt(pop/area)}</b><span>pessoas por km²</span></div>
+    </div>
+    <div class="cm-dm-leg1"><span class="cm-dm-leg1-tit">Concursos por cidade:</span>${Object.entries(CM_SITUACOES).map(([id,s])=>`<span><i class="sit-${id}"></i>${s.nome}</span>`).join('')}</div>
+    ${comDados ? '' : `<div class="cm-dm-aviso1">Os concursos de cada cidade ainda estão sendo cadastrados.</div>`}
+    <div class="cm-dm-fonte">Fonte: <a href="https://sidra.ibge.gov.br/tabela/4714" target="_blank" rel="noopener">IBGE — Censo Demográfico 2022</a> · método: <a href="https://journals.openedition.org/confins/61191?lang=pt" target="_blank" rel="noopener">Hervé Théry (Confins, 2025)</a></div>`;
+  requestAnimationFrame(()=>info.classList.add('aparece'));
+}
+// ── CONCURSOS POR CIDADE — situação de cada um e de onde vêm os dados ──
+// CONCURSOS_CIDADE: { 'código IBGE do município': [ {orgao, status:'aberto'|'previsto'|'semprevisao', vagas} ] }
+// ⚠ VAZIO de propósito (decisão do Levi): só entra dado REAL, com fonte, quando houver o cadastro de concursos (Supabase).
+const CONCURSOS_CIDADE = {};
+const CM_SITUACOES = {
+  aberto:     {nome:'Acontecendo'},
+  previsto:   {nome:'Previsto'},
+  semprevisao:{nome:'Sem previsão'},
+  semdados:   {nome:'Ainda sem dados'},
+};
+function cmConcursosCidade(cod){ return CONCURSOS_CIDADE[cod] || []; }
+// a cor do ponto é a situação "mais forte" da cidade: acontecendo > previsto > sem previsão
+function cmSituacaoCidade(lista){
+  if(!lista.length) return 'semdados';
+  return ['aberto','previsto','semprevisao'].find(s=>lista.some(c=>c.status===s)) || 'semdados';
 }
 function cmNoEstadoVoltar(uf){ return cmDoEstado(uf).replace(/^do /,'ao ').replace(/^da /,'à ').replace(/^de /,'a '); }   // "ao Tocantins", "à Bahia", "a São Paulo"
 function cmMesoFechar(semAnimar){

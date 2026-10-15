@@ -331,5 +331,18 @@ body:not(.light) .cfg-pro-dica{background:#f1f1f1;color:#0f0f0f}
 body.light .tb-links a{color:#1f2433}
 body.light .tr-item{color:#1f2433}
 /* fundo da barra de cima e da barra de ícones da direita um pouco mais escuro no tema claro (pedido do Levi) */
-body.light:not(.tema-pers) #topbar{background:#e8eaee!important}
-body.light:not(.tema-pers) #theme-rail{background:#e8eaee!important;border-color:#c4c7cc!important}
+body.light:not(.tema-pers) #topbar{background:linear-gradient(180deg,#ffffff 0%,#eef0f3 55%,#e3e6eb 100%)!important;border-bottom:1px solid #cfd3da!important;box-shadow:0 1px 0 rgba(255,255,255,.8) inset,0 2px 6px rgba(16,24,40,.06)!important}   /* degradê branco ➔ cinza (pedido do Levi) */
+body.light:not(.tema-pers) #theme-rail{background:linear-gradient(180deg,#ffffff 0%,#eef0f3 50%,#e1e4e9 100%)!important;border-color:#cfd3da!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.9),0 6px 18px rgba(16,24,40,.10)!important}
+/* ═══ ANIMAÇÕES (pedido do Levi) ═══
+   Barra de ícones da direita: ao passar o mouse, o fundo fica cinza e o ícone dá um pulinho suave; ao clicar, afunda.
+   Barra de cima (logo, Ajuda, Equipe de suporte, Ver planos, Registrar-se): só a animação de clique (afunda e volta). */
+.tr-item{transition:background .18s ease,color .18s ease,transform .12s ease}
+.tr-item svg{transition:transform .25s cubic-bezier(.34,1.56,.64,1)}
+body.light .tr-item:hover{background:#dfe2e7!important}
+body:not(.light) .tr-item:hover{background:var(--surface-3)!important}
+.tr-item:hover svg{transform:translateY(-2px) scale(1.1)}
+.tr-item:active{transform:scale(.9)!important}
+.tr-item:active svg{transform:scale(.95)}
+#tb-logo,.tb-title,.tb-links a,#tb-planos,#tb-cadastro,#tb-entrar{transition:transform .1s ease,filter .1s ease}
+#tb-logo:active,.tb-title:active,.tb-links a:active,#tb-planos:active,#tb-cadastro:active,#tb-entrar:active{transform:scale(.94);filter:brightness(.92)}
+@media (prefers-reduced-motion:reduce){ .tr-item svg,.tr-item{transition:none} .tr-item:hover svg{transform:none} }

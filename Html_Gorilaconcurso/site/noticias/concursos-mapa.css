@@ -487,3 +487,64 @@ body:not(.light) .cm-ev-regiao svg{filter:drop-shadow(0 14px 20px rgba(0,0,0,.6)
 .cm-ev-regiao-nome{font-size:20px;font-weight:800;letter-spacing:-.01em;text-align:center;color:var(--text-primary);transition:opacity .4s ease .45s}
 @media (prefers-reduced-motion:reduce){ .cm-ev-regiao svg.vai{transition:none} }
 .cm-ev-regiao-nome{white-space:nowrap}
+/* ═══ MAPA DEMOGRÁFICO DA REGIÃO (IBGE, Censo 2022) — municípios por microrregião + quadrados proporcionais à população ═══ */
+.cm-ev-regiao-mapa{position:relative;flex-shrink:0}
+.cm-dm{position:absolute;left:0;top:0;opacity:0;transition:opacity .45s ease;pointer-events:auto}
+.cm-dm.aparece{opacity:1}
+.cm-dm svg{position:absolute;left:0;top:0;display:block;overflow:visible}
+.cm-dm-munis path{stroke:rgba(255,255,255,.85);stroke-width:.6;vector-effect:non-scaling-stroke;stroke-linejoin:round;cursor:pointer;transition:filter .12s}
+body:not(.light) .cm-dm-munis path{stroke:rgba(0,0,0,.55)}
+.cm-dm-munis path.sel{filter:brightness(1.12)}
+.cm-dm-quadros rect{fill:#d8392c;fill-opacity:.88;stroke:#fff;stroke-width:.8;cursor:pointer}
+body:not(.light) .cm-dm-quadros rect{stroke:#111}
+.cm-dm-quadros rect.sel{fill:#a3170c;stroke-width:1.6}
+.cm-dm-cidade{position:absolute;transform:translateY(-50%);font-size:11.5px;font-weight:800;color:#111827;white-space:nowrap;pointer-events:none;
+  text-shadow:0 0 3px #fff,0 0 3px #fff,0 0 3px #fff}
+body:not(.light) .cm-dm-cidade{color:#fff;text-shadow:0 0 3px #000,0 0 3px #000}
+.cm-dm-dica{position:absolute;z-index:3;transform:translate(14px,-110%);display:flex;flex-direction:column;gap:1px;padding:8px 11px;border-radius:8px;background:#111827;color:#fff;font-size:12px;white-space:nowrap;pointer-events:none;box-shadow:0 8px 22px rgba(16,24,40,.28)}
+.cm-dm-dica b{font-size:13px}
+.cm-dm-dica span{opacity:.85}
+body:not(.light) .cm-dm-dica{background:#f1f1f1;color:#0f0f0f}
+/* números, legenda e fonte embaixo do nome */
+.cm-ev-regiao{pointer-events:none}
+.cm-dm-info{width:100%;opacity:0;transition:opacity .45s ease .1s;display:flex;flex-direction:column;align-items:center;gap:8px}
+.cm-dm-info.aparece{opacity:1}
+.cm-dm-num{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;font-size:12.5px;color:var(--text-secondary)}
+.cm-dm-num b{color:var(--text-primary);font-size:14px}
+.cm-dm-leg{display:flex;flex-direction:column;align-items:center;gap:6px}
+.cm-dm-leg-q{display:flex;align-items:flex-end;gap:14px;font-size:11px;color:var(--text-secondary)}
+.cm-dm-leg-q span{display:flex;align-items:center;gap:5px}
+.cm-dm-leg-q i{display:inline-block;background:#d8392c;opacity:.88}
+.cm-dm-leg-m{display:flex;flex-wrap:wrap;justify-content:center;gap:4px 12px;font-size:11px;color:var(--text-secondary);max-width:100%}
+.cm-dm-leg-m span{display:flex;align-items:center;gap:5px}
+.cm-dm-leg-m i{width:10px;height:10px;border-radius:2px;flex-shrink:0}
+.cm-dm-fonte{font-size:10.5px;color:var(--text-muted);text-align:center}
+.cm-ev-regiao-nome{margin-top:2px}
+.cm-dm-dica[hidden]{display:none}
+/* pontos = concursos: cor pela situação (mesmas cores do letreiro: verde acontecendo, azul previsto) */
+.cm-dm-quadros rect.sit-aberto,.cm-dm-leg-q i.sit-aberto{fill:#16a34a;background:#16a34a}
+.cm-dm-quadros rect.sit-previsto,.cm-dm-leg-q i.sit-previsto{fill:#2563eb;background:#2563eb}
+.cm-dm-quadros rect.sit-semprevisao,.cm-dm-leg-q i.sit-semprevisao{fill:#f59e0b;background:#f59e0b}
+.cm-dm-quadros rect.sit-semdados,.cm-dm-leg-q i.sit-semdados{fill:#6b7280;background:#6b7280}
+.cm-dm-quadros rect{fill-opacity:.9}
+.cm-dm-quadros rect.sel{fill-opacity:1;stroke:#111;stroke-width:1.6}
+.cm-dm-leg-q i{width:10px;height:10px;opacity:1}
+.cm-dm-leg-tam{color:var(--text-muted);font-style:italic}
+.cm-dm-aviso{max-width:420px;font-size:11.5px;line-height:1.4;text-align:center;color:var(--text-secondary);background:var(--surface-2);border:1px solid var(--border);padding:6px 10px}
+.cm-dm-dica span.sem{opacity:.7;font-style:italic}
+.cm-dm-leg-q{flex-wrap:wrap;justify-content:center;align-items:center;row-gap:4px} .cm-dm-leg-q span{white-space:nowrap}
+/* bloco de baixo da região, simplificado: 3 cartões, legenda numa linha, aviso curto e fonte com link */
+.cm-dm-info{gap:7px}
+.cm-dm-cards{display:flex;gap:8px;justify-content:center}
+.cm-dm-cards div{display:flex;flex-direction:column;align-items:center;min-width:96px;padding:6px 12px;background:var(--surface-1);border:1px solid var(--border)}
+.cm-dm-cards b{font-size:17px;font-weight:800;letter-spacing:-.01em;color:var(--text-primary);line-height:1.2}
+.cm-dm-cards span{font-size:11px;color:var(--text-muted)}
+.cm-dm-leg1{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:4px 12px;font-size:11.5px;color:var(--text-secondary)}
+.cm-dm-leg1 span{display:inline-flex;align-items:center;gap:5px;white-space:nowrap}
+.cm-dm-leg1 i{width:9px;height:9px;flex-shrink:0}
+.cm-dm-leg1 i.sit-aberto{background:#16a34a}.cm-dm-leg1 i.sit-previsto{background:#2563eb}.cm-dm-leg1 i.sit-semprevisao{background:#f59e0b}.cm-dm-leg1 i.sit-semdados{background:#6b7280}
+.cm-dm-leg1-tit{font-weight:700;color:var(--text-primary)}
+.cm-dm-aviso1{font-size:11px;font-style:italic;color:var(--text-muted)}
+.cm-dm-fonte{font-size:11px}
+.cm-dm-fonte a{color:var(--accent-text);text-decoration:none;font-weight:600;pointer-events:auto}
+.cm-dm-fonte a:hover{text-decoration:underline}
