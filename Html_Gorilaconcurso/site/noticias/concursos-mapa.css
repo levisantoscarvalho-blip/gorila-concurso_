@@ -375,7 +375,7 @@ body:not(.light) .cm-sobre-painel{box-shadow:0 14px 36px rgba(0,0,0,.6)}
 @media (min-width:1001px){ .cm-so-mapa .cm-palco{height:min(540px,calc(100vh - 224px))} }
 @media (max-width:640px){ .cm-so-mapa .cm-palco{height:max(450px,calc(100vh - 280px))} }
 
-/* ═══ DICA: mouse "clicando" acima do mapa + balão "Clique em um estado do mapa" (some ao clicar num estado) ═══ */
+/* ═══ DICA: mouse "clicando" acima do mapa + balão "Clique em um estado" (some ao clicar num estado) ═══ */
 .cm-so-mapa{position:relative}
 .cm-dica{position:absolute;z-index:4;width:0;height:0;pointer-events:none;animation:cmDicaEntra .4s ease .6s both}
 .cm-dica-cursor{position:absolute;left:0;top:0;width:30px;height:30px}
@@ -396,3 +396,52 @@ body:not(.light) .cm-dica-balao{background:#f1f1f1;color:#0f0f0f;box-shadow:0 6p
 @media (min-width:1001px){ .cm-so-mapa .cm-palco{height:min(540px,calc(100vh - 252px))} }
 @media (max-width:640px){ .cm-faixa-rotulo{padding:0 14px;font-size:11.5px} .cm-so-mapa .cm-palco{height:max(450px,calc(100vh - 308px))} }
 @media (max-width:1099px){ .cm-faixa-rotulo + .cm-faixa{margin-bottom:96px} }
+/* ═══ ESTADO ABERTO (2º clique): o Brasil dá lugar ao estado dividido em mesorregiões, cada uma com cor e nome ═══ */
+.cm-vendo-estado .cm-zoom,.cm-vendo-estado .cm-controles,.cm-vendo-estado .cm-ligacao{opacity:0;visibility:hidden;pointer-events:none;transition:opacity .2s}
+.cm-vendo-estado .cm-destaque-aviso,.cm-vendo-estado .cm-cursor{display:none}
+.cm-vendo-estado .cm-destaque-voo{cursor:default}
+.cm-vendo-estado .cm-destaque{display:none}   /* o estado dividido toma o lugar do estado com a bandeira */
+.cm-estado-vista{position:absolute;z-index:7;display:flex;flex-direction:column;padding:10px 12px 6px 28px;box-sizing:border-box}
+.cm-estado-vista.entra{animation:cmEvEntra .35s cubic-bezier(.2,.8,.2,1)}
+@keyframes cmEvEntra{from{opacity:0;transform:scale(.97)}}
+.cm-ev-topo{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.cm-ev-voltar{display:inline-flex;align-items:center;gap:4px;padding:7px 14px 7px 9px;border-radius:999px;border:1px solid var(--border);background:var(--surface-1);color:var(--text-primary);font-family:inherit;font-size:13px;font-weight:600;line-height:1;cursor:pointer;box-shadow:0 1px 3px rgba(16,24,40,.08)}
+.cm-ev-voltar:hover{background:var(--surface-2)}
+.cm-ev-voltar svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.cm-ev-titulo{font-size:12.5px;font-weight:600;color:var(--text-muted)}
+.cm-ev-mapa{flex:1;min-height:0;display:flex;align-items:center;justify-content:center}
+.cm-ev-quadro{position:relative;flex-shrink:0}
+.cm-ev-quadro svg{display:block;overflow:visible;filter:drop-shadow(0 10px 16px rgba(16,24,40,.18))}
+body:not(.light) .cm-ev-quadro svg{filter:drop-shadow(0 10px 18px rgba(0,0,0,.6))}
+.cm-ev-quadro path{stroke:rgba(35,35,45,.7);stroke-width:1.2;vector-effect:non-scaling-stroke;stroke-linejoin:round;cursor:pointer;transition:fill .15s}
+body:not(.light) .cm-ev-quadro path{stroke:rgba(0,0,0,.75)}
+.cm-ev-rot{position:absolute;transform:translate(-50%,-50%);text-align:center;font-weight:700;text-transform:uppercase;letter-spacing:.02em;line-height:1.12;color:rgba(30,30,40,.82);white-space:nowrap;pointer-events:none;transition:opacity .15s}
+body:not(.light) .cm-ev-rot{color:rgba(255,255,255,.92);text-shadow:0 1px 2px rgba(0,0,0,.6)}
+.cm-vendo-estado .cm-sobre-botao,.cm-vendo-estado .cm-sobre{visibility:hidden}   /* o "Voltar ao Brasil" fica no lugar da estrela */
+.cm-ev-rot.ativo{color:rgba(15,15,25,.95)}
+body:not(.light) .cm-ev-rot.ativo{color:#fff}
+/* balão com o nome da mesorregião, junto do mouse (aparece em todas, inclusive nas pequenas que não têm o nome escrito) */
+.cm-ev-dica{position:absolute;z-index:3;transform:translate(14px,-130%);padding:6px 11px;border-radius:8px;background:#1f2937;color:#fff;font-size:12.5px;font-weight:600;white-space:nowrap;pointer-events:none;box-shadow:0 6px 18px rgba(16,24,40,.25)}
+body:not(.light) .cm-ev-dica{background:#f1f1f1;color:#0f0f0f;box-shadow:0 6px 18px rgba(0,0,0,.5)}
+/* computador: o estado dividido fica na metade direita (a esquerda fica livre para a próxima etapa) */
+.cm-estado-vista.cm-ev-direita .cm-ev-topo{align-self:flex-start}
+.cm-estado-vista.cm-ev-direita .cm-ev-mapa{margin-left:50%}
+/* estado aberto: some o título da página (o "Voltar ao Brasil" sobe para o lugar dele, com a bandeira do estado "fantasma" atrás) */
+#news-screen.cm-modo-estado .cm-pagina{visibility:hidden}   /* guarda o espaço: o letreiro de baixo não sai do lugar */
+/* lado esquerdo do estado aberto: a BANDEIRA do estado TREMULANDO (canvas animado), com as cores reais e sombra */
+.cm-ev-bandeira{position:absolute;left:24px;top:60px;bottom:10px;width:calc(50% - 64px);z-index:0;pointer-events:none;filter:drop-shadow(0 18px 20px rgba(16,24,40,.22))}
+body:not(.light) .cm-ev-bandeira{filter:drop-shadow(0 18px 22px rgba(0,0,0,.6))}
+.cm-estado-vista:not(.cm-ev-direita) .cm-ev-bandeira{display:none}   /* celular: o estado ocupa a tela toda */
+.cm-ev-topo{position:relative;z-index:1}
+/* letreiro do estado aberto — SÓ TEXTO (pedido do Levi): bolinha colorida + nome em cor neutra, separados pelo traço fino */
+.cm-faixa-item.cm-fx-alta,.cm-faixa-item.cm-fx-prev{gap:9px;color:var(--text-primary);font-weight:500}
+.cm-faixa-item > i{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.cm-fx-alta > i{background:#16a34a;box-shadow:0 0 0 3px rgba(22,163,74,.15)}
+.cm-fx-prev > i{background:#2563eb;box-shadow:0 0 0 3px rgba(37,99,235,.15)}
+body:not(.light) .cm-fx-prev > i{background:#3ea6ff;box-shadow:0 0 0 3px rgba(62,166,255,.18)}
+.cm-fx-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.cm-fx-legenda{display:inline-flex;align-items:center;gap:6px;margin-left:14px;font-weight:500;color:var(--text-muted)}
+.cm-fx-legenda i{width:7px;height:7px;border-radius:50%;margin-left:8px}
+.cm-fx-legenda i.cm-fx-alta{background:#16a34a}
+.cm-fx-legenda i.cm-fx-prev{background:#2563eb}
+body:not(.light) .cm-fx-legenda i.cm-fx-prev{background:#3ea6ff}

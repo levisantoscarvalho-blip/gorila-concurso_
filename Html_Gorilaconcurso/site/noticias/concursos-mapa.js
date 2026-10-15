@@ -153,12 +153,12 @@ function cmAtualizar(animar){
 // A lista de concursos (cmListaHTML / cmLegendaHTML / cmAtualizar) fica pronta para a próxima parte.
 // ════════════════════════════════════════════
 let cmZoom = { z:1, x:0, y:0 };
-// ── DICA "Clique em um estado do mapa": mouse clicando no espaço livre acima do mapa (à esquerda do zoom) + balão
+// ── DICA "Clique em um estado": mouse clicando no espaço livre acima do mapa (à esquerda do zoom) + balão
 //    (pedido do Levi). Some quando a pessoa clica num estado; volta na próxima vez que abrir a tela. ──
 let cmDica = true;
 function cmDicaHTML(){
   return `<div class="cm-dica" id="cm-dica" aria-hidden="true">
-      <div class="cm-dica-balao">Clique em um estado do mapa</div>
+      <div class="cm-dica-balao">Clique em um estado</div>
       <span class="cm-dica-cursor"><i class="cm-dica-onda"></i><svg viewBox="0 0 24 24"><path d="M5 2.5v16.2l4.3-4 2.9 6.4 2.7-1.2-2.9-6.3 5.9-.3z"/></svg></span>
     </div>`;
 }
@@ -172,7 +172,8 @@ function cmPosicionarDica(){
 }
 function renderConcursosMapa(){
   const ns = document.getElementById('news-screen'); if(!ns) return;
-  cmZoom = { z:1, x:0, y:0 }; cmSel = null; cmDica = true;
+  ns.classList.remove('cm-modo-estado');
+  cmZoom = { z:1, x:0, y:0 }; cmSel = null; cmVendoEstado = null; cmDica = true;
   ns.innerHTML = `${cmAvisoHTML()}<div class="cm-so-mapa">
       <div class="cm-palco" id="cm-palco" onwheel="cmRoda(event)" onpointerdown="cmArrastaInicio(event)" ondblclick="cmZoomReset()" onclick="cmCliquePalco(event)">
         <div class="cm-zoom" id="cm-zoom"><div class="cm-mapa3d" id="cm-mapa3d"></div><div class="cm-chao"></div></div>
@@ -332,7 +333,7 @@ function cmSobe(uf,on){ if(!on && uf===cmSel) return; const c=document.querySele
 // no espaço vazio (estado do lado esquerdo ➔ quadro à esquerda; do lado direito ➔ à direita), ligado por uma linha.
 // Um cursor de mouse "clica" no estado flutuando 3 vezes (depois fica parado; some com o mouse em cima) e o aviso diz:
 // "Clique no estado para conferir os concursos e mais!" — clicar no estado flutuando ou de novo no mapa = próximas etapas.
-// 2º clique no mesmo estado: AINDA VAMOS DESENVOLVER (decisão do Levi) — por enquanto não abre nada (cmAbrirEstado).
+// 2º clique no mesmo estado (ou no estado flutuando): abre o estado dividido em mesorregiões (cmAbrirEstado, mais abaixo).
 // SEM caixa em volta (pedido do Levi): só o estado grande flutuando, o nome e o aviso. Fecha clicando fora de um estado ou com Esc.
 // ════════════════════════════════════════════
 let cmSel = null, cmArrastou = false, cmPosT = null;
@@ -342,7 +343,6 @@ function cmClicarEstado(uf, ev){
   if(cmSel===uf){ cmAbrirEstado(uf); return; }
   cmMostrarDestaque(uf);
 }
-function cmAbrirEstado(uf){ /* 2º clique: concursos e mais do estado — ainda vamos desenvolver */ }
 function cmCliquePalco(ev){
   if(cmArrastou || !cmSel) return;
   if(ev.target.closest('.cm-controles,.cm-destaque,.cm-sobre')) return;
@@ -384,6 +384,7 @@ function cmMostrarDestaque(uf){
   cmPosicionarDestaque();
 }
 function cmFecharDestaque(){
+  if(cmVendoEstado) cmFecharEstado();
   const ant=cmSel; cmSel=null; if(ant) cmSobe(ant,false);
   document.getElementById('cm-destaque')?.remove(); document.getElementById('cm-ligacao')?.remove();
 }
@@ -406,6 +407,7 @@ function cmTamanhoDestaque(uf){
 function cmPosicionarDestaque(){
   const box=document.getElementById('cm-destaque'), palco=document.getElementById('cm-palco'), lig=document.getElementById('cm-ligacao');
   if(!box||!palco||!lig||!cmSel) return;
+  if(cmVendoEstado){ cmLayoutEstado(); return; }   // vendo as mesorregiões: o quadro fica à esquerda
   const path=document.querySelector(`.cm-alvo path[data-uf="${cmSel}"]`), mapa=document.getElementById('cm-mapa3d'); if(!path||!mapa) return;
   const P=palco.getBoundingClientRect(), e=path.getBoundingClientRect(), m=mapa.getBoundingClientRect();
   const ctrl=palco.querySelector('.cm-controles')?.getBoundingClientRect(), cham=palco.querySelector('.cm-sobre-botao')?.getBoundingClientRect();
@@ -467,10 +469,192 @@ async function cmDesenharEstadoGrande(cv, uf){
       if(ctx.isPointInPath(p, x*R, y*R)){ px=x; py=y; break achar; } }
     cur.style.left=(px/Wc*100)+'%'; cur.style.top=(py/Hc*100)+'%'; }
 }
-document.addEventListener('keydown', e=>{ if(e.key==='Escape' && cmSel && !document.querySelector('.modal-overlay.open')) cmFecharDestaque(); });
+document.addEventListener('keydown', e=>{ if(e.key==='Escape' && cmSel && !document.querySelector('.modal-overlay.open')){ if(cmVendoEstado) cmFecharEstado(); else cmFecharDestaque(); } });
+// ════════════════════════════════════════════
+// 2º CLIQUE NO ESTADO (pedido do Levi): o mapa do Brasil dá lugar ao estado GRANDE, dividido nas
+// mesorregiões do IBGE — cada uma com uma cor e o nome escrito em cima, como num mapa escolar.
+// O estado com a bandeira continua flutuando à esquerda. "Voltar ao Brasil" (ou Esc) volta ao mapa.
+// Contornos: noticias/mesorregioes/UF.js (um arquivo por estado, carregado só na hora em que abre).
+// ════════════════════════════════════════════
+const MESO_BR = {};
+let cmVendoEstado = null;
+const CM_MESO_CORES = ['#c39bb0','#c8bd72','#df6b70','#9b9bd1','#8dcb8b','#e5a66a','#7fb9c9','#b8a07e','#d39ad0','#a3c46a','#e08f9e','#8fa8d8'];
+function cmCarregarMeso(uf){
+  if(MESO_BR[uf]) return Promise.resolve(MESO_BR[uf]);
+  return new Promise(ok=>{ const s=document.createElement('script'); s.src=`noticias/mesorregioes/${uf}.js`;
+    s.onload=()=>ok(MESO_BR[uf]||null); s.onerror=()=>ok(null); document.head.appendChild(s); });
+}
+async function cmAbrirEstado(uf){
+  if(!uf || cmVendoEstado===uf) return;
+  const dados=await cmCarregarMeso(uf), palco=document.getElementById('cm-palco');
+  if(!dados || !palco || cmSel!==uf) return;
+  cmVendoEstado=uf;
+  document.getElementById('news-screen')?.classList.add('cm-modo-estado');   // some o título da página (pedido do Levi)
+  cmFaixaTrocar(uf);                                                         // letreiro de baixo: só os concursos deste estado
+  palco.classList.add('cm-vendo-estado');
+  let v=document.getElementById('cm-estado-vista');
+  if(!v){
+    v=document.createElement('div'); v.id='cm-estado-vista'; v.className='cm-estado-vista';
+    v.onpointerdown=e=>e.stopPropagation(); v.onwheel=e=>e.stopPropagation(); v.ondblclick=e=>e.stopPropagation(); v.onclick=e=>e.stopPropagation();
+    palco.parentElement.appendChild(v);   // fora do palco: pode usar a altura toda até as bandeiras de baixo
+  }
+  const n=dados.regioes.length;
+  // lado esquerdo: a bandeira do estado TREMULANDO ao vento, com as cores reais (pedido do Levi)
+  v.innerHTML=`<canvas class="cm-ev-bandeira" id="cm-ev-bandeira" role="img" aria-label="Bandeira ${cmDoEstado(uf)}"></canvas>
+    <div class="cm-ev-topo">
+      <button type="button" class="cm-ev-voltar" onclick="cmFecharEstado()"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>Voltar ao Brasil</button>
+      <span class="cm-ev-titulo">${CM_UF_NOME[uf]} · ${n} ${n===1?'mesorregião':'mesorregiões'}</span></div>
+    <div class="cm-ev-mapa" id="cm-ev-mapa"></div>`;
+  cmLayoutEstado();
+  v.classList.remove('entra'); void v.offsetWidth; v.classList.add('entra');
+}
+// ── BANDEIRA TREMULANDO (pedido do Levi): a imagem da bandeira desenhada em faixas verticais finas, cada uma subindo e
+// descendo numa onda (presa do lado esquerdo, como num mastro), com luz e sombra nas dobras. Para quando o estado fecha.
+let cmOndaRaf=0;
+function cmBandeiraOndular(uf){
+  cancelAnimationFrame(cmOndaRaf);
+  const cv=document.getElementById('cm-ev-bandeira'); if(!cv || !uf) return;
+  const img=new Image(); img.src=`noticias/bandeiras/${uf}.png`;
+  const comecar=()=>{
+    if(!cv.isConnected || cmVendoEstado!==uf) return;
+    const R=Math.min(2, window.devicePixelRatio||1), Wc=cv.clientWidth, Hc=cv.clientHeight; if(!Wc||!Hc) return;
+    cv.width=Math.round(Wc*R); cv.height=Math.round(Hc*R);
+    const ctx=cv.getContext('2d'); ctx.setTransform(R,0,0,R,0,0); ctx.imageSmoothingQuality='high';
+    const A=Math.max(6, Math.min(14, Wc*0.025));                                       // altura da onda (px)
+    const fw=Math.min(Wc-2*A, (Hc-4*A)*img.width/img.height), fh=fw*img.height/img.width;   // bandeira inteira cabe com folga
+    const x0=Math.max(A, (Wc-fw)/2*0.35), y0=(Hc-fh)/2, faixa=2, parado=matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const t0=performance.now();
+    const quadro=agora=>{
+      if(!cv.isConnected || cmVendoEstado!==uf) return;
+      const t=parado ? 0.6 : (agora-t0)/1000;
+      ctx.clearRect(0,0,Wc,Hc);
+      // 1º a imagem (cada faixa 1px mais larga, para não abrir fresta); depois a luz/sombra, em faixas SEM sobrepor (senão vira listra)
+      const X0=Math.round(x0);
+      for(let x=0; x<fw; x+=faixa){
+        const p=x/fw, fase=p*Math.PI*2.2 - t*2.4, preso=Math.min(1, p*3);       // perto do mastro quase não mexe
+        ctx.drawImage(img, p*img.width, 0, (faixa+1)/fw*img.width, img.height, X0+x, y0+Math.sin(fase)*A*preso, faixa+1, fh);
+      }
+      for(let x=0; x<fw; x+=faixa){
+        const p=x/fw, fase=p*Math.PI*2.2 - t*2.4, preso=Math.min(1, p*3), luz=Math.cos(fase)*preso;   // inclinação da dobra
+        ctx.fillStyle = luz>0 ? `rgba(255,255,255,${(luz*0.16).toFixed(3)})` : `rgba(0,0,0,${(-luz*0.22).toFixed(3)})`;
+        ctx.fillRect(X0+x, y0+Math.sin(fase)*A*preso, Math.min(faixa, fw-x), fh);
+      }
+      if(!parado) cmOndaRaf=requestAnimationFrame(quadro);
+    };
+    cmOndaRaf=requestAnimationFrame(quadro);
+  };
+  if(img.complete && img.naturalWidth) comecar(); else img.onload=comecar;
+}
+function cmFecharEstado(){
+  cancelAnimationFrame(cmOndaRaf);
+  cmVendoEstado=null;
+  document.getElementById('cm-estado-vista')?.remove();
+  document.getElementById('cm-palco')?.classList.remove('cm-vendo-estado','cm-estreito');
+  document.getElementById('news-screen')?.classList.remove('cm-modo-estado');
+  cmFaixaTrocar(null);
+  cmPosicionarDestaque();
+}
+// o "Voltar ao Brasil" fica em cima à esquerda (no lugar da estrela) e o estado dividido fica na METADE DIREITA
+// (pedido do Levi); a metade esquerda fica livre para a próxima etapa. Em tela estreita, o estado ocupa a tela toda.
+function cmLayoutEstado(){
+  const palco=document.getElementById('cm-palco'), v=document.getElementById('cm-estado-vista');
+  if(!palco||!v) return;
+  const estreito=palco.clientWidth<760;
+  palco.classList.toggle('cm-estreito', estreito);
+  v.classList.toggle('cm-ev-direita', !estreito);
+  // sem o título, o estado usa a tela toda: do topo da página até o letreiro de baixo
+  const P=palco.getBoundingClientRect(), A=palco.parentElement.getBoundingClientRect();
+  const N=document.getElementById('news-screen').getBoundingClientRect(), topo=N.top+12;
+  const fim=document.querySelector('.cm-faixa-rotulo')?.getBoundingClientRect().top || innerHeight;
+  v.style.left=(P.left-A.left)+'px'; v.style.width=Math.round(P.width)+'px';
+  v.style.top=(topo-A.top)+'px'; v.style.height=Math.max(300, fim-topo-8)+'px';
+  cmDesenharMeso(cmVendoEstado);
+  cmBandeiraOndular(cmVendoEstado);
+}
+function cmDesenharMeso(uf){
+  const dados=MESO_BR[uf], alvo=document.getElementById('cm-ev-mapa'); if(!dados||!alvo) return;
+  const [vx,vy,vw,vh]=dados.viewBox.split(' ').map(Number);
+  const k=Math.min(alvo.clientWidth*0.98/vw, alvo.clientHeight*0.98/vh), W=vw*k, H=vh*k;   // px por grau (o maior que couber)
+  const escuro=!document.body.classList.contains('light');
+  // tamanho de cada mesorregião (mesma técnica do mapa do Brasil)
+  const ns='http://www.w3.org/2000/svg', med=document.createElementNS(ns,'svg');
+  med.setAttribute('style','position:absolute;left:-9999px;top:0;width:10px;height:10px;visibility:hidden'); document.body.appendChild(med);
+  const regs=dados.regioes.map(r=>{ const p=document.createElementNS(ns,'path'); p.setAttribute('d',r.d); med.appendChild(p); return {...r, b:p.getBBox(), p2:new Path2D(r.d)}; });
+  med.remove();
+  // cores: duas mesorregiões que se encostam nunca ficam com a mesma cor
+  const toca=(a,b)=>a.x<=b.x+b.width && b.x<=a.x+a.width && a.y<=b.y+b.height && b.y<=a.y+a.height;
+  // (até 12 mesorregiões, cada uma ganha uma cor só dela; acima disso, as que se encostam nunca repetem)
+  regs.forEach((r,i)=>{ const usadas=regs.slice(0,i).filter(o=>toca(o.b,r.b)).map(o=>o.ci);
+    r.ci = regs.length<=CM_MESO_CORES.length ? i : ([...CM_MESO_CORES.keys()].find(c=>!usadas.includes(c)) ?? i%CM_MESO_CORES.length);
+    r.cor=escuro ? cmMesoMistura(CM_MESO_CORES[r.ci], '#1f1f1f', .2) : CM_MESO_CORES[r.ci]; });
+  // onde escrever o nome: o ponto mais "fundo" dentro da mesorregião (o mais longe de todas as bordas).
+  // Grade de quadradinhos + distância de cada um até a borda (andando também na diagonal, para medir de verdade).
+  const ctx=document.createElement('canvas').getContext('2d'), N=40, D2=Math.SQRT2;
+  const fonteMapa=getComputedStyle(document.body).fontFamily||'sans-serif';
+  regs.forEach(r=>{
+    const {x,y,width:w,height:h}=r.b, lado=Math.max(w,h)/N, nx=Math.max(1,Math.ceil(w/lado)), ny=Math.max(1,Math.ceil(h/lado));
+    const dentro=new Array(nx*ny), dist=new Float64Array(nx*ny);
+    for(let j=0;j<ny;j++) for(let i=0;i<nx;i++){ const q=j*nx+i, ok=ctx.isPointInPath(r.p2, x+(i+.5)*lado, y+(j+.5)*lado);
+      dentro[q]=ok; dist[q]=ok ? ((i===0||j===0||i===nx-1||j===ny-1) ? 1 : Infinity) : 0; }
+    const v=(i,j)=> (i<0||j<0||i>=nx||j>=ny) ? 0 : dist[j*nx+i];
+    for(let j=0;j<ny;j++) for(let i=0;i<nx;i++){ const q=j*nx+i; if(!dentro[q]) continue;          // ida
+      dist[q]=Math.min(dist[q], v(i-1,j)+1, v(i,j-1)+1, v(i-1,j-1)+D2, v(i+1,j-1)+D2); }
+    for(let j=ny-1;j>=0;j--) for(let i=nx-1;i>=0;i--){ const q=j*nx+i; if(!dentro[q]) continue;    // volta
+      dist[q]=Math.min(dist[q], v(i+1,j)+1, v(i,j+1)+1, v(i+1,j+1)+D2, v(i-1,j+1)+D2); }
+    // nome em 1 ou 2 linhas; o tamanho do texto é MEDIDO (letra de 1px) para testar se o bloco cabe
+    const corte=r.nome.lastIndexOf(' ');
+    r.linhas=corte>0 ? [r.nome.slice(0,corte), r.nome.slice(corte+1)] : [r.nome];
+    ctx.font=`700 100px ${fonteMapa}`;
+    const larg1=Math.max(...r.linhas.map(l=>ctx.measureText(l.toUpperCase()).width/100 + l.length*0.02)), alt1=r.linhas.length*1.12;
+    // o bloco de texto (tamanho f, centro no quadradinho q) cabe INTEIRO dentro da mesorregião? (testa a borda do bloco)
+    const px2raw=1/(k*1e-4), cx=q=>x+(q%nx+.5)*lado, cy=q=>y+((q-q%nx)/nx+.5)*lado;
+    const cabe=(q,f)=>{ const hw=(larg1*f/2+2)*px2raw, hh=(alt1*f/2+1)*px2raw, X=cx(q), Y=cy(q);
+      for(let s=0;s<=4;s++){ const a=-1+s/2;
+        if(!ctx.isPointInPath(r.p2, X+a*hw, Y-hh) || !ctx.isPointInPath(r.p2, X+a*hw, Y+hh) ||
+           !ctx.isPointInPath(r.p2, X-hw, Y+a*hh) || !ctx.isPointInPath(r.p2, X+hw, Y+a*hh)) return false; }
+      return true; };
+    // candidatos: os 20 pontos mais "fundos"; em cada um, a maior letra (até 14px) com que o nome cabe
+    const cand=[...dist.keys()].filter(q=>dentro[q]).sort((a,b)=>dist[b]-dist[a]).slice(0,60);
+    let melhor={q:cand[0]??0, f:0};
+    cand.forEach(q=>{ if(!cabe(q,8)) return; let lo=8, hi=14;
+      if(cabe(q,hi)) lo=hi; else for(let t=0;t<6;t++){ const mid=(lo+hi)/2; if(cabe(q,mid)) lo=mid; else hi=mid; }
+      if(lo>melhor.f) melhor={q,f:lo}; });
+    r.lx=(cx(melhor.q)*1e-4-vx)*k; r.ly=(-cy(melhor.q)*1e-4-vy)*k;
+    r.fonte=melhor.f;   // 0 = o nome não cabe: aparece só no balão, ao passar o mouse
+  });
+  alvo.innerHTML=`<div class="cm-ev-quadro" style="width:${W}px;height:${H}px" onpointermove="cmMesoDicaMove(event)" onpointerleave="cmMesoSobre(-1)">
+    <svg viewBox="${dados.viewBox}" width="${W}" height="${H}" role="img" aria-label="Mesorregiões de ${CM_UF_NOME[uf]}"><g transform="scale(0.0001,-0.0001)">${
+      regs.map((r,i)=>`<path d="${r.d}" fill="${r.cor}" data-i="${i}" onpointerenter="cmMesoSobre(${i})"></path>`).join('')}</g></svg>
+    ${regs.map((r,i)=>r.fonte<8 ? '' : `<div class="cm-ev-rot" data-i="${i}" style="left:${r.lx}px;top:${r.ly}px;font-size:${r.fonte.toFixed(1)}px">${r.linhas.join('<br>')}</div>`).join('')}
+    <div class="cm-ev-dica" id="cm-ev-dica" hidden></div>
+  </div>`;
+  alvo._regs=regs; alvo._sobre=-1;
+}
+// mouse em cima de uma mesorregião: ela clareia e o NOME dela aparece num balão junto do mouse (em todas, grandes ou pequenas)
+function cmMesoSobre(i){
+  const alvo=document.getElementById('cm-ev-mapa'); if(!alvo?._regs) return;
+  const ant=alvo._sobre; if(ant===i) return;
+  if(ant>=0){ const ra=alvo._regs[ant]; alvo.querySelector(`path[data-i="${ant}"]`)?.setAttribute('fill', ra.cor); alvo.querySelector(`.cm-ev-rot[data-i="${ant}"]`)?.classList.remove('ativo'); }
+  alvo._sobre=i;
+  const dica=document.getElementById('cm-ev-dica'), r=alvo._regs[i];
+  if(!r){ if(dica) dica.hidden=true; return; }
+  alvo.querySelector(`path[data-i="${i}"]`)?.setAttribute('fill', cmMesoMistura(r.cor, '#ffffff', .22));
+  alvo.querySelector(`.cm-ev-rot[data-i="${i}"]`)?.classList.add('ativo');
+  if(dica){ dica.textContent=r.nome; dica.hidden=false; }
+}
+function cmMesoDicaMove(ev){
+  const dica=document.getElementById('cm-ev-dica'); if(!dica || dica.hidden) return;
+  const q=dica.parentElement.getBoundingClientRect();
+  dica.style.left=(ev.clientX-q.left)+'px'; dica.style.top=(ev.clientY-q.top)+'px';
+}
+// mistura duas cores "#rrggbb" ou "rgb(r,g,b)" (t=0 ➔ a, t=1 ➔ b)
+function cmMesoMistura(a, b, t){
+  const c=h=>h[0]==='#' ? [1,3,5].map(i=>parseInt(h.slice(i,i+2),16)) : h.match(/\d+/g).map(Number), x=c(a), y=c(b);
+  return `rgb(${x.map((v,i)=>Math.round(v+(y[i]-v)*t)).join(',')})`;
+}
 // mudou o tamanho da janela ou o tema: desenha de novo (só nessas horas)
 let cmRedesenhoT=null;
-window.addEventListener('resize',()=>{ if(!document.getElementById('cm-mapa3d')) return; clearTimeout(cmRedesenhoT); cmRedesenhoT=setTimeout(()=>{ cmDesenharMapaLeve(); cmPosicionarDica(); },250); });
+window.addEventListener('resize',()=>{ if(!document.getElementById('cm-mapa3d')) return; clearTimeout(cmRedesenhoT); cmRedesenhoT=setTimeout(()=>{ cmDesenharMapaLeve(); cmPosicionarDica(); if(cmVendoEstado) cmLayoutEstado(); },250); });
 // ════════════════════════════════════════════
 // ÁREA 3 — NÚMEROS DO BRASIL (dados de EXEMPLO) — RETIRADO da tela a pedido do Levi; fica guardado para usar depois
 // ════════════════════════════════════════════
@@ -563,6 +747,45 @@ function cmFaixaHTML(){
   const ufs = Object.keys(CM_UF_NOME).sort((a,b)=>CM_UF_NOME[a].localeCompare(CM_UF_NOME[b],'pt-BR'));
   const itens = ufs.map(u=>`<span class="cm-faixa-item" title="${CM_UF_NOME[u]}"><img src="noticias/bandeiras/${u}.png" alt="Bandeira de ${CM_UF_NOME[u]}" loading="lazy" decoding="async">${CM_FAIXA_CONCURSOS[u]||CM_UF_NOME[u]}</span>`).join('');
   return `<div class="cm-faixa" aria-label="Concursos procurados em cada estado"><div class="cm-faixa-trilho">${itens}<span class="cm-faixa-copia" aria-hidden="true">${itens}</span></div></div>`;
+}
+// ── LETREIRO DO ESTADO ABERTO (pedido do Levi): os concursos EM ALTA (bolinha verde) e os PREVISTOS (bolinha azul) daquele estado ──
+// ⚠ DADOS DE EXEMPLO — TROCAR: quem está "em alta" e quem está "previsto" aqui é só exemplo (órgãos que existem em
+// todo estado + os de CONCURSOS_EXEMPLO). Quando houver o cadastro de concursos (Supabase), vem tudo de lá.
+const CM_PREP = { BA:'da', PB:'da', AL:'de', GO:'de', MG:'de', MT:'de', MS:'de', PE:'de', RO:'de', RR:'de', SC:'de', SE:'de', SP:'de' };   // os outros: "do"
+const CM_CAPITAL = { AC:'Rio Branco', AL:'Maceió', AP:'Macapá', AM:'Manaus', BA:'Salvador', CE:'Fortaleza', DF:'Brasília', ES:'Vitória', GO:'Goiânia',
+  MA:'São Luís', MT:'Cuiabá', MS:'Campo Grande', MG:'Belo Horizonte', PA:'Belém', PB:'João Pessoa', PR:'Curitiba', PE:'Recife', PI:'Teresina',
+  RJ:'Rio de Janeiro', RN:'Natal', RS:'Porto Alegre', RO:'Porto Velho', RR:'Boa Vista', SC:'Florianópolis', SP:'São Paulo', SE:'Aracaju', TO:'Palmas' };
+function cmDoEstado(uf){ return `${CM_PREP[uf]||'do'} ${CM_UF_NOME[uf]}`; }   // "do Maranhão", "da Bahia", "de São Paulo"
+function cmConcursosDoEstado(uf){
+  const de=cmDoEstado(uf), lista=[], visto=new Set();
+  const por=(nome,status)=>{ const ch=nome.replace(/\s*\(.*\)$/,'').toLowerCase(); if(!visto.has(ch)){ visto.add(ch); lista.push({nome,status}); } };
+  CONCURSOS_EXEMPLO.filter(c=>c.uf===uf).forEach(c=>por(c.orgao.replace(/\s*\(.*\)$/,''), c.status==='publicado'?'alta':'previsto'));
+  if(CM_FAIXA_CONCURSOS[uf]) por(CM_FAIXA_CONCURSOS[uf],'alta');
+  const df=uf==='DF';
+  [`Tribunal de Justiça ${de}`, `Polícia Civil ${de}`, df?'Secretaria de Educação do Distrito Federal':`Prefeitura de ${CM_CAPITAL[uf]}`, df?'Secretaria de Economia do Distrito Federal':`SEFAZ ${CM_UF_NOME[uf]}`].forEach(n=>por(n,'alta'));
+  [uf==='RS'?'Brigada Militar do Rio Grande do Sul':`Polícia Militar ${de}`, `Ministério Público ${de}`, `Detran-${uf}`, `Corpo de Bombeiros ${de}`,
+   df?'Câmara Legislativa do Distrito Federal':`Assembleia Legislativa ${de}`].forEach(n=>por(n,'previsto'));
+  // intercala: em alta, previsto, em alta, previsto...
+  const a=lista.filter(x=>x.status==='alta'), p=lista.filter(x=>x.status==='previsto'), mix=[];
+  for(let i=0;i<Math.max(a.length,p.length);i++){ if(a[i]) mix.push(a[i]); if(p[i]) mix.push(p[i]); }
+  return mix;
+}
+// troca o letreiro: uf = estado aberto (concursos dele, sem bandeiras); null = volta ao letreiro do Brasil
+const CM_ICONE_ALTA='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg>';
+function cmFaixaTrocar(uf){
+  const rot=document.querySelector('.cm-faixa-rotulo'), faixa=document.querySelector('.cm-faixa'); if(!rot||!faixa) return;
+  if(!uf){
+    rot.innerHTML=`${CM_ICONE_ALTA}Concursos procurados em cada estado`;
+    faixa.outerHTML=cmFaixaHTML(); cmFaixaVelocidade(); return;
+  }
+  const no=cmDoEstado(uf).replace(/^do /,'no ').replace(/^da /,'na ').replace(/^de /,'em ');   // "no Maranhão", "na Bahia", "em São Paulo"
+  rot.innerHTML=`${CM_ICONE_ALTA}Concursos ${no}<span class="cm-fx-legenda"><i class="cm-fx-alta"></i>Em alta<i class="cm-fx-prev"></i>Previstos</span>`;
+  // só texto (pedido do Levi): bolinha da cor da situação + nome; a situação também vai escrita para leitor de tela
+  const um=cmConcursosDoEstado(uf).map(c=>{ const alta=c.status==='alta';
+    return `<span class="cm-faixa-item cm-fx-${alta?'alta':'prev'}" title="${alta?'Em alta':'Previsto'}"><i aria-hidden="true"></i>${c.nome}<span class="cm-fx-sr"> (${alta?'em alta':'previsto'})</span></span>`; }).join('');
+  const itens=um+um+um;   // poucos nomes: repete para o letreiro encher a tela
+  faixa.outerHTML=`<div class="cm-faixa" aria-label="Concursos ${no}"><div class="cm-faixa-trilho">${itens}<span class="cm-faixa-copia" aria-hidden="true">${itens}</span></div></div>`;
+  cmFaixaVelocidade();
 }
 // mesma velocidade de leitura de antes (~43 px por segundo), qualquer que seja o tamanho dos nomes
 function cmFaixaVelocidade(){
