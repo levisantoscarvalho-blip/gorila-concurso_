@@ -159,6 +159,7 @@ function renderConcursosMapa(){
   ns.innerHTML = `${cmAvisoHTML()}<div class="cm-so-mapa">
       <div class="cm-palco" id="cm-palco" onwheel="cmRoda(event)" onpointerdown="cmArrastaInicio(event)" ondblclick="cmZoomReset()" onclick="cmCliquePalco(event)">
         <div class="cm-zoom" id="cm-zoom"><div class="cm-mapa3d" id="cm-mapa3d"></div><div class="cm-chao"></div></div>
+        ${cmSobreHTML()}
         <div class="cm-controles" onpointerdown="event.stopPropagation()" ondblclick="event.stopPropagation()">
           <div class="cm-ctrl-grupo" role="group" aria-label="Zoom do mapa">
             <button type="button" id="cm-mais" onclick="cmZoomPasso(1)" aria-label="Aproximar" title="Aproximar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button>
@@ -171,7 +172,8 @@ function renderConcursosMapa(){
       </div>
     </div>${cmFaixaHTML()}`;   // bandeiras EMBAIXO do mapa (pedido do Levi)
   cmDesenharMapaLeve(); cmAplicarZoom();   // controle já começa em 100% (− e mira apagados)
-  if(!cmTourVisto()) setTimeout(()=>cmTour(0), 500);   // 1ª visita: tour guiado
+  cmTourPrimeira = false;
+  if(!cmTourVisto()) setTimeout(()=>{ cmTourPrimeira = true; cmTour(0); }, 500);   // 1ª visita: tour guiado (do "?") e, ao terminar, o quadro da estrela
 }
 // ── ampliar com a rodinha do mouse (aproxima no ponto onde o mouse está) e arrastar para mover ──
 let cmNitidezT=null;
@@ -305,7 +307,7 @@ function cmClicarEstado(uf, ev){
 function cmAbrirEstado(uf){ /* 2º clique: concursos e mais do estado — ainda vamos desenvolver */ }
 function cmCliquePalco(ev){
   if(cmArrastou || !cmSel) return;
-  if(ev.target.closest('.cm-controles,.cm-destaque,.cm-chamada')) return;
+  if(ev.target.closest('.cm-controles,.cm-destaque,.cm-sobre')) return;
   cmFecharDestaque();
 }
 function cmMostrarDestaque(uf){
@@ -351,7 +353,7 @@ function cmTamanhoDestaque(uf){
   const palco=document.getElementById('cm-palco'), path=document.querySelector(`.cm-alvo path[data-uf="${uf}"]`), mapa=document.getElementById('cm-mapa3d');
   if(!palco||!path||!mapa) return {w:300,h:260};
   const P=palco.getBoundingClientRect(), e=path.getBoundingClientRect(), m=mapa.getBoundingClientRect(), folga=14;
-  const ctrl=palco.querySelector('.cm-controles')?.getBoundingClientRect(), cham=palco.querySelector('.cm-chamada')?.getBoundingClientRect();
+  const ctrl=palco.querySelector('.cm-controles')?.getBoundingClientRect(), cham=palco.querySelector('.cm-sobre-botao')?.getBoundingClientRect();
   const mapL=m.left-P.left, mapR=m.right-P.left, ex=e.left+e.width/2-P.left;
   const livreEsq=mapL-folga*3, livreDir=(ctrl?ctrl.left-P.left:P.width)-folga-mapR-folga*2;
   const esq = ex<(mapL+mapR)/2 ? livreEsq>=220 || livreDir<220 : livreDir<220 && livreEsq>=220;
@@ -367,7 +369,7 @@ function cmPosicionarDestaque(){
   if(!box||!palco||!lig||!cmSel) return;
   const path=document.querySelector(`.cm-alvo path[data-uf="${cmSel}"]`), mapa=document.getElementById('cm-mapa3d'); if(!path||!mapa) return;
   const P=palco.getBoundingClientRect(), e=path.getBoundingClientRect(), m=mapa.getBoundingClientRect();
-  const ctrl=palco.querySelector('.cm-controles')?.getBoundingClientRect(), cham=palco.querySelector('.cm-chamada')?.getBoundingClientRect();
+  const ctrl=palco.querySelector('.cm-controles')?.getBoundingClientRect(), cham=palco.querySelector('.cm-sobre-botao')?.getBoundingClientRect();
   const W=P.width, H=P.height, bw=box.offsetWidth, bh=box.offsetHeight, folga=14;
   const ex=e.left+e.width/2-P.left, ey=e.top+e.height/2-P.top;                     // centro do estado dentro do palco
   const dirMax=(ctrl?ctrl.left-P.left:W)-folga;                                      // não cobre os botões do mapa
@@ -458,7 +460,10 @@ const CM_TOUR = [
 ];
 const CM_TOUR_CHAVE='gorila_tour_noticias_v1';
 function cmTourVisto(){ try{ return localStorage.getItem(CM_TOUR_CHAVE)==='1'; }catch(e){ return true; } }
-function cmTourFim(){ try{ localStorage.setItem(CM_TOUR_CHAVE,'1'); }catch(e){} document.querySelectorAll('.cm-tour,.cm-tour-luz').forEach(e=>e.remove()); window.removeEventListener('resize',cmTourReposicionar); }
+// 1ª visita (pedido do Levi): depois das mensagens do "?" (concluir ou pular), abre sozinho o quadro da estrela
+let cmTourPrimeira = false;
+function cmTourFim(){ try{ localStorage.setItem(CM_TOUR_CHAVE,'1'); }catch(e){} document.querySelectorAll('.cm-tour,.cm-tour-luz').forEach(e=>e.remove()); window.removeEventListener('resize',cmTourReposicionar);
+  if(cmTourPrimeira){ cmTourPrimeira = false; setTimeout(()=>cmSobreAlternar(true), 250); } }
 let cmTourPasso=0;
 function cmTour(i){
   if(!document.getElementById('cm-palco')) return;
@@ -494,18 +499,13 @@ function cmTourReposicionar(){
 // FAIXA DAS BANDEIRAS — as 27 bandeiras dos estados passando devagar para a esquerda
 // (o conteúdo aparece 2x seguidas para a volta ser contínua; o mouse em cima pausa)
 // ════════════════════════════════════════════
-// CABEÇALHO da página (pedido do Levi): deixa claro que a página é para conhecer os concursos de cada estado; as bandeiras ficam embaixo do mapa.
+// CABEÇALHO da página (pedido do Levi: "mais profissional"): nome da seção + título grande + uma linha, integrado ao fundo (sem faixa); as bandeiras ficam embaixo do mapa.
 // A chamada "Conheça sobre a história do Brasil" foi TIRADA do mapa (decisão do Levi); a leitura (historia-brasil.js, abrirHistoria) fica guardada para uma área de estudo.
 function cmAvisoHTML(){
-  const pino = `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.4"/></svg>`;
-  return `<header class="cm-aviso">
-    <div class="cm-aviso-tit"><span class="cm-aviso-ico">${pino}</span>
-      <div><h2>Concursos pelo Brasil</h2><p>Encontre os concursos abertos e previstos em cada estado.</p></div></div>
-    <ol class="cm-aviso-passos" aria-label="Como funciona">
-      <li><i>1</i>Clique em um estado</li>
-      <li class="cm-aviso-seta" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></li>
-      <li><i>2</i>Confira os concursos</li>
-    </ol>
+  return `<header class="cm-pagina">
+    <div class="cm-pagina-secao">Concursos e notícias</div>
+    <h1>Concursos pelo Brasil</h1>
+    <p>Escolha um estado no mapa para ver os concursos abertos, previstos e encerrados.</p>
   </header>`;
 }
 function cmFaixaHTML(){
@@ -513,3 +513,28 @@ function cmFaixaHTML(){
   const itens = ufs.map(u=>`<span class="cm-faixa-item"><img src="noticias/bandeiras/${u}.png" alt="" loading="lazy" decoding="async">${CM_UF_NOME[u]}</span>`).join('');
   return `<div class="cm-faixa" aria-label="Bandeiras dos estados brasileiros"><div class="cm-faixa-trilho">${itens}<span class="cm-faixa-copia" aria-hidden="true">${itens}</span></div></div>`;
 }
+// ════════════════════════════════════════════
+// ESTRELA (canto de cima à esquerda do mapa) ➔ quadrado explicando o que a seção "Concursos e notícias" faz.
+// Texto confirmado pelo Levi. Fecha com X, "Entendi", clicando na estrela de novo ou com Esc.
+// ════════════════════════════════════════════
+function cmSobreHTML(){
+  return `<div class="cm-sobre" onpointerdown="event.stopPropagation()" ondblclick="event.stopPropagation()" onwheel="event.stopPropagation()">
+    <button type="button" class="cm-sobre-botao" onclick="cmSobreAlternar()" aria-expanded="false" aria-controls="cm-sobre-painel" aria-label="O que você pode fazer aqui" title="O que você pode fazer aqui">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.2l2.7 5.5 6 .9-4.35 4.25 1.03 6-5.38-2.83-5.38 2.83 1.03-6L3.3 9.6l6-.9z"/></svg></button>
+    <div class="cm-sobre-painel" id="cm-sobre-painel" role="dialog" aria-labelledby="cm-sobre-titulo" hidden>
+      <div class="cm-sobre-cab"><div><div class="cm-sobre-tit" id="cm-sobre-titulo">Concursos e notícias</div><div class="cm-sobre-sub">O que você pode fazer aqui</div></div>
+        <button type="button" class="cm-sobre-x" onclick="cmSobreAlternar(false)" aria-label="Fechar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+      <ol class="cm-sobre-lista">
+        <li><i>1</i><div><b>Escolher o seu concurso</b><span>Clique em um estado no mapa e escolha o concurso que você quer fazer.</span></div></li>
+        <li><i>2</i><div><b>Acompanhar os concursos</b><span>Veja os que estão acontecendo, os previstos e os que já passaram.</span></div></li>
+      </ol>
+      <div class="cm-sobre-rodape"><button type="button" class="cm-sobre-ok" onclick="cmSobreAlternar(false)">Entendi</button></div>
+    </div></div>`;
+}
+function cmSobreAlternar(abrir){
+  const p=document.getElementById('cm-sobre-painel'), b=document.querySelector('.cm-sobre-botao'); if(!p||!b) return;
+  if(abrir===undefined) abrir=p.hidden;
+  p.hidden=!abrir; b.setAttribute('aria-expanded', abrir); b.classList.toggle('ativo', abrir);
+  if(!abrir && document.activeElement && p.contains(document.activeElement)) b.focus({preventScroll:true});
+}
+document.addEventListener('keydown', e=>{ const p=document.getElementById('cm-sobre-painel'); if(e.key==='Escape' && p && !p.hidden){ e.stopImmediatePropagation(); cmSobreAlternar(false); } }, true);
