@@ -296,16 +296,42 @@ function openSection(section){
   document.getElementById('sidebar-section-sub').textContent=cfg.sub;
 
   const nav=document.getElementById('sidebar-nav');
-  nav.innerHTML=cfg.nav.map(n=>`<div class="nav-item" onclick="navClick('${n.tab}','${n.area||''}')" data-tab="${n.tab}"><span class="nav-icon">${navIcon(n.icon)}</span>${n.label}</div>`).join('');
+  // Mural do mês, Conteúdos e Mapa Mental = recursos do Gorila Pro (pedido do Levi, 15/10/2026): sem o Pro aparecem com
+  // cadeado + selo PRO e, ao clicar, abrem a tela de bloqueio (navProTrava) em vez do recurso.
+  nav.innerHTML=cfg.nav.map(n=>{ const trava=NAV_PRO[n.tab] && !state.pro;
+    return `<div class="nav-item${trava?' nav-pro-trava':''}" onclick="navClick('${n.tab}','${n.area||''}')" data-tab="${n.tab}"${trava?' title="Recurso do Gorila Pro"':''}><span class="nav-icon">${navIcon(n.icon)}</span>${n.label}${trava?`<span class="nav-pro-selo"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>PRO</span>`:''}</div>`; }).join('');
 
   const first=cfg.nav[0];
   navClick(first.tab, first.area||'');
   updateSidebarHours();
 }
 
+// recursos do Gorila Pro na barra lateral: o que cada um faz (mesmo texto da página de Ajuda)
+const NAV_PRO = {
+  mural:    {nome:'Mural do mês', faz:'Você escolhe um mês e um dia e vê tudo o que fez naquele dia: horas, questões, matérias, anotação e foto.', serve:'Relembrar o que estudou e revisar o seu histórico com calma.'},
+  conteudos:{nome:'Conteúdos', faz:'Guarda os seus cursos e concursos, com as matérias de cada um, para você marcar o que já estudou.', serve:'Saber quanto do edital ou da grade você já cobriu e o que ainda falta.'},
+  mindmap:  {nome:'Mapa Mental', faz:'Você cria tópicos e subtópicos com resumos e imagens.', serve:'Organizar o que aprendeu e revisar rápido antes da prova.'},
+};
+// tela de bloqueio no lugar do recurso (sem o Pro)
+function navProTrava(tab){
+  const p=NAV_PRO[tab], base=document.getElementById('tab-mural')?.parentElement; if(!p || !base) return;
+  let el=document.getElementById('tab-pro-trava');
+  if(!el){ el=document.createElement('div'); el.className='tab-content'; el.id='tab-pro-trava'; base.appendChild(el); }
+  el.innerHTML=`<div class="pro-trava">
+      <div class="pro-trava-icone"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></div>
+      <span class="pro-trava-selo">Gorila Pro</span>
+      <h2>${p.nome} é um recurso do Gorila Pro</h2>
+      <p><b>O que faz:</b> ${p.faz}</p>
+      <p><b>Para que serve:</b> ${p.serve}</p>
+      <a class="tv-botao" href="institucional/planos.html" target="_blank" rel="noopener">Ver planos</a>
+      <small>Calendário, foguinho e Concursos pelo Brasil continuam liberados.</small>
+    </div>`;
+  showTab('pro-trava');
+}
 function navClick(tab, area){
   navRegistrar({section:currentSection, tab:tab, area:area||''});
   document.querySelectorAll('.sidebar .nav-item').forEach(n=>n.classList.toggle('active', n.dataset.tab===tab));
+  if(NAV_PRO[tab] && !state.pro){ navProTrava(tab); return; }   // sem o Pro: cadeado
   if(tab==='infografico') renderInfografico(area);
   else if(tab==='calendario') renderCalActive();
   else if(tab==='mural'){ muralReiniciar(); renderMural(); }   // o Mural sempre começa no passo 1 (mês)

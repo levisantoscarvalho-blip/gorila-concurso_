@@ -346,3 +346,17 @@ body:not(.light) .tr-item:hover{background:var(--surface-3)!important}
 #tb-logo,.tb-title,.tb-links a,#tb-planos,#tb-cadastro,#tb-entrar{transition:transform .1s ease,filter .1s ease}
 #tb-logo:active,.tb-title:active,.tb-links a:active,#tb-planos:active,#tb-cadastro:active,#tb-entrar:active{transform:scale(.94);filter:brightness(.92)}
 @media (prefers-reduced-motion:reduce){ .tr-item svg,.tr-item{transition:none} .tr-item:hover svg{transform:none} }
+
+/* ════ RECURSOS DO GORILA PRO NA BARRA LATERAL (Mural do mês, Conteúdos, Mapa Mental) ════ */
+.nav-item.nav-pro-trava{color:var(--text-secondary)}
+.nav-pro-selo{margin-left:auto;display:inline-flex;align-items:center;gap:3px;padding:2px 7px;font-size:10.5px;font-weight:800;letter-spacing:.03em;color:#fff;background:#1e3a8a;border-radius:10px}
+.nav-pro-selo svg{width:10px!important;height:10px!important;fill:none;stroke:#fbbf24;stroke-width:2.4}
+.pro-trava{max-width:560px;margin:60px auto;padding:34px 32px;text-align:center;background:var(--surface-1);border:1px solid var(--border);border-radius:14px;box-shadow:0 12px 34px rgba(16,24,40,.08)}
+.pro-trava-icone{width:58px;height:58px;margin:0 auto 12px;display:grid;place-items:center;border-radius:50%;background:var(--surface-3)}
+.pro-trava-icone svg{width:28px;height:28px;fill:none;stroke:var(--text-primary);stroke-width:1.8}
+.pro-trava-selo{display:inline-block;padding:3px 10px;font-size:11px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#fff;background:#1e3a8a;border-radius:12px}
+.pro-trava h2{margin:12px 0 14px;font-size:21px;font-weight:800;color:var(--text-primary)}
+.pro-trava p{margin:0 0 8px;font-size:14px;line-height:1.55;color:var(--text-secondary)}
+.pro-trava p b{color:var(--text-primary)}
+.pro-trava .tv-botao{display:inline-block;margin-top:14px}
+.pro-trava small{display:block;margin-top:14px;font-size:12px;color:var(--text-muted)}

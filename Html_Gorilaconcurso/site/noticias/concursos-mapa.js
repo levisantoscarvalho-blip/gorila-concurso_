@@ -751,6 +751,7 @@ function cmMesoAbrir(i){
   painel._uf=cmVendoEstado; painel._nome=r.nome; painel._munis=[];
   cmPainelConcursos();
   cmBuscaDescer();
+  if(typeof cmCentralAbrir==='function') cmCentralAbrir(v, alvo, band, caixa, cmVendoEstado, r);   // CENTRAL DE CONCURSOS à direita (noticias/concursos-central.js)
   // começa EXATAMENTE em cima da região no mapa e desliza até o lugar final
   const k0=de.width/W, svg=caixa.querySelector('svg'), nome=caixa.querySelector('.cm-ev-regiao-nome');
   svg.style.transform=`translate(${de.left-V.left-x}px,${de.top-V.top-y}px) scale(${k0})`;
@@ -1026,7 +1027,8 @@ const CM_AREAS = [
   ['Trânsito', /detran|tr[âa]nsito/i],
   ['Tribunais e jurídico', /\btj|tribunal|trt|\bmp-|minist[ée]rio p|defensoria|\bpge|procurad|advogad|juiz|jur[íi]dic/i],
   ['Controle e legislativo', /\btce|\bcge|controle|assembleia|c[âa]mara|legislativ/i],
-  ['Fiscal e fazenda', /sefaz|sefin|fazend|fiscal|auditor|tribut|receita|finan[çc]/i],
+  // só a área TRIBUTÁRIA/financeira ("Fiscal de obras", "Fiscal ambiental", "Fiscal sanitário" NÃO entram — revisão de 15/10/2026)
+  ['Fiscal e fazenda', /sefaz|sefin|fazend|tribut|receita|auditor[ -]?fiscal|fiscal (de )?(tributos|rendas|da receita|fazend)|finan[çc]/i],
   ['Saúde', /sa[úu]de|\bses|sesa|sesau|hospital|m[ée]dic|enferm|endemias|farmac|odont|psic[óo]log|nutricion|fisioterap|fonoaud/i],
   ['Educação', /professor|educa|seduc|\bseed|\bsed-|\bsee|docente|pedagog|escolar|univers|\bue[a-z]+\b|\buf[a-z]*\b|\bif[a-z]*\b|unesp|unicamp|\busp|cefet|unila|unifal|unifei|unimontes|unilab/i],
   ['Prefeituras e outros cargos', /./],
@@ -1234,6 +1236,7 @@ function cmMesoFechar(semAnimar, manterBusca){   // manterBusca: a busca de baix
   document.getElementById('cm-ev-regiao')?.remove();
   document.getElementById('cm-ev-painel')?.remove();
   document.getElementById('cm-rz-card')?.remove();
+  document.getElementById('cm-central')?.remove(); document.getElementById('news-screen')?.classList.remove('cmc-cheio');
   if(!manterBusca) cmBuscaSubir(semAnimar);
   v.classList.remove('cm-ev-foco');
   const topo=v.querySelector('.cm-ev-topo'); if(topo && cmTopoAntes) topo.innerHTML=cmTopoAntes;

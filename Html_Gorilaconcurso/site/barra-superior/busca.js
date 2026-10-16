@@ -129,6 +129,7 @@ function bgAbrirDia(k){
   openDayModal(k);
 }
 function bgAbrirMapa(topicoId, subId){
+  if(!state.pro){ bgGarantirApp(); navClick('mindmap',''); return; }   // Mapa Mental é do Gorila Pro: mostra o cadeado
   mmGarantirEstado();
   const t = state.mindMap.topicos.find(t=>t.id===topicoId); if(!t) return;
   t.aberto = true;
