@@ -845,3 +845,7 @@ body:not(.light) .cm-central .st-semprevisao{color:#fcd34d}
 .cmc-btn.principal:hover{background:#1d4ed8}
 .cmc-rod{margin:14px 0 0;font-size:11px;color:var(--text-muted)}
 #news-screen.cmc-cheio #cm-busca-baixo{display:none}
+/* camadas dos pontos, círculos e leque cobrem o mapa inteiro: só os DESENHOS recebem o mouse (antes a camada dos círculos,
+   por cima de tudo, engolia o mouse e passar/clicar numa bolinha solta não fazia nada — relatado pelo Levi) */
+.cm-dm svg.cm-dm-pontos,.cm-dm svg.cm-dm-cachos,.cm-dm svg.cm-dm-leque{pointer-events:none}
+.cm-dm-pontos circle,.cm-dm-cacho,.cm-dm-cacho *,.cm-dm-leque circle{pointer-events:auto}
