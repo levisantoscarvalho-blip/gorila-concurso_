@@ -709,3 +709,31 @@ body:not(.light) .cm-dm-leque circle{stroke:#111}
 body:not(.light) .cm-dm-leque circle.sel,body:not(.light) .cm-dm-leque circle.fixo{stroke:#fff}
 .cm-dm-pontos circle.escondido{opacity:0;pointer-events:none}
 .cm-ev-regiao-mapa.cm-rz-vista.leque-aberto{z-index:3}
+/* CÍRCULO DA CIDADE COM MUITOS CONCURSOS: total no meio + anel com a proporção de cada cor */
+.cm-dm-cachos{overflow:visible}
+.cm-dm-cacho{cursor:pointer}
+.cm-dm-cacho .miolo{fill:#fff;stroke:rgba(0,0,0,.18);stroke-width:1;filter:drop-shadow(0 1px 3px rgba(0,0,0,.35))}
+.cm-dm-cacho .seg{fill:none;stroke-width:4.6}
+.cm-dm-cacho .seg.sit-aberto{stroke:#16a34a}.cm-dm-cacho .seg.sit-previsto{stroke:#2563eb}
+.cm-dm-cacho .seg.sit-semprevisao{stroke:#f59e0b}.cm-dm-cacho .seg.sit-andamento{stroke:#dc2626}
+.cm-dm-cacho text{font:800 9.5px Inter,system-ui,sans-serif;fill:#111827;text-anchor:middle;pointer-events:none}
+.cm-dm-cacho:hover .miolo,.cm-dm-cacho .miolo.sel{stroke:#111;stroke-width:1.6}
+body:not(.light) .cm-dm-cacho .miolo{fill:#1f1f1f;stroke:rgba(255,255,255,.25)}
+body:not(.light) .cm-dm-cacho text{fill:#fff}
+.cm-dm-cacho.escondido{display:none}
+/* BUSCA DE BAIXO: resultados abrem PARA CIMA do campo */
+.cm-bb-res{position:absolute;left:0;right:0;bottom:calc(100% + 8px);max-height:340px;overflow-y:auto;padding:6px;background:var(--surface-1);
+  border:1px solid var(--border);border-radius:10px;box-shadow:0 -10px 30px rgba(16,24,40,.16)}
+.cm-bb-res[hidden]{display:none}
+.cm-bb-item{display:grid;grid-template-columns:12px 1fr auto;gap:10px;align-items:center;padding:8px 10px;border-radius:7px;cursor:pointer}
+.cm-bb-item:hover,.cm-bb-item.ativo{background:var(--surface-3)}
+.cm-bb-item i{width:10px;height:10px;border-radius:50%}
+.cm-bb-item i.pin{border-radius:50% 50% 50% 0;transform:rotate(-45deg);background:var(--text-secondary)}
+.cm-bb-item i.sit-aberto{background:#16a34a}.cm-bb-item i.sit-andamento{background:#dc2626}.cm-bb-item i.sit-previsto{background:#2563eb}.cm-bb-item i.sit-semprevisao{background:#f59e0b}
+.cm-bb-item b{display:block;font-size:13px;color:var(--text-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cm-bb-item small{display:block;font-size:11.5px;color:var(--text-secondary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cm-bb-item span{min-width:0}
+.cm-bb-item em{font-style:normal;font-size:11px;font-weight:700;white-space:nowrap}
+.cm-bb-item .st-aberto{color:#15803d}.cm-bb-item .st-andamento{color:#b91c1c}.cm-bb-item .st-previsto{color:#1d4ed8}.cm-bb-item .st-semprevisao{color:#b45309}
+body:not(.light) .cm-bb-item .st-aberto{color:#4ade80}body:not(.light) .cm-bb-item .st-andamento{color:#fca5a5}body:not(.light) .cm-bb-item .st-previsto{color:#93c5fd}body:not(.light) .cm-bb-item .st-semprevisao{color:#fcd34d}
+.cm-bb-mais{padding:8px 10px;font-size:12px;color:var(--text-muted)}

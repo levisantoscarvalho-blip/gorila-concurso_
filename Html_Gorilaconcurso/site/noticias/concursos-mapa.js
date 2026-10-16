@@ -810,10 +810,20 @@ async function cmDemografia(caixa, r, s, uf){
   // espiral de girassol em volta da cidade; cidade com MUITOS concursos fica num cacho compacto (raio máx. ~14px) que
   // se abre com o zoom. Ordem de desenho: vermelhos embaixo, depois laranja, azul e VERDE POR CIMA (o que está aberto aparece).
   const CAMADA_COR={andamento:0, semprevisao:1, previsto:2, aberto:3};
-  const pontos=munis.flatMap((m,j)=>{ const l=conc(m), passo=Math.min(PASSO, 14/Math.sqrt(Math.max(1,l.length)));
+  // CIDADE COM MUITOS CONCURSOS (6+) = UM CÍRCULO com o TOTAL no meio e um ANEL colorido na proporção de cada situação
+  // (pedido do Levi: os pontos grudados não davam para ver). Mouse em cima = resumo; clique = abre o leque com todos.
+  const CACHO_MIN=6, ORDEM_ANEL=['aberto','previsto','semprevisao','andamento'];
+  const pontos=munis.flatMap((m,j)=>{ const l=conc(m); if(l.length>=CACHO_MIN) return [];
+      const passo=Math.min(PASSO, 14/Math.sqrt(Math.max(1,l.length)));
       return l.map((c,k)=>{ const r=passo*Math.sqrt(k), a=k*2.39996, cor=cmCorPonto(c);
         return {cor, svg:`<circle cx="${(m.x+r*Math.cos(a)).toFixed(1)}" cy="${(m.y+r*Math.sin(a)).toFixed(1)}" r="${R_PONTO}" class="sit-${cor}" data-j="${j}" data-k="${k}"/>`}; }); })
     .sort((a,b)=>CAMADA_COR[a.cor]-CAMADA_COR[b.cor]).map(p=>p.svg).join('');
+  const cachos=munis.map((m,j)=>{ const l=conc(m), n=l.length; if(n<CACHO_MIN) return '';
+      const R=Math.min(13, 7+Math.sqrt(n)*0.75), C=2*Math.PI*R; let off=0;
+      const segs=ORDEM_ANEL.map(s=>{ const q=l.filter(c=>cmCorPonto(c)===s).length; if(!q) return ''; const len=C*q/n;
+        const seg=`<circle class="seg sit-${s}" r="${R.toFixed(2)}" stroke-dasharray="${len.toFixed(2)} ${(C-len).toFixed(2)}" stroke-dashoffset="${(-off).toFixed(2)}" transform="rotate(-90)" data-j="${j}"/>`; off+=len; return seg; }).join('');
+      return `<g class="cm-dm-cacho" data-j="${j}" data-x="${m.x.toFixed(1)}" data-y="${m.y.toFixed(1)}" transform="translate(${m.x.toFixed(1)},${m.y.toFixed(1)})">`+
+        `<circle class="miolo" r="${(R-2.6).toFixed(2)}" data-j="${j}"/>${segs}<text dy="0.35em" data-j="${j}">${n}</text></g>`; }).join('');
   // nomes escritos: as cidades mais populosas (até 5), pulando as que encostariam num nome já escrito
   const ordem=[...munis].sort((a,c)=>c.p-a.p), destaques=[], caixas=[];
   for(const m of ordem){ if(destaques.length>=Math.min(5, Math.max(1, Math.round(munis.length/10)+1))) break;
@@ -825,6 +835,7 @@ async function cmDemografia(caixa, r, s, uf){
   camada.innerHTML=`<svg class="cm-dm-munis" viewBox="${vbx} ${vby} ${b.width*1e-4} ${b.height*1e-4}" width="${W}" height="${H}"><g transform="scale(0.0001,-0.0001)">${
       munis.map((m,j)=>`<path d="${m.d}" fill="${corMicro[m.mi]}" data-j="${j}"/>`).join('')}</g></svg>
     <svg class="cm-dm-quadros cm-dm-pontos" width="${W}" height="${H}">${pontos}</svg>
+    <svg class="cm-dm-cachos" width="${W}" height="${H}">${cachos}</svg>
     ${destaques.map(m=>`<span class="cm-dm-cidade" style="left:${(m.x+ladoM(m)/2+4).toFixed(1)}px;top:${m.y.toFixed(1)}px">${m.n}</span>`).join('')}
     <div class="cm-dm-dica" hidden></div>`;
   // ZOOM E ARRASTAR (pedido do Levi, igual ao mapa do Brasil): o contorno da região e a camada dos pontos vão para um
@@ -842,6 +853,7 @@ async function cmDemografia(caixa, r, s, uf){
     zw.style.transform=`translate(${Z.x}px,${Z.y}px) scale(${Z.z})`;
     const r=(R_PONTO*(1+(Z.z-1)*0.25)/Z.z).toFixed(2); camada.querySelectorAll('.cm-dm-pontos circle').forEach(c=>c.setAttribute('r',r));
     camada.querySelectorAll('.cm-dm-cidade').forEach(s=>s.style.transform=`translateY(-50%) scale(${1/Z.z})`);
+    camada.querySelectorAll('.cm-dm-cacho').forEach(g=>g.setAttribute('transform',`translate(${g.dataset.x},${g.dataset.y}) scale(${(1+(Z.z-1)*0.2)/Z.z})`));   // círculo não incha com o zoom
     mapa.classList.toggle('ampliado', Z.z>1.001); lequeRedesenha?.(); };
   const zoomEm=(fator,mx,my)=>{ const z0=Z.z, z1=Math.max(1,Math.min(10,z0*fator)); Z.x=mx-(mx-Z.x)*(z1/z0); Z.y=my-(my-Z.y)*(z1/z0); Z.z=z1; aplicar(); };
   mapa.onwheel=ev=>{ ev.preventDefault(); ev.stopPropagation(); const q=mapa.getBoundingClientRect(); zoomEm(ev.deltaY<0?1.25:0.8, ev.clientX-q.left, ev.clientY-q.top); };
@@ -849,9 +861,12 @@ async function cmDemografia(caixa, r, s, uf){
   mapa.querySelector('.cm-rz-ctrl').onclick=ev=>{ const d=ev.target.dataset?.z; if(d===undefined) return; ev.stopPropagation();
     if(d==='0'){ Z.z=1; Z.x=0; Z.y=0; aplicar(); } else zoomEm(d==='1'?1.5:1/1.5, W/2, H/2); };
   let arrasto=null, arrastou=false;
-  mapa.onpointerdown=ev=>{ if(ev.button!==0 || ev.target.closest('.cm-rz-ctrl')) return; arrasto={x:ev.clientX,y:ev.clientY,x0:Z.x,y0:Z.y}; arrastou=false; mapa.setPointerCapture?.(ev.pointerId); };
+  // ⚠ a "captura" do mouse só começa quando ele REALMENTE arrasta (>4px). Antes ela começava em todo clique, e o clique
+  // ia para o mapa em vez do pontinho — clicar num cacho não fazia nada (bug relatado pelo Levi).
+  mapa.onpointerdown=ev=>{ if(ev.button!==0 || ev.target.closest('.cm-rz-ctrl')) return; arrasto={x:ev.clientX,y:ev.clientY,x0:Z.x,y0:Z.y,id:ev.pointerId}; arrastou=false; };
   mapa.addEventListener('pointermove', ev=>{ if(!arrasto) return; const dx=ev.clientX-arrasto.x, dy=ev.clientY-arrasto.y;
-    if(Math.abs(dx)+Math.abs(dy)>3) arrastou=true; if(arrastou){ Z.x=arrasto.x0+dx; Z.y=arrasto.y0+dy; aplicar(); mapa.classList.add('arrastando'); dicaFora.hidden=true; } });
+    if(!arrastou && Math.abs(dx)+Math.abs(dy)>4){ arrastou=true; try{ mapa.setPointerCapture(arrasto.id); }catch(e){} }
+    if(arrastou){ Z.x=arrasto.x0+dx; Z.y=arrasto.y0+dy; aplicar(); mapa.classList.add('arrastando'); dicaFora.hidden=true; } });
   const soltar=()=>{ arrasto=null; mapa.classList.remove('arrastando'); }; mapa.onpointerup=soltar; mapa.onpointercancel=soltar;
   requestAnimationFrame(()=>camada.classList.add('aparece'));
   // mouse em cima de um ponto = aquele concurso; em cima da cidade = quantos de cada cor. CLIQUE = cartão com detalhes à direita
@@ -870,7 +885,7 @@ async function cmDemografia(caixa, r, s, uf){
       const n=s=>cs.filter(c=>cmCorPonto(c)===s).length;
       const linhas=[['aberto','com inscrições abertas'],['andamento','encerrados (não disponíveis)'],['previsto','previstos'],['semprevisao','sem previsão']]
         .filter(([s])=>n(s)).map(([s,t])=>`<span class="st st-${s}">● ${n(s)} ${t}</span>`).join('');
-      dica.innerHTML=`<b>${m.n}</b>${linhas?linhas+'<span class="sem">Clique para ver a lista</span>':'<span class="sem">Nenhum concurso no levantamento</span>'}`;
+      dica.innerHTML=`<b>${m.n} · ${cs.length} ${cs.length===1?'concurso':'concursos'}</b>${linhas?linhas+`<span class="sem">${cs.length>=CACHO_MIN?'Clique para abrir todos os pontos':'Clique para ver a lista'}</span>`:'<span class="sem">Nenhum concurso no levantamento</span>'}`;
     }
     dica.hidden=false; dica.style.left=(ev.clientX-q.left)+'px'; dica.style.top=(ev.clientY-q.top)+'px'; };
   camada.onpointerleave=()=>{ dica.hidden=true; camada.querySelectorAll('.sel').forEach(e=>e.classList.remove('sel')); };
@@ -878,13 +893,13 @@ async function cmDemografia(caixa, r, s, uf){
   // LEQUE (pedido do Levi: cacho com muitos pontos ficava ilegível, ex.: Brasília com 79). Clicar num cacho com mais de
   // 5 concursos ESPALHA os pontos dele em volta da cidade, MAIORES e agrupados por cor (verdes no meio, depois azuis,
   // laranjas e vermelhos). O leque FICA ABERTO enquanto a pessoa escolhe; só fecha ao clicar fora ou abrir outra cidade.
-  const LEQUE_MIN=6, R_LEQUE=7.5, ORDEM_LEQUE={aberto:0, previsto:1, semprevisao:2, andamento:3};
+  const LEQUE_MIN=CACHO_MIN, R_LEQUE=7.5, ORDEM_LEQUE={aberto:0, previsto:1, semprevisao:2, andamento:3};
   let lequeJ=null;
-  const lequeFechar=()=>{ mapa.classList.remove('leque-aberto'); camada.querySelector('.cm-dm-leque')?.remove(); camada.querySelectorAll('.cm-dm-pontos circle.escondido').forEach(c=>c.classList.remove('escondido')); lequeJ=null; lequeRedesenha=null; };
+  const lequeFechar=()=>{ mapa.classList.remove('leque-aberto'); camada.querySelector('.cm-dm-leque')?.remove(); camada.querySelectorAll('.escondido').forEach(c=>c.classList.remove('escondido')); lequeJ=null; lequeRedesenha=null; };
   const lequeAbrir=j=>{
     lequeFechar(); lequeJ=j; mapa.classList.add('leque-aberto'); const m=munis[j], cs=conc(m);
     const ordem=cs.map((c,k)=>({k, cor:cmCorPonto(c)})).sort((a,b)=>ORDEM_LEQUE[a.cor]-ORDEM_LEQUE[b.cor] || a.k-b.k);
-    camada.querySelectorAll(`.cm-dm-pontos circle[data-j="${j}"]`).forEach(c=>c.classList.add('escondido'));
+    camada.querySelectorAll(`.cm-dm-pontos circle[data-j="${j}"], .cm-dm-cacho[data-j="${j}"]`).forEach(c=>c.classList.add('escondido'));
     const ns='http://www.w3.org/2000/svg', svg=document.createElementNS(ns,'svg'); svg.setAttribute('class','cm-dm-leque'); svg.setAttribute('width',W); svg.setAttribute('height',H);
     camada.appendChild(svg);
     lequeRedesenha=()=>{   // tamanhos em pixels de TELA: divide pelo zoom atual
@@ -894,6 +909,19 @@ async function cmDemografia(caixa, r, s, uf){
           return `<circle cx="${(m.x+d*Math.cos(a)).toFixed(2)}" cy="${(m.y+d*Math.sin(a)).toFixed(2)}" r="${r.toFixed(2)}" class="sit-${o.cor}" data-j="${j}" data-k="${o.k}"/>`; }).join('');
     };
     lequeRedesenha();
+  };
+  // usado pela BUSCA de baixo: leva até a cidade (aproxima o mapa nela) e abre o leque/cartão; url = um concurso específico
+  caixa._selecionar=(cod, url)=>{
+    const j=munis.findIndex(m=>m.c===cod); if(j<0) return false;
+    const m=munis[j], cs=conc(m);
+    Z.z=Math.max(Z.z, 2.4); Z.x=W/2-m.x*Z.z; Z.y=H/2-m.y*Z.z; aplicar();
+    camada.querySelectorAll('.fixo').forEach(e=>e.classList.remove('fixo')); dica.hidden=true;
+    if(!cs.length){ lequeFechar(); cmCartaoFechar(); return true; }
+    if(cs.length>=LEQUE_MIN){ if(lequeJ!==j) lequeAbrir(j); } else if(lequeJ!==null) lequeFechar();
+    const k=url ? cs.findIndex(c=>c.fonte.url===url) : -1;
+    cmCartao(uf, m, cs, k>=0 ? k : null);
+    if(k>=0) camada.querySelector(`.cm-dm-leque circle[data-k="${k}"], .cm-dm-pontos circle[data-j="${j}"][data-k="${k}"]`)?.classList.add('fixo');
+    return true;
   };
   camada.onclick=ev=>{ if(arrastou){ arrastou=false; return; }
     const j=ev.target.dataset?.j, k=ev.target.dataset?.k, noLeque=!!ev.target.closest('.cm-dm-leque');
@@ -1120,13 +1148,71 @@ function cmBuscaDescer(){
   const tb=document.querySelector('#topbar .tb-search'), alvo=cmBuscaAlvo(); if(!tb||!alvo||document.getElementById('cm-busca-baixo')) return;
   const A=tb.getBoundingClientRect();
   const el=document.createElement('div'); el.id='cm-busca-baixo'; el.className='cm-busca-baixo';
-  el.innerHTML=`<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5"/></svg><input type="search" autocomplete="off" placeholder="Busque um concurso, cargo ou cidade" aria-label="Pesquisar">`;
+  el.innerHTML=`<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5"/></svg><input type="search" autocomplete="off" placeholder="Busque um concurso, cargo ou cidade" aria-label="Busque um concurso, cargo ou cidade" oninput="cmBuscaDigitar(this.value)" onkeydown="cmBuscaTecla(event)" onfocus="cmBuscaDigitar(this.value)"><div class="cm-bb-res" id="cm-bb-res" hidden role="listbox"></div>`;
+  el.onpointerdown=e=>e.stopPropagation();
   el.style.cssText=`left:${A.left}px;top:${A.top}px;width:${A.width}px;height:${A.height}px`;
   (document.getElementById('news-screen')||document.body).appendChild(el);   // dentro da tela de Notícias: as Configurações (camada por cima) cobrem a busca também
   tb.style.visibility='hidden'; alvo.ns.classList.add('cm-busca-desceu');   // esconde rótulo + letreiro (mesmo se forem trocados)
   requestAnimationFrame(()=>requestAnimationFrame(()=>{ el.classList.add('anda');
     el.style.cssText=`left:${alvo.left}px;top:${alvo.top}px;width:${alvo.width}px;height:${alvo.height}px`; }));
   window.addEventListener('resize', cmBuscaReposicionar);
+}
+// ── A BUSCA FUNCIONANDO (pedido do Levi): procura no ESTADO aberto — cidades (pelo nome) e concursos (órgão, cargo ou
+// cidade; todas as palavras precisam aparecer). Abertos primeiro, depois previstos e encerrados. Escolher um resultado
+// leva até a cidade no mapa (abre a região dela, se for outra) e mostra o leque/cartão do concurso.
+const cmNormBusca=s=>String(s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9 ]/g,' ').replace(/\s+/g,' ').trim();
+let cmBuscaIdx=null, cmBuscaSel=-1, cmBuscaItens=[];
+function cmBuscaIndice(uf){
+  if(cmBuscaIdx?.uf===uf && cmBuscaIdx.temCid===!!CONC_CIDADES[uf]) return cmBuscaIdx;
+  const munis=MUNI_BR[uf]||[], porCod=new Map(munis.map(m=>[m.c,m])), capital=munis.find(m=>m.n===CM_CAPITAL[uf]);
+  const cods=new Set([...Object.keys(CONC_CIDADES[uf]?.c||{}), ...cmFontes().flatMap(f=>Object.keys(f[uf]?.municipais||{}))]);
+  const conc=[]; cods.forEach(cod=>{ const m=porCod.get(cod); if(m) cmConcursosCidade(cod).forEach(c=>conc.push({c, m})); });
+  const s=cmSlugsCidades(uf); if(capital) cmConcursosEstaduais(uf).filter(c=>!s.has(c.fonte.url)).forEach(c=>conc.push({c:{...c, estadual:true}, m:capital}));
+  conc.forEach(x=>x.txt=cmNormBusca(`${x.c.orgao} ${x.c.cargo} ${x.m.n}`));
+  const nPor=new Map(); conc.forEach(x=>nPor.set(x.m.c,(nPor.get(x.m.c)||0)+1));
+  cmBuscaIdx={uf, temCid:!!CONC_CIDADES[uf], conc, cidades:munis.map(m=>({m, txt:cmNormBusca(m.n), n:nPor.get(m.c)||0}))};
+  return cmBuscaIdx;
+}
+function cmBuscaDigitar(q){
+  const box=document.getElementById('cm-bb-res'), uf=cmVendoEstado; if(!box) return;
+  const t=cmNormBusca(q); if(t.length<2 || !uf || !MUNI_BR[uf]){ box.hidden=true; cmBuscaItens=[]; return; }
+  const idx=cmBuscaIndice(uf), pal=t.split(' ');
+  const cid=idx.cidades.filter(x=>x.txt.includes(t)).sort((a,b)=>(b.txt.startsWith(t)-a.txt.startsWith(t)) || b.n-a.n).slice(0,4);
+  const ord={aberto:0, edital:1, previsto:2, semprevisao:3, andamento:4};
+  const achados=idx.conc.filter(x=>pal.every(p=>x.txt.includes(p))).map(x=>({...x, h:cmConcursoHoje(x.c)}))
+    .sort((a,b)=>ord[a.h.status]-ord[b.h.status] || (b.c.vagas||0)-(a.c.vagas||0));
+  cmBuscaItens=[...cid.map(x=>({tipo:'cid', m:x.m, n:x.n})), ...achados.slice(0,8).map(x=>({tipo:'conc', m:x.m, c:x.h}))]; cmBuscaSel=-1;
+  const vg=c=>c.vagas?` · ${cmNum(c.vagas)} ${c.vagas===1?'vaga':'vagas'}`:'';
+  box.innerHTML=cmBuscaItens.length ? cmBuscaItens.map((it,i)=>it.tipo==='cid'
+      ? `<div class="cm-bb-item" role="option" data-i="${i}"><i class="pin"></i><span><b>${it.m.n}</b><small>Cidade · ${it.n} ${it.n===1?'concurso':'concursos'} no levantamento</small></span></div>`
+      : `<div class="cm-bb-item" role="option" data-i="${i}"><i class="sit-${cmCorPonto(it.c)}"></i><span><b>${it.c.orgao}</b><small>${it.c.cargo}${vg(it.c)} · ${it.m.n}</small></span><em class="st-${cmCorPonto(it.c)}">${CM_SIT_NOME[it.c.status]||''}</em></div>`).join('')
+      + (achados.length>8 ? `<div class="cm-bb-mais">${achados.length} concursos encontrados no estado — refine a busca para ver outros</div>` : '')
+    : `<div class="cm-bb-mais">Nada encontrado ${cmDoEstado(uf).replace(/^d/,'n')} para “${String(q).replace(/[<>&"]/g,'')}”</div>`;
+  box.hidden=false;
+  box.querySelectorAll('.cm-bb-item').forEach(d=>d.onclick=()=>cmBuscaEscolher(+d.dataset.i));
+}
+function cmBuscaTecla(ev){
+  const box=document.getElementById('cm-bb-res');
+  if(ev.key==='Escape'){ ev.stopPropagation(); if(box) box.hidden=true; return; }
+  if(!box || box.hidden || !cmBuscaItens.length) return;
+  if(ev.key==='ArrowDown' || ev.key==='ArrowUp'){ ev.preventDefault(); cmBuscaSel=(cmBuscaSel+(ev.key==='ArrowDown'?1:-1)+cmBuscaItens.length)%cmBuscaItens.length;
+    box.querySelectorAll('.cm-bb-item').forEach((d,i)=>d.classList.toggle('ativo', i===cmBuscaSel)); box.querySelector('.ativo')?.scrollIntoView({block:'nearest'}); }
+  else if(ev.key==='Enter'){ ev.preventDefault(); cmBuscaEscolher(cmBuscaSel>=0?cmBuscaSel:0); }
+}
+function cmBuscaEscolher(i){
+  const it=cmBuscaItens[i], box=document.getElementById('cm-bb-res'); if(!it) return;
+  if(box) box.hidden=true;
+  cmIrParaCidade(cmVendoEstado, it.m, it.tipo==='conc' ? it.c.fonte.url : null);
+}
+// leva até a cidade: se ela é de OUTRA região do estado, fecha a atual e abre a dela (a busca continua embaixo)
+function cmIrParaCidade(uf, m, url){
+  const alvo=document.getElementById('cm-ev-mapa'); if(!alvo?._regs) return;
+  const i=alvo._regs.findIndex(r=>r.cod===m.me); if(i<0) return;
+  const tentar=(n)=>{ const cx=document.getElementById('cm-ev-regiao');
+    if(cx?._selecionar && cmRegiaoAberta===i){ cx._selecionar(m.c, url); return; }
+    if(n>0) setTimeout(()=>tentar(n-1), 150); };
+  if(cmRegiaoAberta!==i){ if(cmRegiaoAberta>=0) cmMesoFechar(true, true); cmEvArrastou=false; cmMesoAbrir(i); }
+  tentar(40);
 }
 function cmBuscaReposicionar(){ const el=document.getElementById('cm-busca-baixo'), a=cmBuscaAlvo(); if(!el||!a) return;
   el.classList.remove('anda'); el.style.cssText=`left:${a.left}px;top:${a.top}px;width:${a.width}px;height:${a.height}px`; }
@@ -1141,14 +1227,14 @@ function cmBuscaSubir(semAnimar){
   el.classList.add('anda'); el.style.cssText=`left:${A.left}px;top:${A.top}px;width:${A.width}px;height:${A.height}px`;
   setTimeout(volta, 560);
 }
-function cmMesoFechar(semAnimar){
+function cmMesoFechar(semAnimar, manterBusca){   // manterBusca: a busca de baixo trocou de região — ela fica onde está
   if(cmRegiaoAberta<0) return;
   cmRegiaoAberta=-1;
   const v=document.getElementById('cm-estado-vista'); if(!v) return;
   document.getElementById('cm-ev-regiao')?.remove();
   document.getElementById('cm-ev-painel')?.remove();
   document.getElementById('cm-rz-card')?.remove();
-  cmBuscaSubir(semAnimar);
+  if(!manterBusca) cmBuscaSubir(semAnimar);
   v.classList.remove('cm-ev-foco');
   const topo=v.querySelector('.cm-ev-topo'); if(topo && cmTopoAntes) topo.innerHTML=cmTopoAntes;
 }
