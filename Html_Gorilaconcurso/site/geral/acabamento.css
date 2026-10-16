@@ -360,3 +360,9 @@ body:not(.light) .tr-item:hover{background:var(--surface-3)!important}
 .pro-trava p b{color:var(--text-primary)}
 .pro-trava .tv-botao{display:inline-block;margin-top:14px}
 .pro-trava small{display:block;margin-top:14px;font-size:12px;color:var(--text-muted)}
+/* bloco dos recursos Pro na barra lateral: itens apagados + UM cadeado no meio (desenho do Levi) */
+.nav-pro-grupo{position:relative}
+.nav-pro-grupo .nav-item.nav-pro-trava{opacity:.55}
+.nav-pro-grupo:hover .nav-item.nav-pro-trava{opacity:.8}
+.nav-pro-cadeado{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:30px;height:30px;display:grid;place-items:center;border-radius:8px;background:var(--surface-1);border:1.5px solid var(--text-primary);box-shadow:0 3px 10px rgba(16,24,40,.15);pointer-events:none}
+.nav-pro-cadeado svg{width:17px;height:17px;fill:none;stroke:var(--text-primary);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}

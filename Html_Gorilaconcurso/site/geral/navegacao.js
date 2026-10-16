@@ -298,8 +298,14 @@ function openSection(section){
   const nav=document.getElementById('sidebar-nav');
   // Mural do mês, Conteúdos e Mapa Mental = recursos do Gorila Pro (pedido do Levi, 15/10/2026): sem o Pro aparecem com
   // cadeado + selo PRO e, ao clicar, abrem a tela de bloqueio (navProTrava) em vez do recurso.
-  nav.innerHTML=cfg.nav.map(n=>{ const trava=NAV_PRO[n.tab] && !state.pro;
-    return `<div class="nav-item${trava?' nav-pro-trava':''}" onclick="navClick('${n.tab}','${n.area||''}')" data-tab="${n.tab}"${trava?' title="Recurso do Gorila Pro"':''}><span class="nav-icon">${navIcon(n.icon)}</span>${n.label}${trava?`<span class="nav-pro-selo"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>PRO</span>`:''}</div>`; }).join('');
+  // desenho do Levi (15/10/2026): os itens travados ficam num BLOCO SÓ, um pouco apagados, com UM cadeado no meio
+  const itemNav=(n,trava)=>`<div class="nav-item${trava?' nav-pro-trava':''}" onclick="navClick('${n.tab}','${n.area||''}')" data-tab="${n.tab}"${trava?' title="Recurso do Gorila Pro"':''}><span class="nav-icon">${navIcon(n.icon)}</span>${n.label}</div>`;
+  let html='', bloco=[];
+  const fecharBloco=()=>{ if(!bloco.length) return;
+    html+=`<div class="nav-pro-grupo" title="Recursos do Gorila Pro">${bloco.join('')}<span class="nav-pro-cadeado" aria-label="Recurso do Gorila Pro"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></span></div>`; bloco=[]; };
+  cfg.nav.forEach(n=>{ const trava=NAV_PRO[n.tab] && !state.pro; if(trava) bloco.push(itemNav(n,true)); else { fecharBloco(); html+=itemNav(n,false); } });
+  fecharBloco();
+  nav.innerHTML=html;
 
   const first=cfg.nav[0];
   navClick(first.tab, first.area||'');
