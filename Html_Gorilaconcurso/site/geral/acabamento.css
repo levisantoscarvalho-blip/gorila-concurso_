@@ -360,10 +360,19 @@ body:not(.light) .tr-item:hover{background:var(--surface-3)!important}
 .pro-trava p b{color:var(--text-primary)}
 .pro-trava .tv-botao{display:inline-block;margin-top:14px}
 .pro-trava small{display:block;margin-top:14px;font-size:12px;color:var(--text-muted)}
-/* bloco dos recursos Pro na barra lateral: itens apagados + UM cadeado no meio (desenho do Levi) */
-.nav-pro-grupo{position:relative}
-.nav-pro-grupo::before{content:"";position:absolute;inset:0 4px;border:1.5px solid var(--text-primary);border-radius:4px;opacity:.35;pointer-events:none}   /* moldura quadrada em volta do bloco (pedido do Levi) */
-.nav-pro-grupo .nav-item.nav-pro-trava{opacity:.55}
-.nav-pro-grupo:hover .nav-item.nav-pro-trava{opacity:.8}
-.nav-pro-cadeado{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:30px;height:30px;display:grid;place-items:center;border-radius:8px;background:var(--surface-1);border:1.5px solid var(--text-primary);box-shadow:0 3px 10px rgba(16,24,40,.15);pointer-events:none}
-.nav-pro-cadeado svg{width:17px;height:17px;fill:none;stroke:var(--text-primary);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+/* bloco dos recursos Pro na barra lateral: itens apagados + UM cadeado no meio (desenho do Levi).
+   Acabamento (16/10/2026, "melhore a interface desse quadrado"): cartão de cantos arredondados com fundo azul bem leve
+   e borda azul fina (cores do Pro), itens desfocados de leve, e o cadeado virou um selo PRO (degradê marinho ➔ azul) em cima
+   da borda, à direita — no meio ele cobria o texto "Conteúdos" */
+.nav-pro-grupo{position:relative;margin:12px 6px 4px;padding:8px 0 4px;border-radius:10px;cursor:pointer;
+  background:linear-gradient(180deg,rgba(36,83,196,.045),rgba(11,29,82,.07));border:1px solid rgba(36,83,196,.22);transition:border-color .15s,box-shadow .15s}
+.nav-pro-grupo .nav-item{margin:2px 4px}
+.nav-pro-grupo .nav-item.nav-pro-trava{opacity:.45;filter:blur(.6px);transition:opacity .15s,filter .15s}
+.nav-pro-grupo:hover{border-color:rgba(36,83,196,.5);box-shadow:0 4px 14px rgba(36,83,196,.14)}
+.nav-pro-grupo:hover .nav-item.nav-pro-trava{opacity:.7;filter:none}
+.nav-pro-cadeado{position:absolute;right:10px;top:0;transform:translateY(-50%);display:inline-flex;align-items:center;gap:5px;padding:3px 9px;border-radius:6px;
+  background:linear-gradient(90deg,#0b1d52,#2453c4);color:#fff;font-size:11px;font-weight:800;letter-spacing:.08em;white-space:nowrap;
+  box-shadow:0 4px 12px rgba(11,29,82,.28);pointer-events:none;transition:transform .15s,box-shadow .15s}
+.nav-pro-grupo:hover .nav-pro-cadeado{transform:translateY(-50%) scale(1.05);box-shadow:0 6px 16px rgba(36,83,196,.4)}
+body:not(.light) .nav-pro-grupo{background:linear-gradient(180deg,rgba(62,110,230,.08),rgba(62,110,230,.03));border-color:rgba(120,150,230,.28)}
+.nav-pro-cadeado svg{width:13px;height:13px;fill:none;stroke:#ffd36b;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}

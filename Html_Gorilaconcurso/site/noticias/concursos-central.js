@@ -82,14 +82,16 @@ function cmcItens(uf, regCod){
   cmConcursosEstaduais(uf).filter(c=>!s.has(c.fonte.url)).forEach(c=>itens.push({c:{...cmConcursoHoje(c), estadual:true}, m:cap||munis[0]}));
   return itens;
 }
-const cmcGrupo=c=>c.status==='aberto'||c.status==='edital' ? 'disp' : c.status==='previsto' ? 'prev' : c.status==='andamento' ? 'hist' : 'sem';
+const cmcGrupo=c=>c.status==='aberto'||c.status==='edital' ? 'disp' : c.status==='previsto'||c.status==='semprevisao' ? 'prev' : c.status==='andamento' ? 'hist' : 'sem';   // "sem previsão" conta como previsto (no mapa ele é azul)
 
 // ── CRIA A CENTRAL (chamado por cmMesoAbrir)
 function cmCentralAbrir(v, alvo, band, caixa, uf, r){
-  document.getElementById('cm-central')?.remove();
+  document.getElementById('cm-central')?.remove(); document.getElementById('news-screen')?.classList.remove('cmc-cheio','cmc-subindo');
   const el=document.createElement('div'); el.id='cm-central'; el.className='cm-central';
+  let A0=null;
   if(band && band.offsetWidth && alvo){ const V=v.getBoundingClientRect(), A=alvo.getBoundingClientRect();
-    el.style.cssText=`left:${A.left-V.left}px;top:${A.top-V.top}px;width:${A.width}px;height:${A.height}px`; v.appendChild(el); }
+    A0={left:A.left-V.left, top:A.top-V.top, width:A.width, height:A.height};
+    el.style.cssText=`left:${A0.left}px;top:${A0.top}px;width:${A0.width}px;height:${A0.height}px`; v.appendChild(el); }
   else { el.classList.add('embaixo'); caixa.appendChild(el); }
   el._uf=uf; el._reg=r; el._pilha=[];
   el.onpointerdown=e=>e.stopPropagation(); el.ondblclick=e=>e.stopPropagation();
@@ -109,12 +111,18 @@ function cmCentralAbrir(v, alvo, band, caixa, uf, r){
   el.querySelectorAll('.cmc-topo [data-v]').forEach(b=>b.onclick=()=>cmcIr(el.querySelector(`[data-v="${b.dataset.v}"]`).dataset.v, {}, true));
   el.querySelector('.cmc-voltar').onclick=()=>cmcVoltar();
   el.querySelector('.cmc-recolher').onclick=()=>cmcCheio(false);
-  // 5: rolando PARA BAIXO a área sobe e ocupa a tela toda; no topo, rolando PARA CIMA, ela desce de volta
+  // 5: SOBE AOS POUCOS (pedido do Levi): cada giro da rodinha PARA BAIXO sobe um pedaço da área, até ocupar a tela toda,
+  // e o resto (mapa, nome, botões, busca) vai sumindo junto. Só depois de cheia a lista rola. No topo da lista, rolando
+  // PARA CIMA, ela desce aos poucos e o resto reaparece.
   const cont=el.querySelector('#cmc-conteudo');
-  cont.addEventListener('wheel', ev=>{ ev.stopPropagation();
-    if(ev.deltaY>0 && !el.classList.contains('cheio') && !el.classList.contains('embaixo')){ ev.preventDefault(); cmcCheio(true); }
-    else if(ev.deltaY<0 && el.classList.contains('cheio') && cont.scrollTop<=0){ ev.preventDefault(); cmcCheio(false); } }, {passive:false});
-  el.querySelector('.cmc-topo').onwheel=e=>e.stopPropagation();
+  if(!el.classList.contains('embaixo')) el._base={left:A0.left, top:A0.top, width:A0.width, height:A0.height};
+  el._p=0; el._alvo=0;
+  el.addEventListener('wheel', ev=>{ ev.stopPropagation(); if(!el._base) return;
+    const d=ev.deltaY*(ev.deltaMode===1 ? 16 : ev.deltaMode===2 ? 400 : 1);
+    if(d>0 && el._alvo<1){ ev.preventDefault(); cmcSubirPara(el, el._alvo+d/CMC_CURSO); }
+    else if(d<0 && el._alvo>0 && cont.scrollTop<=0){ ev.preventDefault(); cmcSubirPara(el, el._alvo+d/CMC_CURSO); } }, {passive:false});
+  // rolou SEM a rodinha (arrastando a barrinha, setas do teclado): sobe inteira
+  cont.addEventListener('scroll', ()=>{ if(cont.scrollTop>0 && el._base && el._alvo<1) cmcSubirPara(el, 1); });
   // números nos botões e a tela inicial (antes e depois dos detalhes chegarem)
   // ⚠ espera as CIDADES do estado (MUNI_BR) chegarem — sem elas a central só via os concursos do estado (bug achado no teste)
   const pronto=()=>{ if(!el.isConnected) return; el._itens=cmcItens(uf, r.cod); cmcContar(el); if(!el._pilha.length) cmcIr('inicio', {}, true); else cmcDesenhar(el); };
@@ -125,13 +133,39 @@ function cmcContar(el){
   const n={todos:el._itens.length, disp:0, prev:0, hist:0}; el._itens.forEach(x=>{ const g=cmcGrupo(x.c); if(n[g]!==undefined) n[g]++; });
   el.querySelectorAll('.cmc-topo .n').forEach(b=>b.textContent=cmNum(n[b.dataset.n]||0));
 }
+const CMC_CURSO=500;   // quanto a rodinha precisa girar (em px) para a área subir inteira (~5 "cliques" de mouse)
 function cmcCheio(sim){
-  const el=document.getElementById('cm-central'); if(!el) return;
-  el.classList.toggle('cheio', !!sim); el.querySelector('.cmc-recolher').hidden=!sim;
-  document.getElementById('news-screen')?.classList.toggle('cmc-cheio', !!sim);
-  const barra=el.querySelector('.cmc-barra'); barra.hidden=!sim && el._pilha.length<2;
+  const el=document.getElementById('cm-central'); if(!el?._base) return;
   if(!sim) el.querySelector('#cmc-conteudo').scrollTop=0;
+  cmcSubirPara(el, sim?1:0);
 }
+// a área anda SUAVE até o ponto pedido pela rodinha (cada "clique" do mouse vira um deslize, não um pulo)
+function cmcSubirPara(el, alvo){ el._alvo=Math.max(0, Math.min(1, alvo)); if(!el._raf) el._raf=requestAnimationFrame(()=>cmcPasso(el)); }
+function cmcPasso(el){
+  el._raf=0; if(!el.isConnected) return;
+  const d=el._alvo-el._p; el._p=Math.abs(d)<0.002 ? el._alvo : el._p+d*0.22;
+  cmcAplicar(el);
+  if(el._p!==el._alvo) el._raf=requestAnimationFrame(()=>cmcPasso(el));
+}
+// p = 0 (no lugar, ao lado do mapa) ... 1 (tela cheia: de 16px da esquerda até a barra de ícones, embaixo da barra de cima)
+function cmcAplicar(el){
+  const p=el._p, b=el._base, v=el.parentElement, tela=document.getElementById('news-screen'), topo=el.querySelector('.cmc-topo');
+  if(!b || !v) return;
+  if(p>0 && !el._topoH) el._topoH=topo.offsetHeight;
+  const V=v.getBoundingClientRect(), t={left:16-V.left, top:72-V.top, width:innerWidth-112, height:innerHeight-84};
+  ['left','top','width','height'].forEach(k=>el.style[k]=(b[k]+(t[k]-b[k])*p)+'px');
+  el.style.zIndex=p>0 ? '80' : '';
+  // os 4 botões de cima encolhem e somem enquanto a área sobe
+  topo.style.maxHeight=p>0 ? el._topoH*(1-p)+'px' : ''; topo.style.overflow=p>0 ? 'hidden' : '';
+  topo.style.opacity=p>0 ? Math.max(0, 1-p*1.6) : ''; topo.style.marginBottom=p>0 ? (-12*p)+'px' : '';
+  // o resto da tela (mapa, nome, legenda, busca) some aos poucos — CSS: #news-screen.cmc-subindo
+  tela?.style.setProperty('--cmc-p', p); tela?.classList.toggle('cmc-subindo', p>0);
+  const cheio=p>=1;
+  if(cheio!==el.classList.contains('cheio')){
+    el.classList.toggle('cheio', cheio); tela?.classList.toggle('cmc-cheio', cheio);
+    el.querySelector('.cmc-recolher').hidden=!cheio; el.querySelector('.cmc-barra').hidden=!cheio && el._pilha.length<2; }
+}
+window.addEventListener('resize', ()=>{ const el=document.getElementById('cm-central'); if(el?._p>0) cmcAplicar(el); });
 // Esc com a área cheia: só recolhe (não fecha a região)
 document.addEventListener('keydown', e=>{ if(e.key==='Escape' && document.getElementById('cm-central')?.classList.contains('cheio')){ e.stopImmediatePropagation(); cmcCheio(false); } }, true);
 
@@ -148,7 +182,7 @@ function cmcDesenhar(el){
   const barra=el.querySelector('.cmc-barra'); barra.hidden=el._pilha.length<2 && !el.classList.contains('cheio');
   el.querySelector('.cmc-voltar').hidden=el._pilha.length<2; el.querySelector('.cmc-recolher').hidden=!el.classList.contains('cheio');
   el.querySelector('.cmc-trilha').textContent=el._pilha.map(p=>p.arg?.titulo||CMC_TITULO[p.vista]||'').filter(Boolean).join(' › ');
-  const V={inicio:cmcInicio, disp:cmcDisp, prev:cmcPrev, hist:cmcHist, cat:cmcCat, area:cmcAreaV, org:cmcOrg, det:cmcDetalhe, cid:cmcCidade}[vista];
+  const V={inicio:cmcInicio, disp:cmcDisp, prev:cmcPrev, hist:cmcHist, cat:cmcCat, area:cmcAreaV, org:cmcOrg, det:cmcDetalhe, cid:cmcCidade, leg:cmcLeg}[vista];
   cont.innerHTML=V ? V(el, arg, uf) : ''; cont.scrollTop=0;
   cont.querySelectorAll('[data-abre]').forEach(d=>d.onclick=()=>{ const i=+d.dataset.abre, x=el._lista[i]; if(x) cmcIr('det', {x, titulo:vista==='org'?'Detalhes':x.c.orgao.replace(/\s+-\s+.*$/,'')}); });
   cont.querySelectorAll('[data-area]').forEach(d=>d.onclick=()=>cmcIr('area', {area:d.dataset.area, titulo:d.dataset.area}));
@@ -244,6 +278,12 @@ function cmcOrg(el, arg){
     ${l.map(x=>cmcLinha(el,x,cmcPrazo(x.c)||(x.c.ate&&x.c.status==='andamento'?`encerrou ${cmcBR(x.c.ate)}`:''))).join('')}`;
 }
 // ── LISTA DE UMA CIDADE (clique na cidade/círculo do mapa)
+// clicou numa cor da LEGENDA do mapa: os concursos daquela cor que estão no mapa da região (mais vagas primeiro)
+function cmcLeg(el, arg){
+  el._lista=[]; const nome=(CM_CICLO.find(x=>x[0]===arg.s)||[])[1]||'', l=[...arg.lista].sort((a,b)=>(b.c.vagas||0)-(a.c.vagas||0));
+  return `<div class="cmc-cab"><b>${cmcEsc(nome)} em ${cmcEsc(el._reg.nome)}</b><span>${l.length} ${l.length===1?'concurso':'concursos'} · os pontos desta cor no mapa · clique para ver os detalhes</span></div>${
+    l.length ? l.map(x=>cmcLinha(el,x,cmcPrazo(x.c)||'')).join('') : `<p class="cmc-vazio">Nenhum concurso desta cor no mapa desta região.</p>`}`;
+}
 function cmcCidade(el, arg){
   el._lista=[]; const ord={disp:0,prev:1,hist:2,sem:3}, l=arg.cs.map(c=>({c:cmConcursoHoje(c), m:arg.m})).sort((a,b)=>ord[cmcGrupo(a.c)]-ord[cmcGrupo(b.c)]);
   return `<div class="cmc-cab"><b>${cmcEsc(arg.m.n)}</b><span>${l.length} ${l.length===1?'concurso':'concursos'} · clique para ver os detalhes</span></div>${l.map(x=>cmcLinha(el,x,cmcPrazo(x.c))).join('')}`;

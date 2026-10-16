@@ -501,6 +501,9 @@ body:not(.light) .cm-dm-quadros rect{stroke:#111}
 .cm-dm-cidade{position:absolute;transform:translateY(-50%);font-size:11.5px;font-weight:800;color:#111827;white-space:nowrap;pointer-events:none;
   text-shadow:0 0 3px #fff,0 0 3px #fff,0 0 3px #fff}
 body:not(.light) .cm-dm-cidade{color:#fff;text-shadow:0 0 3px #000,0 0 3px #000}
+/* ilha longe (ex.: Fernando de Noronha) num quadradinho ao lado do mapa, com o nome embaixo */
+.cm-dm-munis rect.cm-dm-ilha{fill:var(--surface-1);stroke:var(--border);stroke-width:1;vector-effect:non-scaling-stroke;pointer-events:none;filter:drop-shadow(0 4px 10px rgba(16,24,40,.10))}
+.cm-dm-ilha-nome{position:absolute;transform:translateX(-50%);transform-origin:50% 0;font-size:10.5px;font-weight:700;letter-spacing:.02em;color:var(--text-secondary);white-space:nowrap;pointer-events:none}
 .cm-dm-dica{position:absolute;z-index:3;transform:translate(14px,-110%);display:flex;flex-direction:column;gap:1px;padding:8px 11px;border-radius:8px;background:#111827;color:#fff;font-size:12px;white-space:nowrap;pointer-events:none;box-shadow:0 8px 22px rgba(16,24,40,.28)}
 .cm-dm-dica b{font-size:13px}
 .cm-dm-dica span{opacity:.85}
@@ -764,7 +767,11 @@ body:not(.light) .cmc-b2{background:#374151}
 .cmc-trilha{flex:1;color:var(--text-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .cmc-recolher{margin-left:auto}
 .cmc-conteudo{flex:1;min-height:0;overflow-y:auto;padding:14px 16px}
-.cm-central.cheio{position:fixed;left:16px;right:96px;top:72px;bottom:12px;width:auto!important;height:auto!important;z-index:80}
+/* SUBINDO AOS POUCOS (concursos-central.js ➔ cmcAplicar): o JS move/aumenta a área conforme a rodinha (--cmc-p = 0 a 1)
+   e o resto da tela vai sumindo junto (filter:opacity multiplica a opacidade que cada parte já tem) */
+#news-screen.cmc-subindo #cm-estado-vista > :not(.cm-central),
+#news-screen.cmc-subindo #cm-busca-baixo{filter:opacity(calc(1 - var(--cmc-p,0)))}
+#news-screen.cmc-cheio #cm-estado-vista > :not(.cm-central){pointer-events:none}
 .cm-central.cheio .cmc-topo{display:none}
 .cm-central.cheio .cmc-area{box-shadow:0 20px 60px rgba(16,24,40,.28)}
 .cm-central.cheio .cmc-conteudo{padding:18px 26px}
@@ -850,3 +857,57 @@ body:not(.light) .cm-central .st-semprevisao{color:#fcd34d}
    por cima de tudo, engolia o mouse e passar/clicar numa bolinha solta não fazia nada — relatado pelo Levi) */
 .cm-dm svg.cm-dm-pontos,.cm-dm svg.cm-dm-cachos,.cm-dm svg.cm-dm-leque{pointer-events:none}
 .cm-dm-pontos circle,.cm-dm-cacho,.cm-dm-cacho *,.cm-dm-leque circle{pointer-events:auto}
+/* fundo invisível do lado esquerdo da região: rodinha e arrastar funcionam no espaço vazio também (igual ao mapa do Brasil) */
+.cm-rz-fundo{position:absolute;z-index:1;pointer-events:auto;cursor:grab;touch-action:none}
+.cm-rz-fundo.arrastando{cursor:grabbing}
+/* ═══ COR NOVA DO CICLO (16/10/2026, pedido do Levi — concursos-mapa.js ➔ CM_CICLO) ═══
+   GRAFITE (#1f2937, a cor do botão "Ver todos os concursos disponíveis", escolha do Levi) = edital publicado (inscrições ainda não abriram) */
+.cm-dm-pontos circle.sit-edital,.cm-dm-leque circle.sit-edital{fill:#1f2937}
+.cm-dm-cacho .seg.sit-edital{stroke:#1f2937}
+.cm-dm-leg1 i.sit-edital,.cm-rz-card i.sit-edital,.cm-bb-item i.sit-edital,.cm-central i.sit-edital{background:#1f2937}
+.cm-dm-dica .st-edital{color:#e5e7eb}
+body:not(.light) .cm-dm-dica .st-edital{color:#1f2937}
+.cm-rz-card .st-edital,.cm-bb-item .st-edital,.cm-central .st-edital{color:#1f2937}
+body:not(.light) .cm-rz-card .st-edital,body:not(.light) .cm-bb-item .st-edital,body:not(.light) .cm-central .st-edital{color:#e5e7eb}
+/* MOUSE DE DEMONSTRAÇÃO no mapa do estado (cmEvMouse): 4,5 s, toda vez que o estado abre. --w/--h = tamanho do mapa */
+.cm-ev-mouse{position:absolute;z-index:6;width:0;height:0;pointer-events:none;animation:cmEvMouseAnda 4.5s ease-in-out forwards}
+.cm-ev-mouse span{position:absolute;left:0;top:0;width:30px;height:30px;animation:cmEvMouseClica 4.5s ease-in-out forwards}
+.cm-ev-mouse svg{width:30px;height:30px;margin:-3px 0 0 -6px;fill:#fff;stroke:#111827;stroke-width:1.5;stroke-linejoin:round;filter:drop-shadow(0 2px 4px rgba(0,0,0,.45))}
+@keyframes cmEvMouseAnda{
+  0%  {transform:translate(calc(var(--w)*.18),calc(var(--h)*.9));opacity:0}
+  10% {opacity:1}
+  30% {transform:translate(calc(var(--w)*.35),calc(var(--h)*.6))}
+  50% {transform:translate(calc(var(--w)*.68),calc(var(--h)*.4))}
+  68% {transform:translate(calc(var(--w)*.52),calc(var(--h)*.5))}
+  88% {transform:translate(calc(var(--w)*.52),calc(var(--h)*.5));opacity:1}
+  100%{transform:translate(calc(var(--w)*.52),calc(var(--h)*.5));opacity:0}}
+@keyframes cmEvMouseClica{0%,72%,86%,100%{transform:scale(1)}78%{transform:scale(.82)}}
+@media (prefers-reduced-motion:reduce){ .cm-ev-mouse{display:none} }
+/* no escuro o grafite some no fundo: usa o cinza do botão no escuro */
+body:not(.light) .cm-dm-pontos circle.sit-edital,body:not(.light) .cm-dm-leque circle.sit-edital{fill:#4b5563}
+body:not(.light) .cm-dm-cacho .seg.sit-edital{stroke:#4b5563}
+body:not(.light) :is(.cm-dm-leg1,.cm-rz-card,.cm-bb-item,.cm-central) i.sit-edital{background:#4b5563}
+/* LEMA DO ESTADO (cmEvLema): embaixo, no meio, por 5 s (aparece, fica e some) */
+.cm-ev-lema{position:absolute;left:50%;bottom:10px;z-index:3;display:flex;flex-direction:column;align-items:center;gap:2px;max-width:520px;text-align:center;pointer-events:none;
+  transform:translateX(-50%);animation:cmEvLema 5s ease forwards}
+.cm-ev-lema b{font-size:17px;font-weight:700;font-style:italic;letter-spacing:.01em;color:var(--text-primary)}
+.cm-ev-lema span{font-size:12px;color:var(--text-secondary)}
+@keyframes cmEvLema{0%{opacity:0;transform:translate(-50%,8px)}12%{opacity:1;transform:translate(-50%,0)}85%{opacity:1;transform:translate(-50%,0)}100%{opacity:0;transform:translate(-50%,0)}}
+@media (prefers-reduced-motion:reduce){ .cm-ev-lema{animation:cmEvLemaFade 5s linear forwards} @keyframes cmEvLemaFade{0%,90%{opacity:1}100%{opacity:0}} }
+/* ENCERRADOS (vermelho) UM POUCO APAGADOS (16/10/2026, pedido do Levi: "as pessoas não vão querer saber dos fechados,
+   mas é importante estar no mapa"). Ao passar o mouse ou clicar, o ponto volta à cor cheia. */
+.cm-dm-pontos circle.sit-andamento,.cm-dm-leque circle.sit-andamento{fill-opacity:.38;stroke-opacity:.5}
+.cm-dm-pontos circle.sit-andamento:is(.sel,.fixo,:hover),.cm-dm-leque circle.sit-andamento:is(.sel,.fixo,:hover){fill-opacity:1;stroke-opacity:1}
+.cm-dm-cacho .seg.sit-andamento{stroke-opacity:.4}
+.cm-dm-leg1 i.sit-andamento{opacity:.45}
+/* balão do mapa da região: por cima do "Voltar" e do nome; abre embaixo perto do topo e à esquerda perto da direita */
+#cm-dm-dica-fora{z-index:60}
+.cm-dm-dica.embaixo{transform:translate(14px,22px)}
+.cm-dm-dica.esquerda{transform:translate(calc(-100% - 14px),-110%)}
+.cm-dm-dica.embaixo.esquerda{transform:translate(calc(-100% - 14px),22px)}
+/* LEGENDA CLICÁVEL: cada cor é um botão; a cor escolhida fica marcada e os outros pontos do mapa ficam bem apagados */
+.cm-dm-legp span[data-s]{pointer-events:auto;cursor:pointer;padding:2px 6px;border-radius:6px;transition:background .12s}
+.cm-dm-legp span[data-s]:hover{background:var(--surface-3)}
+.cm-dm-legp span[data-s].ativo{background:var(--surface-1);box-shadow:0 0 0 1.5px var(--text-primary);opacity:1}
+.cm-dm-pontos circle.apagado{opacity:.1}
+.cm-dm-cacho.apagado{opacity:.15}

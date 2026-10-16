@@ -302,7 +302,7 @@ function openSection(section){
   const itemNav=(n,trava)=>`<div class="nav-item${trava?' nav-pro-trava':''}" onclick="navClick('${n.tab}','${n.area||''}')" data-tab="${n.tab}"${trava?' title="Recurso do Gorila Pro"':''}><span class="nav-icon">${navIcon(n.icon)}</span>${n.label}</div>`;
   let html='', bloco=[];
   const fecharBloco=()=>{ if(!bloco.length) return;
-    html+=`<div class="nav-pro-grupo" title="Recursos do Gorila Pro">${bloco.join('')}<span class="nav-pro-cadeado" aria-label="Recurso do Gorila Pro"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></span></div>`; bloco=[]; };
+    html+=`<div class="nav-pro-grupo" title="Recursos do Gorila Pro">${bloco.join('')}<span class="nav-pro-cadeado" aria-label="Recurso do Gorila Pro"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>PRO</span></div>`; bloco=[]; };
   cfg.nav.forEach(n=>{ const trava=NAV_PRO[n.tab] && !state.pro; if(trava) bloco.push(itemNav(n,true)); else { fecharBloco(); html+=itemNav(n,false); } });
   fecharBloco();
   nav.innerHTML=html;

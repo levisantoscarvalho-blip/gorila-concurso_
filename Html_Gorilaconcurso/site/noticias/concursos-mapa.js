@@ -510,6 +510,39 @@ async function cmAbrirEstado(uf){
     <div class="cm-ev-mapa" id="cm-ev-mapa"></div>`;
   cmLayoutEstado();
   v.classList.remove('entra'); void v.offsetWidth; v.classList.add('entra');
+  setTimeout(()=>{ if(cmVendoEstado===uf) cmEvMouse(); }, 700);   // depois que o estado entra na tela
+  cmEvLema(uf);
+}
+// LEMA DO ESTADO (pedido do Levi): a frase do brasão aparece embaixo, entre a bandeira e o mapa, por 5 s e some.
+// SÓ LEMAS CONFERIDOS (16/10/2026): SP, BA, RJ e DF no Wikidata; PA e ES em fontes oficiais/jornais; os demais são lemas
+// históricos muito conhecidos. Estado sem lema oficial confirmado fica sem frase — nunca inventar.
+const CM_LEMAS={
+  SP:['Pro Brasilia fiant eximia','Pelo Brasil, façam-se grandes coisas'], MG:['Libertas quae sera tamen','Liberdade, ainda que tardia'],
+  RJ:['Recte rem publicam gerere','Governar com retidão a coisa pública'], BA:['Per ardua surgo','Pelas dificuldades, me elevo'],
+  ES:['Trabalha e confia',''], PA:['Sub lege progrediamur','Sob a lei, progridamos'], PB:['Nego','A recusa da Paraíba, 1930'],
+  RS:['Liberdade, Igualdade, Humanidade',''], MT:['Virtute plusquam auro','Pela virtude, mais que pelo ouro'],
+  DF:['Venturis ventis','Aos ventos que hão de vir'], TO:['Co yvy ore retama','Esta terra é nossa (tupi)'],
+  PI:['Impavidum ferient ruinae','As ruínas o atingirão sem medo']};
+function cmEvLema(uf){
+  document.getElementById('cm-ev-lema')?.remove();
+  const v=document.getElementById('cm-estado-vista'), l=CM_LEMAS[uf]; if(!v || !l) return;
+  const el=document.createElement('div'); el.id='cm-ev-lema'; el.className='cm-ev-lema';
+  el.innerHTML=`<b>“${l[0]}”</b>${l[1]?`<span>${l[1]}</span>`:''}`;
+  v.appendChild(el);
+  el.addEventListener('animationend', ()=>el.remove());
+}
+// MOUSE DE DEMONSTRAÇÃO (pedido do Levi): TODA VEZ que o mapa do estado abre, um mouse branco passeia por cima das
+// regiões durante 4,5 s (entra, faz uma curva, para no meio e "clica") e some — mostra que dá para passar o mouse e clicar.
+function cmEvMouse(){
+  document.getElementById('cm-ev-mouse')?.remove();
+  const v=document.getElementById('cm-estado-vista'), alvo=document.getElementById('cm-ev-mapa');
+  if(!v || !alvo || cmRegiaoAberta>=0 || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const V=v.getBoundingClientRect(), A=alvo.getBoundingClientRect(); if(A.width<60 || A.height<60) return;
+  const m=document.createElement('div'); m.id='cm-ev-mouse'; m.className='cm-ev-mouse'; m.setAttribute('aria-hidden','true');
+  m.style.cssText=`left:${A.left-V.left}px;top:${A.top-V.top}px;--w:${A.width}px;--h:${A.height}px`;
+  m.innerHTML='<span><svg viewBox="0 0 24 24"><path d="M5 2.5v16.2l4.3-4 2.9 6.4 2.7-1.2-2.9-6.3 5.9-.3z"/></svg></span>';
+  v.appendChild(m);
+  m.addEventListener('animationend', e=>{ if(e.animationName==='cmEvMouseAnda') m.remove(); });
 }
 // ── BANDEIRA TREMULANDO (pedido do Levi): a imagem da bandeira desenhada em faixas verticais finas, cada uma subindo e
 // descendo numa onda (presa do lado esquerdo, como num mastro), com luz e sombra nas dobras. Para quando o estado fecha.
@@ -577,17 +610,23 @@ function cmLayoutEstado(){
 // (ex.: Fernando de Noronha, em Pernambuco) ficam de fora — senão o estado aparece pequeno e fora do meio. ──
 function cmMesoEnquadrar(dados){
   if(dados._vb) return dados._vb;
+  const u=cmContinente(dados.regioes.map(r=>r.d)), pad=Math.max(u.width,u.height)*0.02;
+  return dados._vb=`${u.x*1e-4-pad*1e-4} ${-(u.y+u.height)*1e-4-pad*1e-4} ${(u.width+2*pad)*1e-4} ${(u.height+2*pad)*1e-4}`;
+}
+// CONTINENTE: recebe contornos (d) e devolve a caixa só do continente + as ilhas pequenas coladas no litoral.
+// perto(caixa) = aquele pedaço fica no continente; longe = os pedaços que ficaram de fora (ex.: Fernando de Noronha).
+function cmContinente(ds){
   const ns="http://www.w3.org/2000/svg", med=document.createElementNS(ns,"svg");
   med.setAttribute("style","position:absolute;left:-9999px;top:0;width:10px;height:10px;visibility:hidden"); document.body.appendChild(med);
   const partes=[];
-  dados.regioes.forEach(r=>r.d.split(/(?=M)/).forEach(s=>{ const p=document.createElementNS(ns,"path"); p.setAttribute("d",s); med.appendChild(p); partes.push(p.getBBox()); }));
+  ds.forEach(d=>d.split(/(?=M)/).forEach(s=>{ const p=document.createElementNS(ns,"path"); p.setAttribute("d",s); med.appendChild(p); partes.push({s, b:p.getBBox()}); }));
   med.remove();
   const uniao=l=>{ const x=Math.min(...l.map(b=>b.x)), y=Math.min(...l.map(b=>b.y)); return {x, y, w:Math.max(...l.map(b=>b.x+b.width))-x, h:Math.max(...l.map(b=>b.y+b.height))-y}; };
-  const maior=Math.max(...partes.map(b=>b.width*b.height));
-  const c=uniao(partes.filter(b=>b.width*b.height>=maior*0.01));                    // só os pedaços grandes
+  const maior=Math.max(...partes.map(q=>q.b.width*q.b.height));
+  const c=uniao(partes.filter(q=>q.b.width*q.b.height>=maior*0.01).map(q=>q.b));      // só os pedaços grandes
   const perto=b=>b.x+b.width>=c.x-c.w*0.1 && b.x<=c.x+c.w*1.1 && b.y+b.height>=c.y-c.h*0.1 && b.y<=c.y+c.h*1.1;
-  const u=uniao(partes.filter(perto)), pad=Math.max(u.w,u.h)*0.02;                   // + ilhas pequenas coladas no litoral
-  return dados._vb=`${u.x*1e-4-pad*1e-4} ${-(u.y+u.h)*1e-4-pad*1e-4} ${(u.w+2*pad)*1e-4} ${(u.h+2*pad)*1e-4}`;
+  const u=uniao(partes.filter(q=>perto(q.b)).map(q=>q.b));                           // + ilhas pequenas coladas no litoral
+  return {x:u.x, y:u.y, width:u.w, height:u.h, perto, d:partes.filter(q=>perto(q.b)).map(q=>q.s).join(''), longe:partes.filter(q=>!perto(q.b))};
 }
 // ── MAPA DO ESTADO DIVIDIDO EM REGIÕES ──
 function cmDesenharMeso(uf){
@@ -726,17 +765,23 @@ function cmMesoAbrir(i){
   if(cmEvArrastou || cmRegiaoAberta>=0) return;           // soltou depois de arrastar (não é clique) ou já tem região aberta
   const v=document.getElementById('cm-estado-vista'), alvo=document.getElementById('cm-ev-mapa'); if(!v||!alvo?._regs) return;
   const r=alvo._regs[i], p=alvo.querySelector(`path[data-i="${i}"]`); if(!r||!p) return;
-  cmMesoSobre(-1);
+  cmMesoSobre(-1); document.getElementById('cm-ev-mouse')?.remove(); document.getElementById('cm-ev-lema')?.remove();
   cmRegiaoAberta=i;
-  const V=v.getBoundingClientRect(), de=p.getBoundingClientRect();
+  // a região é enquadrada SÓ pelo continente: ilha longe (ex.: Fernando de Noronha, na Metropolitana de Recife) vai
+  // num quadradinho ao lado do mapa (cmDemografia) — antes ela deixava a região minúscula, num canto
+  const cont=r.cont||(r.cont=cmContinente([r.d])), ilhas=cont.longe.length>0, LADO_ILHA=ilhas?CM_ILHA.reserva:0;
+  const V=v.getBoundingClientRect();
+  let de=p.getBoundingClientRect();
+  if(ilhas){ const M=p.getScreenCTM(), a=new DOMPoint(cont.x,cont.y).matrixTransform(M), z=new DOMPoint(cont.x+cont.width,cont.y+cont.height).matrixTransform(M);
+    de={left:Math.min(a.x,z.x), top:Math.min(a.y,z.y), width:Math.abs(z.x-a.x)}; }   // a animação sai do continente, não da caixa com a ilha
   // destino: a área da bandeira (no celular, sem bandeira, a área do mapa)
   const band=v.querySelector('.cm-ev-bandeira'), base=(band && band.offsetWidth ? band : alvo).getBoundingClientRect();
-  const b=r.b, wd=b.width*1e-4, hd=b.height*1e-4, ALT_NOME=70;    // embaixo: nome + legenda dos pontos
-  const s=Math.min(base.width*0.92/wd, (base.height-ALT_NOME)*0.92/hd), W=wd*s, H=hd*s;
+  const b=cont, wd=b.width*1e-4, hd=b.height*1e-4, ALT_NOME=70;    // embaixo: nome + legenda dos pontos
+  const s=Math.min((base.width-2*LADO_ILHA)*0.92/wd, (base.height-ALT_NOME)*0.92/hd), W=wd*s, H=hd*s;
   const x=base.left-V.left+(base.width-W)/2, y=base.top-V.top+(base.height-ALT_NOME-H)/2;
   const caixa=document.createElement('div'); caixa.className='cm-ev-regiao'; caixa.id='cm-ev-regiao';
   caixa.style.cssText=`left:${base.left-V.left}px;top:${y}px;width:${base.width}px`;   // o mapa fica centrado (x); o texto embaixo usa a largura toda
-  caixa.innerHTML=`<div class="cm-ev-regiao-mapa" style="width:${W}px;height:${H}px"><svg viewBox="${b.x*1e-4} ${-(b.y+b.height)*1e-4} ${wd} ${hd}" width="${W}" height="${H}" aria-hidden="true"><g transform="scale(0.0001,-0.0001)"><path d="${r.d}" fill="${r.cor}"/></g></svg></div>
+  caixa.innerHTML=`<div class="cm-ev-regiao-mapa" style="width:${W}px;height:${H}px"><svg viewBox="${b.x*1e-4} ${-(b.y+b.height)*1e-4} ${wd} ${hd}" width="${W}" height="${H}" aria-hidden="true"><g transform="scale(0.0001,-0.0001)"><path d="${cont.d}" fill="${r.cor}"/></g></svg></div>
     <div class="cm-ev-regiao-nome">${r.nome}</div><div class="cm-dm-info" id="cm-dm-info"></div>`;
   v.appendChild(caixa);
   // À DIREITA (onde ficava o estado): o PAINEL DE CONCURSOS da região (pedido do Levi: só dado de concurso, nada de
@@ -777,11 +822,12 @@ function cmCarregarMuni(uf){
     sc.onload=()=>ok(MUNI_BR[uf]||null); sc.onerror=()=>ok(null); document.head.appendChild(sc); });
 }
 const cmNum=n=>Math.round(n).toLocaleString('pt-BR');
+const CM_ILHA={lado:56, dist:24, leg:22, reserva:120};   // quadradinho da ilha longe: tamanho, distância do mapa, nome embaixo, espaço guardado de cada lado
 async function cmDemografia(caixa, r, s, uf){
   const lista=await cmCarregarMuni(uf); if(!lista || !caixa.isConnected) return;
   await cmCarregarCidades(uf); if(!caixa.isConnected) return;   // concursos de cada cidade (PCI), se o arquivo do estado existir
   const munis=lista.filter(m=>m.me===r.cod && m.d && m.p>0); if(!munis.length) return;
-  const b=r.b, vbx=b.x*1e-4, vby=-(b.y+b.height)*1e-4, W=b.width*1e-4*s, H=b.height*1e-4*s;
+  const cont=r.cont||(r.cont=cmContinente([r.d])), b=cont, vbx=b.x*1e-4, vby=-(b.y+b.height)*1e-4, W=b.width*1e-4*s, H=b.height*1e-4*s;
   const px=(gx,gy)=>[(gx*1e-4-vbx)*s, (-gy*1e-4-vby)*s];   // coordenada do IBGE ➔ pixel no quadro
   // microrregiões: cada uma num tom da cor da região (do mais escuro ao mais claro)
   const micros=[...new Set(munis.map(m=>m.mi))].sort((a,c)=>a.localeCompare(c,'pt-BR'));
@@ -793,13 +839,24 @@ async function cmDemografia(caixa, r, s, uf){
   // centro de cada município (para o quadrado): o meio da caixa dele, ou o ponto de dentro mais perto do meio
   const ns='http://www.w3.org/2000/svg', med=document.createElementNS(ns,'svg'), ctx=document.createElement('canvas').getContext('2d');
   med.setAttribute('style','position:absolute;left:-9999px;top:0;width:10px;height:10px;visibility:hidden'); document.body.appendChild(med);
-  munis.forEach(m=>{ const p=document.createElementNS(ns,'path'); p.setAttribute('d',m.d); med.appendChild(p); const bb=p.getBBox(), p2=new Path2D(m.d);
+  munis.forEach(m=>{
+    // pedaços longe do continente saem do desenho; município TODO longe (ex.: Fernando de Noronha) vira "ilha" ➔ quadradinho
+    const ficam=m.d.split(/(?=M)/).filter(s=>{ const q=document.createElementNS(ns,'path'); q.setAttribute('d',s); med.appendChild(q); return cont.perto(q.getBBox()); });
+    m.ilha=!ficam.length; m.dv=m.ilha ? m.d : ficam.join('');
+    const p=document.createElementNS(ns,'path'); p.setAttribute('d',m.dv); med.appendChild(p); const bb=p.getBBox(), p2=new Path2D(m.dv);
     let cx=bb.x+bb.width/2, cy=bb.y+bb.height/2;
     if(!ctx.isPointInPath(p2,cx,cy)){ let melhor=null, dm=1e18;
       for(let j=1;j<10;j++) for(let k=1;k<10;k++){ const tx=bb.x+bb.width*j/10, ty=bb.y+bb.height*k/10; if(ctx.isPointInPath(p2,tx,ty)){ const dd=(tx-cx)**2+(ty-cy)**2; if(dd<dm){ dm=dd; melhor=[tx,ty]; } } }
       if(melhor){ cx=melhor[0]; cy=melhor[1]; } }
-    [m.x,m.y]=px(cx,cy); });
+    [m.x,m.y]=px(cx,cy); m.bb=bb; m.gx=cx; m.gy=cy; });
   med.remove();
+  // ILHAS LONGE: cada uma num QUADRADINHO ao lado do mapa (como nos mapas oficiais), do lado em que ela fica de verdade,
+  // na altura dela (sem sair do quadro). Os pontinhos dos concursos dela ficam ali dentro.
+  munis.filter(m=>m.ilha).forEach((m,n)=>{ const bb=m.bb, k=CM_ILHA.lado/Math.max(bb.width,bb.height), w=bb.width*k, h=bb.height*k;
+    const direita=bb.x+bb.width/2 > cont.x+cont.width/2, L=direita ? W+CM_ILHA.dist : -CM_ILHA.dist-w;
+    const T=Math.max(0, Math.min(H-h-CM_ILHA.leg, px(0,bb.y+bb.height/2)[1]-h/2)) + n*(CM_ILHA.lado+CM_ILHA.leg+10);
+    m.x=L+(m.gx-bb.x)*k; m.y=T+(bb.y+bb.height-m.gy)*k;
+    m.quadro={L, T, w, h, mat:`matrix(${k/s},0,0,${-k/s},${vbx+(L-bb.x*k)/s},${vby+(T+(bb.y+bb.height)*k)/s})`}; });
   // PONTINHOS = CONCURSOS (pedido do Levi): UM PONTO POR CONCURSO, na cidade onde ele acontece, na COR da situação dele
   // (verde inscrições abertas · VERMELHO inscrições encerradas (não disponível) · azul previsto · laranja sem previsão). Vários concursos
   // na mesma cidade = pontos agrupados em volta dela. Concursos do ESTADO (PM, SEFAZ, TJ...) ficam na CAPITAL, a sede.
@@ -810,10 +867,10 @@ async function cmDemografia(caixa, r, s, uf){
   const ladoM=m=>2*Math.min(raio(conc(m).length), 14+R_PONTO);
   // espiral de girassol em volta da cidade; cidade com MUITOS concursos fica num cacho compacto (raio máx. ~14px) que
   // se abre com o zoom. Ordem de desenho: vermelhos embaixo, depois laranja, azul e VERDE POR CIMA (o que está aberto aparece).
-  const CAMADA_COR={andamento:0, semprevisao:1, previsto:2, aberto:3};
+  const CAMADA_COR={andamento:0, previsto:1, edital:2, aberto:3};
   // CIDADE COM MUITOS CONCURSOS (6+) = UM CÍRCULO com o TOTAL no meio e um ANEL colorido na proporção de cada situação
   // (pedido do Levi: os pontos grudados não davam para ver). Mouse em cima = resumo; clique = abre o leque com todos.
-  const CACHO_MIN=6, ORDEM_ANEL=['aberto','previsto','semprevisao','andamento'];
+  const CACHO_MIN=6, ORDEM_ANEL=['previsto','edital','aberto','andamento'];   // ordem do ciclo do concurso
   const pontos=munis.flatMap((m,j)=>{ const l=conc(m); if(l.length>=CACHO_MIN) return [];
       const passo=Math.min(PASSO, 14/Math.sqrt(Math.max(1,l.length)));
       return l.map((c,k)=>{ const r=passo*Math.sqrt(k), a=k*2.39996, cor=cmCorPonto(c);
@@ -828,13 +885,17 @@ async function cmDemografia(caixa, r, s, uf){
   // nomes escritos: as cidades mais populosas (até 5), pulando as que encostariam num nome já escrito
   const ordem=[...munis].sort((a,c)=>c.p-a.p), destaques=[], caixas=[];
   for(const m of ordem){ if(destaques.length>=Math.min(5, Math.max(1, Math.round(munis.length/10)+1))) break;
+    if(m.ilha) continue;   // a ilha já tem o nome embaixo do quadradinho
     const l=ladoM(m), x0=m.x+l/2+4, w=m.n.length*6.6+4, cx={x0, x1:x0+w, y0:m.y-9, y1:m.y+9};
     if(caixas.some(o=>cx.x0<o.x1 && o.x0<cx.x1 && cx.y0<o.y1 && o.y0<cx.y1)) continue;
     caixas.push(cx); destaques.push(m); }
   const mapa=caixa.querySelector('.cm-ev-regiao-mapa');
   const camada=document.createElement('div'); camada.className='cm-dm'; camada.style.cssText=`width:${W}px;height:${H}px`;
   camada.innerHTML=`<svg class="cm-dm-munis" viewBox="${vbx} ${vby} ${b.width*1e-4} ${b.height*1e-4}" width="${W}" height="${H}"><g transform="scale(0.0001,-0.0001)">${
-      munis.map((m,j)=>`<path d="${m.d}" fill="${corMicro[m.mi]}" data-j="${j}"/>`).join('')}</g></svg>
+      munis.map((m,j)=>m.ilha ? '' : `<path d="${m.dv}" fill="${corMicro[m.mi]}" data-j="${j}"/>`).join('')}</g>${
+      munis.map((m,j)=>!m.ilha ? '' : `<rect class="cm-dm-ilha" x="${vbx+(m.quadro.L-8)/s}" y="${vby+(m.quadro.T-8)/s}" width="${(m.quadro.w+16)/s}" height="${(m.quadro.h+16)/s}" rx="${8/s}"/>`+
+        `<path d="${m.d}" transform="${m.quadro.mat}" fill="${corMicro[m.mi]}" data-j="${j}"/>`).join('')}</svg>
+    ${munis.filter(m=>m.ilha).map(m=>`<span class="cm-dm-ilha-nome" style="left:${(m.quadro.L+m.quadro.w/2).toFixed(1)}px;top:${(m.quadro.T+m.quadro.h+14).toFixed(1)}px">${m.n}</span>`).join('')}
     <svg class="cm-dm-quadros cm-dm-pontos" width="${W}" height="${H}">${pontos}</svg>
     <svg class="cm-dm-cachos" width="${W}" height="${H}">${cachos}</svg>
     ${destaques.map(m=>`<span class="cm-dm-cidade" style="left:${(m.x+ladoM(m)/2+4).toFixed(1)}px;top:${m.y.toFixed(1)}px">${m.n}</span>`).join('')}
@@ -844,8 +905,13 @@ async function cmDemografia(caixa, r, s, uf){
   // com os botões + / − / ⟲. Os pontinhos e os nomes NÃO incham junto (ficam quase do mesmo tamanho; os pontos se afastam).
   const zw=document.createElement('div'); zw.className='cm-rz';
   const svgReg=mapa.querySelector(':scope > svg'); if(svgReg) zw.appendChild(svgReg);
+  // contorno da REGIÃO (o que deslizou até aqui): a malha dela e a dos municípios não batem 100% (no DF a região é recortada e o
+  // município é quase um retângulo) e ele aparecia em lasquinhas na borda. Fica na cor neutra e SOME quando os municípios aparecem.
+  svgReg?.querySelector('path')?.setAttribute('fill', BASE); setTimeout(()=>{ if(svgReg) svgReg.style.visibility='hidden'; }, 500);
   zw.appendChild(camada); mapa.appendChild(zw); mapa.classList.add('cm-rz-vista');
-  const dicaFora=camada.querySelector('.cm-dm-dica'); caixa.appendChild(dicaFora);   // o balão fica fora do zoom (não aumenta)
+  // o balão fica FORA do zoom e POR CIMA de tudo (antes ficava atrás do "Voltar" e cortado no alto — bug relatado pelo Levi)
+  document.getElementById('cm-dm-dica-fora')?.remove();
+  const dicaFora=camada.querySelector('.cm-dm-dica'); dicaFora.id='cm-dm-dica-fora'; (document.getElementById('cm-estado-vista')||caixa).appendChild(dicaFora);   // o balão fica fora do zoom (não aumenta)
   mapa.insertAdjacentHTML('beforeend', `<div class="cm-rz-ctrl"><button type="button" data-z="1" title="Aproximar">+</button><button type="button" data-z="-1" title="Afastar">−</button><button type="button" data-z="0" title="Ver a região inteira">⟲</button></div>`);
   const Z={z:1,x:0,y:0};
   // sem borda (pedido do Levi): o mapa pode ser arrastado para onde a pessoa quiser — só não some (metade fica à vista)
@@ -854,21 +920,35 @@ async function cmDemografia(caixa, r, s, uf){
     zw.style.transform=`translate(${Z.x}px,${Z.y}px) scale(${Z.z})`;
     const r=(R_PONTO*(1+(Z.z-1)*0.25)/Z.z).toFixed(2); camada.querySelectorAll('.cm-dm-pontos circle').forEach(c=>c.setAttribute('r',r));
     camada.querySelectorAll('.cm-dm-cidade').forEach(s=>s.style.transform=`translateY(-50%) scale(${1/Z.z})`);
+    camada.querySelectorAll('.cm-dm-ilha-nome').forEach(s=>s.style.transform=`translateX(-50%) scale(${1/Z.z})`);
     camada.querySelectorAll('.cm-dm-cacho').forEach(g=>g.setAttribute('transform',`translate(${g.dataset.x},${g.dataset.y}) scale(${(1+(Z.z-1)*0.2)/Z.z})`));   // círculo não incha com o zoom
     mapa.classList.toggle('ampliado', Z.z>1.001); lequeRedesenha?.(); };
   const zoomEm=(fator,mx,my)=>{ const z0=Z.z, z1=Math.max(1,Math.min(10,z0*fator)); Z.x=mx-(mx-Z.x)*(z1/z0); Z.y=my-(my-Z.y)*(z1/z0); Z.z=z1; aplicar(); };
-  mapa.onwheel=ev=>{ ev.preventDefault(); ev.stopPropagation(); const q=mapa.getBoundingClientRect(); zoomEm(ev.deltaY<0?1.25:0.8, ev.clientX-q.left, ev.clientY-q.top); };
-  mapa.ondblclick=ev=>{ ev.stopPropagation(); Z.z=1; Z.x=0; Z.y=0; aplicar(); };
   mapa.querySelector('.cm-rz-ctrl').onclick=ev=>{ const d=ev.target.dataset?.z; if(d===undefined) return; ev.stopPropagation();
     if(d==='0'){ Z.z=1; Z.x=0; Z.y=0; aplicar(); } else zoomEm(d==='1'?1.5:1/1.5, W/2, H/2); };
+  // IGUAL AO MAPA DO BRASIL (pedido do Levi): a rodinha e o arrastar funcionam em TODO o lado esquerdo, não só em cima
+  // do desenho — um "fundo" invisível cobre o espaço vazio em volta (de baixo do "Voltar" até embaixo, até a central)
+  document.getElementById('cm-rz-fundo')?.remove();
+  const vista=document.getElementById('cm-estado-vista'), centralEl=document.getElementById('cm-central'), topoEl=vista?.querySelector('.cm-ev-topo');
+  if(vista && centralEl && !centralEl.classList.contains('embaixo')){
+    const V=vista.getBoundingClientRect(), C=centralEl.getBoundingClientRect(), t0=topoEl ? topoEl.getBoundingClientRect().bottom-V.top+6 : 0;
+    const fundo=document.createElement('div'); fundo.id='cm-rz-fundo'; fundo.className='cm-rz-fundo';
+    fundo.style.cssText=`left:0;top:${t0}px;width:${Math.max(0,C.left-V.left-12)}px;height:${Math.max(0,V.height-t0)}px`;
+    vista.insertBefore(fundo, caixa);   // embaixo da região: o desenho e os pontinhos continuam por cima
+  }
+  const superficies=[mapa, document.getElementById('cm-rz-fundo')].filter(Boolean);
   let arrasto=null, arrastou=false;
-  // ⚠ a "captura" do mouse só começa quando ele REALMENTE arrasta (>4px). Antes ela começava em todo clique, e o clique
-  // ia para o mapa em vez do pontinho — clicar num cacho não fazia nada (bug relatado pelo Levi).
-  mapa.onpointerdown=ev=>{ if(ev.button!==0 || ev.target.closest('.cm-rz-ctrl')) return; arrasto={x:ev.clientX,y:ev.clientY,x0:Z.x,y0:Z.y,id:ev.pointerId}; arrastou=false; };
-  mapa.addEventListener('pointermove', ev=>{ if(!arrasto) return; const dx=ev.clientX-arrasto.x, dy=ev.clientY-arrasto.y;
-    if(!arrastou && Math.abs(dx)+Math.abs(dy)>4){ arrastou=true; try{ mapa.setPointerCapture(arrasto.id); }catch(e){} }
-    if(arrastou){ Z.x=arrasto.x0+dx; Z.y=arrasto.y0+dy; aplicar(); mapa.classList.add('arrastando'); dicaFora.hidden=true; } });
-  const soltar=()=>{ arrasto=null; mapa.classList.remove('arrastando'); }; mapa.onpointerup=soltar; mapa.onpointercancel=soltar;
+  superficies.forEach(sup=>{
+    sup.onwheel=ev=>{ ev.preventDefault(); ev.stopPropagation(); const q=mapa.getBoundingClientRect(); zoomEm(ev.deltaY<0?1.25:0.8, ev.clientX-q.left, ev.clientY-q.top); };
+    sup.ondblclick=ev=>{ ev.stopPropagation(); Z.z=1; Z.x=0; Z.y=0; aplicar(); };
+    // ⚠ a "captura" do mouse só começa quando ele REALMENTE arrasta (>4px). Antes ela começava em todo clique, e o clique
+    // ia para o mapa em vez do pontinho — clicar num cacho não fazia nada (bug relatado pelo Levi).
+    sup.onpointerdown=ev=>{ if(ev.button!==0 || ev.target.closest('.cm-rz-ctrl')) return; arrasto={x:ev.clientX,y:ev.clientY,x0:Z.x,y0:Z.y,id:ev.pointerId}; arrastou=false; };
+    sup.addEventListener('pointermove', ev=>{ if(!arrasto) return; const dx=ev.clientX-arrasto.x, dy=ev.clientY-arrasto.y;
+      if(!arrastou && Math.abs(dx)+Math.abs(dy)>4){ arrastou=true; try{ sup.setPointerCapture(arrasto.id); }catch(e){} }
+      if(arrastou){ Z.x=arrasto.x0+dx; Z.y=arrasto.y0+dy; aplicar(); superficies.forEach(s=>s.classList.add('arrastando')); dicaFora.hidden=true; } });
+    sup.onpointerup=sup.onpointercancel=()=>{ arrasto=null; superficies.forEach(s=>s.classList.remove('arrastando')); };
+  });
   requestAnimationFrame(()=>camada.classList.add('aparece'));
   // mouse em cima de um ponto = aquele concurso; em cima da cidade = quantos de cada cor. CLIQUE = cartão com detalhes à direita
   const dica=dicaFora;
@@ -884,17 +964,20 @@ async function cmDemografia(caixa, r, s, uf){
         `<span class="sem">${c.estadual?`Órgão estadual ou federal · sede em ${m.n} · vale para todo o estado`:m.n} · clique para ver detalhes</span>`;
     } else {             // em cima da cidade: quantos concursos de cada situação
       const n=s=>cs.filter(c=>cmCorPonto(c)===s).length;
-      const linhas=[['aberto','com inscrições abertas'],['andamento','encerrados (não disponíveis)'],['previsto','previstos'],['semprevisao','sem previsão']]
+      const linhas=CM_CICLO.map(([s,,t])=>[s,t])
         .filter(([s])=>n(s)).map(([s,t])=>`<span class="st st-${s}">● ${n(s)} ${t}</span>`).join('');
       dica.innerHTML=`<b>${m.n} · ${cs.length} ${cs.length===1?'concurso':'concursos'}</b>${linhas?linhas+`<span class="sem">${cs.length>=CACHO_MIN?'Clique para abrir todos os pontos':'Clique para ver a lista'}</span>`:'<span class="sem">Nenhum concurso no levantamento</span>'}`;
     }
-    dica.hidden=false; dica.style.left=(ev.clientX-q.left)+'px'; dica.style.top=(ev.clientY-q.top)+'px'; };
+    // posição: em cima e à direita do mouse; sem espaço em cima (perto do topo) abre EMBAIXO; perto da direita abre à ESQUERDA
+    dica.hidden=false; const pai=dica.parentElement.getBoundingClientRect(), dw=dica.offsetWidth, dh=dica.offsetHeight;
+    dica.classList.toggle('embaixo', ev.clientY-dh-16 < 70); dica.classList.toggle('esquerda', ev.clientX+dw+30 > innerWidth-90);
+    dica.style.left=(ev.clientX-pai.left)+'px'; dica.style.top=(ev.clientY-pai.top)+'px'; };
   camada.onpointerleave=()=>{ dica.hidden=true; camada.querySelectorAll('.sel').forEach(e=>e.classList.remove('sel')); };
   // CLIQUE: num ponto = cartão com os detalhes daquele concurso + botão para o PCI Concursos; na cidade = lista dela
   // LEQUE (pedido do Levi: cacho com muitos pontos ficava ilegível, ex.: Brasília com 79). Clicar num cacho com mais de
   // 5 concursos ESPALHA os pontos dele em volta da cidade, MAIORES e agrupados por cor (verdes no meio, depois azuis,
   // laranjas e vermelhos). O leque FICA ABERTO enquanto a pessoa escolhe; só fecha ao clicar fora ou abrir outra cidade.
-  const LEQUE_MIN=CACHO_MIN, R_LEQUE=7.5, ORDEM_LEQUE={aberto:0, previsto:1, semprevisao:2, andamento:3};
+  const LEQUE_MIN=CACHO_MIN, R_LEQUE=7.5, ORDEM_LEQUE={aberto:0, edital:1, previsto:2, andamento:3};
   let lequeJ=null;
   const lequeFechar=()=>{ mapa.classList.remove('leque-aberto'); camada.querySelector('.cm-dm-leque')?.remove(); camada.querySelectorAll('.escondido').forEach(c=>c.classList.remove('escondido')); lequeJ=null; lequeRedesenha=null; };
   const lequeAbrir=j=>{
@@ -939,10 +1022,21 @@ async function cmDemografia(caixa, r, s, uf){
   // embaixo do mapa: a legenda com QUANTOS pontos de cada cor há na região (pedido do Levi)
   const todosC=munis.flatMap(conc), nCor=s=>todosC.filter(c=>cmCorPonto(c)===s).length;
   const info=caixa.querySelector('#cm-dm-info');
-  info.innerHTML=`<div class="cm-dm-leg1 cm-dm-legp">${[['aberto','Inscrições abertas'],['andamento','Encerrados (não disponíveis)'],['previsto','Previstos'],['semprevisao','Sem previsão']]
-      .map(([s,t])=>`<span class="${nCor(s)?'':'zero'}"><i class="sit-${s}"></i>${t} <b>${nCor(s)}</b></span>`).join('')}</div>
-    <div class="cm-dm-leg1-dica">1 ponto = 1 concurso · rodinha do mouse aproxima · clique num ponto para ver os detalhes</div>`;
+  info.innerHTML=`<div class="cm-dm-leg1 cm-dm-legp">${CM_CICLO.map(([s,t])=>[s,t])
+      .map(([s,t])=>`<span data-s="${s}" title="Ver a lista e destacar estes pontos" class="${nCor(s)?'':'zero'}"><i class="sit-${s}"></i>${t} <b>${nCor(s)}</b></span>`).join('')}</div>
+    <div class="cm-dm-leg1-dica">1 ponto = 1 concurso · rodinha do mouse aproxima · clique num ponto ou numa cor da legenda para ver os concursos</div>`;
   requestAnimationFrame(()=>info.classList.add('aparece'));
+  // LEGENDA CLICÁVEL (pedido do Levi): clicar numa cor mostra na central a LISTA dos concursos daquela cor que estão NO
+  // MAPA e deixa acesos só os pontos dela; clicar de novo na mesma cor desliga (e a central volta ao início)
+  let filtro=null;
+  const filtrar=s=>{ filtro=(filtro===s ? null : s);
+    info.querySelectorAll('[data-s]').forEach(sp=>sp.classList.toggle('ativo', sp.dataset.s===filtro));
+    camada.querySelectorAll('.cm-dm-pontos circle').forEach(c=>c.classList.toggle('apagado', !!filtro && !c.classList.contains('sit-'+filtro)));
+    camada.querySelectorAll('.cm-dm-cacho').forEach(g=>g.classList.toggle('apagado', !!filtro && !g.querySelector('.seg.sit-'+filtro)));
+    if(typeof cmcIr!=='function') return;
+    if(filtro) cmcIr('leg', {s:filtro, lista:munis.flatMap(m=>conc(m).filter(c=>cmCorPonto(c)===filtro).map(c=>({c:cmConcursoHoje(c), m})))}, true);
+    else cmcIr('inicio', {}, true); };
+  info.querySelectorAll('[data-s]').forEach(sp=>sp.onclick=ev=>{ ev.stopPropagation(); filtrar(sp.dataset.s); });
   const p=document.getElementById('cm-ev-painel'); if(p){ p._munis=munis; cmPainelConcursos(); }
 }
 // ── CARTÃO DE DETALHES (clique num pontinho; pedido do Levi): fica à direita, no espaço livre ao lado da região.
@@ -1070,7 +1164,13 @@ const CM_SITUACOES = {
 // nome de cada situação no texto ("edital publicado" e "em andamento" usam a mesma cor verde de "acontecendo")
 const CM_SIT_NOME = {aberto:'Inscrições abertas', edital:'Edital publicado', andamento:'Inscrições encerradas', previsto:'Previsto', semprevisao:'Sem previsão'};
 // cor do PONTO de cada concurso no mapa da região (a situação de hoje)
-function cmCorPonto(c){ const s=cmConcursoHoje(c).status; return s==='edital' ? 'aberto' : s; }
+// CICLO DO CONCURSO = COR DO PONTO (decisão do Levi, 16/10/2026), na ordem em que acontece:
+// AZUL previsto ➔ GRAFITE edital publicado (inscrições ainda não abriram; cor do botão "Ver todos os concursos disponíveis")
+// ➔ VERDE inscrições abertas ➔ VERMELHO encerrado. O antigo "sem previsão" vira azul. (Roxo "período de provas" e laranja
+// "prova realizada" foram TIRADOS a pedido do Levi — a data da prova falta em ~60% dos concursos.) [chave, legenda, balão]
+const CM_CICLO=[['previsto','Previstos','previstos'],['edital','Edital publicado','com edital publicado'],['aberto','Inscrições abertas','com inscrições abertas'],
+  ['andamento','Encerrados','encerrados']];
+function cmCorPonto(c){ const s=cmConcursoHoje(c).status; return s==='semprevisao' ? 'previsto' : s; }
 // (a capital de cada estado — onde ficam os pontos dos concursos do estado — vem de CM_CAPITAL, mais abaixo)
 // as duas fontes de dados reais: concursos-dados.js (SP, manual) e concursos-levantamento.js (todos os estados)
 const cmFontes = ()=>[typeof CONCURSOS_REAIS!=='undefined'?CONCURSOS_REAIS:{}, typeof CONCURSOS_LEVANTAMENTO!=='undefined'?CONCURSOS_LEVANTAMENTO:{}];
@@ -1251,10 +1351,10 @@ function cmMesoFechar(semAnimar, manterBusca){   // manterBusca: a busca de baix
   if(cmRegiaoAberta<0) return;
   cmRegiaoAberta=-1;
   const v=document.getElementById('cm-estado-vista'); if(!v) return;
-  document.getElementById('cm-ev-regiao')?.remove();
+  document.getElementById('cm-ev-regiao')?.remove(); document.getElementById('cm-rz-fundo')?.remove(); document.getElementById('cm-dm-dica-fora')?.remove();
   document.getElementById('cm-ev-painel')?.remove();
   document.getElementById('cm-rz-card')?.remove();
-  document.getElementById('cm-central')?.remove(); document.getElementById('news-screen')?.classList.remove('cmc-cheio');
+  document.getElementById('cm-central')?.remove(); document.getElementById('news-screen')?.classList.remove('cmc-cheio','cmc-subindo');
   if(!manterBusca) cmBuscaSubir(semAnimar);
   v.classList.remove('cm-ev-foco');
   const topo=v.querySelector('.cm-ev-topo'); if(topo && cmTopoAntes) topo.innerHTML=cmTopoAntes;
