@@ -136,6 +136,15 @@
   │ [calendario.js fotoSegura()] ➔ foto só se for imagem (data:image / blob:)
   │ [levantamento-concursos/gerar*.ps1] ➔ textos gravados sem < > e sem quebra de linha; links de notícia só [a-z0-9-]
   └ ⚠ O "Pro" (state.pro) e a conta ainda são decididos SÓ no navegador ➔ dá para burlar; precisa do servidor (Supabase) antes de cobrar
+
+■ [ROBÔ DOS CONCURSOS]  [.github/workflows/atualizar-concursos.yml ➔ Html_Gorilaconcurso/levantamento-concursos/atualizar.ps1]
+  │ (todo dia 4h Brasília, no GitHub, Windows; domingo = coleta completa das ~5.570 cidades com 4 coletores ao mesmo tempo)
+  │ [comum.ps1] leitura do PCI · [atualizar.ps1] páginas por região ➔ novos/datas mudadas ➔ cidades ➔ notícias ➔ gerar*.ps1 ➔ [verificar.ps1]
+  │ travas: inscrição > 18 meses à frente ou de 12+ meses atrás fora · > 5.000 vagas = "a definir" (exceto conferidos.txt) · salário > R$ 100 mil e taxa > R$ 1.000 não aparecem · início antigo mantido se a fonte só traz o fim
+  │ verificar.ps1: compara com o git HEAD (queda > 15% no total ou > 40% num estado = NÃO publica) + node --check
+  │ publica SÓ dados (abertos.txt, pci-cidades, pci-noticias, relatorio-robo.txt, site/noticias/concursos-*), autor = conta do Levi (Vercel Hobby)
+  └ manual: previstos.txt / municipais-previstos.txt (o robô só avisa "CONFERIR" quando um previsto abre) · relatório: relatorio-robo.txt
+    ⚠ o robô faz commits no GitHub ➔ antes de cada push daqui: git pull --rebase
 ```
 
 **Campos do state:** days, cursos, conteudosCustom, trilhasCustom, trilhasOcultas, mindMap, checks, calendarioAtivo, theme, concursosInteresse, foguinhoStart, month, year, coresAreas, estiloCal, paletaCores.

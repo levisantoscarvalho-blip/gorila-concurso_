@@ -14,7 +14,8 @@ $slugs = New-Object Collections.Generic.HashSet[string]
 foreach($f in Get-ChildItem (Join-Path $PSScriptRoot 'pci-cidades') -Filter *.tsv){ foreach($l in [IO.File]::ReadAllLines($f.FullName,$utf8)){ $p=$l.Split("`t"); if($p.Count -ge 11 -and $p[9]){ [void]$slugs.Add($p[9]) } } }
 foreach($l in [IO.File]::ReadAllLines((Join-Path $PSScriptRoot 'abertos.txt'),$utf8)){ $p=$l.Split('|'); if($p.Count -ge 7 -and $p[6]){ [void]$slugs.Add($p[6]) } }
 $lista = @($slugs | Sort-Object) | Where-Object { ([Math]::Abs($_.GetHashCode()) % $Partes) -eq $Parte }
-$feitos = @{}; if(Test-Path $arq){ foreach($l in [IO.File]::ReadAllLines($arq,$utf8)){ if($l -match '"s":"([^"]+)"'){ $feitos[$Matches[1]]=1 } } }
+# já baixadas: em QUALQUER parte (o robô diário roda com uma parte só e não pode baixar tudo de novo)
+$feitos = @{}; foreach($fj in Get-ChildItem $dir -Filter 'parte-*.jsonl'){ foreach($l in [IO.File]::ReadAllLines($fj.FullName,$utf8)){ if($l -match '"s":"([^"]+)"'){ $feitos[$Matches[1]]=1 } } }
 "parte $Parte`: $($lista.Count) notícias ($($feitos.Count) já feitas)"
 function Limpa([string]$s){ return ([Net.WebUtility]::HtmlDecode(($s -replace '<[^>]+>',' ')) -replace '\s+',' ').Trim() }
 $MES = @{janeiro='01';fevereiro='02';'março'='03';marco='03';abril='04';maio='05';junho='06';julho='07';agosto='08';setembro='09';outubro='10';novembro='11';dezembro='12'}

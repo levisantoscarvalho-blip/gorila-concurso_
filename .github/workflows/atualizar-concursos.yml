@@ -1,0 +1,57 @@
+# ROBÔ DO GORILA: atualiza os concursos do mapa todo dia às 4h (Brasília), sozinho.
+# Diário = concursos novos e datas que mudaram; domingo = coleta completa de todas as cidades.
+# Se a conferência (verificar.ps1) achar algo estranho, o robô PARA, nada é publicado e o GitHub manda um e-mail.
+# Só publica DADOS (levantamento-concursos/ e site/noticias/concursos-*); o código do site nunca é mexido por aqui.
+# Para rodar na hora: GitHub ➔ Actions ➔ "Atualizar concursos" ➔ Run workflow.
+name: Atualizar concursos
+
+on:
+  schedule:
+    - cron: '0 7 * * *'          # 7h UTC = 4h em Brasília
+  workflow_dispatch:
+    inputs:
+      completo:
+        description: 'Coleta completa (todas as ~5.570 cidades, ~40 min)'
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: atualizar-concursos
+  cancel-in-progress: false
+
+jobs:
+  atualizar:
+    runs-on: windows-latest
+    timeout-minutes: 150
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Atualizar os concursos
+        shell: powershell
+        working-directory: Html_Gorilaconcurso/levantamento-concursos
+        run: |
+          $hoje = [TimeZoneInfo]::ConvertTimeBySystemTimeZoneId([DateTime]::UtcNow, 'E. South America Standard Time')
+          $completo = ('${{ github.event.inputs.completo }}' -eq 'true') -or ($hoje.DayOfWeek -eq 'Sunday')
+          if($completo){ .\atualizar.ps1 -Completo } else { .\atualizar.ps1 }
+          if($LASTEXITCODE -ne 0){ exit 1 }
+
+      - name: Publicar (só os dados)
+        shell: bash
+        run: |
+          # autor = a conta do Levi (a Vercel só publica commits do dono no plano gratuito)
+          git config user.name "Levi Santos"
+          git config user.email "236066102+levisantoscarvalho-blip@users.noreply.github.com"
+          git add Html_Gorilaconcurso/levantamento-concursos/abertos.txt \
+                  Html_Gorilaconcurso/levantamento-concursos/pci-cidades \
+                  Html_Gorilaconcurso/levantamento-concursos/pci-noticias \
+                  Html_Gorilaconcurso/levantamento-concursos/relatorio-robo.txt \
+                  Html_Gorilaconcurso/site/noticias/concursos-levantamento.js \
+                  Html_Gorilaconcurso/site/noticias/concursos-cidades \
+                  Html_Gorilaconcurso/site/noticias/concursos-detalhes
+          if git diff --cached --quiet; then echo "Nada mudou hoje."; exit 0; fi
+          git commit -m "Dados: atualização automática $(TZ=America/Sao_Paulo date +%d/%m/%Y)" -m "Feito pelo robô (.github/workflows/atualizar-concursos.yml). Relatório: Html_Gorilaconcurso/levantamento-concursos/relatorio-robo.txt"
+          git pull --rebase origin main
+          git push origin HEAD:main

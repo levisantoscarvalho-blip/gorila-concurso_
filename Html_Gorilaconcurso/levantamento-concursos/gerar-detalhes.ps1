@@ -12,8 +12,12 @@ foreach($f in Get-ChildItem (Join-Path $PSScriptRoot 'pci-noticias') -Filter *.j
     $o = $l | ConvertFrom-Json; if($o.erro){ continue }
     $r = [ordered]@{}
     if($o.pub){ $r.p=$o.pub }; if($o.tit){ $r.ti=$o.tit }; if($o.orgao_site){ $r.o=$o.orgao_site }; if($o.banca_site){ $r.b=$o.banca_site }
-    if($o.cargos){ $r.cg=@($o.cargos) }; if($o.sal_min){ $r.smin=$o.sal_min }; if($o.sal_max){ $r.smax=$o.sal_max }
-    if($o.taxa_min){ $r.tmin=$o.taxa_min }; if($o.taxa_max){ $r.tmax=$o.taxa_max }; if($o.prova){ $r.pr=$o.prova }; if($o.validade){ $r.v=$o.validade }
+    # travas: salário acima de R$ 100 mil ou taxa acima de R$ 1.000 = leitura errada da notícia ➔ não mostra (AVISO no relatório)
+    $salOk = -not $o.sal_max -or [double]$o.sal_max -le 100000; $taxaOk = -not $o.taxa_max -or [double]$o.taxa_max -le 1000
+    if(-not $salOk){ "AVISO salário impossível (R$ $($o.sal_max)), não mostrado: $($o.s)" }
+    if(-not $taxaOk){ "AVISO taxa impossível (R$ $($o.taxa_max)), não mostrada: $($o.s)" }
+    if($o.cargos){ $r.cg=@($o.cargos) }; if($salOk -and $o.sal_min){ $r.smin=$o.sal_min }; if($salOk -and $o.sal_max){ $r.smax=$o.sal_max }
+    if($taxaOk -and $o.taxa_min){ $r.tmin=$o.taxa_min }; if($taxaOk -and $o.taxa_max){ $r.tmax=$o.taxa_max }; if($o.prova){ $r.pr=$o.prova }; if($o.validade){ $r.v=$o.validade }
     if($o.tipo){ $r.t=$o.tipo }; if($o.editais){ $r.e=@($o.editais) }
     $det[$o.s] = ($r | ConvertTo-Json -Compress -Depth 3)
   }

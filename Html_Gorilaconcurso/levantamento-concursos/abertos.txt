@@ -301,7 +301,7 @@ SC|Prefeitura e Câmara de Benedito Novo|Benedito Novo|55|Vários cargos|27/10/2
 SC|SEFAZ-SC|-|50|Auditor estadual de finanças públicas|05/10/2026|sefaz-sc-abre-concurso-publico-para-o-cargo-de-auditor-estadual-de-financas-publicas
 SC|Secretaria de Saúde de SC|-|5|Técnicos e engenheiro (seleção)|16/10/2026|ses-sc-abre-processo-seletivo-com-salarios-de-ate-5670
 SC|Secretaria de Saúde de SC|-|1|Técnico em enfermagem (seleção)|27/10/2026|ses-sc-abre-processo-seletivo-para-tecnico-em-enfermagem-em-florianopolis
-SC|TJSC|-|15|Juiz substituto|26/11/2026|tjsc-abre-concurso-publico-para-o-cargo-de-juiz-substituto
+SC|TJSC|-|15|Juiz substituto|19/10/2026>26/11/2026|tjsc-abre-concurso-publico-para-o-cargo-de-juiz-substituto
 SC|UDESC|-|146|Professor substituto (seleção)|26/10/2026|udesc-sc-abre-processo-seletivo-para-professores-substitutos-em-diversas-areas-do-conhecimento
 RJ|Prefeitura de São Gonçalo|São Gonçalo|101|Guarda municipal|18/11/2026|prefeitura-de-sao-goncalo-rj-abre-concursos-para-guardas-municipais
 RJ|Corpo de Bombeiros do RJ|-|192|1º tenente temporário (seleção)|19/10/2026>09/11/2026|cbmerj-rj-abre-processo-seletivo-para-1-tenente-temporario
@@ -522,3 +522,18 @@ SP|UNICAMP|-|1|Professor doutor|11/11/2026|unicamp-sp-prorroga-inscricoes-de-con
 SP|UNICAMP|-|1|Professor doutor|30/10/2026|unicamp-sp-abre-concurso-para-professor-doutor-na-area-de-fisica-geral
 SP|UNIFESP|-|1|Professor substituto|02/11/2026|unifesp-abre-processo-seletivo-para-professor-substituto-na-area-de-fisiologia-engenharia-biomedica
 SP|USP|-|CR|Professores (várias unidades)|16/04/2027|usp-abre-concursos-publicos-para-professores-titulares-em-diversas-areas-de-atuacao
+BA|SENAR-AR/BA - Serviço Nacional de Aprendizagem Rural|-|2|Técnico em Química, Analista de RH, Pedagogo (Técnico / Superior)|18/10/2026|senar-ar-ba-abre-processo-seletivo-com-salarios-de-ate-6948
+SP|FAMESP - Fundação para o Desenvolvimento Médico e Hospitalar|-|11|Vários Cargos (Médio / Técnico / Superior)|25/10/2026|famesp-sp-abre-processos-seletivos-em-diferentes-cidades
+SP|FUNCAMP - Fundação de Desenvolvimento da Unicamp|-|3|Auxiliar de Cozinha, Auxiliar de Lavanderia, Recepcionista (Fundamental / Médio)|26/10/2026|funcamp-sp-abre-selecoes-para-auxiliar-de-cozinha-auxiliar-de-lavanderia-e-recepcionista
+SP|UNESP - Universidade Estadual Paulista|-|1|Pesquisador IV (Superior)|30/10/2026|unesp-abre-concurso-para-pesquisador-iv-na-area-de-producao-sustentavel-em-aquicultura
+SP|USP - Universidade de São Paulo|-|1|Professor Doutor (Superior)|03/11/2026|usp-abre-concurso-publico-para-o-cargo-de-professor-doutor-no-instituto-de-arquitetura-e-urbanismo
+MG|CIGEDAS - Consórcio Intermunicipal de Gestão e Desenvolvimento Ambiental Sustentável das Vertentes|-|3|Vários Cargos (Médio / Superior)|23/10/2026|cigedas-mg-abre-processo-seletivo-com-salarios-de-ate-5152
+MG|CIMAG - Consórcio Público Intermunicipal Multifinalitário da Microrregião do Circuito das Águas|-|2|Médico Veterinário Júnior, Médico Veterinário Sênior (Superior)|24/10/2026>23/11/2026|cimag-abre-concurso-publico-para-medicos-veterinarios-com-salarios-de-ate-8300
+MG|CISICOM - Consórcio Intermunicipal dos Serviços de Inspeção do Centro-Oeste Mineiro|-|1|Auditor-Fiscal Agropecuário/Médico Veterinário (Superior)|05/11/2026|cisicom-mg-anuncia-concurso-publico-com-vaga-para-medico-veterinario
+MG|CISURG Saúde Médio Piracicaba|-|33|Vários Cargos (Fundamental / Médio / Técnico / Superior)|20/10/2026|cisurg-medio-piracicaba-mg-abre-processo-seletivo-com-salarios-de-ate-10967
+MG|IPSEMG - Instituto de Previdência dos Servidores do Estado de Minas Gerais / Hospital Governador Israel Pinheiro|-|93|Vários Cargos (Superior)|05/11/2026|ipsemg-anuncia-selecao-com-vagas-para-residencia-medica
+SC|CISAMAVI - Consórcio Público Interfederativo de Saúde e Multifinalitário do Alto Vale do Itajaí|-|7|Vários Cargos (Médio / Técnico / Superior)|28/10/2026|cisamavi-sc-abre-concurso-publico-com-salarios-de-ate-10520
+SC|Consórcio Intermunicipal de Serviços de Acolhimento da Região da AMURC|-|9|Vários Cargos (Fundamental / Médio / Superior)|21/10/2026|consorcio-intermunicipal-da-regiao-da-amurc-sc-abre-processo-seletivo-para-diversos-niveis
+SC|FAHECE - Fundação de Apoio ao Hemosc e Cepon|-|2|Técnico(a) Auxiliar de Regulação Médica - TARM, Auxiliar de Higienização (Fundamental / Médio / Técnico)|15/10/2026|fahece-sc-abre-processos-seletivos-para-o-samu-em-chapeco-e-florianopolis
+DF|HSL - Hospital Santa Lúcia|-|22|Vários Cargos (Superior)|09/11/2026|hospital-santa-lucia-abre-vagas-para-residencia-medica-em-diversas-especialidades
+GO|IDTECH - Instituto de Desenvolvimento Tecnológico e Humano|-|3|Vários Cargos (Médio / Técnico / Superior)|19/10/2026|idtech-go-abre-processo-seletivo-para-o-hgg-e-hemogo

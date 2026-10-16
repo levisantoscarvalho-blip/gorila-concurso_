@@ -1,4 +1,4 @@
-﻿param([string]$Site, [string]$Dir)
+﻿param([string]$Site = (Join-Path $PSScriptRoot '..\site'), [string]$Dir = $PSScriptRoot, [string]$Data = (Get-Date -Format "dd/MM/yyyy"))
 $ErrorActionPreference = 'Stop'
 $utf8 = New-Object Text.UTF8Encoding $false
 $PCI = 'https://www.pciconcursos.com.br/noticias/'
@@ -78,8 +78,8 @@ if(Test-Path "$Dir\municipais-previstos.txt"){
 
 $sb = New-Object Text.StringBuilder
 [void]$sb.AppendLine('/* ════════════════════════════════════════════')
-[void]$sb.AppendLine('   LEVANTAMENTO DE CONCURSOS DE TODOS OS ESTADOS (feito em 15/10/2026; pedido do Levi: só dado real, com fonte)')
-[void]$sb.AppendLine('   • Inscrições abertas: PCI Concursos (páginas por região, 15/10/2026). Quando a data "ate" passa, o site mostra')
+[void]$sb.AppendLine('   LEVANTAMENTO DE CONCURSOS DE TODOS OS ESTADOS (atualizado em ' + $Data + '; pedido do Levi: só dado real, com fonte)')
+[void]$sb.AppendLine('   • Inscrições abertas: PCI Concursos (páginas por região; o robô diário atualiza). Quando a data "ate" passa, o site mostra')
 [void]$sb.AppendLine('     "inscrições encerradas" sozinho (cmConcursoHoje em concursos-mapa.js).')
 [void]$sb.AppendLine('   • Previstos: Estratégia Concursos (páginas por estado, ago–out/2026), O Liberal (PA) e JC Concursos (PC-TO).')
 [void]$sb.AppendLine('   Arquivo GERADO a partir de duas tabelas; SP também tem o levantamento manual em concursos-dados.js.')
@@ -87,7 +87,7 @@ $sb = New-Object Text.StringBuilder
 [void]$sb.AppendLine('const CONCURSOS_LEVANTAMENTO = {')
 foreach($uf in ($dados.Keys | Sort-Object)){
   $u = $dados[$uf]
-  [void]$sb.AppendLine("  $uf`: { atualizado:""15/10/2026"", todos:""https://www.pciconcursos.com.br/concursos/$($REG[$uf])/"",")
+  [void]$sb.AppendLine("  $uf`: { atualizado:""$Data"", todos:""https://www.pciconcursos.com.br/concursos/$($REG[$uf])/"",")
   [void]$sb.AppendLine('    estaduais: [')
   foreach($i in $u.est){ [void]$sb.AppendLine("      $i,") }
   [void]$sb.AppendLine('    ],')

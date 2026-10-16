@@ -1,7 +1,13 @@
 ﻿# Transforma pci-cidades/<UF>.tsv (baixado por baixar-pci-cidades.ps1) em site/noticias/concursos-cidades/<UF>.js:
 #   CONC_CIDADES['UF'] = { atualizado:'DD/MM/AAAA', c:{ 'código IBGE': [ [órgão, cargo, nível, vagas, CR, início, fim, link], ... ] } }
 # O site carrega o arquivo do estado só quando o estado é aberto. A situação (aberto/encerrado) é calculada pela data.
-param([string]$Site = (Join-Path $PSScriptRoot '..\site'), [string]$Data = (Get-Date -Format 'dd/MM/yyyy'))
+param([string]$Site = (Join-Path $PSScriptRoot '..\site'), [string]$Data = (Get-Date -Format 'dd/MM/yyyy'), [string]$Desde = (Get-Date).AddYears(-1).ToString('yyyy-MM-dd'))
+# TRAVAS DE QUALIDADE (robô diário, 15/10/2026): só entra concurso com fim de inscrição nos últimos 12 meses ($Desde) e
+# até 18 meses à frente (mais que isso = erro de digitação na fonte, ex.: IFMG "29/09/2029"); início depois do fim perde o início; mais de 5.000 vagas vira
+# "a definir" até alguém conferir e pôr o link em conferidos.txt. Cada caso sai como "AVISO" no relatório do robô.
+$limite = (Get-Date).AddMonths(18).ToString('yyyy-MM-dd')
+$CONFERIDOS = @(); $arqConf = Join-Path $PSScriptRoot 'conferidos.txt'
+if(Test-Path $arqConf){ $CONFERIDOS = @([IO.File]::ReadAllLines($arqConf, (New-Object Text.UTF8Encoding $false)) | Where-Object { $_ -and -not $_.StartsWith('#') } | ForEach-Object { ($_ -split '\s')[0] }) }
 $ErrorActionPreference = 'Stop'
 $utf8 = New-Object Text.UTF8Encoding $false
 $dir = Join-Path $PSScriptRoot 'pci-cidades'; $saida = Join-Path $Site 'noticias\concursos-cidades'
@@ -23,6 +29,11 @@ foreach($arq in Get-ChildItem $dir -Filter *.tsv){
   $por = [ordered]@{}; $semCod = @{}; $n = 0
   foreach($l in [IO.File]::ReadAllLines($arq.FullName, $utf8)){
     $f = $l.Split("`t"); if($f.Count -lt 11 -or $f[10] -eq 'vazio' -or $EXCLUIR -contains $f[9]){ continue }
+    if($f[9] -notmatch '^[a-z0-9\-]+$'){ "AVISO $uf link estranho, fora: $($f[9])"; continue }
+    if($f[8] -notmatch '^\d{4}-\d{2}-\d{2}$' -or $f[8] -gt $limite){ "AVISO $uf data impossível ($($f[8])), fora: $($f[9])"; continue }
+    if($f[8] -lt $Desde){ continue }   # mais de 12 meses: sai do mapa
+    if($f[7] -and ($f[7] -notmatch '^\d{4}-\d{2}-\d{2}$' -or $f[7] -gt $f[8])){ "AVISO $uf início depois do fim ($($f[7]) > $($f[8])), início apagado: $($f[9])"; $f[7] = '' }
+    if([int]$f[5] -gt 5000 -and $CONFERIDOS -notcontains $f[9]){ "AVISO $uf $($f[5]) vagas sem conferência, ficou 'a definir': $($f[9])"; $f[5] = '0' }
     $c = $cod[(Norm $f[1])]; if(-not $c){ $c = $cod[(Norm ($f[0] -replace '-',' '))] }
     if(-not $c -and $APELIDO.ContainsKey((Norm $f[1]))){ $c = $cod[$APELIDO[(Norm $f[1])]] }
     if(-not $c){ $semCod[$f[1]] = 1; continue }

@@ -1,0 +1,3 @@
+# Concursos com número de vagas MUITO alto (mais de 5.000) que já foram CONFERIDOS em outra fonte.
+# Sem estar aqui, o robô mostra "vagas a definir" até alguém conferir. Um link de notícia do PCI por linha (o final do endereço).
+prefeitura-de-varzea-grande-mt-abre-processo-seletivo-com-vagas-para-a-educacao   (5.156 vagas · conferido na revisão de 15/10/2026)

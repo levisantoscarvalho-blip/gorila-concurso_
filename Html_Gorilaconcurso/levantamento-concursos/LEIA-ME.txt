@@ -1,18 +1,37 @@
-﻿LEVANTAMENTO DE CONCURSOS (gera site/noticias/concursos-levantamento.js)
+﻿LEVANTAMENTO DE CONCURSOS — de onde vêm os dados do mapa de concursos
 
-abertos.txt   = inscrições abertas (fonte: pciconcursos.com.br/concursos/<região>/)
+═══ ROBÔ AUTOMÁTICO (desde 15/10/2026) ═══
+Todo dia às 4h (Brasília) o GitHub roda o atualizar.ps1 (arquivo .github/workflows/atualizar-concursos.yml):
+  • lê as páginas por região do PCI Concursos (todos os concursos com inscrições abertas);
+  • concurso novo ➔ acha a cidade e baixa a página dela; data que mudou ➔ baixa de novo; notícias novas ➔ fatos do edital;
+  • gera os arquivos do site com travas de qualidade (datas impossíveis, mais de 5.000 vagas, salário acima de R$ 100 mil,
+    taxa acima de R$ 1.000) e confere tudo contra a versão no ar (verificar.ps1). Se algo parecer quebrado, NÃO publica
+    e o GitHub manda e-mail;
+  • aos domingos baixa de novo TODAS as cidades (troca só se a coleta nova estiver completa).
+O que aconteceu em cada rodada: relatorio-robo.txt. Linhas "CONFERIR" e "AVISO" pedem um olhar humano.
+Rodar na hora: GitHub ➔ Actions ➔ "Atualizar concursos" ➔ Run workflow.   Rodar aqui: .\atualizar.ps1  (ou -Completo)
+
+O QUE AINDA É MANUAL (o robô não decide sozinho):
+  previstos.txt e municipais-previstos.txt — previstos vêm de notícias vagas; o robô só avisa ("CONFERIR: ... agora abriu
+  inscrições") quando um previsto ganha edital, para alguém tirar da lista.
+  conferidos.txt — concursos com mais de 5.000 vagas já conferidos em outra fonte (sem isso aparecem como "a definir").
+
+═══ ARQUIVOS ═══
+abertos.txt   = inscrições abertas de órgãos estaduais/federais ou sem cidade (fonte: pciconcursos.com.br/concursos/<região>/)
                 UF|órgão|cidade (ou - se for órgão estadual/federal)|vagas (número ou CR)|cargo|até (ou início>fim)|final do link da notícia
 previstos.txt = concursos previstos (fonte: concursos.estrategia.com/portal/concursos-<uf>/)
                 UF|status|órgão|cargo|vagas (0 = a definir)|situação|banca|data da notícia|nome da fonte|link
-
 municipais-previstos.txt = previstos de prefeituras, câmaras e guardas (cada um vira um ponto azul na cidade)
                 UF|órgão|cidade|cargo|vagas|situação|banca|data da notícia|link
+pci-cidades/UF.tsv   = concursos de cada cidade (página da cidade no PCI, últimos 12 meses)
+pci-noticias/*.jsonl = fatos de cada notícia (não o texto do PCI; os PDFs do PCI NÃO são baixados: têm "não sou robô")
 
-Para atualizar: editar as tabelas e rodar no PowerShell, dentro desta pasta:
-  .\gerar.ps1 -Site ..\site -Dir .
-O script avisa ("NAO ACHOU") se alguma cidade não bater com a lista do IBGE.
-CONCURSOS DE CADA CIDADE (todos os da página da cidade no PCI, últimos 12 meses — abertos e encerrados):
-  1) .\baixar-pci-cidades.ps1            (baixa as ~5.570 páginas de cidade; demora ~1 hora; retoma de onde parou)
-     .\baixar-pci-cidades.ps1 -Ufs SP,MG (só alguns estados)
-     Para baixar de novo do zero, apague a pasta pci-cidades.
-  2) .\gerar-cidades.ps1                 (gera site\noticias\concursos-cidades\<UF>.js)
+═══ SCRIPTS ═══
+comum.ps1               funções de leitura do PCI usadas pelos outros
+atualizar.ps1           o robô (diário / -Completo)
+baixar-pci-cidades.ps1  baixa as ~5.570 páginas de cidade (retoma de onde parou; -Ufs SP,MG; -Dir outra-pasta)
+baixar-pci-noticias.ps1 baixa as notícias que faltam
+gerar.ps1               abertos + previstos ➔ site\noticias\concursos-levantamento.js
+gerar-cidades.ps1       pci-cidades ➔ site\noticias\concursos-cidades\UF.js
+gerar-detalhes.ps1      pci-noticias ➔ site\noticias\concursos-detalhes\UF.js
+verificar.ps1           conferência antes de publicar
