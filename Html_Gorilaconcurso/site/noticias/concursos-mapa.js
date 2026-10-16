@@ -880,7 +880,7 @@ async function cmDemografia(caixa, r, s, uf){
     const cs=conc(m);
     if(k!==undefined){   // em cima de UM ponto: o concurso dele
       const c=cs[+k];
-      dica.innerHTML=`<b>${c.orgao}</b><span>${c.cargo}${vg(c)}${c.banca?` · ${c.banca}`:''}</span><span class="st st-${cmCorPonto(c)}">${CM_SIT_NOME[c.status]||''}: ${c.quando}</span>`+
+      dica.innerHTML=`<b>${c.orgao}</b><span>${c.cargo}${vg(c)}${c.banca?` · ${c.banca}`:''}</span><span class="st st-${cmCorPonto(c)}">${c.status==='andamento' ? c.quando : `${CM_SIT_NOME[c.status]||''}: ${c.quando}`}</span>`+
         `<span class="sem">${c.estadual?`Órgão estadual ou federal · sede em ${m.n} · vale para todo o estado`:m.n} · clique para ver detalhes</span>`;
     } else {             // em cima da cidade: quantos concursos de cada situação
       const n=s=>cs.filter(c=>cmCorPonto(c)===s).length;
@@ -1074,8 +1074,26 @@ function cmCorPonto(c){ const s=cmConcursoHoje(c).status; return s==='edital' ? 
 // (a capital de cada estado — onde ficam os pontos dos concursos do estado — vem de CM_CAPITAL, mais abaixo)
 // as duas fontes de dados reais: concursos-dados.js (SP, manual) e concursos-levantamento.js (todos os estados)
 const cmFontes = ()=>[typeof CONCURSOS_REAIS!=='undefined'?CONCURSOS_REAIS:{}, typeof CONCURSOS_LEVANTAMENTO!=='undefined'?CONCURSOS_LEVANTAMENTO:{}];
+// SEGURANÇA (revisão de 15/10/2026): os textos dos concursos vêm de sites de fora (PCI Concursos...) e entram na tela
+// como HTML (mapa, balão, busca, letreiro, central). Aqui eles perdem < > e aspas (que poderiam virar código rodando no
+// site), datas fora do formato AAAA-MM-DD são descartadas e só passam links https. TODO concurso passa por aqui
+// (cmConcursoHoje é chamada por cmOrdenar, pelo letreiro e pela central).
+const cmTxtSeguro=s=>typeof s==='string' ? s.replace(/[<>]/g,'').replace(/"/g,'”') : s;
+const cmUrlSegura=u=>/^https:\/\/[^\s"'<>`\\]+$/.test(u||'') ? u : 'https://www.pciconcursos.com.br/';
+const cmDataOk=d=>/^\d{4}-\d{2}-\d{2}$/.test(d||'');
+function cmSeguro(c){
+  if(!c || c._seguro) return c;
+  const s={...c, _seguro:true};
+  ['orgao','cargo','quando','banca','cidade'].forEach(k=>{ if(k in s) s[k]=cmTxtSeguro(s[k]); });
+  s.status=CM_SIT_NOME[s.status] ? s.status : 'semprevisao';
+  s.vagas=Math.max(0, Math.floor(Number(s.vagas)||0));
+  if(!cmDataOk(s.ate)) delete s.ate; if(!cmDataOk(s.de)) delete s.de;
+  s.fonte={nome:cmTxtSeguro(c.fonte?.nome||'Fonte'), url:cmUrlSegura(c.fonte?.url)};
+  return s;
+}
 // a situação de HOJE: quem tem data de inscrição muda sozinho — antes do início = edital publicado, depois do fim = encerradas
 function cmConcursoHoje(c){
+  c=cmSeguro(c);
   if(c.status!=='aberto' || !c.ate) return c;
   const hoje=new Date().toLocaleDateString('sv-SE'), br=d=>d.split('-').reverse().join('/');
   if(hoje>c.ate) return {...c, status:'andamento', quando:`Inscrições encerradas em ${br(c.ate)}`};
@@ -1122,7 +1140,7 @@ function cmSituacaoCidade(lista){
 // uma linha de concurso com a fonte (pedido do Levi: só dado real, sempre com de onde veio)
 function cmLinhaConcurso(c){
   return `<li><i class="sit-${cmSituacaoCidade([c])}"></i><span><b>${c.orgao}</b> — ${c.cargo}${c.vagas?` · ${cmNum(c.vagas)} ${c.vagas===1?'vaga':'vagas'}`:''}${c.banca?` · ${c.banca}`:''}
-    <em>${CM_SIT_NOME[c.status]||''}: ${c.quando}</em></span>
+    <em>${c.status==='andamento' ? c.quando : `${CM_SIT_NOME[c.status]||''}: ${c.quando}`}</em></span>
     <a href="${c.fonte.url}" target="_blank" rel="noopener">${c.fonte.nome}</a></li>`;
 }
 // lista embaixo do mapa da região: concursos das prefeituras daqui + os do estado, cada um com a fonte

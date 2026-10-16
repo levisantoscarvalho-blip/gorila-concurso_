@@ -150,10 +150,13 @@ function guardarFoto(src){
 function gravarFoto(id,src){
   fotosDB.set(id,src).catch(e=>{ console.error('Erro ao salvar foto:',e); mostrarToast('Não foi possível salvar a foto no navegador.'); });
 }
+// só aceita foto de verdade (imagem guardada no navegador): um backup adulterado poderia trazer aspas no lugar da
+// imagem e virar código dentro do <img src="..."> (revisão de segurança de 15/10/2026)
+const fotoSegura=s=>typeof s==='string' && /^(data:image\/|blob:)/.test(s) && !/["'<>]/.test(s) ? s : '';
 function fotoDoDia(info){
   if(!info) return '';
-  if(info.imgId) return FOTOS[info.imgId]||'';
-  return info.imgSrc||'';
+  if(info.imgId) return fotoSegura(FOTOS[info.imgId]);
+  return fotoSegura(info.imgSrc);
 }
 function temFotoVisivel(info){ return !!fotoDoDia(info) && info.usarImg!==false; }
 // Apaga fotos que nenhum dia usa mais. Nunca roda no modo visitante nem antes de as fotos carregarem.

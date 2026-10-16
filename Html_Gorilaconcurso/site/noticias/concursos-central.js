@@ -37,13 +37,15 @@ function cmcBanca(d){
 }
 const cmcSlug=c=>/pciconcursos\.com\.br\/noticias\//.test(c.fonte?.url||'') ? c.fonte.url.split('/noticias/')[1] : '';
 const cmcDet=(uf,c)=>{ const s=cmcSlug(c); return s ? CONC_DETALHES[uf]?.[s] || null : null; };
-const cmcBR=d=>d ? d.split('-').reverse().join('/') : '';
+const cmcBR=d=>cmDataOk(d) ? d.split('-').reverse().join('/') : '';
 const cmcMeses=['janeiro','fevereiro','março','abril','maio','junho','julho','agosto','setembro','outubro','novembro','dezembro'];
-const cmcExt=d=>{ if(!d) return ''; const [a,m,dd]=d.split('-'); return `${+dd} de ${cmcMeses[+m-1]} de ${a}`; };
+const cmcExt=d=>{ if(!cmDataOk(d)) return ''; const [a,m,dd]=d.split('-'); return `${+dd} de ${cmcMeses[+m-1]} de ${a}`; };
 const cmcR$=v=>'R$ '+Number(v).toLocaleString('pt-BR',{minimumFractionDigits:2, maximumFractionDigits:2});
 const cmcHoje=()=>new Date().toLocaleDateString('sv-SE');
 const cmcDias=d=>Math.round((new Date(d+'T12:00')-new Date(cmcHoje()+'T12:00'))/864e5);
 const cmcEsc=s=>String(s??'').replace(/[&<>"]/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[ch]));
+// links de órgão e banca (vindos das notícias): só http/https — nunca javascript: ou outro esquema que rode código
+const cmcUrl=u=>/^https?:\/\/[^\s"'<>`\\]+$/i.test(u||'') ? u : '';
 const cmcVagas=c=>c.vagas?`${cmNum(c.vagas)} ${c.vagas===1?'vaga':'vagas'}`:(/reserva/.test(c.quando||'')?'Cadastro de reserva':'Vagas a definir');
 // CATEGORIA de cada concurso (revisada em 15/10/2026 conferindo os 11.747 do Brasil):
 //  1º pelo ÓRGÃO (Câmara ➔ legislativo, Universidade ➔ educação, Polícia/Bombeiros/Guarda ➔ segurança...);
@@ -175,7 +177,10 @@ function cmcPrazo(c){
 function cmcInicio(el){
   el._lista=[]; const it=el._itens, n=g=>it.filter(x=>cmcGrupo(x.c)===g).length;
   const top=it.filter(x=>cmcGrupo(x.c)==='disp').sort((a,b)=>(b.c.vagas||0)-(a.c.vagas||0)).slice(0,5);
-  return `<div class="cmc-resumo"><b>${cmcEsc(el._reg.nome)}</b><span>${cmNum(it.length)} concursos no levantamento: <i class="sit-aberto"></i>${n('disp')} disponíveis · <i class="sit-previsto"></i>${n('prev')} previstos · <i class="sit-andamento"></i>${n('hist')} já aconteceram</span></div>
+  // concursos do ESTADO entram em toda região, mas no mapa ficam só na capital — explica a diferença (os números da
+  // legenda do mapa e os daqui não batiam numa região sem a capital, ex.: Norte Amazonense; revisão de 15/10/2026)
+  const ne=it.filter(x=>x.c.estadual).length, temCap=it.some(x=>!x.c.estadual && x.m?.n===CM_CAPITAL[el._uf]);
+  return `<div class="cmc-resumo"><b>${cmcEsc(el._reg.nome)}</b><span>${cmNum(it.length)} concursos no levantamento: <i class="sit-aberto"></i>${n('disp')} disponíveis · <i class="sit-previsto"></i>${n('prev')} previstos · <i class="sit-andamento"></i>${n('hist')} já aconteceram</span>${ne?`<span class="cmc-resumo-nota">Inclui ${ne} ${ne===1?'concurso':'concursos'} do estado (polícias, secretarias, tribunais...), que valem para todas as cidades${temCap?'':` — no mapa eles aparecem na capital, ${cmcEsc(CM_CAPITAL[el._uf])}`}.</span>`:''}</div>
     ${top.length?`<div class="cmc-sub">Disponíveis com mais vagas</div>${top.map(x=>cmcLinha(el,x,cmcPrazo(x.c))).join('')}<button type="button" class="cmc-link" data-ir="disp">Ver todos os disponíveis ›</button>`
       : `<p class="cmc-vazio">Nenhum concurso com inscrições abertas nesta região agora. Veja os <a data-ir="prev">previstos</a> ou os que <a data-ir="hist">já aconteceram</a>.</p>`}
     <p class="cmc-dica">Role para baixo para ver em tela cheia · clique num ponto do mapa para ver o concurso</p>`;
@@ -291,8 +296,8 @@ function cmcDetalhe(el, arg, uf){
     </dl>
     ${cargos.length?`<div class="cmc-cargos"><b>Cargos e vagas</b><ul>${cargos.map(s=>`<li>${cmcEsc(s)}</li>`).join('')}</ul>${cargos.length>=25?'<small>A lista pode ter mais cargos — veja o edital.</small>':''}</div>`:''}
     <div class="cmc-links">
-      ${d?.b?`<a class="cmc-btn principal" href="${cmcEsc(d.b)}" target="_blank" rel="noopener">Página oficial do concurso e edital em PDF ›<small>${cmcEsc(banca||cmcHost(d.b))}</small></a>`:''}
-      ${d?.o && d.o!==d.b?`<a class="cmc-btn" href="${cmcEsc(d.o)}" target="_blank" rel="noopener">Site oficial do órgão ›<small>${cmcEsc(cmcHost(d.o))}</small></a>`:''}
+      ${cmcUrl(d?.b)?`<a class="cmc-btn principal" href="${cmcEsc(d.b)}" target="_blank" rel="noopener">Página oficial do concurso e edital em PDF ›<small>${cmcEsc(banca||cmcHost(d.b))}</small></a>`:''}
+      ${cmcUrl(d?.o) && d.o!==d.b?`<a class="cmc-btn" href="${cmcEsc(d.o)}" target="_blank" rel="noopener">Site oficial do órgão ›<small>${cmcEsc(cmcHost(d.o))}</small></a>`:''}
       <a class="cmc-btn" href="${cmcEsc(c.fonte.url)}" target="_blank" rel="noopener">${ehPci?'Notícia completa e editais no PCI Concursos':`Notícia na fonte (${cmcEsc(c.fonte.nome)})`} ›${d?.e?.length?`<small>${d.e.length} ${d.e.length===1?'arquivo':'arquivos'}: ${cmcEsc(d.e.slice(0,2).join(' · '))}${d.e.length>2?' …':''}</small>`:''}</a>
       ${x.m && !c.estadual?`<button type="button" class="cmc-btn" data-mapa="0">Mostrar no mapa ›</button>`:''}
     </div>

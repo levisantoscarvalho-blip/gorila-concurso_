@@ -126,7 +126,16 @@
   │ [estado.js] ➔ state em STORAGE_KEY = guia_estudos_state_v1 ➔ loadState(), saveState() (automático a cada mudança); dados salvos ilegíveis ➔ NÃO grava por cima (__dadosIlegiveis) e avisa · [calendario.js sanearDados()] ➔ ao carregar/importar, confere ids, cores, datas e números (backup estragado ou mexido não quebra a página)
   │   └ (duas abas: quando outra aba salva, esta recarrega o state — evento 'storage' — para uma não apagar a outra)
   │ [ver-dados.html] ➔ ver o que está salvo · Baixar backup · Importar meus dados (.json)
+  │   └ (importar — aqui e em estado.js importBackup — passa por backupSeguro(): recusa arquivo com aspas/< >/; em ids e cores; nunca traz state.pro)
   └ [Visitante: saveState() não grava nada]
+
+■ [SEGURANÇA]  (revisão de 15/10/2026)
+  │ [site/vercel.json] ➔ cabeçalhos na Vercel: Content-Security-Policy (só scripts do próprio site; fonte do Google; imagens data:/blob:; connect-src 'self' ➔ ao ligar o Supabase, ACRESCENTAR o endereço dele em connect-src), X-Frame-Options DENY, nosniff, Referrer-Policy, Permissions-Policy
+  │ [concursos-mapa.js cmSeguro()] ➔ todo concurso (PCI etc.) perde < > e aspas, datas fora do formato e links não-https antes de ir para a tela (chamado dentro de cmConcursoHoje)
+  │ [concursos-central.js cmcEsc / cmcUrl] ➔ textos escapados; links de órgão/banca só http(s)
+  │ [calendario.js fotoSegura()] ➔ foto só se for imagem (data:image / blob:)
+  │ [levantamento-concursos/gerar*.ps1] ➔ textos gravados sem < > e sem quebra de linha; links de notícia só [a-z0-9-]
+  └ ⚠ O "Pro" (state.pro) e a conta ainda são decididos SÓ no navegador ➔ dá para burlar; precisa do servidor (Supabase) antes de cobrar
 ```
 
 **Campos do state:** days, cursos, conteudosCustom, trilhasCustom, trilhasOcultas, mindMap, checks, calendarioAtivo, theme, concursosInteresse, foguinhoStart, month, year, coresAreas, estiloCal, paletaCores.

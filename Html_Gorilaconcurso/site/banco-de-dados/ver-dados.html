@@ -179,6 +179,13 @@ async function importar(input){
   if(!dados || typeof dados !== 'object' || !dados.days || typeof dados.days !== 'object'){
     alert('Este arquivo não é um backup válido do Gorila Concurso (não tem os dias do calendário).'); return;
   }
+  // mesma conferência de banco-de-dados/estado.js (backupSeguro): ids e cores com aspas/< > = arquivo adulterado
+  const ruim = s => /["'<>`\\;]/.test(String(s)), CAMPO = /^(id|cor|color|theme|tema|estiloCal|temaEscolhido|corDestaque|tipo|trilha|area|coresAreas|paletaCores)$|Id$/;
+  const andar = (v, k, pai) => v && typeof v === 'object'
+    ? Object.keys(v).every(c => !ruim(c) && (c === 'fotos' && k === '' ? Object.values(v[c] || {}).every(f => typeof f === 'string' && /^data:image\//.test(f) && !/["'<>]/.test(f)) : andar(v[c], c, k)))
+    : !(typeof v === 'string' && (CAMPO.test(k || '') || CAMPO.test(pai || '')) && ruim(v));
+  if(!andar(dados, '', '')){ alert('Este arquivo foi alterado fora do Gorila Concurso e não pode ser importado com segurança.'); return; }
+  delete dados.pro;   // o Pro vem da assinatura, nunca de um backup
   const nDias = Object.keys(dados.days).length;
   const atual = ler(CHAVE_ESTADO);
   const nAtual = atual && atual.days ? Object.keys(atual.days).length : 0;

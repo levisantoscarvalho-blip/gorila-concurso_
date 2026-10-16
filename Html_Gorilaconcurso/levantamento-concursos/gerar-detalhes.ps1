@@ -27,7 +27,8 @@ foreach($uf in ($porUf.Keys | Sort-Object)){
   $sb = New-Object Text.StringBuilder; $n=0
   [void]$sb.AppendLine("/* Detalhes das notícias de concursos — $uf (fatos extraídos das notícias do PCI Concursos; não é o texto delas). Gerado por gerar-detalhes.ps1. Não editar à mão. */")
   [void]$sb.AppendLine("CONC_DETALHES['$uf'] = {")
-  foreach($s in $porUf[$uf]){ if($det.ContainsKey($s)){ [void]$sb.AppendLine("'$s':$($det[$s]),"); $n++ } }
+  # link estranho (aspas etc.) não entra: quebraria o arquivo
+  foreach($s in $porUf[$uf]){ if($det.ContainsKey($s) -and $s -match '^[a-z0-9\-]+$'){ [void]$sb.AppendLine("'$s':$($det[$s]),"); $n++ } }
   [void]$sb.AppendLine('};')
   [IO.File]::WriteAllText((Join-Path $saida "$uf.js"), $sb.ToString(), $utf8)
   "$uf`: $n de $($porUf[$uf].Count)"

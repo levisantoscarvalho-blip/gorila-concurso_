@@ -15,7 +15,7 @@ function Norm([string]$s){
 $EXCLUIR = @('fundacao-paulistana-sp-abre-processo-seletivo-para-cursos-tecnicos')   # vagas de aluno em cursos técnicos
 # nomes que o PCI escreve diferente do IBGE (nome no PCI ➔ nome no IBGE, já normalizados)
 $APELIDO = @{ 'ares'='arez'; 'boasaude'='januariocicco' }
-function Js([string]$s){ return '"' + ($s -replace '\\','\\' -replace '"','\"') + '"' }
+function Js([string]$s){ return '"' + ($s -replace '[<>]','' -replace '[\r\n  ]+',' ' -replace '\\','\\' -replace '"','\"') + '"' }   # sem < > nem quebra de linha (segurança)
 foreach($arq in Get-ChildItem $dir -Filter *.tsv){
   $uf = $arq.BaseName
   $cod = @{}; $txt = [IO.File]::ReadAllText((Join-Path $Site "noticias\municipios\$uf.js"), $utf8)

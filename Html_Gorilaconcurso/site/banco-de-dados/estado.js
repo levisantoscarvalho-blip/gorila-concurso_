@@ -217,6 +217,22 @@ function exportBackup(){
   }
 }
 
+// SEGURANÇA DO BACKUP (revisão de 15/10/2026): ids e cores vão para dentro de onclick="..." e style="...". Um arquivo
+// .json adulterado (recebido de outra pessoa, por exemplo) poderia esconder código neles. Recusa o arquivo se algum id,
+// cor ou nome de campo tiver aspas, < >, ponto e vírgula ou barra invertida. O "Pro" nunca vem de um backup (é da assinatura).
+const BACKUP_CAMPO_CODIGO = /^(id|cor|color|theme|tema|estiloCal|temaEscolhido|corDestaque|tipo|trilha|area|coresAreas|paletaCores)$|Id$/;
+function backupSeguro(dados){
+  if(!dados || typeof dados!=='object' || Array.isArray(dados)) return false;
+  const ruim = s => /["'<>`\\;]/.test(String(s));
+  const andar = (v, chave, pai) => {
+    if(v && typeof v==='object'){
+      return Object.keys(v).every(k => !ruim(k) && andar(v[k], k, chave));
+    }
+    if(typeof v==='string' && (BACKUP_CAMPO_CODIGO.test(chave||'') || BACKUP_CAMPO_CODIGO.test(pai||''))) return !ruim(v);
+    return true;
+  };
+  return andar(dados, '', '');
+}
 // Restaura o progresso a partir de um arquivo .json exportado anteriormente
 function importBackup(input){
   const file = input.files && input.files[0];
@@ -225,6 +241,8 @@ function importBackup(input){
   reader.onload = async (e) => {
     try{
       const parsed = JSON.parse(e.target.result);
+      if(!backupSeguro(parsed)){ await customAlert('Este arquivo foi alterado fora do Gorila Concurso e não pode ser importado com segurança.'); return; }
+      delete parsed.pro;
       const quer = await customConfirm('Isso vai SUBSTITUIR seu progresso atual pelo conteúdo do arquivo importado. Deseja continuar?');
       if(!quer) return;
 

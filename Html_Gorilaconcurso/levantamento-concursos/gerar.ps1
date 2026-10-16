@@ -12,7 +12,7 @@ function Norm([string]$s){
   foreach($ch in $d.ToCharArray()){ if([Globalization.CharUnicodeInfo]::GetUnicodeCategory($ch) -ne 'NonSpacingMark'){ [void]$sb.Append($ch) } }
   return ($sb.ToString() -replace "[^a-z0-9]", '')
 }
-function Js([string]$s){ return '"' + ($s -replace '\\','\\' -replace '"','\"') + '"' }
+function Js([string]$s){ return '"' + ($s -replace '[<>]','' -replace '[\r\n  ]+',' ' -replace '\\','\\' -replace '"','\"') + '"' }   # sem < > nem quebra de linha (segurança)
 function Iso([string]$d){ $p=$d.Split('/'); return "$($p[2])-$($p[1])-$($p[0])" }
 
 # códigos IBGE de cada cidade, por estado
