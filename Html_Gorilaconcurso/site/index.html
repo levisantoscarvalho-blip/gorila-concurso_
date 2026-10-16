@@ -19,6 +19,7 @@
 <link rel="stylesheet" href="sala-de-estudo/mapa-mental.css">
 <link rel="stylesheet" href="sala-de-estudo/painel.css">
 <link rel="stylesheet" href="geral/layout.css">
+<link rel="stylesheet" href="inicio/inicio.css">
 <!-- fonte profissional (Inter) + acabamento visual: SEMPRE o último CSS -->
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
@@ -160,6 +161,7 @@
 <!-- ═══════════ LOGIN / CADASTRO → código em login-e-carregamento/ ═══════════ -->
 <!-- ─── JANELA DE ACESSO: entrar / criar conta ─── -->
 <div id="auth-screen" style="display:none">
+  <div id="au-principal"></div>   <!-- PÁGINA PRINCIPAL: o que o visitante vê ao entrar no site (inicio/inicio.js ➔ renderInicio) -->
   <div id="auth-modal" class="auth-modal" onclick="if(event.target===this)auFecharLogin()">
     <div class="auth-box" role="dialog" aria-modal="true" aria-labelledby="au-titulo">
       <button type="button" class="au-fechar" onclick="auFecharLogin()" title="Fechar" aria-label="Fechar">&#10005;</button>
@@ -697,6 +699,7 @@
 <script src="noticias/concursos-mapa.js"></script>
 <script src="noticias/concursos-central.js"></script>
 <script src="noticias/historia-brasil.js"></script>
+<script src="inicio/inicio.js"></script>
 <script src="sala-de-estudo/trilhas.js"></script>
 <script src="sala-de-estudo/conteudos.js"></script>
 <script src="sala-de-estudo/mapa-mental.js"></script>

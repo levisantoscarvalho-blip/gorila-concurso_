@@ -97,6 +97,7 @@ function mostrarAuth(){
   document.getElementById('auth-screen').style.display='flex';
   document.body.classList.add('pre-login');
   renderLanding(); auFecharLogin();
+  if(typeof renderInicio==='function') renderInicio(document.getElementById('au-principal'));   // página principal de quem entra no site
   const _b = document.getElementById('busca-global'); if(_b){ _b.value=''; _b.placeholder='Pesquise por concurso, matérias, edital...'; }
   const _tv=document.getElementById('tb-visitante'); if(_tv) _tv.style.display='inline-block';
   const _tb=document.getElementById('tb-entrar'); if(_tb) _tb.style.display='none';   // sem "Entrar": a conta é aberta pelo Registrar grátis
