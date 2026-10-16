@@ -1,11 +1,9 @@
 /* ════════════════════════════════════════════
    NOTÍCIAS — CONCURSOS PELO BRASIL (mapa 3D por região)
-   Clicar numa região mostra ao lado os concursos JÁ LANÇADOS (edital publicado)
-   e os que AINDA VÃO LANÇAR (previstos), com filtro por estado.
+   Mapa 3D com a bandeira de cada estado; clicar num estado abre as regiões dele e, numa região, os concursos de cada
+   cidade (DADOS REAIS: concursos-levantamento.js, concursos-cidades/, concursos-detalhes/ — PCI Concursos e Estratégia).
    Contorno dos estados: noticias/mapa-brasil.js (malha oficial do IBGE).
-
-   ⚠ DADOS DE EXEMPLO — TROCAR: quando houver o cadastro de concursos (Supabase),
-   CONCURSOS_EXEMPLO dá lugar aos dados de verdade. Cada item leva a marca "Exemplo".
+   (16/10/2026: os CONCURSOS_EXEMPLO fictícios e a lista antiga que os usava foram APAGADOS na revisão geral.)
    ════════════════════════════════════════════ */
 
 // Regiões: o 1º dígito do código IBGE do estado diz a região
@@ -19,44 +17,8 @@ const CM_REGIOES = [
 const CM_UF_NOME = {AC:'Acre',AL:'Alagoas',AP:'Amapá',AM:'Amazonas',BA:'Bahia',CE:'Ceará',DF:'Distrito Federal',ES:'Espírito Santo',GO:'Goiás',MA:'Maranhão',MT:'Mato Grosso',MS:'Mato Grosso do Sul',MG:'Minas Gerais',PA:'Pará',PB:'Paraíba',PR:'Paraná',PE:'Pernambuco',PI:'Piauí',RJ:'Rio de Janeiro',RN:'Rio Grande do Norte',RS:'Rio Grande do Sul',RO:'Rondônia',RR:'Roraima',SC:'Santa Catarina',SP:'São Paulo',SE:'Sergipe',TO:'Tocantins'};
 function cmRegiaoDaUF(uf){ const e=MAPA_BR.estados.find(x=>x.uf===uf); return e ? CM_REGIOES.find(r=>r.dig===e.cod[0]) : null; }
 
-// status: 'publicado' = edital já lançado (com prazo de inscrição) · 'previsto' = ainda vai lançar
-const CONCURSOS_EXEMPLO = [
-  {orgao:'Tribunal de Justiça da Bahia (TJ-BA)', uf:'BA', cargos:'Analista e Técnico Judiciário', vagas:120, salario:13000, banca:'FGV', status:'publicado', inscricoesAte:'2026-11-20'},
-  {orgao:'Polícia Civil de Pernambuco', uf:'PE', cargos:'Agente e Escrivão', vagas:300, salario:6200, banca:'Cebraspe', status:'publicado', inscricoesAte:'2026-11-05'},
-  {orgao:'Secretaria da Fazenda do Ceará (SEFAZ-CE)', uf:'CE', cargos:'Auditor Fiscal', vagas:60, salario:22000, banca:'FCC', status:'previsto', previsao:'1º semestre de 2027'},
-  {orgao:'Prefeitura de São Luís', uf:'MA', cargos:'Professor e Agente Administrativo', vagas:450, salario:4100, banca:'IBFC', status:'publicado', inscricoesAte:'2026-10-30'},
-  {orgao:'Polícia Militar do Pará', uf:'PA', cargos:'Soldado', vagas:2000, salario:4800, banca:'Instituto AOCP', status:'previsto', previsao:'Dezembro de 2026'},
-  {orgao:'Tribunal Regional do Trabalho do Amazonas (TRT-11)', uf:'AM', cargos:'Técnico Judiciário', vagas:25, salario:8500, banca:'FCC', status:'publicado', inscricoesAte:'2026-11-12'},
-  {orgao:'Defensoria Pública de Tocantins', uf:'TO', cargos:'Defensor Público', vagas:15, salario:28000, banca:'Cebraspe', status:'previsto', previsao:'2º semestre de 2027'},
-  {orgao:'Polícia Federal', uf:'DF', cargos:'Agente, Escrivão e Delegado', vagas:1000, salario:23600, banca:'Cebraspe', status:'previsto', previsao:'1º semestre de 2027'},
-  {orgao:'Tribunal de Justiça de Goiás (TJ-GO)', uf:'GO', cargos:'Analista Judiciário', vagas:80, salario:12500, banca:'FGV', status:'publicado', inscricoesAte:'2026-11-28'},
-  {orgao:'SEFAZ Mato Grosso do Sul', uf:'MS', cargos:'Auditor Fiscal', vagas:40, salario:21000, banca:'FGV', status:'previsto', previsao:'Março de 2027'},
-  {orgao:'Polícia Civil de Mato Grosso', uf:'MT', cargos:'Investigador', vagas:250, salario:9800, banca:'Cebraspe', status:'publicado', inscricoesAte:'2026-12-03'},
-  {orgao:'Tribunal de Justiça de São Paulo (TJ-SP)', uf:'SP', cargos:'Escrevente Técnico Judiciário', vagas:500, salario:6000, banca:'Vunesp', status:'publicado', inscricoesAte:'2026-11-15'},
-  {orgao:'SEFAZ São Paulo', uf:'SP', cargos:'Auditor Fiscal Tributário', vagas:150, salario:24000, banca:'FCC', status:'previsto', previsao:'1º semestre de 2027'},
-  {orgao:'Polícia Civil do Rio de Janeiro', uf:'RJ', cargos:'Inspetor', vagas:400, salario:7400, banca:'FGV', status:'publicado', inscricoesAte:'2026-11-08'},
-  {orgao:'Tribunal de Justiça de Minas Gerais (TJ-MG)', uf:'MG', cargos:'Oficial Judiciário', vagas:320, salario:5800, banca:'Fundep', status:'previsto', previsao:'Janeiro de 2027'},
-  {orgao:'Prefeitura de Vitória', uf:'ES', cargos:'Analista e Assistente', vagas:90, salario:5200, banca:'Instituto Consulplan', status:'publicado', inscricoesAte:'2026-10-31'},
-  {orgao:'Polícia Militar do Paraná', uf:'PR', cargos:'Soldado', vagas:1500, salario:5600, banca:'UFPR', status:'publicado', inscricoesAte:'2026-11-25'},
-  {orgao:'Tribunal de Justiça de Santa Catarina (TJ-SC)', uf:'SC', cargos:'Técnico Judiciário', vagas:60, salario:7900, banca:'FGV', status:'previsto', previsao:'2º semestre de 2027'},
-  {orgao:'SEFAZ Rio Grande do Sul', uf:'RS', cargos:'Auditor Fiscal da Receita Estadual', vagas:50, salario:25000, banca:'Cebraspe', status:'publicado', inscricoesAte:'2026-12-10'},
-  {orgao:'Tribunal Regional Federal da 5ª Região (TRF-5)', uf:'PE', cargos:'Analista Judiciário', vagas:35, salario:13900, banca:'FCC', status:'previsto', previsao:'Fevereiro de 2027'},
-];
 
 let cmRegiao = null;      // null = Brasil inteiro · 'N' | 'NE' | 'CO' | 'SE' | 'S'
-let cmStatus = 'todos';   // 'todos' | 'publicado' | 'previsto'
-let cmUF = null;
-
-const cmDinheiro = v => 'R$ ' + Number(v).toLocaleString('pt-BR');
-const cmData = k => k.split('-').reverse().join('/');
-
-function cmConcursos(){
-  return CONCURSOS_EXEMPLO
-    .filter(c => !cmRegiao || (cmRegiaoDaUF(c.uf)||{}).id === cmRegiao)
-    .filter(c => !cmUF || c.uf === cmUF)
-    .filter(c => cmStatus==='todos' || c.status===cmStatus)
-    .sort((a,b) => a.status!==b.status ? (a.status==='publicado'?-1:1) : (a.inscricoesAte||'').localeCompare(b.inscricoesAte||''));
-}
 
 // ── Mapa 3D com a BANDEIRA de cada estado (bandeiras em noticias/bandeiras/UF.png — domínio público) ──
 // Cada estado é um bloco: camada escura deslocada para baixo (espessura) + a bandeira recortada no formato do estado.
@@ -88,69 +50,9 @@ function cmRealce(uf, on){
   const bloco=document.querySelector(`.cm-bloco[data-uf="${uf}"]`), lado=document.querySelector(`.cm-lado[data-uf="${uf}"]`);
   [bloco,lado].forEach(el=>el && el.classList.toggle('sobe', on));
 }
-function cmEscolherRegiao(id){ cmRegiao = (cmRegiao===id ? null : id); cmUF = null; cmAtualizar(true); }
-function cmEscolherStatus(s){ cmStatus = s; cmAtualizar(); }
-function cmEscolherUF(uf){ cmUF = (cmUF===uf ? null : uf); cmAtualizar(); }
-
-function cmItem(c){
-  const pub = c.status==='publicado';
-  return `<article class="cm-item">
-    <div class="cm-item-topo">
-      <span class="cm-uf" title="${CM_UF_NOME[c.uf]}">${c.uf}</span>
-      <b class="cm-orgao">${escapeHtmlCarreira(c.orgao)}</b>
-      <span class="cm-status ${c.status}">${pub?'Edital publicado':'Previsto'}</span>
-      <span class="cm-exemplo" title="Concurso de demonstração">Exemplo</span>
-    </div>
-    <div class="cm-cargos">${escapeHtmlCarreira(c.cargos)}</div>
-    <div class="cm-info">
-      <span><b>${c.vagas.toLocaleString('pt-BR')}</b> vagas</span>
-      <span>até <b>${cmDinheiro(c.salario)}</b></span>
-      <span>Banca: <b>${escapeHtmlCarreira(c.banca)}</b></span>
-      <span class="cm-prazo">${pub ? `Inscrições até <b>${cmData(c.inscricoesAte)}</b>` : `Previsão: <b>${escapeHtmlCarreira(c.previsao)}</b>`}</span>
-    </div>
-  </article>`;
-}
-
-// partes que mudam a cada clique (legenda + lista) — o mapa NÃO é redesenhado (ficava pesado)
-function cmLegendaHTML(){
-  return CM_REGIOES.map(r=>{ const n=CONCURSOS_EXEMPLO.filter(c=>(cmRegiaoDaUF(c.uf)||{}).id===r.id).length;
-    return `<button type="button" class="cm-leg${cmRegiao===r.id?' sel':''}" onclick="cmEscolherRegiao('${r.id}')" style="--cor:${r.cor}"><i></i>${r.nome}<small>${n}</small></button>`; }).join('');
-}
-function cmListaHTML(){
-  const reg = CM_REGIOES.find(r=>r.id===cmRegiao);
-  const base = CONCURSOS_EXEMPLO.filter(c => !cmRegiao || (cmRegiaoDaUF(c.uf)||{}).id===cmRegiao);
-  const lista = cmConcursos();
-  const nPub = base.filter(c=>c.status==='publicado').length, nPrev = base.filter(c=>c.status==='previsto').length;
-  const ufs = reg ? MAPA_BR.estados.filter(e=>e.cod[0]===reg.dig).map(e=>e.uf).sort() : [];
-  const filtros = [['todos','Todos',base.length],['publicado','Edital publicado',nPub],['previsto','Previstos',nPrev]]
-    .map(([id,txt,n])=>`<button type="button" class="${cmStatus===id?'ativo':''}" onclick="cmEscolherStatus('${id}')">${txt} <small>${n}</small></button>`).join('');
-  const chipsUF = ufs.length ? `<div class="cm-ufs">${ufs.map(u=>`<button type="button" class="${cmUF===u?'sel':''}" onclick="cmEscolherUF('${u}')" title="${CM_UF_NOME[u]}">${u}</button>`).join('')}</div>` : '';
-  const corpo = lista.length ? lista.map(cmItem).join('')
-    : telaVazia({desenho:'mural', compacto:true, titulo:'Nenhum concurso com esse filtro', texto:'Tente outro estado ou veja todos os concursos da região.', botao:'Ver todos', icone:false, acao:"cmUF=null;cmStatus='todos';cmAtualizar()"});
-  return `<div class="cm-lista-cab">
-      <div><h2>${reg ? reg.nome : 'Brasil inteiro'}</h2><p>${base.length} ${base.length===1?'concurso':'concursos'}${reg?' na região':''}</p></div>
-      ${reg ? `<button type="button" class="cm-limpar" onclick="cmEscolherRegiao('${reg.id}')">Ver o Brasil inteiro</button>` : ''}
-    </div>
-    <div class="cm-filtros" role="group" aria-label="Situação">${filtros}</div>
-    ${chipsUF}
-    <div class="cm-lista">${corpo}</div>`;
-}
-// clique: só troca os destaques do mapa e refaz legenda + lista
-function cmAtualizar(animar){
-  if(!document.querySelector('#news-screen .cm-svg')){ renderConcursosMapa(animar); return; }
-  document.querySelectorAll('.cm-bloco').forEach(g=>{
-    const r=g.dataset.r, sel=cmRegiao===r, ap=!!cmRegiao && !sel;
-    g.classList.toggle('sel', sel); g.classList.toggle('apagada', ap);
-    const l=document.querySelector(`.cm-lado[data-uf="${g.dataset.uf}"]`); if(l){ l.classList.toggle('sel', sel); l.classList.toggle('apagada', ap); }
-  });
-  document.querySelector('.cm-legenda').innerHTML = cmLegendaHTML();
-  const lc = document.querySelector('.cm-lista-cartao');
-  lc.innerHTML = cmListaHTML();
-  if(animar){ lc.classList.remove('entra'); void lc.offsetWidth; lc.classList.add('entra'); }
-}
 // ════════════════════════════════════════════
 // PARTE 1 (agora): SÓ O MAPA — o estado sobe com o mouse e a rodinha do mouse amplia.
-// A lista de concursos (cmListaHTML / cmLegendaHTML / cmAtualizar) fica pronta para a próxima parte.
+// (a lista antiga com concursos de exemplo foi apagada em 16/10/2026 — os concursos reais ficam no mapa da região e na central)
 // ════════════════════════════════════════════
 let cmZoom = { z:1, x:0, y:0 };
 // ── DICA "Clique em um estado": mouse clicando no espaço livre acima do mapa (à esquerda do zoom) + balão
@@ -1405,22 +1307,6 @@ function cmMesoMistura(a, b, t){
 // mudou o tamanho da janela ou o tema: desenha de novo (só nessas horas)
 let cmRedesenhoT=null;
 window.addEventListener('resize',()=>{ if(!document.getElementById('cm-mapa3d')) return; clearTimeout(cmRedesenhoT); cmRedesenhoT=setTimeout(()=>{ cmDesenharMapaLeve(); cmPosicionarDica(); if(cmVendoEstado) cmLayoutEstado(); },250); });
-// ════════════════════════════════════════════
-// ÁREA 3 — NÚMEROS DO BRASIL (dados de EXEMPLO) — RETIRADO da tela a pedido do Levi; fica guardado para usar depois
-// ════════════════════════════════════════════
-function cmNumerosHTML(){
-  const abertos=CONCURSOS_EXEMPLO.filter(c=>c.status==='publicado').length, previstos=CONCURSOS_EXEMPLO.filter(c=>c.status==='previsto').length;
-  const vagas=CONCURSOS_EXEMPLO.reduce((t,c)=>t+c.vagas,0), maior=Math.max(...CONCURSOS_EXEMPLO.map(c=>c.salario));
-  const item=(rot,val,sub,ico)=>`<div class="cm-num"><span class="cm-num-ico">${ico}</span><div><span>${rot}</span><b>${val}</b>${sub?`<small>${sub}</small>`:''}</div></div>`;
-  const I=d=>`<svg viewBox="0 0 24 24" aria-hidden="true">${d}</svg>`;
-  return `<aside class="cm-numeros" id="cm-numeros" aria-label="Números do Brasil">
-    <div class="cm-numeros-cab"><b>Números do Brasil</b><span class="cm-exemplo" title="Números de demonstração">Exemplo</span></div>
-    ${item('Abertos agora', abertos, 'com inscrições abertas', I('<path d="M4 12.5l5 5L20 6.5"/>'))}
-    ${item('Previstos', previstos, 'editais que vão sair', I('<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/>'))}
-    ${item('Vagas', vagas.toLocaleString('pt-BR'), 'somando todos', I('<circle cx="9" cy="8" r="3.2"/><path d="M3.5 19c.6-3.2 2.8-5 5.5-5s4.9 1.8 5.5 5M16 5.5a3 3 0 0 1 0 6M18 14c1.6.6 2.7 2.4 3 5"/>'))}
-    ${item('Maior salário', cmDinheiro(maior), 'entre os concursos', I('<path d="M12 3v18M16.5 7.5c0-1.7-2-3-4.5-3s-4.5 1.3-4.5 3 2 2.6 4.5 3 4.5 1.3 4.5 3-2 3-4.5 3-4.5-1.3-4.5-3"/>'))}
-  </aside>`;
-}
 
 // ════════════════════════════════════════════
 // ÁREA 1 — TOUR GUIADO (na 1ª visita; o botão "?" do mapa mostra de novo)
@@ -1506,7 +1392,7 @@ const CM_CAPITAL = { AC:'Rio Branco', AL:'Maceió', AP:'Macapá', AM:'Manaus', B
   RJ:'Rio de Janeiro', RN:'Natal', RS:'Porto Alegre', RO:'Porto Velho', RR:'Boa Vista', SC:'Florianópolis', SP:'São Paulo', SE:'Aracaju', TO:'Palmas' };
 function cmDoEstado(uf){ return `${CM_PREP[uf]||'do'} ${CM_UF_NOME[uf]}`; }   // "do Maranhão", "da Bahia", "de São Paulo"
 // ⚠ CORRIGIDO na revisão de 15/10/2026: antes este letreiro INVENTAVA nomes ("Tribunal de Justiça do X", "Prefeitura
-// da capital"...) e os marcava como "em alta"/"previsto" sem dado nenhum, misturados com CONCURSOS_EXEMPLO (fictícios).
+// da capital"...) e os marcava como "em alta"/"previsto" sem dado nenhum, misturados com os concursos de exemplo fictícios (já apagados).
 // Agora usa SÓ DADOS REAIS do estado: verde = inscrições abertas hoje (mais vagas primeiro), azul = previstos.
 function cmConcursosDoEstado(uf){
   const pc=CONC_CIDADES[uf];
