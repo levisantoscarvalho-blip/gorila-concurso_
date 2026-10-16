@@ -494,6 +494,7 @@ async function cmAbrirEstado(uf){
   cmVendoEstado=uf;
   document.getElementById('news-screen')?.classList.add('cm-modo-estado');   // some o título da página (pedido do Levi)
   cmFaixaTrocar(uf);                                                         // letreiro de baixo: só os concursos deste estado
+  cmCarregarCidades(uf).then(()=>{ if(cmVendoEstado===uf) cmFaixaTrocar(uf); });   // e de novo com os concursos de cada cidade (PCI)
   palco.classList.add('cm-vendo-estado');
   let v=document.getElementById('cm-estado-vista');
   if(!v){
@@ -1290,26 +1291,26 @@ function cmFaixaHTML(){
   const itens = ufs.map(u=>`<span class="cm-faixa-item" title="${CM_UF_NOME[u]}"><img src="noticias/bandeiras/${u}.png" alt="Bandeira de ${CM_UF_NOME[u]}" loading="lazy" decoding="async">${CM_FAIXA_CONCURSOS[u]||CM_UF_NOME[u]}</span>`).join('');
   return `<div class="cm-faixa" aria-label="Concursos procurados em cada estado"><div class="cm-faixa-trilho">${itens}<span class="cm-faixa-copia" aria-hidden="true">${itens}</span></div></div>`;
 }
-// ── LETREIRO DO ESTADO ABERTO (pedido do Levi): os concursos EM ALTA (bolinha verde) e os PREVISTOS (bolinha azul) daquele estado ──
-// ⚠ DADOS DE EXEMPLO — TROCAR: quem está "em alta" e quem está "previsto" aqui é só exemplo (órgãos que existem em
-// todo estado + os de CONCURSOS_EXEMPLO). Quando houver o cadastro de concursos (Supabase), vem tudo de lá.
+// ── LETREIRO DO ESTADO ABERTO (pedido do Levi): os concursos com INSCRIÇÕES ABERTAS (bolinha verde) e os PREVISTOS (bolinha azul) daquele estado ──
+// (dados REAIS desde a revisão de 15/10/2026 — ver cmConcursosDoEstado)
 const CM_PREP = { BA:'da', PB:'da', AL:'de', GO:'de', MG:'de', MT:'de', MS:'de', PE:'de', RO:'de', RR:'de', SC:'de', SE:'de', SP:'de' };   // os outros: "do"
 const CM_CAPITAL = { AC:'Rio Branco', AL:'Maceió', AP:'Macapá', AM:'Manaus', BA:'Salvador', CE:'Fortaleza', DF:'Brasília', ES:'Vitória', GO:'Goiânia',
   MA:'São Luís', MT:'Cuiabá', MS:'Campo Grande', MG:'Belo Horizonte', PA:'Belém', PB:'João Pessoa', PR:'Curitiba', PE:'Recife', PI:'Teresina',
   RJ:'Rio de Janeiro', RN:'Natal', RS:'Porto Alegre', RO:'Porto Velho', RR:'Boa Vista', SC:'Florianópolis', SP:'São Paulo', SE:'Aracaju', TO:'Palmas' };
 function cmDoEstado(uf){ return `${CM_PREP[uf]||'do'} ${CM_UF_NOME[uf]}`; }   // "do Maranhão", "da Bahia", "de São Paulo"
+// ⚠ CORRIGIDO na revisão de 15/10/2026: antes este letreiro INVENTAVA nomes ("Tribunal de Justiça do X", "Prefeitura
+// da capital"...) e os marcava como "em alta"/"previsto" sem dado nenhum, misturados com CONCURSOS_EXEMPLO (fictícios).
+// Agora usa SÓ DADOS REAIS do estado: verde = inscrições abertas hoje (mais vagas primeiro), azul = previstos.
 function cmConcursosDoEstado(uf){
-  const de=cmDoEstado(uf), lista=[], visto=new Set();
-  const por=(nome,status)=>{ const ch=nome.replace(/\s*\(.*\)$/,'').toLowerCase(); if(!visto.has(ch)){ visto.add(ch); lista.push({nome,status}); } };
-  CONCURSOS_EXEMPLO.filter(c=>c.uf===uf).forEach(c=>por(c.orgao.replace(/\s*\(.*\)$/,''), c.status==='publicado'?'alta':'previsto'));
-  if(CM_FAIXA_CONCURSOS[uf]) por(CM_FAIXA_CONCURSOS[uf],'alta');
-  const df=uf==='DF';
-  [`Tribunal de Justiça ${de}`, `Polícia Civil ${de}`, df?'Secretaria de Educação do Distrito Federal':`Prefeitura ${({RJ:"do",PE:"do",RN:"do"})[uf]||"de"} ${CM_CAPITAL[uf]}`, df?'Secretaria de Economia do Distrito Federal':`SEFAZ ${CM_UF_NOME[uf]}`].forEach(n=>por(n,'alta'));
-  [uf==='RS'?'Brigada Militar do Rio Grande do Sul':`Polícia Militar ${de}`, `Ministério Público ${de}`, `Detran-${uf}`, `Corpo de Bombeiros ${de}`,
-   df?'Câmara Legislativa do Distrito Federal':`Assembleia Legislativa ${de}`].forEach(n=>por(n,'previsto'));
-  // intercala: em alta, previsto, em alta, previsto...
-  const a=lista.filter(x=>x.status==='alta'), p=lista.filter(x=>x.status==='previsto'), mix=[];
-  for(let i=0;i<Math.max(a.length,p.length);i++){ if(a[i]) mix.push(a[i]); if(p[i]) mix.push(p[i]); }
+  const pc=CONC_CIDADES[uf];
+  const mun=[...cmFontes().flatMap(f=>Object.values(f[uf]?.municipais||{}).flat()), ...(pc?Object.values(pc.c).flat().map(cmDaCidade):[])];
+  const todos=[...cmConcursosEstaduais(uf), ...mun].map(cmConcursoHoje);
+  const nome=c=>c.orgao.replace(/\s+-\s+.*$/,'').replace(/\s*\([^)]*\)/g,'').trim();   // "UNESP - Universidade..." ➔ "UNESP"
+  const pegar=(st,max)=>{ const visto=new Set(), l=[];
+    todos.filter(c=>st.includes(c.status)).sort((a,b)=>(b.vagas||0)-(a.vagas||0)).forEach(c=>{ const n=nome(c), ch=n.toLowerCase(); if(!visto.has(ch) && l.length<max){ visto.add(ch); l.push({nome:n, status:st[0]==='aberto'?'alta':'previsto'}); } });
+    return l; };
+  const a=pegar(['aberto','edital'],14), p=pegar(['previsto'],10), mix=[];
+  for(let i=0;i<Math.max(a.length,p.length);i++){ if(a[i]) mix.push(a[i]); if(p[i]) mix.push(p[i]); }   // intercala verde/azul
   return mix;
 }
 // troca o letreiro: uf = estado aberto (concursos dele, sem bandeiras); null = volta ao letreiro do Brasil
@@ -1321,10 +1322,12 @@ function cmFaixaTrocar(uf){
     faixa.outerHTML=cmFaixaHTML(); cmFaixaVelocidade(); return;
   }
   const no=cmDoEstado(uf).replace(/^do /,'no ').replace(/^da /,'na ').replace(/^de /,'em ');   // "no Maranhão", "na Bahia", "em São Paulo"
-  rot.innerHTML=`${CM_ICONE_ALTA}Concursos ${no}<span class="cm-fx-legenda"><i class="cm-fx-alta"></i>Em alta<i class="cm-fx-prev"></i>Previstos</span>`;
+  rot.innerHTML=`${CM_ICONE_ALTA}Concursos ${no}<span class="cm-fx-legenda"><i class="cm-fx-alta"></i>Inscrições abertas<i class="cm-fx-prev"></i>Previstos</span>`;
   // só texto (pedido do Levi): bolinha da cor da situação + nome; a situação também vai escrita para leitor de tela
-  const um=cmConcursosDoEstado(uf).map(c=>{ const alta=c.status==='alta';
-    return `<span class="cm-faixa-item cm-fx-${alta?'alta':'prev'}" title="${alta?'Em alta':'Previsto'}"><i aria-hidden="true"></i>${c.nome}<span class="cm-fx-sr"> (${alta?'em alta':'previsto'})</span></span>`; }).join('');
+  const lista=cmConcursosDoEstado(uf);
+  if(!lista.length){ faixa.outerHTML=`<div class="cm-faixa" aria-label="Concursos ${no}"><div class="cm-faixa-trilho cm-faixa-parado"><span class="cm-faixa-item">Nenhum concurso aberto ou previsto no levantamento</span></div></div>`; return; }
+  const um=lista.map(c=>{ const alta=c.status==='alta';
+    return `<span class="cm-faixa-item cm-fx-${alta?'alta':'prev'}" title="${alta?'Inscrições abertas':'Previsto'}"><i aria-hidden="true"></i>${c.nome}<span class="cm-fx-sr"> (${alta?'inscrições abertas':'previsto'})</span></span>`; }).join('');
   const itens=um+um+um;   // poucos nomes: repete para o letreiro encher a tela
   faixa.outerHTML=`<div class="cm-faixa" aria-label="Concursos ${no}"><div class="cm-faixa-trilho">${itens}<span class="cm-faixa-copia" aria-hidden="true">${itens}</span></div></div>`;
   cmFaixaVelocidade();

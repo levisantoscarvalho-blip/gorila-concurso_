@@ -11,6 +11,8 @@ function Norm([string]$s){
   foreach($ch in $d.ToCharArray()){ if([Globalization.CharUnicodeInfo]::GetUnicodeCategory($ch) -ne 'NonSpacingMark'){ [void]$sb.Append($ch) } }
   return ($sb.ToString() -replace '[^a-z0-9]', '')
 }
+# itens do PCI que NÃO são vaga de emprego (seleção de ALUNOS etc.) — ficam de fora do mapa (revisão de 15/10/2026)
+$EXCLUIR = @('fundacao-paulistana-sp-abre-processo-seletivo-para-cursos-tecnicos')   # vagas de aluno em cursos técnicos
 # nomes que o PCI escreve diferente do IBGE (nome no PCI ➔ nome no IBGE, já normalizados)
 $APELIDO = @{ 'ares'='arez'; 'boasaude'='januariocicco' }
 function Js([string]$s){ return '"' + ($s -replace '\\','\\' -replace '"','\"') + '"' }
@@ -20,7 +22,7 @@ foreach($arq in Get-ChildItem $dir -Filter *.tsv){
   foreach($x in [regex]::Matches($txt, "c:'(\d{7})',n:'((?:[^'\\]|\\.)*)'")){ $cod[(Norm ($x.Groups[2].Value -replace "\\'", "'"))] = $x.Groups[1].Value }
   $por = [ordered]@{}; $semCod = @{}; $n = 0
   foreach($l in [IO.File]::ReadAllLines($arq.FullName, $utf8)){
-    $f = $l.Split("`t"); if($f.Count -lt 11 -or $f[10] -eq 'vazio'){ continue }
+    $f = $l.Split("`t"); if($f.Count -lt 11 -or $f[10] -eq 'vazio' -or $EXCLUIR -contains $f[9]){ continue }
     $c = $cod[(Norm $f[1])]; if(-not $c){ $c = $cod[(Norm ($f[0] -replace '-',' '))] }
     if(-not $c -and $APELIDO.ContainsKey((Norm $f[1]))){ $c = $cod[$APELIDO[(Norm $f[1])]] }
     if(-not $c){ $semCod[$f[1]] = 1; continue }

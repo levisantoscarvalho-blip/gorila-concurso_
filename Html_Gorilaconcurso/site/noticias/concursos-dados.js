@@ -31,19 +31,13 @@ const CONCURSOS_REAIS = {
         quando:'Autorizado em 01/09/2026; edital ainda não publicado',
         fonte:{ nome:'Money Times', url:'https://www.moneytimes.com.br/novo-concurso-aprovado-rede-estadual-professores-isca/' } },
     ],
+    // Revisão de 15/10/2026: Bauru, Agudos e Lins SAÍRAM daqui — os editais de Bauru e Agudos já vêm da página da cidade
+    // no PCI (concursos-cidades/SP.js; ficavam repetidos) e Lins NÃO está "sem edital em 2026" (o PCI mostra seleção de
+    // professores aberta até 16/10/2026). Botucatu continua: nenhum edital da prefeitura nos últimos 12 meses no PCI.
     municipais: {
-      '3506003': [ { area:'prefeitura', orgao:'Prefeitura de Bauru', cargo:'Merendeira, médicos e professor de Arte', status:'andamento', vagas:5,
-        quando:'Inscrições até 13/08/2026; provas em setembro/2026',
-        fonte:{ nome:'JC Concursos', url:'https://jcconcursos.com.br/noticia/concursos/concurso-da-prefeitura-de-bauru-sp-abre-inscricoes-para-cargos-na-educacao-e-saude-144462' } } ],
-      '3500709': [ { area:'prefeitura', orgao:'Prefeitura de Agudos', cargo:'Cargos de nível médio e superior', status:'andamento', vagas:7, banca:'IBEPP',
-        quando:'Inscrições até 19/07/2026; prova em 13/09/2026',
-        fonte:{ nome:'Tribuna de Jundiaí', url:'https://tribunadejundiai.com.br/economia/concursos/concurso-prefeitura-agudos-sp/' } } ],
-      '3507506': [ { area:'prefeitura', orgao:'Prefeitura de Botucatu', cargo:'Último edital: Controlador Interno (2025)', status:'semprevisao', vagas:1,
-        quando:'Sem edital em 2026',
+      '3507506': [ { area:'prefeitura', orgao:'Prefeitura de Botucatu', cargo:'Último edital: Controlador Interno (abr/2025)', status:'semprevisao', vagas:0,
+        quando:'Nenhum edital da prefeitura nos últimos 12 meses',
         fonte:{ nome:'Concursos no Brasil', url:'https://concursosnobrasil.com/concursos/sp/2025/04/11/concurso-prefeitura-de-botucatu-sp-tem-edital-publicado' } } ],
-      '3527108': [ { area:'prefeitura', orgao:'Prefeitura de Lins', cargo:'Último edital: 113 vagas (2024)', status:'semprevisao', vagas:113, banca:'Vunesp',
-        quando:'Sem edital em 2026',
-        fonte:{ nome:'Concursos no Brasil', url:'https://concursosnobrasil.com/concursos/sp/2024/03/03/concurso-prefeitura-de-lins/' } } ],
     },
   },
 };

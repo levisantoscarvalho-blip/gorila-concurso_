@@ -1,13 +1,12 @@
 ﻿# Concursos PREVISTOS de prefeituras, câmaras, guardas e autarquias municipais (cada um tem cidade ➔ ponto azul no mapa)
 # UF|órgão|cidade|cargo|vagas (0 = a definir)|situação|banca|data da notícia|link da fonte|status (opcional: previsto ou semprevisao; padrão previsto)
+# Revisão de 15/10/2026: saíram São Carlos, Caçapava (Educação), Porto Alegre (Educação) e Várzea Grande — o edital já foi publicado e está na página da cidade no PCI (ficavam repetidos como 'previsto').
 SP|Câmara de Jundiaí|Jundiaí|Níveis médio e superior|0|Banca definida|Vunesp|13/10/2026|https://concursos.estrategia.com/portal/concursos-sp/
 SP|Câmara de Olímpia|Olímpia|Diversos|1|Banca definida|Vunesp|13/10/2026|https://concursos.estrategia.com/portal/concursos-sp/
-SP|Prefeitura de São Carlos|São Carlos|A definir|0|Banca definida|Indepac|13/10/2026|https://concursos.estrategia.com/portal/concursos-sp/
 SP|IPSSC Cajamar|Cajamar|Níveis médio e superior|12|Banca definida|Indepac|13/10/2026|https://concursos.estrategia.com/portal/concursos-sp/
 SP|Prefeitura de Valinhos|Valinhos|A definir|0|Banca definida|ABCP|13/10/2026|https://concursos.estrategia.com/portal/concursos-sp/
 SP|Prefeitura de Caçapava (Saúde)|Caçapava|Diversos|11|Banca definida|Avança SP|13/10/2026|https://concursos.estrategia.com/portal/concursos-sp/
 SP|Prefeitura de Caçapava|Caçapava|Diversos|56|Banca definida|Avança SP|13/10/2026|https://concursos.estrategia.com/portal/concursos-sp/
-SP|Prefeitura de Caçapava (Educação)|Caçapava|Diversos|30|Banca definida|Avança SP|13/10/2026|https://concursos.estrategia.com/portal/concursos-sp/
 SP|Guarda Municipal de Capão Bonito|Capão Bonito|Guarda municipal|25|Banca definida|Vunesp|13/10/2026|https://concursos.estrategia.com/portal/concursos-sp/
 SP|Guarda Municipal de São Roque|São Roque|Guarda municipal|0|Banca definida|ABCP|13/10/2026|https://concursos.estrategia.com/portal/concursos-sp/
 SP|Guarda Municipal de Valinhos|Valinhos|Guarda municipal|0|Banca definida||13/10/2026|https://concursos.estrategia.com/portal/concursos-sp/
@@ -68,7 +67,6 @@ MS|Câmara de Campo Grande|Campo Grande|A definir|20|Concurso previsto (20 a 40 
 MT|Câmara de Cuiabá|Cuiabá|Vários cargos|26|Banca definida|Selecon|15/10/2026|https://concursos.estrategia.com/portal/concursos-mt/
 MT|Prefeitura de Barra do Garças|Barra do Garças|A definir|0|Banca definida|Selecon|15/10/2026|https://concursos.estrategia.com/portal/concursos-mt/
 MT|Prefeitura de Campo Verde|Campo Verde|A definir|27|Concurso autorizado||15/10/2026|https://concursos.estrategia.com/portal/concursos-mt/
-MT|Prefeitura de Várzea Grande|Várzea Grande|Diversos|5000|Concurso previsto (5 a 6 mil vagas)||15/10/2026|https://concursos.estrategia.com/portal/concursos-mt/
 PA|ISS Belém|Belém|Auditor fiscal|20|Concurso autorizado||07/10/2026|https://www.oliberal.com/concurso/concursos-publicos-no-para-veja-editais-abertos-e-selecoes-previstas-com-salarios-de-ate-r-7-7-mil-1.1137016
 PB|Câmara de João Pessoa|João Pessoa|Vários cargos|0|Concurso anunciado||02/10/2026|https://concursos.estrategia.com/portal/concursos-pb/
 PB|Prefeitura de Cabedelo|Cabedelo|A definir|0|Concurso anunciado||02/10/2026|https://concursos.estrategia.com/portal/concursos-pb/
@@ -124,7 +122,6 @@ RJ|Prefeitura de Petrópolis|Petrópolis|Nível superior|129|Concurso solicitado
 RJ|Guarda Municipal de Petrópolis|Petrópolis|Guarda municipal|110|Concurso solicitado||06/10/2026|https://concursos.estrategia.com/portal/concursos-rj/
 RN|Prefeitura de Extremoz|Extremoz|Diversos|0|Comissão formada||07/10/2026|https://concursos.estrategia.com/portal/concursos-rn/
 RN|STTU Natal|Natal|Agente de mobilidade|120|Comissão formada||07/10/2026|https://concursos.estrategia.com/portal/concursos-rn/
-RS|Prefeitura de Porto Alegre (Educação)|Porto Alegre|Professor, monitor e bibliotecário|0|Banca definida|Fundação La Salle|15/10/2026|https://concursos.estrategia.com/portal/concursos-rs/
 RS|Guarda Municipal de Novo Hamburgo|Novo Hamburgo|Guarda municipal|0|Banca definida|Fundatec|15/10/2026|https://concursos.estrategia.com/portal/concursos-rs/
 RS|Prefeitura de Porto Alegre (Saúde)|Porto Alegre|Assistente social, psicólogo, dentista e fono|0|Banca definida|Fundação La Salle|15/10/2026|https://concursos.estrategia.com/portal/concursos-rs/
 RS|Guarda Municipal de Sapucaia do Sul|Sapucaia do Sul|Guarda municipal|10|Banca definida|INQC|15/10/2026|https://concursos.estrategia.com/portal/concursos-rs/
