@@ -72,7 +72,7 @@
   │     │     │     └─ [No calendário (renderCal): filtro da versão antiga com a cor do dia escurecida (escurecerCor); sem curso = azul-marinho; ícone de foto só ao passar o mouse]
   │     │     └─ [Interruptor ON/OFF ➔ toggleCalendarioAtivo() ➔ state.calendarioAtivo]  (OFF só esconde, não apaga)
   │     │
-  │     ├─ ▧ [GORILA PRO (15/10/2026, pedido do Levi): Mural do mês, Conteúdos e Mapa Mental são do Pro — sem state.pro ficam na barra lateral num BLOCO SÓ, apagados, com UM cadeado no meio (desenho do Levi; .nav-pro-grupo, NAV_PRO em geral/navegacao.js) e o clique abre a tela de bloqueio #tab-pro-trava (o que faz / para que serve / Ver planos; mesmo texto da Ajuda); a busca do topo também respeita (bgAbrirMapa)]
+  │     ├─ ▧ [GORILA PRO (15/10/2026, pedido do Levi): Mural do mês, Conteúdos e Mapa Mental são do Pro — sem state.pro ficam na barra lateral num BLOCO SÓ, apagados, dentro de uma moldura quadrada e com UM cadeado no meio (desenho do Levi; .nav-pro-grupo, NAV_PRO em geral/navegacao.js) e o clique abre a tela de bloqueio #tab-pro-trava (o que faz / para que serve / Ver planos; mesmo texto da Ajuda); a busca do topo também respeita (bgAbrirMapa)]
   │     ├─ ▧ [Aba 2: Mural do mês (#tab-mural)]  [calendario/mural.js ➔ renderMural() · mural.css] — meses à ESQUERDA, mês escolhido AO LADO
   │     │     ├─ [Esquerda: 12 meses (cartões com dias, horas, barrinha, selo "Este mês") + ‹ ano › ➔ muralEscolherMes(i) · abre já no mês de hoje (muralReiniciar)]
   │     │     ├─ [Ao lado: calendário do mês (entra animado) ➔ muralEscolherDia(k)]
