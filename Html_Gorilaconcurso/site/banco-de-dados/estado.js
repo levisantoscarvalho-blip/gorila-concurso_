@@ -165,6 +165,7 @@ async function saveState() {
     try {
       const result = await window.storage.set(STORAGE_KEY, payload, false);
       if (result) {
+        if(typeof nuvemAgendar === 'function') nuvemAgendar(payload);   // e manda para a nuvem (banco-de-dados/nuvem.js)
         mostrarAvisoSalvamento(true);
         return true;
       }

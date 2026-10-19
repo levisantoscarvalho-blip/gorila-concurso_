@@ -1,6 +1,7 @@
 /* ════════════════════════════════════════════
    LOGIN / CADASTRO / SAIR
-   Conta local (guardada neste navegador), entrar, criar conta, visitante.
+   Conta na NUVEM (Supabase, desde 18/10/2026 — banco-de-dados/nuvem.js): entrar, criar conta, esqueci a senha, sair; visitante.
+   (as funções de senha local — hashSenha, senhaConfere — ficaram só para contas antigas; não são mais usadas para entrar)
    ════════════════════════════════════════════ */
 
 // ════════════════════════════════════════════
@@ -122,17 +123,19 @@ async function cadastrar(){
 
   authOcupado = true; botaoOcupado('cadastro-btn', true, 'Criando conta...');
   try{
-    const sal = gerarSal();
-    const novo = { versao:2, nome, email, sal, hash: hashSenha(senha, sal), criadoEm: new Date().toISOString(), bootVisto: true };
-    try{
-      await window.storage.set(PERFIL_KEY, JSON.stringify(novo), false);
-    }catch(e){
-      return mostrarErroAuth(E, 'Não foi possível salvar a conta neste navegador. Verifique se o navegador não está em modo anônimo e tente de novo.');
-    }
-    perfilSalvo = novo;
-    tentativasErradas = 0; bloqueadoAte = 0;
+    // CONTA NA NUVEM (Supabase, desde 18/10/2026 — banco-de-dados/nuvem.js). A senha vai direto para o Supabase.
+    if(!window.sb) return mostrarErroAuth(E, 'Não foi possível falar com o servidor de contas. Recarregue a página e tente de novo.');
+    const { data, error } = await sb.auth.signUp({ email, password: senha, options:{ data:{ nome }, emailRedirectTo: nuvemVolta() } });
+    if(error) return mostrarErroAuth(E, nuvemErro(error));
     ['auth-senha','auth-senha2'].forEach(id=>{ document.getElementById(id).value=''; });
     mostrarRegrasSenha();
+    // o Supabase pede para CONFIRMAR o e-mail: a conta só abre depois do clique no link (que traz a pessoa de volta já logada)
+    if(!data.session){
+      auFecharLogin();
+      await customAlert(`Quase lá! Enviamos um link de confirmação para ${email}. Abra seu e-mail (veja também o spam) e clique no link para ativar sua conta.`);
+      return;
+    }
+    nuvemUsuario(data.user);
     window.__cadastroNovo = true;
     await entrarDepoisDoCadastro();
   } finally {
@@ -141,8 +144,15 @@ async function cadastrar(){
 }
 
 async function entrarDepoisDoCadastro(){
+  await prepararContaDaNuvem();
   await levarVisitanteParaConta();
   await entrarApp();
+}
+// depois de entrar ou criar a conta: traz da nuvem o progresso desta conta (e nunca usa o de outra pessoa)
+async function prepararContaDaNuvem(){
+  window.__estadoReal = null; window.__estadoOk = false; window.__loadPromise = null;
+  try{ await nuvemPrepararLocal(true); }
+  catch(e){ console.warn('Não foi possível ler o progresso na nuvem:', e); }
 }
 
 // ════════════════════════════════════════════
@@ -271,29 +281,26 @@ async function entrarLogin(){
 
   const espera = Math.ceil((bloqueadoAte - Date.now())/1000);
   if(espera > 0) return mostrarErroAuth(E, `Muitas tentativas. Aguarde ${espera} segundos e tente de novo.`);
-  if(!perfilSalvo) return mostrarErroAuth(E, 'Ainda não existe conta neste navegador. Use "Criar conta".');
   if(!emailValido(email)) return mostrarErroAuth(E, 'Informe o e-mail da sua conta.', 'login-email');
   if(!senha) return mostrarErroAuth(E, 'Informe sua senha.', 'login-senha');
+  if(!window.sb) return mostrarErroAuth(E, 'Não foi possível falar com o servidor de contas. Recarregue a página e tente de novo.');
 
   authOcupado = true; botaoOcupado('login-btn', true, 'Entrando...');
   try{
-    if(!senhaConfere(email, senha)){
-      tentativasErradas++;
+    // CONTA NA NUVEM (Supabase, desde 18/10/2026): quem confere a senha é o servidor
+    const { data, error } = await sb.auth.signInWithPassword({ email, password: senha });
+    if(error){
       document.getElementById('login-senha').value='';
-      if(tentativasErradas >= TENTATIVAS_MAX){
+      if(/Invalid login credentials/i.test(error.message||'') && ++tentativasErradas >= TENTATIVAS_MAX){
         bloqueadoAte = Date.now() + BLOQUEIO_SEG*1000; tentativasErradas = 0;
         return mostrarErroAuth(E, `E-mail ou senha incorretos. Por segurança, aguarde ${BLOQUEIO_SEG} segundos para tentar de novo.`, 'login-senha');
       }
-      return mostrarErroAuth(E, 'E-mail ou senha incorretos.', 'login-senha');
+      return mostrarErroAuth(E, nuvemErro(error), 'login-senha');
     }
     tentativasErradas = 0; bloqueadoAte = 0;
-    // conta do formato antigo: troca a senha "disfarçada" pela impressão digital segura
-    if(perfilSalvo.versao !== 2){
-      const sal = gerarSal();
-      const atualizado = { versao:2, nome: perfilSalvo.nome||'', email, sal, hash: hashSenha(senha, sal), criadoEm: new Date().toISOString(), bootVisto: true };
-      try{ await window.storage.set(PERFIL_KEY, JSON.stringify(atualizado), false); perfilSalvo = atualizado; }catch(e){}
-    }
     document.getElementById('login-senha').value='';
+    nuvemUsuario(data.user);
+    await prepararContaDaNuvem();
     await levarVisitanteParaConta();   // antes só trocava de dados e o que o visitante fez se perdia
     await entrarApp();
   } finally {
@@ -301,13 +308,15 @@ async function entrarLogin(){
   }
 }
 
-// A conta fica só neste navegador: não existe e-mail de recuperação.
+// ESQUECI MINHA SENHA: o Supabase manda um link por e-mail; ao voltar por ele, o site pede a senha nova (nuvem.js)
 async function esqueciSenha(){
-  await customAlert('Sua conta fica guardada apenas neste navegador, por isso não há envio de e-mail para recuperar a senha. Você pode criar um novo acesso: seu progresso de estudo continua salvo.');
-  configurarAuthModal('cadastro');
-  const e=document.getElementById('auth-email'); if(e && perfilSalvo) e.value = perfilSalvo.email || '';
-  const n=document.getElementById('auth-nome'); if(n && perfilSalvo) n.value = perfilSalvo.nome || '';
-  const s=document.getElementById('auth-senha'); if(s) s.focus();
+  const E = 'auth-login-erro'; limparErrosAuth();
+  const email = normalizarEmail(document.getElementById('login-email').value);
+  if(!emailValido(email)) return mostrarErroAuth(E, 'Digite o e-mail da sua conta no campo acima e clique de novo em "Esqueci minha senha".', 'login-email');
+  if(!window.sb) return mostrarErroAuth(E, 'Não foi possível falar com o servidor de contas. Recarregue a página e tente de novo.');
+  const { error } = await sb.auth.resetPasswordForEmail(email, { redirectTo: nuvemVolta() });
+  if(error) return mostrarErroAuth(E, nuvemErro(error));
+  await customAlert(`Se existir uma conta com ${email}, enviamos um link para criar uma senha nova. Abra seu e-mail (veja também o spam).`);
 }
 // ════════════════════════════════════════════
 // SAIR DA SEÇÃO (não apaga nada — só volta pra tela de login)
@@ -336,7 +345,9 @@ function entrarComoVisitante(){
 async function sairDaSecao(){
   if(window.__guest) return;
   await saveState();
-  window.__estadoOk = true; // dados seguem em memória
+  // conta na nuvem: sai de verdade e não deixa o progresso neste navegador (computador compartilhado)
+  await nuvemSair();
+  state = defaultState(); window.__estadoOk = false; window.__loadPromise = null; window.__estadoReal = null;
   window.__logado = false; renderNewsPanel();
   const bgi=document.getElementById('busca-global'); if(bgi){ bgi.value=''; bgFechar(); }
   document.getElementById('home-screen').style.display='none';
@@ -435,8 +446,10 @@ function abrirJanelaLogin(modo){
   document.getElementById('auth-modal').classList.add('open');
 }
 // TROCAR quando o Supabase estiver ligado: aqui entra o login de verdade com a conta Google
-function auContinuarGoogle(){
-  mostrarToast('Entrar com Google estará disponível em breve. Por enquanto, continue com seu e-mail.');
+async function auContinuarGoogle(){
+  if(!NUVEM_GOOGLE || !window.sb){ mostrarToast('Entrar com Google estará disponível em breve. Por enquanto, continue com seu e-mail.'); return; }
+  const { error } = await sb.auth.signInWithOAuth({ provider:'google', options:{ redirectTo: nuvemVolta() } });   // volta já logado (iniciar)
+  if(error) customAlert(nuvemErro(error));
 }
 function auEscolher(modo){ if(modo==='visitante'){ entrarComoVisitante(); return; } auAbrirLogin(modo); }
 function auFecharLogin(){ const m = document.getElementById('auth-modal'); if(m) m.classList.remove('open'); }

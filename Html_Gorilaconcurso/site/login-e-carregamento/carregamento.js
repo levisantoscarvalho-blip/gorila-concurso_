@@ -155,19 +155,16 @@ async function iniciar(){
   const con = detectarConexao();
   // 1) lê só o perfil (leitura pequena). 2) Se há conta, pré-carrega os dados na mesma tela de carregamento.
   //    Se NÃO há conta (visitante), encerra o carregamento na hora e mostra a landing.
-  const trabalho = carregarPerfil().then(()=>{
-    if(!perfilSalvo){ return; }
-    if(!perfilSalvo.bootVisto){ con.minMs = Math.max(con.minMs, 2000); con.maxMs = Math.max(con.maxMs, con.minMs + 2000); } // mascote completo só na 1ª vez
+  // CONTA NA NUVEM (18/10/2026): sessão guardada pelo Supabase ➔ traz o progresso da nuvem e ENTRA DIRETO
+  // (também é assim que a pessoa volta do link de confirmação do e-mail ou do Google). Sem sessão ➔ página principal.
+  const trabalho = nuvemSessao().then(async u=>{
+    nuvemUsuario(u);
+    if(!u) return;
+    try{ await nuvemPrepararLocal(false); }catch(e){ console.warn('Não foi possível ler o progresso na nuvem:', e); }
     return carregarEstadoUmaVez();
   });
   await rodarLoading(trabalho,
     ['Iniciando ambiente seguro','Pré-carregando seus dados','Validando acesso','Preparando tela de acesso'], con);
-  if(perfilSalvo){
-    try{ applyTheme(); updateFoguinho(); renderTrilhasFixas(); renderCarreirasCustom(); }catch(e){}
-    if(!perfilSalvo.bootVisto){
-      perfilSalvo.bootVisto = true;
-      try{ await window.storage.set(PERFIL_KEY, JSON.stringify(perfilSalvo), false); }catch(e){}
-    }
-  }
+  if(window.__uid){ await entrarApp(); return; }
   mostrarAuth();
 }
