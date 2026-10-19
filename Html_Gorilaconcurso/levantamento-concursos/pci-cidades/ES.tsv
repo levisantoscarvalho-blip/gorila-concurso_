@@ -59,7 +59,6 @@ boa-esperanca	Boa Esperança	Prefeitura de Boa Esperança	Vários Cargos	Fundame
 boa-esperanca	Boa Esperança	Prefeitura de Boa Esperança	Vários Cargos	Médio / Técnico / Superior	0			2026-03-19	prefeitura-de-boa-esperanca-es-abre-selecao-para-professores-e-coordenadores	ea
 boa-esperanca	Boa Esperança	Prefeitura de Boa Esperança	Vários Cargos	Fundamental / Médio / Técnico / Superior	0	CR		2026-03-10	prefeitura-de-boa-esperanca-es-abre-selecao-para-cadastro-de-reserva-em-diversos-cargos	ea
 boa-esperanca	Boa Esperança	Prefeitura de Boa Esperança	Vários Cargos	Superior	0			2025-11-19	prefeitura-de-boa-esperanca-es-lanca-processo-seletivo-para-cargo-de-professor	ea
-boa-esperanca	Boa Esperança	Prefeitura de Boa Esperança	Professor Habilitado, Professor Não Habilitado	Superior	0			2025-10-15	prefeitura-de-boa-esperanca-es-publica-processo-seletivo-para-cargo-de-professor	ea
 bom-jesus-do-norte	Bom Jesus do Norte	Prefeitura de Bom Jesus do Norte	Vários Cargos	Fundamental / Médio / Superior	24			2025-12-22	prefeitura-de-bom-jesus-do-norte-es-anuncia-processo-seletivo-com-24-vagas	ea
 bom-jesus-do-norte	Bom Jesus do Norte	Prefeitura de Bom Jesus do Norte	Vários Cargos	Médio / Superior	8			2025-12-12	prefeitura-de-bom-jesus-do-norte-es-anuncia-abertura-das-inscricoes-para-edital-de-processo-seletivo	ea
 brejetuba	Brejetuba	Prefeitura de Brejetuba	Vários Cargos	Superior	0			2025-11-17	prefeitura-de-brejetuba-es-lanca-edital-de-processo-seletivo-para-cargo-de-nivel-superior	ea
@@ -74,7 +73,6 @@ cariacica	Cariacica	IFES - Instituto Federal do Espírito Santo	Professor Substi
 cariacica	Cariacica	IFES - Instituto Federal do Espírito Santo	Professor Substituto	Superior	1			2026-03-18	ifes-abre-selecao-para-professor-substituto-na-area-de-atendimento-educacional-especializado	ea
 cariacica	Cariacica	Prefeitura de Cariacica	Vários Cargos	Superior	0	CR		2026-01-14	prefeitura-de-cariacica-es-lanca-inscricoes-para-dois-processos-seletivo	ea
 cariacica	Cariacica	IFES - Instituto Federal de Educação, Ciência e Tecnologia - Cariacica	Professor Substituto - Ciências Econômicas (Teoria Econômica)	Superior	0			2025-11-14	ifes-abre-edital-de-processo-seletivo-para-o-campus-de-cariacica	ea
-cariacica	Cariacica	Prefeitura de Cariacica	Procurador Municipal	Superior	2			2025-10-17	prefeitura-de-cariacica-es-abre-concurso-publico-para-procurador-municipal	ea
 castelo	Castelo	Prefeitura de Castelo	Vários Cargos	Fundamental / Médio	0	CR		2026-10-14	prefeitura-de-castelo-es-abre-processo-seletivo-para-cadastro-de-reserva	ea
 castelo	Castelo	Prefeitura de Castelo	Borracheiro, Operador de Serviços Gerais, Motorista Categoria D	Fundamental	0	CR		2026-06-23	prefeitura-de-castelo-es-abre-processo-seletivo-para-profissionais-de-nivel-fundamental	ea
 castelo	Castelo	Prefeitura de Castelo	Vários Cargos	Fundamental / Médio / Técnico / Superior	0	CR		2026-05-19	prefeitura-de-castelo-es-abre-processo-seletivo-para-cadastro-de-reserva-em-diversos-cargos	ea
@@ -242,6 +240,7 @@ montanha	Montanha	SEMECT - Prefeitura de Montanha	Vários Cargos	Fundamental / M
 mucurici	Mucurici				0					vazio
 muniz-freire	Muniz Freire				0					vazio
 muqui	Muqui				0					vazio
+nova-venecia	Nova Venécia	Prefeitura de Nova Venécia	Vários Cargos	Superior	0	CR		2026-10-29	prefeitura-de-nova-venecia-es-abre-processo-seletivo-para-cargos-de-nivel-superior	na
 nova-venecia	Nova Venécia	Prefeitura de Nova Venécia	Motorista, Trabalhador Braçal Feminino, Bioquímico	Fundamental / Superior	0			2026-06-23	prefeitura-de-nova-venecia-es-abre-selecoes-para-niveis-fundamental-e-superior	ea
 nova-venecia	Nova Venécia	IFES - Instituto Federal de Educação, Ciência e Tecnologia do Espírito Santo	Professor Substituto	Superior	1			2026-04-28	ifes-anuncia-processo-seletivo-para-professor-substituto-de-administracao-em-nova-venecia	ea
 nova-venecia	Nova Venécia	IFES - Instituto Federal de Educação, Ciência e Tecnologia do Espírito Santo	Professor Substituto	Superior	1			2026-04-24	ifes-abre-processo-seletivo-para-professor-substituto-de-quimica-no-campus-nova-venecia	ea
@@ -403,7 +402,8 @@ vila-velha	Vila Velha	Prefeitura de Vila Velha	Professor B - Língua Inglesa	Sup
 vila-velha	Vila Velha	SEMESP - Secretaria Municipal de Educação de Vila Velha	Professor B	Superior	0	CR		2026-02-05	secretaria-municipal-de-educacao-de-vila-velha-es-abre-selecao-para-cadastro-reserva-no-magisterio	ea
 vila-velha	Vila Velha	IFES - Instituto Federal de Educação, Ciência e Tecnologia do Espírito Santo	Professor Substituto	Superior	1			2026-01-18	ifes-abre-processo-seletivo-junto-ao-campus-vila-velha	ea
 vila-velha	Vila Velha	SEMSA - Prefeitura de Vila Velha	Vários Cargos	Médio / Superior	0			2025-12-22	prefeitura-de-vila-velha-es-publica-processo-seletivo-para-a-secretaria-municipal-de-saude	ea
-vitoria	Vitória	ARIES - Agência Reguladora Intermunicipal de Saneamento Básico do Estado do Espírito Santo	Analista de Fiscalização e Regulação	Superior	1			2026-10-15	aries-es-abre-selecao-para-analista-de-fiscalizacao-e-regulacao	na
+vitoria	Vitória	Banestes - Banco do Estado do Espírito Santo e Banestes Seguros	Técnico Bancário, Técnico em Segurança do Trabalho, Assistente Securitário	Médio / Técnico	0	CR	2026-10-19	2026-11-17	banestes-e-banestes-seguros-es-abrem-concursos-para-cadastro-de-reserva	na
+vitoria	Vitória	ARIES - Agência Reguladora Intermunicipal de Saneamento Básico do Estado do Espírito Santo	Analista de Fiscalização e Regulação	Superior	1			2026-10-15	aries-es-abre-selecao-para-analista-de-fiscalizacao-e-regulacao	ea
 vitoria	Vitória	Prefeitura de Vitória	Vários Cargos	Médio / Superior	5			2026-10-14	prefeitura-de-vitoria-es-abre-selecoes-para-profissionais-de-saude-e-educacao	ea
 vitoria	Vitória	SAMU 192/ES - Serviço de Atendimento Móvel de Urgência	Telefonista Auxiliar de Regulação Médica	Ensino Médio	0			2026-10-11	samu-192-es-abre-processo-seletivo-para-o-cargo-de-telefonista-auxiliar-de-regulacao-medica	ea
 vitoria	Vitória	Prefeitura de Vitória	Cirurgião Dentista Clínico, Cirurgião Dentista PSF	Superior	2			2026-10-09	prefeitura-de-vitoria-es-abre-processo-seletivo-para-cirurgioes-dentistas	ea
@@ -446,4 +446,3 @@ vitoria	Vitória	Prefeitura de Vitória	Engenheiro Mecânico	Superior	1			2025-1
 vitoria	Vitória	Prefeitura de Vitória	Guarda Vidas	Fundamental	33			2025-10-31	prefeitura-de-vitoria-es-lanca-edital-de-processo-seletivo-com-33-vagas	ea
 vitoria	Vitória	Prefeitura de Vitória	Vários Cargos	Superior	204			2025-10-22	prefeitura-de-vitoria-es-informa-retificacao-de-dois-editais-de-processo-seletivo	ea
 vitoria	Vitória	SAMU - Irmandade da Santa Casa de Misericórdia de Vitória	Telefonista Auxiliar de Regulação Médica, Rádio Operador	Ensino Médio	0			2025-10-19	samu-es-anuncia-abertura-de-dois-editais-de-processo-seletivo	ea
-vitoria	Vitória	Prefeitura de Vitória	Técnico Desportivo - Ginástica Aeróbica	Superior	1			2025-10-17	prefeitura-de-vitoria-es-abre-processo-seletivo-para-tecnico-desportivo-ginastica-aerobica	ea

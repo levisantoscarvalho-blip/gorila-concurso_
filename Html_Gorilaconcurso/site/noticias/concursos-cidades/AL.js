@@ -1,6 +1,6 @@
 /* Concursos por cidade — AL. Fonte: PCI Concursos (pciconcursos.com.br/concursos/al/<cidade>), últimos 12 meses.
-   Gerado por levantamento-concursos/gerar-cidades.ps1 em 15/10/2026. Não editar à mão. */
-CONC_CIDADES['AL'] = { atualizado:'15/10/2026', c:{
+   Gerado por levantamento-concursos/gerar-cidades.ps1 em 18/10/2026. Não editar à mão. */
+CONC_CIDADES['AL'] = { atualizado:'18/10/2026', c:{
 '2700300':[["Prefeitura de Arapiraca","Vários Cargos","Fundamental / Médio / Superior",76,"","","2026-07-08","prefeitura-de-arapiraca-al-abre-processo-seletivo-com-vagas-na-secretaria-de-desenvolvimento-social"],["Prefeitura de Arapiraca","Vários Cargos","Médio / Superior",392,"","","2025-11-11","prefeitura-de-arapiraca-al-abre-concurso-publico-com-392-vagas-na-area-de-educacao"]],
 '2701308':[["Prefeitura de Cajueiro","Vários Cargos","Fundamental / Médio / Técnico / Superior",95,"","","2026-05-27","prefeitura-de-cajueiro-al-abre-concurso-publico-com-salarios-de-ate-4-1-mil"]],
 '2701407':[["Prefeitura de Campo Alegre","Vários Cargos","Médio / Superior",240,"","","2026-08-03","prefeitura-de-campo-alegre-al-abre-concurso-publico-com-salarios-de-ate-3885"]],

@@ -57,7 +57,7 @@ carlinda	Carlinda	Prefeitura de Carlinda	Vários Cargos	Fundamental / Médio / T
 carlinda	Carlinda	Prefeitura de Carlinda	Agente Comunitário de Saúde, Agente de Combate à Endemias	Ensino Médio	8			2026-01-06	prefeitura-de-carlinda-mt-divulga-processo-seletivo-para-cargos-de-nivel-medio	ea
 carlinda	Carlinda	Prefeitura de Carlinda	Vários Cargos	Superior	3			2025-12-02	prefeitura-de-carlinda-mt-divulga-novo-processo-seletivo-para-cargo-de-professor	ea
 castanheira	Castanheira	Prefeitura de Castanheira	Apoio Educacional de Desenvolvimento Infantil (ADI)	Ensino Médio	1	CR		2026-03-06	prefeitura-de-castanheira-mt-abre-processo-seletivo-para-apoio-educacional-de-desenvolvimento-infantil	ea
-chapada-dos-guimaraes	Chapada dos Guimarães	SAAE - Prefeitura de Chapada dos Guimarães	Vários Cargos	Médio / Técnico / Superior	134			2026-10-15	prefeitura-de-chapada-dos-guimaraes-mt-divulga-retificacao-de-concurso-publico	na
+chapada-dos-guimaraes	Chapada dos Guimarães	SAAE - Prefeitura de Chapada dos Guimarães	Vários Cargos	Médio / Técnico / Superior	134			2026-10-15	prefeitura-de-chapada-dos-guimaraes-mt-divulga-retificacao-de-concurso-publico	ea
 chapada-dos-guimaraes	Chapada dos Guimarães	ICMBio - Instituto Chico Mendes de Conservação da Biodiversidade	Chefe de Brigada	Fundamental	0	CR		2026-05-25	icmbio-mt-abre-selecao-para-chefes-de-brigada-no-parque-nacional-da-chapada-dos-guimaraes	ea
 chapada-dos-guimaraes	Chapada dos Guimarães	ICMBio - Instituto Chico Mendes de Conservação da Biodiversidade	Agente Temporário Ambiental	Fundamental	0	CR		2026-05-17	icmbio-mt-abre-selecao-para-agentes-temporarios-ambientais-no-parque-nacional-da-chapada-dos-guimaraes	ea
 chapada-dos-guimaraes	Chapada dos Guimarães	ICMBio - Instituto Chico Mendes de Conservação da Biodiversidade	Brigadista, Chefe de Esquadrão	Fundamental	0	CR		2026-04-29	icmbio-mt-abre-selecao-para-agente-temporario-ambiental-no-parque-nacional-da-chapada-dos-guimaraes	ea
@@ -115,7 +115,6 @@ cuiaba	Cuiabá	Prefeitura de Cuiabá	Cirurgião Dentista - Odontopediatria	Super
 cuiaba	Cuiabá	UFMT - Universidade Federal de Mato Grosso	Professor Substituto (Estudos e Pesquisas em Libras)	Superior	0			2025-10-30	ufmt-abre-processo-seletivo-no-campus-de-cuiaba	ea
 cuiaba	Cuiabá	UFMT - Universidade Federal de Mato Grosso	Professor Substituto	Superior	1			2025-10-24	ufmt-abre-processo-seletivo-para-professor-substituto-em-cuiaba-mt	ea
 cuiaba	Cuiabá	UFMT - Universidade Federal de Mato Grosso	Professor Substituto - Língua Francesa	Superior	1			2025-10-20	ufmt-abre-vaga-para-professor-substituto-em-lingua-francesa-em-cuiaba-mt	ea
-cuiaba	Cuiabá	Prefeitura de Cuiabá	Cuidador de Aluno com Deficiência	Ensino Médio	0			2025-10-17	prefeitura-de-cuiaba-mt-abre-processo-seletivo-para-cuidador-de-aluno-com-deficiencia	ea
 curvelandia	Curvelândia				0					vazio
 denise	Denise				0					vazio
 diamantino	Diamantino	Prefeitura de Diamantino	Professor de Ensino Fundamental, Professor de Ensino Infantil	Superior	8			2026-09-03	prefeitura-de-diamantino-mt-abre-processo-seletivo-para-professores	ea
@@ -154,6 +153,7 @@ jaciara	Jaciara	Prefeitura de Jaciara	Professor Pedagogia, Professor Português/
 jaciara	Jaciara	Prefeitura de Jaciara	Vários Cargos	Médio / Técnico / Superior	0			2025-12-17	prefeitura-de-jaciara-mt-publica-processo-seletivo-com-salarios-de-ate-5-3-mil	ea
 jangada	Jangada				0					vazio
 jauru	Jauru	Prefeitura de Jauru	Vários Cargos	Fundamental / Médio / Superior	60			2026-04-17	prefeitura-de-jauru-mt-abre-processo-seletivo-com-salarios-de-ate-5-3-mil	ea
+juara	Juara	Prefeitura de Juara	Apoio Administrativo Educacional	Fundamental	0	CR		2026-10-20	prefeitura-de-juara-mt-abre-selecao-para-apoio-administrativo-educacional-na-area-de-infraestrutura-e-nutricao	na
 juara	Juara	Prefeitura de Juara - Secretaria Municipal de Saúde	Técnico em Enfermagem, Odontólogo	Técnico / Superior	0	CR		2026-09-24	prefeitura-de-juara-mt-abre-selecao-para-tecnicos-em-enfermagem-e-odontologos	ea
 juara	Juara	Prefeitura de Juara	Médico Veterinário	Superior	1			2026-09-09	prefeitura-de-juara-mt-abre-vaga-para-medico-veterinario	ea
 juara	Juara	Prefeitura de Juara	Apoio Administrativo Educacional - Auxiliar de Professor	Fundamental	0	CR		2026-08-30	prefeitura-de-juara-mt-abre-processo-seletivo-para-auxiliar-de-professor-na-zona-rural	ea
@@ -227,7 +227,6 @@ nova-xavantina	Nova Xavantina	Prefeitura de Nova Xavantina	Vários Cargos	Fundam
 nova-xavantina	Nova Xavantina	Prefeitura e Câmara de Nova Xavantina	Vários Cargos	Fundamental / Médio / Superior	0	CR		2026-06-19	prefeitura-de-nova-xavantina-mt-retifica-edital-de-processo-seletivo	ea
 nova-xavantina	Nova Xavantina	Prefeitura de Nova Xavantina	Agente Comunitário de Saúde, Agente de Combate às Endemias	Ensino Médio	0	CR		2026-05-24	prefeitura-de-nova-xavantina-mt-retifica-processo-seletivo-para-agentes-de-saude-e-de-endemias	ea
 nova-xavantina	Nova Xavantina	Prefeitura de Nova Xavantina	Vários Cargos	Médio / Técnico / Superior	0			2025-11-18	prefeitura-de-nova-xavantina-mt-abre-processo-seletivo-para-formar-cadastro-de-reserva	ea
-nova-xavantina	Nova Xavantina	Prefeitura de Nova Xavantina	Vários Cargos	Fundamental / Médio / Técnico / Superior	127			2025-10-15	prefeitura-de-nova-xavantina-mt-abre-processo-seletivo-com-127-vagas	ea
 novo-horizonte-do-norte	Novo Horizonte do Norte				0					vazio
 novo-mundo	Novo Mundo	Prefeitura de Novo Mundo	Vários Cargos	Fundamental / Médio / Superior	132		2026-10-26	2026-11-19	prefeitura-de-novo-mundo-mt-abre-processo-seletivo-com-salarios-de-ate-7342	na
 novo-mundo	Novo Mundo	Prefeitura de Novo Mundo	Operador de Máquinas Leves	Fundamental	2			2026-10-14	prefeitura-de-novo-mundo-mt-abre-vagas-para-operadores-de-maquinas-leves	ea
@@ -247,8 +246,7 @@ novo-mundo	Novo Mundo	Prefeitura de Novo Mundo	Psicólogo	Superior	2			2026-01-1
 novo-mundo	Novo Mundo	Prefeitura de Novo Mundo	Técnico de Enfermagem, Auxiliar de Saúde Bucal	Médio / Técnico	2			2026-01-16	prefeitura-de-novo-mundo-mt-abre-inscricoes-para-novo-processo-seletivo	ea
 novo-mundo	Novo Mundo	Prefeitura de Novo Mundo	Vários Cargos	Fundamental / Médio / Técnico / Superior	182			2025-11-21	prefeitura-de-novo-mundo-mt-divulga-processo-seletivo-com-mais-de-100-vagas	ea
 novo-mundo	Novo Mundo	Prefeitura de Novo Mundo	Fisioterapeuta	Superior	1			2025-10-22	prefeitura-de-novo-mundo-mt-divulga-processo-seletivo-para-cargo-de-fisioterapeuta	ea
-novo-mundo	Novo Mundo	Prefeitura de Novo Mundo - Secretaria Municipal de Saúde	Operador de Máquinas Pesadas, Motorista	Não informada	0			2025-10-15	prefeitura-de-novo-mundo-mt-divulga-processo-seletivo-para-operador-de-maquinas-pesadas-e-motorista	ea
-novo-santo-antonio	Novo Santo Antônio	Prefeitura de Novo Santo Antônio	Psicólogo, Psicólogo Educacional, Nutricionista - Saúde	Superior	3			2026-10-15	prefeitura-de-novo-santo-antonio-mt-abre-processo-seletivo-para-psicologo-e-nutricionista	na
+novo-santo-antonio	Novo Santo Antônio	Prefeitura de Novo Santo Antônio	Psicólogo, Psicólogo Educacional, Nutricionista - Saúde	Superior	3			2026-10-15	prefeitura-de-novo-santo-antonio-mt-abre-processo-seletivo-para-psicologo-e-nutricionista	ea
 novo-santo-antonio	Novo Santo Antônio	Prefeitura de Novo Santo Antônio	Vários Cargos	Fundamental / Médio / Técnico / Superior	1			2026-07-31	prefeitura-de-novo-santo-antonio-mt-abre-selecao-para-profissionais-de-saude-e-apoio	ea
 novo-santo-antonio	Novo Santo Antônio	Prefeitura de Novo Santo Antônio	Vários Cargos	Fundamental / Médio / Técnico / Superior	7			2026-06-17	prefeitura-de-novo-santo-antonio-mt-abre-selecao-com-salarios-de-ate-15000	ea
 novo-santo-antonio	Novo Santo Antônio	Prefeitura de Novo Santo Antônio	Vários Cargos	Fundamental / Médio / Técnico / Superior	2			2026-02-05	prefeitura-de-novo-santo-antonio-mt-publica-edital-de-processo-seletivo-com-diversos-cargos	ea
@@ -288,7 +286,7 @@ poxoreu	Poxoréu	Prefeitura de Poxoréu	Vários Cargos	Médio / Superior	0			202
 primavera-do-leste	Primavera do Leste	Prefeitura de Primavera do Leste	Vários Cargos	Médio / Técnico / Superior	33			2026-08-30	prefeitura-de-primavera-do-leste-mt-retifica-edital-de-concurso-publico	ea
 primavera-do-leste	Primavera do Leste	Prefeitura de Primavera do Leste	Agente Comunitário de Saúde, Agente de Combate às Endemias	Ensino Médio	52			2026-08-23	prefeitura-de-primavera-do-leste-mt-abre-selecao-para-agentes-de-saude-e-de-endemias	ea
 primavera-do-leste	Primavera do Leste	Prefeitura de Primavera do Leste	Vários Cargos	Fundamental / Médio / Técnico / Superior	0			2026-06-25	prefeitura-de-primavera-do-leste-mt-abre-processo-seletivo-com-salarios-de-ate-16346	ea
-querencia	Querência	Prefeitura de Querência	Vários Cargos	Fundamental / Médio / Técnico / Superior	0			2025-10-15	edital-de-processo-seletivo-e-divulgado-pela-prefeitura-de-querencia-mt	ea
+querencia	Querência				0					vazio
 reserva-do-cabacal	Reserva do Cabaçal				0					vazio
 ribeirao-cascalheira	Ribeirão Cascalheira				0					vazio
 ribeiraozinho	Ribeirãozinho				0					vazio
@@ -362,7 +360,6 @@ varzea-grande	Várzea Grande	Prefeitura de Várzea Grande	Vários Cargos	Fundame
 varzea-grande	Várzea Grande	Prefeitura de Várzea Grande	Vários Cargos	Médio / Técnico / Superior	0			2025-11-30	prefeitura-de-varzea-grande-mt-abre-processo-seletivo-para-cadastro-de-reserva-em-diversas-areas	ea
 varzea-grande	Várzea Grande	UFMT - Universidade Federal de Mato Grosso	Professor Substituto - Ciência da Computação	Superior	1			2025-11-18	ufmt-lanca-edital-de-processo-seletivo-no-campus-de-varzea-grande	ea
 varzea-grande	Várzea Grande	Prefeitura de Várzea Grande	Vários Cargos	Médio / Técnico / Superior	2946			2025-11-09	prefeitura-de-varzea-grande-mt-abre-2946-vagas-em-novo-processo-seletivo	ea
-varzea-grande	Várzea Grande	UFMT - Universidade Federal de Mato Grosso - Várzea Grande	Professor Substituto (Engenharia de Transportes)	Superior	1			2025-10-17	ufmt-abre-edital-de-processo-seletivo-no-campus-de-varzea-grande	ea
 vera	Vera	Prefeitura de Vera	Monitor Educacional, Monitor de Creche, Monitor de Transporte Escolar	Médio / Superior	103			2026-05-08	prefeitura-de-vera-mt-reabre-inscricoes-de-processo-seletivo-para-diversos-cargos	ea
 vera	Vera	Prefeitura de Vera	Vários Cargos	Médio / Superior	34			2026-02-05	prefeitura-de-vera-mt-abre-processo-seletivo-com-34-vagas-na-area-da-educacao	ea
 vera	Vera	Prefeitura de Vera - Mato Grosso	Vários Cargos	Médio / Superior	50			2026-01-05	prefeitura-de-vera-mt-divulga-dois-editais-de-processos-seletivos	ea

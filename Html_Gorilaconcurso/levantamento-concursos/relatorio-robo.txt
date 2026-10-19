@@ -1,11 +1,14 @@
-ROBÔ DO GORILA — 15/10/2026 23:34 (horário de Brasília)
+ROBÔ DO GORILA — 18/10/2026 21:38 (horário de Brasília) — coleta COMPLETA (semanal)
+coleta completa: 27 cidades com erro na 1ª passada
+2ª passada: 27 cidades ainda com erro
+cidades trocadas: 11638 concursos (antes 11749)
 CONFERIR: data de inscrição impossível na fonte (2029-09-29), não entrou: ifmg-divulga-retificacoes-do-concurso-publico-para-professores-do-ensino-basico-tecnico-e-tecnologico
-PCI hoje: 622 concursos com inscrições abertas
-novos concursos: 1 em cidades + 15 estaduais/sem cidade · 1 com data mudada (prorrogação/retificação)
-notícias: parte 0 pronta (17 nesta rodada)
+PCI hoje: 587 concursos com inscrições abertas
+novos concursos: 0 em cidades + 2 estaduais/sem cidade · 0 com data mudada (prorrogação/retificação)
+notícias: parte 0 pronta (39 nesta rodada)
 AVISO taxa impossível (R$ 4231.6), não mostrada: uem-pr-abre-selecao-para-tecnico-em-laboratorio-com-salario-de-4-2-mil
 AVISO taxa impossível (R$ 2125.02), não mostrada: prefeitura-de-cajamar-sp-retifica-um-dos-editais-de-concursos-publicos
-concursos nas cidades: 11748 (no ar: 11747) · detalhes: 11842 (no ar: 11826)
-levantamento estadual/municipal: 803 (no ar: 788)
-(sem Node: sintaxe não conferida aqui)
+concursos nas cidades: 11638 (no ar: 11748) · detalhes: 11729 (no ar: 11842)
+levantamento estadual/municipal: 805 (no ar: 803)
+sintaxe conferida com o Node em 55 arquivos
 OK: pode publicar

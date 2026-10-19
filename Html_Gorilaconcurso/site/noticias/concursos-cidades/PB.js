@@ -1,6 +1,6 @@
 /* Concursos por cidade — PB. Fonte: PCI Concursos (pciconcursos.com.br/concursos/pb/<cidade>), últimos 12 meses.
-   Gerado por levantamento-concursos/gerar-cidades.ps1 em 15/10/2026. Não editar à mão. */
-CONC_CIDADES['PB'] = { atualizado:'15/10/2026', c:{
+   Gerado por levantamento-concursos/gerar-cidades.ps1 em 18/10/2026. Não editar à mão. */
+CONC_CIDADES['PB'] = { atualizado:'18/10/2026', c:{
 '2500106':[["Prefeitura de Água Branca","Vários Cargos","Médio / Superior",24,"","","2026-11-15","prefeitura-de-agua-branca-pb-republica-editais-de-concursos-publicos"]],
 '2500601':[["Prefeitura de Alhandra","Agente Comunitário de Saúde, Agente de Combate às Endemias","Ensino Médio",12,"","","2025-10-31","prefeitura-de-alhandra-pb-publica-edital-de-processo-seletivo-para-cargos-de-nivel-medio"]],
 '2500809':[["Prefeitura de Araçagi","Vários Cargos","Fundamental / Médio / Técnico / Superior",72,"","","2026-03-02","prefeitura-de-aracagi-pb-retifica-processo-seletivo-com-salarios-de-ate-7-mil"]],

@@ -1,6 +1,5 @@
 angra-dos-reis	Angra dos Reis	PMAR - Prefeitura de Angra dos Reis	Agente Tributário	Superior	20			2026-04-29	prefeitura-de-angra-dos-reis-rj-abre-concurso-com-20-vagas-para-agente-tributario	ea
 angra-dos-reis	Angra dos Reis	Prefeitura de Angra dos Reis	Docente I, Docente II - Arte, Berçarista	Médio / Superior	187			2025-12-30	prefeitura-de-angra-dos-reis-rj-abre-inscricoes-para-tres-processos-seletivos	ea
-angra-dos-reis	Angra dos Reis	Câmara de Angra dos Reis	Vários Cargos	Médio / Técnico / Superior	23			2025-10-17	camara-de-angra-dos-reis-rj-prorroga-inscricoes-de-concurso-publico	ea
 aperibe	Aperibé				0					vazio
 araruama	Araruama				0					vazio
 areal	Areal				0					vazio
@@ -44,7 +43,7 @@ conceicao-de-macabu	Conceição de Macabu				0					vazio
 cordeiro	Cordeiro				0					vazio
 duas-barras	Duas Barras				0					vazio
 duque-de-caxias	Duque de Caxias	SMASDH - Secretaria Municipal de Assistência Social e Direitos Humanos de Duque de Caxias	Vários Cargos	Fundamental / Médio / Superior	200			2026-05-06	prefeitura-de-duque-de-caxias-rj-abre-selecao-para-profissionais-de-diversas-areas	ea
-engenheiro-paulo-de-frontin	Engenheiro Paulo de Frontin	Prefeitura de Engenheiro Paulo de Frontin	Vários Cargos	Fundamental / Médio / Técnico / Superior	143			2026-10-15	prefeitura-de-engenheiro-paulo-de-frontin-rj-prorroga-inscricoes-para-concurso-publico	na
+engenheiro-paulo-de-frontin	Engenheiro Paulo de Frontin	Prefeitura de Engenheiro Paulo de Frontin	Vários Cargos	Fundamental / Médio / Técnico / Superior	143			2026-10-15	prefeitura-de-engenheiro-paulo-de-frontin-rj-prorroga-inscricoes-para-concurso-publico	ea
 guapimirim	Guapimirim	Prefeitura de Guapimirim	Professor II, Professor I	Médio / Superior	125			2026-09-20	prefeitura-de-guapimirim-rj-prorroga-inscricoes-do-concurso-publico-para-professores	ea
 guapimirim	Guapimirim	ICMBio - Instituto Chico Mendes de Conservação da Biodiversidade	Agente Temporário Ambiental	Fundamental	0	CR		2026-05-13	icmbio-rj-abre-processo-seletivo-para-agentes-temporarios-ambientais-em-guapimirim	ea
 guapimirim	Guapimirim	ICMBio - Instituto Chico Mendes de Conservação da Biodiversidade	Agente Temporário Ambiental	Fundamental	0	CR		2026-05-13	icmbio-rj-abre-processo-seletivo-para-agente-temporario-ambiental-em-guapimirim	ea
@@ -141,7 +140,8 @@ rio-de-janeiro	Rio de Janeiro	UERJ - Universidade do Estado do Rio de Janeiro	Pr
 rio-de-janeiro	Rio de Janeiro	UERJ - Universidade do Estado do Rio de Janeiro	Professor Adjunto	Superior	1			2026-10-23	uerj-abre-vaga-para-professor-adjunto-no-instituto-de-nutricao	na
 rio-de-janeiro	Rio de Janeiro	SME - Secretaria Municipal de Educação do Rio de Janeiro	Professor	Superior	103			2026-10-20	secretaria-municipal-de-educacao-do-rio-de-janeiro-rj-abre-processo-seletivo-para-professores	na
 rio-de-janeiro	Rio de Janeiro	UERJ - Universidade do Estado do Rio de Janeiro	Professor Adjunto	Superior	2			2026-10-19	uerj-abre-concursos-para-professores-adjuntos-no-departamento-de-engenharia-eletrica	na
-rio-de-janeiro	Rio de Janeiro	UERJ - Universidade do Estado do Rio de Janeiro	Professor Adjunto	Superior	1			2026-10-16	uerj-abre-vaga-para-professor-adjunto-no-instituto-de-letras	na
+rio-de-janeiro	Rio de Janeiro	RioSaúde - Empresa Pública de Saúde do Rio de Janeiro S/A	Médico	Superior	23			2026-10-19	riosaude-rj-reabre-inscricoes-de-processo-seletivo-para-cargos-especificos-de-medicos	na
+rio-de-janeiro	Rio de Janeiro	UERJ - Universidade do Estado do Rio de Janeiro	Professor Adjunto	Superior	1			2026-10-16	uerj-abre-vaga-para-professor-adjunto-no-instituto-de-letras	ea
 rio-de-janeiro	Rio de Janeiro	Riosaúde - Empresa Pública de Saúde do Rio de Janeiro S/A	Enfermeiro Generalista, Técnico em Radiologia	Técnico / Superior	51			2026-10-13	riosaude-rj-abre-processos-seletivos-para-enfermeiros-e-tecnicos-em-radiologia	ea
 rio-de-janeiro	Rio de Janeiro	SEPLAG - Secretaria de Estado de Planejamento e Gestão	Especialista em Políticas Públicas e Gestão Governamental, Analista de Planejamento e Orçamento	Superior	60			2026-10-08	seplag-rj-publica-retificacoes-do-concurso-com-60-vagas-para-cargos-de-nivel-superior	ea
 rio-de-janeiro	Rio de Janeiro	UERJ - Universidade do Estado do Rio de Janeiro	Professor Adjunto	Superior	1			2026-10-01	uerj-abre-concurso-publico-para-professor-adjunto-no-instituto-de-fisica	ea
@@ -151,7 +151,6 @@ rio-de-janeiro	Rio de Janeiro	CRA/RJ - Conselho Regional de Administração do R
 rio-de-janeiro	Rio de Janeiro	UFRJ - Universidade Federal do Rio de Janeiro	Professor da Carreira do Magistério Superior	Superior	1			2026-09-27	ufrj-abre-concurso-publico-para-professor-na-area-de-canto-coral	ea
 rio-de-janeiro	Rio de Janeiro	CMTC - MOBI-Rio - Companhia Municipal de Transportes Coletivos	Vários Cargos	Fundamental / Médio / Técnico / Superior	19			2026-09-25	mobi-rio-rj-abre-processo-seletivo-com-remuneracoes-de-ate-5960	ea
 rio-de-janeiro	Rio de Janeiro	RIOSAUDE - Empresa Pública de Saúde do Rio de Janeiro S.A.	Técnico de Enfermagem	Ensino Técnico	65			2026-09-22	riosaude-rj-abre-processo-seletivo-com-65-vagas-para-tecnicos-de-enfermagem	ea
-rio-de-janeiro	Rio de Janeiro	RioSaúde - Empresa Pública de Saúde do Rio de Janeiro S/A	Médico	Superior	23			2026-09-13	riosaude-rj-abre-processo-seletivo-para-a-contratacao-de-medicos	ea
 rio-de-janeiro	Rio de Janeiro	UERJ - Universidade do Estado do Rio de Janeiro	Residente em Enfermagem	Superior	63			2026-09-10	uerj-rj-abre-selecao-para-residencia-em-enfermagem	ea
 rio-de-janeiro	Rio de Janeiro	MOBI-Rio - Companhia Municipal de Transportes Coletivos	Médico do Trabalho	Superior	1			2026-09-09	mobi-rio-rj-abre-processo-seletivo-para-medico-do-trabalho	ea
 rio-de-janeiro	Rio de Janeiro	Marinha do Brasil - Comando do 1º Distrito Naval	Vários Cargos	Superior	25			2026-09-08	comando-do-1-distrito-naval-da-marinha-rj-abre-processo-seletivo-para-oficiais-de-3-classe	ea
@@ -294,13 +293,11 @@ rio-de-janeiro	Rio de Janeiro	Prefeitura do Rio de Janeiro	Gestor de Segurança 
 rio-de-janeiro	Rio de Janeiro	UERJ - Universidade do Estado do Rio de Janeiro	Professor Adjunto (Oftalmologia)	Superior	1			2025-10-27	uerj-promove-concurso-publico-para-professor-adjunto-na-area-de-oftalmologia	ea
 rio-de-janeiro	Rio de Janeiro	UERJ - Universidade do Estado do Rio de Janeiro	Professor Assistente - Letras - Língua Japonesa	Superior	2			2025-10-24	uerj-publica-edital-de-concurso-publico-para-cargo-de-professor-assistente	ea
 rio-de-janeiro	Rio de Janeiro	UERJ - Universidade do Estado do Rio de Janeiro	Professor Assistente	Superior	2			2025-10-22	uerj-lanca-edital-de-concurso-publico-para-cargo-de-professor-assistente	ea
-rio-de-janeiro	Rio de Janeiro	UNIRIO - Universidade Federal do Estado do Rio de Janeiro	Professor Substituto	Superior	3			2025-10-17	unirio-publica-dois-processos-seletivos-para-professores-substitutos-na-area-de-museologia	ea
-rio-de-janeiro	Rio de Janeiro	UFF - Universidade Federal Fluminense	Professor Substituto - Contabilidade Tributária	Superior	1			2025-10-16	uff-rj-abre-processo-seletivo-para-professor-substituto-de-contabilidade-tributaria	ea
 santa-maria-madalena	Santa Maria Madalena				0					vazio
 santo-antonio-de-padua	Santo Antônio de Pádua	Prefeitura de Santo Antônio de Pádua	Vários Cargos	Fundamental / Médio / Técnico / Superior	420			2026-05-18	prefeitura-de-santo-antonio-de-padua-rj-retifica-editais-de-concursos-publicos	ea
 sao-fidelis	São Fidélis				0					vazio
 sao-francisco-de-itabapoana	São Francisco de Itabapoana				0					vazio
-sao-goncalo	São Gonçalo				0					vazio
+sao-goncalo	São Gonçalo	Prefeitura de São Gonçalo	Guarda Municipal Nível II, Guarda Municipal Nível III - Psicólogo	Médio / Superior	101			2026-11-18	prefeitura-de-sao-goncalo-rj-abre-concursos-para-guardas-municipais	da
 sao-joao-da-barra	São João da Barra	Prefeitura de São João da Barra	Guarda-Vidas	Fundamental	112			2025-11-25	prefeitura-de-sao-joao-da-barra-rj-abre-processo-seletivo-para-guarda-vidas	ea
 sao-joao-de-meriti	São João de Meriti				0					vazio
 sao-jose-de-uba	São José de Ubá				0					vazio
@@ -348,4 +345,3 @@ volta-redonda	Volta Redonda	UFF - Universidade Federal Fluminense	Professor Subs
 volta-redonda	Volta Redonda	Prefeitura de Volta Redonda	Vários Cargos	Médio / Superior	19			2026-01-12	prefeitura-de-volta-redonda-rj-abre-processo-seletivo-para-profissionais-da-area-da-educacao	ea
 volta-redonda	Volta Redonda	UFF - Universidade Federal Fluminense	Professor Substituto - Políticas Públicas e Gestão Pública	Superior	1			2025-12-09	uff-rj-abre-processo-seletivo-no-departamento-multidisciplinar-de-volta-redonda	ea
 volta-redonda	Volta Redonda	Câmara de Volta Redonda	Agente Legislativo I, Agente Contábil do Legislativo I	Médio / Superior	11			2025-11-30	camara-de-volta-redonda-rj-retifica-concurso-publico-com-vagas-para-agente-legislativo-e-agente-contabil	ea
-volta-redonda	Volta Redonda	HSJB - Hospital São João Batista	Enfermeiro, Técnico em Enfermagem	Técnico / Superior	300			2025-10-16	hospital-sao-joao-batista-de-volta-redonda-rj-abre-concurso-publico-com-300-vagas	ea

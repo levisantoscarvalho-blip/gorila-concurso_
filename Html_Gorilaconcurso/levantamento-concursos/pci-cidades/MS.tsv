@@ -99,9 +99,8 @@ campo-grande	Campo Grande	IFMS - Instituto Federal de Educação, Ciência e Tec
 campo-grande	Campo Grande	Prefeitura de Campo Grande	Vários Cargos	Superior	0			2025-11-13	prefeitura-de-campo-grande-ms-divulga-processo-seletivo-para-cargo-de-professor	ea
 campo-grande	Campo Grande	MSGÁS - Companhia de Gás do Estado de Mato Grosso do Sul	Vários Cargos	Médio / Técnico / Superior	3			2025-11-07	msgas-prorroga-inscricoes-de-concurso-publico-com-salarios-de-ate-10-6-mil	ea
 campo-grande	Campo Grande	Prefeitura de Campo Grande	Vários Cargos	Fundamental / Médio	65			2025-10-24	prefeitura-de-campo-grande-ms-divulga-processo-seletivo-com-65-vagas	ea
-campo-grande	Campo Grande	Prefeitura de Campo Grande	Coveiro, Pedreiro	Fundamental	0			2025-10-16	prefeitura-de-campo-grande-ms-publica-edital-de-processo-seletivo-para-formar-cadastro-reserva	ea
-caracol	Caracol	Prefeitura de Caracol	Psicólogo, Assistente Social, Professor	Superior	2			2026-10-16	prefeitura-de-caracol-ms-abre-processo-seletivo-para-profissionais-de-nivel-superior	na
-caracol	Caracol	Prefeitura de Caracol	Vários Cargos	Fundamental / Médio	65			2026-10-15	prefeitura-de-caracol-ms-abre-selecao-para-cargos-na-educacao	na
+caracol	Caracol	Prefeitura de Caracol	Psicólogo, Assistente Social, Professor	Superior	2			2026-10-16	prefeitura-de-caracol-ms-abre-processo-seletivo-para-profissionais-de-nivel-superior	ea
+caracol	Caracol	Prefeitura de Caracol	Vários Cargos	Fundamental / Médio	65			2026-10-15	prefeitura-de-caracol-ms-abre-selecao-para-cargos-na-educacao	ea
 caracol	Caracol	Prefeitura de Caracol	Motorista, Auxiliar de Serviços Gerais	Fundamental	2			2026-08-19	prefeitura-de-caracol-ms-abre-selecao-para-motorista-e-auxiliar-de-servicos-gerais	ea
 caracol	Caracol	Prefeitura de Caracol	Farmacêutico	Superior	1			2026-07-10	prefeitura-de-caracol-ms-abre-selecao-para-o-cargo-de-farmaceutico	ea
 caracol	Caracol	Prefeitura de Caracol	Motorista do Transporte Escolar	Fundamental	0	CR		2026-06-12	prefeitura-de-caracol-ms-abre-processo-seletivo-para-o-cargo-de-motorista-do-transporte-escolar	ea
@@ -115,7 +114,6 @@ caracol	Caracol	Prefeitura de Caracol	Vários Cargos	Fundamental / Superior	24		
 caracol	Caracol	Prefeitura de Caracol	Vários Cargos	Fundamental	44			2025-11-28	prefeitura-de-caracol-ms-abre-44-vagas-em-novo-processo-seletivo	ea
 caracol	Caracol	Prefeitura de Caracol	Vários Cargos	Fundamental / Médio / Superior	6			2025-11-14	prefeitura-de-caracol-ms-abre-seis-vagas-em-novo-processo-seletivo	ea
 caracol	Caracol	Prefeitura de Caracol	Vários Cargos	Superior	81			2025-11-14	prefeitura-de-caracol-ms-publica-retificacao-de-processo-seletivo	ea
-caracol	Caracol	Prefeitura de Caracol	Psicólogo	Superior	1			2025-10-15	prefeitura-de-caracol-ms-publica-edital-de-processo-seletivo-para-cargo-de-psicologo	ea
 cassilandia	Cassilândia	UEMS - Universidade Estadual de Mato Grosso do Sul	Docente	Superior	0	CR		2026-08-10	uems-abre-processo-seletivo-para-docente-na-area-de-zootecnia-em-cassilandia	ea
 cassilandia	Cassilândia	UEMS - Universidade Estadual de Mato Grosso do Sul	Docente	Superior	0			2026-06-08	uems-abre-selecao-para-docente-de-matematica-em-cassilandia	ea
 cassilandia	Cassilândia	Prefeitura de Cassilândia	Operador de Trator Agrícola	Fundamental	0			2026-03-10	prefeitura-de-cassilandia-ms-abre-selecao-para-operador-de-trator-agricola	ea
@@ -157,7 +155,6 @@ eldorado	Eldorado	Prefeitura de Eldorado	Trabalhador Braçal	Fundamental	4			202
 eldorado	Eldorado	Prefeitura de Eldorado	Motorista, Auxiliar de Serviços Gerais Ambulatorial	Fundamental	6			2026-02-13	prefeitura-de-eldorado-ms-abre-selecao-para-cargos-de-nivel-fundamental	ea
 eldorado	Eldorado	Prefeitura de Eldorado	Auxiliar de Serviços Gerais, Lavador de Veículos, Motorista de Transporte Escolar	Fundamental	2			2026-01-28	prefeitura-de-eldorado-ms-divulga-duas-vagas-em-novo-processo-seletivo	ea
 eldorado	Eldorado	Prefeitura de Eldorado	Vários Cargos	Fundamental / Médio / Técnico / Superior	5			2025-12-04	prefeitura-de-eldorado-ms-abre-inscricoes-para-edital-de-processo-seletivo	ea
-eldorado	Eldorado	Prefeitura de Eldorado	Motorista, Fisioterapeuta	Fundamental / Superior	2			2025-10-17	prefeitura-de-eldorado-ms-publica-processo-seletivo-para-motorista-e-fisioterapeuta	ea
 fatima-do-sul	Fátima do Sul				0					vazio
 figueirao	Figueirão	Prefeitura de Figueirão	Vários Cargos	Fundamental / Técnico / Superior	8			2026-09-18	prefeitura-de-figueirao-ms-abre-processo-seletivo-com-salarios-de-ate-9540	ea
 figueirao	Figueirão	Prefeitura de Figueirão	Vários Cargos	Fundamental / Médio / Técnico / Superior	15			2026-07-20	prefeitura-de-figueirao-ms-abre-processo-seletivo-com-salarios-de-ate-6971	ea
@@ -223,7 +220,6 @@ laguna-carapa	Laguna Carapã	Prefeitura de Laguna Carapã	Vários Cargos	Fundame
 laguna-carapa	Laguna Carapã	Prefeitura de Laguna Carapã	Fisioterapeuta	Superior	1			2026-04-16	prefeitura-de-laguna-carapa-ms-abre-selecao-para-fisioterapeuta	ea
 laguna-carapa	Laguna Carapã	Prefeitura de Laguna Carapã	Técnico em Enfermagem	Ensino Técnico	1			2026-03-10	prefeitura-de-laguna-carapa-ms-abre-processo-seletivo-para-tecnico-em-enfermagem	ea
 laguna-carapa	Laguna Carapã	Prefeitura de Laguna Carapã	Vários Cargos	Médio / Superior	43			2025-12-09	prefeitura-de-laguna-carapa-ms-abre-44-vagas-em-novo-processo-seletivo	ea
-laguna-carapa	Laguna Carapã	Prefeitura de Laguna Carapã	Trabalhador Braçal	Fundamental	3			2025-10-16	prefeitura-de-laguna-carapa-ms-abre-novo-processo-seletivo-para-trabalhador-bracal	ea
 maracaju	Maracaju				0					vazio
 miranda	Miranda	Prefeitura de Miranda	Vários Cargos	Médio / Superior	0			2025-12-12	prefeitura-de-miranda-ms-abre-processo-seletivo-para-professores	ea
 mundo-novo	Mundo Novo	UEMS - Universidade Estadual de Mato Grosso do Sul	Docente de Agronomia	Superior	0	CR		2026-08-10	uems-abre-selecao-para-docente-na-area-de-agronomia-em-mundo-novo	ea
@@ -252,7 +248,6 @@ navirai	Naviraí	Prefeitura de Naviraí	Operador de Serviços Públicos	Fundamen
 navirai	Naviraí	IFMS - Instituto Federal de Educação, Ciência e Tecnologia - Naviraí	Professor Substituto de História	Superior	1			2025-12-07	ifms-processo-seletivo-para-professor-substituto-de-historia-e-divulgado-em-navirai	ea
 navirai	Naviraí	Prefeitura de Naviraí	Médico II, Médico do Trabalho, Auxiliar de Enfermagem	Médio / Superior	0			2025-11-19	prefeitura-de-navirai-ms-abre-novo-edital-de-processo-seletivo	ea
 navirai	Naviraí	Prefeitura de Naviraí	Pedreiro	Fundamental	2			2025-11-13	processo-seletivo-para-pedreiro-e-divulgado-pela-prefeitura-de-navirai-ms	ea
-navirai	Naviraí	Prefeitura de Naviraí	Engenheiro Eletricista	Superior	1			2025-10-15	prefeitura-de-navirai-ms-republica-edital-de-processo-seletivo-para-engenheiro-eletricista	ea
 nioaque	Nioaque				0					vazio
 nova-alvorada-do-sul	Nova Alvorada do Sul	Prefeitura de Nova Alvorada do Sul	Vários Cargos	Fundamental / Médio / Superior	0	CR		2026-11-06	prefeitura-de-nova-alvorada-do-sul-ms-abre-selecao-para-a-secretaria-de-educacao	na
 nova-alvorada-do-sul	Nova Alvorada do Sul	Prefeitura de Nova Alvorada do Sul	Fiscal de Obras e Posturas, Fiscal de Tributos, Procurador do Município	Médio / Superior	4			2026-06-01	prefeitura-de-nova-alvorada-do-sul-ms-abre-concurso-publico-com-salarios-de-ate-13483	ea
@@ -291,7 +286,6 @@ pedro-gomes	Pedro Gomes	Prefeitura de Pedro Gomes	Operador de Máquinas Pesadas,
 pedro-gomes	Pedro Gomes	Prefeitura de Pedro Gomes	Motorista, Professor	Fundamental / Superior	3			2026-03-13	prefeitura-de-pedro-gomes-ms-abre-selecao-para-nivel-fundamental-e-superior	ea
 pedro-gomes	Pedro Gomes	Prefeitura de Pedro Gomes	Vários Cargos	Fundamental / Médio / Superior	10			2026-02-20	prefeitura-de-pedro-gomes-ms-abre-processo-seletivo-com-vagas-para-diversos-cargos	ea
 pedro-gomes	Pedro Gomes	Prefeitura de Pedro Gomes	Vários Cargos	Fundamental / Médio / Superior	0			2025-12-23	prefeitura-de-pedro-gomes-ms-abre-novo-processo-seletivo	ea
-pedro-gomes	Pedro Gomes	Prefeitura de Pedro Gomes	Psicólogo, Médico	Superior	1			2025-10-16	prefeitura-de-pedro-gomes-ms-abre-novo-processo-seletivo-com-salarios-de-ate-4-6-mil	ea
 ponta-pora	Ponta Porã	Câmara de Ponta Porã	Vários Cargos	Médio / Técnico / Superior	19			2026-10-01	camara-de-ponta-pora-ms-retifica-edital-de-concurso-publico	ea
 ponta-pora	Ponta Porã	IFMS - Instituto Federal de Educação, Ciência e Tecnologia de Mato Grosso do Sul	Professor Substituto	Superior	1			2026-06-09	ifms-publica-edital-de-processo-seletivo-para-docente-substituto-de-administracao-em-ponta-pora	ea
 ponta-pora	Ponta Porã	IFMS - Instituto Federal de Educação, Ciência e Tecnologia de Mato Grosso do Sul	Professor Substituto	Superior	2			2026-04-12	ifms-abre-selecao-para-professores-substitutos-em-ponta-pora	ea
