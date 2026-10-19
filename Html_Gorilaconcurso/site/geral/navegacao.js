@@ -94,7 +94,13 @@ async function trIrInicio(){
     document.getElementById('app-shell').style.display='none';
     mostrarAuth();
   } else if(window.__logado){
-    try{ await sairDaSecao(); }catch(e){ console.log('erro ao voltar à tela inicial:', e && e.message); }
+    // LOGADO (conta na nuvem, 19/10/2026): mostra a página principal SEM sair da conta. Antes chamava sairDaSecao —
+    // com a nuvem isso desconectava a pessoa de verdade (bug relatado pelo Levi). Para sair, só o botão "Sair".
+    document.getElementById('home-screen').style.display='none';
+    document.getElementById('app-shell').style.display='none';
+    document.getElementById('auth-screen').style.display='flex'; auFecharLogin();
+    if(typeof renderInicio==='function') renderInicio(document.getElementById('au-principal'));
+    window.__naPrincipal = true;
   } else {
     try{ auFecharLogin(); }catch(e){}
   }
@@ -257,6 +263,8 @@ function trAbrirNoticias(){
   mostrarNoticias();
 }
 function fecharTudo(){
+  // logado vendo a página principal (trIrInicio) e abriu outra tela: a página principal sai da frente
+  if(window.__naPrincipal){ window.__naPrincipal = false; if(!window.__guest){ const a=document.getElementById('auth-screen'); if(a) a.style.display='none'; } }
   if(typeof cfgEsconder==='function') cfgEsconder();   // abriu outra tela: as Configurações (e a prévia de tema Pro) fecham
   document.querySelectorAll('.modal-overlay.open').forEach(m=>m.classList.remove('open'));
   document.querySelectorAll('.cm-tour,.cm-tour-luz').forEach(e=>e.remove());   // balões do tour de Notícias
