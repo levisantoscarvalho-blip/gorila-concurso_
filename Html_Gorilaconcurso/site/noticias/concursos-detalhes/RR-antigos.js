@@ -1,0 +1,7 @@
+/* Detalhes das notícias de concursos ANTIGOS — RR (inscrições encerradas há mais de 12 meses). Junta-se a CONC_DETALHES['RR']. Gerado por gerar-detalhes.ps1. Não editar à mão. */
+Object.assign(CONC_DETALHES['RR'] = CONC_DETALHES['RR'] || {}, {
+'prefeitura-de-boa-vista-rr-lanca-edital-de-concurso-publico-com-diversas-vagas':{"p":"2025-08-11","ti":"Prefeitura de Boa Vista - RR lança edital de Concurso Público com diversas vagas","smin":1971.03,"smax":7506.17,"pr":"2025-11-02","v":2,"t":"concurso","e":["EDITAL DE ABERTURA Nº 01/2025"]},
+'prefeitura-de-bonfim-rr-publica-processo-seletivo-para-o-samu':{"p":"2025-10-14","ti":"Prefeitura de Bonfim - RR publica Processo Seletivo para o SAMU","cg":["Condutor de Ambulância (7 vagas)","Técnico de Enfermagem (7 vagas)","Telefonista / Auxiliar de Regulação Médica (TARM) (2 vagas)","Auxiliar de Serviços Gerais (1 vaga)"],"smin":1520,"smax":3022.73,"t":"seletivo","e":["EDITAL DE ABERTURA Nº 01/2025"]},
+'icmbio-lanca-processo-seletivo-para-agentes-temporarios-ambientais-em-roraima':{"p":"2025-09-11","ti":"ICMBio lança Processo Seletivo para Agentes Temporários Ambientais em Roraima","v":1,"t":"seletivo","e":["EDITAL DE ABERTURA Nº 01/2025"]},
+'icmbio-abre-edital-de-processo-seletivo-para-a-cidade-de-caracarai-rr':{"p":"2025-09-16","ti":"ICMBio abre edital de Processo Seletivo para a cidade de Caracaraí - RR","cg":["Prevenção e combate a incêndios I (brigadista) (36 vagas)","Prevenção e combate a incêndios II (chefe de esquadrão) (5 vagas)"],"v":1,"t":"seletivo","e":["EDITAL DE ABERTURA 2025"]},
+});

@@ -1,4 +1,4 @@
-/* Detalhes das notícias de concursos — MT (fatos extraídos das notícias do PCI Concursos; não é o texto delas). Gerado por gerar-detalhes.ps1. Não editar à mão. */
+/* Detalhes das notícias de concursos — MT, últimos 12 meses (fatos extraídos das notícias do PCI Concursos; não é o texto delas). Gerado por gerar-detalhes.ps1. Não editar à mão. */
 CONC_DETALHES['MT'] = {
 'prefeitura-de-acorizal-mt-abre-selecao-para-professor-alfabetizador':{"p":"2026-05-06","ti":"Prefeitura de Acorizal - MT abre seleção para Professor Alfabetizador","o":"https://www.acorizal.mt.gov.br/","cg":["Professor Alfabetizador"],"smin":2993.75,"smax":2993.75,"t":"seletivo","e":["EDITAL DE PROCESSO SELETIVO Nº 01/2026"]},
 'prefeitura-de-acorizal-mt-abre-processo-seletivo-para-diversas-areas':{"p":"2025-12-19","ti":"Prefeitura de Acorizal - MT abre Processo Seletivo para diversas áreas","o":"https://www.acorizal.mt.gov.br/","cg":["Professor;","Técnico em Desenvolvimento Infantil;","Cuidador de Alunos com Deficiência;","Técnico em Nutrição Escolar;","Técnico em Manutenção e Infraestrutura (serviços gerais)."],"smin":1590,"smax":2993.75,"t":"seletivo","e":["EDITAL DE ABERTURA Nº 01/2025"]},

@@ -1,4 +1,4 @@
-/* Detalhes das notícias de concursos — DF (fatos extraídos das notícias do PCI Concursos; não é o texto delas). Gerado por gerar-detalhes.ps1. Não editar à mão. */
+/* Detalhes das notícias de concursos — DF, últimos 12 meses (fatos extraídos das notícias do PCI Concursos; não é o texto delas). Gerado por gerar-detalhes.ps1. Não editar à mão. */
 CONC_DETALHES['DF'] = {
 'associacao-das-pioneiras-sociais-abre-selecao-para-medico-neurofisiologista':{"p":"2026-08-21","ti":"Associação das Pioneiras Sociais abre seleção para Médico Neurofisiologista","o":"https://www.sarah.br/","b":"https://www.sarah.br/rh","cg":["Médico - especialidade em Neurofisiologia (1 vaga)"],"smin":16945.71,"smax":32348.41,"tmin":160,"tmax":160,"pr":"2026-11-08","v":2,"t":"seletivo","e":["EDITAL Nº 9/2026"]},
 'igesdf-abre-selecao-para-assistente-social-com-remuneracao-de-3639':{"p":"2026-09-14","ti":"IGESDF abre seleção para Assistente Social com remuneração de R$ 3.639,02","o":"https://igesdf.org.br/","b":"https://processoseletivo.igesdf.org.br/","cg":["Assistente Social - Psicossocial (cadastro de reserva)"],"smin":3639.02,"smax":3639.02,"t":"seletivo","e":["EDITAL Nº 99/2026"]},

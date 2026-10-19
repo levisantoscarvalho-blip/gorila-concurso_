@@ -1,14 +1,25 @@
-ROBÔ DO GORILA — 18/10/2026 21:38 (horário de Brasília) — coleta COMPLETA (semanal)
+ROBÔ DO GORILA — 18/10/2026 22:30 (horário de Brasília) — coleta COMPLETA (semanal)
 coleta completa: 27 cidades com erro na 1ª passada
 2ª passada: 27 cidades ainda com erro
-cidades trocadas: 11638 concursos (antes 11749)
+cidades trocadas: 142310 concursos (antes 11638)
 CONFERIR: data de inscrição impossível na fonte (2029-09-29), não entrou: ifmg-divulga-retificacoes-do-concurso-publico-para-professores-do-ensino-basico-tecnico-e-tecnologico
 PCI hoje: 587 concursos com inscrições abertas
-novos concursos: 0 em cidades + 2 estaduais/sem cidade · 0 com data mudada (prorrogação/retificação)
-notícias: parte 0 pronta (39 nesta rodada)
+novos concursos: 0 em cidades + 0 estaduais/sem cidade · 0 com data mudada (prorrogação/retificação)
+notícias: parte 0 pronta (2500 nesta rodada, faltam 127002 para as próximas)
+AVISO GO 17232 vagas sem conferência, ficou 'a definir': seduce-go-retifica-um-dos-dois-processos-seletivos-com-mais-de-17-2-mil-vagas
+AVISO GO 7453 vagas sem conferência, ficou 'a definir': valparaiso-de-goias-go-prorroga-inscricoes-e-retifica-edital-001-2014
+MG: 19560 concursos em 839 cidades · SEM CÓDIGO IBGE: Barão de Monte Alto
+MT: 5433 concursos em 141 cidades · SEM CÓDIGO IBGE: Santo Antônio do Leverger
+AVISO RJ 5146 vagas sem conferência, ficou 'a definir': prefeitura-de-belford-roxo-rj-anuncia-processo-seletivo-com-mais-de-5-mil-vagas
+AVISO RJ 7617 vagas sem conferência, ficou 'a definir': 7617-vagas-na-prefeitura-de-nova-friburgo-rj
+RN: 2095 concursos em 151 cidades · SEM CÓDIGO IBGE: Açu
+AVISO RO 5089 vagas sem conferência, ficou 'a definir': prefeitura-de-porto-velho-ro-oferece-5089-vagas-de-ate-2339
+RR: 379 concursos em 14 cidades · SEM CÓDIGO IBGE: São Luiz
+SE: 359 concursos em 56 cidades · SEM CÓDIGO IBGE: Gracho Cardoso
 AVISO taxa impossível (R$ 4231.6), não mostrada: uem-pr-abre-selecao-para-tecnico-em-laboratorio-com-salario-de-4-2-mil
 AVISO taxa impossível (R$ 2125.02), não mostrada: prefeitura-de-cajamar-sp-retifica-um-dos-editais-de-concursos-publicos
-concursos nas cidades: 11638 (no ar: 11748) · detalhes: 11729 (no ar: 11842)
-levantamento estadual/municipal: 805 (no ar: 803)
-sintaxe conferida com o Node em 55 arquivos
+AUDITORIA: 10 erros, 27 para conferir, 1 info (ver auditoria.txt) — ATENÇÃO: 10 cidades com concursos que o robô não conseguiu ler
+concursos nas cidades: 142294 (no ar: 11638) · detalhes: 14378 (no ar: 11729)
+levantamento estadual/municipal: 805 (no ar: 805)
+sintaxe conferida com o Node em 82 arquivos
 OK: pode publicar
