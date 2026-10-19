@@ -37,9 +37,9 @@ if($Completo){
   $grupos = 0..3 | ForEach-Object { $g = $_; ,@($TODAS_UFS | Where-Object { [array]::IndexOf($TODAS_UFS, $_) % 4 -eq $g }) }
   $jobs = foreach($g in $grupos){ Start-Job -ScriptBlock { param($s,$u,$d,$p,$o) & $s -Ufs $u -Desde $d -PausaMs $p -Dir $o } -ArgumentList $script, $g, $desde, $PausaMs, $novo }
   $saida = $jobs | Wait-Job | Receive-Job; $jobs | Remove-Job
-  Anota "coleta completa: $(@($saida | Where-Object { $_ -match 'ERRO' }).Count) cidades com erro na 1ª passada"
+  Anota "coleta completa: $(@($saida | Where-Object { $_ -cmatch ': ERRO' }).Count) cidades com erro na 1ª passada"   # -cmatch: antes contava as linhas '0 erros' (27, uma por estado) como erro
   $saida2 = & $script -Ufs $TODAS_UFS -Desde $desde -PausaMs $PausaMs -Dir $novo   # 2ª passada: só as que faltaram
-  $ainda = @($saida2 | Where-Object { $_ -match 'ERRO' }); Anota "2ª passada: $($ainda.Count) cidades ainda com erro"
+  $ainda = @($saida2 | Where-Object { $_ -cmatch ': ERRO' }); Anota "2ª passada: $($ainda.Count) cidades ainda com erro"
   # cidade que falhou nas 2 passadas FICA COM OS DADOS DA COLETA ANTERIOR (antes ela sumia do mapa até o domingo seguinte)
   $mantidas = 0
   foreach($uf in $TODAS_UFS){
@@ -163,7 +163,7 @@ if($mudou.Count){
     [IO.File]::WriteAllText($f.FullName, (($ls -join "`n") + "`n"), $utf8)
   }
 }
-$sn = & (Join-Path $dir 'baixar-pci-noticias.ps1') -Parte 0 -Partes 1 -PausaMs $PausaMs -Max 2500; Anota "notícias: $(($sn | Select-Object -Last 1))"
+$sn = & (Join-Path $dir 'baixar-pci-noticias.ps1') -Parte 0 -Partes 1 -PausaMs $PausaMs -Max 6000; Anota "notícias: $(($sn | Select-Object -Last 1))"
 
 # ── 4. GERA OS ARQUIVOS DO SITE (com as travas de qualidade)
 $g1 = & (Join-Path $dir 'gerar.ps1') -Site $site -Dir $dir -Data $dataBR

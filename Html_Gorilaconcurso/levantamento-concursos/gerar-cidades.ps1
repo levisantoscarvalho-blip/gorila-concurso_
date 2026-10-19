@@ -20,7 +20,7 @@ function Norm([string]$s){
 # itens do PCI que NÃO são vaga de emprego (seleção de ALUNOS etc.) — ficam de fora do mapa (revisão de 15/10/2026)
 $EXCLUIR = @('fundacao-paulistana-sp-abre-processo-seletivo-para-cursos-tecnicos')   # vagas de aluno em cursos técnicos
 # nomes que o PCI escreve diferente do IBGE (nome no PCI ➔ nome no IBGE, já normalizados)
-$APELIDO = @{ 'ares'='arez'; 'boasaude'='januariocicco' }
+$APELIDO = @{ 'ares'='arez'; 'boasaude'='januariocicco'; 'baraodemontealto'='baraodomontealto'; 'santoantoniodoleverger'='santoantoniodeleverger'; 'acu'='assu'; 'saoluiz'='saoluizdoanaua'; 'grachocardoso'='gracchocardoso' }   # 19/10/2026: 5 cidades que sumiam (SEM CÓDIGO IBGE no relatório)
 function Js([string]$s){ return '"' + ($s -replace '[<>]','' -replace '[\r\n  ]+',' ' -replace '\\','\\' -replace '"','\"') + '"' }   # sem < > nem quebra de linha (segurança)
 foreach($arq in Get-ChildItem $dir -Filter *.tsv){
   $uf = $arq.BaseName

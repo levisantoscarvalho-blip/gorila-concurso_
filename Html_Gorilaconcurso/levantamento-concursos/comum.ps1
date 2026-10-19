@@ -40,7 +40,9 @@ function ItensPci([string]$html){
     # sem data: o PCI escreve "Suspenso" ou "Cancelado" no lugar (desde 18/10/2026: suspenso ENTRA no mapa; cancelado é lido e
     # descartado de propósito). Qualquer outra palavra sem data fica sem ler — e o AUDITOR avisa (lidos < bruto).
     $sit = ''; $d = Datas (Limpa $m.Groups[7].Value)
-    if(-not $d){ $t = Limpa $m.Groups[7].Value; if($t -match '^Suspens'){ $sit = 'suspenso' } elseif($t -match '^Cancel'){ $sit = 'cancelado' } else { continue }; $d = @('', '') }
+    if(-not $d){ $t = Limpa $m.Groups[7].Value; if($t -match '^Suspens'){ $sit = 'suspenso' } elseif($t -match '^Cancel'){ $sit = 'cancelado' }
+      elseif($t -match '^(Conferir per[íi]odo|Apenas para)'){ $sit = 'semdata' }   # "Conferir período no edital/por cargo", "Apenas para uma área": sem data, não dá para saber se está aberto — fica de fora de propósito
+      else { continue }; $d = @('', '') }
     $partes = $m.Groups[6].Value -split '<br\s*/?>'
     $vagasTxt = Limpa $partes[0]; $cargo = if($partes.Count -gt 1){ Limpa $partes[1] } else { '' }; $nivel = if($partes.Count -gt 2){ Limpa $partes[2] } else { '' }
     $v = 0; if($vagasTxt -match '^([\d\.]+)\s+vaga'){ $v = [int]($Matches[1] -replace '\.','') }
@@ -60,7 +62,7 @@ function LinhasCidade([string]$uf, [string]$slug, [string]$nome, [string]$desde)
   $linhas = New-Object Collections.ArrayList; $lidos = 0
   foreach($i in (ItensPci $html)){
     $lidos++
-    if($i.sit -eq 'cancelado' -or ($desde -and $i.ate -and $i.ate -lt $desde) -or $i.slug -notmatch '^[a-z0-9\-]+$'){ continue }
+    if($i.sit -eq 'cancelado' -or $i.sit -eq 'semdata' -or ($desde -and $i.ate -and $i.ate -lt $desde) -or $i.slug -notmatch '^[a-z0-9\-]+$'){ continue }
     $classe = if($i.sit){ $i.sit } else { $i.classe }   # suspenso: a coluna "classe" leva a palavra (gerar-cidades.ps1 entende)
     [void]$linhas.Add((($slug, $nome, $i.orgao, $i.cargo, $i.nivel, $i.vagas, $i.cr, $i.de, $i.ate, $i.slug, $classe) -join "`t"))
   }

@@ -14,7 +14,7 @@ ROBÔ AUDITOR (desde 18/10/2026): a cada rodada o auditar.ps1 procura erros ESTR
   concurso, quedas bruscas, previstos velhos) e escreve auditoria.txt: ERRO = corrigir o código · CONFERIR = olhar · INFO = limite.
 SEM CORTE DE DATA (desde 18/10/2026): o mapa guarda tudo o que a página de cada cidade do PCI mostra (no máximo os 200 mais
   recentes; em capitais isso vai até ~2018). Antes eram só os últimos 12 meses, e órgãos que abrem concurso de anos em anos
-  (TCE, TJ...) sumiam do mapa. Notícias (detalhes) antigas são baixadas aos poucos, 2.500 por dia, as mais recentes primeiro.
+  (TCE, TJ...) sumiam do mapa. Notícias (detalhes) antigas são baixadas aos poucos, 6.000 por dia, as mais recentes primeiro.
 Rodar na hora: GitHub ➔ Actions ➔ "Atualizar concursos" ➔ Run workflow.   Rodar aqui: .\atualizar.ps1  (ou -Completo)
 
 O QUE AINDA É MANUAL (o robô não decide sozinho):
