@@ -16,6 +16,8 @@
 #app-shell .main{background:var(--bg)}
 #app-shell .sidebar{background:var(--surface-1)}
 #theme-rail{z-index:985!important}
+/* Sala de estudos e Questões em construção: só aparecem no MODO DONO (ver o <script> no fim do <head> do index.html) */
+html:not(.modo-dono) #tr-sala, html:not(.modo-dono) #tr-questoes{display:none!important}
 #topbar{z-index:990!important}
 #mindmap-modal{top:64px!important}
 #news-screen{position:fixed;top:64px;left:0;right:0;bottom:0;z-index:960;background:var(--bg);display:none}

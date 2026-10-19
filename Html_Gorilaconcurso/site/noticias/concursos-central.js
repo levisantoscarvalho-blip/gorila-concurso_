@@ -17,6 +17,15 @@ function cmCarregarDetalhes(uf){
   return new Promise(ok=>{ const sc=document.createElement('script'); sc.src=`noticias/concursos-detalhes/${uf}.js`;
     sc.onload=()=>ok(CONC_DETALHES[uf]||null); sc.onerror=()=>{ CONC_DETALHES[uf]=null; ok(null); }; document.head.appendChild(sc); });
 }
+// detalhes dos concursos ANTIGOS (inscrições encerradas há mais de 12 meses) ficam num arquivo à parte, UF-antigos.js, que só
+// é baixado quando a pessoa abre algo além da tela inicial/disponíveis/previstos (desde 18/10/2026 o mapa guarda vários anos;
+// carregar tudo de uma vez deixaria o estado lento para abrir, principalmente no celular)
+const CONC_DET_ANTIGOS = {};
+function cmCarregarDetalhesAntigos(uf){
+  if(CONC_DET_ANTIGOS[uf]) return CONC_DET_ANTIGOS[uf];
+  return CONC_DET_ANTIGOS[uf] = cmCarregarDetalhes(uf).then(()=>new Promise(ok=>{ const sc=document.createElement('script'); sc.src=`noticias/concursos-detalhes/${uf}-antigos.js`;
+    sc.onload=()=>ok(true); sc.onerror=()=>ok(false); document.head.appendChild(sc); }));
+}
 // banca pelo endereço do site (o PCI dá o link onde as inscrições são feitas)
 const CMC_BANCAS = [[/cebraspe/,'Cebraspe'],[/fgv\.br/,'FGV'],[/vunesp/,'Vunesp'],[/concursosfcc|\bfcc\b/,'FCC'],[/cesgranrio/,'Cesgranrio'],[/ibfc/,'IBFC'],
   [/aocp/,'Instituto AOCP'],[/idecan/,'Idecan'],[/ibam-concursos|\bibam\b/,'IBAM'],[/selecon/,'Selecon'],[/consulplan/,'Consulplan'],[/quadrix/,'Quadrix'],
@@ -179,6 +188,8 @@ function cmcIr(vista, arg, raiz){
 function cmcVoltar(){ const el=document.getElementById('cm-central'); if(!el || el._pilha.length<2) return; el._pilha.pop(); cmcDesenhar(el); }
 function cmcDesenhar(el){
   const {vista, arg}=el._pilha[el._pilha.length-1], cont=el.querySelector('#cmc-conteudo'), uf=el._uf;
+  if(!['inicio','disp','prev'].includes(vista) && !CONC_DET_ANTIGOS[uf])   // precisa dos detalhes antigos: baixa e desenha de novo
+    cmCarregarDetalhesAntigos(uf).then(()=>{ if(el.isConnected && el._pilha[el._pilha.length-1]?.vista===vista) cmcDesenhar(el); });
   const barra=el.querySelector('.cmc-barra'); barra.hidden=el._pilha.length<2 && !el.classList.contains('cheio');
   el.querySelector('.cmc-voltar').hidden=el._pilha.length<2; el.querySelector('.cmc-recolher').hidden=!el.classList.contains('cheio');
   el.querySelector('.cmc-trilha').textContent=el._pilha.map(p=>p.arg?.titulo||CMC_TITULO[p.vista]||'').filter(Boolean).join(' › ');
@@ -214,7 +225,7 @@ function cmcInicio(el){
   // concursos do ESTADO entram em toda região, mas no mapa ficam só na capital — explica a diferença (os números da
   // legenda do mapa e os daqui não batiam numa região sem a capital, ex.: Norte Amazonense; revisão de 15/10/2026)
   const ne=it.filter(x=>x.c.estadual).length, temCap=it.some(x=>!x.c.estadual && x.m?.n===CM_CAPITAL[el._uf]);
-  return `<div class="cmc-resumo"><b>${cmcEsc(el._reg.nome)}</b><span>${cmNum(it.length)} concursos no levantamento: <i class="sit-aberto"></i>${n('disp')} disponíveis · <i class="sit-previsto"></i>${n('prev')} previstos · <i class="sit-andamento"></i>${n('hist')} já aconteceram</span>${ne?`<span class="cmc-resumo-nota">Inclui ${ne} ${ne===1?'concurso':'concursos'} do estado (polícias, secretarias, tribunais...), que valem para todas as cidades${temCap?'':` — no mapa eles aparecem na capital, ${cmcEsc(CM_CAPITAL[el._uf])}`}.</span>`:''}</div>
+  return `<div class="cmc-resumo"><b>${cmcEsc(el._reg.nome)}</b><span>${cmNum(it.length)} concursos no levantamento: <i class="sit-aberto"></i>${n('disp')} disponíveis · <i class="sit-previsto"></i>${n('prev')} previstos · <i class="sit-andamento"></i>${n('hist')} já aconteceram${(ns=>ns?` · <i class="sit-suspenso"></i>${ns} ${ns===1?'suspenso':'suspensos'}`:'')(it.filter(x=>x.c.status==='suspenso').length)}</span>${ne?`<span class="cmc-resumo-nota">Inclui ${ne} ${ne===1?'concurso':'concursos'} do estado (polícias, secretarias, tribunais...), que valem para todas as cidades${temCap?'':` — no mapa eles aparecem na capital, ${cmcEsc(CM_CAPITAL[el._uf])}`}.</span>`:''}</div>
     ${top.length?`<div class="cmc-sub">Disponíveis com mais vagas</div>${top.map(x=>cmcLinha(el,x,cmcPrazo(x.c))).join('')}<button type="button" class="cmc-link" data-ir="disp">Ver todos os disponíveis ›</button>`
       : `<p class="cmc-vazio">Nenhum concurso com inscrições abertas nesta região agora. Veja os <a data-ir="prev">previstos</a> ou os que <a data-ir="hist">já aconteceram</a>.</p>`}
     <p class="cmc-dica">Role para baixo para ver em tela cheia · clique num ponto do mapa para ver o concurso</p>`;
@@ -237,11 +248,11 @@ function cmcPrev(el, arg){
     ${l.length ? l.map(x=>cmcLinha(el,x,'')).join('') : `<p class="cmc-vazio">Nenhum concurso previsto nesta região no levantamento.</p>`}
     <p class="cmc-dica">Previstos vêm de notícias (Estratégia Concursos e outras). Até o edital sair, vagas e datas podem mudar.</p>`;
 }
-// ── 4. JÁ ACONTECERAM — por MÊS (padrão) ou por ANO, com resumo de vagas, salários, bancas e áreas
+// ── 4. JÁ ACONTECERAM — por ANO (padrão) ou por MÊS, com resumo de vagas, salários, bancas e áreas
 function cmcHist(el, arg){
-  el._lista=[]; const modo=arg.modo||'mes', uf=el._uf;
+  el._lista=[]; const modo=arg.modo||'ano', uf=el._uf;   // padrão = por ANO (desde 18/10/2026 o histórico tem vários anos)
   const l=el._itens.filter(x=>cmcGrupo(x.c)==='hist' && x.c.ate).sort((a,b)=>b.c.ate.localeCompare(a.c.ate));
-  if(!l.length) return `<div class="cmc-cab cor-hist"><b>Concursos que já aconteceram</b></div><p class="cmc-vazio">Nenhum concurso encerrado nesta região nos últimos 12 meses.</p>`;
+  if(!l.length) return `<div class="cmc-cab cor-hist"><b>Concursos que já aconteceram</b></div><p class="cmc-vazio">Nenhum concurso encerrado nesta região no levantamento.</p>`;
   const resumo=g=>{ const vagas=g.reduce((t,x)=>t+(x.c.vagas||0),0), sal=Math.max(0,...g.map(x=>cmcDet(uf,x.c)?.smax||0));
     const conta=f=>{ const m=new Map(); g.forEach(x=>{ const k=f(x); if(k) m.set(k,(m.get(k)||0)+1); }); return [...m].sort((a,b)=>b[1]-a[1]); };
     const bancas=conta(x=>cmcBanca(cmcDet(uf,x.c))).slice(0,3).map(([k,n])=>`${cmcEsc(k)} (${n})`).join(', ');
@@ -250,7 +261,7 @@ function cmcHist(el, arg){
   const grupos=new Map(); l.forEach(x=>{ const k=modo==='ano'?x.c.ate.slice(0,4):x.c.ate.slice(0,7); if(!grupos.has(k)) grupos.set(k,[]); grupos.get(k).push(x); });
   const nomeG=k=>modo==='ano'?k:`${cmcMeses[+k.slice(5)-1][0].toUpperCase()+cmcMeses[+k.slice(5)-1].slice(1)} de ${k.slice(0,4)}`;
   const extra=x=>{ const d=cmcDet(uf,x.c), h=cmcHoje(), pv=d?.pr ? (d.pr<h?`prova foi em ${cmcBR(d.pr)}`:`prova em ${cmcBR(d.pr)}`) : ''; return [`encerrou ${cmcBR(x.c.ate)}`, pv].filter(Boolean).join(' · '); };
-  return `<div class="cmc-cab cor-hist"><b>Concursos que já aconteceram em ${cmcEsc(el._reg.nome)}</b><div class="cmc-cab-res">${resumo(l)}</div><span class="nota">Inscrições encerradas nos últimos 12 meses (PCI Concursos). Muitos ainda têm prova ou resultado pela frente.</span></div>
+  return `<div class="cmc-cab cor-hist"><b>Concursos que já aconteceram em ${cmcEsc(el._reg.nome)}</b><div class="cmc-cab-res">${resumo(l)}</div><span class="nota">Todos os concursos com inscrições encerradas que o PCI Concursos mostra para as cidades da região (até 200 por cidade). Os mais recentes podem ainda ter prova ou resultado pela frente.</span></div>
     <div class="cmc-ordem">Organizar por: <button type="button" data-modo="mes" class="${modo==='mes'?'sel':''}">Mês</button><button type="button" data-modo="ano" class="${modo==='ano'?'sel':''}">Ano</button></div>
     ${[...grupos].map(([k,g])=>`<div class="cmc-grupo"><div class="cmc-grupo-cab"><b>${nomeG(k)}</b>${resumo(g)}</div>${g.map(x=>cmcLinha(el,x,extra(x))).join('')}</div>`).join('')}`;
 }
@@ -288,6 +299,22 @@ function cmcCidade(el, arg){
   el._lista=[]; const ord={disp:0,prev:1,hist:2,sem:3}, l=arg.cs.map(c=>({c:cmConcursoHoje(c), m:arg.m})).sort((a,b)=>ord[cmcGrupo(a.c)]-ord[cmcGrupo(b.c)]);
   return `<div class="cmc-cab"><b>${cmcEsc(arg.m.n)}</b><span>${l.length} ${l.length===1?'concurso':'concursos'} · clique para ver os detalhes</span></div>${l.map(x=>cmcLinha(el,x,cmcPrazo(x.c))).join('')}`;
 }
+// ── ONDE FICA (pedido do Levi, 18/10/2026): clicou na bolinha ➔ o detalhe mostra num mapa do Google o LOCAL do órgão,
+// para a pessoa ver onde vai trabalhar. É uma BUSCA pelo nome do órgão + cidade (não temos o endereço exato): o aviso
+// embaixo diz isso. Concurso do ESTADO ➔ a sede, na capital (a lotação de verdade vem no edital).
+// ⚠ No ar, o vercel.json precisa liberar "frame-src https://www.google.com" (senão o quadro fica em branco).
+function cmcLocal(c, x, uf){
+  const cidade=c.estadual ? CM_CAPITAL[uf] : x.m?.n; if(!cidade) return '';
+  // "SEAP - Secretaria de Estado..." ➔ o nome por extenso acha melhor; tira o " - São Luís" do fim (a cidade já vai na busca)
+  const partes=String(c.orgao||'').split(/\s+-\s+/), nome=(partes.length>1 && partes[0].length<=12 ? partes.slice(1) : partes).filter(p=>cmcNorm(p)!==cmcNorm(cidade)).join(' - ');
+  const q=`${nome}, ${cidade} - ${uf}`, qq=encodeURIComponent(q);
+  const nota=c.estadual ? `Sede do órgão, em ${cidade}. O concurso vale para todo o estado: a cidade onde você vai trabalhar (lotação) é definida no edital.`
+    : `${nome} em ${cidade}. Local aproximado, achado pelo nome do órgão — o endereço exato de trabalho vem no edital.`;
+  return `<div class="cmc-local"><b>Onde fica</b>
+    <iframe src="https://www.google.com/maps?q=${qq}&hl=pt-BR&z=15&output=embed" loading="lazy" referrerpolicy="no-referrer" title="Mapa: ${cmcEsc(q)}"></iframe>
+    <small>${cmcEsc(nota)} <a href="https://www.google.com/maps/search/?api=1&query=${qq}" target="_blank" rel="noopener">Abrir no Google Maps ›</a></small></div>`;
+}
+const cmcNorm=s=>String(s).toLowerCase().normalize('NFD').replace(/\p{M}/gu,'').replace(/[^a-z0-9]/g,'');
 // ── DETALHE: introdução escrita a partir dos fatos + dados + links oficiais
 function cmcIntro(c, d, m){
   const tipo=d?.t==='seletivo' ? 'processo seletivo' : (/seletiv|sele[çc][ãa]o/i.test(c.cargo+' '+(d?.ti||'')) ? 'processo seletivo' : 'concurso público');
@@ -296,6 +323,7 @@ function cmcIntro(c, d, m){
   const vg=c.vagas ? `${cmNum(c.vagas)} ${c.vagas===1?'vaga':'vagas'}` : 'formação de cadastro de reserva';
   const banca=cmcBanca(d), frases=[];
   if(c.status==='previsto' || c.status==='semprevisao') return null;
+  if(c.status==='suspenso') return `O ${tipo} de ${c.orgao}${cg?` para ${cg}`:''} está SUSPENSO: foi parado pelo órgão ou pela Justiça e pode ser retomado, às vezes com novas datas. Acompanhe a página oficial e a notícia do PCI.`;
   if(c.status==='aberto') frases.push(`${c.orgao} está com inscrições abertas em um ${tipo} com ${vg}${cg?` para ${cg}`:''}.`);
   else if(c.status==='edital') frases.push(`${c.orgao} publicou o edital de um ${tipo} com ${vg}${cg?` para ${cg}`:''}. As inscrições ainda vão abrir.`);
   else frases.push(`${c.orgao} abriu${d?.p?` em ${cmcExt(d.p).replace(/^\d+ de /,'')}`:''} um ${tipo} com ${vg}${cg?` para ${cg}`:''}. As inscrições já terminaram.`);
@@ -334,6 +362,7 @@ function cmcDetalhe(el, arg, uf){
       ${linha('Validade', d?.v ? `${d.v===1?'1 ano':`${d.v} anos`}, prorrogável` : '')}
       ${linha('Publicado em', d?.p ? cmcBR(d.p) : '')}
     </dl>
+    ${cmcLocal(c, x, uf)}
     ${cargos.length?`<div class="cmc-cargos"><b>Cargos e vagas</b><ul>${cargos.map(s=>`<li>${cmcEsc(s)}</li>`).join('')}</ul>${cargos.length>=25?'<small>A lista pode ter mais cargos — veja o edital.</small>':''}</div>`:''}
     <div class="cmc-links">
       ${cmcUrl(d?.b)?`<a class="cmc-btn principal" href="${cmcEsc(d.b)}" target="_blank" rel="noopener">Página oficial do concurso e edital em PDF ›<small>${cmcEsc(banca||cmcHost(d.b))}</small></a>`:''}

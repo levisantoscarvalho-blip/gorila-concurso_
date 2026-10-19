@@ -24,6 +24,14 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
 <link rel="stylesheet" href="geral/acabamento.css">
+<!-- MODO DONO (18/10/2026): Sala de estudos e Questões ainda não estão prontas ➔ ficam ESCONDIDAS para os visitantes e só aparecem
+     para o Levi. Liga UMA VEZ no navegador dele abrindo o site com ?dono=1 no fim do endereço (desliga com ?dono=0). Não é segurança:
+     só esconde telas em construção. Quando ficarem prontas, apagar este bloco e a regra .modo-dono em geral/layout.css. -->
+<script>
+  try{ const q=new URLSearchParams(location.search).get('dono');
+    if(q==='1') localStorage.setItem('gorila_dono','1'); else if(q==='0') localStorage.removeItem('gorila_dono');
+    if(localStorage.getItem('gorila_dono')==='1') document.documentElement.classList.add('modo-dono'); }catch(e){}
+</script>
 </head>
 <body class="light accent-azul">
 

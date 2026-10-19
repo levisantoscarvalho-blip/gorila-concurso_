@@ -48,6 +48,7 @@ jobs:
                   Html_Gorilaconcurso/levantamento-concursos/pci-cidades \
                   Html_Gorilaconcurso/levantamento-concursos/pci-noticias \
                   Html_Gorilaconcurso/levantamento-concursos/relatorio-robo.txt \
+                  Html_Gorilaconcurso/levantamento-concursos/auditoria.txt \
                   Html_Gorilaconcurso/site/noticias/concursos-levantamento.js \
                   Html_Gorilaconcurso/site/noticias/concursos-cidades \
                   Html_Gorilaconcurso/site/noticias/concursos-detalhes

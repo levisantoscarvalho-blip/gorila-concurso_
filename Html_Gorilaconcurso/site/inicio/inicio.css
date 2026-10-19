@@ -1,8 +1,8 @@
-/* ═══ PÁGINA PRINCIPAL (inicio/inicio.js) — estilo da faixa do Qconcursos com as cores do Gorila ═══
+/* ═══ PÁGINA PRINCIPAL (inicio/inicio.js) — estilo da faixa do Qconcursos com fundo preto (antes azul) ═══
    Ocupa a tela toda (embaixo da barra de cima); deixa 96px à direita para a barra de ícones fixa. */
 .ini-faixa{position:relative;box-sizing:border-box;min-height:100%;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);align-items:center;gap:20px;
   padding:40px 120px 40px 64px;overflow:hidden;color:#fff;
-  background:radial-gradient(circle at 78% 55%,rgba(96,165,250,.35) 0,transparent 45%),linear-gradient(120deg,#0b1d52 0%,#16348f 55%,#2453c4 100%)}
+  background:radial-gradient(circle at 78% 55%,rgba(255,255,255,.08) 0,transparent 45%),linear-gradient(120deg,#000 0%,#0b0b0b 55%,#161616 100%)}   /* PRETO (pedido do Levi, 17/10/2026; antes era o azul da marca) */
 .ini-txt{position:relative;z-index:2;max-width:560px}
 .ini-txt h1{margin:0 0 18px;font-size:clamp(34px,4.4vw,58px);line-height:1.02;font-weight:800;font-style:italic;text-transform:uppercase;letter-spacing:-.01em;
   text-shadow:0 4px 24px rgba(0,0,0,.25)}
@@ -13,14 +13,14 @@
 .ini-bt:hover{transform:translateY(-2px);filter:brightness(1.08)}
 .ini-arte{position:relative;z-index:2;height:100%;min-height:340px}
 /* FOTO da estudante (Pexels, foto 1462630 — escolhida pelo Levi como PROVISÓRIA, ele vai trocar por uma mais profissional; licença grátis, uso comercial permitido): metade direita da faixa, se
-   misturando ao azul pela esquerda (máscara em degradê), como a pessoa na faixa do Qconcursos */
+   misturando ao fundo preto pela esquerda (máscara em degradê), como a pessoa na faixa do Qconcursos */
 /* (as linhas diagonais do fundo foram TIRADAS a pedido do Levi) */
 .ini-foto{position:absolute;top:0;right:0;bottom:0;width:56%;height:100%;object-fit:cover;object-position:50% 18%;
   -webkit-mask-image:linear-gradient(to right,transparent 0,#000 38%);mask-image:linear-gradient(to right,transparent 0,#000 38%)}
-.ini-faixa::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,transparent 60%,rgba(11,29,82,.25) 100%)}
+.ini-faixa::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,transparent 60%,rgba(0,0,0,.25) 100%)}
 /* cartão de vidro com o número real do dia (embaixo, à esquerda da foto, para não cobrir o rosto) */
 .ini-vidro{position:absolute;left:0;bottom:8%;display:flex;flex-direction:column;align-items:center;gap:2px;padding:22px 26px;min-width:190px;
-  text-align:center;border-radius:16px;background:rgba(11,29,82,.45);border:1px solid rgba(255,255,255,.35);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  text-align:center;border-radius:16px;background:rgba(0,0,0,.45);border:1px solid rgba(255,255,255,.35);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
   box-shadow:0 18px 40px rgba(0,0,0,.25)}
 .ini-vidro small{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.85)}
 .ini-vidro b{font-size:58px;line-height:1.05;font-weight:800}
@@ -33,3 +33,11 @@
 /* na ENTRADA do site (#auth-screen, tela do visitante): a faixa ocupa tudo embaixo da barra de cima */
 #au-principal{position:absolute;top:64px;left:0;right:0;bottom:0;overflow:auto}
 #au-principal .ini-faixa{height:100%}
+/* MINI GORILA DANDO TCHAU (pedido do Levi, 18/10/2026; substituiu o logo num círculo branco em cima da barra): bem pequeno, desenhado
+   no azul do logo, agarrado na lateral direita da barra de ícones (altura do 1º ícone), acenando com o braço de tempos em tempos.
+   Posição calculada pelo JS (iniPosMascote). */
+.ini-mascote{position:fixed;z-index:986;width:28px;height:31px;pointer-events:none;overflow:visible;filter:drop-shadow(0 2px 3px rgba(0,0,0,.35))}
+.ini-braco{transform-box:view-box;transform-origin:26px 26px;animation:iniTchau 4s ease-in-out infinite}
+@keyframes iniTchau{0%,55%,100%{transform:rotate(0)}62%{transform:rotate(22deg)}69%{transform:rotate(-8deg)}76%{transform:rotate(22deg)}83%{transform:rotate(-8deg)}90%{transform:rotate(0)}}
+@media (max-width:760px){ .ini-mascote{display:none} }
+@media (prefers-reduced-motion:reduce){ .ini-braco{animation:none} }

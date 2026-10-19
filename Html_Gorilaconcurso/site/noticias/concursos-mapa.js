@@ -769,10 +769,10 @@ async function cmDemografia(caixa, r, s, uf){
   const ladoM=m=>2*Math.min(raio(conc(m).length), 14+R_PONTO);
   // espiral de girassol em volta da cidade; cidade com MUITOS concursos fica num cacho compacto (raio máx. ~14px) que
   // se abre com o zoom. Ordem de desenho: vermelhos embaixo, depois laranja, azul e VERDE POR CIMA (o que está aberto aparece).
-  const CAMADA_COR={andamento:0, previsto:1, edital:2, aberto:3};
+  const CAMADA_COR={andamento:0, suspenso:0.5, previsto:1, edital:2, aberto:3};
   // CIDADE COM MUITOS CONCURSOS (6+) = UM CÍRCULO com o TOTAL no meio e um ANEL colorido na proporção de cada situação
   // (pedido do Levi: os pontos grudados não davam para ver). Mouse em cima = resumo; clique = abre o leque com todos.
-  const CACHO_MIN=6, ORDEM_ANEL=['previsto','edital','aberto','andamento'];   // ordem do ciclo do concurso
+  const CACHO_MIN=6, ORDEM_ANEL=['previsto','edital','aberto','suspenso','andamento'];   // ordem do ciclo do concurso
   const pontos=munis.flatMap((m,j)=>{ const l=conc(m); if(l.length>=CACHO_MIN) return [];
       const passo=Math.min(PASSO, 14/Math.sqrt(Math.max(1,l.length)));
       return l.map((c,k)=>{ const r=passo*Math.sqrt(k), a=k*2.39996, cor=cmCorPonto(c);
@@ -1064,14 +1064,14 @@ const CM_SITUACOES = {
   semdados:   {nome:'Ainda sem dados'},
 };
 // nome de cada situação no texto ("edital publicado" e "em andamento" usam a mesma cor verde de "acontecendo")
-const CM_SIT_NOME = {aberto:'Inscrições abertas', edital:'Edital publicado', andamento:'Inscrições encerradas', previsto:'Previsto', semprevisao:'Sem previsão'};
+const CM_SIT_NOME = {aberto:'Inscrições abertas', edital:'Edital publicado', andamento:'Inscrições encerradas', previsto:'Previsto', semprevisao:'Sem previsão', suspenso:'Suspenso'};
 // cor do PONTO de cada concurso no mapa da região (a situação de hoje)
 // CICLO DO CONCURSO = COR DO PONTO (decisão do Levi, 16/10/2026), na ordem em que acontece:
 // AZUL previsto ➔ GRAFITE edital publicado (inscrições ainda não abriram; cor do botão "Ver todos os concursos disponíveis")
 // ➔ VERDE inscrições abertas ➔ VERMELHO encerrado. O antigo "sem previsão" vira azul. (Roxo "período de provas" e laranja
 // "prova realizada" foram TIRADOS a pedido do Levi — a data da prova falta em ~60% dos concursos.) [chave, legenda, balão]
 const CM_CICLO=[['previsto','Previstos','previstos'],['edital','Edital publicado','com edital publicado'],['aberto','Inscrições abertas','com inscrições abertas'],
-  ['andamento','Encerrados','encerrados']];
+  ['suspenso','Suspensos','suspensos'],['andamento','Encerrados','encerrados']];   // ÂMBAR suspenso (18/10/2026): parado, pode voltar
 function cmCorPonto(c){ const s=cmConcursoHoje(c).status; return s==='semprevisao' ? 'previsto' : s; }
 // (a capital de cada estado — onde ficam os pontos dos concursos do estado — vem de CM_CAPITAL, mais abaixo)
 // as duas fontes de dados reais: concursos-dados.js (SP, manual) e concursos-levantamento.js (todos os estados)
@@ -1102,10 +1102,10 @@ function cmConcursoHoje(c){
   if(c.de && hoje<c.de) return {...c, status:'edital', quando:`inscrições ${c.quando}`};
   return c;
 }
-const CM_ORDEM_SIT = {aberto:0, edital:1, andamento:2, previsto:3, semprevisao:4};
+const CM_ORDEM_SIT = {aberto:0, edital:1, suspenso:1.5, andamento:2, previsto:3, semprevisao:4};
 const cmOrdenar = l=>l.map(cmConcursoHoje).sort((a,b)=>(CM_ORDEM_SIT[a.status]-CM_ORDEM_SIT[b.status]) || (a.ate||'').localeCompare(b.ate||''));
 // ── CONCURSOS DE CADA CIDADE, página por página do PCI Concursos (pedido do Levi: "literalmente todos" de cada
-// microrregião, abertos e já encerrados, últimos 12 meses). Um arquivo por estado em noticias/concursos-cidades/UF.js,
+// microrregião, abertos e já encerrados — sem corte de data desde 18/10/2026, até 200 por cidade). Um arquivo por estado em noticias/concursos-cidades/UF.js,
 // carregado só quando o estado é aberto; gerado por levantamento-concursos/baixar-pci-cidades.ps1 + gerar-cidades.ps1.
 const CONC_CIDADES = {};
 const CM_UF_IBGE = {11:'RO',12:'AC',13:'AM',14:'RR',15:'PA',16:'AP',17:'TO',21:'MA',22:'PI',23:'CE',24:'RN',25:'PB',26:'PE',27:'AL',28:'SE',29:'BA',
@@ -1118,7 +1118,9 @@ function cmCarregarCidades(uf){
 const CM_PCI = 'https://www.pciconcursos.com.br/noticias/';
 // item compacto do arquivo da cidade ➔ concurso (a situação de hoje vem da data, em cmConcursoHoje)
 function cmDaCidade(a){
-  const [orgao,cargo,nivel,vagas,cr,de,ate,slug]=a, br=d=>d.split('-').reverse().join('/');
+  const [orgao,cargo,nivel,vagas,cr,de,ate,slug,sit]=a, br=d=>d.split('-').reverse().join('/');
+  // SUSPENSO (desde 18/10/2026, pedido do Levi): o PCI escreve "Suspenso" no lugar das datas — concurso parado que pode voltar
+  if(sit==='suspenso') return {orgao, cargo:cargo+(nivel?` (${nivel})`:''), vagas, status:'suspenso', quando:'Concurso suspenso'+(cr?' · cadastro de reserva':''), fonte:{nome:'PCI Concursos', url:CM_PCI+slug}};
   return {orgao, cargo:cargo+(nivel?` (${nivel})`:''), vagas, status:'aberto', ate, ...(de?{de}:{}),
     quando:(de?`de ${br(de)} a ${br(ate)}`:`até ${br(ate)}`)+(cr?' · cadastro de reserva':''), fonte:{nome:'PCI Concursos', url:CM_PCI+slug}};
 }

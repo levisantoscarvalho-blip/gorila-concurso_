@@ -37,23 +37,34 @@ $rxItem = [regex]'<div class="(\w+)" onclick="myClick\(event\)" data-url="https:
 # lê os concursos de um trecho de HTML ➔ objetos { classe, slug, titulo, orgao, uf, vagas, cr, cargo, nivel, de, ate }
 function ItensPci([string]$html){
   foreach($m in $rxItem.Matches($html)){
-    $d = Datas (Limpa $m.Groups[7].Value); if(-not $d){ continue }
+    # sem data: o PCI escreve "Suspenso" ou "Cancelado" no lugar (desde 18/10/2026: suspenso ENTRA no mapa; cancelado é lido e
+    # descartado de propósito). Qualquer outra palavra sem data fica sem ler — e o AUDITOR avisa (lidos < bruto).
+    $sit = ''; $d = Datas (Limpa $m.Groups[7].Value)
+    if(-not $d){ $t = Limpa $m.Groups[7].Value; if($t -match '^Suspens'){ $sit = 'suspenso' } elseif($t -match '^Cancel'){ $sit = 'cancelado' } else { continue }; $d = @('', '') }
     $partes = $m.Groups[6].Value -split '<br\s*/?>'
     $vagasTxt = Limpa $partes[0]; $cargo = if($partes.Count -gt 1){ Limpa $partes[1] } else { '' }; $nivel = if($partes.Count -gt 2){ Limpa $partes[2] } else { '' }
     $v = 0; if($vagasTxt -match '^([\d\.]+)\s+vaga'){ $v = [int]($Matches[1] -replace '\.','') }
     [pscustomobject]@{ classe=$m.Groups[1].Value; slug=$m.Groups[2].Value; titulo=(Limpa ([regex]::Match($m.Groups[3].Value, 'title="([^"]*)"').Groups[1].Value)); orgao=(Limpa $m.Groups[4].Value)
-      uf=(Limpa $m.Groups[5].Value); vagas=$v; cr=$(if($vagasTxt -match 'reserva'){ 'CR' } else { '' }); cargo=$cargo; nivel=$nivel; de=$d[0]; ate=$d[1] }
+      uf=(Limpa $m.Groups[5].Value); vagas=$v; cr=$(if($vagasTxt -match 'reserva'){ 'CR' } else { '' }); cargo=$cargo; nivel=$nivel; de=$d[0]; ate=$d[1]; sit=$sit }
   }
 }
 # linhas do .tsv de uma cidade (formato de pci-cidades/UF.tsv); $null = erro ao baixar
+# SEM CORTE DE DATA desde 18/10/2026 (pedido do Levi: "literalmente todos os concursos possíveis") — guarda tudo o que a
+# página da cidade mostra (o PCI mostra no máximo os 200 mais recentes; em capitais isso vai até ~2018). $desde só se alguém pedir.
+# Para o AUDITOR (auditar.ps1): $script:Leitura = quantos concursos a página TINHA (bruto) e quantos o robô CONSEGUIU LER (lidos).
+# Se lidos < bruto, o jeito do PCI escrever algum item mudou e o robô está perdendo concursos sem perceber.
+$PCI_MAX_CIDADE = 200
 function LinhasCidade([string]$uf, [string]$slug, [string]$nome, [string]$desde){
   $html = Baixar "https://www.pciconcursos.com.br/concursos/$($uf.ToLower())/$slug"
   if(-not $html){ return $null }
-  $linhas = New-Object Collections.ArrayList
+  $linhas = New-Object Collections.ArrayList; $lidos = 0
   foreach($i in (ItensPci $html)){
-    if($i.ate -lt $desde -or $i.slug -notmatch '^[a-z0-9\-]+$'){ continue }
-    [void]$linhas.Add((($slug, $nome, $i.orgao, $i.cargo, $i.nivel, $i.vagas, $i.cr, $i.de, $i.ate, $i.slug, $i.classe) -join "`t"))
+    $lidos++
+    if($i.sit -eq 'cancelado' -or ($desde -and $i.ate -and $i.ate -lt $desde) -or $i.slug -notmatch '^[a-z0-9\-]+$'){ continue }
+    $classe = if($i.sit){ $i.sit } else { $i.classe }   # suspenso: a coluna "classe" leva a palavra (gerar-cidades.ps1 entende)
+    [void]$linhas.Add((($slug, $nome, $i.orgao, $i.cargo, $i.nivel, $i.vagas, $i.cr, $i.de, $i.ate, $i.slug, $classe) -join "`t"))
   }
+  $script:Leitura = @{ bruto = [regex]::Matches($html, 'onclick="myClick\(event\)" data-url="https://www\.pciconcursos\.com\.br/noticias/').Count; lidos = $lidos }
   if(-not $linhas.Count){ [void]$linhas.Add((($slug, $nome, '', '', '', 0, '', '', '', '', 'vazio') -join "`t")) }   # marca a cidade como feita
   return ,$linhas
 }

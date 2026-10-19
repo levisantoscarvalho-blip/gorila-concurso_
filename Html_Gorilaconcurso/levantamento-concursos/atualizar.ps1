@@ -11,6 +11,8 @@
 #   3. baixa só as notícias novas (fatos do edital: salário, taxa, banca, prova...);
 #   4. gera os arquivos do site, com as travas de qualidade (datas impossíveis, vagas exageradas, salários impossíveis);
 #   5. verificar.ps1 confere tudo contra a versão no ar — se algo parecer quebrado, PARA (exit 1) e nada é publicado.
+#   (antes da conferência, o AUDITOR — auditar.ps1 — procura erros estruturais e escreve auditoria.txt; não impede publicar)
+# DESDE 18/10/2026 NÃO HÁ CORTE DE DATA: o mapa guarda tudo o que a página de cada cidade do PCI mostra (até 200 por cidade).
 # SEMANAL (-Completo): antes de tudo, baixa todas as cidades numa pasta nova (4 ao mesmo tempo); só troca a pasta
 #   antiga se a coleta nova tiver pelo menos 90% dos concursos da antiga.
 # Tudo o que aconteceu fica em relatorio-robo.txt (publicado junto, para conferir depois).
@@ -18,7 +20,8 @@
 param([switch]$Completo, [int]$PausaMs = 400)
 . (Join-Path $PSScriptRoot 'comum.ps1')
 $dir = $PSScriptRoot; $site = Join-Path $dir '..\site'
-$agora = Agora; $dataBR = $agora.ToString('dd/MM/yyyy'); $desde = $agora.AddYears(-1).ToString('yyyy-MM-dd'); $limite = $agora.AddMonths(18).ToString('yyyy-MM-dd')   # inscrição até depois disso = erro de digitação na fonte
+$agora = Agora; $dataBR = $agora.ToString('dd/MM/yyyy'); $desde = '';   # SEM corte de data desde 18/10/2026 (antes: só os últimos 12 meses)
+$limite = $agora.AddMonths(18).ToString('yyyy-MM-dd')   # inscrição até depois disso = erro de digitação na fonte
 $rel = New-Object Collections.ArrayList
 function Anota([string]$s){ [void]$rel.Add($s); Write-Host $s }
 function Fim([int]$codigo){ [IO.File]::WriteAllText((Join-Path $dir 'relatorio-robo.txt'), ($rel -join "`r`n") + "`r`n", $utf8); exit $codigo }
@@ -37,6 +40,15 @@ if($Completo){
   Anota "coleta completa: $(@($saida | Where-Object { $_ -match 'ERRO' }).Count) cidades com erro na 1ª passada"
   $saida2 = & $script -Ufs $TODAS_UFS -Desde $desde -PausaMs $PausaMs -Dir $novo   # 2ª passada: só as que faltaram
   $ainda = @($saida2 | Where-Object { $_ -match 'ERRO' }); Anota "2ª passada: $($ainda.Count) cidades ainda com erro"
+  # cidade que falhou nas 2 passadas FICA COM OS DADOS DA COLETA ANTERIOR (antes ela sumia do mapa até o domingo seguinte)
+  $mantidas = 0
+  foreach($uf in $TODAS_UFS){
+    $aV = Join-Path $pastaCid "$uf.tsv"; $aN = Join-Path $novo "$uf.tsv"; if(-not (Test-Path $aV)){ continue }
+    $temN = @{}; if(Test-Path $aN){ foreach($l in [IO.File]::ReadAllLines($aN,$utf8)){ if($l){ $temN[$l.Split("`t")[0]] = 1 } } }
+    $falta = @([IO.File]::ReadAllLines($aV,$utf8) | Where-Object { $_ -and -not $temN.ContainsKey($_.Split("`t")[0]) })
+    if($falta.Count){ [IO.File]::AppendAllText($aN, (($falta -join "`n") + "`n"), $utf8); $mantidas += @($falta | ForEach-Object { $_.Split("`t")[0] } | Select-Object -Unique).Count }
+  }
+  if($mantidas){ Anota "$mantidas cidades não responderam e ficaram com os dados da coleta anterior" }
   $nNovo = ContaLinhas $novo; $nVelho = ContaLinhas $pastaCid
   if(@(Get-ChildItem $novo -Filter *.tsv).Count -eq 27 -and $nNovo -ge 0.9*$nVelho){
     Remove-Item -Recurse -Force $pastaCid; Rename-Item $novo 'pci-cidades'; Anota "cidades trocadas: $nNovo concursos (antes $nVelho)"
@@ -52,7 +64,7 @@ foreach($r in 'norte','nordeste','sudeste','sul','centrooeste'){
   if(-not $h){ Anota "ERRO: não consegui ler a página '$r' do PCI — nada foi publicado"; Fim 1 }
   $its = @(ItensPci $h)
   if($its.Count -lt 10){ Anota "ERRO: a página '$r' do PCI veio com só $($its.Count) concursos (o PCI mudou o site?) — nada foi publicado"; Fim 1 }
-  foreach($i in $its){ if($i.ate -gt $limite){ Anota "CONFERIR: data de inscrição impossível na fonte ($($i.ate)), não entrou: $($i.slug)"; continue }; if($TODAS_UFS -contains $i.uf -and $i.slug -match '^[a-z0-9\-]+$' -and -not $abertosPci.Contains($i.slug)){ $abertosPci[$i.slug] = $i } }
+  foreach($i in $its){ if($i.sit){ continue }; if($i.ate -gt $limite){ Anota "CONFERIR: data de inscrição impossível na fonte ($($i.ate)), não entrou: $($i.slug)"; continue }; if($TODAS_UFS -contains $i.uf -and $i.slug -match '^[a-z0-9\-]+$' -and -not $abertosPci.Contains($i.slug)){ $abertosPci[$i.slug] = $i } }
 }
 Anota "PCI hoje: $($abertosPci.Count) concursos com inscrições abertas"
 
@@ -137,10 +149,10 @@ foreach($x in $naoAchados){
 }
 Anota "novos concursos: $novosCid em cidades + $novosEst estaduais/sem cidade · $datasMudaram com data mudada (prorrogação/retificação)"
 foreach($uf in $TODAS_UFS){ [IO.File]::WriteAllText((Join-Path $pastaCid "$uf.tsv"), (($tsv[$uf] -join "`n") + "`n"), $utf8) }
-# abertos com inscrição encerrada há mais de 12 meses saem da tabela (o mapa mostra só os últimos 12 meses)
+# abertos com data impossível (mais de 18 meses à frente) saem da tabela; os ANTIGOS FICAM (sem corte de data desde 18/10/2026)
 $antes = $abertos.Count
-$abertos = @($abertos | Where-Object { $d = [regex]::Matches($_.Split('|')[5], '(\d{2})/(\d{2})/(\d{4})') | Select-Object -Last 1; $iso = if($d){ "$($d.Groups[3].Value)-$($d.Groups[2].Value)-$($d.Groups[1].Value)" }; -not $d -or ($iso -ge $desde -and $iso -le $limite) })
-if($abertos.Count -lt $antes){ Anota "$($antes - $abertos.Count) concursos estaduais com mais de 12 meses saíram de abertos.txt" }
+$abertos = @($abertos | Where-Object { $d = [regex]::Matches($_.Split('|')[5], '(\d{2})/(\d{2})/(\d{4})') | Select-Object -Last 1; $iso = if($d){ "$($d.Groups[3].Value)-$($d.Groups[2].Value)-$($d.Groups[1].Value)" }; -not $d -or $iso -le $limite })
+if($abertos.Count -lt $antes){ Anota "$($antes - $abertos.Count) concursos estaduais com data impossível saíram de abertos.txt" }
 [IO.File]::WriteAllText($arqAb, (($abertos -join "`r`n") + "`r`n"), $utf8)
 
 # ── 3. NOTÍCIAS (detalhes): as que mudaram são baixadas de novo; depois, só as que faltam
@@ -151,13 +163,16 @@ if($mudou.Count){
     [IO.File]::WriteAllText($f.FullName, (($ls -join "`n") + "`n"), $utf8)
   }
 }
-$sn = & (Join-Path $dir 'baixar-pci-noticias.ps1') -Parte 0 -Partes 1 -PausaMs $PausaMs; Anota "notícias: $(($sn | Select-Object -Last 1))"
+$sn = & (Join-Path $dir 'baixar-pci-noticias.ps1') -Parte 0 -Partes 1 -PausaMs $PausaMs -Max 2500; Anota "notícias: $(($sn | Select-Object -Last 1))"
 
 # ── 4. GERA OS ARQUIVOS DO SITE (com as travas de qualidade)
 $g1 = & (Join-Path $dir 'gerar.ps1') -Site $site -Dir $dir -Data $dataBR
 $g2 = & (Join-Path $dir 'gerar-cidades.ps1') -Site $site -Data $dataBR -Desde $desde
 $g3 = & (Join-Path $dir 'gerar-detalhes.ps1') -Site $site
 @($g1) + @($g2) + @($g3) | Where-Object { $_ -match 'AVISO|NAO ACHOU: \S|SEM CÓDIGO' } | ForEach-Object { Anota "$_" }
+
+# ── 4b. AUDITOR (auditar.ps1): procura erros ESTRUTURAIS (leitura, cobertura, órgãos faltando...) ➔ auditoria.txt. Nunca impede publicar.
+try { $au = & (Join-Path $dir 'auditar.ps1') -Completo:$Completo; Anota "$(@($au)[-1])" } catch { Anota "AVISO: o auditor falhou ($_)" }
 
 # ── 5. CONFERÊNCIA (se falhar, nada é publicado)
 $v = & (Join-Path $dir 'verificar.ps1') -Site $site; $ok = $LASTEXITCODE -eq 0

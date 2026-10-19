@@ -27,6 +27,11 @@ foreach($uf in $TODAS_UFS){
       if($velho){ $v = Conta $velho '\["'; $totV += $v; if($v -ge 30 -and $n -lt 0.6*$v){ [void]$falhas.Add("$uf`: concursos caíram de $v para $n") } }
     } else {
       $n = Conta $txt "(?m)^'"; $detN += $n; if($velho){ $detV += Conta $velho "(?m)^'" }
+      # detalhes dos concursos antigos (desde 18/10/2026, arquivo à parte): entram na mesma conta
+      $arqA = Join-Path $Site "noticias\$tipo\$uf-antigos.js"
+      if(Test-Path $arqA){ $txtA = [IO.File]::ReadAllText($arqA, $utf8)
+        if($txtA.TrimEnd() -notmatch '\}\);$'){ [void]$falhas.Add("$tipo/$uf-antigos.js termina errado (arquivo cortado?)") }
+        $detN += Conta $txtA "(?m)^'"; $velhoA = if($temGit){ NoAr "Html_Gorilaconcurso/site/noticias/$tipo/$uf-antigos.js" } else { $null }; if($velhoA){ $detV += Conta $velhoA "(?m)^'" } }
     }
   }
 }

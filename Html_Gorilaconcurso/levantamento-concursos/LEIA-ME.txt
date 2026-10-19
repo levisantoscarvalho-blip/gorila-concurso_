@@ -9,6 +9,12 @@ Todo dia às 4h (Brasília) o GitHub roda o atualizar.ps1 (arquivo .github/workf
     e o GitHub manda e-mail;
   • aos domingos baixa de novo TODAS as cidades (troca só se a coleta nova estiver completa).
 O que aconteceu em cada rodada: relatorio-robo.txt. Linhas "CONFERIR" e "AVISO" pedem um olhar humano.
+ROBÔ AUDITOR (desde 18/10/2026): a cada rodada o auditar.ps1 procura erros ESTRUTURAIS (concursos que a página tinha e o robô
+  não leu, cidades que faltam, capital com poucos concursos, órgãos que todo estado tem — TCE, TJ, MP, polícias... — sem nenhum
+  concurso, quedas bruscas, previstos velhos) e escreve auditoria.txt: ERRO = corrigir o código · CONFERIR = olhar · INFO = limite.
+SEM CORTE DE DATA (desde 18/10/2026): o mapa guarda tudo o que a página de cada cidade do PCI mostra (no máximo os 200 mais
+  recentes; em capitais isso vai até ~2018). Antes eram só os últimos 12 meses, e órgãos que abrem concurso de anos em anos
+  (TCE, TJ...) sumiam do mapa. Notícias (detalhes) antigas são baixadas aos poucos, 2.500 por dia, as mais recentes primeiro.
 Rodar na hora: GitHub ➔ Actions ➔ "Atualizar concursos" ➔ Run workflow.   Rodar aqui: .\atualizar.ps1  (ou -Completo)
 
 O QUE AINDA É MANUAL (o robô não decide sozinho):
@@ -23,7 +29,7 @@ previstos.txt = concursos previstos (fonte: concursos.estrategia.com/portal/conc
                 UF|status|órgão|cargo|vagas (0 = a definir)|situação|banca|data da notícia|nome da fonte|link
 municipais-previstos.txt = previstos de prefeituras, câmaras e guardas (cada um vira um ponto azul na cidade)
                 UF|órgão|cidade|cargo|vagas|situação|banca|data da notícia|link
-pci-cidades/UF.tsv   = concursos de cada cidade (página da cidade no PCI, últimos 12 meses)
+pci-cidades/UF.tsv   = concursos de cada cidade (página da cidade no PCI, tudo o que ela mostra) + UF.leitura (para o auditor)
 pci-noticias/*.jsonl = fatos de cada notícia (não o texto do PCI; os PDFs do PCI NÃO são baixados: têm "não sou robô")
 
 ═══ SCRIPTS ═══
@@ -35,3 +41,4 @@ gerar.ps1               abertos + previstos ➔ site\noticias\concursos-levantam
 gerar-cidades.ps1       pci-cidades ➔ site\noticias\concursos-cidades\UF.js
 gerar-detalhes.ps1      pci-noticias ➔ site\noticias\concursos-detalhes\UF.js
 verificar.ps1           conferência antes de publicar
+auditar.ps1             auditor de erros estruturais ➔ auditoria.txt  (-Completo também consulta a lista de cidades do PCI)
