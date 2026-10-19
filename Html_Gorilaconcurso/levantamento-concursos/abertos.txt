@@ -539,3 +539,5 @@ DF|HSL - Hospital Santa Lúcia|-|22|Vários Cargos (Superior)|09/11/2026|hospita
 GO|IDTECH - Instituto de Desenvolvimento Tecnológico e Humano|-|3|Vários Cargos (Médio / Técnico / Superior)|19/10/2026|idtech-go-abre-processo-seletivo-para-o-hgg-e-hemogo
 SC|FAHECE - Fundação de Apoio ao HEMOSC e CEPON|-|2|Técnico de Enfermagem I, Técnico em Radiologia/Imagem I (Ensino Técnico)|19/10/2026|fahece-sc-anuncia-processos-seletivos-para-tecnicos-em-enfermagem-e-radiologia
 SC|SES - Secretaria de Estado da Saúde|-|4|Técnico em Laboratório, Agente Auxiliar de Saúde Pública (Médio / Técnico)|29/10/2026|ses-sc-abre-selecao-para-tecnico-em-laboratorio-e-agente-auxiliar-de-saude-publica
+SP|UNIFESP - Universidade Federal de São Paulo|-|2|Professor Assistente A Substituto (Superior)|17/11/2026|unifesp-abre-selecao-para-professor-substituto-de-quimica-analitica-em-diadema-sp
+SP|USCS - Universidade Municipal de São Caetano do Sul, HFASP e Barueri|-|58|Médico Residente (Superior)|06/12/2026|fauscs-sp-abre-selecao-para-residencia-medica-em-diversas-areas
