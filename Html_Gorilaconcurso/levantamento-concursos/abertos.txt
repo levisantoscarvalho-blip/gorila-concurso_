@@ -541,3 +541,12 @@ SC|FAHECE - Fundação de Apoio ao HEMOSC e CEPON|-|2|Técnico de Enfermagem I, 
 SC|SES - Secretaria de Estado da Saúde|-|4|Técnico em Laboratório, Agente Auxiliar de Saúde Pública (Médio / Técnico)|29/10/2026|ses-sc-abre-selecao-para-tecnico-em-laboratorio-e-agente-auxiliar-de-saude-publica
 SP|UNIFESP - Universidade Federal de São Paulo|-|2|Professor Assistente A Substituto (Superior)|17/11/2026|unifesp-abre-selecao-para-professor-substituto-de-quimica-analitica-em-diadema-sp
 SP|USCS - Universidade Municipal de São Caetano do Sul, HFASP e Barueri|-|58|Médico Residente (Superior)|06/12/2026|fauscs-sp-abre-selecao-para-residencia-medica-em-diversas-areas
+AP|SESA - Secretaria de Estado da Saúde do Amapá|-|4208|Vários Cargos (Médio / Técnico / Superior)|26/10/2026|governo-do-estado-do-amapa-ap-prorroga-inscricoes-para-concurso-publico
+SP|FUNCAMP - Fundação de Desenvolvimento da Unicamp|-|2|Assistente Social, Jardineiro (Fundamental / Superior)|04/11/2026|funcamp-sp-abre-selecoes-para-o-hospital-de-clinicas-e-hospital-estadual-sumare
+SP|IAMSPE - Instituto de Assistência Médica ao Servidor Público Estadual|-|253|Residente Médico (Superior)|03/11/2026|iamspe-sp-abre-selecao-para-residencia-medica-em-diversas-especialidades
+RJ|CBMERJ - Corpo de Bombeiros Militar do Estado do Rio de Janeiro|-|192|Vários Cargos (Superior)|09/11/2026|cbmerj-rj-retifica-edital-de-processo-seletivo-para-1-tenente-temporario
+ES|UFES - Universidade Federal do Espírito Santo|-|1|Professor visitante estrangeiro (Superior)|09/11/2026|ufes-abre-processo-seletivo-para-professor-visitante-estrangeiro-no-programa-de-pos-graduacao-em-educacao
+SC|CIDEMA - Consórcio Intermunicipal de Desenvolvimento Econômico, Social e do Meio Ambiente|-|1|Analista Técnico em Gestão Ambiental (Superior)|21/10/2026>04/11/2026|cidema-sc-abre-processo-seletivo-para-analista-tecnico-em-gestao-ambiental
+SC|PMSC - Polícia Militar de Santa Catarina|-|500|Soldado do Quadro de Praças Policial Militar (Superior)|26/10/2026>16/11/2026|pmsc-abre-concurso-com-500-vagas-para-soldados-do-quadro-de-pracas-policial-militar
+DF|IGESDF - Instituto de Gestão Estratégica de Saúde do Distrito Federal|-|CR|Vários Cargos (Médio / Técnico / Superior)|28/10/2026|igesdf-df-abre-processos-seletivos-com-salarios-de-ate-4894
+DF|IGESDF - Instituto de Gestão Estratégica de Saúde do Distrito Federal|-|CR|Médico Paliativista, Tecnólogo em Radiologia, Médico Reumatologista (Superior)|22/10/2026|igesdf-abre-selecoes-para-medicos-e-tecnologos-em-radiologia

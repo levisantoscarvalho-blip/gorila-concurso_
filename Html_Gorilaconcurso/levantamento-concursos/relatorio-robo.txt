@@ -1,8 +1,8 @@
-ROBÔ DO GORILA — 19/10/2026 11:21 (horário de Brasília)
+ROBÔ DO GORILA — 20/10/2026 09:32 (horário de Brasília)
 CONFERIR: data de inscrição impossível na fonte (2029-09-29), não entrou: ifmg-divulga-retificacoes-do-concurso-publico-para-professores-do-ensino-basico-tecnico-e-tecnologico
-PCI hoje: 580 concursos com inscrições abertas
-novos concursos: 11 em cidades + 2 estaduais/sem cidade · 0 com data mudada (prorrogação/retificação)
-notícias: parte 0 pronta (6000 nesta rodada, faltam 121014 para as próximas)
+PCI hoje: 582 concursos com inscrições abertas
+novos concursos: 26 em cidades + 9 estaduais/sem cidade · 0 com data mudada (prorrogação/retificação)
+notícias: parte 0 pronta (6000 nesta rodada, faltam 115045 para as próximas)
 AVISO GO 17232 vagas sem conferência, ficou 'a definir': seduce-go-retifica-um-dos-dois-processos-seletivos-com-mais-de-17-2-mil-vagas
 AVISO GO 7453 vagas sem conferência, ficou 'a definir': valparaiso-de-goias-go-prorroga-inscricoes-e-retifica-edital-001-2014
 AVISO RJ 5146 vagas sem conferência, ficou 'a definir': prefeitura-de-belford-roxo-rj-anuncia-processo-seletivo-com-mais-de-5-mil-vagas
@@ -11,7 +11,7 @@ AVISO RO 5089 vagas sem conferência, ficou 'a definir': prefeitura-de-porto-vel
 AVISO taxa impossível (R$ 4231.6), não mostrada: uem-pr-abre-selecao-para-tecnico-em-laboratorio-com-salario-de-4-2-mil
 AVISO taxa impossível (R$ 2125.02), não mostrada: prefeitura-de-cajamar-sp-retifica-um-dos-editais-de-concursos-publicos
 AUDITORIA: 10 erros, 27 para conferir, 1 info (ver auditoria.txt) — ATENÇÃO: 10 cidades com concursos que o robô não conseguiu ler
-concursos nas cidades: 142317 (no ar: 142294) · detalhes: 20376 (no ar: 14378)
-levantamento estadual/municipal: 807 (no ar: 805)
+concursos nas cidades: 142336 (no ar: 142317) · detalhes: 26373 (no ar: 20376)
+levantamento estadual/municipal: 816 (no ar: 807)
 sintaxe conferida com o Node em 82 arquivos
 OK: pode publicar

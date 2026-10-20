@@ -1,6 +1,6 @@
 /* Concursos por cidade — TO. Fonte: PCI Concursos (pciconcursos.com.br/concursos/to/<cidade>), todos os que a página mostra (até 200 por cidade).
-   Gerado por levantamento-concursos/gerar-cidades.ps1 em 19/10/2026. Não editar à mão. */
-CONC_CIDADES['TO'] = { atualizado:'19/10/2026', c:{
+   Gerado por levantamento-concursos/gerar-cidades.ps1 em 20/10/2026. Não editar à mão. */
+CONC_CIDADES['TO'] = { atualizado:'20/10/2026', c:{
 '1700251':[["Prefeitura de Abreulândia","Vários Cargos","Fundamental Incompleto / Fundamental / Médio / Técnico / Superior",97,"","","2023-06-21","prefeitura-de-abreulandia-to-retifica-concurso-publico-com-97-vagas"]],
 '1700350':[["Prefeitura de Aliança do Tocantins","Vários Cargos","Fundamental / Médio / Superior",87,"","","2016-07-13","prefeitura-de-alianca-do-tocantins-to-retifica-cronograma-de-concurso"],["Câmara de Aliança do Tocantins","Aux. Serv. Gerais, Vigia e Ass. Administ","Fundamental / Médio",3,"","","2014-12-24","camara-de-alianca-do-tocantins-to-abre-concurso-publico-com-3-vagas"],["Prefeitura de Aliança do Tocantins","Vários Cargos","Fundamental / Médio / Superior",109,"","","2011-01-13","prorrogado-o-periodo-de-inscricoes-da-prefeitura-de-alianca-do-tocantins-to"]],
 '1700400':[["Prefeitura de Almas","Vários Cargos","Fundamental / Médio / Superior",95,"","","2014-05-12","prefeitura-de-almas-to-retifica-e-prorroga-concurso-001-2014-com-mais-de-90-vagas"],["Prefeitura de Almas","Vários Cargos","Fundamental / Médio / Superior",179,"","","2011-12-28","prorrogadas-inscricoes-do-edital-001-2011-da-prefeitura-de-almas-to"]],

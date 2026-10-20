@@ -996,6 +996,7 @@ armazem	Armazém	Prefeitura de Armazém	Professores	Magistério / Superior	0			2
 armazem	Armazém	Prefeitura de Armazém	Vários Cargos	Fundamental / Médio / Superior	26			2009-07-17	prefeitura-de-armazem-sc-oferece-36-vagas-em-diversos-niveis	ea
 armazem	Armazém	Prefeitura de Armazém	Vários Cargos	Fundamental / Superior	0				em-santa-catarina-prefeitura-de-armazem-tem-processo-seletivo-suspenso	suspenso
 armazem	Armazém	Prefeitura de Armazém	Vários Cargos	Fundamental / Superior	5				prefeitura-de-armazem-sc-suspende-concurso-publico	suspenso
+arroio-trinta	Arroio Trinta	IPREARROIO - Instituto de Previdência Social dos Servidores Públicos do Município de Arroio Trinta	Agente Previdenciário	Superior	1			2026-11-18	iprearroio-sc-abre-concurso-publico-para-o-cargo-de-agente-previdenciario	na
 arroio-trinta	Arroio Trinta	Prefeitura de Arroio Trinta	Auxiliar de Obras e Serviços Públicos, Auxiliar de Serviços Gerais, Professor de Educação Física	Fundamental / Superior	2			2026-07-20	prefeitura-de-arroio-trinta-sc-abre-processo-seletivo-com-salarios-de-ate-5359	ea
 arroio-trinta	Arroio Trinta	Prefeitura de Arroio Trinta	Vários Cargos	Superior	1			2026-05-29	prefeitura-de-arroio-trinta-sc-abre-selecao-com-salarios-de-ate-11160	ea
 arroio-trinta	Arroio Trinta	Prefeitura de Arroio Trinta	Vários Cargos	Fundamental / Médio / Superior	3			2025-11-04	prefeitura-de-arroio-trinta-sc-publica-processo-seletivo-com-salarios-de-ate-12-7-mil	ea
@@ -1240,6 +1241,7 @@ balneario-barra-do-sul	Balneário Barra do Sul	Prefeitura de Balneário Barra do
 balneario-barra-do-sul	Balneário Barra do Sul	Prefeitura de Balneário Barra do Sul	Supervisor Escolar e Professores	Superior	0			2013-01-30	prefeitura-de-balneario-barra-do-sul-sc-abre-vagas-para-cargos-da-educacao	ea
 balneario-barra-do-sul	Balneário Barra do Sul	Prefeitura de Balneário Barra do Sul	Vários Cargos	Fundamental / Médio / Superior	0			2009-11-23	vagas-de-ate-2387-destinadas-a-prefeitura-de-balneario-barra-do-sul-sc	ea
 balneario-barra-do-sul	Balneário Barra do Sul	Prefeitura de Balneário Barra do Sul	Área da Saúde	Médio / Superior	0			2009-10-16	vagas-na-area-da-saude-para-prefeitura-de-balneario-barra-do-sul-sc	ea
+balneario-camboriu	Balneário Camboriú	FAHECE - Fundação de Apoio ao Hemosc e Cepon	Rádio Operador(a)	Ensino Médio	3			2026-10-21	fahece-sc-abre-selecao-para-radio-operador-no-samu-em-balneario-camboriu	na
 balneario-camboriu	Balneário Camboriú	EMASA - Empresa Municipal de Água e Saneamento	Fiscal Sanitarista	Superior	1			2026-09-10	emasa-de-balneario-camboriu-sc-abre-processo-seletivo-com-vaga-para-fiscal-sanitarista	ea
 balneario-camboriu	Balneário Camboriú	FAHECE - Fundação de Apoio ao Hemosc e Cepon	Técnico(a) Auxiliar de Regulação Médica (TARM)	Ensino Médio	1			2026-08-06	fahece-sc-abre-vaga-para-tecnico-auxiliar-de-regulacao-medica-em-balneario-camboriu	ea
 balneario-camboriu	Balneário Camboriú	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Rádio Operador(a)	Ensino Médio	1			2026-03-29	fahece-sc-anuncia-vaga-para-radio-operador-no-samu-em-balneario-camboriu	ea
@@ -5121,8 +5123,9 @@ flor-do-sertao	Flor do Sertão	Prefeitura de Flor do Sertão	Médico	Superior	1	
 florianopolis	Florianópolis	SES - Secretaria de Estado da Saúde de Santa Catarina	Técnico em Enfermagem Necropsia	Ensino Técnico	1			2026-10-27	ses-sc-abre-processo-seletivo-para-tecnico-em-enfermagem-em-florianopolis	na
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao Hemosc e Cepon	Motorista II	Ensino Médio	1			2026-10-25	fahece-sc-abre-selecao-para-o-cargo-de-motorista-ii-em-florianopolis	na
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC e CEPON	Terapeuta Ocupacional I	Superior	1			2026-10-25	fahece-sc-abre-processo-seletivo-para-o-cargo-de-terapeuta-ocupacional-i-em-florianopolis	na
+florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao Hemosc e Cepon	Técnico Auxiliar de Regulação Médica	Ensino Médio	1			2026-10-21	fahece-sc-abre-selecao-para-tecnico-auxiliar-de-regulacao-medica-no-samu-de-florianopolis	na
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao Hemosc e Cepon	Enfermeiro I	Superior	1			2026-10-21	fahece-sc-abre-processo-seletivo-para-enfermeiro-i-no-cepon-de-florianopolis	na
-florianopolis	Florianópolis	SMS - Secretaria Municipal de Saúde de Florianópolis	Médico de Família e Comunidade	Superior	0	CR		2026-10-19	prefeitura-de-florianopolis-sc-abre-selecao-para-medico-de-familia-e-comunidade	na
+florianopolis	Florianópolis	SMS - Secretaria Municipal de Saúde de Florianópolis	Médico de Família e Comunidade	Superior	0	CR		2026-10-19	prefeitura-de-florianopolis-sc-abre-selecao-para-medico-de-familia-e-comunidade	ea
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao Hemosc e Cepon	Técnico de Enfermagem I, Enfermeiro I	Técnico / Superior	2			2026-10-18	fahece-sc-abre-selecoes-para-tecnico-de-enfermagem-e-enfermeiro-no-cepon	ea
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC e CEPON	Farmacêutico, Técnico em Laboratório I - Patologia	Técnico / Superior	2			2026-10-18	fahece-sc-abre-processos-seletivos-para-farmaceutico-e-tecnico-em-laboratorio	ea
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC e CEPON	Médico II	Superior	1			2026-10-16	fahece-sc-anuncia-processo-seletivo-para-o-cargo-de-medico-ii-em-florianopolis	ea
@@ -5306,9 +5309,9 @@ florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC e CEPON	Assi
 florianopolis	Florianópolis	HEMOSC - Centro de Hematologia e Hemoterapia de Santa Catarina	Assistente de Compras I	Ensino Médio	1			2026-02-17	fahece-sc-abre-processo-seletivo-com-vaga-para-assistente-de-compras-i-pcd-no-hemosc-de-florianopolis	ea
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC e CEPON	Enfermeiro I Central de Quimioterapia	Superior	1			2026-02-16	fahece-sc-anuncia-processo-seletivo-para-o-cargo-de-enfermeiro-i-no-cepon-de-florianopolis	ea
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Analista Contábil I	Superior	1			2026-02-16	fahece-sc-abre-processo-seletivo-para-analista-contabil-no-cepon-de-florianopolis	ea
+florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Assistente de Comunicação I PCD	Ensino Médio	1			2026-02-15	fahece-sc-abre-processo-seletivo-para-assistente-de-comunicacao-i-pcd	ea
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Médico(a) do Trabalho	Superior	1			2026-02-15	fahece-sc-abre-selecao-para-medico-do-trabalho-no-samu-de-florianopolis	ea
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao Hemosc/Cepom	Supervisor(a) Operacional de Central de Regulação	Superior	1			2026-02-15	fahece-sc-abre-selecao-para-supervisor-operacional-em-florianopolis	ea
-florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Assistente de Comunicação I PCD	Ensino Médio	1			2026-02-15	fahece-sc-abre-processo-seletivo-para-assistente-de-comunicacao-i-pcd	ea
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Assistente Administrativo I	Ensino Médio	1			2026-02-12	fahece-sc-abre-processo-seletivo-para-assistente-administrativo-i-farmacia-no-cepon-de-florianopolis	ea
 florianopolis	Florianópolis	CRMV - Conselho Regional de Medicina Veterinária do Estado de Santa Catarina	Assistente Administrativo, Advogado, Engenheiro Civil	Médio / Superior	5			2026-02-12	crmv-sc-abre-cinco-vagas-temporarias-para-cargos-de-nivel-medio-e-superior	ea
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Enfermeiro I	Superior	1			2026-02-11	fahece-sc-abre-processo-seletivo-para-o-cargo-de-enfermeiro-i	ea
@@ -5316,7 +5319,6 @@ florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Analis
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Coordenador de Enfermagem	Superior	1			2026-02-06	fahece-sc-abre-processo-seletivo-para-coordenador-de-enfermagem-em-uti	ea
 florianopolis	Florianópolis	SES - Secretaria de Estado da Saúde	Médico	Superior	15			2026-02-05	secretaria-de-estado-da-saude-sc-abre-processo-seletivo-para-medicos-com-15-vagas-e-cadastro-reserva	ea
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Técnico de Segurança do Trabalho II	Ensino Técnico	1			2026-02-03	fahece-sc-anuncia-vaga-para-tecnico-de-seguranca-do-trabalho-em-florianopolis	ea
-florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Técnico de Enfermagem I	Ensino Técnico	1			2026-02-02	fahece-sc-abre-processo-seletivo-para-tecnico-de-enfermagem-i-especializado-em-centro-cirurgico	ea
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Analista Contábil II	Superior	1			2026-02-02	fahece-abre-processo-seletivo-para-analista-contabil-em-florianopolis-sc	ea
 formosa-do-sul	Formosa do Sul	Prefeitura de Formosa do Sul	Vários Cargos	Fundamental / Médio / Superior	12			2026-07-08	prefeitura-de-formosa-do-sul-sc-abre-seletivo-para-diversos-cargos-com-salarios-de-ate-14888	ea
 formosa-do-sul	Formosa do Sul	Prefeitura de Formosa do Sul	Vários Cargos	Fundamental / Médio / Técnico / Superior	53			2026-06-25	prefeitura-de-formosa-do-sul-sc-retifica-concurso-publico	ea
@@ -8978,6 +8980,7 @@ joacaba	Joaçaba	Prefeitura de Joaçaba	Vários Cargos	Fundamental / Médio / Su
 joacaba	Joaçaba	Prefeitura de Joaçaba	Técnico em Vigilância Sanitária	Ensino Médio	1			2009-11-13	vagas-para-tecnico-em-vigilancia-sanitaria-na-prefeitura-de-joacaba-sc	ea
 joacaba	Joaçaba	Prefeitura de Joaçaba	Área da Educação	Magistério / Superior	13			2008-12-11	prefeitura-de-joacaba-sc-oferece-13-vagas-na-area-da-educacao	ea
 joacaba	Joaçaba	Prefeitura de Joaçaba - Edital 1	Vários Cargos	Fundamental / Médio / Superior	34			2008-02-22	prefeitura-de-joacaba-sc-selecionara-271-candidatos	ea
+joinville	Joinville	FAHECE - Fundação de Apoio ao HEMOSC e CEPON	Analista Administrativo I	Superior	1			2026-10-21	fahece-sc-anuncia-processo-seletivo-para-analista-administrativo-i-em-joinville	na
 joinville	Joinville	HEMOSC - Centro de Hematologia e Hemoterapia de Santa Catarina	Técnico em Enfermagem I	Ensino Técnico	1			2026-10-15	fahece-sc-abre-processo-seletivo-para-tecnico-em-enfermagem-i-no-municipio-de-joinville	ea
 joinville	Joinville	FAHECE - Fundação de Apoio ao HEMOSC e CEPON	Médico II	Superior	1			2026-10-13	fahece-sc-abre-processo-seletivo-para-medico-no-hemosc-de-joinville	ea
 joinville	Joinville	FAHECE - Fundação de Apoio ao HEMOSC e CEPON	Técnico de Enfermagem I	Ensino Técnico	0	CR		2026-10-09	fahece-sc-abre-processo-seletivo-para-tecnico-de-enfermagem-pcd-no-hemosc-de-joinville	ea
@@ -9177,7 +9180,6 @@ joinville	Joinville	IFSC - Instituto Federal de Educação, Ciência e Tecnologi
 joinville	Joinville	Secretaria de Estado da Saúde	Médico	Superior	4			2013-04-19	secretaria-da-saude-sc-abre-4-vagas-para-medicos-em-joinville	ea
 joinville	Joinville	UFSC - Universidade Federal de Santa Catarina	Professores	Superior	2			2013-04-12	ufsc-abre-vagas-docentes-no-campus-de-joinville-e-no-ccs	ea
 joinville	Joinville	Defensoria Pública da União em Joinville	Estagiários	Superior Incompleto	2			2013-04-10	dpu-sc-abre-2-vagas-para-estagiarios-de-direito-em-joinville	ea
-joinville	Joinville	Secretaria de Estado da Saúde	Médicos	Superior	5			2013-04-01	ses-sc-abre-cinco-vagas-para-medicos-no-hospital-regional-de-joinville	ea
 jose-boiteux	José Boiteux	Prefeitura de José Boiteux	Professor, Auxiliar de Sala	Médio / Superior	0	CR		2026-10-15	prefeitura-de-jose-boiteux-sc-abre-processo-seletivo-para-a-educacao	ea
 jose-boiteux	José Boiteux	Prefeitura de José Boiteux	Servente Merendeira	Fundamental	1			2026-08-28	prefeitura-de-jose-boiteux-sc-abre-selecao-para-servente-merendeira	ea
 jose-boiteux	José Boiteux	Prefeitura de José Boiteux	Professor, Auxiliar de Sala, Servente/Merendeira	Fundamental / Médio / Superior	7			2026-03-03	prefeitura-de-jose-boiteux-sc-abre-vagas-para-a-area-da-educacao-em-processo-seletivo	ea
@@ -11120,6 +11122,7 @@ nova-veneza	Nova Veneza	Prefeitura de Nova Veneza	Vários Cargos	Médio / Superi
 nova-veneza	Nova Veneza	Prefeitura de Nova Veneza	Vários Cargos	Médio / Superior	27			2014-10-07	prefeitura-de-nova-veneza-sc-divulga-errata-ao-cp-02-mas-mantem-03-e-04-inalterados-63-vagas	ea
 nova-veneza	Nova Veneza	Prefeitura de Veneza	Agente Comunitário de Saúde	Fundamental	26			2012-02-03	prefeitura-de-nova-veneza-sc-abr-26-vagas-para-agente-comunitario-de-saude	ea
 nova-veneza	Nova Veneza	Prefeitura de Nova Veneza	Professores	Magistério / Superior	0			2009-11-26	prefeitura-de-nova-veneza-sc-oferece-vagas-na-area-da-educacao	ea
+novo-horizonte	Novo Horizonte	Prefeitura de Novo Horizonte	Vários Cargos	Fundamental / Médio / Superior	13			2026-10-30	prefeitura-de-novo-horizonte-sc-abre-processo-seletivo-com-salarios-de-ate-6201	na
 novo-horizonte	Novo Horizonte	Prefeitura de Novo Horizonte	Agente de Manutenção e Conservação, Motorista, Engenheiro Civil	Fundamental / Superior	4			2026-06-26	prefeitura-de-novo-horizonte-sc-abre-processo-seletivo-com-salarios-de-ate-4003	ea
 novo-horizonte	Novo Horizonte	Prefeitura de Novo Horizonte	Vários Cargos	Fundamental / Médio / Técnico / Superior	4			2025-12-22	prefeitura-de-novo-horizonte-sc-abre-inscricoes-para-concurso-publico-e-processo-seletivo	ea
 novo-horizonte	Novo Horizonte	Câmara de Vereadores de Novo Horizonte	Vários Cargos	Fundamental / Médio / Superior	4			2025-06-12	camara-de-vereadores-de-novo-horizonte-sc-anuncia-concurso-publico	ea
