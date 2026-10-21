@@ -4442,8 +4442,9 @@ borebi	Borebi	Prefeitura de Borebi	Vários Cargos	Fundamental / Médio / Superio
 borebi	Borebi	Prefeitura de Borebi	Vários Cargos	Médio / Superior	6			2012-06-08	inscricoes-abertas-para-o-concurso-com-6-vagas-na-prefeitura-de-borebi-sp	ea
 borebi	Borebi	Prefeitura de Borebi	Vários Cargos	Fundamental / Médio / Superior	10			2011-12-22	prefeitura-de-borebi-sp-disponibiliza-10-vagas-de-diferentes-niveis	ea
 borebi	Borebi	Câmara de Borebi	Vários Cargos	Fundamental / Médio / Superior	4				camara-de-borebi-sp-tem-concurso-de-2012-suspenso	suspenso
-botucatu	Botucatu	UNESP - Universidade Estadual Paulista "Júlio de Mesquita Filho"	Professor Titular	Superior	1		2026-10-19	2026-12-02	unesp-abre-concurso-publico-para-professor-titular-em-botucatu-sp	na
+botucatu	Botucatu	UNESP - Universidade Estadual Paulista "Júlio de Mesquita Filho"	Professor Titular	Superior	1			2026-12-02	unesp-abre-concurso-publico-para-professor-titular-em-botucatu-sp	na
 botucatu	Botucatu	UNESP - Universidade Estadual Paulista Júlio de Mesquita Filho	Professor Titular	Superior	1			2026-11-16	unesp-abre-concurso-para-o-cargo-de-professor-titular-na-faculdade-de-medicina-de-botucatu-sp	na
+botucatu	Botucatu	UNESP - Universidade Estadual Paulista "Júlio de Mesquita Filho"	Professor Substituto	Superior	1		2026-10-26	2026-11-09	unesp-abre-concurso-publico-para-professor-substituto-de-medicina-veterinaria-em-botucatu-sp	na
 botucatu	Botucatu	UNESP - Universidade Estadual Paulista "Júlio de Mesquita Filho"	Professor Substituto	Superior	1			2026-11-03	unesp-abre-vaga-para-professor-substituto-de-engenharia-quimica-em-botucatu-sp	na
 botucatu	Botucatu	UNESP - Universidade Estadual Paulista "Júlio de Mesquita Filho"	Professor Substituto	Superior	2			2026-10-27	unesp-abre-concursos-para-professores-substitutos-na-area-de-enfermagem-em-botucatu-sp	na
 botucatu	Botucatu	UNESP - Universidade Estadual Paulista "Júlio de Mesquita Filho"	Professor Titular	Superior	1			2026-10-14	unesp-abre-concurso-publico-para-professor-titular-na-faculdade-de-medicina-de-botucatu	ea
@@ -4641,7 +4642,6 @@ botucatu	Botucatu	UNESP - Universidade Estadual Paulista - Botucatu	Professor Su
 botucatu	Botucatu	UNESP - Universidade Estadual Paulista - Botucatu	Professor Assistente	Superior	1			2024-11-12	unesp-inscricoes-abertas-para-novo-concurso-publico-no-campus-de-botucatu	ea
 botucatu	Botucatu	UNESP - Universidade Estadual Paulista - Botucatu	Professor	Superior	8			2024-11-12	unesp-campus-botucatu-abre-inscricoes-para-seis-concursos-publicos	ea
 botucatu	Botucatu	UNESP - Universidade Estadual Paulista - Botucatu	Professor Colaborador	Superior	2			2024-10-31	unesp-divulga-dois-novos-concursos-publicos-no-campus-de-botucatu-sp	ea
-botucatu	Botucatu	Etec - Escola Técnica - Botucatu	Professor de Ensino Médio e Técnico	Superior	0			2024-10-23	etec-de-botucatu-sp-anuncia-inscricoes-para-novo-processo-seletivo	ea
 braganca-paulista	Bragança Paulista	Prefeitura de Bragança Paulista	Vários Cargos	Fundamental / Médio / Técnico / Superior	89			2026-06-11	prefeitura-de-braganca-paulista-sp-publica-cinco-editais-de-concursos-publicos	ea
 braganca-paulista	Bragança Paulista	Fatec - Faculdade de Tecnologia - Bragança Paulista	Professor de Ensino Superior	Superior	2			2025-08-28	fatec-de-braganca-paulista-sp-abre-processos-seletivos-para-professores-em-duas-areas-de-atuacao	ea
 braganca-paulista	Bragança Paulista	Fatec - Faculdade de Tecnologia - Bragança Paulista	Professor de Ensino Superior	Superior	1			2025-07-15	fatec-de-braganca-paulista-sp-publica-processo-seletivo-para-docente-de-ensino-superior	ea
@@ -12147,7 +12147,8 @@ ilha-comprida	Ilha Comprida	Câmara de Ilha Comprida	Vários Cargos	Fundamental 
 ilha-comprida	Ilha Comprida	Prefeitura de Ilha Comprida	Vários Cargos	Fundamental / Médio / Superior	48			2010-11-18	prefeitura-de-ilha-comprida-sp-prorroga-inscricoes-de-concurso-publico	ea
 ilha-comprida	Ilha Comprida	Prefeitura de Ilha Comprida	Vários Cargos	Fundamental / Médio / Superior	51			2009-07-27	51-vagas-para-prefeitura-de-ilha-comprida-sp	ea
 ilha-comprida	Ilha Comprida	Prefeitura de Ilha Comprida	Processo Seletivo	Fundamental / Médio / Superior	45			2007-06-19	prefeitura-de-ilha-comprida-sp	ea
-ilha-solteira	Ilha Solteira	UNESP - Universidade Estadual Paulista "Júlio de Mesquita Filho"	Professor Substituto	Superior	2			2026-10-19	unesp-abre-concursos-para-professores-substitutos-no-campus-de-ilha-solteira-sp	na
+ilha-solteira	Ilha Solteira	UNESP - Universidade Estadual Paulista "Júlio de Mesquita Filho"	Professor Substituto	Superior	1		2026-10-23	2026-11-06	unesp-abre-concurso-para-professor-substituto-de-engenharia-civil-no-campus-de-ilha-solteira	na
+ilha-solteira	Ilha Solteira	UNESP - Universidade Estadual Paulista "Júlio de Mesquita Filho"	Professor Substituto	Superior	2			2026-10-19	unesp-abre-concursos-para-professores-substitutos-no-campus-de-ilha-solteira-sp	ea
 ilha-solteira	Ilha Solteira	UNESP - Universidade Estadual Paulista "Júlio de Mesquita Filho"	Professor Substituto	Superior	6			2026-10-02	unesp-abre-concursos-para-professores-substitutos-em-ilha-solteira	ea
 ilha-solteira	Ilha Solteira	UNESP - Universidade Estadual Paulista	Professor Substituto	Superior	1			2026-05-25	unesp-abre-concurso-para-professor-substituto-na-area-de-ciencias-sociais-aplicadas-em-ilha-solteira-sp	ea
 ilha-solteira	Ilha Solteira	UNESP - Faculdade de Engenharia do Câmpus de Ilha Solteira	Professor Substituto	Superior	1			2026-04-30	unesp-abre-concurso-para-professor-substituto-de-engenharia-civil-em-ilha-solteira-sp	ea
@@ -12261,8 +12262,8 @@ ilha-solteira	Ilha Solteira	UNESP - Universidade Estadual Paulista - Ilha Soltei
 ilha-solteira	Ilha Solteira	UNESP - Universidade Estadual Paulista - Ilha Solteira	Assistente de Suporte Acadêmico II	Ensino Médio	1			2023-02-24	unesp-faculdade-de-engenharia-divulga-novo-concurso-publico-em-ilha-solteira-sp	ea
 ilha-solteira	Ilha Solteira	UNESP - Universidade Estadual Paulista - Ilha Solteira	Professor Colaborador	Superior	1			2023-02-17	unesp-de-ilha-solteira-divulga-concurso-publico-com-salario-de-13-3-mil	ea
 ilha-solteira	Ilha Solteira	UNESP - Universidade Estadual Paulista - Ilha Solteira	Professor Substituto	Superior	1			2023-02-13	unesp-de-ilha-solteira-divulga-concurso-publico-na-faculdade-de-engenharia	ea
-ilha-solteira	Ilha Solteira	Prefeitura de Ilha Solteira	Vários Cargos	Fundamental / Médio / Superior	92			2023-02-09	prefeitura-de-ilha-solteira-sp-promove-concurso-publico-com-remuneracoes-de-ate-20-9-mil	ea
 ilha-solteira	Ilha Solteira	Prefeitura de Ilha Solteira	Vários Cargos	Médio / Superior	115			2023-02-09	prefeitura-de-ilha-solteira-sp-abre-tres-novos-concursos-publicos	ea
+ilha-solteira	Ilha Solteira	Prefeitura de Ilha Solteira	Vários Cargos	Fundamental / Médio / Superior	92			2023-02-09	prefeitura-de-ilha-solteira-sp-promove-concurso-publico-com-remuneracoes-de-ate-20-9-mil	ea
 ilha-solteira	Ilha Solteira	UNESP - Universidade Estadual Paulista - Ilha Solteira	Professor Assistente	Superior	1			2023-02-06	salario-de-13-3-mil-e-ofertado-em-concurso-publico-da-unesp-de-ilha-solteira	ea
 ilha-solteira	Ilha Solteira	UNESP - Universidade Estadual Paulista - Ilha Solteira	Professor Substituto	Superior	1			2023-01-16	unesp-abre-concurso-publico-no-campus-de-ilha-solteira	ea
 ilha-solteira	Ilha Solteira	Etec - Escola Técnica - Ilha Solteira	Professor de Ensino Médio e Técnico	Superior	0			2023-01-15	etec-divulga-dois-concursos-publicos-na-cidade-de-ilha-solteira	ea
@@ -12346,7 +12347,6 @@ ilha-solteira	Ilha Solteira	ETEC - Escola de Tecnologia - Ilha Solteira	Professo
 ilha-solteira	Ilha Solteira	ETEC - Escola de Tecnologia - Ilha Solteira	Professor de Ensino Médio e Técnico	Superior	0			2021-02-15	etec-de-ilha-solteira-sp-publica-quatro-novos-processos-seletivos	ea
 ilha-solteira	Ilha Solteira	UNESP - Universidade Estadual Paulista - Ilha Solteira	Professor Substituto	Superior	4			2021-02-12	unesp-quatro-concursos-publicos-tem-inscricoes-prorrogadas	ea
 ilha-solteira	Ilha Solteira	UNESP - Universidade Estadual Paulista - Ilha Solteira	Professor Substituto	Superior	1			2021-02-11	unesp-realiza-novo-concurso-publico-em-ilha-solteira	ea
-ilha-solteira	Ilha Solteira	ETEC - Escola de Tecnologia - Ilha Solteira	Professor	Superior	0			2021-02-11	etec-ilha-solteira-20-processos-seletivos-para-professor-sao-anunciados	ea
 ilhabela	Ilhabela	FUNDACI - Fundação Arte e Cultura de Ilhabela	Advogado, Controle Interno	Superior	2			2026-09-24	fundaci-de-ilhabela-sp-abre-concurso-publico-para-cargos-de-nivel-superior	ea
 ilhabela	Ilhabela	Prefeitura da Estância Balneária de Ilhabela	Vários Cargos	Fundamental / Médio / Superior	53			2026-09-10	prefeitura-de-ilhabela-sp-retifica-edital-de-concurso-publico-com-remuneracoes-de-ate-12579	ea
 ilhabela	Ilhabela	Prefeitura de Ilhabela	Vários Cargos	Médio / Superior	158			2026-09-08	prefeitura-de-ilhabela-sp-retifica-edital-de-processo-seletivo-com-vagas-para-professores-e-auxiliares	ea
@@ -14746,6 +14746,7 @@ jaborandi	Jaborandi	Prefeitura de Jaborandi	Vários Cargos	Fundamental / Médio 
 jaborandi	Jaborandi	Prefeitura de Jaborandi	Professor Educação Básica	Superior Incompleto / Superior	0			2016-12-13	prefeitura-de-jaborandi-sp-divulga-processo-seletivo-de-professores	ea
 jaborandi	Jaborandi	ETEC Coronel Raphael Brandão - Barretos	Professores	Superior	0			2014-12-12	etec-de-barueri-sp-anuncia-realizacao-de-processo-seletivo	ea
 jaboticabal	Jaboticabal	UNESP - Universidade Estadual Paulista "Júlio de Mesquita Filho"	Professor Titular	Superior	1		2026-10-30	2026-12-14	unesp-abre-concurso-publico-para-professor-titular-em-jaboticabal-sp	na
+jaboticabal	Jaboticabal	UNESP - Universidade Estadual Paulista "Júlio de Mesquita Filho"	Professor Substituto	Superior	1		2026-10-23	2026-11-06	unesp-abre-concurso-publico-para-professor-substituto-de-medicina-veterinaria-em-jaboticabal-sp	na
 jaboticabal	Jaboticabal	UNESP - Universidade Estadual Paulista "Júlio de Mesquita Filho"	Professor Substituto	Superior	1			2026-11-03	unesp-abre-concurso-para-professor-substituto-de-zoologia-em-jaboticabal-sp	na
 jaboticabal	Jaboticabal	UNESP - Universidade Estadual Paulista Júlio de Mesquita Filho	Professor Substituto	Superior	1			2026-10-29	unesp-abre-concurso-publico-para-professor-substituto-de-ciencias-agrarias-em-jaboticabal-sp	na
 jaboticabal	Jaboticabal	UNESP - Universidade Estadual Paulista	Professor Assistente	Superior	1			2026-08-18	unesp-abre-concurso-para-professor-assistente-na-area-de-farmacologia-em-jaboticabal-sp	ea
@@ -14944,7 +14945,6 @@ jaboticabal	Jaboticabal	UNESP - Universidade Estadual Paulista - Jaboticabal	Pro
 jaboticabal	Jaboticabal	UNESP - Universidade Estadual Paulista	Professor Substituto	Superior	1			2021-03-29	unesp-anuncia-concurso-publico-em-jaboticabal	ea
 jaboticabal	Jaboticabal	EMURJA - Empresa Municipal de Urbanização de Jaboticabal	Vários Cargos	Fundamental / Médio	1			2021-03-24	emurja-sp-contrata-por-meio-de-processo-seletivo	ea
 jaboticabal	Jaboticabal	UNESP - Universidade Estadual Paulista - Jaboticabal	Professor Substituto	Superior	20			2021-01-29	unesp-cancela-um-de-seus-20-concursos-publicos-anunciados	ea
-jaboticabal	Jaboticabal	Prefeitura de Jaboticabal	Vários Cargos (Saúde)	Superior	30			2020-12-22	prefeitura-de-jaboticabal-sp-realiza-novo-processo-seletivo-com-30-vagas-disponiveis	ea
 jacarei	Jacareí	Prefeitura de Jacareí	Vários Cargos	Médio / Técnico / Superior	32			2026-02-26	prefeitura-de-jacarei-sp-abre-concursos-com-salarios-de-ate-10-9-mil	ea
 jacarei	Jacareí	Prefeitura de Jacareí	Vários Cargos	Médio / Técnico / Superior	62			2026-02-19	prefeitura-de-jacarei-sp-abre-novos-concursos-com-salarios-de-ate-8-mil	ea
 jacarei	Jacareí	Fatec - Faculdade de Tecnologia - Jacareí	Professor do Ensino Superior (Design Digital)	Superior	1			2025-12-30	fatec-abre-processo-seletivo-com-vaga-para-professor-em-jacarei-sp	ea
@@ -18371,6 +18371,7 @@ mirante-do-paranapanema	Mirante do Paranapanema	Prefeitura de Mirante do Paranap
 mirante-do-paranapanema	Mirante do Paranapanema	Diretoria de Ensino - Região de Mirante do Paranapanema	Agente de Organização Escolar	Fundamental	0			2010-06-24	vagas-de-654-na-d-e-regiao-de-mirante-do-paranapanema-sp	ea
 mirante-do-paranapanema	Mirante do Paranapanema	Prefeitura de Mirante do Paranapanema	Vários Cargos	Fundamental / Médio / Superior	101			2010-05-14	prefeitura-de-mirante-do-paranapanema-sp-abre-121-vagas-de-diversos-cargos	ea
 mirante-do-paranapanema	Mirante do Paranapanema	Prefeitura de Mirante do Paranapanema	Vários Cargos	Fundamental / Médio / Superior	48			2009-09-30	111-vagas-de-ate-1393-a-prefeitura-de-mirante-do-paranapanema-sp	ea
+mirassol	Mirassol	Prefeitura de Mirassol	Agente de Suporte ao Atendimento da Criança	Ensino Médio	30			2026-11-06	prefeitura-de-mirassol-sp-abre-processo-seletivo-para-agente-de-suporte-ao-atendimento-da-crianca	na
 mirassol	Mirassol	Prefeitura de Mirassol	Professor Especialista de Educação Física PEF II	Superior	8			2026-01-23	prefeitura-de-mirassol-sp-abre-processo-seletivo-para-professor-especialista-de-educacao-fisica	ea
 mirassol	Mirassol	Câmara de Mirassol	Vários Cargos	Médio / Superior	9			2025-11-19	camara-de-mirassol-sp-publica-edital-de-concurso-publico	ea
 mirassol	Mirassol	Etec - Escola Técnica - Mirassol	Professor de Ensino Médio e Técnico	Médio / Técnico / Superior	0			2025-11-18	etec-de-mirassol-sp-publica-processo-seletivo-para-docente-de-lingua-portuguesa	ea
@@ -21378,6 +21379,7 @@ panorama	Panorama	Prefeitura de Panorama	Vários Cargos	Fundamental / Médio / S
 panorama	Panorama	Câmara de Panorama	Faxineiro	Fundamental	1			2010-07-25	camara-de-panorama-sp-oferece-1-vaga-para-faxineiro-de-930	ea
 panorama	Panorama	Prefeitura de Panorama	Vários Cargos	Fundamental / Médio / Superior	31			2010-07-07	31-vagas-para-diversos-cargos-disponibilizadas-na-prefeitura-de-panorama-sp	ea
 panorama	Panorama	Prefeitura de Panorama	Vários Cargos	Superior	4			2009-01-29	4-vagas-para-a-prefeitura-de-panorama-sp	ea
+paraguacu-paulista	Paraguaçu Paulista	Câmara da Estância Turística de Paraguaçu Paulista	Vários Cargos	Fundamental / Médio / Superior	0	CR		2026-11-15	camara-de-paraguacu-paulista-sp-abre-concurso-publico-com-salarios-de-ate-11065	na
 paraguacu-paulista	Paraguaçu Paulista	Etec - Escola Técnica - Paraguaçu Paulista	Professor de Ensino Médio e Técnico	Superior	0			2025-12-02	etec-de-paraguacu-paulista-sp-lanca-abertura-de-edital-de-processo-seletivo	ea
 paraguacu-paulista	Paraguaçu Paulista	Prefeitura de Paraguaçu Paulista	Vários Cargos	Superior	0			2025-11-24	prefeitura-de-paraguacu-paulista-sp-abre-processo-seletivo-para-professores	ea
 paraguacu-paulista	Paraguaçu Paulista	Etec - Escola Técnica - Paraguaçu Paulista	Professor de Ensino Médio, Professor Técnico	Superior	0			2025-10-28	etec-de-paraguacu-paulista-sp-abre-processo-seletivo-para-professores	ea
@@ -21682,6 +21684,7 @@ paulistania	Paulistânia	Prefeitura de Paulistânia	Coveiro e Serviços Gerais	A
 paulistania	Paulistânia	Prefeitura de Paulistânia	Vários Cargos	Fundamental / Médio / Superior	21			2013-05-17	prefeitura-de-paulistania-sp-abre-vagas-para-cargos-em-diversos-niveis	ea
 paulistania	Paulistânia	Prefeitura de Paulistânia	Vários Cargos	Fundamental / Médio / Superior	30			2013-05-17	abertas-30-vagas-para-diversos-niveis-na-prefeitura-de-paulistania-sp	ea
 paulistania	Paulistânia	Prefeitura de Paulistânia	Vários Cargos	Fundamental / Médio / Superior	30			2012-03-14	salarios-de-ate-2-9-mil-sao-oferecidos-pela-prefeitura-de-paulistania-sp	ea
+paulo-de-faria	Paulo de Faria	Prefeitura de Paulo de Faria	Vários Cargos	Fundamental / Médio / Técnico / Superior	34		2026-10-22	2026-11-05	prefeitura-de-paulo-de-faria-sp-abre-concurso-publico-com-salarios-de-ate-8632	na
 paulo-de-faria	Paulo de Faria	Prefeitura de Paulo de Faria	Professor de Educação Básica I, Professor de Educação Básica II	Superior	0	CR		2026-09-21	prefeitura-de-paulo-de-faria-sp-abre-processo-seletivo-para-professores-de-diversas-areas	ea
 paulo-de-faria	Paulo de Faria	Prefeitura de Paulo de Faria	Professor	Superior	0			2024-05-29	novo-processo-seletivo-para-professor-e-anunciado-pela-prefeitura-de-paulo-de-faria-sp	ea
 paulo-de-faria	Paulo de Faria	Prefeitura de Paulo de Faria	Professores	Superior	0			2023-01-22	prefeitura-de-paulo-de-faria-sp-disponibiliza-novo-edital-de-processo-seletivo	ea

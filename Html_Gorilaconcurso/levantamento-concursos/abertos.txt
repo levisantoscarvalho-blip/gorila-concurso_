@@ -550,3 +550,14 @@ SC|CIDEMA - Consórcio Intermunicipal de Desenvolvimento Econômico, Social e do
 SC|PMSC - Polícia Militar de Santa Catarina|-|500|Soldado do Quadro de Praças Policial Militar (Superior)|26/10/2026>16/11/2026|pmsc-abre-concurso-com-500-vagas-para-soldados-do-quadro-de-pracas-policial-militar
 DF|IGESDF - Instituto de Gestão Estratégica de Saúde do Distrito Federal|-|CR|Vários Cargos (Médio / Técnico / Superior)|28/10/2026|igesdf-df-abre-processos-seletivos-com-salarios-de-ate-4894
 DF|IGESDF - Instituto de Gestão Estratégica de Saúde do Distrito Federal|-|CR|Médico Paliativista, Tecnólogo em Radiologia, Médico Reumatologista (Superior)|22/10/2026|igesdf-abre-selecoes-para-medicos-e-tecnologos-em-radiologia
+AC|IFAC - Instituto Federal de Educação, Ciência e Tecnologia do Acre|-|1|Professor substituto (Superior)|23/10/2026|ifac-abre-processo-seletivo-para-professor-substituto-de-fisica
+AP|SEAD/AP - Secretaria de Estado da Administração|-|396|Delegado de Polícia Civil, Oficial Investigador de Polícia Civil (Superior)|23/10/2026|sead-ap-prorroga-inscricoes-de-concurso-para-delegado-e-oficial-investigador-de-policia-civil
+BA|UFBA - Universidade Federal da Bahia|-|139|Vários Cargos (Médio / Técnico / Superior)|29/10/2026|ufba-ba-publica-retificacoes-de-concurso-publico-para-tecnicos-administrativos-em-educacao
+BA|CISUDOESTE - Consórcio Intermunicipal do Sudoeste da Bahia|-|2|Técnico de Nível Superior (Superior)|23/10/2026|cisudoeste-ba-abre-selecao-para-tecnicos-de-nivel-superior
+PB|TJPB - Tribunal de Justiça do Estado da Paraíba|-|50|Analista Judiciário, Contabilidade (Superior)|18/11/2026|tjpb-abre-concurso-publico-para-analistas-judiciarios
+SP|IPA - Instituto de Pesquisas Ambientais|-|98|Pesquisador Científico I A (Superior)|18/11/2026>22/12/2026|ipa-sp-abre-concurso-publico-para-pesquisadores-cientificos
+RJ|UERJ - Universidade do Estado do Rio de Janeiro|-|0|Vários Cargos (Fundamental / Médio / Técnico / Superior)|03/11/2026|uerj-abre-processo-seletivo-para-cadastro-de-reserva-em-projetos-da-saude
+MG|HOB - Hospital Metropolitano Odilon Behrens|-|0|Analista de Planejamento e Gestão Governamental, Técnico Superior de Saúde (Superior)|27/10/2026|hospital-metropolitano-odilon-behrens-mg-abre-vagas-para-fonoaudiologo-e-analista-de-sistemas
+ES|MGS - Minas Gerais Administração e Serviços S.A.|-|0|Vários Cargos (Médio / Superior)|09/11/2026|mgs-es-abre-processo-seletivo-com-salarios-de-ate-4508
+DF|ABDI - Agência Brasileira de Desenvolvimento Industrial|-|20|Analista de Produtividade e Inovação (Superior)|10/11/2026|abdi-df-processo-seletivo-abre-vagas-para-analistas-de-produtividade-e-inovacao
+GO|UEG - Universidade Estadual de Goiás|-|CR|Docente Professor de Apoio (Superior)|19/11/2026|ueg-go-abre-processo-seletivo-para-professores-de-apoio
