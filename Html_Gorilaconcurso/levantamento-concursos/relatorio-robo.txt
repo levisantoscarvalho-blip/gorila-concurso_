@@ -1,18 +1,19 @@
-ROBÔ DO GORILA — 21/10/2026 09:43 (horário de Brasília)
+ROBÔ DO GORILA — 22/10/2026 09:47 (horário de Brasília)
 CONFERIR: data de inscrição impossível na fonte (2029-09-29), não entrou: ifmg-divulga-retificacoes-do-concurso-publico-para-professores-do-ensino-basico-tecnico-e-tecnologico
-PCI hoje: 579 concursos com inscrições abertas
-novos concursos: 26 em cidades + 11 estaduais/sem cidade · 0 com data mudada (prorrogação/retificação)
-notícias: parte 0 pronta (6000 nesta rodada, faltam 109079 para as próximas)
+PCI hoje: 596 concursos com inscrições abertas
+novos concursos: 36 em cidades + 5 estaduais/sem cidade · 0 com data mudada (prorrogação/retificação)
+notícias: parte 0 pronta (6000 nesta rodada, faltam 103116 para as próximas)
 AVISO GO 17232 vagas sem conferência, ficou 'a definir': seduce-go-retifica-um-dos-dois-processos-seletivos-com-mais-de-17-2-mil-vagas
 AVISO GO 7453 vagas sem conferência, ficou 'a definir': valparaiso-de-goias-go-prorroga-inscricoes-e-retifica-edital-001-2014
 AVISO MT 5156 vagas sem conferência, ficou 'a definir': prefeitura-de-varzea-grande-mt-retifica-processo-seletivo-com-vagas-para-a-educacao
 AVISO RJ 5146 vagas sem conferência, ficou 'a definir': prefeitura-de-belford-roxo-rj-anuncia-processo-seletivo-com-mais-de-5-mil-vagas
 AVISO RJ 7617 vagas sem conferência, ficou 'a definir': 7617-vagas-na-prefeitura-de-nova-friburgo-rj
 AVISO RO 5089 vagas sem conferência, ficou 'a definir': prefeitura-de-porto-velho-ro-oferece-5089-vagas-de-ate-2339
+AVISO salário impossível (R$ 142229.65), não mostrado: fhgv-novo-processo-seletivo-para-contratacao-de-medico-e-anunciado-em-sapucaia-do-sul-rs
 AVISO taxa impossível (R$ 4231.6), não mostrada: uem-pr-abre-selecao-para-tecnico-em-laboratorio-com-salario-de-4-2-mil
 AVISO taxa impossível (R$ 2125.02), não mostrada: prefeitura-de-cajamar-sp-retifica-um-dos-editais-de-concursos-publicos
 AUDITORIA: 10 erros, 27 para conferir, 1 info (ver auditoria.txt) — ATENÇÃO: 10 cidades com concursos que o robô não conseguiu ler
-concursos nas cidades: 142355 (no ar: 142336) · detalhes: 32370 (no ar: 26373)
-levantamento estadual/municipal: 827 (no ar: 816)
+concursos nas cidades: 142381 (no ar: 142355) · detalhes: 38365 (no ar: 32370)
+levantamento estadual/municipal: 832 (no ar: 827)
 sintaxe conferida com o Node em 82 arquivos
 OK: pode publicar

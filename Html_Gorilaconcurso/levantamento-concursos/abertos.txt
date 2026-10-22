@@ -561,3 +561,8 @@ MG|HOB - Hospital Metropolitano Odilon Behrens|-|0|Analista de Planejamento e Ge
 ES|MGS - Minas Gerais Administração e Serviços S.A.|-|0|Vários Cargos (Médio / Superior)|09/11/2026|mgs-es-abre-processo-seletivo-com-salarios-de-ate-4508
 DF|ABDI - Agência Brasileira de Desenvolvimento Industrial|-|20|Analista de Produtividade e Inovação (Superior)|10/11/2026|abdi-df-processo-seletivo-abre-vagas-para-analistas-de-produtividade-e-inovacao
 GO|UEG - Universidade Estadual de Goiás|-|CR|Docente Professor de Apoio (Superior)|19/11/2026|ueg-go-abre-processo-seletivo-para-professores-de-apoio
+CE|UFCA - Universidade Federal do Cariri|-|6|Professor Substituto (Superior)|30/10/2026|ufca-ce-abre-processo-seletivo-para-professores-substitutos
+SP|FUNCAMP - Fundação de Desenvolvimento da Unicamp|-|1|Analista de Pesquisa Clínica Júnior (Superior)|06/11/2026|funcamp-sp-abre-processo-seletivo-para-analista-de-pesquisa-clinica-junior-no-hemocentro
+SP|IFSP - Instituto Federal de Educação, Ciência e Tecnologia de São Paulo|-|79|Professor Substituto (Superior)|27/10/2026>13/11/2026|ifsp-abre-processo-seletivo-com-vagas-para-professores-substitutos
+MG|UFU - Universidade Federal de Uberlândia|-|9|Professor Substituto (Superior)|28/10/2026>12/11/2026|ufu-mg-abre-processos-seletivos-para-professores-substitutos
+SC|FAHECE - Fundação de Apoio ao Hemosc e Cepon|-|3|Médico Regulador das Urgências (Superior)|22/10/2026|fahece-sc-abre-processo-seletivo-para-medicos-reguladores-das-urgencias-no-samu
