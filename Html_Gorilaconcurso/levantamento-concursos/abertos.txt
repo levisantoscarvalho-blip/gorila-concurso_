@@ -566,3 +566,6 @@ SP|FUNCAMP - Fundação de Desenvolvimento da Unicamp|-|1|Analista de Pesquisa C
 SP|IFSP - Instituto Federal de Educação, Ciência e Tecnologia de São Paulo|-|79|Professor Substituto (Superior)|27/10/2026>13/11/2026|ifsp-abre-processo-seletivo-com-vagas-para-professores-substitutos
 MG|UFU - Universidade Federal de Uberlândia|-|9|Professor Substituto (Superior)|28/10/2026>12/11/2026|ufu-mg-abre-processos-seletivos-para-professores-substitutos
 SC|FAHECE - Fundação de Apoio ao Hemosc e Cepon|-|3|Médico Regulador das Urgências (Superior)|22/10/2026|fahece-sc-abre-processo-seletivo-para-medicos-reguladores-das-urgencias-no-samu
+RS|IFRS - Instituto Federal de Educação, Ciência e Tecnologia do Rio Grande do Sul|-|1|Professor visitante (Superior)|08/11/2026|ifrs-abre-selecao-para-professor-visitante-de-matematica-em-caxias-do-sul
+RS|TRT4 - Tribunal Regional do Trabalho da 4ª Região|-|CR|Analista Judiciário, Técnico Judiciário (Superior)|26/10/2026>25/11/2026|trt4-rs-abre-concurso-publico-para-analistas-e-tecnicos-judiciarios
+MT|UNEMAT - Universidade do Estado de Mato Grosso|-|12|Professor da Educação Superior (Superior)|27/10/2026>06/11/2026|unemat-mt-abre-processos-seletivos-para-professores-da-educacao-superior

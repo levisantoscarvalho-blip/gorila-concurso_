@@ -1,5 +1,5 @@
-AUDITORIA DO GORILA — 22/10/2026 10:36 (horário de Brasília)
-142381 concursos nas cidades examinados · 10 ERROS · 27 para CONFERIR · 1 INFO
+AUDITORIA DO GORILA — 23/10/2026 10:18 (horário de Brasília)
+142399 concursos nas cidades examinados · 10 ERROS · 27 para CONFERIR · 1 INFO
 ERRO = o robô está perdendo ou estragando dados (corrigir o código) · CONFERIR = uma pessoa olha · INFO = limite conhecido
 
 == ERROS ==
@@ -37,7 +37,7 @@ ERRO = o robô está perdendo ou estragando dados (corrigir o código) · CONFER
 - ÓRGÃOS RN: nenhum concurso de Polícia Civil, Corpo de Bombeiros, Fazenda / Receita estadual, Tribunal Regional do Trabalho no levantamento — é real (órgão sem concurso no PCI) ou o robô está perdendo?
 - ÓRGÃOS RO: nenhum concurso de Polícia Civil, Fazenda / Receita estadual, Tribunal Regional do Trabalho no levantamento — é real (órgão sem concurso no PCI) ou o robô está perdendo?
 - ÓRGÃOS RR: nenhum concurso de Polícia Civil, Tribunal Regional Eleitoral, Tribunal Regional do Trabalho, Detran no levantamento — é real (órgão sem concurso no PCI) ou o robô está perdendo?
-- ÓRGÃOS RS: nenhum concurso de Tribunal de Contas, Polícia Civil, Tribunal Regional Eleitoral, Tribunal Regional do Trabalho, Detran no levantamento — é real (órgão sem concurso no PCI) ou o robô está perdendo?
+- ÓRGÃOS RS: nenhum concurso de Tribunal de Contas, Polícia Civil, Tribunal Regional Eleitoral, Detran no levantamento — é real (órgão sem concurso no PCI) ou o robô está perdendo?
 - ÓRGÃOS SC: nenhum concurso de Polícia Civil, Tribunal Regional Eleitoral, Tribunal Regional do Trabalho, Detran no levantamento — é real (órgão sem concurso no PCI) ou o robô está perdendo?
 - ÓRGÃOS SE: nenhum concurso de Polícia Militar, Polícia Civil, Corpo de Bombeiros, Fazenda / Receita estadual, Tribunal Regional Eleitoral, Detran no levantamento — é real (órgão sem concurso no PCI) ou o robô está perdendo?
 - ÓRGÃOS SP: nenhum concurso de Polícia Civil, Tribunal Regional Eleitoral, Tribunal Regional do Trabalho no levantamento — é real (órgão sem concurso no PCI) ou o robô está perdendo?
