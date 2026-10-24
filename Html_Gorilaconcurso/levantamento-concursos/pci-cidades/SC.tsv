@@ -2224,6 +2224,7 @@ bom-jesus-do-oeste	Bom Jesus do Oeste	Câmara de Bom Jesus do Oeste	Aux. Serv. G
 bom-jesus-do-oeste	Bom Jesus do Oeste	Prefeitura de Bom Jesus do Oeste	Vários Cargos	Magistério / Superior	11			2013-02-01	prefeitura-de-bom-jesus-do-oeste-sc-abre-11-vagas-com-salarios-de-ate-2-mil	ea
 bom-jesus-do-oeste	Bom Jesus do Oeste	Prefeitura de Bom Jesus do Oeste	Vários Cargos	Fundamental / Médio / Superior	22			2011-02-16	22-vagas-de-ate-6385-destinadas-a-prefeitura-de-bom-jesus-do-oeste-sc	ea
 bom-jesus-do-oeste	Bom Jesus do Oeste	Prefeitura de Bom Jesus do Oeste	Vários Cargos	Fundamental / Médio	5			2011-02-16	5-vagas-destinadas-a-prefeitura-de-bom-jesus-do-oeste-sc	ea
+bom-retiro	Bom Retiro	Prefeitura de Bom Retiro	Vários Cargos	Fundamental / Médio / Técnico / Superior	66			2026-11-23	prefeitura-de-bom-retiro-rs-abre-concurso-publico-com-salarios-de-ate-20138	na
 bom-retiro	Bom Retiro	Prefeitura de Bom Retiro	Vários Cargos	Fundamental / Médio / Superior	0			2026-03-04	prefeitura-de-bom-retiro-sc-abre-processo-seletivo-para-diversos-niveis-de-escolaridade	ea
 bom-retiro	Bom Retiro	Prefeitura de Bom Retiro	Vários Cargos	Fundamental / Médio / Superior	0	CR		2026-01-19	prefeitura-de-bom-retiro-sc-publica-processo-seletivo-para-formar-cadastro-reserva	ea
 bom-retiro	Bom Retiro	Prefeitura de Bom Retiro	Vários Cargos	Fundamental / Médio / Técnico / Superior	0			2025-12-11	prefeitura-de-bom-retiro-sc-publica-edital-de-processo-seletivo	ea
@@ -5123,11 +5124,14 @@ flor-do-sertao	Flor do Sertão	Prefeitura de Flor do Sertão	Operador de Máquin
 flor-do-sertao	Flor do Sertão	Prefeitura de Flor do Sertão	Farmacêutico	Superior	1			2017-12-08	prefeitura-de-flor-do-sertao-sc-abre-selecao-para-farmaceutico	ea
 flor-do-sertao	Flor do Sertão	Prefeitura de Flor do Sertão	Médico	Superior	1			2017-08-30	prefeitura-de-flor-do-sertao-sc-divulga-processo-seletivo-para-medico	ea
 florianopolis	Florianópolis	SES - Secretaria de Estado da Saúde de Santa Catarina	Técnico em Enfermagem Necropsia	Ensino Técnico	1			2026-10-27	ses-sc-abre-processo-seletivo-para-tecnico-em-enfermagem-em-florianopolis	na
+florianopolis	Florianópolis	HEMOSC - Centro de Hematologia e Hemoterapia de Santa Catarina	Vários Cargos	Fundamental / Médio	4			2026-10-26	fahece-sc-abre-processos-seletivos-para-atuacao-no-hemosc-em-florianopolis	na
+florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC e CEPON	Rádio Operador(a)	Ensino Médio	1			2026-10-25	fahece-sc-anuncia-processo-seletivo-para-radio-operador-no-samu-de-florianopolis	na
+florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC e CEPON	Técnico de Enfermagem I	Ensino Técnico	1			2026-10-25	fahece-sc-abre-processo-seletivo-para-tecnico-de-enfermagem-no-cepon-em-florianopolis	na
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao Hemosc e Cepon	Médico do Trabalho	Superior	1			2026-10-25	fahece-sc-anuncia-vaga-para-medico-do-trabalho-em-florianopolis	na
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao Hemosc e Cepon	Médico II	Superior	1			2026-10-25	fahece-sc-anuncia-vaga-para-medico-infectologista-no-cepon-de-florianopolis	na
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao Hemosc e Cepon	Motorista II	Ensino Médio	1			2026-10-25	fahece-sc-abre-selecao-para-o-cargo-de-motorista-ii-em-florianopolis	na
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC e CEPON	Terapeuta Ocupacional I	Superior	1			2026-10-25	fahece-sc-abre-processo-seletivo-para-o-cargo-de-terapeuta-ocupacional-i-em-florianopolis	na
-florianopolis	Florianópolis	FAHECE - HEMOSC	Coordenador de Suprimentos I	Superior	1			2026-10-23	fahece-sc-anuncia-processo-seletivo-para-coordenador-de-suprimentos-i-no-hemosc-de-florianopolis	na
+florianopolis	Florianópolis	FAHECE - HEMOSC	Coordenador de Suprimentos I	Superior	1			2026-10-23	fahece-sc-anuncia-processo-seletivo-para-coordenador-de-suprimentos-i-no-hemosc-de-florianopolis	ea
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao Hemosc e Cepon	Técnico Auxiliar de Regulação Médica	Ensino Médio	1			2026-10-21	fahece-sc-abre-selecao-para-tecnico-auxiliar-de-regulacao-medica-no-samu-de-florianopolis	ea
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao Hemosc e Cepon	Enfermeiro I	Superior	1			2026-10-21	fahece-sc-abre-processo-seletivo-para-enfermeiro-i-no-cepon-de-florianopolis	ea
 florianopolis	Florianópolis	SMS - Secretaria Municipal de Saúde de Florianópolis	Médico de Família e Comunidade	Superior	0	CR		2026-10-19	prefeitura-de-florianopolis-sc-abre-selecao-para-medico-de-familia-e-comunidade	ea
@@ -5251,8 +5255,8 @@ florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Analis
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Analista de Sistemas I	Superior	1			2026-04-27	fahece-sc-abre-vaga-para-analista-de-sistemas-i-no-cepon-de-florianopolis	ea
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Coordenador de Qualidade I	Superior	1			2026-04-27	fahece-sc-abre-selecao-para-coordenador-de-qualidade-no-cepon-de-florianopolis	ea
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Gerente de Gestão de Pessoas	Superior	1			2026-04-26	fahece-sc-abre-vaga-para-gerente-de-gestao-de-pessoas-com-salario-superior-a-15-mil	ea
-florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Analista de Administração de Pessoal I	Superior	1			2026-04-23	fahece-sc-abre-vaga-para-analista-de-administracao-de-pessoal-i-no-cepon-em-florianopolis	ea
 florianopolis	Florianópolis	IFSC - Instituto Federal de Educação, Ciência e Tecnologia de Santa Catarina	Professor Visitante	Superior	14			2026-04-23	ifsc-abre-selecao-com-vagas-para-professores-visitantes	ea
+florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Analista de Administração de Pessoal I	Superior	1			2026-04-23	fahece-sc-abre-vaga-para-analista-de-administracao-de-pessoal-i-no-cepon-em-florianopolis	ea
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Analista Administrativo I, Analista de Contratos I	Superior	2			2026-04-20	fahece-sc-abre-processos-seletivos-para-analista-administrativo-e-analista-de-contratos-em-florianopolis	ea
 florianopolis	Florianópolis	UFSC - Universidade Federal de Santa Catarina	Professor Substituto	Superior	8			2026-04-17	ufsc-abre-selecao-para-professores-substitutos-com-salarios-de-ate-8-3-mil	ea
 florianopolis	Florianópolis	InvestSC - Invest Santa Catarina Parcerias e Negócios Estratégicos S.A.	Agente Administrativo, Agente de Negócios	Superior	10			2026-04-16	investsc-sc-publica-retificacao-em-concurso-com-10-vagas	ea
@@ -5275,10 +5279,10 @@ florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC e CEPON	Biom
 florianopolis	Florianópolis	UFSC - Universidade Federal de Santa Catarina	Professor Substituto	Superior	20			2026-03-30	ufsc-abre-processo-seletivo-para-o-cargo-de-professor-substituto-em-diversas-areas-e-localidades	ea
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Farmacêutico I, Assistente de Faturamento II	Superior	2			2026-03-29	fahece-sc-abre-vagas-para-farmaceutico-e-assistente-de-faturamento-no-cepon-de-florianopolis	ea
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC e CEPON	Bioquímico/Farmacêutico/Biomédico/Biólogo, Assistente de Almoxarifado I	Médio / Superior	2			2026-03-28	fahece-sc-abre-processos-seletivos-para-o-hemosc-de-florianopolis	ea
-florianopolis	Florianópolis	Prefeitura de Florianópolis	Vários Cargos	Médio / Técnico / Superior	41			2026-03-27	prefeitura-de-florianopolis-sc-reabre-inscricoes-para-processo-seletivo	ea
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Assistente de Faturamento I	Superior	1			2026-03-27	fahece-sc-abre-processo-seletivo-para-cargo-de-assistente-de-faturamento-i-em-florianopolis	ea
-florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Técnico de Enfermagem I	Ensino Técnico	1			2026-03-26	fahece-sc-anuncia-vaga-para-tecnico-de-enfermagem-no-cepon-de-florianopolis	ea
+florianopolis	Florianópolis	Prefeitura de Florianópolis	Vários Cargos	Médio / Técnico / Superior	41			2026-03-27	prefeitura-de-florianopolis-sc-reabre-inscricoes-para-processo-seletivo	ea
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC e CEPON	Enfermeiro, Técnico em Enfermagem	Técnico / Superior	2			2026-03-26	fahece-sc-abre-processos-seletivos-com-vagas-para-enfermeiro-e-tecnico-em-enfermagem	ea
+florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Técnico de Enfermagem I	Ensino Técnico	1			2026-03-26	fahece-sc-anuncia-vaga-para-tecnico-de-enfermagem-no-cepon-de-florianopolis	ea
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Assistente Administrativo I - Farmácia	Ensino Médio	1			2026-03-24	fahece-sc-abre-vaga-em-processo-seletivo-para-assistente-administrativo-na-area-de-farmacia	ea
 florianopolis	Florianópolis	SES - Secretaria de Estado da Saúde de Santa Catarina	Administrador	Superior	1			2026-03-24	ses-sc-abre-processo-seletivo-para-o-cargo-de-administrador-em-florianopolis	ea
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Assistente Financeiro III	Superior	1			2026-03-23	hemosc-sc-abre-vaga-para-assistente-financeiro-iii-em-florianopolis	ea
@@ -5314,14 +5318,11 @@ florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC e CEPON	Assi
 florianopolis	Florianópolis	HEMOSC - Centro de Hematologia e Hemoterapia de Santa Catarina	Assistente de Compras I	Ensino Médio	1			2026-02-17	fahece-sc-abre-processo-seletivo-com-vaga-para-assistente-de-compras-i-pcd-no-hemosc-de-florianopolis	ea
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC e CEPON	Enfermeiro I Central de Quimioterapia	Superior	1			2026-02-16	fahece-sc-anuncia-processo-seletivo-para-o-cargo-de-enfermeiro-i-no-cepon-de-florianopolis	ea
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Analista Contábil I	Superior	1			2026-02-16	fahece-sc-abre-processo-seletivo-para-analista-contabil-no-cepon-de-florianopolis	ea
-florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Médico(a) do Trabalho	Superior	1			2026-02-15	fahece-sc-abre-selecao-para-medico-do-trabalho-no-samu-de-florianopolis	ea
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao Hemosc/Cepom	Supervisor(a) Operacional de Central de Regulação	Superior	1			2026-02-15	fahece-sc-abre-selecao-para-supervisor-operacional-em-florianopolis	ea
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Assistente de Comunicação I PCD	Ensino Médio	1			2026-02-15	fahece-sc-abre-processo-seletivo-para-assistente-de-comunicacao-i-pcd	ea
-florianopolis	Florianópolis	CRMV - Conselho Regional de Medicina Veterinária do Estado de Santa Catarina	Assistente Administrativo, Advogado, Engenheiro Civil	Médio / Superior	5			2026-02-12	crmv-sc-abre-cinco-vagas-temporarias-para-cargos-de-nivel-medio-e-superior	ea
+florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Médico(a) do Trabalho	Superior	1			2026-02-15	fahece-sc-abre-selecao-para-medico-do-trabalho-no-samu-de-florianopolis	ea
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Assistente Administrativo I	Ensino Médio	1			2026-02-12	fahece-sc-abre-processo-seletivo-para-assistente-administrativo-i-farmacia-no-cepon-de-florianopolis	ea
-florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Enfermeiro I	Superior	1			2026-02-11	fahece-sc-abre-processo-seletivo-para-o-cargo-de-enfermeiro-i	ea
-florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Analista Contábil I	Superior	1			2026-02-08	fahece-sc-abre-processo-seletivo-para-analista-contabil-i-em-florianopolis	ea
-florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Coordenador de Enfermagem	Superior	1			2026-02-06	fahece-sc-abre-processo-seletivo-para-coordenador-de-enfermagem-em-uti	ea
+florianopolis	Florianópolis	CRMV - Conselho Regional de Medicina Veterinária do Estado de Santa Catarina	Assistente Administrativo, Advogado, Engenheiro Civil	Médio / Superior	5			2026-02-12	crmv-sc-abre-cinco-vagas-temporarias-para-cargos-de-nivel-medio-e-superior	ea
 formosa-do-sul	Formosa do Sul	Prefeitura de Formosa do Sul	Vários Cargos	Fundamental / Médio / Superior	12			2026-07-08	prefeitura-de-formosa-do-sul-sc-abre-seletivo-para-diversos-cargos-com-salarios-de-ate-14888	ea
 formosa-do-sul	Formosa do Sul	Prefeitura de Formosa do Sul	Vários Cargos	Fundamental / Médio / Técnico / Superior	53			2026-06-25	prefeitura-de-formosa-do-sul-sc-retifica-concurso-publico	ea
 formosa-do-sul	Formosa do Sul	Prefeitura de Formosa do Sul	Vários Cargos	Fundamental / Médio / Técnico / Superior	11			2025-11-14	prefeitura-de-formosa-do-sul-sc-abre-edital-de-processo-seletivo-com-diversos-cargos	ea
@@ -8571,7 +8572,8 @@ jaguaruna	Jaguaruna	Prefeitura de Jaguaruna	Vários Cargos	Fundamental / Médio 
 jaguaruna	Jaguaruna	Prefeitura de Jaguaruna	Professores	Magistério / Superior	92			2010-02-04	92-vagas-para-professores-na-prefeitura-de-jaguaruna-sc	ea
 jaguaruna	Jaguaruna	Prefeitura de Jaguaruna (Concurso Público)	Vários Cargos	Fundamental / Médio / Superior	113			2008-02-01	prefeitura-de-jaguaruna-sc-oferece-158-vagas	ea
 jaguaruna	Jaguaruna	Prefeitura de Jaguaruna	Vários Cargos	Fundamental / Médio / Técnico / Superior	24				covid-19-prefeitura-de-jaguaruna-sc-suspende-dois-concursos-publicos	suspenso
-jaragua-do-sul	Jaraguá do Sul	FAHECE - Fundação de Apoio ao HEMOSC e CEPON	Assistente Administrativo I	Ensino Médio	0			2026-10-20	fahece-sc-abre-selecao-para-assistente-administrativo-i-exclusivo-para-pcd	na
+jaragua-do-sul	Jaraguá do Sul	Prefeitura de Jaraguá do Sul	Vários Cargos	Médio / Técnico / Superior	10			2026-11-12	prefeitura-de-jaragua-do-sul-sc-abre-processos-seletivos-com-salarios-de-ate-15606	na
+jaragua-do-sul	Jaraguá do Sul	FAHECE - Fundação de Apoio ao HEMOSC e CEPON	Assistente Administrativo I	Ensino Médio	0			2026-10-20	fahece-sc-abre-selecao-para-assistente-administrativo-i-exclusivo-para-pcd	ea
 jaragua-do-sul	Jaraguá do Sul	PMJS - Prefeitura de Jaraguá do Sul e SAMAE - Serviço Autônomo Municipal de Água e Esgoto	Vários Cargos	Fundamental / Médio / Superior	44			2026-10-01	prefeitura-e-samae-de-jaragua-do-sul-sc-abrem-concursos-publicos-com-salarios-de-ate-15605	ea
 jaragua-do-sul	Jaraguá do Sul	FUJAMA - Fundação Jaraguaense de Meio Ambiente	Fiscal de Bem-estar Animal	Superior	1			2026-10-01	fujama-sc-abre-concurso-publico-para-fiscal-de-bem-estar-animal	ea
 jaragua-do-sul	Jaraguá do Sul	CIGAMVALI - Consórcio Intermunicipal de Gestão Pública do Vale do Itapocu	Analista Ambiental	Superior	1			2026-09-23	cigamvali-sc-abre-processo-seletivo-para-analistas-ambientais	ea
@@ -8770,7 +8772,6 @@ jaragua-do-sul	Jaraguá do Sul	Prefeitura de Jaraguá do Sul	Professores	Superio
 jaragua-do-sul	Jaraguá do Sul	Prefeitura de Jaraguá do Sul	Estagiário	Superior Incompleto	0			2021-08-06	prefeitura-de-jaragua-do-sul-sc-divulga-tres-novos-processos-seletivos	ea
 jaragua-do-sul	Jaraguá do Sul	Prefeitura de Jaraguá do Sul	Professor - Matemática e Anos Iniciais	Superior	2			2021-07-26	prefeitura-de-jaragua-do-sul-sc-divulga-retificacoes-referentes-aos-processos-seletivos-para-professor	ea
 jaragua-do-sul	Jaraguá do Sul	Prefeitura de Jaraguá do Sul	Estagiário	Superior Incompleto	0			2021-07-15	prefeitura-de-jaragua-do-sul-sc-realiza-tres-processos-seletivos-para-estagiarios	ea
-jaragua-do-sul	Jaraguá do Sul	Prefeitura de Jaraguá do Sul	Estagiários	Superior Incompleto	0			2021-07-13	inscricoes-sao-abertas-para-o-processo-seletivo-de-estagiarios-da-prefeitura-de-jaragua-do-sul-sc	ea
 jardinopolis	Jardinópolis	Prefeitura de Jardinópolis	Odontólogo, Auxiliar de Dentista	Técnico / Superior	5			2026-01-27	prefeitura-de-jardinopolis-sc-abre-cinco-vagas-em-novo-processo-seletivo	ea
 jardinopolis	Jardinópolis	Prefeitura de Jardinópolis	Vários Cargos	Superior	6			2025-08-18	prefeitura-de-jardinopolis-sc-lanca-edital-de-processo-seletivo-para-cargos-de-nivel-superior	ea
 jardinopolis	Jardinópolis	Prefeitura de Jardinópolis	Vários Cargos	Fundamental / Médio / Técnico / Superior	12			2024-04-08	prefeitura-de-jardinopolis-sc-retifica-concurso-publico	ea
@@ -10765,6 +10766,7 @@ morro-grande	Morro Grande	Prefeitura de Morro Grande (SAMAE)	Encanador	Fundament
 morro-grande	Morro Grande	Prefeitura de Morro Grande	Vários Cargos	Fundamental / Médio / Superior	33			2010-05-19	prefeitura-de-morro-grande-sc-abre-41-vagas-para-diversos-cargos-e-niveis	ea
 morro-grande	Morro Grande	Prefeitura de Morro Grande	Professor III	Superior	0			2009-12-10	prefeitura-de-morro-grande-sc-oferece-vagas-de-ate-518	ea
 morro-grande	Morro Grande	Prefeitura de Morro Grande	Vários Cargos	Fundamental / Superior	20			2009-06-16	prefeitura-de-morro-grande-sc-oferece-20-vagas-de-ate-1574	ea
+navegantes	Navegantes	Prefeitura e Fundação Cultural de Navegantes	Vários Cargos	Fundamental / Médio / Técnico / Superior	0	CR	2026-10-27	2026-11-25	prefeitura-e-fundacao-cultural-de-navegantes-sc-abrem-selecoes-com-salarios-de-ate-19199	na
 navegantes	Navegantes	FAHECE - Fundação de Apoio ao Hemosc e Cepon	Condutor Socorrista	Ensino Médio	1			2026-07-22	fahece-sc-abre-processo-seletivo-para-condutor-socorrista-no-samu-de-navegantes	ea
 navegantes	Navegantes	Prefeitura de Navegantes	Engenheiro Civil	Superior	1			2026-07-03	prefeitura-de-navegantes-sc-abre-processo-seletivo-para-engenheiro-civil	ea
 navegantes	Navegantes	Prefeitura de Navegantes	Vários Cargos	Médio / Superior	16			2026-05-28	prefeitura-de-navegantes-sc-retifica-concurso-publico-com-vagas-para-a-educacao	ea
@@ -13698,6 +13700,7 @@ santa-terezinha	Santa Terezinha	Prefeitura de Santa Terezinha	Enfermeiro e Farma
 santa-terezinha	Santa Terezinha	Prefeitura de Santa Terezinha	Vários Cargos	Fundamental / Superior	8			2012-05-02	prefeitura-de-santa-terezinha-sc-publica-edital-para-concurso-com-8-vagas	ea
 santa-terezinha	Santa Terezinha	Câmara de Santa Terezinha	Vários Cargos	Fundamental / Médio / Superior	0			2009-04-15	vagas-para-a-camara-de-santa-terezinha-sc	ea
 santa-terezinha	Santa Terezinha	Prefeitura de Santa Terezinha	Vários Cargos	Fundamental / Médio / Superior	97			2009-04-15	prefeitura-de-santa-terezinha-sc-oferece-97-vagas	ea
+santa-terezinha-do-progresso	Santa Terezinha do Progresso	Prefeitura de Santa Terezinha do Progresso	Vários Cargos	Fundamental / Médio / Técnico / Superior	8		2026-10-26	2026-11-25	prefeitura-de-santa-terezinha-do-progresso-sc-abre-concurso-com-salarios-de-ate-10000	na
 santa-terezinha-do-progresso	Santa Terezinha do Progresso	Prefeitura de Santa Terezinha do Progresso	Vários Cargos	Fundamental / Médio / Técnico / Superior	10			2026-04-14	prefeitura-de-santa-terezinha-do-progresso-sc-anuncia-editais-de-concurso-publico-e-processo-seletivo	ea
 santa-terezinha-do-progresso	Santa Terezinha do Progresso	Prefeitura de Santa Terezinha do Progresso	Vários Cargos	Superior	6			2025-11-09	prefeitura-de-santa-terezinha-do-progresso-sc-prorroga-inscricoes-de-processo-seletivo-e-concurso-publico	ea
 santa-terezinha-do-progresso	Santa Terezinha do Progresso	Prefeitura de Santa Terezinha do Progresso	Estagiários em Direito, Contabilidade, Ensino Médio	Médio / Superior	0			2024-04-01	prefeitura-de-santa-terezinha-do-progresso-sc-divulga-processo-seletivo-para-estagiarios	ea
@@ -15620,6 +15623,7 @@ saudades	Saudades	Prefeitura de Saudades	Vários Cargos	Fundamental / Médio / S
 saudades	Saudades	Prefeitura de Saudades	Vários Cargos	Fundamental / Médio / Superior	12			2012-01-30	12-vagas-de-varios-niveis-e-salarios-de-ate-2-9-mil-na-prefeitura-de-saudades-sc	ea
 saudades	Saudades	Prefeitura de Saudades	Vários Cargos	Médio / Superior	15			2011-01-14	15-vagas-para-diversos-cargos-ofertadas-na-prefeitura-de-saudades-sc	ea
 saudades	Saudades	Prefeitura de Saudades	Motorista e Téc. em Enfermagem	Fundamental / Médio	10			2010-12-10	prefeitura-de-saudades-sc-oferece-10-vagas-de-nivel-fundamental-e-tecnico	ea
+schroeder	Schroeder	SEMSA - Secretaria Municipal de Saúde de Schroeder	Auxiliar de consultório dentário	Médio / Técnico	1			2026-11-13	prefeitura-de-schroeder-sc-abre-selecao-para-auxiliar-de-consultorio-dentario	na
 schroeder	Schroeder	PMS - Prefeitura de Schroeder	Vários Cargos	Fundamental / Médio / Superior	6			2026-08-04	prefeitura-de-schroeder-sc-abre-processo-seletivo-para-a-secretaria-municipal-de-educacao	ea
 schroeder	Schroeder	Prefeitura de Schroeder	Vários Cargos	Fundamental / Médio / Técnico	7			2026-06-14	prefeitura-de-schroeder-sc-abre-processo-seletivo-com-vagas-para-a-secretaria-municipal-de-educacao	ea
 schroeder	Schroeder	Prefeitura de Schroeder	Vários Cargos	Fundamental / Médio / Superior	11			2026-04-14	prefeitura-de-schroeder-sc-abre-processo-seletivo-na-area-da-educacao-com-salarios-de-ate-5-3-mil	ea

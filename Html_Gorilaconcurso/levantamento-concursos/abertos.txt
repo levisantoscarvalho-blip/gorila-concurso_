@@ -569,3 +569,10 @@ SC|FAHECE - Fundação de Apoio ao Hemosc e Cepon|-|3|Médico Regulador das Urg�
 RS|IFRS - Instituto Federal de Educação, Ciência e Tecnologia do Rio Grande do Sul|-|1|Professor visitante (Superior)|08/11/2026|ifrs-abre-selecao-para-professor-visitante-de-matematica-em-caxias-do-sul
 RS|TRT4 - Tribunal Regional do Trabalho da 4ª Região|-|CR|Analista Judiciário, Técnico Judiciário (Superior)|26/10/2026>25/11/2026|trt4-rs-abre-concurso-publico-para-analistas-e-tecnicos-judiciarios
 MT|UNEMAT - Universidade do Estado de Mato Grosso|-|12|Professor da Educação Superior (Superior)|27/10/2026>06/11/2026|unemat-mt-abre-processos-seletivos-para-professores-da-educacao-superior
+PA|FHCGV - Fundação Pública Estadual Hospital de Clínicas Gaspar Vianna|-|215|Vários Cargos (Médio / Técnico / Superior)|27/10/2026|seplad-e-fhcgv-pa-prorrogam-inscricoes-para-concurso-publico
+MA|UEMA - Universidade Estadual do Maranhão|-|18|Professor Substituto (Superior)|27/10/2026>04/11/2026|uema-abre-seletivos-para-professores-substitutos
+RN|CREF16/RN - Conselho Regional de Educação Física da 16ª Região|-|3|Advogado, Contador, Agente de Licitações e Contratos (Superior)|30/10/2026>15/11/2026|cref16-rn-abre-concurso-publico-para-profissionais-de-nivel-superior
+SP|FEG - Fundação Educacional Guaçuana|-|9|Vários Cargos (Superior)|19/11/2026|feg-sp-abre-concurso-publico-para-professores
+MG|CIMMESF - Consórcio Intermunicipal Multifinalitário do Médio São Francisco|-|2|Inspetor de Produtos de Origem Animal, Assistente Administrativo de Inspeção Sanitária (Técnico / Superior)|06/11/2026|cimmesf-mg-abre-processo-seletivo-com-salarios-de-ate-4236
+RS|Hospital Beneficente Dr. César Santos|-|4|Vários Cargos (Médio / Superior)|26/10/2026>10/11/2026|hospital-beneficente-dr-cesar-santos-rs-abre-selecao-com-remuneracoes-de-ate-6050
+SC|SES - Secretaria de Estado da Saúde de Santa Catarina|-|7|Médico especialista (Superior)|04/11/2026|ses-sc-abre-processo-seletivo-para-medicos-em-florianopolis-e-sao-jose
