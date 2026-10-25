@@ -612,8 +612,8 @@ brejetuba	Brejetuba	Prefeitura de Brejetuba	Médico Plantonista	Superior	6			201
 brejetuba	Brejetuba	Prefeitura de Brejetuba	Vários Cargos	Fundamental / Médio / Superior	98			2015-02-08	prefeitura-de-brejetuba-es-retifica-edital-de-concurso-pela-sexta-vez	ea
 brejetuba	Brejetuba	Câmara de Brejetuba	Vários Cargos	Fundamental / Médio / Superior	9			2011-12-20	camara-de-brejetuba-es-prorroga-inscricoes-e-retifica-edital-001-2011	ea
 brejetuba	Brejetuba	Prefeitura de Brejetuba	Vários Cargos	Fundamental / Médio / Superior	106			2009-11-09	prefeitura-de-brejetuba-es-oferece-105-vagas-de-ate-2525	ea
-cachoeiro-de-itapemirim	Cachoeiro de Itapemirim	HIFA - Hospital Materno Infantil Francisco de Assis	Vários Cargos	Superior	30			2026-10-19	hifa-es-anuncia-processo-seletivo-para-residencia-medica-com-30-vagas	na
-cachoeiro-de-itapemirim	Cachoeiro de Itapemirim	HECI - Hospital Evangélico de Cachoeiro de Itapemirim	Vários Cargos	Superior	16			2026-10-19	hospital-evangelico-de-cachoeiro-de-itapemirim-es-abre-selecao-para-residencia-em-saude	na
+cachoeiro-de-itapemirim	Cachoeiro de Itapemirim	HIFA - Hospital Materno Infantil Francisco de Assis	Vários Cargos	Superior	30			2026-10-19	hifa-es-anuncia-processo-seletivo-para-residencia-medica-com-30-vagas	ea
+cachoeiro-de-itapemirim	Cachoeiro de Itapemirim	HECI - Hospital Evangélico de Cachoeiro de Itapemirim	Vários Cargos	Superior	16			2026-10-19	hospital-evangelico-de-cachoeiro-de-itapemirim-es-abre-selecao-para-residencia-em-saude	ea
 cachoeiro-de-itapemirim	Cachoeiro de Itapemirim	ICMBio - Instituto Chico Mendes de Conservação da Biodiversidade	Agente Temporário Ambiental	Fundamental	0	CR		2026-06-17	icmbio-es-abre-selecao-para-agente-ambiental-em-cachoeiro-de-itapemirim	ea
 cachoeiro-de-itapemirim	Cachoeiro de Itapemirim	ICMBio - Instituto Chico Mendes de Conservação da Biodiversidade	Agente Temporário Ambiental	Fundamental	0	CR		2026-06-12	icmbio-es-abre-selecao-para-agente-temporario-ambiental-em-cachoeiro-de-itapemirim	ea
 cachoeiro-de-itapemirim	Cachoeiro de Itapemirim	ICMBio - Instituto Chico Mendes de Conservação da Biodiversidade	Agente Temporário Ambiental	Fundamental	0	CR		2026-06-12	icmbio-es-abre-processo-seletivo-para-agente-temporario-ambiental-em-cachoeiro-de-itapemirim	ea
@@ -1631,7 +1631,7 @@ iconha	Iconha	Prefeitura de Iconha	Professores	Superior	0			2014-08-15	prefeitur
 iconha	Iconha	Prefeitura de Iconha	Professores	Magistério / Superior	0			2013-03-22	prefeitura-de-iconha-es-abre-vaga-para-os-cargos-de-professor-e-pedagogo	ea
 iconha	Iconha	Prefeitura de Iconha	Professores	Superior Incompleto / Superior	0			2011-12-02	prefeitura-iconha-es-abre-selecao-para-professores-de-varias-areas	ea
 iconha	Iconha	Prefeitura de Iconha	Professores	Superior	0			2011-06-08	processo-seletivo-para-professores-em-iconha-es	ea
-irupi	Irupi	Prefeitura de Irupi	Cuidador Escolar	Ensino Médio	0	CR	2026-10-19	2026-11-03	prefeitura-de-irupi-es-abre-selecao-para-cuidador-escolar	na
+irupi	Irupi	Prefeitura de Irupi	Cuidador Escolar	Ensino Médio	0	CR		2026-11-03	prefeitura-de-irupi-es-abre-selecao-para-cuidador-escolar	na
 irupi	Irupi	Prefeitura de Irupi	Professor MAPB - Língua Portuguesa	Superior	0	CR		2026-09-14	prefeitura-de-irupi-es-abre-processo-seletivo-para-o-cargo-de-professor-de-lingua-portuguesa	ea
 irupi	Irupi	Prefeitura de Irupi	Fisioterapeuta	Superior	0	CR		2026-08-20	prefeitura-de-irupi-es-abre-selecao-para-fisioterapeuta-do-nasf	ea
 irupi	Irupi	Prefeitura de Irupi	Braçal	Fundamental	0	CR		2026-08-04	prefeitura-de-irupi-es-abre-processo-seletivo-para-o-cargo-de-bracal	ea
@@ -3107,7 +3107,7 @@ sao-roque-do-canaa	São Roque do Canaã	Prefeitura de São Roque do Canaã	Vári
 sao-roque-do-canaa	São Roque do Canaã	Prefeitura de São Roque do Canaã	Vários Cargos	Fundamental / Médio	33			2013-12-04	sao-roque-do-canaa-es-reabre-edital-para-agentes-e-auxiliares	ea
 sao-roque-do-canaa	São Roque do Canaã	Prefeitura de São Roque do Canaã	Vários Cargos	Superior	20			2013-11-13	sao-roque-do-canaa-es-seleciona-profissionais-da-area-da-saude	ea
 sao-roque-do-canaa	São Roque do Canaã	Prefeitura de São Roque do Canaã	Agente Comunitário de Saúde	Ensino Médio	27			2009-06-15	prefeitura-de-sao-roque-do-canaa-es-oferece-27-vagas	ea
-serra	Serra	Prefeitura da Serra	Vários Cargos	Médio / Técnico / Superior	0	CR		2026-10-22	prefeitura-da-serra-es-abre-selecao-para-cadastro-de-reserva-na-saude	na
+serra	Serra	Prefeitura da Serra	Vários Cargos	Médio / Técnico / Superior	0	CR		2026-10-22	prefeitura-da-serra-es-abre-selecao-para-cadastro-de-reserva-na-saude	ea
 serra	Serra	Prefeitura da Serra	Vários Cargos	Superior	0	CR		2026-09-20	prefeitura-da-serra-es-abre-selecao-para-medicos-especialistas	ea
 serra	Serra	SAMU 192 - Serviço de Atendimento Móvel de Urgência / Santa Casa de Misericórdia de Vitória	Médico Socorrista	Superior	0			2026-08-16	samu-192-es-abre-processo-seletivo-para-medicos-socorristas	ea
 serra	Serra	Prefeitura da Serra	Professor MaPB	Superior	0	CR		2026-08-11	prefeitura-da-serra-es-abre-processo-seletivo-para-professores	ea
@@ -3641,7 +3641,7 @@ vila-valerio	Vila Valério	Prefeitura de Vila Valério	Médicos	Superior	3			201
 vila-valerio	Vila Valério	Prefeitura de Vila Valério	Vários Cargos	Superior	6			2010-04-30	prefeitura-de-vila-valerio-es-oferece-6-vagas-para-medico-e-professor	ea
 vila-valerio	Vila Valério	Prefeitura de Vila Valério	Vários Cargos	Fundamental / Médio / Superior	192			2009-10-30	prefeitura-de-vila-valerio-es-oferece-192-vagas-de-ate-1575	ea
 vila-velha	Vila Velha	HEVV - Hospital Evangélico de Vila Velha	Vários Cargos	Superior	40			2026-10-30	hospital-evangelico-de-vila-velha-es-abre-selecao-para-residencia-e-especializacao-medica	na
-vila-velha	Vila Velha	SEMMA - Secretaria Municipal de Meio Ambiente de Vila Velha	Vários Cargos	Técnico / Superior	10			2026-10-21	prefeitura-de-vila-velha-es-republica-edital-de-processo-seletivo	na
+vila-velha	Vila Velha	SEMMA - Secretaria Municipal de Meio Ambiente de Vila Velha	Vários Cargos	Técnico / Superior	10			2026-10-21	prefeitura-de-vila-velha-es-republica-edital-de-processo-seletivo	ea
 vila-velha	Vila Velha	Prefeitura de Vila Velha	Vários Cargos	Técnico / Superior	1			2026-09-10	prefeitura-de-vila-velha-es-abre-selecao-para-a-secretaria-de-saude	ea
 vila-velha	Vila Velha	Prefeitura de Vila Velha	Médico Veterinário, Engenheiro Agrônomo	Superior	0	CR		2026-08-03	prefeitura-de-vila-velha-es-abre-selecao-para-cargos-de-nivel-superior	ea
 vila-velha	Vila Velha	PMVV - Prefeitura de Vila Velha	Vários Cargos	Médio / Superior	0	CR		2026-04-29	prefeitura-de-vila-velha-es-abre-selecao-para-a-secretaria-municipal-de-educacao	ea
@@ -3751,7 +3751,8 @@ vila-velha	Vila Velha	Prefeitura de Vila Velha	Professores	Magistério / Superio
 vila-velha	Vila Velha	Prefeitura de Vila Velha	Vários Cargos	Médio / Superior	523			2009-03-30	523-vagas-para-a-prefeitura-de-vila-velha-es	ea
 vila-velha	Vila Velha	Prefeitura de Vila Velha	Vários Cargos	Médio / Superior	267			2008-01-22	vila-velha-es-oferece-267-vagas-de-ate-3500	ea
 vila-velha	Vila Velha	Câmara de Vila Velha	Vários Cargos	Médio / Técnico / Superior	13				concurso-publico-da-camara-de-vila-velha-es-tem-novo-comunicado-divulgado	suspenso
-vitoria	Vitória	Banestes - Banco do Estado do Espírito Santo e Banestes Seguros	Técnico Bancário, Técnico em Segurança do Trabalho, Assistente Securitário	Médio / Técnico	0	CR	2026-10-19	2026-11-17	banestes-e-banestes-seguros-es-abrem-concursos-para-cadastro-de-reserva	na
+vitoria	Vitória	Banestes - Banco do Estado do Espírito Santo e Banestes Seguros	Técnico Bancário, Técnico em Segurança do Trabalho, Assistente Securitário	Médio / Técnico	0	CR		2026-11-17	banestes-e-banestes-seguros-es-abrem-concursos-para-cadastro-de-reserva	na
+vitoria	Vitória	UFES - Universidade Federal do Espírito Santo	Professor visitante estrangeiro	Superior	1			2026-11-09	ufes-abre-processo-seletivo-para-professor-visitante-estrangeiro-no-programa-de-pos-graduacao-em-educacao	na
 vitoria	Vitória	ARIES - Agência Reguladora Intermunicipal de Saneamento Básico do Estado do Espírito Santo	Analista de Fiscalização e Regulação	Superior	1			2026-10-15	aries-es-abre-selecao-para-analista-de-fiscalizacao-e-regulacao	ea
 vitoria	Vitória	Prefeitura de Vitória	Vários Cargos	Médio / Superior	5			2026-10-14	prefeitura-de-vitoria-es-abre-selecoes-para-profissionais-de-saude-e-educacao	ea
 vitoria	Vitória	SAMU 192/ES - Serviço de Atendimento Móvel de Urgência	Telefonista Auxiliar de Regulação Médica	Ensino Médio	0			2026-10-11	samu-192-es-abre-processo-seletivo-para-o-cargo-de-telefonista-auxiliar-de-regulacao-medica	ea
@@ -3919,9 +3920,9 @@ vitoria	Vitória	UFES - Universidade Federal do Espírito Santo	Professor do Mag
 vitoria	Vitória	UFES - Universidade Federal do Espírito Santo	Professor Substituto	Superior	1			2022-08-26	ufes-abre-processo-seletivo-para-professor-substituto	ea
 vitoria	Vitória	Prefeitura de Vitória	Assistente Social	Superior	1			2022-08-20	prefeitura-de-vitoria-es-anuncia-processo-seletivo-para-assistente-social	ea
 vitoria	Vitória	COREN - Conselho Regional de Enfermagem	Auxiliar Administrativo	Ensino Médio	2			2022-08-19	coren-es-publica-um-novo-edital-de-processo-seletivo	ea
-vitoria	Vitória	UFES - Universidade Federal do Espírito Santo	Estagiário	Superior Incompleto	2			2022-07-29	ufes-realiza-novos-processos-seletivos-para-admissao-de-estagiarios	ea
-vitoria	Vitória	PC - Polícia Civil do Estado do Espírito Santo	Delegado de Polícia	Superior	40			2022-07-29	pc-es-retifica-concurso-publico-com-40-vagas	ea
 vitoria	Vitória	UFES - Universidade Federal do Espírito Santo	Professor Substituto	Superior	1			2022-07-29	ufes-es-promove-processo-seletivo-para-docentes	ea
+vitoria	Vitória	PC - Polícia Civil do Estado do Espírito Santo	Delegado de Polícia	Superior	40			2022-07-29	pc-es-retifica-concurso-publico-com-40-vagas	ea
+vitoria	Vitória	UFES - Universidade Federal do Espírito Santo	Estagiário	Superior Incompleto	2			2022-07-29	ufes-realiza-novos-processos-seletivos-para-admissao-de-estagiarios	ea
 vitoria	Vitória	Prefeitura de Vitória	Médico	Superior	4			2022-07-22	prefeitura-de-vitoria-es-um-novo-processo-seletivo-e-disponibilizado	ea
 vitoria	Vitória	Prefeitura de Vitória	Técnico Esportivo	Superior	2			2022-07-16	vitoria-es-abre-novo-processo-seletivo-para-tecnico-esportivo	ea
 vitoria	Vitória	SECONT - Secretaria de Estado de Controle e Transparência	Auditor do Estado	Superior	12			2022-07-08	secont-es-divulga-retificacao-de-concurso-publico-com-vagas-para-auditor-do-estado	ea
@@ -3938,8 +3939,8 @@ vitoria	Vitória	Prefeitura de Vitória	Professor	Superior	0			2022-05-21	prefei
 vitoria	Vitória	IFES - Instituto Federal de Educação, Ciência e Tecnologia	Professor Substituto	Superior	12			2022-05-20	ifes-abre-tres-processos-seletivos-em-vitoria-e-sao-mateus-edital-de-itapina-e-retificado	ea
 vitoria	Vitória	Prefeitura de Vitória	Professor	Superior	0			2022-05-20	prefeitura-de-vitoria-es-promove-um-novo-processo-seletivo	ea
 vitoria	Vitória	Prefeitura de Vitória	Nutricionista	Superior	2			2022-04-29	prefeitura-de-vitoria-es-anuncia-processo-seletivo-para-nutricionista	ea
-vitoria	Vitória	Prefeitura de Vitória	Analista em Gestão Pública	Superior	4			2022-04-22	inscricoes-sao-anunciadas-para-novo-processo-seletivo-em-vitoria-es	ea
 vitoria	Vitória	Prefeitura de Vitória	Vários Cargos	Superior	5			2022-04-22	dois-novos-processos-seletivos-sao-anunciados-pela-prefeitura-de-vitoria-es	ea
+vitoria	Vitória	Prefeitura de Vitória	Analista em Gestão Pública	Superior	4			2022-04-22	inscricoes-sao-anunciadas-para-novo-processo-seletivo-em-vitoria-es	ea
 vitoria	Vitória	IFES - Instituto Federal de Educação, Ciência e Tecnologia	Vários Cargos	Médio / Superior	37			2022-04-18	ifes-retifica-os-dois-concursos-publicos-com-vagas-em-cargos-tecnico-administrativo-e-professor	ea
 vitoria	Vitória	Defensoria Pública de Vitória	Estagiário - Direito	Superior Incompleto	0			2022-04-15	defensoria-publica-de-vitoria-es-anuncia-processo-seletivo	ea
 vitoria	Vitória	UFES - Universidade Federal do Espírito Santo	Vários Cargos	Técnico / Superior	23			2022-03-20	ufes-es-retifica-concurso-publico-com-alteracao-no-quantitativo-de-vagas	ea
@@ -3950,4 +3951,3 @@ vitoria	Vitória	SEDU - Secretaria de Estado da Educação	Assistentes de Alfabe
 vitoria	Vitória	Prefeitura de Vitória	Professor	Superior	0			2021-12-27	prefeitura-de-vitoria-es-divulga-retificacao-para-novo-processo-seletivo	ea
 vitoria	Vitória	UFES - Universidade Federal do Espírito Santo	Professor do Magistério Superior	Superior	1			2021-12-07	concurso-publico-para-professor-e-disponibilizado-pela-ufes-es	ea
 vitoria	Vitória	SEGER - Secretaria de Estado de Gestão e Recursos Humanos	Assistente de Gestão	Ensino Médio	0			2021-11-17	seger-es-anuncia-processo-seletivo-para-assistente-de-gestao	ea
-vitoria	Vitória	SETADES - Secretaria de Estado de Trabalho, Assistência e Desenvolvimento Social	Técnico de nível superior	Superior	1			2021-11-10	setades-es-anuncia-processo-seletivo-para-tecnico-de-nivel-superior	ea

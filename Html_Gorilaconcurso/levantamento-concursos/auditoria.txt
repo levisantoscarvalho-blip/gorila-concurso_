@@ -1,18 +1,13 @@
-AUDITORIA DO GORILA — 24/10/2026 09:42 (horário de Brasília)
-142421 concursos nas cidades examinados · 10 ERROS · 27 para CONFERIR · 1 INFO
+AUDITORIA DO GORILA — 25/10/2026 10:25 (horário de Brasília) — com consulta ao PCI
+142427 concursos nas cidades examinados · 5 ERROS · 27 para CONFERIR · 1 INFO
 ERRO = o robô está perdendo ou estragando dados (corrigir o código) · CONFERIR = uma pessoa olha · INFO = limite conhecido
 
 == ERROS ==
-- LEITURA AM/tefe: a página do PCI tinha 39 concursos e o robô leu só 38 — algum item mudou de formato (ver ItensPci em comum.ps1)
-- LEITURA GO/goias: a página do PCI tinha 114 concursos e o robô leu só 113 — algum item mudou de formato (ver ItensPci em comum.ps1)
 - LEITURA GO/serranopolis: a página do PCI tinha 12 concursos e o robô leu só 11 — algum item mudou de formato (ver ItensPci em comum.ps1)
 - LEITURA MG/santa-luzia: a página do PCI tinha 108 concursos e o robô leu só 105 — algum item mudou de formato (ver ItensPci em comum.ps1)
-- LEITURA PE/salgueiro: a página do PCI tinha 71 concursos e o robô leu só 70 — algum item mudou de formato (ver ItensPci em comum.ps1)
 - LEITURA PE/olinda: a página do PCI tinha 46 concursos e o robô leu só 45 — algum item mudou de formato (ver ItensPci em comum.ps1)
 - LEITURA RS/sarandi: a página do PCI tinha 13 concursos e o robô leu só 12 — algum item mudou de formato (ver ItensPci em comum.ps1)
 - LEITURA SC/porto-uniao: a página do PCI tinha 27 concursos e o robô leu só 26 — algum item mudou de formato (ver ItensPci em comum.ps1)
-- LEITURA SP/ariranha: a página do PCI tinha 22 concursos e o robô leu só 21 — algum item mudou de formato (ver ItensPci em comum.ps1)
-- LEITURA SP/santa-barbara-d-oeste: a página do PCI tinha 139 concursos e o robô leu só 138 — algum item mudou de formato (ver ItensPci em comum.ps1)
 
 == CONFERIR ==
 - ÓRGÃOS AC: nenhum concurso de Polícia Militar, Polícia Civil, Corpo de Bombeiros, Tribunal Regional Eleitoral, Tribunal Regional do Trabalho no levantamento — é real (órgão sem concurso no PCI) ou o robô está perdendo?

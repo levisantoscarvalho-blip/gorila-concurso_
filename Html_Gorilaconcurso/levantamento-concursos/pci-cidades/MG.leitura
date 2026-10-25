@@ -26,7 +26,7 @@ alvarenga	3	3
 alvinopolis	18	18
 alvorada-de-minas	28	28
 amparo-do-serra	3	3
-andradas	43	43
+andradas	44	44
 andrelandia	17	17
 angelandia	7	7
 antonio-carlos	3	3
@@ -34,7 +34,7 @@ antonio-dias	12	12
 antonio-prado-de-minas	6	6
 aracai	2	2
 aracitaba	11	11
-aracuai	94	94
+aracuai	95	95
 araguari	64	64
 arantina	4	4
 araponga	3	3
@@ -92,7 +92,7 @@ botumirim	4	4
 bras-pires	6	6
 brasilandia-de-minas	5	5
 brasilia-de-minas	13	13
-braunas	42	42
+braunas	43	43
 brazopolis	16	16
 brumadinho	24	24
 bueno-brandao	21	21
@@ -143,7 +143,7 @@ caputira	0	0
 carai	6	6
 caranaiba	4	4
 carandai	76	76
-carangola	37	37
+carangola	38	38
 caratinga	21	21
 carbonita	17	17
 careacu	7	7
@@ -168,7 +168,7 @@ catas-altas	183	183
 catas-altas-da-noruega	5	5
 catuji	5	5
 catuti	1	1
-caxambu	21	21
+caxambu	22	22
 cedro-do-abaete	1	1
 central-de-minas	4	4
 centralina	1	1
@@ -195,7 +195,7 @@ conceicao-do-para	3	3
 conceicao-do-rio-verde	10	10
 conceicao-dos-ouros	9	9
 conego-marinho	15	15
-confins	20	20
+confins	21	21
 congonhal	12	12
 congonhas	86	86
 congonhas-do-norte	0	0
@@ -229,8 +229,8 @@ crucilandia	4	4
 cruzeiro-da-fortaleza	8	8
 cruzilia	9	9
 cuparaque	2	2
-curral-de-dentro	7	7
-curvelo	148	148
+curral-de-dentro	8	8
+curvelo	149	149
 datas	6	6
 delfim-moreira	8	8
 delfinopolis	88	88
@@ -363,7 +363,7 @@ itabirinha	9	9
 itabirito	72	72
 itacambira	4	4
 itacarambi	7	7
-itaguara	24	24
+itaguara	25	25
 itaipe	4	4
 itajuba	200	200
 itamarandiba	22	22
@@ -516,7 +516,7 @@ nazareno	26	26
 nepomuceno	45	45
 ninheira	5	5
 nova-belem	0	0
-nova-era	14	14
+nova-era	15	15
 nova-lima	69	69
 nova-modica	3	3
 nova-ponte	20	20
@@ -529,10 +529,10 @@ novo-oriente-de-minas	4	4
 novorizonte	3	3
 olaria	3	3
 olhos-d-agua	4	4
-olimpio-noronha	1	1
+olimpio-noronha	2	2
 oliveira	30	30
 oliveira-fortes	5	5
-onca-de-pitangui	10	10
+onca-de-pitangui	11	11
 oratorios	29	29
 orizania	4	4
 ouro-branco	71	71
@@ -543,7 +543,7 @@ padre-carvalho	2	2
 padre-paraiso	10	10
 pai-pedro	3	3
 paineiras	11	11
-pains	13	13
+pains	14	14
 paiva	4	4
 palma	12	12
 palmopolis	4	4
@@ -597,7 +597,7 @@ piranga	70	70
 pirangucu	6	6
 piranguinho	9	9
 pirapetinga	19	19
-pirapora	104	104
+pirapora	105	105
 pirauba	4	4
 pitangui	39	39
 piumhi	54	54
@@ -656,7 +656,7 @@ romaria	4	4
 rosario-da-limeira	7	7
 rubelita	20	20
 rubim	3	3
-sabara	134	134
+sabara	136	136
 sabinopolis	26	26
 sacramento	31	31
 salinas	68	68
@@ -679,10 +679,10 @@ santa-maria-do-salto	2	2
 santa-maria-do-suacui	13	13
 santa-rita-de-caldas	13	13
 santa-rita-de-ibitipoca	4	4
-santa-rita-de-jacutinga	3	3
+santa-rita-de-jacutinga	4	4
 santa-rita-de-minas	4	4
 santa-rita-do-itueto	3	3
-santa-rita-do-sapucai	13	13
+santa-rita-do-sapucai	14	14
 santa-rosa-da-serra	2	2
 santa-vitoria	30	30
 santana-da-vargem	9	9
@@ -694,7 +694,7 @@ santana-do-jacare	12	12
 santana-do-manhuacu	4	4
 santana-do-paraiso	13	13
 santana-do-riacho	8	8
-santana-dos-montes	1	1
+santana-dos-montes	2	2
 santo-antonio-do-amparo	9	9
 santo-antonio-do-aventureiro	5	5
 santo-antonio-do-grama	7	7
@@ -748,7 +748,7 @@ sao-jose-do-jacuri	7	7
 sao-jose-do-mantimento	4	4
 sao-lourenco	60	60
 sao-miguel-do-anta	6	6
-sao-pedro-da-uniao	27	27
+sao-pedro-da-uniao	28	28
 sao-pedro-do-suacui	7	7
 sao-pedro-dos-ferros	5	5
 sao-romao	11	11
@@ -761,8 +761,8 @@ sao-sebastiao-do-oeste	14	14
 sao-sebastiao-do-paraiso	55	55
 sao-sebastiao-do-rio-preto	2	2
 sao-sebastiao-do-rio-verde	9	9
-sao-tiago	42	42
-sao-tomas-de-aquino	23	23
+sao-tiago	43	43
+sao-tomas-de-aquino	24	24
 sao-tome-das-letras	10	10
 sao-vicente-de-minas	7	7
 sapucai-mirim	8	8
