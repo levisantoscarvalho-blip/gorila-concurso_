@@ -21,6 +21,8 @@ O QUE AINDA É MANUAL (o robô não decide sozinho):
   previstos.txt e municipais-previstos.txt — previstos vêm de notícias vagas; o robô só avisa ("CONFERIR: ... agora abriu
   inscrições") quando um previsto ganha edital, para alguém tirar da lista.
   conferidos.txt — concursos com mais de 5.000 vagas já conferidos em outra fonte (sem isso aparecem como "a definir").
+  previstos-conferidos.txt — previstos que o auditor apontou como "previsto já aconteceu?" e uma pessoa conferiu que são
+  OUTRO concurso (25/10/2026). Se for o MESMO que já aconteceu, tirar a linha de previstos.txt e rodar gerar.ps1.
 
 ═══ ARQUIVOS ═══
 abertos.txt   = inscrições abertas de órgãos estaduais/federais ou sem cidade (fonte: pciconcursos.com.br/concursos/<região>/)

@@ -778,12 +778,17 @@ async function cmDemografia(caixa, r, s, uf){
       return l.map((c,k)=>{ const r=passo*Math.sqrt(k), a=k*2.39996, cor=cmCorPonto(c);
         return {cor, svg:`<circle cx="${(m.x+r*Math.cos(a)).toFixed(1)}" cy="${(m.y+r*Math.sin(a)).toFixed(1)}" r="${R_PONTO}" class="sit-${cor}" data-j="${j}" data-k="${k}"/>`}; }); })
     .sort((a,b)=>CAMADA_COR[a.cor]-CAMADA_COR[b.cor]).map(p=>p.svg).join('');
+  // ATIVOS EM DESTAQUE (25/10/2026, pedido do Levi: com o histórico completo o mapa virou "um mar de vermelho"): por padrão o
+  // anel e o NÚMERO de cada círculo contam só os ATIVOS (aberto, edital publicado, previsto, suspenso); encerrados ficam
+  // bem apagados. Clicar em "Encerrados" na legenda liga o modo HISTÓRICO (.cm-dm.hist): anel e número com tudo, como antes.
+  const ATIVO=c=>cmCorPonto(c)!=='andamento';
+  const anel=(l, R, C, j)=>{ let off=0; const n=l.length; return ORDEM_ANEL.map(s=>{ const q=l.filter(c=>cmCorPonto(c)===s).length; if(!q) return ''; const len=C*q/n;
+        const seg=`<circle class="seg sit-${s}" r="${R.toFixed(2)}" stroke-dasharray="${len.toFixed(2)} ${(C-len).toFixed(2)}" stroke-dashoffset="${(-off).toFixed(2)}" transform="rotate(-90)" data-j="${j}"/>`; off+=len; return seg; }).join(''); };
   const cachos=munis.map((m,j)=>{ const l=conc(m), n=l.length; if(n<CACHO_MIN) return '';
-      const R=Math.min(13, 7+Math.sqrt(n)*0.75), C=2*Math.PI*R; let off=0;
-      const segs=ORDEM_ANEL.map(s=>{ const q=l.filter(c=>cmCorPonto(c)===s).length; if(!q) return ''; const len=C*q/n;
-        const seg=`<circle class="seg sit-${s}" r="${R.toFixed(2)}" stroke-dasharray="${len.toFixed(2)} ${(C-len).toFixed(2)}" stroke-dashoffset="${(-off).toFixed(2)}" transform="rotate(-90)" data-j="${j}"/>`; off+=len; return seg; }).join('');
-      return `<g class="cm-dm-cacho" data-j="${j}" data-x="${m.x.toFixed(1)}" data-y="${m.y.toFixed(1)}" transform="translate(${m.x.toFixed(1)},${m.y.toFixed(1)})">`+
-        `<circle class="miolo" r="${(R-2.6).toFixed(2)}" data-j="${j}"/>${segs}<text dy="0.35em" data-j="${j}">${n}</text></g>`; }).join('');
+      const at=l.filter(ATIVO), R=Math.min(13, 7+Math.sqrt(n)*0.75), C=2*Math.PI*R;
+      return `<g class="cm-dm-cacho${at.length?'':' so-hist'}" data-j="${j}" data-x="${m.x.toFixed(1)}" data-y="${m.y.toFixed(1)}" transform="translate(${m.x.toFixed(1)},${m.y.toFixed(1)})">`+
+        `<circle class="miolo" r="${(R-2.6).toFixed(2)}" data-j="${j}"/><g class="anel-todos">${anel(l, R, C, j)}</g><g class="anel-ativo">${anel(at, R, C, j)}</g>`+
+        `<text class="n-total" dy="0.35em" data-j="${j}">${n}</text><text class="n-ativos" dy="0.35em" data-j="${j}">${at.length||''}</text></g>`; }).join('');
   // nomes escritos: as cidades mais populosas (até 5), pulando as que encostariam num nome já escrito
   const ordem=[...munis].sort((a,c)=>c.p-a.p), destaques=[], caixas=[];
   for(const m of ordem){ if(destaques.length>=Math.min(5, Math.max(1, Math.round(munis.length/10)+1))) break;
@@ -862,7 +867,14 @@ async function cmDemografia(caixa, r, s, uf){
     const cs=conc(m);
     if(k!==undefined){   // em cima de UM ponto: o concurso dele
       const c=cs[+k];
-      dica.innerHTML=`<b>${c.orgao}</b><span>${c.cargo}${vg(c)}${c.banca?` · ${c.banca}`:''}</span><span class="st st-${cmCorPonto(c)}">${c.status==='andamento' ? c.quando : `${CM_SIT_NOME[c.status]||''}: ${c.quando}`}</span>`+
+      // BALÃO DO PONTO (25/10/2026, pedido do Levi: "como o PCI, mas sem copiar"): órgão · cargo (com a escolaridade) ·
+      // vagas e maior salário (fatos da notícia, CONC_DETALHES) · situação com o PRAZO (faltam N dias) · cidade.
+      // (a FOTO do prédio entra em cima quando a chave do Google Maps for ligada — ainda não)
+      const d=typeof cmcDet==='function' ? cmcDet(uf,c) : null, sal=d?.smax ? `até ${cmcR$(d.smax)}` : '';
+      const vagas=c.vagas ? `${cmNum(c.vagas)} ${c.vagas===1?'vaga':'vagas'}` : (/reserva/.test(c.quando||'') ? 'cadastro de reserva' : '');
+      const prazo=typeof cmcPrazo==='function' ? cmcPrazo(c) : '';
+      const sit=c.status==='andamento' ? c.quando : c.status==='suspenso' ? 'Suspenso — pode ser retomado' : `${CM_SIT_NOME[c.status]||''}${prazo ? ` · ${prazo}` : c.quando ? `: ${c.quando}` : ''}`;
+      dica.innerHTML=`<b>${c.orgao}</b><span>${c.cargo}</span>${vagas||sal?`<span>${[vagas, sal].filter(Boolean).join(' · ')}</span>`:''}<span class="st st-${cmCorPonto(c)}">${sit}</span>`+
         `<span class="sem">${c.estadual?`Órgão estadual ou federal · sede em ${m.n} · vale para todo o estado`:m.n} · clique para ver detalhes</span>`;
     } else {             // em cima da cidade: quantos concursos de cada situação
       const n=s=>cs.filter(c=>cmCorPonto(c)===s).length;
@@ -912,6 +924,7 @@ async function cmDemografia(caixa, r, s, uf){
   camada.onclick=ev=>{ if(arrastou){ arrastou=false; return; }
     const j=ev.target.dataset?.j, k=ev.target.dataset?.k, noLeque=!!ev.target.closest('.cm-dm-leque');
     camada.querySelectorAll('.fixo').forEach(e=>e.classList.remove('fixo'));
+    window.cmPontoAlvo=ev.target;   // o círculo clicado: o cartão do ponto (concursos-central.js) abre junto dele
     if(ev.target.classList.contains('fundo')) return;   // clique no fundo do leque: não fecha
     if(j===undefined){ lequeFechar(); cmCartaoFechar(); return; }
     const m=munis[+j], cs=conc(m); if(!cs.length){ lequeFechar(); cmCartaoFechar(); return; }
@@ -926,12 +939,13 @@ async function cmDemografia(caixa, r, s, uf){
   const info=caixa.querySelector('#cm-dm-info');
   info.innerHTML=`<div class="cm-dm-leg1 cm-dm-legp">${CM_CICLO.map(([s,t])=>[s,t])
       .map(([s,t])=>`<span data-s="${s}" title="Ver a lista e destacar estes pontos" class="${nCor(s)?'':'zero'}"><i class="sit-${s}"></i>${t} <b>${nCor(s)}</b></span>`).join('')}</div>
-    <div class="cm-dm-leg1-dica">1 ponto = 1 concurso · rodinha do mouse aproxima · clique num ponto ou numa cor da legenda para ver os concursos</div>`;
+    <div class="cm-dm-leg1-dica">1 ponto = 1 concurso · encerrados ficam apagados: clique em <b>Encerrados</b> para ver o histórico · clique num ponto para ver o concurso</div>`;
   requestAnimationFrame(()=>info.classList.add('aparece'));
   // LEGENDA CLICÁVEL (pedido do Levi): clicar numa cor mostra na central a LISTA dos concursos daquela cor que estão NO
   // MAPA e deixa acesos só os pontos dela; clicar de novo na mesma cor desliga (e a central volta ao início)
   let filtro=null;
   const filtrar=s=>{ filtro=(filtro===s ? null : s);
+    camada.classList.toggle('hist', filtro==='andamento');   // "Encerrados" na legenda = modo histórico (vermelhos acesos)
     info.querySelectorAll('[data-s]').forEach(sp=>sp.classList.toggle('ativo', sp.dataset.s===filtro));
     camada.querySelectorAll('.cm-dm-pontos circle').forEach(c=>c.classList.toggle('apagado', !!filtro && !c.classList.contains('sit-'+filtro)));
     camada.querySelectorAll('.cm-dm-cacho').forEach(g=>g.classList.toggle('apagado', !!filtro && !g.querySelector('.seg.sit-'+filtro)));
@@ -1120,8 +1134,8 @@ const CM_PCI = 'https://www.pciconcursos.com.br/noticias/';
 function cmDaCidade(a){
   const [orgao,cargo,nivel,vagas,cr,de,ate,slug,sit]=a, br=d=>d.split('-').reverse().join('/');
   // SUSPENSO (desde 18/10/2026, pedido do Levi): o PCI escreve "Suspenso" no lugar das datas — concurso parado que pode voltar
-  if(sit==='suspenso') return {orgao, cargo:cargo+(nivel?` (${nivel})`:''), vagas, status:'suspenso', quando:'Concurso suspenso'+(cr?' · cadastro de reserva':''), fonte:{nome:'PCI Concursos', url:CM_PCI+slug}};
-  return {orgao, cargo:cargo+(nivel?` (${nivel})`:''), vagas, status:'aberto', ate, ...(de?{de}:{}),
+  if(sit==='suspenso') return {orgao, cargo:cargo+(nivel && !/^n[ãa]o informad/i.test(nivel)?` (${nivel})`:''), vagas, status:'suspenso', quando:'Concurso suspenso'+(cr?' · cadastro de reserva':''), fonte:{nome:'PCI Concursos', url:CM_PCI+slug}};
+  return {orgao, cargo:cargo+(nivel && !/^n[ãa]o informad/i.test(nivel)?` (${nivel})`:''), vagas, status:'aberto', ate, ...(de?{de}:{}),
     quando:(de?`de ${br(de)} a ${br(ate)}`:`até ${br(ate)}`)+(cr?' · cadastro de reserva':''), fonte:{nome:'PCI Concursos', url:CM_PCI+slug}};
 }
 // todos os links do PCI que já estão em alguma cidade do estado (para não repetir o mesmo concurso em outro lugar)
@@ -1257,7 +1271,7 @@ function cmMesoFechar(semAnimar, manterBusca){   // manterBusca: a busca de baix
   const v=document.getElementById('cm-estado-vista'); if(!v) return;
   document.getElementById('cm-ev-regiao')?.remove(); document.getElementById('cm-rz-fundo')?.remove(); document.getElementById('cm-dm-dica-fora')?.remove();
   document.getElementById('cm-ev-painel')?.remove();
-  document.getElementById('cm-rz-card')?.remove();
+  document.getElementById('cm-rz-card')?.remove(); document.getElementById('cm-ponto-cartao')?.remove();
   document.getElementById('cm-central')?.remove(); document.getElementById('news-screen')?.classList.remove('cmc-cheio','cmc-subindo');
   if(!manterBusca) cmBuscaSubir(semAnimar);
   v.classList.remove('cm-ev-foco');

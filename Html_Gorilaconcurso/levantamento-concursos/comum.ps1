@@ -37,12 +37,16 @@ $rxItem = [regex]'<div class="(\w+)" onclick="myClick\(event\)" data-url="https:
 # lê os concursos de um trecho de HTML ➔ objetos { classe, slug, titulo, orgao, uf, vagas, cr, cargo, nivel, de, ate }
 function ItensPci([string]$html){
   foreach($m in $rxItem.Matches($html)){
-    # sem data: o PCI escreve "Suspenso" ou "Cancelado" no lugar (desde 18/10/2026: suspenso ENTRA no mapa; cancelado é lido e
-    # descartado de propósito). Qualquer outra palavra sem data fica sem ler — e o AUDITOR avisa (lidos < bruto).
+    # SEM DATA: o PCI escreve uma frase no lugar ("Suspenso", "Cancelado", "Adiado início", "Inscrições adiadas",
+    # "Conferir suspensão por edital", "Conferir período no edital", "Somente para Doadores de Sangue", "Edital n° 01/2015"...).
+    # Regra geral (25/10/2026 — antes era frase por frase e o auditor acusava cada frase nova):
+    #   suspensão ou adiamento ➔ SUSPENSO (entra no mapa, âmbar: parado, pode voltar) · cancelado ➔ lido e descartado ·
+    #   qualquer outra frase ➔ 'semdata': lido e descartado (sem data não dá para saber se está aberto).
+    # O AUDITOR continua pegando mudança de FORMATO da página (item que nem chega aqui: lidos < bruto).
     $sit = ''; $d = Datas (Limpa $m.Groups[7].Value)
-    if(-not $d){ $t = Limpa $m.Groups[7].Value; if($t -match '^Suspens'){ $sit = 'suspenso' } elseif($t -match '^Cancel'){ $sit = 'cancelado' }
-      elseif($t -match '^(Conferir per[íi]odo|Apenas para)'){ $sit = 'semdata' }   # "Conferir período no edital/por cargo", "Apenas para uma área": sem data, não dá para saber se está aberto — fica de fora de propósito
-      else { continue }; $d = @('', '') }
+    if(-not $d){ $t = Limpa $m.Groups[7].Value
+      $sit = if($t -match '(?i)suspens|adiad'){ 'suspenso' } elseif($t -match '(?i)cancel'){ 'cancelado' } else { 'semdata' }
+      $d = @('', '') }
     $partes = $m.Groups[6].Value -split '<br\s*/?>'
     $vagasTxt = Limpa $partes[0]; $cargo = if($partes.Count -gt 1){ Limpa $partes[1] } else { '' }; $nivel = if($partes.Count -gt 2){ Limpa $partes[2] } else { '' }
     $v = 0; if($vagasTxt -match '^([\d\.]+)\s+vaga'){ $v = [int]($Matches[1] -replace '\.','') }

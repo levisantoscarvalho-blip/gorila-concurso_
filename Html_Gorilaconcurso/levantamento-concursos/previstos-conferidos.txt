@@ -1,0 +1,10 @@
+﻿# PREVISTOS JÁ CONFERIDOS por uma pessoa (o auditor — regra 11 "previsto já aconteceu?" — não acusa de novo).
+# Quando: o órgão do previsto teve concurso no último ano, mas conferimos que o previsto é OUTRO concurso.
+# O auditor volta a acusar se aparecer concurso do órgão com inscrições DEPOIS da data da conferência.
+# UF|órgão (igual a previstos.txt)|data da conferência (AAAA-MM-DD)|motivo
+AM|Defensoria Pública do AM|2026-10-25|o que aconteceu foi residência (Aluno Residente); o previsto é concurso com banca definida
+BA|TJ-BA|2026-10-25|o que aconteceu foi para Juiz Substituto; o previsto é para servidores (LDO 2026)
+BA|Defensoria Pública da BA|2026-10-25|o que aconteceu foi seleção de Médico; o previsto tem comissão formada e edital em preparação
+MG|Polícia Militar de MG|2026-10-25|a PM-MG faz concurso todo ano; o de jan/2026 já passou e o previsto é o próximo
+MG|TJ-MG|2026-10-25|o que aconteceu foi para Juiz de Direito Substituto; o previsto é para servidores
+RN|PGE-RN|2026-10-25|o que aconteceu (Analista Jurídico, abr/2026) é o anterior; o previsto é do orçamento de 2027

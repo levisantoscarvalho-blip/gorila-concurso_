@@ -138,6 +138,32 @@ foreach($a in 'previstos.txt'){ foreach($l in [IO.File]::ReadAllLines((Join-Path
   if($p.Count -ge 8 -and $p[7] -match '^(\d{2})/(\d{2})/(\d{4})$' -and "$($Matches[3])-$($Matches[2])-$($Matches[1])" -lt $limitePrev){ [void]$velhos.Add("$($p[0]) $($p[2]) (notícia de $($p[7]))") } } }
 if($velhos.Count){ Conferir "PREVISTOS: $($velhos.Count) previstos com notícia de mais de 1 ano e ainda sem edital — continuam previstos? $(($velhos | Select-Object -First 8) -join ' · ')$(if($velhos.Count -gt 8){' …'})" }
 
+# ── 11. PREVISTO QUE JÁ ACONTECEU (25/10/2026 — caso SEAP-MA: "previsto, 203 vagas" no mapa, mas o concurso já tinha
+#        acontecido em agosto e estava no mapa como encerrado; o mesmo concurso aparecia duas vezes). Procura, para cada
+#        previsto, concursos do MESMO órgão no último ano (cidades + abertos estaduais). Achou ➔ CONFERIR (tirar dos previstos?).
+$umAno = $agora.AddYears(-1).ToString('yyyy-MM-dd'); $jaAcont = New-Object Collections.ArrayList
+$conferidoEm = @{}; $arqConf = Join-Path $dir 'previstos-conferidos.txt'   # previstos que uma pessoa já conferiu (UF|órgão|data|motivo)
+if(Test-Path $arqConf){ foreach($l in [IO.File]::ReadAllLines($arqConf, $utf8)){ if(-not $l -or $l.StartsWith('#')){ continue }; $q = $l.Split('|'); if($q.Count -ge 3){ $conferidoEm["$($q[0])|$($q[1])"] = $q[2] } } }
+foreach($l in [IO.File]::ReadAllLines((Join-Path $dir 'previstos.txt'), $utf8)){ if(-not $l -or $l.StartsWith('#')){ continue }; $p = $l.Split('|'); if($p.Count -lt 3){ continue }
+  $uf = $p[0]; if(-not $porUf.ContainsKey($uf)){ continue }
+  # "SEAP-MA (Polícia Penal)" ➔ sigla SEAP · "Polícia Civil do AC" ➔ nome "Polícia Civil"
+  $base = (($p[2] -replace '\([^)]*\)', '') -replace "\s*[-–]\s*$uf\b", '' -replace "\s+d[aeo]s?\s+$uf\s*$", '').Trim()
+  $sig = if($base -cmatch '^([A-Z]{2,})\b'){ $Matches[1] } else { '' }; $nb = Norm $base
+  if(-not $sig -and $nb.Length -lt 8){ continue }
+  # cargo do previsto com palavra própria ("Soldado", "Perito", "Técnico de enfermagem") ➔ só conta concurso que tenha
+  # alguma dessas palavras no cargo (PM-DF Soldado ≠ Curso de Oficiais). Cargo genérico ("A definir", "Diversos") ➔ qualquer um.
+  $pal = @((NormPalavras $p[3]).Trim().Split(' ') | Where-Object { $_.Length -ge 5 -and $_ -notmatch '^(definir|diversos|varios|cargos|areas?|nivel|superior|medio)$' })
+  $achou = $null
+  foreach($k in $porUf[$uf].Keys){ foreach($r in $porUf[$uf][$k]){
+    if(-not $r[8] -or $r[8] -lt $umAno){ continue }
+    $ok = if($sig){ $r[2] -cmatch "^$sig\b" } else { (Norm $r[2]).Contains($nb) }
+    if($ok -and $pal.Count){ $cr = NormPalavras $r[3]; $ok = [bool]($pal | Where-Object { $cr.Contains(" $_") }) }
+    if($ok -and (-not $achou -or $r[8] -gt $achou[8])){ $achou = $r } } }
+  if($achou -and $conferidoEm.ContainsKey("$uf|$($p[2])") -and $achou[8] -le $conferidoEm["$uf|$($p[2])"]){ $achou = $null }   # já conferido por uma pessoa
+  if($achou){ [void]$jaAcont.Add("$uf $($p[2]) ➔ já teve '$($achou[3])' (inscrições até $($achou[8]), $($achou[1]))") }
+}
+if($jaAcont.Count){ Conferir "PREVISTO JÁ ACONTECEU? $($jaAcont.Count) previstos cujo órgão já teve concurso no último ano — o previsto é um concurso NOVO ou é o mesmo que já aconteceu (aí tirar de previstos.txt)? $($jaAcont -join ' · ')" }
+
 # ── RESULTADO
 $saida = New-Object Collections.ArrayList
 [void]$saida.Add("AUDITORIA DO GORILA — $($agora.ToString('dd/MM/yyyy HH:mm')) (horário de Brasília)$(if($Completo){' — com consulta ao PCI'})")

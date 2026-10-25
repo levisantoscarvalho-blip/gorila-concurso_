@@ -303,16 +303,21 @@ function cmcCidade(el, arg){
 // para a pessoa ver onde vai trabalhar. É uma BUSCA pelo nome do órgão + cidade (não temos o endereço exato): o aviso
 // embaixo diz isso. Concurso do ESTADO ➔ a sede, na capital (a lotação de verdade vem no edital).
 // ⚠ No ar, o vercel.json precisa liberar "frame-src https://www.google.com" (senão o quadro fica em branco).
-function cmcLocal(c, x, uf){
-  const cidade=c.estadual ? CM_CAPITAL[uf] : x.m?.n; if(!cidade) return '';
+// o LUGAR do órgão: busca "nome por extenso, cidade - UF" + o aviso (usado aqui e no cartão do ponto, cmcCartaoPonto)
+function cmcLugar(c, x, uf){
+  const cidade=c.estadual ? CM_CAPITAL[uf] : x.m?.n; if(!cidade) return null;
   // "SEAP - Secretaria de Estado..." ➔ o nome por extenso acha melhor; tira o " - São Luís" do fim (a cidade já vai na busca)
   const partes=String(c.orgao||'').split(/\s+-\s+/), nome=(partes.length>1 && partes[0].length<=12 ? partes.slice(1) : partes).filter(p=>cmcNorm(p)!==cmcNorm(cidade)).join(' - ');
   const q=`${nome}, ${cidade} - ${uf}`, qq=encodeURIComponent(q);
   const nota=c.estadual ? `Sede do órgão, em ${cidade}. O concurso vale para todo o estado: a cidade onde você vai trabalhar (lotação) é definida no edital.`
     : `${nome} em ${cidade}. Local aproximado, achado pelo nome do órgão — o endereço exato de trabalho vem no edital.`;
-  return `<div class="cmc-local"><b>Onde fica</b>
-    <iframe src="https://www.google.com/maps?q=${qq}&hl=pt-BR&z=15&output=embed" loading="lazy" referrerpolicy="no-referrer" title="Mapa: ${cmcEsc(q)}"></iframe>
-    <small>${cmcEsc(nota)} <a href="https://www.google.com/maps/search/?api=1&query=${qq}" target="_blank" rel="noopener">Abrir no Google Maps ›</a></small></div>`;
+  return { q, qq, nota, nome, cidade,
+    mapa:`<iframe src="https://www.google.com/maps?q=${qq}&hl=pt-BR&z=15&output=embed" loading="lazy" referrerpolicy="no-referrer" title="Mapa: ${cmcEsc(q)}"></iframe>`,
+    link:`<a href="https://www.google.com/maps/search/?api=1&query=${qq}" target="_blank" rel="noopener">Abrir no Google Maps ›</a>` };
+}
+function cmcLocal(c, x, uf){
+  const L=cmcLugar(c, x, uf); if(!L) return '';
+  return `<div class="cmc-local"><b>Onde fica</b>${L.mapa}<small>${cmcEsc(L.nota)} ${L.link}</small></div>`;
 }
 const cmcNorm=s=>String(s).toLowerCase().normalize('NFD').replace(/\p{M}/gu,'').replace(/[^a-z0-9]/g,'');
 // ── DETALHE: introdução escrita a partir dos fatos + dados + links oficiais
@@ -335,9 +340,9 @@ function cmcIntro(c, d, m){
   if(d?.v) frases.push(`O resultado vale por ${d.v===1?'1 ano':`${d.v} anos`}, podendo ser prorrogado.`);
   return frases.join(' ');
 }
-function cmcDetalhe(el, arg, uf){
-  const x=arg.x, c=cmConcursoHoje(x.c), d=cmcDet(uf,c), cor=cmCorPonto(c), banca=cmcBanca(d), intro=cmcIntro(c,d,x.m);
-  el._lista=[x];
+// PARTES do detalhe de um concurso — usadas no detalhe da central (cmcDetalhe) e no CARTÃO DO PONTO (cmcCartaoPonto)
+function cmcPartes(x, uf){
+  const c=cmConcursoHoje(x.c), d=cmcDet(uf,c), cor=cmCorPonto(c), banca=cmcBanca(d), intro=cmcIntro(c,d,x.m);
   const linha=(k,v)=>v?`<div><dt>${k}</dt><dd>${v}</dd></div>`:'';
   const cargos=(d?.cg||[]);
   const falta=c.status==='aberto'&&c.ate ? cmcDias(c.ate) : null;
@@ -345,41 +350,137 @@ function cmcDetalhe(el, arg, uf){
       +(falta===null ? (c.status==='edital'?' — ainda vão abrir':'') : falta<=0 ? ' — último dia hoje' : falta===1 ? ' — termina amanhã' : ` — faltam ${falta} dias`)
     : c.status==='andamento' && c.ate ? `Encerradas em ${cmcBR(c.ate)}` : cmcEsc(c.quando||'');
   const ehPci=/pciconcursos/.test(c.fonte.url);
+  // previsto, sem previsão e suspenso não têm inscrições: o rótulo vira "Situação" (25/10/2026, inconsistência apontada pelo Levi)
+  const inscRot=/^(previsto|semprevisao|suspenso)$/.test(c.status) ? 'Situação' : 'Inscrições';
+  return { c, d, cor, banca, linha, insc, inscRot,
+    topo:`<div class="cmc-det-topo"><span class="cmc-st st-${cor}"><i class="sit-${cor}"></i>${cmcEsc(CM_SIT_NOME[c.status]||'')}</span>${d?.t?`<span class="cmc-tipo">${d.t==='seletivo'?'Processo seletivo':'Concurso público'}</span>`:''}</div>`,
+    local:`<div class="cmc-det-local">${c.estadual?`Órgão estadual ou federal — vale para todo o estado (${cmcEsc(CM_UF_NOME[uf])})`:`${cmcEsc(x.m?.n||'')} — ${cmcEsc(uf)}`}</div>`,
+    intro: intro?`<div class="cmc-intro"><b>Introdução</b><p>${cmcEsc(intro)}</p></div>`
+      : `<div class="cmc-intro"><b>Situação</b><p>${cmcEsc(c.quando||'')}. ${c.status==='previsto'?'Ainda não há edital: vagas, cargos e datas podem mudar até a publicação.':''}</p></div>`,
+    vagas: cmcEsc(cmcVagas(c)),
+    escolaridade: cmcEsc((c.cargo.match(/\(([^)]*(?:Fundamental|Médio|Técnico|Superior)[^)]*)\)/)||[])[1]||''),
+    salario: d?.smax ? (d.smin && d.smin<d.smax ? `${cmcR$(d.smin)} a ${cmcR$(d.smax)}` : cmcR$(d.smax)) : '',
+    taxa: d?.tmin ? (d.tmin===d.tmax?cmcR$(d.tmin):`${cmcR$(d.tmin)} a ${cmcR$(d.tmax)}`) : '',
+    cargos: cargos.length?`<div class="cmc-cargos"><b>Cargos e vagas</b><ul>${cargos.map(s=>`<li>${cmcEsc(s)}</li>`).join('')}</ul>${cargos.length>=25?'<small>A lista pode ter mais cargos — veja o edital.</small>':''}</div>`:'',
+    links: comMapa=>`<div class="cmc-links">
+      ${cmcUrl(d?.b)?`<a class="cmc-btn principal" href="${cmcEsc(d.b)}" target="_blank" rel="noopener">Página oficial do concurso e edital em PDF ›<small>${cmcEsc(banca||cmcHost(d.b))}</small></a>`:''}
+      ${cmcUrl(d?.o) && d.o!==d.b?`<a class="cmc-btn" href="${cmcEsc(d.o)}" target="_blank" rel="noopener">Site oficial do órgão ›<small>${cmcEsc(cmcHost(d.o))}</small></a>`:''}
+      <a class="cmc-btn" href="${cmcEsc(c.fonte.url)}" target="_blank" rel="noopener">${ehPci?'Notícia completa e editais no PCI Concursos':`Notícia na fonte (${cmcEsc(c.fonte.nome)})`} ›${d?.e?.length?`<small>${d.e.length} ${d.e.length===1?'arquivo':'arquivos'}: ${cmcEsc(d.e.slice(0,2).join(' · '))}${d.e.length>2?' …':''}</small>`:''}</a>
+      ${comMapa && x.m && !c.estadual?`<button type="button" class="cmc-btn" data-mapa="0">Mostrar no mapa ›</button>`:''}
+    </div>`,
+    rod:`<p class="cmc-rod">Fonte: ${cmcEsc(c.fonte.nome)}${d?.p?` · notícia de ${cmcBR(d.p)}`:''}. Os dados são resumidos automaticamente da notícia; o que vale é sempre o edital oficial.</p>` };
+}
+function cmcDetalhe(el, arg, uf){
+  const x=arg.x, P=cmcPartes(x, uf), {c, d, linha}=P;
+  el._lista=[x];
   return `<div class="cmc-det">
-    <div class="cmc-det-topo"><span class="cmc-st st-${cor}"><i class="sit-${cor}"></i>${cmcEsc(CM_SIT_NOME[c.status]||'')}</span>${d?.t?`<span class="cmc-tipo">${d.t==='seletivo'?'Processo seletivo':'Concurso público'}</span>`:''}</div>
+    ${P.topo}
     <h3>${cmcEsc(c.orgao)}</h3>
-    <div class="cmc-det-local">${c.estadual?`Órgão estadual ou federal — vale para todo o estado (${cmcEsc(CM_UF_NOME[uf])})`:`${cmcEsc(x.m?.n||'')} — ${cmcEsc(uf)}`}</div>
-    ${intro?`<div class="cmc-intro"><b>Introdução</b><p>${cmcEsc(intro)}</p></div>`
-      : `<div class="cmc-intro"><b>Situação</b><p>${cmcEsc(c.quando||'')}. ${c.status==='previsto'?'Ainda não há edital: vagas, cargos e datas podem mudar até a publicação.':''}</p></div>`}
+    ${P.local}
+    ${P.intro}
     <dl class="cmc-dados">
-      ${linha('Vagas', cmcEsc(cmcVagas(c)))}
-      ${linha('Escolaridade', cmcEsc((c.cargo.match(/\(([^)]*(?:Fundamental|Médio|Técnico|Superior)[^)]*)\)/)||[])[1]||''))}
-      ${linha('Remuneração', d?.smax ? (d.smin && d.smin<d.smax ? `${cmcR$(d.smin)} a ${cmcR$(d.smax)}` : cmcR$(d.smax)) : '')}
-      ${linha('Inscrições', insc)}
-      ${linha('Taxa', d?.tmin ? (d.tmin===d.tmax?cmcR$(d.tmin):`${cmcR$(d.tmin)} a ${cmcR$(d.tmax)}`) : '')}
+      ${linha('Vagas', P.vagas)}
+      ${linha('Escolaridade', P.escolaridade)}
+      ${linha('Remuneração', P.salario)}
+      ${linha(P.inscRot, P.insc)}
+      ${linha('Taxa', P.taxa)}
       ${linha('Prova objetiva', d?.pr ? cmcBR(d.pr) : '')}
-      ${linha('Banca', cmcEsc(banca || c.banca || (d?.b ? 'O próprio órgão' : '')))}
+      ${linha('Banca', cmcEsc(P.banca || c.banca || (d?.b ? 'O próprio órgão' : '')))}
       ${linha('Validade', d?.v ? `${d.v===1?'1 ano':`${d.v} anos`}, prorrogável` : '')}
       ${linha('Publicado em', d?.p ? cmcBR(d.p) : '')}
     </dl>
     ${cmcLocal(c, x, uf)}
-    ${cargos.length?`<div class="cmc-cargos"><b>Cargos e vagas</b><ul>${cargos.map(s=>`<li>${cmcEsc(s)}</li>`).join('')}</ul>${cargos.length>=25?'<small>A lista pode ter mais cargos — veja o edital.</small>':''}</div>`:''}
-    <div class="cmc-links">
-      ${cmcUrl(d?.b)?`<a class="cmc-btn principal" href="${cmcEsc(d.b)}" target="_blank" rel="noopener">Página oficial do concurso e edital em PDF ›<small>${cmcEsc(banca||cmcHost(d.b))}</small></a>`:''}
-      ${cmcUrl(d?.o) && d.o!==d.b?`<a class="cmc-btn" href="${cmcEsc(d.o)}" target="_blank" rel="noopener">Site oficial do órgão ›<small>${cmcEsc(cmcHost(d.o))}</small></a>`:''}
-      <a class="cmc-btn" href="${cmcEsc(c.fonte.url)}" target="_blank" rel="noopener">${ehPci?'Notícia completa e editais no PCI Concursos':`Notícia na fonte (${cmcEsc(c.fonte.nome)})`} ›${d?.e?.length?`<small>${d.e.length} ${d.e.length===1?'arquivo':'arquivos'}: ${cmcEsc(d.e.slice(0,2).join(' · '))}${d.e.length>2?' …':''}</small>`:''}</a>
-      ${x.m && !c.estadual?`<button type="button" class="cmc-btn" data-mapa="0">Mostrar no mapa ›</button>`:''}
-    </div>
-    <p class="cmc-rod">Fonte: ${cmcEsc(c.fonte.nome)}${d?.p?` · notícia de ${cmcBR(d.p)}`:''}. Os dados são resumidos automaticamente da notícia; o que vale é sempre o edital oficial.</p>
+    ${P.cargos}
+    ${P.links(true)}
+    ${P.rod}
   </div>`;
 }
-// clique num ponto/cidade do MAPA ➔ abre na central (substitui o cartão flutuante antigo)
+// ── CARTÃO DO PONTO (25/10/2026, pedido do Levi): clicou num pontinho do mapa ➔ abre ALI, junto do ponto, um cartão
+//   SEM ROLAGEM: EM CIMA a FOTO de onde a pessoa vai trabalhar e EMBAIXO só o básico (cargo, vagas, salário, inscrições).
+//   Quem quiser mais clica em "Ver mais informações" ➔ o detalhe completo abre na central da direita (como antes).
+//   FOTO (cmcFotoLugar): por enquanto da WIKIPÉDIA (grátis) — primeiro a do próprio órgão; se ele não tiver foto de verdade
+//   (logotipo, brasão, bandeira e mapa NÃO contam), a da cidade onde fica o trabalho (concurso do estado ➔ a capital,
+//   sede). Sempre com legenda dizendo o que é a foto. Quando a chave do Google Maps for ligada, a foto do prédio entra aqui.
+function cmcCartaoPonto(x, uf){
+  const P=cmcPartes(x, uf), {c, linha}=P;
+  return `<div class="cmp-img carregando"><button type="button" class="cmp-x" aria-label="Fechar">×</button></div>
+    <div class="cmp-corpo">
+      ${P.topo}
+      <h4>${cmcEsc(c.orgao)}</h4>
+      ${P.local}
+      <dl class="cmc-dados cmp-basico">
+        ${linha('Cargo', cmcEsc(c.cargo))}
+        ${linha('Vagas', P.vagas)}
+        ${linha('Salário', P.salario)}
+        ${linha(P.inscRot, P.insc)}
+      </dl>
+      <button type="button" class="cmc-btn principal cmp-mais">Ver mais informações ›</button>
+    </div>`;
+}
+// foto de uma página da Wikipédia em português — só FOTO de verdade (.jpg), nunca logotipo/brasão/bandeira/mapa; guardada na memória
+const CMC_FOTOS = {};
+function cmcWikiFoto(titulo){
+  if(!titulo) return Promise.resolve(null);
+  if(CMC_FOTOS[titulo] !== undefined) return CMC_FOTOS[titulo];
+  const u=`https://pt.wikipedia.org/w/api.php?action=query&titles=${encodeURIComponent(titulo)}&redirects=1&prop=pageimages%7Cpageprops&piprop=thumbnail&pithumbsize=640&format=json&origin=*`;
+  return CMC_FOTOS[titulo] = fetch(u).then(r=>r.json()).then(j=>{
+    const p=Object.values(j?.query?.pages||{})[0], pp=p?.pageprops||{}, arq=pp.page_image_free||pp.page_image||'';
+    if(!p || 'missing' in p || 'disambiguation' in pp || !p.thumbnail?.source) return null;
+    if(!/\.jpe?g$/i.test(arq) || /logo|bras[aã]o|bandeira|mapa|map\b|localiza|selo|emblema|s[ií]mbolo|flag|coat/i.test(arq)) return null;
+    if(!/^https:\/\/(upload|thumb)\.wikimedia\.org\//.test(p.thumbnail.source)) return null;
+    return { src:p.thumbnail.source, titulo:p.title, pagina:`https://pt.wikipedia.org/wiki/${encodeURIComponent(p.title.replace(/ /g,'_'))}` };
+  }).catch(()=>null);
+}
+async function cmcFotoLugar(c, x, uf){
+  const L=cmcLugar(c, x, uf); if(!L) return null;
+  const org=await cmcWikiFoto(L.nome);
+  if(org) return { ...org, legenda:`Foto: ${org.titulo}` };
+  for(const t of [`${L.cidade} (${CM_UF_NOME[uf]})`, L.cidade]){
+    const f=await cmcWikiFoto(t);
+    if(f) return { ...f, legenda:`Foto da cidade de ${L.cidade}${c.estadual?' — sede do órgão':''}` };
+  }
+  return null;
+}
+// abre o cartão junto do ponto clicado (cmPontoAlvo = o círculo, guardado pelo clique no mapa), sem sair da tela
+function cmcAbrirCartaoPonto(uf, m, cs, c){
+  cmcFecharCartaoPonto();
+  const alvo=window.cmPontoAlvo, ns=document.getElementById('news-screen'); if(!alvo || !ns) return;
+  const cart=document.createElement('div'); cart.id='cm-ponto-cartao'; cart.className='cm-ponto-cartao';
+  const x={c, m};
+  cart.innerHTML=cmcCartaoPonto(x, uf);
+  cart.querySelector('.cmp-x').onclick=cmcFecharCartaoPonto;
+  // "Ver mais informações": o detalhe completo na central da direita (como era antes) e o cartão fecha
+  cart.querySelector('.cmp-mais').onclick=()=>{ const el=document.getElementById('cm-central'); cmcFecharCartaoPonto(); if(!el) return;
+    el._pilha=[{vista:'cid', arg:{m, cs, titulo:m.n}}]; cmcIr('det', {x, titulo:c.orgao.replace(/\s+-\s+.*$/,'')}); };
+  ['pointerdown','click','dblclick','wheel'].forEach(t=>cart.addEventListener(t, e=>e.stopPropagation(), {passive:true}));
+  ns.appendChild(cart);
+  const posicionar=()=>{   // ao lado do ponto: à direita se couber, senão à esquerda; na altura do ponto, sem sair da tela
+    const b=alvo.getBoundingClientRect(), W=cart.offsetWidth, H=cart.offsetHeight, topoMin=72;
+    cart.style.left=(b.right+14+W<=innerWidth-100 ? b.right+14 : Math.max(8, b.left-14-W))+'px';
+    cart.style.top=Math.max(topoMin, Math.min(b.top+b.height/2-90, innerHeight-H-12))+'px'; };
+  posicionar();
+  const caixa=cart.querySelector('.cmp-img');
+  cmcFotoLugar(c, x, uf).then(f=>{
+    if(!cart.isConnected) return;
+    caixa.classList.remove('carregando');
+    if(!f){ caixa.classList.add('sem-foto'); posicionar(); return; }   // sem foto: o cartão começa direto pelo básico
+    const img=document.createElement('img'); img.alt=f.legenda; img.loading='eager'; img.referrerPolicy='no-referrer'; img.src=f.src;
+    img.onerror=()=>{ caixa.classList.add('sem-foto'); posicionar(); };
+    const cred=document.createElement('a'); cred.className='cmp-cred'; cred.href=f.pagina; cred.target='_blank'; cred.rel='noopener';
+    cred.textContent=`${f.legenda} · Wikipédia`;
+    caixa.prepend(img); caixa.appendChild(cred);
+  });
+}
+function cmcFecharCartaoPonto(){ document.getElementById('cm-ponto-cartao')?.remove(); }
+document.addEventListener('keydown', e=>{ if(e.key==='Escape' && document.getElementById('cm-ponto-cartao')){ e.stopImmediatePropagation(); cmcFecharCartaoPonto(); } }, true);
+// clique no MAPA: num PONTO ➔ o cartão junto dele (o detalhe completo só pelo botão "Ver mais informações");
+// numa cidade / cacho ➔ a lista dela na central (substitui o cartão flutuante antigo)
 const _cmCartaoAntigo = typeof cmCartao==='function' ? cmCartao : null;
 cmCartao = function(uf, m, cs, k){
   const el=document.getElementById('cm-central'); if(!el) return _cmCartaoAntigo?.(uf, m, cs, k);
-  if(k===null || k===undefined) return cmcIr('cid', {m, cs, titulo:m.n}, true);
+  if(k===null || k===undefined){ cmcFecharCartaoPonto(); return cmcIr('cid', {m, cs, titulo:m.n}, true); }
   const c=cmConcursoHoje(cs[k]);
-  el._pilha=[{vista:'cid', arg:{m, cs, titulo:m.n}}]; cmcIr('det', {x:{c:{...c, estadual:cs[k].estadual}, m}, titulo:c.orgao.replace(/\s+-\s+.*$/,'')});
+  cmcAbrirCartaoPonto(uf, m, cs, {...c, estadual:cs[k].estadual});
 };
 const _cmCartaoFecharAntigo = typeof cmCartaoFechar==='function' ? cmCartaoFechar : null;
-cmCartaoFechar = function(){ _cmCartaoFecharAntigo?.(); };
+cmCartaoFechar = function(){ _cmCartaoFecharAntigo?.(); cmcFecharCartaoPonto(); };

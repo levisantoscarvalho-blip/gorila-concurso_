@@ -28,7 +28,7 @@ DF|previsto|Polícia Militar do DF|Soldado|2000|Banca Cebraspe contratada; cerca
 DF|previsto|Polícia Civil do DF|Perito e papiloscopista|105|Concurso autorizado||15/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-df/
 DF|previsto|SEEDF (Educação)|Professor e outros cargos|10604|Autorizado (Portaria 825/2025: 2.650 imediatas + 7.954 cadastro); banca em definição; edital previsto para nov–dez/2026||23/09/2026|Focus Concursos|https://noticias.focusconcursos.com.br/noticias/concurso-sedf-2026-banca-entra-em-definicao-para-10604-vagas
 DF|previsto|SEFAZ-DF|Auditor fiscal|115|Banca definida|Cebraspe|15/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-df/
-DF|previsto|SES-DF (Saúde)|Especialista em saúde|2379|Concurso solicitado||15/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-df/
+DF|previsto|SES-DF (Saúde)|Especialista em saúde|2379|Banca contratada; edital pode sair em breve (322 imediatas + cadastro de reserva)|Cebraspe|13/10/2026|Qconcursos (Folha Dirigida)|https://folha.qconcursos.com/n/concurso-ses-df-banca-contratada-2026
 DF|previsto|Câmara Legislativa do DF|Analista, assistente e técnico|90|Grupo de estudos formado||15/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-df/
 DF|previsto|Detran-DF|Agente de trânsito|182|Concurso anunciado||15/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-df/
 ES|previsto|SESA-ES (Saúde)|Níveis médio, técnico e superior|688|Comissão formada||15/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-es/
@@ -45,7 +45,6 @@ GO|previsto|MP-GO|Técnico ministerial|0|Concurso confirmado||24/08/2026|Estrat�
 MA|previsto|Polícia Militar, Polícia Civil e Bombeiros do MA|Diversos (Segurança Pública)|2292|Previsto no orçamento de 2026||06/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-ma/
 MA|previsto|SEDUC-MA (Educação)|Diversos|2300|Banca definida|FCC|06/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-ma/
 MA|previsto|SES-MA (Saúde)|A definir|189|Banca definida|FCC|06/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-ma/
-MA|previsto|SEAP-MA (Polícia Penal)|A definir|203|Previsto no orçamento de 2026||06/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-ma/
 MA|previsto|Detran-MA|A definir|121|Comissão formada||06/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-ma/
 MA|previsto|SEFAZ-MA|Auditor fiscal|10|Previsto no orçamento de 2026||06/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-ma/
 MA|previsto|Defensoria Pública do MA|A definir|0|Deve sair do papel em 2026||06/10/2026|Estratégia Concursos|https://concursos.estrategia.com/portal/concursos-ma/
