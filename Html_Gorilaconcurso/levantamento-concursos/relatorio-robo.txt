@@ -1,11 +1,8 @@
-ROBÔ DO GORILA — 25/10/2026 09:21 (horário de Brasília) — coleta COMPLETA (semanal)
-coleta completa: 0 cidades com erro na 1ª passada
-2ª passada: 0 cidades ainda com erro
-cidades trocadas: 142427 concursos (antes 142421)
+ROBÔ DO GORILA — 26/10/2026 10:54 (horário de Brasília)
 CONFERIR: data de inscrição impossível na fonte (2029-09-29), não entrou: ifmg-divulga-retificacoes-do-concurso-publico-para-professores-do-ensino-basico-tecnico-e-tecnologico
-PCI hoje: 600 concursos com inscrições abertas
-novos concursos: 0 em cidades + 0 estaduais/sem cidade · 0 com data mudada (prorrogação/retificação)
-notícias: parte 0 pronta (6000 nesta rodada, faltam 85181 para as próximas)
+PCI hoje: 594 concursos com inscrições abertas
+novos concursos: 7 em cidades + 2 estaduais/sem cidade · 0 com data mudada (prorrogação/retificação)
+notícias: parte 0 pronta (6000 nesta rodada, faltam 79190 para as próximas)
 AVISO GO 17232 vagas sem conferência, ficou 'a definir': seduce-go-retifica-um-dos-dois-processos-seletivos-com-mais-de-17-2-mil-vagas
 AVISO GO 7453 vagas sem conferência, ficou 'a definir': valparaiso-de-goias-go-prorroga-inscricoes-e-retifica-edital-001-2014
 AVISO MT 5156 vagas sem conferência, ficou 'a definir': prefeitura-de-varzea-grande-mt-retifica-processo-seletivo-com-vagas-para-a-educacao
@@ -17,7 +14,7 @@ AVISO taxa impossível (R$ 2506.23), não mostrada: concurso-publico-e-retificad
 AVISO taxa impossível (R$ 4231.6), não mostrada: uem-pr-abre-selecao-para-tecnico-em-laboratorio-com-salario-de-4-2-mil
 AVISO taxa impossível (R$ 2125.02), não mostrada: prefeitura-de-cajamar-sp-retifica-um-dos-editais-de-concursos-publicos
 AUDITORIA: 5 erros, 27 para conferir, 1 info (ver auditoria.txt) — ATENÇÃO: 5 cidades com concursos que o robô não conseguiu ler
-concursos nas cidades: 142427 (no ar: 142421) · detalhes: 56343 (no ar: 50350)
-levantamento estadual/municipal: 842 (no ar: 842)
+concursos nas cidades: 142432 (no ar: 142427) · detalhes: 62341 (no ar: 56343)
+levantamento estadual/municipal: 843 (no ar: 841)
 sintaxe conferida com o Node em 82 arquivos
 OK: pode publicar

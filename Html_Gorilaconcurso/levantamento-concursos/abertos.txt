@@ -576,3 +576,5 @@ SP|FEG - Fundação Educacional Guaçuana|-|9|Vários Cargos (Superior)|19/11/20
 MG|CIMMESF - Consórcio Intermunicipal Multifinalitário do Médio São Francisco|-|2|Inspetor de Produtos de Origem Animal, Assistente Administrativo de Inspeção Sanitária (Técnico / Superior)|06/11/2026|cimmesf-mg-abre-processo-seletivo-com-salarios-de-ate-4236
 RS|Hospital Beneficente Dr. César Santos|-|4|Vários Cargos (Médio / Superior)|26/10/2026>10/11/2026|hospital-beneficente-dr-cesar-santos-rs-abre-selecao-com-remuneracoes-de-ate-6050
 SC|SES - Secretaria de Estado da Saúde de Santa Catarina|-|7|Médico especialista (Superior)|04/11/2026|ses-sc-abre-processo-seletivo-para-medicos-em-florianopolis-e-sao-jose
+MG|UNIFEI - Universidade Federal de Itajubá|-|27|Professor do Magistério Superior (Superior)|26/11/2026|unifei-mg-abre-concurso-publico-para-professores-do-magisterio-superior
+PR|UFPR - Universidade Federal do Paraná|-|1|Professor (Superior)|25/11/2026|ufpr-abre-concurso-publico-para-professor-de-ciencia-da-computacao
