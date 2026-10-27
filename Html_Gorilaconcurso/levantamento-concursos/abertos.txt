@@ -578,3 +578,13 @@ RS|Hospital Beneficente Dr. César Santos|-|4|Vários Cargos (Médio / Superior)
 SC|SES - Secretaria de Estado da Saúde de Santa Catarina|-|7|Médico especialista (Superior)|04/11/2026|ses-sc-abre-processo-seletivo-para-medicos-em-florianopolis-e-sao-jose
 MG|UNIFEI - Universidade Federal de Itajubá|-|27|Professor do Magistério Superior (Superior)|26/11/2026|unifei-mg-abre-concurso-publico-para-professores-do-magisterio-superior
 PR|UFPR - Universidade Federal do Paraná|-|1|Professor (Superior)|25/11/2026|ufpr-abre-concurso-publico-para-professor-de-ciencia-da-computacao
+RJ|UFRRJ - Universidade Federal Rural do Rio de Janeiro|-|23|Professor do Magistério Superior (Superior)|24/11/2026|ufrrj-abre-concurso-publico-para-professores-do-magisterio-superior
+MG|CISAB Zona da Mata - Consórcio Intermunicipal de Saneamento Básico da Zona da Mata de Minas Gerais|-|1|Auxiliar de Laboratório (Ensino Médio)|18/11/2026|cisab-zona-da-mata-mg-abre-processo-seletivo-para-auxiliar-de-laboratorio
+ES|Banestes - Banco do Estado do Espírito Santo e Banestes Seguros|-|CR|Técnico Bancário, Técnico em Segurança do Trabalho, Assistente Securitário (Médio / Técnico)|23/11/2026|banestes-e-banestes-seguros-es-retificam-concursos-para-cadastro-de-reserva
+RS|HBCS - Hospital Beneficente Dr. César Santos|-|4|Vários Cargos (Médio / Superior)|10/11/2026|hospital-beneficente-dr-cesar-santos-rs-abre-processo-seletivo-com-quatro-vagas
+RS|UFCSPA - Fundação Universidade Federal de Ciências da Saúde de Porto Alegre|-|10|Professor (Superior)|17/11/2026|ufcspa-rs-abre-concurso-publico-com-vagas-para-professores-do-magisterio-superior
+RS|UFSM - Universidade Federal de Santa Maria|-|8|Professor substituto (Superior)|30/10/2026|ufsm-rs-abre-selecao-publica-para-professores-substitutos-em-santa-maria-e-frederico-westphalen
+SC|PMSC - Polícia Militar de Santa Catarina|-|500|Soldado do Quadro de Praças Policial Militar (Superior)|16/11/2026|pmsc-retifica-concurso-para-soldados-do-quadro-de-pracas-policial-militar
+DF|DPDF - Defensoria Pública do Distrito Federal|-|7|Analista de Apoio à Assistência Judiciária (Superior)|03/12/2026>07/01/2027|dpdf-abre-concurso-publico-para-analista-de-apoio-a-assistencia-judiciaria
+DF|IGESDF - Instituto de Gestão Estratégica de Saúde do Distrito Federal|-|CR|Vários Cargos (Técnico / Superior)|04/11/2026|igesdf-df-abre-selecoes-para-formacao-de-cadastro-de-reserva
+MS|UFMS - Fundação Universidade Federal de Mato Grosso do Sul|-|79|Professor Visitante (Superior)|13/11/2026|ufms-abre-processos-seletivos-para-professores-visitantes

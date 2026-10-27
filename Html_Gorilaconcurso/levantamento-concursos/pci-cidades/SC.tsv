@@ -592,6 +592,7 @@ antonio-carlos	Antônio Carlos	Prefeitura de Antônio Carlos	Vários Cargos	Fund
 antonio-carlos	Antônio Carlos	Prefeitura de Antônio Carlos	Vários Cargos	Fundamental / Médio / Superior	4			2011-12-12	prefeitura-de-antonio-carlos-sc-oferece-3-vagas-com-salarios-de-ate-2-7-mil	ea
 antonio-carlos	Antônio Carlos	Prefeitura de Antônio Carlos	Ag. Com. Saúde e Ag. Man. e Conserv.	Fundamental	6			2011-10-31	prefeitura-antonio-carlos-sc-abre-seis-vagas-para-dois-cargos	ea
 antonio-carlos	Antônio Carlos	Prefeitura de Antônio Carlos	Vários Cargos	Fundamental / Superior	17			2010-02-03	17-vagas-de-ate-1104-destinadas-a-prefeitura-de-antonio-carlos-sc	ea
+apiuna	Apiúna	Prefeitura de Apiúna	Técnico em Enfermagem	Médio / Técnico	0			2026-11-01	prefeitura-de-apiuna-sc-abre-processo-seletivo-para-o-cargo-de-tecnico-em-enfermagem	na
 apiuna	Apiúna	Prefeitura de Apiúna	Vários Cargos	Fundamental / Médio / Superior	0	CR		2026-10-16	prefeitura-de-apiuna-sc-abre-processo-seletivo-com-salarios-de-ate-5130	ea
 apiuna	Apiúna	Prefeitura de Apiúna	Farmacêutico, Enfermeiro PSF	Superior	0	CR		2026-07-28	prefeitura-de-apiuna-sc-abre-selecao-para-enfermeiro-e-farmaceutico	ea
 apiuna	Apiúna	Prefeitura de Apiúna	Auxiliar de Desenvolvimento Infantil, Professor de Ciências	Médio / Superior	0	CR		2026-06-23	prefeitura-de-apiuna-sc-abre-selecao-para-auxiliar-de-desenvolvimento-infantil-e-professor-de-ciencias	ea
@@ -5123,14 +5124,15 @@ flor-do-sertao	Flor do Sertão	Prefeitura de Flor do Sertão	Vários Cargos	Fund
 flor-do-sertao	Flor do Sertão	Prefeitura de Flor do Sertão	Operador de Máquinas	Alfabetizado	1			2017-12-14	prefeitura-de-flor-do-sertao-sc-divulga-processo-seletivo	ea
 flor-do-sertao	Flor do Sertão	Prefeitura de Flor do Sertão	Farmacêutico	Superior	1			2017-12-08	prefeitura-de-flor-do-sertao-sc-abre-selecao-para-farmaceutico	ea
 flor-do-sertao	Flor do Sertão	Prefeitura de Flor do Sertão	Médico	Superior	1			2017-08-30	prefeitura-de-flor-do-sertao-sc-divulga-processo-seletivo-para-medico	ea
+florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC e CEPON	Assistente Administrativo I	Ensino Médio	1			2026-10-28	fahece-sc-anuncia-vaga-de-assistente-administrativo-para-o-cepon-em-florianopolis	na
 florianopolis	Florianópolis	SES - Secretaria de Estado da Saúde de Santa Catarina	Técnico em Enfermagem Necropsia	Ensino Técnico	1			2026-10-27	ses-sc-abre-processo-seletivo-para-tecnico-em-enfermagem-em-florianopolis	na
-florianopolis	Florianópolis	HEMOSC - Centro de Hematologia e Hemoterapia de Santa Catarina	Vários Cargos	Fundamental / Médio	4			2026-10-26	fahece-sc-abre-processos-seletivos-para-atuacao-no-hemosc-em-florianopolis	na
-florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC e CEPON	Rádio Operador(a)	Ensino Médio	1			2026-10-25	fahece-sc-anuncia-processo-seletivo-para-radio-operador-no-samu-de-florianopolis	na
-florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC e CEPON	Técnico de Enfermagem I	Ensino Técnico	1			2026-10-25	fahece-sc-abre-processo-seletivo-para-tecnico-de-enfermagem-no-cepon-em-florianopolis	na
-florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao Hemosc e Cepon	Médico do Trabalho	Superior	1			2026-10-25	fahece-sc-anuncia-vaga-para-medico-do-trabalho-em-florianopolis	na
-florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao Hemosc e Cepon	Médico II	Superior	1			2026-10-25	fahece-sc-anuncia-vaga-para-medico-infectologista-no-cepon-de-florianopolis	na
-florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao Hemosc e Cepon	Motorista II	Ensino Médio	1			2026-10-25	fahece-sc-abre-selecao-para-o-cargo-de-motorista-ii-em-florianopolis	na
-florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC e CEPON	Terapeuta Ocupacional I	Superior	1			2026-10-25	fahece-sc-abre-processo-seletivo-para-o-cargo-de-terapeuta-ocupacional-i-em-florianopolis	na
+florianopolis	Florianópolis	HEMOSC - Centro de Hematologia e Hemoterapia de Santa Catarina	Vários Cargos	Fundamental / Médio	4			2026-10-26	fahece-sc-abre-processos-seletivos-para-atuacao-no-hemosc-em-florianopolis	ea
+florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC e CEPON	Rádio Operador(a)	Ensino Médio	1			2026-10-25	fahece-sc-anuncia-processo-seletivo-para-radio-operador-no-samu-de-florianopolis	ea
+florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC e CEPON	Técnico de Enfermagem I	Ensino Técnico	1			2026-10-25	fahece-sc-abre-processo-seletivo-para-tecnico-de-enfermagem-no-cepon-em-florianopolis	ea
+florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao Hemosc e Cepon	Médico do Trabalho	Superior	1			2026-10-25	fahece-sc-anuncia-vaga-para-medico-do-trabalho-em-florianopolis	ea
+florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao Hemosc e Cepon	Médico II	Superior	1			2026-10-25	fahece-sc-anuncia-vaga-para-medico-infectologista-no-cepon-de-florianopolis	ea
+florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao Hemosc e Cepon	Motorista II	Ensino Médio	1			2026-10-25	fahece-sc-abre-selecao-para-o-cargo-de-motorista-ii-em-florianopolis	ea
+florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC e CEPON	Terapeuta Ocupacional I	Superior	1			2026-10-25	fahece-sc-abre-processo-seletivo-para-o-cargo-de-terapeuta-ocupacional-i-em-florianopolis	ea
 florianopolis	Florianópolis	FAHECE - HEMOSC	Coordenador de Suprimentos I	Superior	1			2026-10-23	fahece-sc-anuncia-processo-seletivo-para-coordenador-de-suprimentos-i-no-hemosc-de-florianopolis	ea
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao Hemosc e Cepon	Técnico Auxiliar de Regulação Médica	Ensino Médio	1			2026-10-21	fahece-sc-abre-selecao-para-tecnico-auxiliar-de-regulacao-medica-no-samu-de-florianopolis	ea
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao Hemosc e Cepon	Enfermeiro I	Superior	1			2026-10-21	fahece-sc-abre-processo-seletivo-para-enfermeiro-i-no-cepon-de-florianopolis	ea
@@ -5255,8 +5257,8 @@ florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Analis
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Analista de Sistemas I	Superior	1			2026-04-27	fahece-sc-abre-vaga-para-analista-de-sistemas-i-no-cepon-de-florianopolis	ea
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Coordenador de Qualidade I	Superior	1			2026-04-27	fahece-sc-abre-selecao-para-coordenador-de-qualidade-no-cepon-de-florianopolis	ea
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Gerente de Gestão de Pessoas	Superior	1			2026-04-26	fahece-sc-abre-vaga-para-gerente-de-gestao-de-pessoas-com-salario-superior-a-15-mil	ea
-florianopolis	Florianópolis	IFSC - Instituto Federal de Educação, Ciência e Tecnologia de Santa Catarina	Professor Visitante	Superior	14			2026-04-23	ifsc-abre-selecao-com-vagas-para-professores-visitantes	ea
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Analista de Administração de Pessoal I	Superior	1			2026-04-23	fahece-sc-abre-vaga-para-analista-de-administracao-de-pessoal-i-no-cepon-em-florianopolis	ea
+florianopolis	Florianópolis	IFSC - Instituto Federal de Educação, Ciência e Tecnologia de Santa Catarina	Professor Visitante	Superior	14			2026-04-23	ifsc-abre-selecao-com-vagas-para-professores-visitantes	ea
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Analista Administrativo I, Analista de Contratos I	Superior	2			2026-04-20	fahece-sc-abre-processos-seletivos-para-analista-administrativo-e-analista-de-contratos-em-florianopolis	ea
 florianopolis	Florianópolis	UFSC - Universidade Federal de Santa Catarina	Professor Substituto	Superior	8			2026-04-17	ufsc-abre-selecao-para-professores-substitutos-com-salarios-de-ate-8-3-mil	ea
 florianopolis	Florianópolis	InvestSC - Invest Santa Catarina Parcerias e Negócios Estratégicos S.A.	Agente Administrativo, Agente de Negócios	Superior	10			2026-04-16	investsc-sc-publica-retificacao-em-concurso-com-10-vagas	ea
@@ -5293,9 +5295,9 @@ florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Enferm
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Farmacêutico I	Superior	1			2026-03-15	fahece-sc-abre-vaga-de-farmaceutico-com-salario-de-4-5-mil-em-florianopolis	ea
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Enfermeiro I	Superior	1			2026-03-15	fahece-sc-abre-selecao-para-enfermeiro-com-atuacao-no-cepon-de-florianopolis	ea
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Coordenador Financeiro	Superior	1			2026-03-13	fahece-sc-abre-processo-seletivo-para-coordenador-financeiro-com-salario-de-8-2-mil	ea
+florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Assistente de Faturamento I	Ensino Médio	1			2026-03-12	fahece-sc-abre-selecao-para-assistente-de-faturamento-no-cepon-de-florianopolis	ea
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Assistente de Laboratório I	Médio / Técnico	1			2026-03-12	fahece-sc-anuncia-vaga-para-assistente-de-laboratorio-no-hemosc-de-florianopolis	ea
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Coordenador de TI	Superior	1			2026-03-12	fahece-sc-processo-seletivo-abre-vaga-para-coordenador-de-ti-no-cepon-de-florianopolis	ea
-florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Assistente de Faturamento I	Ensino Médio	1			2026-03-12	fahece-sc-abre-selecao-para-assistente-de-faturamento-no-cepon-de-florianopolis	ea
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Enfermeiro I	Superior	1			2026-03-11	fahece-sc-abre-processo-seletivo-para-o-cargo-de-enfermeiro-i-no-cepon-de-florianopolis	ea
 florianopolis	Florianópolis	HEMOSC - Centro de Hematologia e Hemoterapia de Santa Catarina	Assistente Administrativo I	Ensino Médio	1			2026-03-09	fahece-sc-abre-vaga-para-assistente-administrativo-em-florianopolis	ea
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Bioquímico I, Biomédico I, Biólogo I	Superior	1			2026-03-08	fahece-sc-abre-processo-seletivo-para-bioquimico-biomedico-e-biologo-exclusivo-pcd	ea
@@ -5313,15 +5315,14 @@ florianopolis	Florianópolis	SES - Secretaria de Estado da Saúde de Santa Catar
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Analista de Faturamento II	Superior	1			2026-02-20	fahece-sc-anuncia-processo-seletivo-para-analista-de-faturamento-ii-no-cepon-de-florianopolis	ea
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON/CEPON	Coordenador de Controladoria	Superior	1			2026-02-20	fahece-sc-abre-processo-seletivo-para-coordenador-de-controladoria-em-florianopolis	ea
 florianopolis	Florianópolis	Prefeitura de Florianópolis	Agente Comunitário de Saúde, Agente de Combate às Endemias	Ensino Médio	500			2026-02-19	prefeitura-de-florianopolis-sc-publica-retificacao-de-processo-seletivo-com-500-vagas	ea
-florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC e CEPON	Assistente Administrativo III	Superior	2			2026-02-18	fahece-sc-abre-processos-seletivos-para-profissionais-de-nivel-superior-em-florianopolis	ea
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC e CEPON	Assistente Administrativo III	Superior	1			2026-02-18	fahece-sc-abre-vaga-para-assistente-administrativo-iii-com-salario-superior-a-3-7-mil	ea
+florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC e CEPON	Assistente Administrativo III	Superior	2			2026-02-18	fahece-sc-abre-processos-seletivos-para-profissionais-de-nivel-superior-em-florianopolis	ea
 florianopolis	Florianópolis	HEMOSC - Centro de Hematologia e Hemoterapia de Santa Catarina	Assistente de Compras I	Ensino Médio	1			2026-02-17	fahece-sc-abre-processo-seletivo-com-vaga-para-assistente-de-compras-i-pcd-no-hemosc-de-florianopolis	ea
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC e CEPON	Enfermeiro I Central de Quimioterapia	Superior	1			2026-02-16	fahece-sc-anuncia-processo-seletivo-para-o-cargo-de-enfermeiro-i-no-cepon-de-florianopolis	ea
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Analista Contábil I	Superior	1			2026-02-16	fahece-sc-abre-processo-seletivo-para-analista-contabil-no-cepon-de-florianopolis	ea
-florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao Hemosc/Cepom	Supervisor(a) Operacional de Central de Regulação	Superior	1			2026-02-15	fahece-sc-abre-selecao-para-supervisor-operacional-em-florianopolis	ea
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Assistente de Comunicação I PCD	Ensino Médio	1			2026-02-15	fahece-sc-abre-processo-seletivo-para-assistente-de-comunicacao-i-pcd	ea
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Médico(a) do Trabalho	Superior	1			2026-02-15	fahece-sc-abre-selecao-para-medico-do-trabalho-no-samu-de-florianopolis	ea
-florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Assistente Administrativo I	Ensino Médio	1			2026-02-12	fahece-sc-abre-processo-seletivo-para-assistente-administrativo-i-farmacia-no-cepon-de-florianopolis	ea
+florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao Hemosc/Cepom	Supervisor(a) Operacional de Central de Regulação	Superior	1			2026-02-15	fahece-sc-abre-selecao-para-supervisor-operacional-em-florianopolis	ea
 florianopolis	Florianópolis	CRMV - Conselho Regional de Medicina Veterinária do Estado de Santa Catarina	Assistente Administrativo, Advogado, Engenheiro Civil	Médio / Superior	5			2026-02-12	crmv-sc-abre-cinco-vagas-temporarias-para-cargos-de-nivel-medio-e-superior	ea
 formosa-do-sul	Formosa do Sul	Prefeitura de Formosa do Sul	Vários Cargos	Fundamental / Médio / Superior	12			2026-07-08	prefeitura-de-formosa-do-sul-sc-abre-seletivo-para-diversos-cargos-com-salarios-de-ate-14888	ea
 formosa-do-sul	Formosa do Sul	Prefeitura de Formosa do Sul	Vários Cargos	Fundamental / Médio / Técnico / Superior	53			2026-06-25	prefeitura-de-formosa-do-sul-sc-retifica-concurso-publico	ea
@@ -5763,6 +5764,7 @@ garopaba	Garopaba	Prefeitura de Garopaba	Professores	Superior	17			2011-01-07	17
 garopaba	Garopaba	Prefeitura de Garopaba	Vários Cargos	Médio / Superior	0			2010-05-18	prefeitura-de-garopaba-sc-oferece-vagas-para-area-de-saude-e-desenv-social	ea
 garopaba	Garopaba	Prefeitura de Garopaba	Área da Saúde	Fundamental / Médio / Superior	72			2009-09-30	223-vagas-destinadas-a-prefeitura-de-garopaba-sc	ea
 garopaba	Garopaba	Prefeitura de Garopaba	Vários Cargos	Fundamental / Médio / Superior	91			2009-04-27	prefeitura-de-garopaba-sc-oferece-155-vagas	ea
+garuva	Garuva	Prefeitura de Garuva	Vários Cargos	Fundamental / Médio / Superior	0	CR		2026-11-17	prefeitura-de-garuva-sc-abre-processo-seletivo-para-cadastro-de-reserva-em-diversos-cargos	na
 garuva	Garuva	Prefeitura de Garuva	Cuidador	Ensino Médio	0	CR		2026-10-14	prefeitura-de-garuva-sc-abre-selecao-para-o-cargo-de-cuidador	ea
 garuva	Garuva	Prefeitura de Garuva	Terapeuta Ocupacional, Fonoaudiólogo	Superior	1			2026-08-17	prefeitura-de-garuva-sc-abre-processo-seletivo-para-terapeuta-ocupacional-e-fonoaudiologo	ea
 garuva	Garuva	Prefeitura de Garuva	Cuidador	Ensino Médio	0	CR		2026-05-03	prefeitura-de-garuva-sc-abre-processo-seletivo-para-o-cargo-de-cuidador	ea
@@ -12838,6 +12840,7 @@ rancho-queimado	Rancho Queimado	Câmara de Rancho Queimado	Contador e Ag. de Ser
 rancho-queimado	Rancho Queimado	Prefeitura de Rancho Queimado	Vários Cargos	Fundamental / Médio / Superior	25			2010-08-31	prefeitura-de-rancho-queimado-sc-oferece-25-vagas-para-diversos-cargos	ea
 rancho-queimado	Rancho Queimado	Prefeitura de Rancho Queimado	Vários Cargos	Médio / Superior	3			2008-02-29	11-vagas-para-a-prefeitura-de-rancho-queimado-sc	ea
 rancho-queimado	Rancho Queimado	Prefeitura de Rancho Queimado	Vários Cargos	Fundamental / Médio / Superior	35				prefeitura-de-rancho-queimado-sc-cancela-processo-seletivo	suspenso
+rio-das-antas	Rio das Antas	Prefeitura de Rio das Antas	Engenheiro Civil	Superior	0	CR		2026-11-03	prefeitura-de-rio-das-antas-sc-abre-processo-seletivo-para-engenheiro-civil	na
 rio-das-antas	Rio das Antas	Prefeitura de Rio das Antas	Nutricionista	Superior	0			2026-10-21	prefeitura-de-rio-das-antas-sc-abre-processo-seletivo-para-o-cargo-de-nutricionista	ea
 rio-das-antas	Rio das Antas	Prefeitura de Rio das Antas	Agente Comunitário de Saúde	Ensino Médio	0	CR		2026-10-06	prefeitura-de-rio-das-antas-sc-abre-processo-seletivo-para-agente-comunitario-de-saude	ea
 rio-das-antas	Rio das Antas	Prefeitura de Rio das Antas	Motorista II	Fundamental	1			2026-08-21	prefeitura-de-rio-das-antas-sc-abre-vaga-para-motorista-de-veiculos-pesados	ea
