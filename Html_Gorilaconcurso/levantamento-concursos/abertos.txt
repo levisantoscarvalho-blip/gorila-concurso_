@@ -588,3 +588,8 @@ SC|PMSC - Polícia Militar de Santa Catarina|-|500|Soldado do Quadro de Praças 
 DF|DPDF - Defensoria Pública do Distrito Federal|-|7|Analista de Apoio à Assistência Judiciária (Superior)|03/12/2026>07/01/2027|dpdf-abre-concurso-publico-para-analista-de-apoio-a-assistencia-judiciaria
 DF|IGESDF - Instituto de Gestão Estratégica de Saúde do Distrito Federal|-|CR|Vários Cargos (Técnico / Superior)|04/11/2026|igesdf-df-abre-selecoes-para-formacao-de-cadastro-de-reserva
 MS|UFMS - Fundação Universidade Federal de Mato Grosso do Sul|-|79|Professor Visitante (Superior)|13/11/2026|ufms-abre-processos-seletivos-para-professores-visitantes
+CE|CRO - Conselho Regional de Odontologia do Ceará|-|1|Fiscal Cirurgião-Dentista (Superior)|06/11/2026|cro-ce-abre-processo-seletivo-para-o-cargo-de-fiscal-cirurgiao-dentista
+SE|CRO - Conselho Regional de Odontologia de Sergipe|-|83|Vários Cargos (Médio / Superior)|06/11/2026|cro-se-prorroga-inscricoes-para-concurso-publico-com-salarios-de-ate-4504
+SP|IFSP - Instituto Federal de Educação, Ciência e Tecnologia de São Paulo|-|79|Professor Substituto (Superior)|13/11/2026|ifsp-retifica-processo-seletivo-com-vagas-para-professores-substitutos
+SP|UNIFESP - Universidade Federal de São Paulo|-|1|Professor Assistente A Substituto (Superior)|29/10/2026>17/11/2026|unifesp-abre-vaga-para-professor-substituto-na-area-de-linguistica-em-guarulhos-sp
+ES|IDAF - Instituto de Defesa Agropecuária e Florestal do Espírito Santo|-|14|Técnico de Fiscalização e Desenvolvimento Agropecuário, Fiscal Estadual Agropecuário (Técnico / Superior)|06/11/2026>06/12/2026|idaf-es-abre-concurso-publico-com-salarios-de-ate-8477

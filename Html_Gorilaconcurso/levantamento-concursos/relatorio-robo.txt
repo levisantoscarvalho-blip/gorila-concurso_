@@ -1,9 +1,8 @@
-ROBÔ DO GORILA — 27/10/2026 09:59 (horário de Brasília)
-PCI hoje: 601 concursos com inscrições abertas
-CONFERIR: 'Prefeitura de Quixadá' (CE) estava em municipais-previstos.txt e agora abriu inscrições — tirar dos previstos? prefeitura-de-quixada-ce-abre-processo-seletivo-com-vagas-imediatas-e-cadastro-de-reserva
-CONFERIR: 'Câmara de Cuiabá' (MT) estava em municipais-previstos.txt e agora abriu inscrições — tirar dos previstos? camara-de-cuiaba-mt-abre-concurso-publico-com-salarios-de-ate-11629
-novos concursos: 30 em cidades + 10 estaduais/sem cidade · 0 com data mudada (prorrogação/retificação)
-notícias: parte 0 pronta (6000 nesta rodada, faltam 73225 para as próximas)
+ROBÔ DO GORILA — 28/10/2026 10:50 (horário de Brasília)
+PCI hoje: 612 concursos com inscrições abertas
+CONFERIR: 'Prefeitura de Leopoldina' (MG) estava em municipais-previstos.txt e agora abriu inscrições — tirar dos previstos? municipio-de-leopoldina-mg-abre-selecao-para-agentes-de-saude-e-de-endemias
+novos concursos: 36 em cidades + 5 estaduais/sem cidade · 0 com data mudada (prorrogação/retificação)
+notícias: parte 0 pronta (6000 nesta rodada, faltam 67262 para as próximas)
 AVISO GO 17232 vagas sem conferência, ficou 'a definir': seduce-go-retifica-um-dos-dois-processos-seletivos-com-mais-de-17-2-mil-vagas
 AVISO GO 7453 vagas sem conferência, ficou 'a definir': valparaiso-de-goias-go-prorroga-inscricoes-e-retifica-edital-001-2014
 AVISO MT 5156 vagas sem conferência, ficou 'a definir': prefeitura-de-varzea-grande-mt-retifica-processo-seletivo-com-vagas-para-a-educacao
@@ -12,10 +11,12 @@ AVISO RJ 7617 vagas sem conferência, ficou 'a definir': 7617-vagas-na-prefeitur
 AVISO RO 5089 vagas sem conferência, ficou 'a definir': prefeitura-de-porto-velho-ro-oferece-5089-vagas-de-ate-2339
 AVISO salário impossível (R$ 142229.65), não mostrado: fhgv-novo-processo-seletivo-para-contratacao-de-medico-e-anunciado-em-sapucaia-do-sul-rs
 AVISO taxa impossível (R$ 2506.23), não mostrada: concurso-publico-e-retificado-pela-prefeitura-de-quatis-rj
+AVISO salário impossível (R$ 106002.35), não mostrado: prefeitura-de-rio-branco-do-ivai-pr-retifica-processo-seletivo
+AVISO taxa impossível (R$ 2533.02), não mostrada: processo-seletivo-e-retificado-em-sao-joao-batista-sc
 AVISO taxa impossível (R$ 4231.6), não mostrada: uem-pr-abre-selecao-para-tecnico-em-laboratorio-com-salario-de-4-2-mil
 AVISO taxa impossível (R$ 2125.02), não mostrada: prefeitura-de-cajamar-sp-retifica-um-dos-editais-de-concursos-publicos
 AUDITORIA: 5 erros, 27 para conferir, 1 info (ver auditoria.txt) — ATENÇÃO: 5 cidades com concursos que o robô não conseguiu ler
-concursos nas cidades: 142452 (no ar: 142432) · detalhes: 68336 (no ar: 62341)
-levantamento estadual/municipal: 853 (no ar: 843)
+concursos nas cidades: 142475 (no ar: 142452) · detalhes: 74330 (no ar: 68336)
+levantamento estadual/municipal: 858 (no ar: 853)
 sintaxe conferida com o Node em 82 arquivos
 OK: pode publicar

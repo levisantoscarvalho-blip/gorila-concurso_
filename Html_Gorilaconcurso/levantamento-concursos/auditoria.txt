@@ -1,5 +1,5 @@
-AUDITORIA DO GORILA — 27/10/2026 10:50 (horário de Brasília)
-142452 concursos nas cidades examinados · 5 ERROS · 27 para CONFERIR · 1 INFO
+AUDITORIA DO GORILA — 28/10/2026 11:42 (horário de Brasília)
+142475 concursos nas cidades examinados · 5 ERROS · 27 para CONFERIR · 1 INFO
 ERRO = o robô está perdendo ou estragando dados (corrigir o código) · CONFERIR = uma pessoa olha · INFO = limite conhecido
 
 == ERROS ==
