@@ -2697,6 +2697,7 @@ cangucu	Canguçu	Prefeitura de Canguçu	Vários Cargos	Fundamental / Superior	36
 cangucu	Canguçu	Prefeitura de Canguçu	Vários Cargos	Médio / Superior	0			2012-01-18	prefeitura-de-cangucu-rs-abre-diversas-vagas-na-area-da-educacao	ea
 cangucu	Canguçu	Prefeitura de Canguçu	Vários Cargos	Fundamental / Médio / Superior	54			2009-12-29	prefeitura-de-cangucu-rs-oferece-78-vagas-de-ate-2262	ea
 cangucu	Canguçu	Câmara de Canguçu	Vários Cargos	Fundamental / Médio / Superior	4			2009-10-20	camara-de-cangucu-rs-oferece-4-vagas-de-ate-2054	ea
+canoas	Canoas	Prefeitura de Canoas	Professor de Educação Básica, Técnico de Educação Básica	Médio / Superior	76			2026-11-17	prefeitura-de-canoas-rs-abre-concurso-publico-para-a-area-da-educacao	na
 canoas	Canoas	PGM - Procuradoria-Geral do Município de Canoas	Especialista Municipal/Procurador Municipal	Superior	0	CR		2026-06-23	pgm-de-canoas-rs-abre-concurso-para-procurador-municipal	ea
 canoas	Canoas	IFRS - Instituto Federal de Educação, Ciência e Tecnologia do Rio Grande do Sul - Campus Canoas	Professor Substituto	Superior	4			2026-03-19	ifrs-abre-processo-seletivo-para-professores-substitutos-no-campus-de-canoas	ea
 canoas	Canoas	FMSC - Fundação Municipal de Saúde de Canoas	Vários Cargos	Médio / Técnico / Superior	0	CR		2026-03-06	fmsc-de-canoas-rs-abre-processo-seletivo-para-cadastro-de-reserva-em-diversas-areas	ea
@@ -2896,7 +2897,6 @@ canoas	Canoas	Prefeitura de Canoas	Vários Cargos	Fundamental / Médio / Superio
 canoas	Canoas	MP - Ministério Público - Canoas	Estagiários	Superior Incompleto	2			2013-09-30	mpe-rs-altera-data-de-entrevista-da-selecao-n-09-2013	ea
 canoas	Canoas	Câmara de Canoas	Contador	Superior	1			2013-09-01	camara-de-canoas-rs-retifica-edital-n-1-2013-contador	ea
 canoas	Canoas	MP - Ministério Público - Canoas	Estagiários	Superior Incompleto	2			2013-08-26	mpe-rs-abre-duas-vagas-para-estagiario-de-direito-em-canoas	ea
-canoas	Canoas	MP - Ministério Público - Canoas	Estagiário	Médio Incompleto	1			2013-08-16	mpe-rs-abre-vaga-para-estagiario-de-nivel-medio-em-canoas	ea
 canudos-do-vale	Canudos do Vale	Prefeitura de Canudos do Vale	Motorista, Operador de Máquinas, Servente	Fundamental	0	CR		2026-09-02	prefeitura-de-canudos-do-vale-rs-retifica-edital-de-concurso-publico	ea
 canudos-do-vale	Canudos do Vale	Prefeitura de Canudos do Vale	Agente de Combate às Endemias	Ensino Médio	0	CR		2026-09-02	prefeitura-de-canudos-do-vale-rs-abre-selecao-para-agente-de-combate-as-endemias	ea
 canudos-do-vale	Canudos do Vale	Prefeitura de Canudos do Vale	Vários Cargos	Fundamental / Médio / Superior	0			2025-08-17	concurso-publico-para-cadastro-reserva-e-anunciado-em-canudos-do-vale-rs	ea
@@ -15525,6 +15525,7 @@ sobradinho	Sobradinho	Prefeitura de Sobradinho	Vários Cargos	Fundamental / Méd
 sobradinho	Sobradinho	Câmara de Sobradinho	Ag. Administrativo e Aux. Serv. Gerais	Fundamental / Médio	2			2011-09-20	camara-de-sobradinho-rs-abre-vagas-de-niveis-fundamental-e-medio	ea
 sobradinho	Sobradinho	Prefeitura de Sobradinho	Vários Cargos	Fundamental / Médio / Superior	84			2010-09-27	prefeitura-de-sobradinho-rs-oferece-84-vagas-para-diversos-cargos-e-niveis	ea
 sobradinho	Sobradinho	Prefeitura de Sobradinho	Vários Cargos	Fundamental / Médio / Superior	24			2007-04-09	concurso-publico-da-prefeitura-de-sobradinho-rs	ea
+soledade	Soledade	Câmara de Soledade	Vários Cargos	Médio / Técnico / Superior	5		2026-11-09	2026-12-09	camara-de-soledade-rs-abre-concurso-publico-com-salarios-de-ate-4381	na
 soledade	Soledade	Prefeitura de Soledade	Vários Cargos	Fundamental / Médio / Técnico / Superior	63			2025-11-14	prefeitura-de-soledade-rs-anuncia-63-vagas-em-novo-concurso-publico	ea
 soledade	Soledade	Prefeitura de Soledade	Vários Cargos	Médio / Superior	0			2024-06-11	prefeitura-de-soledade-rs-anuncia-abertura-de-edital-de-processo-seletivo-com-diversas-vagas	ea
 soledade	Soledade	Prefeitura de Soledade	Vários Cargos	Médio / Superior	63			2024-04-08	prefeitura-de-soledade-rs-tem-novo-processo-seletivo-com-63-vagas-retificado	ea
@@ -15870,6 +15871,7 @@ terra-de-areia	Terra de Areia	Prefeitura de Terra de Areia	Professor de Portugu�
 terra-de-areia	Terra de Areia	Prefeitura de Terra de Areia	Operador de Máquinas	Fundamental	1			2014-09-17	prefeitura-de-terra-de-areia-rs-seleciona-operador-de-maquina	ea
 terra-de-areia	Terra de Areia	MP - Ministério Público - Terra de Areia	Estagiário	Superior Incompleto	1			2014-01-24	mpe-rs-seleciona-estagiario-de-direito-em-terra-de-areia	ea
 terra-de-areia	Terra de Areia	MP - Ministério Público - Terra de Areia	Estagiário	Superior Incompleto	1			2013-04-08	mpe-rs-seleciona-estagiario-de-direito-para-a-promotoria-de-terra-de-areia	ea
+teutonia	Teutônia	Prefeitura de Teutônia	Agente de Combate às Endemias, Monitor do PIM, Visitador do PIM	Médio / Superior	3			2026-11-18	prefeitura-de-teutonia-rs-abre-processo-seletivo-com-tres-vagas	na
 teutonia	Teutônia	Prefeitura de Teutônia	Vários Cargos	Fundamental / Médio / Técnico / Superior	12			2026-11-18	municipio-de-teutonia-rs-abre-concurso-publico-com-salarios-de-ate-13844	na
 teutonia	Teutônia	Prefeitura de Teutônia	Estagiários - Nível Médio, Técnico e Superior	Médio Incompleto / Técnico Incompleto / Superior Incompleto	31			2024-01-25	prefeitura-de-teutonia-rs-divulga-novo-processo-seletivo-para-estagiarios	ea
 teutonia	Teutônia	MP - Ministério Público - Teutônia	Estagiário - Direito	Superior Incompleto	0			2023-12-01	mp-rs-prorroga-inscricoes-do-processo-seletivo-para-estagiario-na-area-de-direito	ea

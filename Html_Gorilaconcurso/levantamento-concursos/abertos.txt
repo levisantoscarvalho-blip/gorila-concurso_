@@ -605,3 +605,5 @@ PE|Prefeitura de São Caetano|-|46|Vários Cargos (Médio / Superior)|10/12/2026
 SP|USCS - Universidade Municipal de São Caetano do Sul|-|CR|Professor de Simulação Realística, Professor de Enfermagem em Simulação Realística, Professor (Superior)|17/11/2026|uscs-sp-abre-concurso-para-professores-do-curso-de-medicina-em-itapetininga
 MS|UFMS - Fundação Universidade Federal de Mato Grosso do Sul|-|154|Vários Cargos (Médio / Técnico / Superior)|04/11/2026>04/12/2026|ufms-abre-concurso-publico-para-cargos-tecnico-administrativos-em-educacao
 MT|SECITECI - Secretaria de Estado de Ciência, Tecnologia e Inovação de Mato Grosso|-|CR|Vários Cargos (Médio / Técnico / Superior)|26/11/2026|seciteci-mt-abre-selecao-para-formacao-de-cadastro-de-reserva
+PB|TJPB - Tribunal de Justiça do Estado da Paraíba|-|50|Analista Judiciário, Contabilidade (Superior)|18/11/2026|tjpb-retifica-concurso-publico-para-analistas-judiciarios
+GO|ISG - Instituto Sócrates Guanaes|-|CR|Vários Cargos (Médio / Técnico / Superior)|13/11/2026|instituto-socrates-guanaes-go-abre-processo-seletivo-para-cadastro-de-reserva

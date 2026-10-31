@@ -1,7 +1,9 @@
-ROBÔ DO GORILA — 30/10/2026 10:52 (horário de Brasília)
-PCI hoje: 632 concursos com inscrições abertas
-novos concursos: 35 em cidades + 9 estaduais/sem cidade · 0 com data mudada (prorrogação/retificação)
-notícias: parte 0 pronta (6000 nesta rodada, faltam 55344 para as próximas)
+ROBÔ DO GORILA — 31/10/2026 10:18 (horário de Brasília)
+PCI hoje: 614 concursos com inscrições abertas
+CONFERIR: 'Prefeitura de Blumenau' (SC) estava em municipais-previstos.txt e agora abriu inscrições — tirar dos previstos? prefeitura-de-blumenau-sc-abre-concurso-publico-para-a-area-da-educacao
+CONFERIR: 'Prefeitura de Blumenau (Educação)' (SC) estava em municipais-previstos.txt e agora abriu inscrições — tirar dos previstos? prefeitura-de-blumenau-sc-abre-concurso-publico-para-a-area-da-educacao
+novos concursos: 21 em cidades + 2 estaduais/sem cidade · 0 com data mudada (prorrogação/retificação)
+notícias: parte 0 pronta (6000 nesta rodada, faltam 49365 para as próximas)
 AVISO GO 17232 vagas sem conferência, ficou 'a definir': seduce-go-retifica-um-dos-dois-processos-seletivos-com-mais-de-17-2-mil-vagas
 AVISO GO 7453 vagas sem conferência, ficou 'a definir': valparaiso-de-goias-go-prorroga-inscricoes-e-retifica-edital-001-2014
 AVISO MT 5156 vagas sem conferência, ficou 'a definir': prefeitura-de-varzea-grande-mt-retifica-processo-seletivo-com-vagas-para-a-educacao
@@ -16,7 +18,7 @@ AVISO taxa impossível (R$ 3130.85), não mostrada: processo-seletivo-aberto-pel
 AVISO taxa impossível (R$ 4231.6), não mostrada: uem-pr-abre-selecao-para-tecnico-em-laboratorio-com-salario-de-4-2-mil
 AVISO taxa impossível (R$ 2125.02), não mostrada: prefeitura-de-cajamar-sp-retifica-um-dos-editais-de-concursos-publicos
 AUDITORIA: 5 erros, 27 para conferir, 1 info (ver auditoria.txt) — ATENÇÃO: 5 cidades com concursos que o robô não conseguiu ler
-concursos nas cidades: 142522 (no ar: 142493) · detalhes: 86309 (no ar: 80313)
-levantamento estadual/municipal: 870 (no ar: 861)
+concursos nas cidades: 142538 (no ar: 142522) · detalhes: 92307 (no ar: 86309)
+levantamento estadual/municipal: 872 (no ar: 870)
 sintaxe conferida com o Node em 82 arquivos
 OK: pode publicar
