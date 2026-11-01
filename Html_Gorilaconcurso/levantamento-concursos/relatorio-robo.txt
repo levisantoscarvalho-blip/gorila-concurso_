@@ -1,9 +1,10 @@
-ROBÔ DO GORILA — 31/10/2026 10:18 (horário de Brasília)
-PCI hoje: 614 concursos com inscrições abertas
-CONFERIR: 'Prefeitura de Blumenau' (SC) estava em municipais-previstos.txt e agora abriu inscrições — tirar dos previstos? prefeitura-de-blumenau-sc-abre-concurso-publico-para-a-area-da-educacao
-CONFERIR: 'Prefeitura de Blumenau (Educação)' (SC) estava em municipais-previstos.txt e agora abriu inscrições — tirar dos previstos? prefeitura-de-blumenau-sc-abre-concurso-publico-para-a-area-da-educacao
-novos concursos: 21 em cidades + 2 estaduais/sem cidade · 0 com data mudada (prorrogação/retificação)
-notícias: parte 0 pronta (6000 nesta rodada, faltam 49365 para as próximas)
+ROBÔ DO GORILA — 01/11/2026 11:03 (horário de Brasília) — coleta COMPLETA (semanal)
+coleta completa: 0 cidades com erro na 1ª passada
+2ª passada: 0 cidades ainda com erro
+cidades trocadas: 142546 concursos (antes 142538)
+PCI hoje: 612 concursos com inscrições abertas
+novos concursos: 0 em cidades + 0 estaduais/sem cidade · 0 com data mudada (prorrogação/retificação)
+notícias: parte 0 pronta (6000 nesta rodada, faltam 43364 para as próximas)
 AVISO GO 17232 vagas sem conferência, ficou 'a definir': seduce-go-retifica-um-dos-dois-processos-seletivos-com-mais-de-17-2-mil-vagas
 AVISO GO 7453 vagas sem conferência, ficou 'a definir': valparaiso-de-goias-go-prorroga-inscricoes-e-retifica-edital-001-2014
 AVISO MT 5156 vagas sem conferência, ficou 'a definir': prefeitura-de-varzea-grande-mt-retifica-processo-seletivo-com-vagas-para-a-educacao
@@ -17,8 +18,8 @@ AVISO taxa impossível (R$ 2533.02), não mostrada: processo-seletivo-e-retifica
 AVISO taxa impossível (R$ 3130.85), não mostrada: processo-seletivo-aberto-pela-ufpi-tem-periodo-de-inscricoes-alterado
 AVISO taxa impossível (R$ 4231.6), não mostrada: uem-pr-abre-selecao-para-tecnico-em-laboratorio-com-salario-de-4-2-mil
 AVISO taxa impossível (R$ 2125.02), não mostrada: prefeitura-de-cajamar-sp-retifica-um-dos-editais-de-concursos-publicos
-AUDITORIA: 5 erros, 27 para conferir, 1 info (ver auditoria.txt) — ATENÇÃO: 5 cidades com concursos que o robô não conseguiu ler
-concursos nas cidades: 142538 (no ar: 142522) · detalhes: 92307 (no ar: 86309)
-levantamento estadual/municipal: 872 (no ar: 870)
+AUDITORIA: 0 erros, 27 para conferir, 1 info (ver auditoria.txt)
+concursos nas cidades: 142546 (no ar: 142538) · detalhes: 98301 (no ar: 92307)
+levantamento estadual/municipal: 872 (no ar: 872)
 sintaxe conferida com o Node em 82 arquivos
 OK: pode publicar
