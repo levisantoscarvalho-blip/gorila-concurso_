@@ -1,6 +1,6 @@
 /* Concursos por cidade — BA. Fonte: PCI Concursos (pciconcursos.com.br/concursos/ba/<cidade>), todos os que a página mostra (até 200 por cidade).
-   Gerado por levantamento-concursos/gerar-cidades.ps1 em 03/11/2026. Não editar à mão. */
-CONC_CIDADES['BA'] = { atualizado:'03/11/2026', c:{
+   Gerado por levantamento-concursos/gerar-cidades.ps1 em 04/11/2026. Não editar à mão. */
+CONC_CIDADES['BA'] = { atualizado:'04/11/2026', c:{
 '2900207':[["Prefeitura de Abaré","Agente Comunitário de Saúde","Ensino Médio",9,"","","2026-08-12","prefeitura-de-abare-ba-retifica-edital-de-concurso-publico-para-agente-comunitario-de-saude"],["Prefeitura de Abaré","Vários Cargos","Fundamental / Médio / Superior",109,"","","2014-05-20","prefeitura-de-abare-ba-prorroga-inscricoes-e-retifica-concurso-01-2014-com-109-vagas"]],
 '2900306':[["Prefeitura de Acajutiba","Vários Cargos","Fundamental / Médio / Superior",75,"","","2016-04-25","prefeitura-de-acajutiba-ba-prorroga-concurso-publico-com-75-vagas"],["Prefeitura de Acajutiba","Vários Cargos","Fundamental / Médio / Superior",104,"","","2008-01-31","104-vagas-para-a-prefeitura-de-acajutiba-ba"]],
 '2900355':[["Prefeitura de Adustina","Vários Cargos","Médio / Técnico / Superior",27,"","","2024-02-13","prefeitura-de-adustina-ba-retifica-concurso-publico-e-processo-seletivo"],["Prefeitura de Adustina","Vários Cargos","Fundamental / Médio / Superior",70,"","","2015-11-25","prefeitura-de-adustina-ba-reabre-inscricoes-de-concurso-publico-com-70-vagas"]],

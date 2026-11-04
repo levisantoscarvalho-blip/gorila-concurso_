@@ -1,7 +1,7 @@
-ROBÔ DO GORILA — 03/11/2026 11:51 (horário de Brasília)
-PCI hoje: 612 concursos com inscrições abertas
-novos concursos: 18 em cidades + 2 estaduais/sem cidade · 0 com data mudada (prorrogação/retificação)
-notícias: parte 0 pronta (6000 nesta rodada, faltam 31383 para as próximas)
+ROBÔ DO GORILA — 04/11/2026 12:07 (horário de Brasília)
+PCI hoje: 610 concursos com inscrições abertas
+novos concursos: 35 em cidades + 4 estaduais/sem cidade · 2 com data mudada (prorrogação/retificação)
+notícias: parte 0 pronta (6000 nesta rodada, faltam 25422 para as próximas)
 AVISO GO 17232 vagas sem conferência, ficou 'a definir': seduce-go-retifica-um-dos-dois-processos-seletivos-com-mais-de-17-2-mil-vagas
 AVISO GO 7453 vagas sem conferência, ficou 'a definir': valparaiso-de-goias-go-prorroga-inscricoes-e-retifica-edital-001-2014
 AVISO MT 5156 vagas sem conferência, ficou 'a definir': prefeitura-de-varzea-grande-mt-retifica-processo-seletivo-com-vagas-para-a-educacao
@@ -16,7 +16,7 @@ AVISO taxa impossível (R$ 3130.85), não mostrada: processo-seletivo-aberto-pel
 AVISO taxa impossível (R$ 4231.6), não mostrada: uem-pr-abre-selecao-para-tecnico-em-laboratorio-com-salario-de-4-2-mil
 AVISO taxa impossível (R$ 2125.02), não mostrada: prefeitura-de-cajamar-sp-retifica-um-dos-editais-de-concursos-publicos
 AUDITORIA: 0 erros, 27 para conferir, 1 info (ver auditoria.txt)
-concursos nas cidades: 142556 (no ar: 142546) · detalhes: 110296 (no ar: 104301)
-levantamento estadual/municipal: 874 (no ar: 872)
+concursos nas cidades: 142575 (no ar: 142556) · detalhes: 116282 (no ar: 110296)
+levantamento estadual/municipal: 878 (no ar: 874)
 sintaxe conferida com o Node em 82 arquivos
 OK: pode publicar
