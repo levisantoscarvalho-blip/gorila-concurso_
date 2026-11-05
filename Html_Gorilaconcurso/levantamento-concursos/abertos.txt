@@ -613,3 +613,8 @@ AC|ECOPS - Empresa Cruzeirense de Obras Públicas, Serviços e Urbanização|-|1
 PA|HOL - Hospital Ophir Loyola|-|54|Médico (Superior)|07/11/2026|hospital-ophir-loyola-pa-anuncia-processos-seletivos-com-vagas-para-medicos
 PE|SEAP - Secretaria de Administração Penitenciária e Ressocialização|-|700|Policial Penal (Superior)|12/11/2026>04/01/2027|seap-pe-abre-concurso-publico-com-700-vagas-para-policial-penal
 SP|SEFAZ - Secretaria da Fazenda e Planejamento|-|60|Analista em Planejamento, Orçamento e Finanças Públicas (Superior)|05/11/2026|sefaz-sp-retifica-concurso-publico-para-analista-em-planejamento-orcamento-e-financas-publicas
+SP|PM - Polícia Militar do Estado de São Paulo|-|2000|Aluno-Soldado PM (Ensino Médio)|09/11/2026>22/12/2026|policia-militar-sp-abre-2000-vagas-para-aluno-soldado
+MG|CIS-VERDE - Consórcio Intermunicipal Multifinalitário|-|4|Motorista (Fundamental)|10/11/2026|cis-verde-mg-abre-processo-seletivo-para-o-cargo-de-motorista
+RS|GHC - Grupo Hospitalar Conceição|-|CR|Vários Cargos (Fundamental / Técnico / Superior)|04/12/2026|grupo-hospitalar-conceicao-rs-abre-concurso-para-cadastro-de-reserva-em-diversas-areas
+SC|IMA - Instituto do Meio Ambiente do Estado de Santa Catarina|-|18|Vários Cargos (Técnico / Superior)|13/11/2026>14/12/2026|ima-sc-abre-concurso-publico-com-salarios-de-ate-12300
+DF|IGESDF - Instituto de Gestão Estratégica de Saúde do Distrito Federal|-|CR|Terapeuta Ocupacional, Médico Cirurgião Geral (Superior)|13/11/2026|igesdf-df-anuncia-selecoes-para-terapeuta-ocupacional-e-medico-cirurgiao-geral

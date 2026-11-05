@@ -2475,6 +2475,7 @@ braco-do-norte	Braço do Norte	Prefeitura de Braço do Norte	Vários Cargos	Fund
 braco-do-norte	Braço do Norte	CIACA de Braço do Norte	Vários Cargos	Fundamental / Médio / Superior	16			2013-10-21	ciaca-de-braco-do-norte-sc-retifica-o-concurso-n-1-2013	ea
 braco-do-norte	Braço do Norte	Prefeitura de Braço do Norte	Professores	Magistério / Superior	0			2009-12-10	prefeitura-de-braco-do-norte-sc-oferece-varias-vagas	ea
 braco-do-norte	Braço do Norte	Prefeitura de Braço do Norte	Vários Cargos	Fundamental / Médio / Superior	465			2008-02-11	465-ofertas-de-trabalho-na-prefeitura-de-braco-do-norte-sc	ea
+braco-do-trombudo	Braço do Trombudo	Prefeitura de Braço do Trombudo	Vários Cargos	Fundamental / Médio / Superior	0	CR		2026-12-04	prefeitura-de-braco-do-trombudo-sc-abre-processo-seletivo-para-cadastro-de-reserva	na
 braco-do-trombudo	Braço do Trombudo	Prefeitura de Braço do Trombudo	Vários Cargos	Fundamental / Médio / Superior	0	CR		2026-05-06	prefeitura-de-braco-do-trombudo-sc-abre-selecao-para-cadastro-reserva-em-diversos-cargos	ea
 braco-do-trombudo	Braço do Trombudo	Prefeitura de Braço do Trombudo	Vários Cargos	Superior	0			2025-12-10	prefeitura-de-braco-do-trombudo-sc-abre-processo-seletivo-para-cadastro-de-reserva-em-diversas-areas	ea
 braco-do-trombudo	Braço do Trombudo	Prefeitura de Braço do Trombudo	Vários Cargos	Fundamental / Médio / Técnico / Superior	19			2025-09-11	prefeitura-de-braco-do-trombudo-sc-divulga-retificacoes-de-concurso-publico	ea
@@ -5133,6 +5134,8 @@ flor-do-sertao	Flor do Sertão	Prefeitura de Flor do Sertão	Operador de Máquin
 flor-do-sertao	Flor do Sertão	Prefeitura de Flor do Sertão	Farmacêutico	Superior	1			2017-12-08	prefeitura-de-flor-do-sertao-sc-abre-selecao-para-farmaceutico	ea
 flor-do-sertao	Flor do Sertão	Prefeitura de Flor do Sertão	Médico	Superior	1			2017-08-30	prefeitura-de-flor-do-sertao-sc-divulga-processo-seletivo-para-medico	ea
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC e ao CEPON	Fonoaudiólogo I	Superior	1			2026-11-09	fahece-sc-abre-selecao-para-o-cargo-de-fonoaudiologo-no-cepon-de-florianopolis	na
+florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao Hemosc e Cepon	Assistente de Almoxarifado I	Ensino Médio	1			2026-11-08	fahece-sc-abre-vaga-para-assistente-de-almoxarifado-pcd-no-samu-de-florianopolis	na
+florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC e CEPON	Técnico de Laboratório I	Ensino Técnico	1			2026-11-06	fahece-sc-abre-processo-seletivo-para-tecnico-de-laboratorio-em-florianopolis	na
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC e CEPON	Assistente Administrativo I	Ensino Médio	1			2026-10-31	fahece-sc-abre-processo-seletivo-para-o-cargo-de-assistente-administrativo-no-cepon	ea
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC e CEPON	Assistente Administrativo I	Ensino Médio	1			2026-10-28	fahece-sc-anuncia-vaga-de-assistente-administrativo-para-o-cepon-em-florianopolis	ea
 florianopolis	Florianópolis	SES - Secretaria de Estado da Saúde de Santa Catarina	Técnico em Enfermagem Necropsia	Ensino Técnico	1			2026-10-27	ses-sc-abre-processo-seletivo-para-tecnico-em-enfermagem-em-florianopolis	ea
@@ -5317,8 +5320,8 @@ florianopolis	Florianópolis	HEMOSC - Centro de Hematologia e Hemoterapia de San
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Coordenador de Engenharia Clínica e Manutenção	Superior	1			2026-03-02	fahece-sc-abre-selecao-para-coordenador-de-engenharia-clinica-com-salario-de-14-3-mil	ea
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Analista Contábil II	Superior	1			2026-03-01	fahece-sc-abre-processo-seletivo-para-analista-contabil-ii-em-florianopolis	ea
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Auxiliar de Higienização	Fundamental	1			2026-03-01	fahece-sc-abre-vaga-para-auxiliar-de-higienizacao-no-samu-de-florianopolis	ea
-florianopolis	Florianópolis	PMF - Prefeitura de Florianópolis	Coveiro, Motorista, Operador de Máquinas	Fundamental	13			2026-02-27	prefeitura-de-florianopolis-sc-retifica-processo-seletivo-para-cargos-de-nivel-fundamental	ea
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Auxiliar de Higienização	Ensino Médio	1			2026-02-27	fahece-sc-abre-vaga-para-auxiliar-de-higienizacao-no-cepon-de-florianopolis	ea
+florianopolis	Florianópolis	PMF - Prefeitura de Florianópolis	Coveiro, Motorista, Operador de Máquinas	Fundamental	13			2026-02-27	prefeitura-de-florianopolis-sc-retifica-processo-seletivo-para-cargos-de-nivel-fundamental	ea
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Analista de Administração de Pessoal I	Superior	1			2026-02-25	fahece-sc-abre-processo-seletivo-para-analista-de-administracao-de-pessoal-i-em-florianopolis	ea
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Assistente de Departamento Pessoal I PCD	Ensino Médio	1			2026-02-23	fahece-sc-abre-vaga-exclusiva-para-pcd-no-cargo-de-assistente-de-departamento-pessoal	ea
 florianopolis	Florianópolis	SES - Secretaria de Estado da Saúde de Santa Catarina	Administrador, Médico Especialista em Nefrologia - Transplante Renal	Superior	2			2026-02-23	ses-sc-abre-processo-seletivo-com-salarios-de-ate-10-5-mil	ea
@@ -5330,8 +5333,6 @@ florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC e CEPON	Assi
 florianopolis	Florianópolis	HEMOSC - Centro de Hematologia e Hemoterapia de Santa Catarina	Assistente de Compras I	Ensino Médio	1			2026-02-17	fahece-sc-abre-processo-seletivo-com-vaga-para-assistente-de-compras-i-pcd-no-hemosc-de-florianopolis	ea
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Analista Contábil I	Superior	1			2026-02-16	fahece-sc-abre-processo-seletivo-para-analista-contabil-no-cepon-de-florianopolis	ea
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC e CEPON	Enfermeiro I Central de Quimioterapia	Superior	1			2026-02-16	fahece-sc-anuncia-processo-seletivo-para-o-cargo-de-enfermeiro-i-no-cepon-de-florianopolis	ea
-florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Médico(a) do Trabalho	Superior	1			2026-02-15	fahece-sc-abre-selecao-para-medico-do-trabalho-no-samu-de-florianopolis	ea
-florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao Hemosc/Cepom	Supervisor(a) Operacional de Central de Regulação	Superior	1			2026-02-15	fahece-sc-abre-selecao-para-supervisor-operacional-em-florianopolis	ea
 formosa-do-sul	Formosa do Sul	Prefeitura de Formosa do Sul	Vários Cargos	Fundamental / Médio / Superior	12			2026-07-08	prefeitura-de-formosa-do-sul-sc-abre-seletivo-para-diversos-cargos-com-salarios-de-ate-14888	ea
 formosa-do-sul	Formosa do Sul	Prefeitura de Formosa do Sul	Vários Cargos	Fundamental / Médio / Técnico / Superior	53			2026-06-25	prefeitura-de-formosa-do-sul-sc-retifica-concurso-publico	ea
 formosa-do-sul	Formosa do Sul	Prefeitura de Formosa do Sul	Vários Cargos	Fundamental / Médio / Técnico / Superior	11			2025-11-14	prefeitura-de-formosa-do-sul-sc-abre-edital-de-processo-seletivo-com-diversos-cargos	ea
