@@ -618,3 +618,11 @@ MG|CIS-VERDE - Consórcio Intermunicipal Multifinalitário|-|4|Motorista (Fundam
 RS|GHC - Grupo Hospitalar Conceição|-|CR|Vários Cargos (Fundamental / Técnico / Superior)|04/12/2026|grupo-hospitalar-conceicao-rs-abre-concurso-para-cadastro-de-reserva-em-diversas-areas
 SC|IMA - Instituto do Meio Ambiente do Estado de Santa Catarina|-|18|Vários Cargos (Técnico / Superior)|13/11/2026>14/12/2026|ima-sc-abre-concurso-publico-com-salarios-de-ate-12300
 DF|IGESDF - Instituto de Gestão Estratégica de Saúde do Distrito Federal|-|CR|Terapeuta Ocupacional, Médico Cirurgião Geral (Superior)|13/11/2026|igesdf-df-anuncia-selecoes-para-terapeuta-ocupacional-e-medico-cirurgiao-geral
+BA|TJBA - Tribunal de Justiça do Estado da Bahia|-|CR|Mediador Judicial (Superior)|08/11/2026|tjba-abre-selecao-para-cadastro-de-reserva-na-funcao-de-mediador-judicial
+MA|UEMA - Universidade Estadual do Maranhão|-|29|Professor Substituto (Superior)|18/11/2026|uema-abre-9-processos-seletivos-para-professores-substitutos
+SP|Faculdade Sebrae|-|1|Professor Adjunto (Superior)|10/11/2026|faculdade-sebrae-sp-abre-vaga-para-professor-adjunto-de-engenharia-de-software
+SP|FHSL - Fundação Hospital Santa Lydia|-|8|Vários Cargos (Médio / Superior)|16/11/2026|fundacao-hospital-santa-lydia-sp-abre-selecao-com-salarios-de-ate-7310
+RJ|UERJ - Universidade do Estado do Rio de Janeiro|-|1|Professor Assistente (Superior)|04/12/2026|uerj-abre-concurso-publico-para-professor-assistente-na-area-de-ginecologia
+RJ|UERJ - Universidade do Estado do Rio de Janeiro|-|1|Professor Assistente (Superior)|13/11/2026|uerj-abre-concurso-publico-para-professor-assistente-na-area-de-pediatria-em-cabo-frio
+RS|FHGV - Fundação Hospitalar Getúlio Vargas|-|0|Médico (Superior)|04/12/2026|fundacao-hospitalar-getulio-vargas-rs-abre-processo-seletivo-para-medicos
+GO|SANEAGO - Saneamento de Goiás S.A.|-|CR|Jovem Aprendiz (Fundamental / Médio)|24/11/2026|saneago-go-abre-processo-seletivo-para-o-programa-jovem-aprendiz
