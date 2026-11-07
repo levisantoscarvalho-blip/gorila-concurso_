@@ -3726,7 +3726,8 @@ chapadao-do-lageado	Chapadão do Lageado	Prefeitura de Chapadão do Lageado	Prof
 chapadao-do-lageado	Chapadão do Lageado	Prefeitura de Chapadão do Lagedo	Vários Cargos	Fundamental / Superior	19			2011-04-19	quadro-de-servidores-de-chapadao-do-lageado-sc-abre-19-vagas	ea
 chapadao-do-lageado	Chapadão do Lageado	Prefeitura de Chapadão do Lageado	Professores	Magistério / Superior	0			2009-12-02	prefeitura-de-chapadao-do-lageado-sc-oferece-vagas-para-professores	ea
 chapeco	Chapecó	Prefeitura de Chapecó	Professor de Arte, Professor de Educação Física, Professor de Educação Infantil	Médio / Superior	0			2026-11-11	prefeitura-de-chapeco-sc-abre-processo-seletivo-para-professores	na
-chapeco	Chapecó	Prefeitura de Chapecó	Instrutor, Instrutor Desportivo	Médio / Superior	0	CR		2026-11-05	prefeitura-de-chapeco-sc-abre-selecao-para-instrutores-em-diversas-areas	na
+chapeco	Chapecó	HEMOSC - Centro de Hematologia e Hemoterapia de Santa Catarina	Vários Cargos	Superior	1			2026-11-10	fahece-sc-abre-processo-seletivo-para-o-hemosc-em-chapeco	na
+chapeco	Chapecó	Prefeitura de Chapecó	Instrutor, Instrutor Desportivo	Médio / Superior	0	CR		2026-11-05	prefeitura-de-chapeco-sc-abre-selecao-para-instrutores-em-diversas-areas	ea
 chapeco	Chapecó	Prefeitura de Chapecó	Atendente de Central do Cidadão	Ensino Médio	10			2026-10-29	prefeitura-de-chapeco-sc-abre-concurso-publico-para-atendente-de-central-do-cidadao	ea
 chapeco	Chapecó	FAHECE - Fundação de Apoio ao HEMOSC e CEPON	Oficial de Manutenção	Ensino Médio	1			2026-10-22	fahece-sc-abre-processo-seletivo-para-oficial-de-manutencao-no-hemosc-de-chapeco	ea
 chapeco	Chapecó	Prefeitura de Chapecó	Professor	Superior	0			2026-09-15	prefeitura-de-chapeco-sc-prorroga-as-inscricoes-do-processo-seletivo-para-professores	ea
@@ -3924,7 +3925,6 @@ chapeco	Chapecó	Prefeitura de Chapecó (CMDCA)	Conselheiro Tutelar	Superior	10	
 chapeco	Chapecó	Prefeitura de Chapecó	Vários Cargos	Fundamental / Médio / Superior	220			2015-03-27	prefeitura-de-chapeco-sc-retifica-novamente-o-concurso-com-mais-de-200-vagas	ea
 chapeco	Chapecó	UFFS - Universidade Federal da Fronteira Sul	Professor Substituto	Superior	3			2015-03-23	uffs-abre-vagas-para-professor-substituto-em-chapeco-sc	ea
 chapeco	Chapecó	UFFS - Universidade Federal da Fronteira Sul	Professor Titular-Livre	Superior	1			2015-03-15	uffs-retifica-concurso-publico-para-professor-titular-em-chapeco-sc	ea
-chapeco	Chapecó	UFFS - Universidade Federal da Fronteira Sul	Professor Substituto	Superior	13			2015-02-23	uffs-seleciona-docentes-no-campus-de-chapeco-sc	ea
 cocal-do-sul	Cocal do Sul	Prefeitura de Cocal do Sul	Vários Cargos	Médio / Superior	14			2024-05-21	concurso-publico-com-14-oportunidades-e-divulgado-pela-prefeitura-de-cocal-do-sul-sc	ea
 cocal-do-sul	Cocal do Sul	Prefeitura de Cocal do Sul	Segundo Professor de Educação Especial	Superior	2			2024-04-17	nova-chamada-publica-e-divulgada-pela-prefeitura-de-cocal-do-sul-sc	ea
 cocal-do-sul	Cocal do Sul	Prefeitura de Cocal do Sul	Professor de Informática	Superior	1			2024-04-04	chamada-publica-na-area-da-educacao-e-aberta-pela-prefeitura-de-cocal-do-sul-sc	ea
@@ -6786,6 +6786,7 @@ ibicare	Ibicaré	Prefeitura de Ibicaré	Agente Comunitário de Saúde	Fundamenta
 ibicare	Ibicaré	Prefeitura de Ibicaré	Servente e Operador de Motoniveladora	Alfabetizado	2			2012-01-19	oportunidades-para-servente-e-operador-de-motoniveladora-em-ibicare-sc	ea
 ibicare	Ibicaré	Prefeitura de Ibicaré	Vários Cargos	Fundamental / Médio / Superior	15			2010-01-04	prefeitura-de-ibicare-sc-oferece-15-vagas-de-ate-1730	ea
 ibicare	Ibicaré	Prefeitura de Ibicaré	Vários Cargos	Fundamental / Médio / Técnico / Superior	0				prefeitura-de-ibicare-sc-suspende-concurso-publico	suspenso
+ibirama	Ibirama	Prefeitura de Ibirama	Vários Cargos	Fundamental / Médio / Técnico / Superior	10			2026-11-29	prefeitura-de-ibirama-sc-abre-concurso-publico-com-salarios-de-ate-20364	na
 ibirama	Ibirama	Câmara de Ibirama	Vários Cargos	Fundamental / Superior	4			2026-10-09	camara-de-ibirama-sc-abre-concurso-publico-com-salarios-de-ate-8500	ea
 ibirama	Ibirama	SES - Secretaria de Estado da Saúde de Santa Catarina	Enfermeiro	Superior	1			2026-07-17	ses-sc-abre-processo-seletivo-para-o-cargo-de-enfermeiro-em-ibirama	ea
 ibirama	Ibirama	FAHECE - Fundação de Apoio ao Hemosc e Cepon	Assistente de Laboratório I	Médio / Técnico	1			2026-07-10	fahece-sc-abre-processo-seletivo-para-assistente-de-laboratorio-em-ibirama	ea
@@ -13286,6 +13287,7 @@ rio-negrinho	Rio Negrinho	Prefeitura de Rio Negrinho	Vários Cargos	Médio / Sup
 rio-negrinho	Rio Negrinho	Prefeitura e Câmara de Rio Negrinho	Vários Cargos	Fundamental / Médio / Superior	155			2009-10-29	155-vagas-destinadas-a-prefeitura-e-camara-de-rio-negrinho-sc	ea
 rio-negrinho	Rio Negrinho	Prefeitura de Rio Negrinho	Vários Cargos	Fundamental / Médio / Superior	139			2008-05-06	prefeitura-de-rio-negrinho-sc-oferece-139-vagas-de-ate-7261	ea
 rio-negrinho	Rio Negrinho	Prefeitura de Rio Negrinho (SAMAE)	Vários Cargos	Fundamental / Médio / Superior	7				concurso-001-2012-de-rio-negrinho-sc-fica-suspenso	suspenso
+rio-rufino	Rio Rufino	Prefeitura do Município de Rio Rufino	Vários Cargos	Fundamental / Médio / Técnico / Superior	0			2026-12-05	prefeitura-de-rio-rufino-sc-abre-selecoes-para-cadastro-de-reserva-em-diversas-areas	na
 rio-rufino	Rio Rufino	Prefeitura de Rio Rufino	Vários Cargos	Fundamental / Médio / Técnico / Superior	0			2025-11-29	prefeitura-de-rio-rufino-sc-publica-retificacoes-de-processo-seletivo-e-concurso-publico	ea
 rio-rufino	Rio Rufino	Prefeitura de Rio Rufino	Vários Cargos	Fundamental / Superior	0			2024-04-23	prefeitura-de-rio-rufino-sc-divulga-quatro-chamadas-publicas	ea
 rio-rufino	Rio Rufino	Prefeitura de Rio Rufino	Vários Cargos	Fundamental / Médio / Superior	0			2024-01-25	chamada-publica-tem-periodo-de-inscricoes-anunciado-pela-prefeitura-de-rio-rufino-sc	ea
@@ -14135,6 +14137,7 @@ sao-bernardino	São Bernardino	Prefeitura de São Bernardino	Psicólogo e Auxili
 sao-bernardino	São Bernardino	Prefeitura de São Bernardino	Vários Cargos	Fundamental / Médio / Superior	11			2018-06-26	prefeitura-de-sao-bernardino-sc-divulga-edital-de-novo-concurso-publico	ea
 sao-bernardino	São Bernardino	Prefeitura de São Bernardino	Agente Comunitário de Saúde	Fundamental	2			2017-11-20	prefeitura-de-sao-bernardino-sc-abrira-inscricoes-para-processo-seletivo	ea
 sao-bernardino	São Bernardino	Prefeitura de São Bernardino	Vários Cargos	Médio / Superior	4			2017-09-27	prefeitura-de-sao-bernardino-sc-lanca-concurso-publico-com-salario-de-ate-13-mil	ea
+sao-bonifacio	São Bonifácio	Prefeitura de São Bonifácio	Vários Cargos	Superior	0			2026-11-15	prefeitura-de-sao-bonifacio-sc-abre-processo-seletivo-para-formacao-de-cadastro-de-reserva	na
 sao-bonifacio	São Bonifácio	Prefeitura de São Bonifácio	Assistente Social, Nutricionista, Professor	Superior	0	CR		2026-01-21	prefeitura-de-sao-bonifacio-sc-abre-edital-de-processo-seletivo-para-formar-cadastro-reserva	ea
 sao-bonifacio	São Bonifácio	Prefeitura de São Bonifácio	Vários Cargos	Técnico / Superior	0			2025-09-25	prefeitura-de-sao-bonifacio-sc-abre-novo-edital-de-processo-seletivo	ea
 sao-bonifacio	São Bonifácio	Prefeitura de São Bonifácio	Vários Cargos	Fundamental Incompleto / Médio / Técnico / Superior	7			2024-06-14	prefeitura-de-sao-bonifacio-sc-retifica-concurso-publico-e-processo-seletivo	ea
@@ -14148,8 +14151,8 @@ sao-bonifacio	São Bonifácio	Prefeitura de São Bonifácio	Professor de Educaç
 sao-bonifacio	São Bonifácio	Prefeitura de São Bonifácio	Vários Cargos	Fundamental / Médio / Superior	5			2018-12-07	concurso-publico-e-processo-seletivo-sao-anunciados-pela-prefeitura-de-sao-bonifacio-sc	ea
 sao-bonifacio	São Bonifácio	Prefeitura de São Bonifácio	Farmacêutico/ Bioquímico	Superior	2			2018-08-24	prefeitura-de-sao-bonifacio-sc-contrata-profissional-da-saude-por-meio-de-processo-seletivo	ea
 sao-bonifacio	São Bonifácio	Prefeitura de São Bonifácio	Vários Cargos	Não informada	8			2016-02-19	prefeitura-de-sao-bonifacio-sc-abre-concurso-publico-e-processo-seletivo	ea
-sao-bonifacio	São Bonifácio	Prefeitura de São Bonifácio	Vários Cargos	Fundamental / Médio / Superior	12			2012-02-17	12-vagas-abertas-na-prefeitura-de-sao-bonifacio-sc	ea
 sao-bonifacio	São Bonifácio	Prefeitura de São Bonifácio	Técnico de Enfermagem	Ensino Técnico	1			2012-02-17	prefeitura-de-sao-bonifacio-sc-oferece-8-vagas-na-saude	ea
+sao-bonifacio	São Bonifácio	Prefeitura de São Bonifácio	Vários Cargos	Fundamental / Médio / Superior	12			2012-02-17	12-vagas-abertas-na-prefeitura-de-sao-bonifacio-sc	ea
 sao-bonifacio	São Bonifácio	Prefeitura de São Bonifácio	Vários cargos	Magistério / Superior	0			2009-12-12	prefeitura-de-sao-bonifacio-sc-oferece-diversas-vagas	ea
 sao-carlos	São Carlos	Prefeitura de São Carlos	Vários Cargos	Fundamental / Médio / Superior	10			2026-05-04	prefeitura-de-sao-carlos-sc-abre-processo-seletivo-com-salarios-de-ate-6-6-mil	ea
 sao-carlos	São Carlos	Câmara de São Carlos	Contador	Superior	0			2026-01-14	processo-seletivo-tem-inscricoes-abertas-pela-camara-de-sao-carlos-sc	ea

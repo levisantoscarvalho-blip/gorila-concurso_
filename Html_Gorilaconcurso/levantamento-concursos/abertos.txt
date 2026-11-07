@@ -626,3 +626,7 @@ RJ|UERJ - Universidade do Estado do Rio de Janeiro|-|1|Professor Assistente (Sup
 RJ|UERJ - Universidade do Estado do Rio de Janeiro|-|1|Professor Assistente (Superior)|13/11/2026|uerj-abre-concurso-publico-para-professor-assistente-na-area-de-pediatria-em-cabo-frio
 RS|FHGV - Fundação Hospitalar Getúlio Vargas|-|0|Médico (Superior)|04/12/2026|fundacao-hospitalar-getulio-vargas-rs-abre-processo-seletivo-para-medicos
 GO|SANEAGO - Saneamento de Goiás S.A.|-|CR|Jovem Aprendiz (Fundamental / Médio)|24/11/2026|saneago-go-abre-processo-seletivo-para-o-programa-jovem-aprendiz
+AC|PCAC - Polícia Civil do Estado do Acre|-|139|Vários Cargos (Superior)|11/11/2026>14/12/2026|policia-civil-do-estado-do-acre-pcac-e-sead-ac-abrem-concurso-publico-com-salarios-de-ate-19505
+SP|UFABC - Fundação Universidade Federal do ABC|-|79|Professor assistente (Superior)|30/11/2026>28/01/2027|ufabc-sp-abre-concurso-publico-para-professores
+MG|IPSEMG - Instituto de Previdência dos Servidores do Estado de Minas Gerais|-|99|Vários Cargos (Superior)|12/11/2026|ipsemg-retifica-processo-seletivo-com-vagas-para-residencia-medica
+MG|UNIFAL - Universidade Federal de Alfenas|-|1|Professor Substituto (Superior)|23/11/2026|unifal-mg-abre-vaga-para-professor-substituto-de-ciencias-atuariais-em-varginha

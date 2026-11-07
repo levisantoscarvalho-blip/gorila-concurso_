@@ -1,9 +1,9 @@
-AUDITORIA DO GORILA — 06/11/2026 12:42 (horário de Brasília)
-142617 concursos nas cidades examinados · 0 ERROS · 27 para CONFERIR · 1 INFO
+AUDITORIA DO GORILA — 07/11/2026 11:42 (horário de Brasília)
+142632 concursos nas cidades examinados · 0 ERROS · 27 para CONFERIR · 1 INFO
 ERRO = o robô está perdendo ou estragando dados (corrigir o código) · CONFERIR = uma pessoa olha · INFO = limite conhecido
 
 == CONFERIR ==
-- ÓRGÃOS AC: nenhum concurso de Polícia Militar, Polícia Civil, Corpo de Bombeiros, Tribunal Regional Eleitoral, Tribunal Regional do Trabalho no levantamento — é real (órgão sem concurso no PCI) ou o robô está perdendo?
+- ÓRGÃOS AC: nenhum concurso de Polícia Militar, Corpo de Bombeiros, Tribunal Regional Eleitoral, Tribunal Regional do Trabalho no levantamento — é real (órgão sem concurso no PCI) ou o robô está perdendo?
 - ÓRGÃOS AL: nenhum concurso de Tribunal Regional Eleitoral, Detran no levantamento — é real (órgão sem concurso no PCI) ou o robô está perdendo?
 - ÓRGÃOS AM: nenhum concurso de Corpo de Bombeiros, Assembleia Legislativa, Tribunal Regional Eleitoral, Tribunal Regional do Trabalho, Detran no levantamento — é real (órgão sem concurso no PCI) ou o robô está perdendo?
 - ÓRGÃOS AP: nenhum concurso de Ministério Público, Assembleia Legislativa, Tribunal Regional Eleitoral, Tribunal Regional do Trabalho, Detran no levantamento — é real (órgão sem concurso no PCI) ou o robô está perdendo?
