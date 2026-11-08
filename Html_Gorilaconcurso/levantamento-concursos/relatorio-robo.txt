@@ -1,12 +1,10 @@
-ROBÔ DO GORILA — 07/11/2026 10:45 (horário de Brasília)
-PCI hoje: 608 concursos com inscrições abertas
-CONFERIR: 'Câmara de Petrolina' (PE) estava em municipais-previstos.txt e agora abriu inscrições — tirar dos previstos? camara-de-petrolina-pe-abre-concurso-publico-com-salarios-de-ate-8561
-CONFERIR: 'Prefeitura de Iguaba Grande' (RJ) estava em municipais-previstos.txt e agora abriu inscrições — tirar dos previstos? prefeitura-de-iguaba-grande-rj-abre-processo-seletivo-com-salarios-de-ate-6596
-CONFERIR: 'Prefeitura de Leopoldina' (MG) estava em municipais-previstos.txt e agora abriu inscrições — tirar dos previstos? prefeitura-de-leopoldina-mg-abre-selecao-com-salarios-de-ate-4462
-CONFERIR: 'Prefeitura de Pelotas (Saúde)' (RS) estava em municipais-previstos.txt e agora abriu inscrições — tirar dos previstos? prefeitura-de-pelotas-rs-abre-processos-seletivos-para-medicos
-CONFERIR: 'Prefeitura de Pelotas' (RS) estava em municipais-previstos.txt e agora abriu inscrições — tirar dos previstos? prefeitura-de-pelotas-rs-abre-processos-seletivos-para-medicos
-novos concursos: 23 em cidades + 4 estaduais/sem cidade · 0 com data mudada (prorrogação/retificação)
-notícias: parte 0 pronta (6000 nesta rodada, faltam 7530 para as próximas)
+ROBÔ DO GORILA — 08/11/2026 11:05 (horário de Brasília) — coleta COMPLETA (semanal)
+coleta completa: 0 cidades com erro na 1ª passada
+2ª passada: 0 cidades ainda com erro
+cidades trocadas: 142638 concursos (antes 142632)
+PCI hoje: 606 concursos com inscrições abertas
+novos concursos: 0 em cidades + 0 estaduais/sem cidade · 0 com data mudada (prorrogação/retificação)
+notícias: parte 0 pronta (6000 nesta rodada, faltam 1532 para as próximas)
 AVISO GO 17232 vagas sem conferência, ficou 'a definir': seduce-go-retifica-um-dos-dois-processos-seletivos-com-mais-de-17-2-mil-vagas
 AVISO GO 7453 vagas sem conferência, ficou 'a definir': valparaiso-de-goias-go-prorroga-inscricoes-e-retifica-edital-001-2014
 AVISO MT 5156 vagas sem conferência, ficou 'a definir': prefeitura-de-varzea-grande-mt-retifica-processo-seletivo-com-vagas-para-a-educacao
@@ -28,7 +26,7 @@ AVISO taxa impossível (R$ 2434.33), não mostrada: ufg-estende-inscricoes-para-
 AVISO taxa impossível (R$ 4231.6), não mostrada: uem-pr-abre-selecao-para-tecnico-em-laboratorio-com-salario-de-4-2-mil
 AVISO taxa impossível (R$ 2125.02), não mostrada: prefeitura-de-cajamar-sp-retifica-um-dos-editais-de-concursos-publicos
 AUDITORIA: 0 erros, 27 para conferir, 1 info (ver auditoria.txt)
-concursos nas cidades: 142632 (no ar: 142617) · detalhes: 134250 (no ar: 128258)
-levantamento estadual/municipal: 895 (no ar: 891)
+concursos nas cidades: 142638 (no ar: 142632) · detalhes: 140242 (no ar: 134250)
+levantamento estadual/municipal: 895 (no ar: 895)
 sintaxe conferida com o Node em 82 arquivos
 OK: pode publicar
