@@ -1871,6 +1871,7 @@ biguacu	Biguaçu	Prefeitura de Biguaçu	Vários Cargos	Magistério / Superior	0	
 biguacu	Biguaçu	Prefeitura de Biguaçu	Ag. Com. de Saúde e Combate a Endemias	Fundamental	0				prefeitura-de-biguacu-sc-suspende-o-edital-de-processo-seletivo	suspenso
 blumenau	Blumenau	Prefeitura de Blumenau	Coordenador Pedagógico, Professor de Computação, Professor I	Superior	18			2026-12-09	prefeitura-de-blumenau-sc-abre-concurso-publico-para-a-area-da-educacao	na
 blumenau	Blumenau	FURB - Fundação Universidade Regional de Blumenau	Vários Cargos	Médio / Técnico / Superior	0	CR	2026-11-14	2026-12-02	furb-sc-abre-processo-seletivo-com-salarios-de-ate-5906	na
+blumenau	Blumenau	SAMU - Serviço de Atendimento Móvel de Urgência de Blumenau	Auxiliar de Higienização	Fundamental	0			2026-11-12	fahece-sc-abre-selecao-para-auxiliar-de-higienizacao-no-samu-de-blumenau	na
 blumenau	Blumenau	PGM - Procuradoria-Geral do Município de Blumenau	Residente Jurídico	Superior	5			2026-10-29	prefeitura-de-blumenau-sc-abre-selecao-para-o-programa-de-residencia-juridica	ea
 blumenau	Blumenau	FAHECE - Fundação de Apoio ao HEMOSC e CEPON	Assistente Administrativo I	Ensino Médio	1			2026-10-15	fahece-sc-abre-vaga-para-assistente-administrativo-i-em-blumenau	ea
 blumenau	Blumenau	Prefeitura de Blumenau	Vários Cargos	Médio / Superior	0			2026-09-28	prefeitura-de-blumenau-sc-publica-editais-de-processos-seletivos-para-profissionais-da-educacao	ea
@@ -2068,7 +2069,6 @@ blumenau	Blumenau	Prefeitura de Blumenau (SAMAE)	Agente de Logística	Ensino Mé
 blumenau	Blumenau	FURB - Fundação Universidade Regional de Blumenau	Professor Universitário e de Ensino Médio	Superior	0			2021-12-13	furb-sc-comunica-retomada-de-processos-seletivos	ea
 blumenau	Blumenau	FURB - Fundação Universidade Regional de Blumenau	Professor Universitário	Superior	0			2021-12-08	furb-sc-divulga-19-editais-de-processos-seletivos	ea
 blumenau	Blumenau	FURB - Fundação Universidade Regional de Blumenau	Professor	Superior	0			2021-12-02	furb-sc-divulga-realizacao-de-10-novos-processos-seletivos	ea
-blumenau	Blumenau	Prefeitura de Blumenau	Vários Cargos	Médio / Superior	44			2021-11-30	prefeitura-de-blumenau-sc-anuncia-retificacao-de-concurso-publico-com-44-vagas	ea
 bocaina-do-sul	Bocaína do Sul	Prefeitura de Bocaina do Sul	Vários Cargos	Fundamental / Médio / Técnico / Superior	0			2025-10-22	prefeitura-de-bocaina-do-sul-sc-lanca-abertura-de-edital-de-processo-seletivo	ea
 bocaina-do-sul	Bocaína do Sul	Prefeitura de Bocaina do Sul	Vários Cargos	Fundamental / Médio / Técnico / Superior	0			2025-01-16	prefeitura-de-bocaina-do-sul-sc-informa-a-abertura-de-edital-de-processo-seletivo	ea
 bocaina-do-sul	Bocaína do Sul	Prefeitura de Bocaina do Sul	Vários Cargos	Alfabetizado / Fundamental Incompleto / Fundamental / Médio / Técnico / Superior	23			2024-04-29	prefeitura-de-bocaina-do-sul-sc-retifica-edital-de-concurso-publico	ea
@@ -4453,7 +4453,8 @@ corupa	Corupá	Prefeitura de Corupá	Médico ESF	Superior	1			2011-06-24	prefeit
 corupa	Corupá	Prefeitura de Corupá	Agente Comunitário de Saúde	Fundamental	5			2011-06-10	corupa-sc-abre-inscricoes-para-agente-comunitario	ea
 corupa	Corupá	Prefeitura de Corupá	Vários Cargos	Fundamental / Médio / Superior	57			2011-01-14	57-vagas-para-cargos-e-niveis-de-ate-8820-na-prefeitura-de-corupa-sc	ea
 corupa	Corupá	Prefeitura de Corupá	Vários Cargos	Fundamental / Médio / Superior	83			2008-02-14	prefeitura-de-corupa-sc-oferece-83-vagas	ea
-criciuma	Criciúma	SAMU - Serviço de Atendimento Móvel de Urgência de Criciúma	Assistente Administrativo I	Ensino Médio	1			2026-11-08	fahece-sc-abre-vaga-de-assistente-administrativo-para-pessoa-com-deficiencia-em-criciuma	na
+criciuma	Criciúma	Prefeitura de Criciúma	Professor, Professor Bilíngue/Intérprete, Professor Instrutor	Superior	11			2026-12-08	prefeitura-de-criciuma-sc-abre-processo-seletivo-para-professores	na
+criciuma	Criciúma	SAMU - Serviço de Atendimento Móvel de Urgência de Criciúma	Assistente Administrativo I	Ensino Médio	1			2026-11-08	fahece-sc-abre-vaga-de-assistente-administrativo-para-pessoa-com-deficiencia-em-criciuma	ea
 criciuma	Criciúma	FAHECE - Fundação de Apoio ao HEMOSC e CEPON	Assistente Administrativo I	Ensino Médio	1			2026-09-25	fahece-sc-abre-selecao-para-assistente-administrativo-no-hemosc-de-criciuma	ea
 criciuma	Criciúma	UNESC - Universidade do Extremo Sul Catarinense	Vários Cargos	Superior	24			2026-09-07	unesc-sc-abre-selecoes-para-residencias-multiprofissionais-com-bolsa-superior-a-4-mil	ea
 criciuma	Criciúma	HMISC - Hospital Materno Infantil Santa Catarina	Vários Cargos	Fundamental / Médio / Técnico / Superior	28			2026-08-14	hospital-materno-infantil-santa-catarina-sc-abre-selecao-com-salarios-de-ate-6110	ea
@@ -5071,6 +5072,7 @@ erval-velho	Erval Velho	Prefeitura de Erval Velho	Farmac./Bioquímico e Ag. Com.
 erval-velho	Erval Velho	Prefeitura de Erval Velho	Vários Cargos	Fundamental / Médio / Superior	10			2011-01-28	divulgada-a-retificacao-do-edital-n-09-2010-da-prefeitura-de-erval-velho-sc	ea
 erval-velho	Erval Velho	Prefeitura de Erval Velho	Vários Cargos	Fundamental / Médio / Superior	7			2010-01-08	7-vagas-de-ate-2014-para-prefeitura-de-erval-velho-sc	ea
 erval-velho	Erval Velho	Prefeitura de Erval Velho	Bioquímico	Superior	0			2009-09-18	vagas-ate-1007-para-prefeitura-de-erval-velho-sc	ea
+faxinal-dos-guedes	Faxinal dos Guedes	Prefeitura de Faxinal dos Guedes	Vários Cargos	Fundamental / Médio / Superior	12			2026-12-07	prefeitura-de-faxinal-dos-guedes-sc-abre-concurso-publico-e-processo-seletivo-com-salarios-de-ate-7454	na
 faxinal-dos-guedes	Faxinal dos Guedes	Prefeitura de Faxinal dos Guedes	Vários Cargos	Fundamental / Médio / Técnico / Superior	4			2025-11-29	prefeitura-de-faxinal-dos-guedes-sc-abre-edital-de-processo-seletivo-com-diversos-cargos	ea
 faxinal-dos-guedes	Faxinal dos Guedes	Prefeitura de Faxinal dos Guedes	Vários Cargos	Médio / Superior	2			2025-11-29	prefeitura-de-faxinal-dos-guedes-sc-abre-concurso-publico-para-vagas-de-niveis-medio-e-superior	ea
 faxinal-dos-guedes	Faxinal dos Guedes	Prefeitura de Faxinal dos Guedes	Estagiários - Nível Médio, Técnico e Superior	Médio Incompleto / Técnico Incompleto / Superior Incompleto	0			2024-06-06	prefeitura-de-faxinal-dos-guedes-sc-abre-inscricoes-de-processo-seletivo-para-estagiarios	ea
@@ -5094,8 +5096,8 @@ faxinal-dos-guedes	Faxinal dos Guedes	Prefeitura de Faxinal dos Guedes	Professor
 faxinal-dos-guedes	Faxinal dos Guedes	Prefeitura de Faxinal dos Guedes	Vários Cargos	Fundamental / Superior	12			2015-12-08	prefeitura-de-faxinal-dos-guedes-sc-retifica-concurso-com-salarios-de-ate-3-mil	ea
 faxinal-dos-guedes	Faxinal dos Guedes	Prefeitura de Faxinal dos Guedes	Odontólogo	Superior	1			2015-07-30	prefeitura-de-faxinal-dos-guedes-sc-abre-inscricoes-de-seletiva-para-odontologo	ea
 faxinal-dos-guedes	Faxinal dos Guedes	Prefeitura de Faxinal dos Guedes	Vários Cargos	Médio / Superior	4			2015-07-27	prefeitura-de-faxinal-dos-guedes-sc-anula-provas-de-concurso-e-remarca-nova-data	ea
-faxinal-dos-guedes	Faxinal dos Guedes	Prefeitura de Faxinal dos Guedes	Vários Cargos	Fundamental / Superior	9			2015-04-29	prefeitura-de-faxinal-dos-guedes-sc-retifica-novamente-concurso-publico-com-nove-vagas	ea
 faxinal-dos-guedes	Faxinal dos Guedes	Prefeitura de Faxinal dos Guedes	Agente Comunitário de Saúde	Fundamental	3			2015-04-29	prefeitura-de-faxinal-dos-guedes-sc-altera-vagas-de-concurso-publico	ea
+faxinal-dos-guedes	Faxinal dos Guedes	Prefeitura de Faxinal dos Guedes	Vários Cargos	Fundamental / Superior	9			2015-04-29	prefeitura-de-faxinal-dos-guedes-sc-retifica-novamente-concurso-publico-com-nove-vagas	ea
 faxinal-dos-guedes	Faxinal dos Guedes	Prefeitura de Faxinal dos Guedes	Professores	Magistério / Superior	0			2015-04-05	prefeitura-de-faxinal-dos-guedes-sc-forma-cadastro-reserva-de-docentes	ea
 faxinal-dos-guedes	Faxinal dos Guedes	Prefeitura de Faxinal dos Guedes	Agente Comunitário de Saúde	Fundamental	1			2014-11-11	prefeitura-de-faxinal-dos-guedes-sc-divulga-adendo-ao-edital-para-agente-acs	ea
 faxinal-dos-guedes	Faxinal dos Guedes	Prefeitura de Faxinal dos Guedes	Vários Cargos	Médio / Superior	7			2014-11-10	faxinal-dos-guedes-sc-divulga-adendo-do-edital-003-2014-com-diversas-vagas	ea
@@ -5135,9 +5137,10 @@ flor-do-sertao	Flor do Sertão	Prefeitura de Flor do Sertão	Vários Cargos	Fund
 flor-do-sertao	Flor do Sertão	Prefeitura de Flor do Sertão	Operador de Máquinas	Alfabetizado	1			2017-12-14	prefeitura-de-flor-do-sertao-sc-divulga-processo-seletivo	ea
 flor-do-sertao	Flor do Sertão	Prefeitura de Flor do Sertão	Farmacêutico	Superior	1			2017-12-08	prefeitura-de-flor-do-sertao-sc-abre-selecao-para-farmaceutico	ea
 flor-do-sertao	Flor do Sertão	Prefeitura de Flor do Sertão	Médico	Superior	1			2017-08-30	prefeitura-de-flor-do-sertao-sc-divulga-processo-seletivo-para-medico	ea
+florianopolis	Florianópolis	CAU - Conselho de Arquitetura e Urbanismo de Santa Catarina	Vários Cargos	Médio / Superior	0			2026-12-09	cau-sc-abre-concurso-publico-para-cadastro-de-reserva-em-florianopolis	na
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC e ao CEPON	Fonoaudiólogo I	Superior	1			2026-11-09	fahece-sc-abre-selecao-para-o-cargo-de-fonoaudiologo-no-cepon-de-florianopolis	na
-florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Técnico(a) Auxiliar de Regulação Médica (TARM)	Ensino Médio	1			2026-11-08	fahece-sc-abre-vaga-para-tecnico-auxiliar-de-regulacao-medica-pcd-em-florianopolis	na
-florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao Hemosc e Cepon	Assistente de Almoxarifado I	Ensino Médio	1			2026-11-08	fahece-sc-abre-vaga-para-assistente-de-almoxarifado-pcd-no-samu-de-florianopolis	na
+florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Técnico(a) Auxiliar de Regulação Médica (TARM)	Ensino Médio	1			2026-11-08	fahece-sc-abre-vaga-para-tecnico-auxiliar-de-regulacao-medica-pcd-em-florianopolis	ea
+florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao Hemosc e Cepon	Assistente de Almoxarifado I	Ensino Médio	1			2026-11-08	fahece-sc-abre-vaga-para-assistente-de-almoxarifado-pcd-no-samu-de-florianopolis	ea
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC e CEPON	Técnico de Laboratório I	Ensino Técnico	1			2026-11-06	fahece-sc-abre-processo-seletivo-para-tecnico-de-laboratorio-em-florianopolis	ea
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC e CEPON	Assistente Administrativo I	Ensino Médio	1			2026-10-31	fahece-sc-abre-processo-seletivo-para-o-cargo-de-assistente-administrativo-no-cepon	ea
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC e CEPON	Assistente Administrativo I	Ensino Médio	1			2026-10-28	fahece-sc-anuncia-vaga-de-assistente-administrativo-para-o-cepon-em-florianopolis	ea
@@ -5299,10 +5302,10 @@ florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Farmac
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC e CEPON	Bioquímico/Farmacêutico/Biomédico/Biólogo, Assistente de Almoxarifado I	Médio / Superior	2			2026-03-28	fahece-sc-abre-processos-seletivos-para-o-hemosc-de-florianopolis	ea
 florianopolis	Florianópolis	Prefeitura de Florianópolis	Vários Cargos	Médio / Técnico / Superior	41			2026-03-27	prefeitura-de-florianopolis-sc-reabre-inscricoes-para-processo-seletivo	ea
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Assistente de Faturamento I	Superior	1			2026-03-27	fahece-sc-abre-processo-seletivo-para-cargo-de-assistente-de-faturamento-i-em-florianopolis	ea
-florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Técnico de Enfermagem I	Ensino Técnico	1			2026-03-26	fahece-sc-anuncia-vaga-para-tecnico-de-enfermagem-no-cepon-de-florianopolis	ea
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC e CEPON	Enfermeiro, Técnico em Enfermagem	Técnico / Superior	2			2026-03-26	fahece-sc-abre-processos-seletivos-com-vagas-para-enfermeiro-e-tecnico-em-enfermagem	ea
-florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Assistente Administrativo I - Farmácia	Ensino Médio	1			2026-03-24	fahece-sc-abre-vaga-em-processo-seletivo-para-assistente-administrativo-na-area-de-farmacia	ea
+florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Técnico de Enfermagem I	Ensino Técnico	1			2026-03-26	fahece-sc-anuncia-vaga-para-tecnico-de-enfermagem-no-cepon-de-florianopolis	ea
 florianopolis	Florianópolis	SES - Secretaria de Estado da Saúde de Santa Catarina	Administrador	Superior	1			2026-03-24	ses-sc-abre-processo-seletivo-para-o-cargo-de-administrador-em-florianopolis	ea
+florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Assistente Administrativo I - Farmácia	Ensino Médio	1			2026-03-24	fahece-sc-abre-vaga-em-processo-seletivo-para-assistente-administrativo-na-area-de-farmacia	ea
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Assistente Financeiro III	Superior	1			2026-03-23	hemosc-sc-abre-vaga-para-assistente-financeiro-iii-em-florianopolis	ea
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Analista de Suprimentos III	Superior	1			2026-03-23	fahece-sc-anuncia-vaga-para-analista-de-suprimentos-iii-em-florianopolis	ea
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Assistente de Almoxarifado I	Ensino Médio	1			2026-03-22	fahece-sc-anuncia-vaga-para-assistente-de-almoxarifado-i-exclusiva-para-pcd	ea
@@ -5323,18 +5326,17 @@ florianopolis	Florianópolis	HEMOSC - Centro de Hematologia e Hemoterapia de San
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Coordenador de Engenharia Clínica e Manutenção	Superior	1			2026-03-02	fahece-sc-abre-selecao-para-coordenador-de-engenharia-clinica-com-salario-de-14-3-mil	ea
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Analista Contábil II	Superior	1			2026-03-01	fahece-sc-abre-processo-seletivo-para-analista-contabil-ii-em-florianopolis	ea
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Auxiliar de Higienização	Fundamental	1			2026-03-01	fahece-sc-abre-vaga-para-auxiliar-de-higienizacao-no-samu-de-florianopolis	ea
-florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Auxiliar de Higienização	Ensino Médio	1			2026-02-27	fahece-sc-abre-vaga-para-auxiliar-de-higienizacao-no-cepon-de-florianopolis	ea
 florianopolis	Florianópolis	PMF - Prefeitura de Florianópolis	Coveiro, Motorista, Operador de Máquinas	Fundamental	13			2026-02-27	prefeitura-de-florianopolis-sc-retifica-processo-seletivo-para-cargos-de-nivel-fundamental	ea
+florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Auxiliar de Higienização	Ensino Médio	1			2026-02-27	fahece-sc-abre-vaga-para-auxiliar-de-higienizacao-no-cepon-de-florianopolis	ea
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Analista de Administração de Pessoal I	Superior	1			2026-02-25	fahece-sc-abre-processo-seletivo-para-analista-de-administracao-de-pessoal-i-em-florianopolis	ea
-florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Assistente de Departamento Pessoal I PCD	Ensino Médio	1			2026-02-23	fahece-sc-abre-vaga-exclusiva-para-pcd-no-cargo-de-assistente-de-departamento-pessoal	ea
 florianopolis	Florianópolis	SES - Secretaria de Estado da Saúde de Santa Catarina	Administrador, Médico Especialista em Nefrologia - Transplante Renal	Superior	2			2026-02-23	ses-sc-abre-processo-seletivo-com-salarios-de-ate-10-5-mil	ea
+florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Assistente de Departamento Pessoal I PCD	Ensino Médio	1			2026-02-23	fahece-sc-abre-vaga-exclusiva-para-pcd-no-cargo-de-assistente-de-departamento-pessoal	ea
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Analista de Faturamento II	Superior	1			2026-02-20	fahece-sc-anuncia-processo-seletivo-para-analista-de-faturamento-ii-no-cepon-de-florianopolis	ea
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON/CEPON	Coordenador de Controladoria	Superior	1			2026-02-20	fahece-sc-abre-processo-seletivo-para-coordenador-de-controladoria-em-florianopolis	ea
 florianopolis	Florianópolis	Prefeitura de Florianópolis	Agente Comunitário de Saúde, Agente de Combate às Endemias	Ensino Médio	500			2026-02-19	prefeitura-de-florianopolis-sc-publica-retificacao-de-processo-seletivo-com-500-vagas	ea
-florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC e CEPON	Assistente Administrativo III	Superior	2			2026-02-18	fahece-sc-abre-processos-seletivos-para-profissionais-de-nivel-superior-em-florianopolis	ea
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC e CEPON	Assistente Administrativo III	Superior	1			2026-02-18	fahece-sc-abre-vaga-para-assistente-administrativo-iii-com-salario-superior-a-3-7-mil	ea
+florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC e CEPON	Assistente Administrativo III	Superior	2			2026-02-18	fahece-sc-abre-processos-seletivos-para-profissionais-de-nivel-superior-em-florianopolis	ea
 florianopolis	Florianópolis	HEMOSC - Centro de Hematologia e Hemoterapia de Santa Catarina	Assistente de Compras I	Ensino Médio	1			2026-02-17	fahece-sc-abre-processo-seletivo-com-vaga-para-assistente-de-compras-i-pcd-no-hemosc-de-florianopolis	ea
-florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC e CEPON	Enfermeiro I Central de Quimioterapia	Superior	1			2026-02-16	fahece-sc-anuncia-processo-seletivo-para-o-cargo-de-enfermeiro-i-no-cepon-de-florianopolis	ea
 formosa-do-sul	Formosa do Sul	Prefeitura de Formosa do Sul	Vários Cargos	Fundamental / Médio / Superior	12			2026-07-08	prefeitura-de-formosa-do-sul-sc-abre-seletivo-para-diversos-cargos-com-salarios-de-ate-14888	ea
 formosa-do-sul	Formosa do Sul	Prefeitura de Formosa do Sul	Vários Cargos	Fundamental / Médio / Técnico / Superior	53			2026-06-25	prefeitura-de-formosa-do-sul-sc-retifica-concurso-publico	ea
 formosa-do-sul	Formosa do Sul	Prefeitura de Formosa do Sul	Vários Cargos	Fundamental / Médio / Técnico / Superior	11			2025-11-14	prefeitura-de-formosa-do-sul-sc-abre-edital-de-processo-seletivo-com-diversos-cargos	ea

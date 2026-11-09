@@ -1,10 +1,8 @@
-ROBÔ DO GORILA — 08/11/2026 11:05 (horário de Brasília) — coleta COMPLETA (semanal)
-coleta completa: 0 cidades com erro na 1ª passada
-2ª passada: 0 cidades ainda com erro
-cidades trocadas: 142638 concursos (antes 142632)
-PCI hoje: 606 concursos com inscrições abertas
-novos concursos: 0 em cidades + 0 estaduais/sem cidade · 0 com data mudada (prorrogação/retificação)
-notícias: parte 0 pronta (6000 nesta rodada, faltam 1532 para as próximas)
+ROBÔ DO GORILA — 09/11/2026 14:10 (horário de Brasília)
+PCI hoje: 614 concursos com inscrições abertas
+CONFERIR: 'Prefeitura de Criciúma' (SC) estava em municipais-previstos.txt e agora abriu inscrições — tirar dos previstos? prefeitura-de-criciuma-sc-abre-processo-seletivo-para-professores
+novos concursos: 28 em cidades + 1 estaduais/sem cidade · 0 com data mudada (prorrogação/retificação)
+notícias: parte 0 pronta (1561 nesta rodada)
 AVISO GO 17232 vagas sem conferência, ficou 'a definir': seduce-go-retifica-um-dos-dois-processos-seletivos-com-mais-de-17-2-mil-vagas
 AVISO GO 7453 vagas sem conferência, ficou 'a definir': valparaiso-de-goias-go-prorroga-inscricoes-e-retifica-edital-001-2014
 AVISO MT 5156 vagas sem conferência, ficou 'a definir': prefeitura-de-varzea-grande-mt-retifica-processo-seletivo-com-vagas-para-a-educacao
@@ -23,10 +21,13 @@ AVISO taxa impossível (R$ 5469.97), não mostrada: prefeitura-de-altonia-pr-abr
 AVISO taxa impossível (R$ 2714.89), não mostrada: ufc-reabre-inscricoes-para-o-edital-n-96-2013-campus-de-sobral
 AVISO taxa impossível (R$ 2714.89), não mostrada: campus-da-ufc-em-sobral-reabre-inscricoes-para-o-edital-n-101-2013
 AVISO taxa impossível (R$ 2434.33), não mostrada: ufg-estende-inscricoes-para-professor-do-campus-cidade-de-goias
+AVISO taxa impossível (R$ 1372), não mostrada: prefeitura-de-dourado-sp-preenchera-13-vagas
+AVISO taxa impossível (R$ 2365.32), não mostrada: cefet-go-realizara-concurso-publico
+AVISO taxa impossível (R$ 1627.28), não mostrada: taboao-da-serra-sp-vagas-para-o-cargo-de-medico
 AVISO taxa impossível (R$ 4231.6), não mostrada: uem-pr-abre-selecao-para-tecnico-em-laboratorio-com-salario-de-4-2-mil
 AVISO taxa impossível (R$ 2125.02), não mostrada: prefeitura-de-cajamar-sp-retifica-um-dos-editais-de-concursos-publicos
 AUDITORIA: 0 erros, 27 para conferir, 1 info (ver auditoria.txt)
-concursos nas cidades: 142638 (no ar: 142632) · detalhes: 140242 (no ar: 134250)
-levantamento estadual/municipal: 895 (no ar: 895)
+concursos nas cidades: 142654 (no ar: 142638) · detalhes: 141792 (no ar: 140242)
+levantamento estadual/municipal: 896 (no ar: 895)
 sintaxe conferida com o Node em 82 arquivos
 OK: pode publicar

@@ -630,3 +630,4 @@ AC|PCAC - Polícia Civil do Estado do Acre|-|139|Vários Cargos (Superior)|11/11
 SP|UFABC - Fundação Universidade Federal do ABC|-|79|Professor assistente (Superior)|30/11/2026>28/01/2027|ufabc-sp-abre-concurso-publico-para-professores
 MG|IPSEMG - Instituto de Previdência dos Servidores do Estado de Minas Gerais|-|99|Vários Cargos (Superior)|12/11/2026|ipsemg-retifica-processo-seletivo-com-vagas-para-residencia-medica
 MG|UNIFAL - Universidade Federal de Alfenas|-|1|Professor Substituto (Superior)|23/11/2026|unifal-mg-abre-vaga-para-professor-substituto-de-ciencias-atuariais-em-varginha
+PA|IFPA - Instituto Federal de Educação, Ciência e Tecnologia do Pará|-|2|Professor substituto (Superior)|15/11/2026|ifpa-abre-selecao-para-professores-substitutos-de-engenharia-eletrica-e-engenharia-mecanica
