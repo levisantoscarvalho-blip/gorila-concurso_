@@ -5138,9 +5138,10 @@ flor-do-sertao	Flor do Sertão	Prefeitura de Flor do Sertão	Operador de Máquin
 flor-do-sertao	Flor do Sertão	Prefeitura de Flor do Sertão	Farmacêutico	Superior	1			2017-12-08	prefeitura-de-flor-do-sertao-sc-abre-selecao-para-farmaceutico	ea
 flor-do-sertao	Flor do Sertão	Prefeitura de Flor do Sertão	Médico	Superior	1			2017-08-30	prefeitura-de-flor-do-sertao-sc-divulga-processo-seletivo-para-medico	ea
 florianopolis	Florianópolis	CAU - Conselho de Arquitetura e Urbanismo de Santa Catarina	Vários Cargos	Médio / Superior	0			2026-12-09	cau-sc-abre-concurso-publico-para-cadastro-de-reserva-em-florianopolis	na
-florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC e ao CEPON	Fonoaudiólogo I	Superior	1			2026-11-09	fahece-sc-abre-selecao-para-o-cargo-de-fonoaudiologo-no-cepon-de-florianopolis	na
+florianopolis	Florianópolis	FAHECE	Terapeuta Ocupacional I	Superior	1			2026-11-22	fahece-sc-prorroga-inscricoes-de-processo-seletivo-para-o-cargo-de-terapeuta-ocupacional-i-em-florianopolis	na
+florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC e ao CEPON	Fonoaudiólogo I	Superior	1			2026-11-09	fahece-sc-abre-selecao-para-o-cargo-de-fonoaudiologo-no-cepon-de-florianopolis	ea
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Técnico(a) Auxiliar de Regulação Médica (TARM)	Ensino Médio	1			2026-11-08	fahece-sc-abre-vaga-para-tecnico-auxiliar-de-regulacao-medica-pcd-em-florianopolis	ea
-florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao Hemosc e Cepon	Assistente de Almoxarifado I	Ensino Médio	1			2026-11-08	fahece-sc-abre-vaga-para-assistente-de-almoxarifado-pcd-no-samu-de-florianopolis	ea
+florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao Hemosc e Cepon	Assistente de Almoxarifado I	Ensino Médio	1			2026-11-08	fahece-sc-prorroga-inscricoes-de-processo-seletivo-para-assistente-de-almoxarifado-pcd-no-samu-de-florianopolis	ea
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC e CEPON	Técnico de Laboratório I	Ensino Técnico	1			2026-11-06	fahece-sc-abre-processo-seletivo-para-tecnico-de-laboratorio-em-florianopolis	ea
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC e CEPON	Assistente Administrativo I	Ensino Médio	1			2026-10-31	fahece-sc-abre-processo-seletivo-para-o-cargo-de-assistente-administrativo-no-cepon	ea
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC e CEPON	Assistente Administrativo I	Ensino Médio	1			2026-10-28	fahece-sc-anuncia-vaga-de-assistente-administrativo-para-o-cepon-em-florianopolis	ea
@@ -5151,7 +5152,6 @@ florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC e CEPON	Téc
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao Hemosc e Cepon	Médico do Trabalho	Superior	1			2026-10-25	fahece-sc-anuncia-vaga-para-medico-do-trabalho-em-florianopolis	ea
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao Hemosc e Cepon	Médico II	Superior	1			2026-10-25	fahece-sc-anuncia-vaga-para-medico-infectologista-no-cepon-de-florianopolis	ea
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao Hemosc e Cepon	Motorista II	Ensino Médio	1			2026-10-25	fahece-sc-abre-selecao-para-o-cargo-de-motorista-ii-em-florianopolis	ea
-florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC e CEPON	Terapeuta Ocupacional I	Superior	1			2026-10-25	fahece-sc-abre-processo-seletivo-para-o-cargo-de-terapeuta-ocupacional-i-em-florianopolis	ea
 florianopolis	Florianópolis	FAHECE - HEMOSC	Coordenador de Suprimentos I	Superior	1			2026-10-23	fahece-sc-anuncia-processo-seletivo-para-coordenador-de-suprimentos-i-no-hemosc-de-florianopolis	ea
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao Hemosc e Cepon	Técnico Auxiliar de Regulação Médica	Ensino Médio	1			2026-10-21	fahece-sc-abre-selecao-para-tecnico-auxiliar-de-regulacao-medica-no-samu-de-florianopolis	ea
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao Hemosc e Cepon	Enfermeiro I	Superior	1			2026-10-21	fahece-sc-abre-processo-seletivo-para-enfermeiro-i-no-cepon-de-florianopolis	ea
@@ -5300,12 +5300,12 @@ florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC e CEPON	Biom
 florianopolis	Florianópolis	UFSC - Universidade Federal de Santa Catarina	Professor Substituto	Superior	20			2026-03-30	ufsc-abre-processo-seletivo-para-o-cargo-de-professor-substituto-em-diversas-areas-e-localidades	ea
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Farmacêutico I, Assistente de Faturamento II	Superior	2			2026-03-29	fahece-sc-abre-vagas-para-farmaceutico-e-assistente-de-faturamento-no-cepon-de-florianopolis	ea
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC e CEPON	Bioquímico/Farmacêutico/Biomédico/Biólogo, Assistente de Almoxarifado I	Médio / Superior	2			2026-03-28	fahece-sc-abre-processos-seletivos-para-o-hemosc-de-florianopolis	ea
-florianopolis	Florianópolis	Prefeitura de Florianópolis	Vários Cargos	Médio / Técnico / Superior	41			2026-03-27	prefeitura-de-florianopolis-sc-reabre-inscricoes-para-processo-seletivo	ea
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Assistente de Faturamento I	Superior	1			2026-03-27	fahece-sc-abre-processo-seletivo-para-cargo-de-assistente-de-faturamento-i-em-florianopolis	ea
+florianopolis	Florianópolis	Prefeitura de Florianópolis	Vários Cargos	Médio / Técnico / Superior	41			2026-03-27	prefeitura-de-florianopolis-sc-reabre-inscricoes-para-processo-seletivo	ea
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC e CEPON	Enfermeiro, Técnico em Enfermagem	Técnico / Superior	2			2026-03-26	fahece-sc-abre-processos-seletivos-com-vagas-para-enfermeiro-e-tecnico-em-enfermagem	ea
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Técnico de Enfermagem I	Ensino Técnico	1			2026-03-26	fahece-sc-anuncia-vaga-para-tecnico-de-enfermagem-no-cepon-de-florianopolis	ea
-florianopolis	Florianópolis	SES - Secretaria de Estado da Saúde de Santa Catarina	Administrador	Superior	1			2026-03-24	ses-sc-abre-processo-seletivo-para-o-cargo-de-administrador-em-florianopolis	ea
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Assistente Administrativo I - Farmácia	Ensino Médio	1			2026-03-24	fahece-sc-abre-vaga-em-processo-seletivo-para-assistente-administrativo-na-area-de-farmacia	ea
+florianopolis	Florianópolis	SES - Secretaria de Estado da Saúde de Santa Catarina	Administrador	Superior	1			2026-03-24	ses-sc-abre-processo-seletivo-para-o-cargo-de-administrador-em-florianopolis	ea
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Assistente Financeiro III	Superior	1			2026-03-23	hemosc-sc-abre-vaga-para-assistente-financeiro-iii-em-florianopolis	ea
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Analista de Suprimentos III	Superior	1			2026-03-23	fahece-sc-anuncia-vaga-para-analista-de-suprimentos-iii-em-florianopolis	ea
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Assistente de Almoxarifado I	Ensino Médio	1			2026-03-22	fahece-sc-anuncia-vaga-para-assistente-de-almoxarifado-i-exclusiva-para-pcd	ea
@@ -5326,16 +5326,16 @@ florianopolis	Florianópolis	HEMOSC - Centro de Hematologia e Hemoterapia de San
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Coordenador de Engenharia Clínica e Manutenção	Superior	1			2026-03-02	fahece-sc-abre-selecao-para-coordenador-de-engenharia-clinica-com-salario-de-14-3-mil	ea
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Analista Contábil II	Superior	1			2026-03-01	fahece-sc-abre-processo-seletivo-para-analista-contabil-ii-em-florianopolis	ea
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Auxiliar de Higienização	Fundamental	1			2026-03-01	fahece-sc-abre-vaga-para-auxiliar-de-higienizacao-no-samu-de-florianopolis	ea
-florianopolis	Florianópolis	PMF - Prefeitura de Florianópolis	Coveiro, Motorista, Operador de Máquinas	Fundamental	13			2026-02-27	prefeitura-de-florianopolis-sc-retifica-processo-seletivo-para-cargos-de-nivel-fundamental	ea
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Auxiliar de Higienização	Ensino Médio	1			2026-02-27	fahece-sc-abre-vaga-para-auxiliar-de-higienizacao-no-cepon-de-florianopolis	ea
+florianopolis	Florianópolis	PMF - Prefeitura de Florianópolis	Coveiro, Motorista, Operador de Máquinas	Fundamental	13			2026-02-27	prefeitura-de-florianopolis-sc-retifica-processo-seletivo-para-cargos-de-nivel-fundamental	ea
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Analista de Administração de Pessoal I	Superior	1			2026-02-25	fahece-sc-abre-processo-seletivo-para-analista-de-administracao-de-pessoal-i-em-florianopolis	ea
-florianopolis	Florianópolis	SES - Secretaria de Estado da Saúde de Santa Catarina	Administrador, Médico Especialista em Nefrologia - Transplante Renal	Superior	2			2026-02-23	ses-sc-abre-processo-seletivo-com-salarios-de-ate-10-5-mil	ea
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Assistente de Departamento Pessoal I PCD	Ensino Médio	1			2026-02-23	fahece-sc-abre-vaga-exclusiva-para-pcd-no-cargo-de-assistente-de-departamento-pessoal	ea
+florianopolis	Florianópolis	SES - Secretaria de Estado da Saúde de Santa Catarina	Administrador, Médico Especialista em Nefrologia - Transplante Renal	Superior	2			2026-02-23	ses-sc-abre-processo-seletivo-com-salarios-de-ate-10-5-mil	ea
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Analista de Faturamento II	Superior	1			2026-02-20	fahece-sc-anuncia-processo-seletivo-para-analista-de-faturamento-ii-no-cepon-de-florianopolis	ea
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC/CEPON/CEPON	Coordenador de Controladoria	Superior	1			2026-02-20	fahece-sc-abre-processo-seletivo-para-coordenador-de-controladoria-em-florianopolis	ea
 florianopolis	Florianópolis	Prefeitura de Florianópolis	Agente Comunitário de Saúde, Agente de Combate às Endemias	Ensino Médio	500			2026-02-19	prefeitura-de-florianopolis-sc-publica-retificacao-de-processo-seletivo-com-500-vagas	ea
-florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC e CEPON	Assistente Administrativo III	Superior	1			2026-02-18	fahece-sc-abre-vaga-para-assistente-administrativo-iii-com-salario-superior-a-3-7-mil	ea
 florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC e CEPON	Assistente Administrativo III	Superior	2			2026-02-18	fahece-sc-abre-processos-seletivos-para-profissionais-de-nivel-superior-em-florianopolis	ea
+florianopolis	Florianópolis	FAHECE - Fundação de Apoio ao HEMOSC e CEPON	Assistente Administrativo III	Superior	1			2026-02-18	fahece-sc-abre-vaga-para-assistente-administrativo-iii-com-salario-superior-a-3-7-mil	ea
 florianopolis	Florianópolis	HEMOSC - Centro de Hematologia e Hemoterapia de Santa Catarina	Assistente de Compras I	Ensino Médio	1			2026-02-17	fahece-sc-abre-processo-seletivo-com-vaga-para-assistente-de-compras-i-pcd-no-hemosc-de-florianopolis	ea
 formosa-do-sul	Formosa do Sul	Prefeitura de Formosa do Sul	Vários Cargos	Fundamental / Médio / Superior	12			2026-07-08	prefeitura-de-formosa-do-sul-sc-abre-seletivo-para-diversos-cargos-com-salarios-de-ate-14888	ea
 formosa-do-sul	Formosa do Sul	Prefeitura de Formosa do Sul	Vários Cargos	Fundamental / Médio / Técnico / Superior	53			2026-06-25	prefeitura-de-formosa-do-sul-sc-retifica-concurso-publico	ea
@@ -9003,11 +9003,11 @@ joacaba	Joaçaba	Prefeitura de Joaçaba	Vários Cargos	Fundamental / Médio / Su
 joacaba	Joaçaba	Prefeitura de Joaçaba	Técnico em Vigilância Sanitária	Ensino Médio	1			2009-11-13	vagas-para-tecnico-em-vigilancia-sanitaria-na-prefeitura-de-joacaba-sc	ea
 joacaba	Joaçaba	Prefeitura de Joaçaba	Área da Educação	Magistério / Superior	13			2008-12-11	prefeitura-de-joacaba-sc-oferece-13-vagas-na-area-da-educacao	ea
 joacaba	Joaçaba	Prefeitura de Joaçaba - Edital 1	Vários Cargos	Fundamental / Médio / Superior	34			2008-02-22	prefeitura-de-joacaba-sc-selecionara-271-candidatos	ea
+joinville	Joinville	HEMOSC	Médico II	Superior	1			2026-11-16	fahece-sc-prorroga-inscricoes-de-processo-seletivo-para-medico-no-hemosc-de-joinville	na
 joinville	Joinville	FAHECE - Fundação de Apoio ao HEMOSC e CEPON	Assistente Administrativo I	Ensino Médio	0	CR		2026-11-06	fahece-sc-abre-processo-seletivo-para-assistente-administrativo-i-exclusivo-para-pcd	ea
 joinville	Joinville	FAHECE - Fundação de Apoio ao HEMOSC e CEPON	Analista Administrativo I	Superior	1			2026-10-21	fahece-sc-anuncia-processo-seletivo-para-analista-administrativo-i-em-joinville	ea
 joinville	Joinville	HEMOSC - Centro de Hematologia e Hemoterapia de Santa Catarina	Técnico em Enfermagem I	Ensino Técnico	1			2026-10-15	fahece-sc-abre-processo-seletivo-para-tecnico-em-enfermagem-i-no-municipio-de-joinville	ea
-joinville	Joinville	FAHECE - Fundação de Apoio ao HEMOSC e CEPON	Médico II	Superior	1			2026-10-13	fahece-sc-abre-processo-seletivo-para-medico-no-hemosc-de-joinville	ea
-joinville	Joinville	FAHECE - Fundação de Apoio ao HEMOSC e CEPON	Técnico de Enfermagem I	Ensino Técnico	0	CR		2026-10-09	fahece-sc-abre-processo-seletivo-para-tecnico-de-enfermagem-pcd-no-hemosc-de-joinville	ea
+joinville	Joinville	FAHECE - Fundação de Apoio ao HEMOSC e CEPON	Técnico de Enfermagem I	Ensino Técnico	0	CR		2026-10-09	fahece-sc-prorroga-inscricoes-de-processo-seletivo-para-tecnico-de-enfermagem-pcd-no-hemosc-de-joinville	ea
 joinville	Joinville	FAHECE - HEMOSC de Joinville	Técnico em Enfermagem I	Ensino Técnico	1			2026-09-01	fahece-sc-abre-processo-seletivo-para-tecnico-em-enfermagem-i-em-joinville	ea
 joinville	Joinville	SES - Secretaria de Estado da Saúde de Santa Catarina	Vários Cargos	Médio / Técnico / Superior	11			2026-08-28	ses-sc-abre-processo-seletivo-para-profissionais-de-saude-em-joinville	ea
 joinville	Joinville	Prefeitura de Joinville	Vários Cargos	Médio / Superior	0	CR		2026-08-20	prefeitura-de-joinville-sc-prorroga-inscricoes-para-o-processo-seletivo-de-cadastro-de-reserva	ea
@@ -9016,13 +9016,13 @@ joinville	Joinville	HEMOSC - Fundação de Apoio ao HEMOSC e CEPON (FAHECE)	Assi
 joinville	Joinville	FAHECE - Fundação de Apoio ao HEMOSC e CEPON	Rádio Operador(a)	Ensino Médio	1			2026-07-30	fahece-sc-abre-vaga-para-radio-operador-no-samu-de-joinville	ea
 joinville	Joinville	CVJ - Câmara de Vereadores de Joinville	Vários Cargos	Médio / Superior	4			2026-07-16	camara-de-joinville-sc-retifica-concurso-publico-com-salarios-de-ate-9828	ea
 joinville	Joinville	FAHECE - Fundação de Apoio ao HEMOSC e CEPON	Enfermeiro Intervencionista	Superior	1			2026-07-12	fahece-sc-abre-processo-seletivo-para-cargo-de-enfermeiro-intervencionista-em-joinville	ea
-joinville	Joinville	Joinville - Município de Joinville	Professor de Língua Portuguesa, Professor de Matemática, Professor de Educação Infantil	Superior	4			2026-07-06	prefeitura-de-joinville-sc-abre-processo-seletivo-para-professores	ea
 joinville	Joinville	FAHECE - HEMOSC de Joinville/SC	Assistente Administrativo I	Ensino Médio	1			2026-07-06	fahece-sc-abre-processo-seletivo-para-assistente-administrativo-em-vaga-exclusiva-para-pcd	ea
+joinville	Joinville	Joinville - Município de Joinville	Professor de Língua Portuguesa, Professor de Matemática, Professor de Educação Infantil	Superior	4			2026-07-06	prefeitura-de-joinville-sc-abre-processo-seletivo-para-professores	ea
 joinville	Joinville	FAHECE - Fundação de Apoio ao Hemosc e Cepon/SAMU	Médico(a) Regulador(a) das Urgências	Superior	0	CR		2026-06-28	fahece-sc-abre-selecao-para-medico-regulador-das-urgencias-do-samu	ea
 joinville	Joinville	FAHECE - Fundação de Apoio ao HEMOSC e CEPON	Copeiro(a)	Fundamental	1			2026-06-21	fahece-sc-abre-vaga-para-o-cargo-de-copeiro-em-joinville	ea
 joinville	Joinville	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Auxiliar de Higienização	Fundamental	1			2026-05-17	fahece-sc-abre-processo-seletivo-com-vaga-para-auxiliar-de-higienizacao-em-joinville	ea
-joinville	Joinville	HEMOSC - Centro de Hematologia e Hemoterapia de Santa Catarina	Motorista I, Técnico em Informática I	Médio / Técnico	2			2026-05-14	fahece-sc-abre-vagas-para-motorista-e-tecnico-em-informatica-em-joinville	ea
 joinville	Joinville	FAHECE - Fundação de Apoio ao HEMOSC e ao CEPON	Assistente de Laboratório I	Ensino Técnico	1			2026-05-14	fahece-sc-abre-processo-seletivo-para-assistente-de-laboratorio-i-em-joinville	ea
+joinville	Joinville	HEMOSC - Centro de Hematologia e Hemoterapia de Santa Catarina	Motorista I, Técnico em Informática I	Médio / Técnico	2			2026-05-14	fahece-sc-abre-vagas-para-motorista-e-tecnico-em-informatica-em-joinville	ea
 joinville	Joinville	FAHECE - Fundação de Apoio ao HEMOSC/CEPON (SAMU)	Condutor(a) Socorrista, Médico(a) Intervencionista	Médio / Superior	1			2026-05-13	fahece-sc-abre-processos-seletivos-para-o-samu-em-joinville-e-canoinhas	ea
 joinville	Joinville	Prefeitura de Joinville	Vários Cargos	Médio / Superior	707			2026-05-08	prefeitura-de-joinville-sc-retifica-concurso-publico-com-vagas-na-area-da-educacao	ea
 joinville	Joinville	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Auxiliar de Higienização, Médico(a) Intervencionista	Fundamental / Superior	2			2026-04-12	fahece-sc-cancela-selecao-para-medico-intervencionista-e-mantem-vaga-para-auxiliar-de-higienizacao	ea
@@ -9036,13 +9036,13 @@ joinville	Joinville	Companhia Águas de Joinville	Vários Cargos	Médio / Técni
 joinville	Joinville	SES - Secretaria de Estado da Saúde	Vários Cargos	Médio / Técnico / Superior	24			2025-11-06	ses-sc-abre-processo-seletivo-em-joinville-para-diversos-profissionais	ea
 joinville	Joinville	Prefeitura de Joinville	Vários Cargos	Fundamental / Médio / Técnico / Superior	155			2025-10-27	prefeitura-de-joinville-sc-publica-retificacoes-de-concurso-publico	ea
 joinville	Joinville	Prefeitura de Joinville	Vários Cargos	Médio / Técnico / Superior	0			2025-10-21	prefeitura-de-joinville-sc-publica-retificacao-de-processo-seletivo	ea
-joinville	Joinville	SES - Secretaria de Estado da Saúde	Fonoaudiólogo, Médico Especialista em Ginecologia e Obstetrícia	Superior	2			2025-10-06	ses-sc-abre-processo-seletivo-na-cidade-de-joinville	ea
 joinville	Joinville	FAHECE - Fundação de Apoio ao Hemosc/ Cepon - Joinville	Enfermeiro I	Superior	1			2025-10-06	fahece-publica-edital-de-processo-seletivo-para-cargo-de-enfermeiro-i	ea
+joinville	Joinville	SES - Secretaria de Estado da Saúde	Fonoaudiólogo, Médico Especialista em Ginecologia e Obstetrícia	Superior	2			2025-10-06	ses-sc-abre-processo-seletivo-na-cidade-de-joinville	ea
 joinville	Joinville	FAHECE - Fundação de Apoio ao Hemosc/ Cepon - Joinville	Auxiliar de Higienização	Fundamental	1			2025-09-05	fahece-sc-divulga-processo-seletivo-para-auxiliar-de-higienizacao-no-hemosc-de-joinville	ea
 joinville	Joinville	HEMOSC - HEMOSC/CEPON	Motorista I	Ensino Médio	0			2025-09-01	fahece-abre-processo-seletivo-para-motorista-i-no-hemosc-em-joinville-sc	ea
 joinville	Joinville	FAHECE - Fundação de Apoio ao Hemosc/ Cepon - Joinville	Técnico de Enfermagem I, Assistente Administrativo I	Médio / Técnico	0			2025-08-29	fahece-lanca-dois-editais-de-processo-seletivo-para-cargos-de-nivel-medio-e-tecnico	ea
-joinville	Joinville	SES - Secretaria de Estado da Saúde de Santa Catarina	Vários Cargos	Superior	18			2025-08-21	ses-sc-processo-seletivo-para-profissionais-de-nivel-superior-e-divulgado-em-joinville	ea
 joinville	Joinville	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Auxiliar de Higienização	Fundamental	1			2025-08-21	fahece-sc-processo-seletivo-para-auxiliar-de-higienizacao-e-divulgado-no-hemosc-de-joinville	ea
+joinville	Joinville	SES - Secretaria de Estado da Saúde de Santa Catarina	Vários Cargos	Superior	18			2025-08-21	ses-sc-processo-seletivo-para-profissionais-de-nivel-superior-e-divulgado-em-joinville	ea
 joinville	Joinville	HEMOSC	Assistente de Laboratório I	Ensino Técnico	0			2025-08-20	fahece-abre-processo-seletivo-para-assistente-de-laboratorio-em-joinville-sc	ea
 joinville	Joinville	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Motorista I, Assistente Administrativo(a) I	Ensino Médio	2			2025-08-07	fahece-abre-dois-processos-seletivos-no-municipio-de-joinville-sc	ea
 joinville	Joinville	FAHECE - Fundação de Apoio ao Hemosc/ Cepon - Joinville	Rádio Operador	Ensino Médio	1			2025-08-03	fahece-sc-processo-seletivo-para-radio-operador-e-divulgado-em-joinville	ea
@@ -9050,8 +9050,8 @@ joinville	Joinville	FAHECE - Fundação de Apoio ao HEMOSC/CEPON	Auxiliar de Hig
 joinville	Joinville	SAMU - Serviço de Atendimento Móvel de Urgência	Técnico Auxiliar de Regulação Médica II	Ensino Médio	1			2025-07-13	fahece-abre-processo-seletivo-junto-ao-samu-no-municipio-de-joinville-sc	ea
 joinville	Joinville	HEMOSC - CEPON	Auxiliar de Higienização	Fundamental	1			2025-07-07	fahece-lanca-processo-seletivo-para-auxiliar-de-higienizacao-em-joinville-sc	ea
 joinville	Joinville	FAHECE - Fundação de Apoio ao Hemosc/ Cepon - Joinville	Técnico Auxiliar de Regulação Médica	Ensino Médio	1			2025-06-22	fahece-anuncia-processo-seletivo-no-municipio-de-joinville-sc	ea
-joinville	Joinville	SES - Secretaria do Estado de Saúde de Santa Catarina	Vários Cargos	Técnico / Superior	4			2025-06-05	ses-sc-anuncia-quatro-vagas-em-novo-processo-seletivo	ea
 joinville	Joinville	Fahece - Fundação de Apoio ao HEMOSC/CEPON	Educador	Superior	1			2025-06-05	fahece-abre-abertura-de-processo-seletivo-para-cargo-de-educador	ea
+joinville	Joinville	SES - Secretaria do Estado de Saúde de Santa Catarina	Vários Cargos	Técnico / Superior	4			2025-06-05	ses-sc-anuncia-quatro-vagas-em-novo-processo-seletivo	ea
 joinville	Joinville	FAHECE - Fundação de Apoio ao Hemosc/ Cepon - Joinville	Analista Administrativo I	Superior	0			2025-05-30	fahece-abre-processo-seletivo-em-joinville-sc	ea
 joinville	Joinville	FAHECE - Fundação de Apoio ao Hemosc/ Cepon - Joinville	Técnico de Enfermagem I	Ensino Técnico	0			2025-05-15	fahece-sc-processo-seletivo-para-tecnico-de-enfermagem-i-e-divulgado-em-joinville	ea
 joinville	Joinville	Prefeitura de Joinville	Vários Cargos	Fundamental / Médio / Técnico / Superior	0			2025-05-05	prefeitura-de-joinville-sc-divulga-retificacoes-de-dois-processos-seletivos	ea
@@ -9067,8 +9067,8 @@ joinville	Joinville	CISNORDESTE - Consórcio Interfederativo de Saúde do Nordes
 joinville	Joinville	FAHECE - Fundação de Apoio ao Hemosc/Cepon - Joinville	Assistente de Laboratório I	Ensino Técnico	1			2024-10-10	fahece-processo-seletivo-para-assistente-de-laboratorio-e-divulgado-em-joinville-sc	ea
 joinville	Joinville	FAHECE - Fundação de Apoio ao Hemosc/ Cepon - Joinville	Técnico em Enfermagem I	Ensino Técnico	1			2024-09-26	fahece-publica-novo-processo-seletivo-na-cidade-de-joinville-sc	ea
 joinville	Joinville	FAHECE - Fundação de Apoio ao Hemosc/Cepon	Técnico Auxiliar de Regulação Médica	Médio / Técnico	1			2024-09-23	fahece-processo-seletivo-para-tecnico-auxiliar-de-regulacao-medica-e-divulgado-em-joinville-sc	ea
-joinville	Joinville	FAHECE - Fundação de Apoio ao Hemosc/Cepon	Assistente Administrativo I	Ensino Médio	1			2024-09-16	fahece-processo-seletivo-para-assistente-administrativo-i-e-anunciado-em-joinville-sc	ea
 joinville	Joinville	FAHECE - Fundação de Apoio ao Hemosc/ Cepon - Joinville	Auxiliar de Higienização	Ensino Médio	0			2024-09-16	fahece-processo-seletivo-para-auxiliar-de-higienizacao-e-anunciado-em-joinville-sc	ea
+joinville	Joinville	FAHECE - Fundação de Apoio ao Hemosc/Cepon	Assistente Administrativo I	Ensino Médio	1			2024-09-16	fahece-processo-seletivo-para-assistente-administrativo-i-e-anunciado-em-joinville-sc	ea
 joinville	Joinville	SES - Secretaria de Estado da Saúde - Joinville	Vários Cargos	Médio / Técnico / Superior	24			2024-09-12	ses-sc-processo-seletivo-oferta-vagas-em-diferentes-unidades-de-lotacao	ea
 joinville	Joinville	FAHECE - Fundação de Apoio ao Hemosc/ Cepon	Auxiliar de Higienização	Ensino Médio	0			2024-09-02	fahece-processo-seletivo-para-auxiliar-de-higienizacao-e-divulgado-em-joinville-sc	ea
 joinville	Joinville	FAHECE - Fundação de Apoio ao Hemosc/ Cepon - Joinville	Assistente Administrativo I	Ensino Médio	0			2024-07-31	fahece-informa-abertura-de-processo-seletivo-para-a-cidade-de-joinville-sc	ea
@@ -9100,8 +9100,8 @@ joinville	Joinville	CISNordeste - Consórcio Intermunicipal de Saúde do Nordest
 joinville	Joinville	FAHECE - Fundação de Apoio ao Hemosc/ Cepon	Assistente de Laboratório I	Ensino Técnico	1			2023-06-09	fahece-anuncia-processo-seletivo-em-joinville-sc	ea
 joinville	Joinville	Prefeitura de Joinville	Vários Cargos	Fundamental / Médio / Superior	0			2022-12-11	prefeitura-de-joinville-sc-anuncia-edital-de-novo-processo-seletivo	ea
 joinville	Joinville	Prefeitura de Joinville	Vários Cargos	Médio / Magistério / Superior	400			2022-10-28	prefeitura-de-joinville-sc-anuncia-retificacao-de-concurso-publico	ea
-joinville	Joinville	Prefeitura de Joinville	Vários Cargos	Superior	0			2022-10-05	prefeitura-de-joinville-sc-divulga-processo-seletivo-com-salarios-de-ate-6-mil	ea
 joinville	Joinville	UNIVILLE - Universidade da Região de Joinville	Auxiliar de Saúde Bucal	Médio / Técnico	2			2022-10-05	furj-e-univille-sc-anunciam-um-novo-processo-seletivo	ea
+joinville	Joinville	Prefeitura de Joinville	Vários Cargos	Superior	0			2022-10-05	prefeitura-de-joinville-sc-divulga-processo-seletivo-com-salarios-de-ate-6-mil	ea
 joinville	Joinville	SES - Secretaria de Estado da Saúde de Santa Catarina - Joinville	Vários Cargos	Técnico / Superior	32			2022-06-10	processo-seletivo-anunciado-pela-ses-sc-para-a-cidade-de-joinville-sc	ea
 joinville	Joinville	Prefeitura de Joinville	Vários Cargos	Médio / Técnico / Superior	0			2022-05-01	processo-seletivo-para-contratacao-temporaria-e-aberto-em-joinville-sc	ea
 joinville	Joinville	Prefeitura de Joinville	Professor Bolsista	Superior	0			2022-03-31	prefeitura-de-joinville-sc-abre-processo-seletivo-para-o-pronatec	ea
@@ -9168,8 +9168,8 @@ joinville	Joinville	Secretaria de Estado da Saúde	Médico - Psiquiatria	Superio
 joinville	Joinville	Secretaria de Estado da Saúde	Fonoaudiólogo	Superior	1			2014-10-20	ses-sc-abre-selecao-para-fonoaudiologo-em-joinville	ea
 joinville	Joinville	Secretaria de Estado da Saúde	Médicos	Superior	4			2014-10-10	ses-sc-abre-vagas-para-medicos-em-joinville-e-ibirama	ea
 joinville	Joinville	Secretaria de Estado da Saúde	Médico Clínico Geral	Superior	8			2014-09-19	ses-sc-abre-vagas-para-medico-clinico-geral-em-joinville	ea
-joinville	Joinville	Secretaria de Estado da Saúde	Médico Clínico Geral	Superior	10			2014-09-01	ses-sc-seleciona-10-medicos-para-hospital-de-joinville	ea
 joinville	Joinville	Secretaria de Estado da Saúde	Médicos	Superior	5			2014-09-01	ses-sc-abre-novas-selecoes-para-medicos-em-joinville-e-sao-jose	ea
+joinville	Joinville	Secretaria de Estado da Saúde	Médico Clínico Geral	Superior	10			2014-09-01	ses-sc-seleciona-10-medicos-para-hospital-de-joinville	ea
 joinville	Joinville	Secretaria de Estado da Saúde	Médico UTI Neonatal	Superior	3			2014-08-15	ses-sc-prorroga-inscricoes-para-selecao-de-medicos-em-joinville	ea
 joinville	Joinville	Secretaria de Estado da Saúde	Médico - Pediatria	Superior	2			2014-07-28	ses-sc-seleciona-profissionais-para-atuar-em-florianopolis-e-joinville	ea
 joinville	Joinville	Prefeitura de Joinville	Vários Cargos	Fundamental / Médio / Superior	1524			2014-07-11	prefeitura-de-joinville-sc-divulga-mais-duas-retificacoes-para-o-concurso-005-2014	ea
@@ -9189,8 +9189,8 @@ joinville	Joinville	Companhia Águas de Joinville	Vários Cargos	Fundamental / M
 joinville	Joinville	Câmara de Joinville	Vários Cargos	Médio / Superior	47			2013-12-20	camara-de-joinville-sc-publica-nova-retificacao-ao-edital-01-2013-com-47-vagas	ea
 joinville	Joinville	Secretaria de Estado da Saúde	Médicos - Emergência e/ou UTI	Superior	23			2013-11-19	ses-sc-abre-mais-de-20-vagas-para-medico-em-joinville	ea
 joinville	Joinville	Secretaria de Estado da Saúde	Médicos	Superior	7			2013-11-08	ses-sc-abre-7-vagas-para-medicos-na-maternidade-darcy-vargas-em-joinville	ea
-joinville	Joinville	ITTRAN - Instituto de Trânsito e Transporte	Estagiários	Superior Incompleto	0			2013-10-25	ittran-sc-retifica-edital-n-01-2013-estagiarios-de-nivel-superior-em-joinville	ea
 joinville	Joinville	Secretaria de Estado da Saúde	Fonoaudiólogo e Médicos	Superior	26			2013-10-25	ses-sc-anuncia-selecao-de-29-profissionais-entre-joinville-e-florianopolis	ea
+joinville	Joinville	ITTRAN - Instituto de Trânsito e Transporte	Estagiários	Superior Incompleto	0			2013-10-25	ittran-sc-retifica-edital-n-01-2013-estagiarios-de-nivel-superior-em-joinville	ea
 joinville	Joinville	Secretaria de Estado da Saúde	Psicólogo e Médicos	Superior	11			2013-10-15	ses-sc-abre-13-vagas-para-medicos-e-1-para-psicologo-em-joinville-e-ibirama	ea
 joinville	Joinville	Prefeitura de Joinville	Estagiários	Superior Incompleto	40			2013-10-08	prefeitura-de-joinville-sc-abre-40-vagas-para-estagiarios-de-nivel-superior	ea
 joinville	Joinville	Hospital Municipal São José	Médico Anestesiologista	Superior	0			2013-10-02	hospital-municipal-sao-jose-de-joinville-sc-credencia-medicos-anestesiologistas	ea

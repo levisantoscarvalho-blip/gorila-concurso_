@@ -631,3 +631,13 @@ SP|UFABC - Fundação Universidade Federal do ABC|-|79|Professor assistente (Sup
 MG|IPSEMG - Instituto de Previdência dos Servidores do Estado de Minas Gerais|-|99|Vários Cargos (Superior)|12/11/2026|ipsemg-retifica-processo-seletivo-com-vagas-para-residencia-medica
 MG|UNIFAL - Universidade Federal de Alfenas|-|1|Professor Substituto (Superior)|23/11/2026|unifal-mg-abre-vaga-para-professor-substituto-de-ciencias-atuariais-em-varginha
 PA|IFPA - Instituto Federal de Educação, Ciência e Tecnologia do Pará|-|2|Professor substituto (Superior)|15/11/2026|ifpa-abre-selecao-para-professores-substitutos-de-engenharia-eletrica-e-engenharia-mecanica
+CE|Unilab - Universidade da Integração Internacional da Lusofonia Afro-Brasileira|-|16|Professor do Magistério Superior (Superior)|09/12/2026|unilab-ce-abre-concurso-publico-com-vagas-para-professores-do-magisterio-superior
+PE|PC - Polícia Civil|-|1315|Agente de Polícia, Delegado de Polícia, Escrivão de Polícia (Superior)|16/12/2026|secretaria-de-defesa-social-e-de-administracao-pe-retificam-concurso-para-a-policia-civil
+SP|Unifesp - Universidade Federal de São Paulo|-|1|Professor Assistente A Substituto (Superior)|25/11/2026|unifesp-sp-abre-vaga-para-professor-na-area-de-ecologia-de-paisagem
+SP|Unifesp - Universidade Federal de São Paulo|-|1|Professor Assistente A Substituto (Superior)|09/12/2026|unifesp-sp-abre-vaga-para-professor-substituto-de-terapia-ocupacional-no-campus-da-baixada-santista
+RJ|CBMERJ - Corpo de Bombeiros Militar do Estado do Rio de Janeiro|-|192|Vários Cargos (Superior)|16/11/2026|cbmerj-rj-prorroga-inscricoes-de-processo-seletivo-para-1-tenente-temporario
+MG|FAEPU - Fundação de Assistência, Estudo e Pesquisa de Uberlândia|-|0|Vários Cargos (Fundamental / Médio / Técnico / Superior)|22/11/2026|faepu-mg-abre-processo-seletivo-para-unidades-de-saude-de-araguari
+MG|IFMG - Instituto Federal de Educação, Ciência e Tecnologia de Minas Gerais|-|2|Professor visitante (Superior)|30/11/2026|ifmg-abre-processo-seletivo-para-professores-visitantes-em-artes-e-enfermagem
+MG|SUDECAP - Superintendência de Desenvolvimento da Capital|-|27|Vários Cargos (Técnico / Superior)|16/11/2026|sudecap-mg-abre-processo-seletivo-com-salarios-de-ate-9375
+MG|UNIFEI - Universidade Federal de Itajubá|-|5|Professor substituto (Superior)|22/11/2026|unifei-mg-abre-processo-seletivo-para-professores-substitutos
+RS|Fundação Escola Técnica Liberato Salzano Vieira da Cunha|-|34|Vários Cargos (Médio / Superior)|08/12/2026|fundacao-escola-tecnica-liberato-salzano-vieira-da-cunha-rs-abre-concurso-publico-para-diversos-cargos
