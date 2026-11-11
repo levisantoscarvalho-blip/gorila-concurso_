@@ -1007,6 +1007,7 @@ rio-das-ostras	Rio das Ostras	Prefeitura de Rio das Ostras	Estagiários	Técnico
 rio-das-ostras	Rio das Ostras	Prefeitura de Rio das Ostras	Vários Cargos	Fundamental / Médio / Superior	2259			2008-04-30	2259-vagas-para-a-prefeitura-de-rio-das-ostras-rj	ea
 rio-das-ostras	Rio das Ostras	Prefeitura de Rio das Ostras	Vários cargos	Fundamental / Médio / Superior	278				concurso-publico-com-278-vagas-da-prefeitura-de-rio-das-ostras-rj-e-suspenso	suspenso
 rio-das-ostras	Rio das Ostras	Prefeitura de Rio das Ostras	Vários Cargos	Fundamental / Médio / Superior	3481				prefeitura-de-rio-da-ostras-rj-tem-concurso-suspenso	suspenso
+rio-de-janeiro	Rio de Janeiro	UERJ - Universidade do Estado do Rio de Janeiro	Professor Adjunto	Superior	1			2027-01-20	uerj-abre-concurso-publico-para-professor-adjunto-no-instituto-de-medicina-social	na
 rio-de-janeiro	Rio de Janeiro	UERJ - Universidade do Estado do Rio de Janeiro	Professor Assistente	Superior	2			2026-12-15	uerj-abre-concurso-para-professor-assistente-na-area-de-anatomia-patologica	na
 rio-de-janeiro	Rio de Janeiro	UERJ - Universidade do Estado do Rio de Janeiro	Professor Adjunto	Superior	1			2026-12-09	uerj-abre-concurso-publico-para-professor-adjunto-na-faculdade-de-educacao	na
 rio-de-janeiro	Rio de Janeiro	UERJ - Universidade do Estado do Rio de Janeiro	Professor Adjunto	Superior	1			2026-12-03	uerj-abre-vaga-para-professor-adjunto-na-area-de-cirurgia-ortopedica	na
@@ -1014,7 +1015,7 @@ rio-de-janeiro	Rio de Janeiro	UERJ - Universidade do Estado do Rio de Janeiro	Pr
 rio-de-janeiro	Rio de Janeiro	RioSaúde - Empresa Pública de Saúde do Rio de Janeiro S/A	Enfermeiro	Superior	15			2026-11-15	riosaude-rj-abre-processo-seletivo-para-enfermeiros	na
 rio-de-janeiro	Rio de Janeiro	MOBI-Rio - Companhia Municipal de Transportes Coletivos	Educador, Motorista Orientador	Médio / Superior	5			2026-11-13	mobi-rio-rj-abre-processo-seletivo-para-educador-e-motorista-orientador	na
 rio-de-janeiro	Rio de Janeiro	Instituto IMS - Instituto de Pós-Graduação em Ciências da Saúde Izamar Milidiu da Silva	Residente	Superior	5			2026-11-12	instituto-ims-rj-prorroga-inscricoes-de-processo-seletivo-para-o-programa-de-residencia-medica-em-dermatologia	na
-rio-de-janeiro	Rio de Janeiro	RioSaúde - Empresa Pública de Saúde do Rio de Janeiro S/A	Maqueiro, Auxiliar de suprimentos, Instrumentador cirúrgico	Ensino Médio	3			2026-11-10	riosaude-rj-abre-vagas-para-maqueiro-auxiliar-de-suprimentos-e-instrumentador-cirurgico	na
+rio-de-janeiro	Rio de Janeiro	RioSaúde - Empresa Pública de Saúde do Rio de Janeiro S/A	Maqueiro, Auxiliar de suprimentos, Instrumentador cirúrgico	Ensino Médio	3			2026-11-10	riosaude-rj-abre-vagas-para-maqueiro-auxiliar-de-suprimentos-e-instrumentador-cirurgico	ea
 rio-de-janeiro	Rio de Janeiro	SMS - Secretaria Municipal de Saúde do Rio de Janeiro	Médico I, Médico II	Superior	62			2026-11-08	secretaria-municipal-de-saude-rj-abre-processo-seletivo-com-vagas-para-medicos	ea
 rio-de-janeiro	Rio de Janeiro	RioSaúde - Empresa Pública de Saúde do Rio de Janeiro S/A	Enfermeiro, Terapeuta Ocupacional	Superior	3			2026-11-08	riosaude-rj-abre-processo-seletivo-para-os-cargos-de-enfermeiro-e-terapeuta-ocupacional	ea
 rio-de-janeiro	Rio de Janeiro	UERJ - Universidade do Estado do Rio de Janeiro	Professor Adjunto	Superior	1			2026-11-05	uerj-abre-concurso-publico-para-professor-adjunto-na-area-de-saude-coletiva	ea
@@ -1206,7 +1207,6 @@ rio-de-janeiro	Rio de Janeiro	UERJ - Universidade do Estado do Rio de Janeiro	Pr
 rio-de-janeiro	Rio de Janeiro	CMTC - Companhia Municipal de Transportes Coletivos (MOBI-Rio)	Psicólogo	Superior	1			2025-08-29	mobi-rio-publica-processo-seletivo-para-psicologo	ea
 rio-de-janeiro	Rio de Janeiro	UNIRIO - Universidade Federal do Estado do Rio de Janeiro	Professor Substituto	Superior	1			2025-08-29	processo-seletivo-para-cargo-de-professor-substituto-e-publicado-pela-unirio	ea
 rio-de-janeiro	Rio de Janeiro	UERJ - Universidade do Estado do Rio de Janeiro	Professor Adjunto	Superior	1			2025-08-28	uerj-abre-concurso-publico-para-professor-adjunto-na-area-de-matematica	ea
-rio-de-janeiro	Rio de Janeiro	Prefeitura do Rio de Janeiro	Medico I	Superior	29			2025-08-27	prefeitura-do-rio-de-janeiro-abre-processo-seletivo-para-cargo-de-medico	ea
 santa-maria-madalena	Santa Maria Madalena	Prefeitura de Santa Maria Madalena	Vários Cargos	Fundamental / Médio / Superior	147			2025-03-17	prefeitura-de-santa-maria-madalena-rj-retifica-edital-de-concurso-publico-com-147-vagas	ea
 santa-maria-madalena	Santa Maria Madalena	Câmara de Santa Maria Madalena	Vários Cargos	Médio / Superior	4			2016-11-13	camara-de-santa-maria-madalena-rj-anuncia-concurso-publico	ea
 santa-maria-madalena	Santa Maria Madalena	Prefeitura de Santa Maria Madalena	Ag. Com. Saúde e Ag. Comb. Endemias	Fundamental	28			2010-07-14	convocacao-para-aplicacao-de-provas-da-prefeitura-de-santa-maria-madalena-rj	ea
@@ -1319,6 +1319,7 @@ sapucaia	Sapucaia	Prefeitura de Sapucaia	Vários Cargos	Fundamental / Médio / S
 sapucaia	Sapucaia	Prefeitura de Sapucaia	Vários Cargos	Fundamental / Médio	51			2015-09-30	prefeitura-de-sapucaia-rj-realiza-concurso-com-mais-de-50-vagas	ea
 sapucaia	Sapucaia	Prefeitura de Sapucaia	Vários Cargos	Médio / Superior	113			2015-01-23	prefeitura-de-sapucaia-rj-abre-concurso-para-area-da-educacao	ea
 sapucaia	Sapucaia	Prefeitura de Sapucaia	Vários Cargos	Fundamental / Médio / Superior	145			2010-04-23	145-vagas-para-diversos-cargos-na-prefeitura-de-sapucaia-rj	ea
+saquarema	Saquarema	Prefeitura de Saquarema	Agente Comunitário de Saúde, Agente de Combate às Endemias	Ensino Médio	217		2026-11-17	2026-12-22	prefeitura-de-saquarema-rj-abre-selecao-para-agentes-de-saude-e-endemias	na
 saquarema	Saquarema	Prefeitura de Saquarema	Guarda-Vidas	Ensino Médio	80			2026-08-24	prefeitura-de-saquarema-rj-abre-concurso-com-80-vagas-para-guarda-vidas	ea
 saquarema	Saquarema	Prefeitura de Saquarema	Vários Cargos	Médio / Superior	1268			2026-07-21	prefeitura-de-saquarema-rj-abre-concurso-publico-com-vagas-na-educacao	ea
 saquarema	Saquarema	Câmara de Saquarema	Vários Cargos	Médio / Técnico / Superior	28			2026-05-31	camara-de-saquarema-rj-abre-concurso-publico-com-salarios-de-ate-8-mil	ea

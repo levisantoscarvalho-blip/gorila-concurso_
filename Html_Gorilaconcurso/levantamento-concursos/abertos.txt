@@ -641,3 +641,9 @@ MG|IFMG - Instituto Federal de Educação, Ciência e Tecnologia de Minas Gerais
 MG|SUDECAP - Superintendência de Desenvolvimento da Capital|-|27|Vários Cargos (Técnico / Superior)|16/11/2026|sudecap-mg-abre-processo-seletivo-com-salarios-de-ate-9375
 MG|UNIFEI - Universidade Federal de Itajubá|-|5|Professor substituto (Superior)|22/11/2026|unifei-mg-abre-processo-seletivo-para-professores-substitutos
 RS|Fundação Escola Técnica Liberato Salzano Vieira da Cunha|-|34|Vários Cargos (Médio / Superior)|08/12/2026|fundacao-escola-tecnica-liberato-salzano-vieira-da-cunha-rs-abre-concurso-publico-para-diversos-cargos
+SP|CETESB - Companhia Ambiental do Estado de São Paulo|-|107|Vários Cargos (Médio / Técnico / Superior)|12/11/2026>14/12/2026|cetesb-sp-abre-concursos-publicos-para-diversos-cargos
+MG|HOB - Hospital Metropolitano Odilon Behrens|-|0|Médico (Superior)|19/11/2026|hospital-metropolitano-odilon-behrens-mg-abre-selecao-para-medicos
+PR|Unespar - Universidade Estadual do Paraná|-|13|Vários Cargos (Superior)|30/11/2026|unespar-pr-abre-processo-seletivo-para-agente-universitario-profissional
+SC|SES - Secretaria de Estado da Saúde|-|6|Motorista Socorrista, Psicólogo (Médio / Superior)|24/11/2026|secretaria-de-estado-da-saude-sc-abre-vagas-para-motorista-socorrista-e-psicologo
+DF|IGESDF - Instituto de Gestão Estratégica de Saúde do Distrito Federal|-|CR|Vários Cargos (Técnico / Superior)|19/11/2026|iges-df-abre-quatro-selecoes-para-medicos-tecnicos-e-analistas
+DF|IGESDF - Instituto de Gestão Estratégica de Saúde do Distrito Federal|-|0|Enfermeiro, Médico (Superior)|18/11/2026|igesdf-df-abre-selecoes-para-enfermeiro-e-medico-otorrinolaringologista
