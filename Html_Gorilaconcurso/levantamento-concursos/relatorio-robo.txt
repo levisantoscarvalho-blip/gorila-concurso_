@@ -1,10 +1,8 @@
-ROBÔ DO GORILA — 11/11/2026 11:55 (horário de Brasília)
-PCI hoje: 610 concursos com inscrições abertas
-CONFERIR: 'Prefeitura de Saquarema' (RJ) estava em municipais-previstos.txt e agora abriu inscrições — tirar dos previstos? prefeitura-de-saquarema-rj-abre-selecao-para-agentes-de-saude-e-endemias
-CONFERIR: 'Prefeitura de Saquarema (Saúde)' (RJ) estava em municipais-previstos.txt e agora abriu inscrições — tirar dos previstos? prefeitura-de-saquarema-rj-abre-selecao-para-agentes-de-saude-e-endemias
-CONFERIR: 'Prefeitura de Campo Limpo de Goiás' (GO) estava em municipais-previstos.txt e agora abriu inscrições — tirar dos previstos? prefeitura-e-camara-de-campo-limpo-de-goias-go-anunciam-concurso-publico-com-diversas-vagas
-novos concursos: 42 em cidades + 6 estaduais/sem cidade · 2 com data mudada (prorrogação/retificação)
-notícias: parte 0 pronta (50 nesta rodada)
+ROBÔ DO GORILA — 12/11/2026 12:47 (horário de Brasília)
+PCI hoje: 627 concursos com inscrições abertas
+CONFERIR: 'Câmara de Carapicuíba' (SP) estava em municipais-previstos.txt e agora abriu inscrições — tirar dos previstos? camara-de-carapicuiba-sp-abre-concurso-publico-para-oficial-de-manutencao-e-tecnico-em-tecnologia-da-informacao
+novos concursos: 36 em cidades + 8 estaduais/sem cidade · 0 com data mudada (prorrogação/retificação)
+notícias: parte 0 pronta (44 nesta rodada)
 AVISO GO 17232 vagas sem conferência, ficou 'a definir': seduce-go-retifica-um-dos-dois-processos-seletivos-com-mais-de-17-2-mil-vagas
 AVISO GO 7453 vagas sem conferência, ficou 'a definir': valparaiso-de-goias-go-prorroga-inscricoes-e-retifica-edital-001-2014
 AVISO MT 5156 vagas sem conferência, ficou 'a definir': prefeitura-de-varzea-grande-mt-retifica-processo-seletivo-com-vagas-para-a-educacao
@@ -29,7 +27,7 @@ AVISO taxa impossível (R$ 1627.28), não mostrada: taboao-da-serra-sp-vagas-par
 AVISO taxa impossível (R$ 4231.6), não mostrada: uem-pr-abre-selecao-para-tecnico-em-laboratorio-com-salario-de-4-2-mil
 AVISO taxa impossível (R$ 2125.02), não mostrada: prefeitura-de-cajamar-sp-retifica-um-dos-editais-de-concursos-publicos
 AUDITORIA: 0 erros, 27 para conferir, 1 info (ver auditoria.txt)
-concursos nas cidades: 142691 (no ar: 142664) · detalhes: 141847 (no ar: 141812)
-levantamento estadual/municipal: 912 (no ar: 906)
+concursos nas cidades: 142710 (no ar: 142691) · detalhes: 141878 (no ar: 141847)
+levantamento estadual/municipal: 920 (no ar: 912)
 sintaxe conferida com o Node em 82 arquivos
 OK: pode publicar

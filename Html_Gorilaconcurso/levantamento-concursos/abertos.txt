@@ -647,3 +647,11 @@ PR|Unespar - Universidade Estadual do Paraná|-|13|Vários Cargos (Superior)|30/
 SC|SES - Secretaria de Estado da Saúde|-|6|Motorista Socorrista, Psicólogo (Médio / Superior)|24/11/2026|secretaria-de-estado-da-saude-sc-abre-vagas-para-motorista-socorrista-e-psicologo
 DF|IGESDF - Instituto de Gestão Estratégica de Saúde do Distrito Federal|-|CR|Vários Cargos (Técnico / Superior)|19/11/2026|iges-df-abre-quatro-selecoes-para-medicos-tecnicos-e-analistas
 DF|IGESDF - Instituto de Gestão Estratégica de Saúde do Distrito Federal|-|0|Enfermeiro, Médico (Superior)|18/11/2026|igesdf-df-abre-selecoes-para-enfermeiro-e-medico-otorrinolaringologista
+BA|SAEB - Secretaria de Administração do Estado da Bahia|-|50|Especialista em Políticas Públicas e Gestão Governamental (Superior)|18/11/2026|saeb-ba-prorroga-inscricoes-de-concurso-publico-para-especialista-em-politicas-publicas-e-gestao-governamental
+CE|UFC - Universidade Federal do Ceará|-|11|Professor do magistério superior (Superior)|24/11/2026>07/12/2026|ufc-ce-abre-concurso-publico-para-professores-do-magisterio-superior
+SE|FUNESA - Fundação Estadual de Saúde|-|5|Auxiliar em Saúde Bucal, Cirurgião-Dentista (Médio / Superior)|26/11/2026|funesa-se-abre-selecao-para-cirurgiao-dentista-e-auxiliar-em-saude-bucal
+MG|UFTM - Universidade Federal do Triângulo Mineiro|-|6|Professor substituto do magistério superior (Superior)|26/11/2026|uftm-mg-abre-processo-seletivo-com-seis-vagas-para-professores-substitutos
+ES|Banescor - Banestes Corretora|-|0|Assistente Securitário (Ensino Médio)|11/12/2026|banestes-corretora-es-abre-concurso-para-assistente-securitario
+ES|Banestes - Banco do Estado do Espírito Santo|-|0|Vários Cargos (Superior)|11/12/2026|banestes-es-abre-concurso-publico-para-cargos-de-nivel-superior
+RS|IFFar - Instituto Federal de Educação, Ciência e Tecnologia Farroupilha|-|30|Vários Cargos (Médio / Técnico / Superior)|19/11/2026>21/12/2026|iffar-rs-abre-concurso-publico-com-vagas-para-diversas-areas
+MT|SECITECI - Secretaria de Estado de Ciência, Tecnologia e Inovação de Mato Grosso|-|CR|Vários Cargos (Médio / Técnico / Superior)|26/11/2026|seciteci-mt-retifica-edital-de-processo-seletivo-para-formacao-de-cadastro-de-reserva
