@@ -659,3 +659,6 @@ AC|Fundape - Fundação de Apoio e Desenvolvimento ao Ensino, Pesquisa e Extens�
 BA|FESF-SUS - Fundação Estatal Saúde da Família|-|0|Operador(a) de Sistemas de Informática, Consultor(a) de Tecnologia da Informação (Médio / Superior)|17/11/2026|fesf-sus-ba-abre-selecao-com-salarios-de-ate-10270
 RJ|CMTC - Companhia Municipal de Transportes Coletivos|-|63|Vários Cargos (Fundamental / Médio)|21/11/2026|mobi-rio-rj-abre-selecao-com-salarios-ate-5960
 RJ|CRP/05 - Conselho Regional de Psicologia da 5ª Região|-|37|Vários Cargos (Médio / Superior)|16/11/2026>17/12/2026|crp-05-rj-abre-concurso-publico-com-salarios-de-ate-7313
+SP|Faculdade Sebrae|-|1|Professor Adjunto (Superior)|19/11/2026|faculdade-sebrae-sp-abre-selecao-para-professor-adjunto-arquiteto-de-solucoes
+SP|FJPO - Fundação José Pedro de Oliveira|-|4|Vários Cargos (Fundamental / Técnico / Superior)|19/11/2026|fundacao-jose-pedro-de-oliveira-sp-prorroga-inscricoes-para-concurso-publico
+DF|APS - Associação das Pioneiras Sociais|-|2|Estatístico (Superior)|23/11/2026>17/12/2026|associacao-das-pioneiras-sociais-aps-abre-processo-seletivo-para-estatistico
