@@ -11,8 +11,8 @@ ananas	Ananás	Prefeitura de Ananás	Vários Cargos	Ensino Médio	5			2023-01-16
 ananas	Ananás	Câmara de Ananás	Vários Cargos	Fundamental Incompleto / Superior	4			2020-03-15	camara-municipal-de-ananas-to-retifica-concurso-publico	ea
 ananas	Ananás	Prefeitura de Ananás	Vários Cargos	Fundamental / Médio / Superior	133			2016-10-02	prefeitura-de-ananas-to-retifica-edital-de-concurso-publico	ea
 angico	Angico	Prefeitura de Angico	Vários Cargos	Não informada	0			2019-08-23	processo-seletivo-e-anunciado-pela-prefeitura-municipal-de-angico-to	ea
-aparecida-do-rio-negro	Aparecida do Rio Negro	Prefeitura de Aparecida do Rio Negro	Vários Cargos	Fundamental / Médio / Superior	49			2011-06-08	prefeitura-de-aparecida-do-rio-negro-to-divulga-alteracao-na-data-da-prova	ea
 aparecida-do-rio-negro	Aparecida do Rio Negro	Câmara de Aparecida do Rio Negro	Vários Cargos	Fundamental / Médio	3			2011-06-08	camara-de-aparecida-do-rio-negro-to-abre-vagas-para-ensino-fundamental-e-medio	ea
+aparecida-do-rio-negro	Aparecida do Rio Negro	Prefeitura de Aparecida do Rio Negro	Vários Cargos	Fundamental / Médio / Superior	49			2011-06-08	prefeitura-de-aparecida-do-rio-negro-to-divulga-alteracao-na-data-da-prova	ea
 aragominas	Aragominas	Prefeitura de Aragominas	Vários Cargos	Fundamental / Médio / Superior	85			2012-05-02	aragominas-to-baixa-numero-de-vagas-do-edital-001-2012	ea
 araguacema	Araguacema	Prefeitura de Araguacema	Vários Cargos	Fundamental / Médio / Superior	115			2016-12-16	prefeitura-de-araguacema-to-retifica-concurso-publico-com-mais-de-110-vagas	ea
 araguacu	Araguaçu				0					vazio
@@ -365,7 +365,7 @@ novo-jardim	Novo Jardim	Prefeitura de Novo Jardim	Vários Cargos	Fundamental / M
 oliveira-de-fatima	Oliveira de Fátima	Câmara de Oliveira de Fátima	Auxiliar de Serviços Gerais, Vigia, Assistente Administrativo	Fundamental / Médio	5			2026-11-30	camara-de-oliveira-de-fatima-to-abre-concurso-publico-com-cinco-vagas-imediatas	na
 oliveira-de-fatima	Oliveira de Fátima	Prefeitura de Oliveira de Fátima	Vários Cargos	Fundamental / Médio / Superior	81			2011-01-10	81-vagas-para-diversos-cargos-abertas-na-prefeitura-de-oliveira-fatima-to	ea
 oliveira-de-fatima	Oliveira de Fátima	Prefeitura de Oliveira de Fátima	Vários Cargos	Fundamental / Técnico / Superior	34				concurso-publico-da-prefeitura-de-oliveira-de-fatima-to-e-suspenso	suspenso
-palmas	Palmas	CAU - Conselho de Arquitetura e Urbanismo do Tocantins	Vários Cargos	Médio / Superior	3			2026-11-09	cau-to-abre-concurso-publico-com-salarios-de-ate-9726	na
+palmas	Palmas	CAU - Conselho de Arquitetura e Urbanismo do Tocantins	Vários Cargos	Médio / Superior	3			2026-11-09	cau-to-abre-concurso-publico-com-salarios-de-ate-9726	ea
 palmas	Palmas	SEDUC - Secretaria da Educação do Estado do Tocantins	Tutor de Polo, Professor Formador	Superior	46			2026-09-25	seduc-to-abre-processo-seletivo-para-professores-e-tutores-de-polo	ea
 palmas	Palmas	SES/TO - Secretaria de Estado da Saúde e SECAD/TO - Secretaria da Administração	Vários Cargos	Médio / Técnico / Superior	952			2026-09-17	governo-do-tocantins-to-retifica-edital-de-concurso-publico-e-prorroga-periodo-de-inscricao	ea
 palmas	Palmas	IFTO - Instituto Federal de Educação, Ciência e Tecnologia do Tocantins	Professor Substituto	Superior	0	CR		2026-06-09	ifto-abre-selecao-para-professores-substitutos-no-campus-palmas	ea
@@ -501,12 +501,12 @@ palmas	Palmas	Prefeitura de Palmas	Estagiários	Superior Incompleto	2			2013-11-
 palmas	Palmas	Prefeitura de Palmas	Vários Cargos	Fundamental / Médio / Superior	3454			2013-11-07	prefeitura-de-palmas-to-retifica-edital-n-01-2013-do-concurso-publico-com-3454-vagas	ea
 palmas	Palmas	SESAU - Secretaria de Estado da Saúde	Instrutores	Superior	2			2013-10-17	sesau-to-abre-duas-vagas-de-nivel-superior-em-palmas	ea
 palmas	Palmas	ACADEPOL - Academia de Polícia Judiciária do Estado	Instrutores	Superior	4			2013-10-16	acadepol-to-reabre-inscricoes-dos-certames-n-005-e-007-2013-instrutores	ea
-palmas	Palmas	SESAU - Secretaria da Saúde do Estado	Pedagogo e Tutores	Superior	5			2013-10-15	secretaria-de-saude-do-tocantins-seleciona-tutores-e-pedagogo	ea
 palmas	Palmas	SESAU - Secretaria de Estado da Saúde	Instrutores	Superior	4			2013-10-15	sesau-to-seleciona-instrutores-de-curso-na-area-de-epidemiologia	ea
+palmas	Palmas	SESAU - Secretaria da Saúde do Estado	Pedagogo e Tutores	Superior	5			2013-10-15	secretaria-de-saude-do-tocantins-seleciona-tutores-e-pedagogo	ea
 palmas	Palmas	ACADEPOL - Academia de Polícia Judiciária do Estado	Instrutores	Superior	6			2013-10-04	acadepol-to-seleciona-instrutores-para-dois-cursos	ea
 palmas	Palmas	Defensoria Pública	Estagiários	Superior Incompleto	2			2013-09-23	defensoria-publica-de-palmas-to-seleciona-estagiarios-de-psicologia-e-jornalismo	ea
-palmas	Palmas	IFTO - Instituto Federal de Educação, Ciência e Tecnologia	Tutores Bolsistas	Superior	107			2013-09-20	ifto-retifica-novamento-o-processo-seletivo-n-30-2013	ea
 palmas	Palmas	IFTO - Instituto Federal de Educação, Ciência e Tecnologia	Professor Substituto	Superior	2			2013-09-20	ifto-divulga-nova-retificacao-do-edital-32-2013-para-professor	ea
+palmas	Palmas	IFTO - Instituto Federal de Educação, Ciência e Tecnologia	Tutores Bolsistas	Superior	107			2013-09-20	ifto-retifica-novamento-o-processo-seletivo-n-30-2013	ea
 palmas	Palmas	Defensoria Pública	Estagiários	Superior Incompleto	8			2013-09-06	dpe-to-abre-oito-vagas-para-estagiarios-de-administracao-em-palmas	ea
 palmas	Palmas	Prefeitura de Palmas	Educadores	Médio / Superior	23			2013-08-30	prefeitura-de-palmas-to-publica-errata-ao-processo-seletivo-n-002-2013-com-23-vagas	ea
 palmas	Palmas	SESAU - Secretaria da Saúde do Estado	Facilitadores	Superior	6			2013-08-23	sesau-to-prorroga-inscricoes-do-edital-n-108-para-cargo-de-facilitador	ea
@@ -527,13 +527,13 @@ palmas	Palmas	Prefeitura de Palmas	Orientadores de Estudos	Superior	12			2012-11
 palmas	Palmas	SESAU - Secretaria da Saúde do Estado	Professores	Superior	2			2012-09-10	sesau-to-oferece-2-vagas-para-professores-em-palmas	ea
 palmas	Palmas	Defensoria Pública	Serviço Voluntário	Superior Incompleto	5			2012-08-27	dpe-to-oferece-cinco-vagas-de-servico-voluntario-em-palmas-e-taquaralto	ea
 palmas	Palmas	Prefeitura de Palmas	Assistente Social	Superior	2			2012-05-28	seduh-de-palmas-to-abre-processo-seletivo-para-contratar-assistentes-sociais	ea
-palmas	Palmas	IFTO - Instituto Federal de Educação, Ciência e Tecnologia	Professor EAD	Superior	74			2012-03-09	ifto-de-palmas-abre-74-vagas-para-professores-ead	ea
 palmas	Palmas	IFTO - Instituto Federal de Educação, Ciência e Tecnologia	Tutores a Distância	Superior	74			2012-03-09	74-vagas-para-tutores-a-distancia-no-campus-palmas-do-ifto	ea
+palmas	Palmas	IFTO - Instituto Federal de Educação, Ciência e Tecnologia	Professor EAD	Superior	74			2012-03-09	ifto-de-palmas-abre-74-vagas-para-professores-ead	ea
 palmas	Palmas	Prefeitura de Palmas	Técnico Social	Superior	1			2012-02-13	seduh-de-palmas-to-abre-vaga-para-contratacao-de-tecnico-social	ea
 palmas	Palmas	Prefeitura de Palmas	Digitador e Motorista	Ensino Médio	12			2012-02-09	prefeitura-de-palmas-to-abre-12-vagas-digitador-e-motorista-do-bolsa-familia	ea
 palmas	Palmas	Prefeitura de Palmas	Auxiliares de Cozinha	Fundamental	65			2012-02-03	65-vagas-para-auxiliar-de-cozinha-na-prefeitura-de-palmas-to	ea
-palmas	Palmas	UFT - Universidade Federal do Tocantins	Professores Assistente e Adjunto	Superior	3			2012-02-02	uft-abre-3-vagas-para-professor-nos-campi-de-palmas-araguaina-e-arraias	ea
 palmas	Palmas	UFT - Universidade Federal do Tocantins	Professores	Superior	3			2012-02-02	uft-abre-vagas-para-professor-mestre-e-doutor-no-campus-palmas	ea
+palmas	Palmas	UFT - Universidade Federal do Tocantins	Professores Assistente e Adjunto	Superior	3			2012-02-02	uft-abre-3-vagas-para-professor-nos-campi-de-palmas-araguaina-e-arraias	ea
 palmas	Palmas	FMP - Fundação Municipal de Palmas	Vários Cargos	Médio / Superior	9			2012-01-13	9-vagas-para-instrutores-do-centro-de-criatividade-de-palmas-to	ea
 palmas	Palmas	Prefeitura de Palmas	Instrutores	Médio / Superior	229			2011-11-18	229-vagas-para-instrutor-na-secretaria-de-educacao-de-palmas-to	ea
 palmas	Palmas	ECT - Correios	Estagiários	Superior Incompleto	0			2011-06-26	oportunidade-de-estagio-superior-nos-correios-de-palmas-to	ea

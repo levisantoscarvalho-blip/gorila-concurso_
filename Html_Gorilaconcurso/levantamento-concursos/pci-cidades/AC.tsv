@@ -136,7 +136,7 @@ capixaba	Capixaba	Prefeitura de Capixaba	Agente Comunitário de Saúde	Fundament
 capixaba	Capixaba	Tribunal de Justiça	Estagiário	Superior Incompleto	0			2015-04-06	tj-ac-abre-vagas-para-estagiarios-de-diversos-cursos-na-comarca-de-capixaba	ea
 capixaba	Capixaba	Prefeitura de Capixaba	Vários Cargos	Médio / Superior	14			2013-04-04	prefeitura-de-capixaba-ac-abre-14-vagas-de-niveis-medio-e-superior	ea
 capixaba	Capixaba	TJ - Tribunal de Justiça - Comarca de Capixaba	Estagiários	Superior Incompleto	0			2012-10-23	comarca-de-capixaba-ac-realiza-processo-seletivo-para-estagiarios	ea
-cruzeiro-do-sul	Cruzeiro do Sul	ECOPS - Empresa Cruzeirense de Obras Públicas, Serviços e Urbanização	Servente de Limpeza Zona Rural	Fundamental	14			2026-11-09	ecops-ac-abre-vagas-para-o-cargo-de-servente-de-limpeza	na
+cruzeiro-do-sul	Cruzeiro do Sul	ECOPS - Empresa Cruzeirense de Obras Públicas, Serviços e Urbanização	Servente de Limpeza Zona Rural	Fundamental	14			2026-11-09	ecops-ac-abre-vagas-para-o-cargo-de-servente-de-limpeza	ea
 cruzeiro-do-sul	Cruzeiro do Sul	IFAC - Instituto Federal de Educação, Ciência e Tecnologia do Acre	Professor substituto	Superior	1			2026-10-23	ifac-abre-processo-seletivo-para-professor-substituto-de-fisica	ea
 cruzeiro-do-sul	Cruzeiro do Sul	Prefeitura de Cruzeiro do Sul	Entrevistador Social	Ensino Médio	2			2026-08-21	prefeitura-de-cruzeiro-do-sul-ac-abre-selecao-para-entrevistador-social	ea
 cruzeiro-do-sul	Cruzeiro do Sul	IFAC - Instituto Federal do Acre	Professor de Ensino Básico, Técnico e Tecnológico	Superior	1			2026-06-22	ifac-abre-processo-seletivo-para-professor-substituto-em-cruzeiro-do-sul	ea
@@ -441,6 +441,7 @@ porto-walter	Porto Walter	Prefeitura de Porto Walter	Vários Cargos	Fundamental 
 porto-walter	Porto Walter	Prefeitura de Porto Walter	Professores	Ensino Médio	41			2012-06-15	prefeitura-de-porto-walter-ac-abre-41-vagas-para-professor-do-fundamental	ea
 porto-walter	Porto Walter	Prefeitura de Porto Walter	Vários Cargos	Fundamental / Médio / Superior	38			2012-03-21	prefeitura-de-porto-walter-ac-abre-38-vagas-com-salarios-de-ate-15-mil	ea
 porto-walter	Porto Walter	Prefeitura de Porto Walter	Vários Cargos	Superior	40			2012-03-08	40-vagas-para-professores-na-prefeitura-de-porto-walter-ac	ea
+rio-branco	Rio Branco	Fundape - Fundação de Apoio e Desenvolvimento ao Ensino, Pesquisa e Extensão Universitária no Acre	Vários Cargos	Fundamental / Médio / Superior	0			2026-11-19	fundape-ac-abre-processo-seletivo-para-formacao-de-cadastro-de-reserva	na
 rio-branco	Rio Branco	TCE - Tribunal de Contas do Estado do Acre	Auditor - Conselheiro Substituto	Superior	1			2026-10-26	tce-ac-reabre-concurso-para-auditor-conselheiro-substituto	ea
 rio-branco	Rio Branco	Câmara de Rio Branco	Procurador, Agente Legislativo - Polícia Legislativa	Médio / Superior	3			2026-10-15	camara-de-rio-branco-ac-abre-concursos-publicos-para-procuradores-e-agentes-legislativos	ea
 rio-branco	Rio Branco	Câmara de Rio Branco	Agente Legislativo, Tradutor Intérprete de Língua Brasileira de Sinais, Analista Legislativo	Médio / Superior	13			2026-10-13	camara-de-rio-branco-ac-abre-concurso-publico-com-13-vagas-imediatas	ea
@@ -468,13 +469,13 @@ rio-branco	Rio Branco	TCE - Tribunal de Contas	Vários Cargos	Médio / Técnico 
 rio-branco	Rio Branco	CRF - Conselho Regional de Farmácia	Vários Cargos	Médio / Superior	1			2024-06-10	crf-ac-abre-inscricoes-para-novo-concurso-publico	ea
 rio-branco	Rio Branco	IFAC - Instituto Federal de Educação, Ciência e Tecnologia	Professor Substituto	Superior	2			2024-05-30	ifac-abre-processo-seletivo-para-professores-substitutos-no-campus-rio-branco-ac	ea
 rio-branco	Rio Branco	CRMV - Conselho Regional de Medicina Veterinária	Assistente Administrativo, Fiscal	Ensino Médio	2			2024-05-06	crmv-ac-tem-inscricoes-anunciadas-para-concurso-publico-com-vagas-de-nivel-medio	ea
-rio-branco	Rio Branco	Prefeitura de Rio Branco	Agente Comunitário de Saúde, Agente de Endemias, Operador de Máquinas Agrícolas	Fundamental / Médio	90			2024-03-20	prefeitura-de-rio-branco-ac-divulga-concurso-publico-com-90-vagas	ea
 rio-branco	Rio Branco	Prefeitura de Rio Branco	Vários Cargos	Fundamental / Médio / Técnico / Superior	540			2024-03-20	prefeitura-de-rio-branco-ac-retifica-edital-para-concurso-publico	ea
+rio-branco	Rio Branco	Prefeitura de Rio Branco	Agente Comunitário de Saúde, Agente de Endemias, Operador de Máquinas Agrícolas	Fundamental / Médio	90			2024-03-20	prefeitura-de-rio-branco-ac-divulga-concurso-publico-com-90-vagas	ea
 rio-branco	Rio Branco	SEAD - Secretaria de Estado da Administração	Estagiários - Nível Superior	Superior Incompleto	0			2024-02-29	sead-ac-retifica-edital-do-processo-seletivo-de-estagio	ea
 rio-branco	Rio Branco	ICMBio - Instituto Chico Mendes de Conservação da Biodiversidade	Agente de Apoio às Atividades de Gestão Socioambiental	Fundamental	2			2023-11-10	icmbio-anuncia-novo-processo-seletivo-em-rio-branco-ac	ea
 rio-branco	Rio Branco	IEPTEC - Instituto Estadual de Educação Profissional e Tecnológica	Mediador de Aprendizagem Horista	Técnico / Superior	17			2023-09-01	ieptec-ac-retifica-novo-processo-seletivo-de-niveis-superior-e-tecnico	ea
-rio-branco	Rio Branco	UFAC - Universidade Federal do Acre	Professor Substituto	Superior	0			2023-07-20	ufac-ac-promove-novo-processo-seletivo-para-docente-substituto	ea
 rio-branco	Rio Branco	Prefeitura de Rio Branco	Vários Cargos	Fundamental / Médio / Superior	232			2023-07-20	prefeitura-de-rio-branco-ac-divulga-processo-seletivo-com-232-vagas	ea
+rio-branco	Rio Branco	UFAC - Universidade Federal do Acre	Professor Substituto	Superior	0			2023-07-20	ufac-ac-promove-novo-processo-seletivo-para-docente-substituto	ea
 rio-branco	Rio Branco	UFAC - Universidade Federal do Acre	Professor Substituto	Superior	0			2023-07-03	ufac-divulga-processo-seletivo-para-professor-substituto-em-rio-branco	ea
 rio-branco	Rio Branco	Prefeitura de Rio Branco e RBPREV	Vários Cargos	Médio / Técnico / Superior	43			2023-06-19	prefeitura-de-rio-branco-ac-e-rbprev-retificam-dois-editais-para-concursos-publicos	ea
 rio-branco	Rio Branco	Prefeitura de Rio Branco	Vários Cargos	Superior	11			2023-06-02	prefeitura-de-rio-branco-ac-realiza-processo-seletivo-com-salario-de-2-8-mil	ea
@@ -488,8 +489,8 @@ rio-branco	Rio Branco	Prefeitura de Rio Branco	Vários Cargos	Médio / Técnico 
 rio-branco	Rio Branco	SEAD - Secretaria de Administração do Estado	Estagiário - Nível Superior	Superior Incompleto	0			2023-04-06	sead-ac-anuncia-novo-processo-seletivo-de-estagio-de-nivel-superior	ea
 rio-branco	Rio Branco	IEPTEC - Instituto Estadual de Educação Profissional e Tecnológica	Mediador de Aprendizagem	Técnico / Superior	1			2023-03-28	ieptec-dom-moacyr-ac-reabre-processo-seletivo-para-mediador-de-aprendizagem	ea
 rio-branco	Rio Branco	SEAD - Secretaria de Administração do Estado	Estagiários	Médio Incompleto / Superior Incompleto	119			2023-02-13	sead-iel-ac-retifica-processo-seletivo-com-119-vagas	ea
-rio-branco	Rio Branco	UFAC - Universidade Federal do Acre	Professor	Superior	2			2023-01-30	ufac-divulga-um-novo-edital-de-concurso-publico-para-docentes	ea
 rio-branco	Rio Branco	IEPTEC - Instituto Estadual de Educação Profissional e Tecnológica	Professor Tutor Mensalista	Superior	0			2023-01-30	ieptec-ac-republica-edital-de-processo-seletivo	ea
+rio-branco	Rio Branco	UFAC - Universidade Federal do Acre	Professor	Superior	2			2023-01-30	ufac-divulga-um-novo-edital-de-concurso-publico-para-docentes	ea
 rio-branco	Rio Branco	IEPTEC - Instituto Estadual de Educação Profissional e Tecnológica	mediador técnico de aprendizagem	Não informada	1			2022-12-20	ieptec-anuncia-processo-seletivo-em-rio-branco-ac	ea
 rio-branco	Rio Branco	IEPTEC - Instituto Estadual de Educação Profissional e Tecnológica	Professor Mediador Mensalista	Superior	1			2022-12-19	ieptec-dom-moacyr-ac-prorroga-inscricoes-de-processo-seletivo-para-docentes	ea
 rio-branco	Rio Branco	SEPLAG - Secretaria de Estado de Planejamento e Gestão	Estagiário - Geografia	Superior Incompleto	2			2022-12-09	seplag-ac-anuncia-processo-seletivo-de-estagio-em-rio-branco	ea
@@ -508,8 +509,8 @@ rio-branco	Rio Branco	IEPETEC - Instituto Estadual de Educação Profissional e 
 rio-branco	Rio Branco	CRC - Conselho Regional de Contabilidade	Agente Administrativo e Contador	Médio / Superior	5			2022-04-25	crc-ac-divulga-concurso-publico-de-niveis-medio-e-superior	ea
 rio-branco	Rio Branco	SEPLAG - Secretaria de Planejamento e Gestão	Estagiário	Médio Incompleto / Superior Incompleto	0			2022-03-31	seplag-ac-divulga-processo-seletivo-para-estagiarios	ea
 rio-branco	Rio Branco	Prefeitura de Rio Branco	Vários Cargos	Fundamental / Médio / Superior	180			2022-03-25	prefeitura-de-rio-branco-ac-realiza-processo-seletivo-com-180-vagas	ea
-rio-branco	Rio Branco	UFAC - Universidade Federal do Acre	Professor	Superior	0			2022-03-08	ufac-lanca-processo-seletivo-simplicado-para-os-campi-de-rio-branco-e-cruzeiro-do-sul	ea
 rio-branco	Rio Branco	UFAC - Universidade Federal do Acre	Professor Substituto	Superior	0			2022-03-08	ufac-lanca-processo-seletivo-para-professor-substituto	ea
+rio-branco	Rio Branco	UFAC - Universidade Federal do Acre	Professor	Superior	0			2022-03-08	ufac-lanca-processo-seletivo-simplicado-para-os-campi-de-rio-branco-e-cruzeiro-do-sul	ea
 rio-branco	Rio Branco	Prefeitura de Rio Branco	Médicos	Superior	15			2022-03-06	processo-seletivo-para-medicos-e-anunciado-pela-prefeitura-de-rio-branco-ac	ea
 rio-branco	Rio Branco	IEPTEC - Instituto Estadual de Educação Profissional e Tecnológica	Professor Autor	Superior	13			2021-12-28	ieptec-ac-organiza-novo-processo-seletivo-para-professor-autor	ea
 rio-branco	Rio Branco	Prefeitura de Rio Branco	Vários Cargos	Fundamental / Médio / Técnico / Superior	92			2021-10-27	prefeitura-de-rio-branco-ac-retifica-processo-seletivo-com-92-vagas	ea
@@ -561,8 +562,8 @@ rio-branco	Rio Branco	TJ - Tribunal de Justiça	Estagiários - Nível Superior	S
 rio-branco	Rio Branco	UFAC - Universidade Federal do Acre	Professor Substituto	Superior	1			2018-06-14	processo-seletivo-no-campus-de-rio-branco-e-anunciado-pela-ufac	ea
 rio-branco	Rio Branco	SEE - Secretaria de Estado da Educação	Bolsista Alfabetizador e Coordenador de Turma	Superior Incompleto / Superior	153			2018-05-25	see-ac-oferece-novas-oportunidades-por-meio-de-processo-seletivo	ea
 rio-branco	Rio Branco	CRMV - Conselho Regional de Medicina Veterinária	Assistente Administrativo e Fiscal	Ensino Médio	2			2018-05-21	concurso-publico-com-dois-diferentes-cargos-e-anunciado-pelo-crmv-ac	ea
-rio-branco	Rio Branco	SEE - Secretaria do Estado da Educação e Esporte	Alfabetizadores	Médio / Superior	180			2018-04-20	see-do-acre-anuncia-novo-processo-seletivo-para-alfabetizador	ea
 rio-branco	Rio Branco	IAPEN - Instituto de Administração Penitenciária	Vários Cargos	Médio / Superior	12			2018-04-20	sga-e-iapen-ac-retifica-processo-seletivo-para-rio-branco	ea
+rio-branco	Rio Branco	SEE - Secretaria do Estado da Educação e Esporte	Alfabetizadores	Médio / Superior	180			2018-04-20	see-do-acre-anuncia-novo-processo-seletivo-para-alfabetizador	ea
 rio-branco	Rio Branco	IDM - Instituto Dom Moacyr Grechi	Assessor Técnico	Superior	0			2018-04-18	processo-seletivo-de-assessor-tecnico-e-anunciado-pelo-idm-ac	ea
 rio-branco	Rio Branco	IDM - Instituto Dom Moacyr Grechi	Mediador de Aprendizagem	Superior	8			2018-04-12	idm-ac-recebe-inscricoes-de-processo-seletivo-em-bujari-e-rio-branco	ea
 rio-branco	Rio Branco	Prefeitura de Rio Branco	Professores	Superior	8			2018-04-05	prefeitura-de-rio-branco-ac-divulga-edital-de-processo-seletivo-para-professores	ea
@@ -630,8 +631,8 @@ rio-branco	Rio Branco	Prefeitura de Rio Branco	Vários Cargos	Fundamental / Méd
 rio-branco	Rio Branco	Prefeitura de Rio Branco	Nutricionista e Professores	Superior	17			2014-07-04	prefeitura-de-rio-branco-ac-abre-17-vagas-na-area-da-educacao	ea
 rio-branco	Rio Branco	Tribunal de Justiça	Ag. Proteção da Infância/Juventude	Ensino Médio	26			2014-06-24	tj-ac-abre-vagas-para-agente-de-protecao-na-comarca-de-rio-branco	ea
 rio-branco	Rio Branco	Prefeitura de Rio Branco	Médico Clínico Geral	Superior	22			2014-06-04	prefeitura-de-rio-branco-ac-estende-periodo-de-inscricao-do-ps-01-2014	ea
-rio-branco	Rio Branco	EMURB - Empresa Municipal de Urbanização de Rio Branco	Vários Cargos	Fundamental / Médio	53			2014-06-01	emurb-de-rio-branco-ac-abre-53-vagas-de-niveis-fundamental-e-medio	ea
 rio-branco	Rio Branco	Prefeitura de Rio Branco	Vários Cargos	Médio / Superior	135			2014-06-01	semcas-de-rio-branco-ac-retifica-edital-001-2014-com-135-vagas	ea
+rio-branco	Rio Branco	EMURB - Empresa Municipal de Urbanização de Rio Branco	Vários Cargos	Fundamental / Médio	53			2014-06-01	emurb-de-rio-branco-ac-abre-53-vagas-de-niveis-fundamental-e-medio	ea
 rio-branco	Rio Branco	UFAC - Universidade Federal do Acre	Professor Substituto	Superior	6			2014-05-14	ufac-retifica-seletiva-n-17-2014-para-professores-substitutos	ea
 rio-branco	Rio Branco	Prefeitura de Rio Branco	Motorista e Professores	Fundamental / Superior	14			2014-03-21	prefeitura-de-rio-branco-ac-retifica-seletiva-com-14-vagas	ea
 rio-branco	Rio Branco	DERACRE	Vários Cargos	Fundamental	332			2014-03-14	deracre-ac-abre-seletiva-com-332-vagas-temporarias	ea
@@ -640,7 +641,6 @@ rio-branco	Rio Branco	RBTRANS	Vários Cargos	Fundamental / Médio / Superior	50	
 rio-branco	Rio Branco	Defensoria Pública	Estagiários	Superior Incompleto	20			2013-09-16	abertas-20-vagas-de-estagio-e-cadastro-de-reserva-na-dpe-ac	ea
 rio-branco	Rio Branco	SPDM - Assoc. Paulista para o Desenvolvimento da Medicina	Vários Cargos	Médio / Superior	8			2013-09-09	spdm-abre-8-vagas-no-dsei-alto-rio-purus-ac	ea
 rio-branco	Rio Branco	SEE - Secretaria de Estado de Educação e Esporte	Alfabetizadores e Coordenadores	Médio / Superior	430			2013-08-09	see-ac-abre-430-vagas-para-alfabetizadores-e-coordenadores-de-turmas	ea
-rio-branco	Rio Branco	Procuradoria Geral do Estado	Estagiários	Superior Incompleto	4			2013-07-15	procuradoria-geral-do-estado-do-acre-seleciona-estagiarios-em-direito	ea
 rodrigues-alves	Rodrigues Alves	Prefeitura de Rodrigues Alves	Vários Cargos	Fundamental / Médio / Técnico / Superior	186			2025-06-22	prefeitura-de-rodrigues-alves-ac-abre-186-vagas-em-processo-seletivo	ea
 rodrigues-alves	Rodrigues Alves	Prefeitura de Rodrigues Alves	Vários Cargos	Médio / Superior	12			2025-03-31	prefeitura-de-rodrigues-alves-ac-publica-edital-de-processo-seletivo-com-12-vagas	ea
 rodrigues-alves	Rodrigues Alves	Prefeitura de Rodrigues Alves	Professor	Superior	0			2024-02-07	prefeitura-de-rodrigues-alves-ac-anuncia-um-novo-processo-seletivo	ea
@@ -816,8 +816,8 @@ xapuri	Xapuri	Prefeitura de Xapuri	Assistente de Alfabetização	Superior	1			20
 xapuri	Xapuri	IFAC - Instituto Federal de Educação, Ciência e Tecnologia	Professores Substitutos	Superior	2			2019-04-29	ifac-torna-publico-processo-seletivo-para-dois-professores-substitutos	ea
 xapuri	Xapuri	IDM - Instituto Dom Moacyr Grechi	Mediador de Aprendizagem	Superior	1			2018-09-26	idm-anuncia-realizacao-de-novo-processo-seletivo-em-xapuri-ac	ea
 xapuri	Xapuri	Prefeitura de Xapuri	Odontólogo	Superior	1			2018-08-01	prefeitura-de-xapuri-ac-anuncia-processo-seletivo-para-odontologo	ea
-xapuri	Xapuri	Prefeitura de Xapuri	Assistente de Alfabetização	Magistério / Superior	0			2018-05-04	prefeitura-de-xapuri-ac-abre-processo-seletivo	ea
 xapuri	Xapuri	Prefeitura de Xapuri	Assistente de Alfabetização	Médio / Superior	1			2018-05-04	abertas-as-inscricoes-do-processo-seletivo-realizado-pela-prefeitura-de-xapuri-ac	ea
+xapuri	Xapuri	Prefeitura de Xapuri	Assistente de Alfabetização	Magistério / Superior	0			2018-05-04	prefeitura-de-xapuri-ac-abre-processo-seletivo	ea
 xapuri	Xapuri	SEE - Secretaria do Estado da Educação e Esporte	Coordenador de Turmas	Superior Incompleto / Superior	3			2018-04-06	see-do-acre-recebe-inscricoes-de-processo-seletivo	ea
 xapuri	Xapuri	IDM - Instituto Dom Moacyr Grechi	Mediador de Aprendizagem Mensalista	Superior	2			2017-08-10	idm-ac-vai-selecionar-bolsistas-para-cursos-do-pronatec-em-processo-seletivo	ea
 xapuri	Xapuri	Prefeitura de Xapuri	Vários Cargos	Fundamental / Médio / Superior	60			2017-03-26	prefeitura-de-xapuri-ac-esta-com-processo-seletivo-aberto-na-area-da-educacao	ea
