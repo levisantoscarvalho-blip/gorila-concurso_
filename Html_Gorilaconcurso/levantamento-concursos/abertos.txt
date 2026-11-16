@@ -662,3 +662,6 @@ RJ|CRP/05 - Conselho Regional de Psicologia da 5ª Região|-|37|Vários Cargos (
 SP|Faculdade Sebrae|-|1|Professor Adjunto (Superior)|19/11/2026|faculdade-sebrae-sp-abre-selecao-para-professor-adjunto-arquiteto-de-solucoes
 SP|FJPO - Fundação José Pedro de Oliveira|-|4|Vários Cargos (Fundamental / Técnico / Superior)|19/11/2026|fundacao-jose-pedro-de-oliveira-sp-prorroga-inscricoes-para-concurso-publico
 DF|APS - Associação das Pioneiras Sociais|-|2|Estatístico (Superior)|23/11/2026>17/12/2026|associacao-das-pioneiras-sociais-aps-abre-processo-seletivo-para-estatistico
+MG|FHEMIG - Fundação Hospitalar do Estado de Minas Gerais|-|10|Vários Cargos (Médio / Técnico / Superior)|23/11/2026|fhemig-mg-abre-processos-seletivos-em-betim-e-belo-horizonte
+MG|UEMG - Universidade do Estado de Minas Gerais|-|91|Professor de Educação Superior (Superior)|26/11/2026|uemg-mg-abre-processo-seletivo-para-professores-de-educacao-superior
+GO|IFG - Instituto Federal de Educação, Ciência e Tecnologia de Goiás|-|36|Vários Cargos (Médio / Técnico / Superior)|24/11/2026>23/12/2026|ifg-go-abre-concurso-publico-para-tecnicos-administrativos-em-educacao

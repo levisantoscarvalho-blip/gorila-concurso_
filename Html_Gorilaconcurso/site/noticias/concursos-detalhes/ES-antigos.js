@@ -3526,5 +3526,4 @@ Object.assign(CONC_DETALHES['ES'] = CONC_DETALHES['ES'] || {}, {
 'mais-um-concurso-publico-e-retificado-pela-ufes-es':{"p":"2022-01-26","ti":"Mais um Concurso Público é retificado pela Ufes - ES","smin":3522.21,"smax":9616.18,"v":2,"t":"concurso","e":["EDITAL DE ABERTURA Nº 65/2021","RETIFICAÇÃO I"]},
 'crq-es-anuncia-retificacao-de-concurso-publico-em-vitoria':{"p":"2021-12-21","ti":"CRQ - ES anuncia retificação de Concurso Público em Vitória","smin":594.33,"smax":2264.75,"pr":"2022-02-06","v":2,"t":"concurso","e":["EDITAL DE ABERTURA Nº 01/2021 - RETIFICADO","RETIFICAÇÃO I"]},
 'secult-es-divulga-processo-seletivo-em-vitoria':{"p":"2022-01-07","ti":"Secult - ES divulga Processo Seletivo em Vitória","smin":3449.34,"smax":3449.34,"pr":"2022-01-27","t":"seletivo","e":["EDITAL DE ABERTURA 01/2022"]},
-'sedu-es-abre-selecao-para-assistentes-de-alfabetizacao-no-programa-tempo-de-aprender':{"p":"2021-12-20","ti":"Sedu - ES abre seleção para assistentes de alfabetização no Programa Tempo de Aprender","t":"seletivo","e":["EDITAL DE ABERTURA 36/2021"]},
 });
