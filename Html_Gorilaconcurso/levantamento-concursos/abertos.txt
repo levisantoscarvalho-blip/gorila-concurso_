@@ -665,3 +665,16 @@ DF|APS - Associação das Pioneiras Sociais|-|2|Estatístico (Superior)|23/11/20
 MG|FHEMIG - Fundação Hospitalar do Estado de Minas Gerais|-|10|Vários Cargos (Médio / Técnico / Superior)|23/11/2026|fhemig-mg-abre-processos-seletivos-em-betim-e-belo-horizonte
 MG|UEMG - Universidade do Estado de Minas Gerais|-|91|Professor de Educação Superior (Superior)|26/11/2026|uemg-mg-abre-processo-seletivo-para-professores-de-educacao-superior
 GO|IFG - Instituto Federal de Educação, Ciência e Tecnologia de Goiás|-|36|Vários Cargos (Médio / Técnico / Superior)|24/11/2026>23/12/2026|ifg-go-abre-concurso-publico-para-tecnicos-administrativos-em-educacao
+MA|UEMA - Universidade Estadual do Maranhão|-|21|Professor substituto (Superior)|25/11/2026|uema-abre-processos-seletivos-para-professores-substitutos-em-quatro-campi
+MA|UEMA - Universidade Estadual do Maranhão|-|11|Professor substituto (Superior)|25/11/2026|uema-abre-selecoes-para-professores-substitutos-em-bacabal-e-ze-doca
+MA|UEMA - Universidade Estadual do Maranhão|-|2|Professor substituto (Superior)|25/11/2026|uema-abre-processos-seletivos-para-professores-substitutos-em-coroata-e-sao-luis
+SE|UFS - Fundação Universidade Federal de Sergipe|-|2|Professor Titular-Livre do Magistério Superior (Superior)|23/11/2026>22/12/2026|ufs-se-abre-concurso-para-professor-titular-livre
+SP|UNESP - Universidade Estadual Paulista "Júlio de Mesquita Filho"|-|2|Professor Substituto (Superior)|17/11/2026|unesp-prorroga-inscricoes-de-concurso-para-professor-substituto-de-engenharia-aeroespacial
+MG|CISPAR - Consórcio Público Intermunicipal de Desenvolvimento Sustentável do Alto Paranaíba|-|11|Analista Superior, Médico Veterinário (Superior)|17/12/2026|cispar-mg-abre-concurso-publico-para-profissionais-de-nivel-superior
+MG|Fhemig - Fundação Hospitalar do Estado de Minas Gerais|-|1|Médico (Superior)|24/11/2026|fhemig-mg-abre-selecao-para-medico-no-instituto-raul-soares
+ES|CIM Expandida Sul - Consórcio Público da Região Expandida Sul|-|10|Vários Cargos (Fundamental / Médio / Técnico)|02/12/2026|cim-expandida-sul-es-abre-processo-seletivo-com-vagas-imediatas-e-cadastro-de-reserva
+ES|SEDU - Secretaria de Estado da Educação|-|0|Professor (Superior)|26/11/2026|sedu-es-abre-processo-seletivo-para-professores-de-ingles-e-espanhol
+ES|TCEES - Tribunal de Contas do Estado do Espírito Santo|-|16|Técnico de Nível Superior (Superior)|18/12/2026|tce-es-abre-processo-seletivo-com-vagas-na-area-de-tecnologia
+SC|CIM-AMFRI - Consórcio Intermunicipal Multifinalitário da Região da AMFRI|-|0|Analista Ambiental, Contador, Médico(a) Veterinário(a) (Superior)|18/12/2026|cim-amfri-sc-abre-processo-seletivo-para-profissionais-de-nivel-superior
+SC|FAHECE - Fundação de Apoio ao HEMOSC/CEPON|-|1|Auxiliar de Higienização (Fundamental)|22/11/2026|fahece-sc-anuncia-vaga-para-auxiliar-de-higienizacao-no-samu
+DF|IFB - Instituto Federal de Brasília|-|1|Professor substituto (Superior)|23/11/2026|ifb-df-abre-selecao-para-professor-substituto-no-campus-planaltina
