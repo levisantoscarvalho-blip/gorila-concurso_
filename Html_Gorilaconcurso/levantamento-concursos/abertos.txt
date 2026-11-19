@@ -685,3 +685,7 @@ PR|SEED - Secretaria de Estado da Educação|-|1000|Tradutor e Intérprete de L�
 SC|Consórcio Intermunicipal do Serviço Socioassistencial de Alta Complexidade Casa Lar Pequeno Príncipe|-|1|Psicóloga (Superior)|23/11/2026|casa-lar-pequeno-principe-sc-abre-selecao-para-psicologa
 SC|UFSC - Universidade Federal de Santa Catarina|-|40|Professor substituto (Superior)|24/11/2026|ufsc-abre-processo-seletivo-com-vagas-para-professor-substituto-em-diferentes-cidades
 MT|UFMT - Universidade Federal de Mato Grosso|-|4|Professor (Superior)|30/11/2026>22/12/2026|ufmt-mt-abre-concurso-publico-para-professores-do-magisterio-superior
+PA|UFRA - Universidade Federal Rural da Amazônia|-|57|Professor (Superior)|18/12/2026|ufra-pa-abre-concurso-publico-para-professores-do-magisterio-superior
+RS|IFRS - Instituto Federal de Educação, Ciência e Tecnologia do Rio Grande do Sul|-|1|Professor substituto (Superior)|26/11/2026|ifrs-abre-processo-seletivo-para-professor-substituto-de-zootecnia-em-sertao
+RS|UERGS - Universidade Estadual do Rio Grande do Sul|-|2|Professor voluntário (Superior)|29/11/2026|uergs-rs-abre-processo-seletivo-para-professores-voluntarios-em-alegrete
+SC|SAMU - Serviço de Atendimento Móvel de Urgência|-|1|Médico(a) Regulador(a) das Urgências (Superior)|19/11/2026|fahece-sc-abre-processos-seletivos-para-medicos-reguladores-em-florianopolis-e-blumenau
