@@ -689,3 +689,6 @@ PA|UFRA - Universidade Federal Rural da Amazônia|-|57|Professor (Superior)|18/1
 RS|IFRS - Instituto Federal de Educação, Ciência e Tecnologia do Rio Grande do Sul|-|1|Professor substituto (Superior)|26/11/2026|ifrs-abre-processo-seletivo-para-professor-substituto-de-zootecnia-em-sertao
 RS|UERGS - Universidade Estadual do Rio Grande do Sul|-|2|Professor voluntário (Superior)|29/11/2026|uergs-rs-abre-processo-seletivo-para-professores-voluntarios-em-alegrete
 SC|SAMU - Serviço de Atendimento Móvel de Urgência|-|1|Médico(a) Regulador(a) das Urgências (Superior)|19/11/2026|fahece-sc-abre-processos-seletivos-para-medicos-reguladores-em-florianopolis-e-blumenau
+SP|CIOP - Consórcio Intermunicipal do Oeste Paulista|-|21|Motorista Condutor de Ambulância, Técnico em Enfermagem (Médio / Técnico)|29/11/2026|ciop-sp-abre-concurso-publico-para-motoristas-e-tecnicos-em-enfermagem
+SP|Funcamp - Fundação de Desenvolvimento da Unicamp|-|1|Camareiro (Fundamental)|27/11/2026|funcamp-sp-abre-vaga-para-camareiro-na-casa-do-professor-visitante
+MG|HOB - Hospital Metropolitano Odilon Behrens|-|0|Técnico em Nutrição e Dietética, Agente Executivo Governamental (Técnico / Superior)|30/11/2026|hospital-metropolitano-odilon-behrens-mg-abre-selecoes-para-tecnico-em-nutricao-e-agente-executivo-governamental
