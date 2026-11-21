@@ -1,4 +1,4 @@
-AUDITORIA DO GORILA — 20/11/2026 12:58 (horário de Brasília)
+AUDITORIA DO GORILA — 21/11/2026 12:08 (horário de Brasília)
 142869 concursos nas cidades examinados · 0 ERROS · 27 para CONFERIR · 1 INFO
 ERRO = o robô está perdendo ou estragando dados (corrigir o código) · CONFERIR = uma pessoa olha · INFO = limite conhecido
 
