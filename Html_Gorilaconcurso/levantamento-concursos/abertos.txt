@@ -692,3 +692,4 @@ SC|SAMU - Serviço de Atendimento Móvel de Urgência|-|1|Médico(a) Regulador(a
 SP|CIOP - Consórcio Intermunicipal do Oeste Paulista|-|21|Motorista Condutor de Ambulância, Técnico em Enfermagem (Médio / Técnico)|29/11/2026|ciop-sp-abre-concurso-publico-para-motoristas-e-tecnicos-em-enfermagem
 SP|Funcamp - Fundação de Desenvolvimento da Unicamp|-|1|Camareiro (Fundamental)|27/11/2026|funcamp-sp-abre-vaga-para-camareiro-na-casa-do-professor-visitante
 MG|HOB - Hospital Metropolitano Odilon Behrens|-|0|Técnico em Nutrição e Dietética, Agente Executivo Governamental (Técnico / Superior)|30/11/2026|hospital-metropolitano-odilon-behrens-mg-abre-selecoes-para-tecnico-em-nutricao-e-agente-executivo-governamental
+MA|UEMASUL - Universidade Estadual da Região Tocantina do Maranhão|-|3|Professor substituto (Superior)|29/11/2026|uemasul-ma-abre-processos-seletivos-para-professores-substitutos-em-diversas-areas
