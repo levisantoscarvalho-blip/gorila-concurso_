@@ -2552,6 +2552,8 @@ carlopolis	Carlópolis	Prefeitura de Carlópolis	Agente de Endemias	Ensino Médi
 carlopolis	Carlópolis	Prefeitura de Carlópolis	Agente de Endemias	Ensino Médio	3			2013-02-25	prefeitura-de-carlopolis-pr-abre-3-vagas-para-agente-de-endemias	ea
 carlopolis	Carlópolis	MP - Ministério Público - Carlópolis	Estagiário	Superior	1			2012-11-23	mpe-pr-abre-vaga-de-estagio-para-pos-graduando-em-carlopolis	ea
 carlopolis	Carlópolis	Prefeitura de Carlópolis	Vários Cargos	Fundamental / Médio / Superior	30			2012-04-09	30-vagas-com-salarios-de-ate-9-8-mil-na-prefeitura-de-carlopolis-pr	ea
+cascavel	Cascavel	IFPR - Instituto Federal de Educação, Ciência e Tecnologia do Paraná	Professor substituto	Superior	1			2026-11-27	ifpr-pr-abre-selecao-para-professor-substituto-de-matematica-em-cascavel	na
+cascavel	Cascavel	IFPR - Instituto Federal de Educação, Ciência e Tecnologia do Paraná	Professor substituto	Superior	2			2026-11-26	ifpr-pr-abre-processos-seletivos-para-professores-substitutos-no-campus-cascavel	na
 cascavel	Cascavel	Prefeitura de Cascavel	Professor de Educação Infantil Temporário, Monitor de Biblioteca Temporário, Professor Temporário	Médio / Superior	10			2026-11-03	prefeitura-de-cascavel-pr-abre-teste-seletivo-com-salarios-de-ate-7477	ea
 cascavel	Cascavel	UNIOESTE - Universidade Estadual do Oeste do Paraná	Técnico de Enfermagem	Ensino Técnico	100			2026-09-23	unioeste-pr-abre-processo-seletivo-com-100-vagas-para-tecnicos-de-enfermagem	ea
 cascavel	Cascavel	CISOP - Consórcio Intermunicipal de Saúde do Oeste do Paraná	Vários Cargos	Fundamental / Médio / Técnico / Superior	31			2026-09-21	cisop-pr-abre-concurso-publico-com-salarios-de-ate-15471	ea
@@ -2750,8 +2752,6 @@ cascavel	Cascavel	MP - Ministério Público - Cascavel	Estagiário	Médio Incomp
 cascavel	Cascavel	IFPR - Instituto Federal do Paraná	Professor Substituto	Superior	1			2015-03-06	ifpr-seleciona-professor-substituto-para-campus-cascavel	ea
 cascavel	Cascavel	MP - Ministério Público - Cascavel	Estagiário - Direito	Superior Incompleto	0			2015-02-09	mpe-pr-realiza-selecao-e-credenciamento-de-estagiarios-em-cascavel	ea
 cascavel	Cascavel	Prefeitura de Cascavel	Ag. Com. de Saúde e Téc. em Saúde Bucal	Fundamental / Médio	4			2015-01-28	prefeitura-de-cascavel-pr-abre-concurso-com-vagas-imediatas-e-cadastro-reserva	ea
-cascavel	Cascavel	Prefeitura de Cascavel	Vários Cargos	Fundamental / Médio / Superior	622			2015-01-25	prefeitura-de-cascavel-pr-divulga-quinta-retificacao-de-concurso-publico-com-622-vagas	ea
-cascavel	Cascavel	MP - Ministério Público - Cascavel	Estagiário - Direito	Superior Incompleto	1			2014-11-28	mpe-pr-realiza-teste-seletivo-com-vaga-para-estagiario-de-direito-em-cascavel	ea
 castro	Castro	Prefeitura de Castro	Técnico em Enfermagem	Ensino Técnico	32			2026-09-24	prefeitura-de-castro-pr-abre-concurso-publico-para-o-cargo-de-tecnico-em-enfermagem	ea
 castro	Castro	Prefeitura de Castro	Agente de Combate às Endemias, Agente Comunitário de Saúde	Ensino Médio	32			2026-08-06	prefeitura-de-castro-pr-abre-concurso-publico-com-vagas-de-nivel-medio	ea
 castro	Castro	Prefeitura de Castro	Vários Cargos	Fundamental / Médio / Técnico / Superior	94			2025-12-09	prefeitura-de-castro-pr-divulga-abertura-de-concurso-publico-com-diversas-vagas	ea
@@ -7958,6 +7958,7 @@ nossa-senhora-das-gracas	Nossa Senhora das Graças	Prefeitura de Nossa Senhora d
 nossa-senhora-das-gracas	Nossa Senhora das Graças	Prefeitura de Nossa Senhora das Graças	Vários Cargos	Fundamental / Médio / Superior	15			2017-02-28	prefeitura-de-nossa-senhora-das-gracas-pr-anuncia-processo-seletivo	ea
 nossa-senhora-das-gracas	Nossa Senhora das Graças	Prefeitura de Nossa Senhora das Graças	Vários Cargos	Fundamental / Médio / Superior	45			2015-07-13	prefeitura-de-nossa-senhora-das-gracas-pr-abre-concurso-com-salarios-de-ate-9-mil	ea
 nossa-senhora-das-gracas	Nossa Senhora das Graças	Câmara de Nossa Senhora das Graças	Vários Cargos	Fundamental / Médio / Superior	4			2013-12-08	camara-de-nossa-senhora-das-gracas-pr-abre-vagas-e-forma-cadastro-reserva	ea
+nova-alianca-do-ivai	Nova Aliança do Ivaí	Prefeitura do Município de Nova Aliança do Ivaí	Agente de Combate às Endemias	Ensino Médio	0			2026-12-22	prefeitura-de-nova-alianca-do-ivai-pr-abre-concurso-para-agente-de-combate-as-endemias	na
 nova-alianca-do-ivai	Nova Aliança do Ivaí	Prefeitura de Nova Aliança do Ivaí	Vários Cargos	Fundamental / Médio / Técnico / Superior	8			2025-08-11	prefeitura-de-nova-alianca-do-ivai-pr-divulga-retificacao-de-concurso-publico	ea
 nova-alianca-do-ivai	Nova Aliança do Ivaí	Câmara Legislativa de Nova Aliança do Ivaí	Secretário Legislativo, Agente de Serviços Gerais	Fundamental / Médio	1			2025-05-11	camara-legislativa-de-nova-alianca-do-ivai-pr-abre-novo-concurso-publico	ea
 nova-alianca-do-ivai	Nova Aliança do Ivaí	Prefeitura de Nova Aliança do Ivaí	Vários Cargos	Ensino Médio	3			2023-08-17	prefeitura-de-nova-alianca-do-ivai-pr-abre-inscricoes-para-novo-processo-seletivo	ea

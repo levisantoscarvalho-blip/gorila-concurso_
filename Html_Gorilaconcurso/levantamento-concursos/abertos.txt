@@ -693,3 +693,8 @@ SP|CIOP - Consórcio Intermunicipal do Oeste Paulista|-|21|Motorista Condutor de
 SP|Funcamp - Fundação de Desenvolvimento da Unicamp|-|1|Camareiro (Fundamental)|27/11/2026|funcamp-sp-abre-vaga-para-camareiro-na-casa-do-professor-visitante
 MG|HOB - Hospital Metropolitano Odilon Behrens|-|0|Técnico em Nutrição e Dietética, Agente Executivo Governamental (Técnico / Superior)|30/11/2026|hospital-metropolitano-odilon-behrens-mg-abre-selecoes-para-tecnico-em-nutricao-e-agente-executivo-governamental
 MA|UEMASUL - Universidade Estadual da Região Tocantina do Maranhão|-|3|Professor substituto (Superior)|29/11/2026|uemasul-ma-abre-processos-seletivos-para-professores-substitutos-em-diversas-areas
+RJ|Cefet/RJ - Centro Federal de Educação Tecnológica Celso Suckow da Fonseca|-|310|Vários Cargos (Não informada)|30/11/2026|cefet-rj-rj-abre-processo-seletivo-com-310-vagas-para-cursos-tecnicos-subsequentes
+MG|UFJF - Universidade Federal de Juiz de Fora|-|1|Professor substituto (Superior)|30/11/2026|ufjf-mg-abre-processo-seletivo-para-professor-substituto-com-salario-de-4975-em-governador-valadares
+SC|Hospital e Maternidade Santo Antônio|-|21|Vários Cargos (Fundamental / Médio / Técnico / Superior)|05/12/2026|hospital-e-maternidade-santo-antonio-sc-abre-processo-seletivo-com-21-vagas-e-cadastro-de-reserva
+SC|UNESC - Universidade do Extremo Sul Catarinense|-|25|Estudante do mestrado (Superior)|25/02/2027|unesc-sc-abre-processo-seletivo-para-mestrado-em-ciencia-e-engenharia-de-materiais-com-oferta-de-bolsas
+SC|UNESC - Universidade do Extremo Sul Catarinense|-|21|Doutorando (Superior)|25/02/2027|unesc-sc-abre-processo-seletivo-para-doutorado-em-ciencia-e-engenharia-de-materiais

@@ -1,10 +1,9 @@
-ROBÔ DO GORILA — 22/11/2026 12:04 (horário de Brasília) — coleta COMPLETA (semanal)
-coleta completa: 0 cidades com erro na 1ª passada
-2ª passada: 0 cidades ainda com erro
-cidades trocadas: 142882 concursos (antes 142869)
-PCI hoje: 606 concursos com inscrições abertas
-novos concursos: 1 em cidades + 1 estaduais/sem cidade · 0 com data mudada (prorrogação/retificação)
-notícias: parte 0 pronta (11 nesta rodada)
+ROBÔ DO GORILA — 23/11/2026 15:59 (horário de Brasília)
+PCI hoje: 631 concursos com inscrições abertas
+CONFERIR: 'Prefeitura de Blumenau' (SC) estava em municipais-previstos.txt e agora abriu inscrições — tirar dos previstos? prefeitura-de-blumenau-sc-abre-concurso-com-19-vagas-e-cadastro-de-reserva-no-magisterio
+CONFERIR: 'Prefeitura de Blumenau (Educação)' (SC) estava em municipais-previstos.txt e agora abriu inscrições — tirar dos previstos? prefeitura-de-blumenau-sc-abre-concurso-com-19-vagas-e-cadastro-de-reserva-no-magisterio
+novos concursos: 44 em cidades + 5 estaduais/sem cidade · 0 com data mudada (prorrogação/retificação)
+notícias: parte 0 pronta (49 nesta rodada)
 AVISO GO 17232 vagas sem conferência, ficou 'a definir': seduce-go-retifica-um-dos-dois-processos-seletivos-com-mais-de-17-2-mil-vagas
 AVISO GO 7453 vagas sem conferência, ficou 'a definir': valparaiso-de-goias-go-prorroga-inscricoes-e-retifica-edital-001-2014
 AVISO MT 5156 vagas sem conferência, ficou 'a definir': prefeitura-de-varzea-grande-mt-retifica-processo-seletivo-com-vagas-para-a-educacao
@@ -29,7 +28,7 @@ AVISO taxa impossível (R$ 1627.28), não mostrada: taboao-da-serra-sp-vagas-par
 AVISO taxa impossível (R$ 4231.6), não mostrada: uem-pr-abre-selecao-para-tecnico-em-laboratorio-com-salario-de-4-2-mil
 AVISO taxa impossível (R$ 2125.02), não mostrada: prefeitura-de-cajamar-sp-retifica-um-dos-editais-de-concursos-publicos
 AUDITORIA: 0 erros, 27 para conferir, 1 info (ver auditoria.txt)
-concursos nas cidades: 142883 (no ar: 142869) · detalhes: 142056 (no ar: 142055)
-levantamento estadual/municipal: 958 (no ar: 957)
+concursos nas cidades: 142908 (no ar: 142883) · detalhes: 142086 (no ar: 142056)
+levantamento estadual/municipal: 963 (no ar: 958)
 sintaxe conferida com o Node em 82 arquivos
 OK: pode publicar
