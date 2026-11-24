@@ -698,3 +698,9 @@ MG|UFJF - Universidade Federal de Juiz de Fora|-|1|Professor substituto (Superio
 SC|Hospital e Maternidade Santo Antônio|-|21|Vários Cargos (Fundamental / Médio / Técnico / Superior)|05/12/2026|hospital-e-maternidade-santo-antonio-sc-abre-processo-seletivo-com-21-vagas-e-cadastro-de-reserva
 SC|UNESC - Universidade do Extremo Sul Catarinense|-|25|Estudante do mestrado (Superior)|25/02/2027|unesc-sc-abre-processo-seletivo-para-mestrado-em-ciencia-e-engenharia-de-materiais-com-oferta-de-bolsas
 SC|UNESC - Universidade do Extremo Sul Catarinense|-|21|Doutorando (Superior)|25/02/2027|unesc-sc-abre-processo-seletivo-para-doutorado-em-ciencia-e-engenharia-de-materiais
+SP|Unifesp - Universidade Federal de São Paulo|-|1|Professor Assistente A Substituto (Superior)|27/11/2026|unifesp-sp-abre-vaga-para-professor-substituto-com-salario-de-6157
+RJ|CMTC - Companhia Municipal de Transportes Coletivos|-|45|Motorista de articulado (Fundamental)|28/11/2026|mobi-rio-rj-abre-processo-seletivo-com-45-vagas-para-motorista-de-articulado
+MG|UFJF - Universidade Federal de Juiz de Fora|-|1|Professor substituto (Superior)|27/11/2026>08/12/2026|ufjf-mg-abre-processo-seletivo-para-professor-substituto-de-medicina-em-governador-valadares
+RS|IFFar - Instituto Federal de Educação, Ciência e Tecnologia Farroupilha|-|2|Professor Substituto (Superior)|30/11/2026|iffar-rs-abre-selecao-para-professores-substitutos-com-salarios-de-ate-8-mil
+RS|IFRS - Instituto Federal de Educação, Ciência e Tecnologia do Rio Grande do Sul|-|2|Professor substituto (Superior)|02/12/2026|ifrs-rs-abre-selecao-para-professores-substitutos-no-campus-porto-alegre
+SC|UNESC - Universidade do Extremo Sul Catarinense|-|21|Vários Cargos (Superior)|25/02/2027|unesc-sc-abre-processo-seletivo-para-doutorado-em-ciencia-e-engenharia-de-materiais-com-21-vagas

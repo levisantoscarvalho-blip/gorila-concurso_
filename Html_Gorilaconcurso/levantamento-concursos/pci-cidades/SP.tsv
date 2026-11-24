@@ -407,7 +407,7 @@ agudos	Agudos	Prefeitura de Agudos	Vários Cargos	Fundamental / Superior	35			20
 agudos	Agudos	Prefeitura de Agudos	Bombeiro Municipal	Ensino Médio	4			2012-04-10	4-vagas-para-o-cargo-de-bombeiro-municipal-na-prefeitura-de-agudos-sp	ea
 agudos	Agudos	Câmara de Agudos	Vários Cargos	Fundamental / Médio	13			2011-06-27	13-vagas-para-camara-de-agudos-sp	ea
 agudos	Agudos	Prefeitura de Agudos	Vários Cargos	Fundamental / Médio / Superior	43			2010-01-22	prefeitura-de-agudos-sp-abre-concurso-para-55-vagas	ea
-alambari	Alambari	Prefeitura de Alambari	Monitor de Transporte Escolar, Professor I	Fundamental / Superior	0	CR		2026-11-23	prefeitura-de-alambari-sp-abre-processo-seletivo-para-monitor-de-transporte-escolar-e-professor-i	na
+alambari	Alambari	Prefeitura de Alambari	Monitor de Transporte Escolar, Professor I	Fundamental / Superior	0			2026-12-10	prefeitura-de-alambari-sp-abre-processo-seletivo-para-cadastro-de-reserva-na-educacao	na
 alambari	Alambari	Prefeitura de Alambari	Agente Comunitário de Saúde	Fundamental	1			2025-10-10	prefeitura-de-alambari-sp-prorroga-inscricoes-de-concurso-publico-para-agente-comunitario-de-saude	ea
 alambari	Alambari	Prefeitura de Alambari	Vários Cargos	Fundamental / Superior	7			2025-07-04	concurso-publico-em-alambari-sp-oferta-sete-vagas	ea
 alambari	Alambari	Prefeitura de Alambari	Vários Cargos	Fundamental / Médio / Técnico / Superior	28			2025-02-05	prefeitura-de-alambari-sp-retifica-edital-de-concurso-publico	ea
@@ -5656,7 +5656,7 @@ campinas	Campinas	Prefeitura de Campinas	Guarda Municipal	Ensino Médio	100		202
 campinas	Campinas	SETEC - Serviços Técnicos Gerais	Procurador	Superior	1			2026-12-04	setec-campinas-sp-abre-concurso-publico-para-o-cargo-de-procurador	na
 campinas	Campinas	SETEC - Serviços Técnicos Gerais de Campinas	Vários Cargos	Fundamental / Médio / Técnico / Superior	39			2026-12-04	setec-campinas-sp-abre-concurso-publico-com-salarios-de-ate-10428	da
 campinas	Campinas	Funcamp - Fundação de Desenvolvimento da Unicamp	Camareiro	Fundamental	1			2026-11-27	funcamp-sp-abre-vaga-para-camareiro-na-casa-do-professor-visitante	na
-campinas	Campinas	Unicamp - Universidade Estadual de Campinas	Enfermeiro, Técnico de Enfermagem	Médio / Técnico / Superior	3			2026-11-27	unicamp-sp-abre-processos-seletivos-para-enfermeiro-e-tecnico-de-enfermagem	na
+campinas	Campinas	Unicamp - Universidade Estadual de Campinas	Enfermeiro, Técnico de Enfermagem	Médio / Técnico / Superior	3			2026-11-27	unicamp-sp-publica-editais-retificados-de-selecao-para-enfermeiro-e-tecnico-de-enfermagem	na
 campinas	Campinas	FJPO - Fundação José Pedro de Oliveira	Vários Cargos	Fundamental / Técnico / Superior	4			2026-11-19	fundacao-jose-pedro-de-oliveira-sp-prorroga-inscricoes-para-concurso-publico	ea
 campinas	Campinas	FUNCAMP - Fundação de Desenvolvimento da Unicamp	Analista de Pesquisa Clínica Júnior	Superior	1			2026-11-06	funcamp-sp-abre-processo-seletivo-para-analista-de-pesquisa-clinica-junior-no-hemocentro	ea
 campinas	Campinas	FUNCAMP - Fundação de Desenvolvimento da Unicamp	Técnico de Administração Hospitalar	Ensino Médio	1			2026-10-29	funcamp-sp-abre-vaga-para-tecnico-de-administracao-hospitalar-pcd	ea
@@ -10957,6 +10957,7 @@ guariba	Guariba	Prefeitura de Guariba	Professores	Superior	0			2010-11-26	prefei
 guariba	Guariba	Câmara de Guariba	Servente e Vigia	Alfabetizado	4			2010-05-14	camara-de-guariba-sp-abre-4-vagas-para-servente-e-vigia-de-nivel-alfabetizado	ea
 guariba	Guariba	Prefeitura de Guariba	Vários Cargos	Fundamental / Médio / Superior	17			2010-05-05	prefeitura-de-guariba-sp-abre-17-vagas-de-diversos-cargos-de-ate-1513	ea
 guariba	Guariba	Prefeitura de Guariba	Professores	Superior	0			2009-02-13	vagas-para-professores-na-prefeitura-de-guariba-sp	ea
+guaruja	Guarujá	Câmara de Guarujá	Procurador Legislativo	Superior	1		2026-12-03	2027-01-04	camara-de-guaruja-sp-abre-concurso-com-salario-de-17868-para-procurador-legislativo	na
 guaruja	Guarujá	Etec - Escola Técnica - Guarujá	Professores de Ensino Médio e Técnico	Superior	0			2026-06-16	etec-de-guaruja-sp-publica-abertura-de-inscricoes-para-dois-editais-de-processo-seletivo	ea
 guaruja	Guarujá	SEDUC - Secretaria Municipal de Educação de Guarujá	Inspetor de Alunos, Professor de Educação Básica III	Fundamental / Superior	37			2026-03-19	prefeitura-de-guaruja-sp-abre-concurso-publico-e-processo-seletivo-para-a-educacao	ea
 guaruja	Guarujá	ETEC - Escola Técnica Estadual Alberto Santos Dumont	Professor de Ensino Médio e Técnico	Superior	0	CR		2026-01-28	etec-de-guaruja-sp-abre-processo-seletivo-para-formar-cadastro-reserva	ea
@@ -29620,6 +29621,7 @@ sao-paulo	São Paulo	USP - Universidade de São Paulo	Professor Doutor	Superior	
 sao-paulo	São Paulo	USP - Universidade de São Paulo	Professor Titular	Superior	1			2027-01-15	usp-abre-concurso-publico-para-o-cargo-de-professor-titular-no-instituto-de-relacoes-internacionais	na
 sao-paulo	São Paulo	USP - Universidade de São Paulo	Professor Titular	Superior	1			2027-01-08	usp-sp-abre-concurso-publico-para-o-cargo-de-professor-titular-na-area-de-sistemas-de-computacao	na
 sao-paulo	São Paulo	USP - Universidade de São Paulo	Vários Cargos	Médio / Superior	10		2026-12-01	2027-01-07	usp-sp-abre-10-novos-concursos-publicos-para-diversos-cargos	na
+sao-paulo	São Paulo	IFSP - Instituto Federal de Educação, Ciência e Tecnologia de São Paulo	Professor substituto	Superior	80			2027-01-05	ifsp-sp-abre-processo-seletivo-para-professor-substituto-com-salarios-de-ate-8340	na
 sao-paulo	São Paulo	IFSP - Instituto Federal de Educação, Ciência e Tecnologia de São Paulo	Técnico de Laboratório, Analista de Tecnologia da Informação, Engenheiro de Segurança do Trabalho	Técnico / Superior	6			2027-01-04	ifsp-abre-concurso-publico-para-cargos-tecnico-administrativos	na
 sao-paulo	São Paulo	HFASP - Hospital de Força Aérea de São Paulo	Vários Cargos	Superior	12			2027-01-04	hfasp-sp-abre-selecao-para-residencia-multiprofissional	na
 sao-paulo	São Paulo	IPA - Instituto de Pesquisas Ambientais	Pesquisador Científico I A	Superior	98			2026-12-22	ipa-sp-abre-concurso-publico-para-pesquisadores-cientificos	na
@@ -29810,7 +29812,6 @@ sao-paulo	São Paulo	USP - Faculdade de Medicina de Ribeirão Preto	Professor Do
 sao-paulo	São Paulo	USP - Universidade de São Paulo	Professor Doutor	Superior	1			2026-01-07	usp-abre-concurso-publico-para-professor-doutor-na-area-de-engenharia-geotecnica	ea
 sao-paulo	São Paulo	USP - Universidade de São Paulo	Professor Doutor	Superior	1			2026-01-07	usp-promove-concurso-publico-para-professor-doutor-na-area-de-inteligencia-artificial-e-ciencia-de-dados	ea
 sao-paulo	São Paulo	USP - Universidade de São Paulo	Professor Doutor	Superior	1			2026-01-06	usp-escola-politecnica-abre-novo-concurso-publico-para-professor	ea
-sao-paulo	São Paulo	Etec - Escola Técnica Estadual Professor Aprígio Gonzaga	Artes, Educação Física	Superior	0			2026-01-01	etec-de-sao-paulo-publica-dois-processos-seletivos-para-formar-cadastro-reserva	ea
 sao-pedro	São Pedro	SAAESP - Serviço Autônomo de Água e Esgoto do Município de São Pedro	Vários Cargos	Fundamental / Médio / Superior	17			2026-07-21	saaesp-de-sao-pedro-sp-publica-edital-retificado-de-concurso-publico	ea
 sao-pedro	São Pedro	Etec - Escola Técnica Estadual Gustavo Teixeira	Professor de Ensino Médio e Técnico	Superior	0	CR		2026-01-29	etec-de-sao-pedro-sp-abre-inscricoes-para-seis-processos-seletivos	ea
 sao-pedro	São Pedro	Prefeitura de São Pedro	Professor II - Ensino Fundamental de Educação Física	Superior	1			2025-11-25	prefeitura-de-sao-pedro-sp-abre-edital-de-concurso-publico-para-cargo-de-professor	ea
@@ -30836,6 +30837,7 @@ serrana	Serrana	Prefeitura de Serrana	Vários Cargos	Médio / Superior	25			2011
 serrana	Serrana	Prefeitura de Serrana	Professores	Magistério / Superior	0			2011-01-23	prefeitura-de-serrana-sp-abre-vagas-para-diversos-cargos-na-area-de-educacao	ea
 serrana	Serrana	Prefeitura de Serrana	Vários Cargos	Fundamental / Médio / Superior	133			2009-08-07	prefeitura-de-serrana-sp-oferece-133-vagas-de-ate-2266	ea
 serrana	Serrana	Prefeitura de Serrana	Procurador Municipal	Superior	0				prefeitura-de-serrana-sp-suspende-processo-seletivo-para-procurador-municipal	suspenso
+sertaozinho	Sertãozinho	Prefeitura da Estância Turística de Sertãozinho	Vários Cargos	Médio / Superior	0			2026-12-03	prefeitura-de-sertaozinho-sp-abre-selecao-com-salarios-de-ate-8732-na-educacao	na
 sertaozinho	Sertãozinho	Câmara de Sertãozinho	Jornalista	Superior	1			2026-04-01	camara-de-sertaozinho-sp-abre-concurso-publico-com-vaga-para-jornalista	ea
 sertaozinho	Sertãozinho	Prefeitura de Sertãozinho	Educador Social	Ensino Médio	0	CR		2026-03-11	prefeitura-de-sertaozinho-sp-abre-processo-seletivo-para-educador-social	ea
 sertaozinho	Sertãozinho	Prefeitura de Sertãozinho - Secretaria Municipal de Educação	Educador de Apoio e Inclusão Escolar - EAI, Profissional de Apoio Escolar - PAE	Médio / Superior	0			2026-01-22	prefeitura-de-sertaozinho-sp-abre-processo-seletivo-para-educador-e-profissional-de-apoio-escolar	ea
@@ -31017,6 +31019,7 @@ sertaozinho	Sertãozinho	Prefeitura de Sertãozinho	Procurador Municipal	Superio
 sertaozinho	Sertãozinho	Prefeitura de Sertãozinho	Vigilante, Ag. Trânsito e Guarda Civil	Fundamental / Médio	21			2008-03-28	prefeitura-de-sertaozinho-sp-oferece-21-vagas	ea
 sertaozinho	Sertãozinho	Prefeitura de Sertãozinho	Vários Cargos	Fundamental / Médio / Superior	96			2008-01-31	prefeitura-de-sertaozinho-sp-oferece-96-vagas	ea
 sertaozinho	Sertãozinho	Prefeitura de Sertãozinho	Vários Cargos	Fundamental / Médio / Superior	57			2008-01-11	prefeitura-de-sertaozinho-sp-oferece-57-vagas	ea
+sete-barras	Sete Barras	Prefeitura de Sete Barras	Vários Cargos	Médio / Superior	42		2026-11-27	2026-12-20	prefeitura-de-sete-barras-sp-abre-concurso-publico-com-42-vagas-e-salarios-de-ate-6449	na
 sete-barras	Sete Barras	Câmara de Sete Barras	Vários Cargos	Médio / Superior	3			2026-12-07	camara-de-sete-barras-sp-abre-concurso-publico-com-salarios-de-ate-7434	na
 sete-barras	Sete Barras	Prefeitura de Sete Barras	Vários Cargos	Fundamental / Médio / Técnico / Superior	79			2026-05-07	prefeitura-de-sete-barras-sp-retifica-processo-seletivo-com-salarios-de-ate-14-mil	ea
 sete-barras	Sete Barras	Prefeitura de Sete Barras	Agente Comunitário de Saúde, Agente de Combate às Endemias	Ensino Médio	4			2026-01-23	prefeitura-de-sete-barras-sp-divulga-processo-seletivo-para-profissionais-de-nivel-medio	ea
