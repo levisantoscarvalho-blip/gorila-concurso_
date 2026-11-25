@@ -1638,11 +1638,12 @@ belmiro-braga	Belmiro Braga	Prefeitura de Belmiro Braga	Vários Cargos	Fundament
 belo-horizonte	Belo Horizonte	SME - Secretaria Municipal de Educação de Belo Horizonte	Professor Municipal	Superior	112		2026-12-21	2027-01-19	secretaria-municipal-de-educacao-de-belo-horizonte-mg-abre-concurso-para-professor-municipal	na
 belo-horizonte	Belo Horizonte	UFMG - Universidade Federal de Minas Gerais	Professor Assistente	Superior	1			2026-12-28	ufmg-abre-concurso-para-docente-na-area-de-nutricao-em-esporte-e-exercicio-fisico	na
 belo-horizonte	Belo Horizonte	Fhemig - Fundação Hospitalar do Estado de Minas Gerais	Biomédico, Farmacêutico, Fonoaudiólogo	Superior	10			2026-12-09	fhemig-mg-abre-processo-seletivo-para-biomedicos-farmaceuticos-e-fonoaudiologos	na
+belo-horizonte	Belo Horizonte	Fhemig - Fundação Hospitalar do Estado de Minas Gerais	Enfermeiro, Médico	Superior	14		2026-11-26	2026-12-02	fhemig-mg-abre-processos-seletivos-para-14-vagas-e-cadastro-reserva-em-belo-horizonte	na
 belo-horizonte	Belo Horizonte	HOB - Hospital Metropolitano Odilon Behrens	Técnico em Nutrição e Dietética, Agente Executivo Governamental	Técnico / Superior	0			2026-11-30	hospital-metropolitano-odilon-behrens-mg-abre-selecoes-para-tecnico-em-nutricao-e-agente-executivo-governamental	na
 belo-horizonte	Belo Horizonte	UFMG - Universidade Federal de Minas Gerais	Professor Assistente	Superior	1			2026-11-30	ufmg-abre-concurso-publico-para-professor-na-faculdade-de-medicina	na
 belo-horizonte	Belo Horizonte	Fhemig - Fundação Hospitalar do Estado de Minas Gerais	Médico	Superior	36			2026-11-27	fhemig-mg-abre-selecao-para-medicos-em-belo-horizonte	na
 belo-horizonte	Belo Horizonte	Fhemig - Fundação Hospitalar do Estado de Minas Gerais	Enfermeiro	Superior	1			2026-11-26	fhemig-mg-abre-processo-seletivo-para-enfermeiro-em-belo-horizonte	na
-belo-horizonte	Belo Horizonte	Fhemig - Fundação Hospitalar do Estado de Minas Gerais	Médico	Superior	1			2026-11-24	fhemig-mg-abre-selecao-para-medico-no-instituto-raul-soares	na
+belo-horizonte	Belo Horizonte	Fhemig - Fundação Hospitalar do Estado de Minas Gerais	Médico	Superior	1			2026-11-24	fhemig-mg-abre-selecao-para-medico-no-instituto-raul-soares	ea
 belo-horizonte	Belo Horizonte	UFMG - Universidade Federal de Minas Gerais	Professor Assistente	Superior	1			2026-11-20	ufmg-abre-concurso-publico-para-professor-assistente-na-faculdade-de-letras	ea
 belo-horizonte	Belo Horizonte	HOB - Hospital Metropolitano Odilon Behrens	Médico	Superior	0			2026-11-19	hospital-metropolitano-odilon-behrens-mg-abre-selecao-para-medicos	ea
 belo-horizonte	Belo Horizonte	SUDECAP - Superintendência de Desenvolvimento da Capital	Vários Cargos	Técnico / Superior	27			2026-11-16	sudecap-mg-abre-processo-seletivo-com-salarios-de-ate-9375	ea
@@ -1834,7 +1835,6 @@ belo-horizonte	Belo Horizonte	HOB - Hospital Metropolitano Odilon Behrens - Belo
 belo-horizonte	Belo Horizonte	FHEMIG - Fundação Hospitalar do Estado de Minas Gerais	Enfermeiro	Superior	1			2025-12-04	fhemig-abre-processo-seletivo-para-contratacao-de-enfermeiro-em-belo-horizonte	ea
 belo-horizonte	Belo Horizonte	FHEMIG - Fundação Hospitalar do Estado de Minas Gerais - Belo Horizonte	Médico Generalista	Superior	1			2025-12-03	fhemig-divulga-processo-seletivo-para-medico-generalista-em-belo-horizonte	ea
 belo-horizonte	Belo Horizonte	FHEMIG - Fundação Hospitalar do Estado de Minas Gerais - Belo Horizonte	Técnico em Enfermagem	Médio / Técnico	3			2025-12-03	fhemig-abre-processo-seletivo-para-tecnicos-de-enfermagem-em-belo-horizonte	ea
-belo-horizonte	Belo Horizonte	FHEMIG - Fundação Hospitalar do Estado de Minas Gerais - Belo Horizonte	Vários Cargos	Médio / Técnico / Superior	15			2025-12-02	fhemig-publica-edital-de-processo-seletivo-para-cargos-de-niveis-medio-e-superior	ea
 belo-oriente	Belo Oriente	Prefeitura de Belo Oriente	Agente Comunitário de Saúde, Agente de Combate às Endemias	Ensino Médio	73			2026-01-04	prefeitura-de-belo-oriente-mg-abre-processo-seletivo-para-cargos-nivel-medio	ea
 belo-oriente	Belo Oriente	Prefeitura de Belo Oriente	Farmacêutico	Superior	1			2024-08-26	prefeitura-de-belo-oriente-mg-retifica-processo-seletivo-para-farmaceutico	ea
 belo-oriente	Belo Oriente	Prefeitura de Belo Oriente	Vários Cargos	Fundamental / Médio / Técnico / Superior	96			2024-07-29	prefeitura-de-belo-oriente-mg-retifica-concurso-publico-com-96-vagas	ea
@@ -2675,6 +2675,8 @@ cachoeira-da-prata	Cachoeira da Prata	Prefeitura de Cachoeira da Prata	Vários C
 cachoeira-da-prata	Cachoeira da Prata	Prefeitura de Cahoeira da Prata	Vários Cargos	Fundamental / Médio / Superior	106			2015-03-24	prefeitura-de-cachoeira-da-prata-mg-retifica-concurso-com-106-vagas	ea
 cachoeira-da-prata	Cachoeira da Prata	Prefeitura de Cachoeira da Prata	Vários Cargos	Fundamental / Superior	17			2015-03-02	prefeitura-de-cachoeira-da-prata-mg-abre-vagas-de-niveis-fundamental-e-superior	ea
 cachoeira-da-prata	Cachoeira da Prata	Prefeitura de Cachoeira da Prata	Vários Cargos	Superior	4			2014-01-20	prefeitura-de-cachoeira-da-prata-mg-abre-selecao-para-cargos-de-nivel-superior	ea
+cachoeira-de-minas	Cachoeira de Minas	Câmara de Cachoeira de Minas	Serviços Gerais, Auxiliar Administrativo, Controlador Interno	Fundamental / Médio / Superior	3		2027-01-18	2027-02-18	camara-de-cachoeira-de-minas-mg-abre-concurso-publico-para-diversos-niveis-de-escolaridade	na
+cachoeira-de-minas	Cachoeira de Minas	Câmara de Cachoeira de Minas	Assistente Técnico da Câmara Municipal	Médio / Técnico / Superior	1		2027-01-18	2027-02-18	camara-de-cachoeira-de-minas-mg-abre-processo-seletivo-para-assistente-tecnico	na
 cachoeira-de-minas	Cachoeira de Minas	Prefeitura de Cachoeira de Minas	Vários Cargos	Fundamental / Médio / Técnico / Superior	33			2026-05-22	prefeitura-de-cachoeira-de-minas-mg-retifica-processo-seletivo-para-a-secretaria-de-saude	ea
 cachoeira-de-minas	Cachoeira de Minas	Prefeitura de Cachoeira de Minas	Vários Cargos	Alfabetizado / Fundamental Incompleto / Fundamental / Médio / Técnico / Superior	131			2024-06-26	prefeitura-de-cachoeira-de-minas-mg-retifica-concurso-publico-com-131-vagas	ea
 cachoeira-de-minas	Cachoeira de Minas	TJ - Tribunal de Justiça - Cachoeira de Minas	Estagiário	Superior	1			2024-02-07	tj-mg-inscricoes-anunciadas-para-novo-processo-seletivo-na-comarca-de-cachoeira-de-minas	ea
@@ -4644,6 +4646,7 @@ corinto	Corinto	Prefeitura de Corinto	Vários Cargos	Fundamental / Médio / Supe
 corinto	Corinto	Prefeitura de Corinto	Vários Cargos	Fundamental / Médio / Superior	99			2011-05-01	corinto-mg-disponibiliza-99-vagas-na-area-da-saude	ea
 corinto	Corinto	Prefeitura de Corinto	Auxiliar Operacional	Fundamental	50			2007-06-15	corinto-mg-50-vagas-para-auxiliar-operacional	ea
 corinto	Corinto	Prefeitura de Corinto	Vários Cargos	Fundamental / Médio / Superior	210			2007-05-18	oportunidades-na-prefeitura-de-corinto-mg	ea
+coroaci	Coroaci	Prefeitura de Coroaci	Agente de Combate às Endemias, Agente Comunitário de Saúde	Ensino Médio	19		2027-01-25	2027-02-23	prefeitura-de-coroaci-mg-abre-processo-seletivo-com-19-vagas-na-saude	na
 coroaci	Coroaci	Câmara de Coroaci	Vários Cargos	Alfabetizado / Superior	4			2020-12-02	edital-de-concurso-publico-e-divulgado-pela-camara-de-coroaci-mg	ea
 coroaci	Coroaci	Prefeitura de Coroaci	Vários Cargos	Fundamental / Médio / Superior	134			2011-07-08	coroaci-mg-acrescenta-uma-vaga-para-professor-no-edital-001-2011	ea
 coroaci	Coroaci	Câmara de Coroaci	Vários Cargos	Fundamental / Médio	3			2010-12-03	3-vagas-de-ate-750-ofertadas-na-camara-de-coroaci-mg	ea
@@ -8857,7 +8860,8 @@ joanesia	Joanésia	Prefeitura de Joanésia	Vários Cargos	Fundamental / Médio /
 joanesia	Joanésia	Prefeitura de Joanésia	Vários Cargos	Médio / Superior	14			2012-05-20	prefeitura-de-joanesia-mg-oferece-salarios-de-ate-9-mil-em-selecao-publica	ea
 joanesia	Joanésia	Prefeitura de Joanésia	Vários Cargos	Fundamental / Médio / Superior	80			2011-01-21	prefeitura-de-joanesia-mg-oferece-80-vagas-para-cargos-de-ate-1788	ea
 joanesia	Joanésia	Prefeitura de Joanésia	Vários Cargos	Fundamental / Médio / Superior	43			2010-11-19	prefeitura-de-joanesia-mg-oferece-43-vagas-para-diversos-cargos-e-niveis	ea
-joao-monlevade	João Monlevade	Prefeitura de João Monlevade	Auxiliar de Consultório Odontológico	Ensino Médio	1			2026-11-22	prefeitura-de-joao-monlevade-mg-abre-selecao-para-auxiliar-de-consultorio-odontologico	na
+joao-monlevade	João Monlevade	Prefeitura de João Monlevade	Médico Plantonista	Superior	2		2026-11-30	2026-12-02	prefeitura-de-joao-monlevade-mg-abre-vagas-para-medicos-plantonistas-com-especializacao	na
+joao-monlevade	João Monlevade	Prefeitura de João Monlevade	Auxiliar de Consultório Odontológico	Ensino Médio	1			2026-11-22	prefeitura-de-joao-monlevade-mg-abre-selecao-para-auxiliar-de-consultorio-odontologico	ea
 joao-monlevade	João Monlevade	Câmara de João Monlevade	Vários Cargos	Ensino Médio	12			2026-10-16	camara-de-joao-monlevade-mg-abre-concurso-publico-para-cargos-de-nivel-medio	ea
 joao-monlevade	João Monlevade	Prefeitura de João Monlevade	Médico ESF	Superior	1			2026-10-15	prefeitura-de-joao-monlevade-mg-abre-vaga-para-medico-esf	ea
 joao-monlevade	João Monlevade	Prefeitura de João Monlevade	Motorista	Fundamental	1			2026-10-13	prefeitura-de-joao-monlevade-mg-abre-selecao-para-o-cargo-de-motorista	ea
@@ -9056,7 +9060,6 @@ joao-monlevade	João Monlevade	Prefeitura de João Monlevade (CMDCA)	Conselheiro
 joao-monlevade	João Monlevade	Prefeitura de João Monlevade	Médico Veterinário	Superior	1			2015-04-28	prefeitura-de-joao-monlevade-mg-abre-processo-seletivo-para-medico-veterinario	ea
 joao-monlevade	João Monlevade	Prefeitura de João Monlevade (CMDCA)	Conselheiros Tutelares	Ensino Médio	5			2015-04-27	cmdca-de-joao-monlevade-mg-lanca-processo-seletivo-de-conselheiros-tutelares	ea
 joao-monlevade	João Monlevade	Prefeitura de João Monlevade	Médico ESF	Superior	1			2015-04-16	prefeitura-de-joao-monlevade-mg-retifica-processo-seletivo-para-medico	ea
-joao-monlevade	João Monlevade	Prefeitura de João Monlevade	Engenheiro de Segurança do Trabalho	Superior	1			2015-04-01	prefeitura-de-joao-monlevade-mg-seleciona-engenheiro-de-seguranca-do-trabalho	ea
 joao-pinheiro	João Pinheiro	MP - Ministério Público - João Pinheiro	Estagiário - pós-graduação em direto	Superior	0			2024-05-17	mp-mg-tem-novo-processo-seletivo-de-estagio-para-a-comarca-de-joao-pinheiro	ea
 joao-pinheiro	João Pinheiro	TJ - Tribunal de Justiça - João Pinheiro	Estagiários - Direito	Superior Incompleto	0			2024-02-23	tj-mg-anuncia-novo-processo-seletivo-de-estagio-em-joao-pinheiro	ea
 joao-pinheiro	João Pinheiro	MP - Ministério Público - João Pinheiro	Estagiário - Direito	Superior Incompleto	0			2023-11-10	mp-mg-anuncia-processo-seletivo-de-estagio-em-joao-pinheiro	ea
@@ -9618,6 +9621,7 @@ laranjal	Laranjal	Prefeitura de Laranjal	Médico e Auxiliar de Enfermagem	Não i
 laranjal	Laranjal	Prefeitura de Laranjal	Vários Cargos	Não informada	0			2015-02-20	prefeitura-de-laranjal-mg-retifica-novamente-processo-seletivo-com-43-vagas	ea
 lassance	Lassance	Prefeitura de Lassance	Agente Comunitário de Saúde e de Combate às Endemias	Ensino Médio	4			2018-04-29	processo-seletivo-da-prefeitura-de-lassance-mg-tem-quatro-vagas	ea
 lassance	Lassance	Prefeitura de Lassance	Vários Cargos	Fundamental / Médio / Superior	163			2015-09-18	prefeitura-de-lassance-mg-retifica-mais-uma-vez-concurso-publico	ea
+lavras	Lavras	UFLA - Universidade Federal de Lavras	Professor do Magistério Superior	Superior	16		2026-12-04	2027-01-04	ufla-mg-abre-concurso-publico-com-16-vagas-para-professores-com-salarios-de-ate-13753	na
 lavras	Lavras	UFLA - Universidade Federal de Lavras	Professor do Magistério do Ensino Básico, Técnico e Tecnológico	Superior	8			2026-08-10	ufla-mg-abre-concurso-publico-com-oito-vagas-para-professores	ea
 lavras	Lavras	Prefeitura de Lavras	Vários Cargos	Médio / Técnico / Superior	169			2026-04-16	prefeitura-de-lavras-mg-publica-retificacao-de-concurso-publico	ea
 lavras	Lavras	UFLA - Universidade Federal de Lavras	Professor do Magistério Superior	Superior	28			2026-04-01	ufla-mg-abre-concurso-publico-com-28-vagas-para-professor-do-magisterio-superior-em-lavras	ea
@@ -16192,6 +16196,7 @@ santo-antonio-do-grama	Santo Antônio do Grama	Prefeitura de Santo Antônio do G
 santo-antonio-do-grama	Santo Antônio do Grama	Prefeitura de Santo Antônio do Grama	Vários Cargos	Fundamental / Médio / Superior	18			2011-05-08	18-vagas-para-todos-os-niveis-em-santo-antonio-do-grama-mg	ea
 santo-antonio-do-grama	Santo Antônio do Grama	Câmara de Santo Antônio do Grama	Vários Cargos	Fundamental / Médio	4			2011-04-19	santo-antonio-do-grama-mg-divulga-retificacao-do-concurso-001-2010	ea
 santo-antonio-do-grama	Santo Antônio do Grama	Prefeitura de Santo Antônio do Grama	Vários Cargos	Fundamental / Médio / Superior	54			2010-12-22	prefeitura-de-santo-antonio-do-grama-mg-oferece-54-vagas-para-varios-cargos	ea
+santo-antonio-do-itambe	Santo Antônio do Itambé	Prefeitura de Santo Antônio do Itambé	Vários Cargos	Fundamental / Médio / Técnico / Superior	3			2026-12-14	prefeitura-de-santo-antonio-do-itambe-mg-abre-processo-seletivo-para-diversos-niveis	na
 santo-antonio-do-itambe	Santo Antônio do Itambé	Prefeitura de Santo Antônio do Itambé	Agente Comunitário de Saúde, Agente de Combate às Endemias	Ensino Médio	5			2026-09-17	prefeitura-de-santo-antonio-do-itambe-mg-abre-processo-seletivo-para-agentes-de-saude-e-de-endemias	ea
 santo-antonio-do-itambe	Santo Antônio do Itambé	Prefeitura de Santo Antônio do Itambé	Vários Cargos	Fundamental / Médio / Superior	58			2025-06-12	prefeitura-de-santo-antonio-do-itambe-mg-publica-processo-seletivo-com-58-vagas	ea
 santo-antonio-do-itambe	Santo Antônio do Itambé	Prefeitura de Santo Antônio do Itambé	Vários Cargos	Fundamental / Médio / Técnico / Superior	72			2025-04-24	prefeitura-de-santo-antonio-do-itambe-mg-anuncia-concurso-publico-com-72-vagas	ea

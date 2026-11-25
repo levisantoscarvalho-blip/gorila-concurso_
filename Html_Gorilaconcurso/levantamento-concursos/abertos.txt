@@ -704,3 +704,11 @@ MG|UFJF - Universidade Federal de Juiz de Fora|-|1|Professor substituto (Superio
 RS|IFFar - Instituto Federal de Educação, Ciência e Tecnologia Farroupilha|-|2|Professor Substituto (Superior)|30/11/2026|iffar-rs-abre-selecao-para-professores-substitutos-com-salarios-de-ate-8-mil
 RS|IFRS - Instituto Federal de Educação, Ciência e Tecnologia do Rio Grande do Sul|-|2|Professor substituto (Superior)|02/12/2026|ifrs-rs-abre-selecao-para-professores-substitutos-no-campus-porto-alegre
 SC|UNESC - Universidade do Extremo Sul Catarinense|-|21|Vários Cargos (Superior)|25/02/2027|unesc-sc-abre-processo-seletivo-para-doutorado-em-ciencia-e-engenharia-de-materiais-com-21-vagas
+MA|UEMA - Universidade Estadual do Maranhão|-|9|Professor substituto (Superior)|02/12/2026|uema-ma-abre-seletivos-para-professores-substitutos-com-salarios-de-ate-6886
+MG|FCS - Fundação Clóvis Salgado|-|19|Professor de Arte (Médio / Superior)|27/11/2026>06/12/2026|fundacao-clovis-salgado-mg-abre-19-vagas-para-professores-de-arte-no-cefart
+MG|IFMG - Instituto Federal de Educação, Ciência e Tecnologia de Minas Gerais|-|3|Professor Visitante (Superior)|30/11/2026>22/01/2027|ifmg-mg-abre-vagas-para-professor-visitante-em-computacao-e-fisica
+PR|CRO/PR - Conselho Regional de Odontologia do Paraná|-|12|Vários Cargos (Médio / Superior)|30/11/2026>29/12/2026|cro-pr-abre-concurso-publico-com-12-vagas-e-salarios-de-ate-14318
+DF|Cofen - Conselho Federal de Enfermagem|-|6|Vários Cargos (Superior)|26/11/2026>11/01/2027|cofen-df-abre-concurso-publico-com-salarios-de-18950-para-diversos-cargos-de-nivel-superior
+DF|IGESDF - Instituto de Gestão Estratégica de Saúde do Distrito Federal|-|0|Médico, Analista de TI II (Superior)|02/12/2026|igesdf-df-abre-processos-seletivos-para-medico-e-analista-de-ti-com-salarios-de-ate-16-mil
+GO|IFG - Instituto Federal de Educação, Ciência e Tecnologia de Goiás|-|1|Tradutor Intérprete de Libras (Superior)|04/12/2026|ifg-go-abre-selecao-para-tradutor-interprete-de-libras-em-aparecida-de-goiania
+MT|UNEMAT - Universidade do Estado de Mato Grosso|-|0|Professor da Educação Superior (Superior)|07/12/2026|unemat-mt-abre-processo-seletivo-para-professores-da-educacao-superior-em-tres-municipios
