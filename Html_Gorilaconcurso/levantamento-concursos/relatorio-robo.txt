@@ -1,9 +1,7 @@
-ROBÔ DO GORILA — 25/11/2026 14:49 (horário de Brasília)
+ROBÔ DO GORILA — 26/11/2026 14:32 (horário de Brasília)
 PCI hoje: 648 concursos com inscrições abertas
-CONFERIR: 'Prefeitura de Parintins' (AM) estava em municipais-previstos.txt e agora abriu inscrições — tirar dos previstos? prefeitura-de-parintins-am-abre-selecao-com-vagas-para-diversos-niveis-e-salarios-de-ate-5130
-CONFERIR: 'Prefeitura de Chapecó' (SC) estava em municipais-previstos.txt e agora abriu inscrições — tirar dos previstos? municipio-de-chapeco-sc-abre-concurso-com-91-vagas-e-salarios-de-ate-25599
-novos concursos: 67 em cidades + 8 estaduais/sem cidade · 0 com data mudada (prorrogação/retificação)
-notícias: parte 0 pronta (75 nesta rodada)
+novos concursos: 33 em cidades + 6 estaduais/sem cidade · 0 com data mudada (prorrogação/retificação)
+notícias: parte 0 pronta (39 nesta rodada)
 AVISO GO 17232 vagas sem conferência, ficou 'a definir': seduce-go-retifica-um-dos-dois-processos-seletivos-com-mais-de-17-2-mil-vagas
 AVISO GO 7453 vagas sem conferência, ficou 'a definir': valparaiso-de-goias-go-prorroga-inscricoes-e-retifica-edital-001-2014
 AVISO MT 5156 vagas sem conferência, ficou 'a definir': prefeitura-de-varzea-grande-mt-retifica-processo-seletivo-com-vagas-para-a-educacao
@@ -28,7 +26,7 @@ AVISO taxa impossível (R$ 1627.28), não mostrada: taboao-da-serra-sp-vagas-par
 AVISO taxa impossível (R$ 4231.6), não mostrada: uem-pr-abre-selecao-para-tecnico-em-laboratorio-com-salario-de-4-2-mil
 AVISO taxa impossível (R$ 2125.02), não mostrada: prefeitura-de-cajamar-sp-retifica-um-dos-editais-de-concursos-publicos
 AUDITORIA: 0 erros, 27 para conferir, 1 info (ver auditoria.txt)
-concursos nas cidades: 142963 (no ar: 142920) · detalhes: 142156 (no ar: 142105)
-levantamento estadual/municipal: 977 (no ar: 969)
+concursos nas cidades: 142988 (no ar: 142963) · detalhes: 142188 (no ar: 142156)
+levantamento estadual/municipal: 983 (no ar: 977)
 sintaxe conferida com o Node em 82 arquivos
 OK: pode publicar

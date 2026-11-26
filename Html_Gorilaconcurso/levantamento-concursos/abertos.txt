@@ -712,3 +712,9 @@ DF|Cofen - Conselho Federal de Enfermagem|-|6|Vários Cargos (Superior)|26/11/20
 DF|IGESDF - Instituto de Gestão Estratégica de Saúde do Distrito Federal|-|0|Médico, Analista de TI II (Superior)|02/12/2026|igesdf-df-abre-processos-seletivos-para-medico-e-analista-de-ti-com-salarios-de-ate-16-mil
 GO|IFG - Instituto Federal de Educação, Ciência e Tecnologia de Goiás|-|1|Tradutor Intérprete de Libras (Superior)|04/12/2026|ifg-go-abre-selecao-para-tradutor-interprete-de-libras-em-aparecida-de-goiania
 MT|UNEMAT - Universidade do Estado de Mato Grosso|-|0|Professor da Educação Superior (Superior)|07/12/2026|unemat-mt-abre-processo-seletivo-para-professores-da-educacao-superior-em-tres-municipios
+MA|SEAP - Secretaria de Estado de Administração Penitenciária|-|0|Especialista Penitenciário, Agente Penitenciário, Auxiliar Penitenciário (Médio / Superior)|15/12/2026|seap-ma-abre-selecoes-para-cadastro-reserva-com-salarios-de-ate-3952
+MA|SEAP - Secretaria de Estado de Administração Penitenciária|-|0|Agente Penitenciário, Auxiliar Penitenciário, Especialista Penitenciário (Médio / Superior)|15/12/2026|seap-ma-abre-seletivos-para-diversas-areas-em-unidades-prisionais
+PE|Secretaria Municipal de Educação de São Caetano|-|204|Professor (Superior)|09/12/2026|secretaria-municipal-de-educacao-de-sao-caetano-pe-abre-204-vagas-para-professores
+MG|CRF/MG - Conselho Regional de Farmácia do Estado de Minas Gerais|-|6|Vários Cargos (Médio / Técnico / Superior)|21/12/2026|crf-mg-abre-concurso-para-profissionais-de-diversas-areas
+MG|IFMG - Instituto Federal de Educação, Ciência e Tecnologia de Minas Gerais|-|1|Professor Visitante (Superior)|30/11/2026>18/12/2026|ifmg-mg-abre-processo-seletivo-para-professor-visitante-com-remuneracao-de-ate-8340
+RS|IFFar - Instituto Federal de Educação, Ciência e Tecnologia Farroupilha|-|30|Vários Cargos (Médio / Técnico / Superior)|21/12/2026|iffar-rs-abre-concurso-publico-para-cargos-de-niveis-medio-e-superior
