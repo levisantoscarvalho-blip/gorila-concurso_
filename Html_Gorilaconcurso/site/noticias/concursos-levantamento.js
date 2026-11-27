@@ -1,12 +1,12 @@
 /* ════════════════════════════════════════════
-   LEVANTAMENTO DE CONCURSOS DE TODOS OS ESTADOS (atualizado em 26/11/2026; pedido do Levi: só dado real, com fonte)
+   LEVANTAMENTO DE CONCURSOS DE TODOS OS ESTADOS (atualizado em 27/11/2026; pedido do Levi: só dado real, com fonte)
    • Inscrições abertas: PCI Concursos (páginas por região; o robô diário atualiza). Quando a data "ate" passa, o site mostra
      "inscrições encerradas" sozinho (cmConcursoHoje em concursos-mapa.js).
    • Previstos: Estratégia Concursos (páginas por estado, ago–out/2026), O Liberal (PA) e JC Concursos (PC-TO).
    Arquivo GERADO a partir de duas tabelas; SP também tem o levantamento manual em concursos-dados.js.
    ════════════════════════════════════════════ */
 const CONCURSOS_LEVANTAMENTO = {
-  AC: { atualizado:"26/11/2026", todos:"https://www.pciconcursos.com.br/concursos/norte/",
+  AC: { atualizado:"27/11/2026", todos:"https://www.pciconcursos.com.br/concursos/norte/",
     estaduais: [
       {orgao:"TCE-AC",cargo:"Auditor (conselheiro substituto)",status:"aberto",vagas:1,ate:"2026-10-26",quando:"até 26/10/2026",fonte:{nome:"PCI Concursos",url:"https://www.pciconcursos.com.br/noticias/tce-ac-reabre-concurso-para-auditor-conselheiro-substituto"}},
       {orgao:"IFAC - Instituto Federal de Educação, Ciência e Tecnologia do Acre",cargo:"Professor substituto (Superior)",status:"aberto",vagas:1,ate:"2026-10-23",quando:"até 23/10/2026",fonte:{nome:"PCI Concursos",url:"https://www.pciconcursos.com.br/noticias/ifac-abre-processo-seletivo-para-professor-substituto-de-fisica"}},
@@ -22,7 +22,7 @@ const CONCURSOS_LEVANTAMENTO = {
       '1200401': [ {orgao:"Câmara de Rio Branco",cargo:"Agente e analista legislativo",status:"aberto",vagas:13,ate:"2026-10-13",quando:"até 13/10/2026",fonte:{nome:"PCI Concursos",url:"https://www.pciconcursos.com.br/noticias/camara-de-rio-branco-ac-abre-concurso-publico-com-13-vagas-imediatas"}}, {orgao:"Câmara de Rio Branco",cargo:"Procurador e polícia legislativa",status:"aberto",vagas:3,ate:"2026-10-15",quando:"até 15/10/2026",fonte:{nome:"PCI Concursos",url:"https://www.pciconcursos.com.br/noticias/camara-de-rio-branco-ac-abre-concursos-publicos-para-procuradores-e-agentes-legislativos"}} ],
     },
   },
-  AL: { atualizado:"26/11/2026", todos:"https://www.pciconcursos.com.br/concursos/nordeste/",
+  AL: { atualizado:"27/11/2026", todos:"https://www.pciconcursos.com.br/concursos/nordeste/",
     estaduais: [
       {orgao:"SEFAZ-AL",cargo:"Auditor fiscal",status:"aberto",vagas:40,ate:"2026-10-21",quando:"até 21/10/2026",fonte:{nome:"PCI Concursos",url:"https://www.pciconcursos.com.br/noticias/sefaz-al-abre-concurso-publico-com-vagas-para-o-cargo-de-auditor-fiscal"}},
       {orgao:"ADEAL",cargo:"Fiscal estadual agropecuário",status:"aberto",vagas:20,ate:"2026-10-20",quando:"até 20/10/2026",fonte:{nome:"PCI Concursos",url:"https://www.pciconcursos.com.br/noticias/adeal-abre-concurso-publico-para-cargos-de-fiscal-estadual-agropecuario"}},
@@ -40,7 +40,7 @@ const CONCURSOS_LEVANTAMENTO = {
       '2704500': [ {orgao:"Prefeitura de Maragogi",cargo:"A definir",status:"previsto",vagas:0,quando:"Comissão formada (notícia de 25/08/2026)",fonte:{nome:"Estratégia Concursos",url:"https://concursos.estrategia.com/portal/concursos-al/"}} ],
     },
   },
-  AM: { atualizado:"26/11/2026", todos:"https://www.pciconcursos.com.br/concursos/norte/",
+  AM: { atualizado:"27/11/2026", todos:"https://www.pciconcursos.com.br/concursos/norte/",
     estaduais: [
       {orgao:"CRA-AM",cargo:"Vários cargos",status:"aberto",vagas:10,ate:"2026-10-15",quando:"até 15/10/2026",fonte:{nome:"PCI Concursos",url:"https://www.pciconcursos.com.br/noticias/cra-am-abre-concurso-publico-com-salarios-de-ate-3683-em-manaus"}},
       {orgao:"DPE - Defensoria Pública do Estado do Amazonas",cargo:"Vários Cargos (Médio / Técnico / Superior)",status:"aberto",vagas:5,ate:"2027-01-04",de:"2026-11-30",quando:"de 30/11/2026 a 04/01/2027",fonte:{nome:"PCI Concursos",url:"https://www.pciconcursos.com.br/noticias/dpe-am-abre-concurso-publico-com-salarios-de-ate-8006"}},
@@ -55,7 +55,7 @@ const CONCURSOS_LEVANTAMENTO = {
       '1303403': [ {orgao:"Prefeitura de Parintins",cargo:"Diversos (59 cargos)",status:"previsto",vagas:328,banca:"FGV",quando:"Banca definida (notícia de 09/09/2026)",fonte:{nome:"Estratégia Concursos",url:"https://concursos.estrategia.com/portal/concursos-am/"}}, {orgao:"ISS Parintins",cargo:"Fiscal de tributos",status:"previsto",vagas:0,banca:"FGV",quando:"Banca definida (notícia de 09/09/2026)",fonte:{nome:"Estratégia Concursos",url:"https://concursos.estrategia.com/portal/concursos-am/"}} ],
     },
   },
-  AP: { atualizado:"26/11/2026", todos:"https://www.pciconcursos.com.br/concursos/norte/",
+  AP: { atualizado:"27/11/2026", todos:"https://www.pciconcursos.com.br/concursos/norte/",
     estaduais: [
       {orgao:"Polícia Civil do AP",cargo:"Delegado e oficial investigador",status:"aberto",vagas:396,ate:"2026-10-19",quando:"até 19/10/2026",fonte:{nome:"PCI Concursos",url:"https://www.pciconcursos.com.br/noticias/sead-ap-publica-edital-retificado-de-concurso-para-delegado-e-oficial-investigador-de-policia-civil"}},
       {orgao:"CAU-AP",cargo:"Assistente e agente de fiscalização",status:"aberto",vagas:2,ate:"2026-11-09",quando:"até 09/11/2026",fonte:{nome:"PCI Concursos",url:"https://www.pciconcursos.com.br/noticias/conselho-de-arquitetura-e-urbanismo-do-amapa-abre-concurso-publico-em-macapa"}},
@@ -73,7 +73,7 @@ const CONCURSOS_LEVANTAMENTO = {
       '1600600': [ {orgao:"Prefeitura de Santana",cargo:"Guarda civil municipal",status:"aberto",vagas:50,ate:"2026-11-09",quando:"até 09/11/2026",fonte:{nome:"PCI Concursos",url:"https://www.pciconcursos.com.br/noticias/prefeitura-de-santana-ap-publica-edital-de-concurso-publico-para-guardas-civis-municipais"}} ],
     },
   },
-  BA: { atualizado:"26/11/2026", todos:"https://www.pciconcursos.com.br/concursos/nordeste/",
+  BA: { atualizado:"27/11/2026", todos:"https://www.pciconcursos.com.br/concursos/nordeste/",
     estaduais: [
       {orgao:"UFBA",cargo:"Técnico-administrativo",status:"aberto",vagas:139,ate:"2026-10-29",quando:"até 29/10/2026",fonte:{nome:"PCI Concursos",url:"https://www.pciconcursos.com.br/noticias/ufba-ba-publica-edital-de-concurso-publico-para-tecnicos-administrativos-em-educacao"}},
       {orgao:"Marinha do Brasil (2º Distrito Naval)",cargo:"Oficiais temporários",status:"aberto",vagas:18,ate:"2026-11-10",quando:"até 10/11/2026",fonte:{nome:"PCI Concursos",url:"https://www.pciconcursos.com.br/noticias/marinha-do-brasil-2-distrito-naval-abre-selecao-para-oficiais-temporarios-rm2-na-bahia"}},
@@ -85,6 +85,7 @@ const CONCURSOS_LEVANTAMENTO = {
       {orgao:"TJBA - Tribunal de Justiça do Estado da Bahia",cargo:"Mediador Judicial (Superior)",status:"aberto",vagas:0,ate:"2026-11-08",quando:"até 08/11/2026 · cadastro de reserva",fonte:{nome:"PCI Concursos",url:"https://www.pciconcursos.com.br/noticias/tjba-abre-selecao-para-cadastro-de-reserva-na-funcao-de-mediador-judicial"}},
       {orgao:"SAEB - Secretaria de Administração do Estado da Bahia",cargo:"Especialista em Políticas Públicas e Gestão Governamental (Superior)",status:"aberto",vagas:50,ate:"2026-11-18",quando:"até 18/11/2026",fonte:{nome:"PCI Concursos",url:"https://www.pciconcursos.com.br/noticias/saeb-ba-prorroga-inscricoes-de-concurso-publico-para-especialista-em-politicas-publicas-e-gestao-governamental"}},
       {orgao:"FESF-SUS - Fundação Estatal Saúde da Família",cargo:"Operador(a) de Sistemas de Informática, Consultor(a) de Tecnologia da Informação (Médio / Superior)",status:"aberto",vagas:0,ate:"2026-11-17",quando:"até 17/11/2026",fonte:{nome:"PCI Concursos",url:"https://www.pciconcursos.com.br/noticias/fesf-sus-ba-abre-selecao-com-salarios-de-ate-10270"}},
+      {orgao:"IBGE - Fundação Instituto Brasileiro de Geografia e Estatística",cargo:"Recenseador (Fundamental)",status:"aberto",vagas:27279,ate:"2026-11-30",quando:"até 30/11/2026",fonte:{nome:"PCI Concursos",url:"https://www.pciconcursos.com.br/noticias/ibge-abre-processo-seletivo-com-27279-vagas-para-recenseador"}},
       {orgao:"Polícia Militar da BA",cargo:"A definir",status:"previsto",vagas:0,quando:"Concurso anunciado, sem data (notícia de 13/10/2026)",fonte:{nome:"Estratégia Concursos",url:"https://concursos.estrategia.com/portal/concursos-ba/"}},
       {orgao:"SEFAZ-BA",cargo:"Auditor fiscal e agente de tributos",status:"previsto",vagas:200,banca:"Cesgranrio",quando:"Edital esperado em 2026 (notícia de 13/10/2026)",fonte:{nome:"Estratégia Concursos",url:"https://concursos.estrategia.com/portal/concursos-ba/"}},
       {orgao:"PGE-BA",cargo:"Analista e assistente",status:"previsto",vagas:115,banca:"FCC",quando:"Edital esperado em 2026 (notícia de 13/10/2026)",fonte:{nome:"Estratégia Concursos",url:"https://concursos.estrategia.com/portal/concursos-ba/"}},
@@ -107,7 +108,7 @@ const CONCURSOS_LEVANTAMENTO = {
       '2933307': [ {orgao:"ISS Vitória da Conquista",cargo:"Atendente, técnico e auditor fazendário",status:"previsto",vagas:24,quando:"Comissão formada (notícia de 13/10/2026)",fonte:{nome:"Estratégia Concursos",url:"https://concursos.estrategia.com/portal/concursos-ba/"}} ],
     },
   },
-  CE: { atualizado:"26/11/2026", todos:"https://www.pciconcursos.com.br/concursos/nordeste/",
+  CE: { atualizado:"27/11/2026", todos:"https://www.pciconcursos.com.br/concursos/nordeste/",
     estaduais: [
       {orgao:"SEDUC-CE",cargo:"Professor",status:"aberto",vagas:2000,ate:"2026-10-15",quando:"até 15/10/2026",fonte:{nome:"PCI Concursos",url:"https://www.pciconcursos.com.br/noticias/seduc-e-seplag-ce-abrem-concurso-publico-com-vagas-para-professores"}},
       {orgao:"IFCE",cargo:"Professor substituto",status:"aberto",vagas:2,ate:"2026-10-31",de:"2026-10-21",quando:"de 21/10/2026 a 31/10/2026",fonte:{nome:"PCI Concursos",url:"https://www.pciconcursos.com.br/noticias/ifce-abre-selecao-para-professores-substitutos-no-campus-limoeiro-do-norte"}},
@@ -140,7 +141,7 @@ const CONCURSOS_LEVANTAMENTO = {
       '2311306': [ {orgao:"Prefeitura de Quixadá",cargo:"A definir",status:"previsto",vagas:0,quando:"Anunciado em maio/2025; ainda sem cargos e vagas (notícia de 07/09/2026)",fonte:{nome:"Estratégia Concursos",url:"https://concursos.estrategia.com/portal/concursos-ce/"}} ],
     },
   },
-  DF: { atualizado:"26/11/2026", todos:"https://www.pciconcursos.com.br/concursos/centrooeste/",
+  DF: { atualizado:"27/11/2026", todos:"https://www.pciconcursos.com.br/concursos/centrooeste/",
     estaduais: [
       {orgao:"CGU",cargo:"Auditor federal de finanças e controle",status:"aberto",vagas:60,ate:"2026-11-04",quando:"até 04/11/2026",fonte:{nome:"PCI Concursos",url:"https://www.pciconcursos.com.br/noticias/cgu-abre-concurso-publico-com-vagas-para-auditores-federais-de-financas-e-controle"}},
       {orgao:"HSL - Hospital Santa Lúcia",cargo:"Vários Cargos (Superior)",status:"aberto",vagas:22,ate:"2026-11-09",quando:"até 09/11/2026",fonte:{nome:"PCI Concursos",url:"https://www.pciconcursos.com.br/noticias/hospital-santa-lucia-abre-vagas-para-residencia-medica-em-diversas-especialidades"}},
@@ -167,7 +168,7 @@ const CONCURSOS_LEVANTAMENTO = {
     municipais: {
     },
   },
-  ES: { atualizado:"26/11/2026", todos:"https://www.pciconcursos.com.br/concursos/sudeste/",
+  ES: { atualizado:"27/11/2026", todos:"https://www.pciconcursos.com.br/concursos/sudeste/",
     estaduais: [
       {orgao:"CRECI-ES",cargo:"Vários cargos",status:"aberto",vagas:24,ate:"2026-11-10",quando:"até 10/11/2026",fonte:{nome:"PCI Concursos",url:"https://www.pciconcursos.com.br/noticias/creci-es-abre-concurso-publico-com-salarios-de-ate-8250"}},
       {orgao:"CREF22-ES",cargo:"Nível superior",status:"aberto",vagas:2,ate:"2026-10-20",quando:"até 20/10/2026",fonte:{nome:"PCI Concursos",url:"https://www.pciconcursos.com.br/noticias/cref22-es-abre-concurso-publico-para-cargos-de-nivel-superior"}},
@@ -180,6 +181,7 @@ const CONCURSOS_LEVANTAMENTO = {
       {orgao:"CIM Expandida Sul - Consórcio Público da Região Expandida Sul",cargo:"Vários Cargos (Fundamental / Médio / Técnico)",status:"aberto",vagas:10,ate:"2026-12-02",quando:"até 02/12/2026",fonte:{nome:"PCI Concursos",url:"https://www.pciconcursos.com.br/noticias/cim-expandida-sul-es-abre-processo-seletivo-com-vagas-imediatas-e-cadastro-de-reserva"}},
       {orgao:"SEDU - Secretaria de Estado da Educação",cargo:"Professor (Superior)",status:"aberto",vagas:0,ate:"2026-11-26",quando:"até 26/11/2026",fonte:{nome:"PCI Concursos",url:"https://www.pciconcursos.com.br/noticias/sedu-es-abre-processo-seletivo-para-professores-de-ingles-e-espanhol"}},
       {orgao:"TCEES - Tribunal de Contas do Estado do Espírito Santo",cargo:"Técnico de Nível Superior (Superior)",status:"aberto",vagas:16,ate:"2026-12-18",quando:"até 18/12/2026",fonte:{nome:"PCI Concursos",url:"https://www.pciconcursos.com.br/noticias/tce-es-abre-processo-seletivo-com-vagas-na-area-de-tecnologia"}},
+      {orgao:"SEDU - Secretaria de Estado da Educação",cargo:"Agente de Integração Escolar (Ensino Médio)",status:"aberto",vagas:0,ate:"2026-12-09",de:"2026-11-30",quando:"de 30/11/2026 a 09/12/2026",fonte:{nome:"PCI Concursos",url:"https://www.pciconcursos.com.br/noticias/sedu-es-abre-processo-seletivo-para-agente-de-integracao-escolar-com-bolsa-de-2300"}},
       {orgao:"SESA-ES (Saúde)",cargo:"Níveis médio, técnico e superior",status:"previsto",vagas:688,quando:"Comissão formada (notícia de 15/10/2026)",fonte:{nome:"Estratégia Concursos",url:"https://concursos.estrategia.com/portal/concursos-es/"}},
       {orgao:"Detran-ES",cargo:"Assistente e analista de trânsito",status:"previsto",vagas:94,quando:"Comissão formada (notícia de 15/10/2026)",fonte:{nome:"Estratégia Concursos",url:"https://concursos.estrategia.com/portal/concursos-es/"}},
       {orgao:"Corpo de Bombeiros do ES",cargo:"Soldado",status:"previsto",vagas:100,quando:"Concurso anunciado (notícia de 15/10/2026)",fonte:{nome:"Estratégia Concursos",url:"https://concursos.estrategia.com/portal/concursos-es/"}},
@@ -199,7 +201,7 @@ const CONCURSOS_LEVANTAMENTO = {
       '3202405': [ {orgao:"CODEG Guarapari",cargo:"A definir",status:"previsto",vagas:0,quando:"Comissão formada (notícia de 15/10/2026)",fonte:{nome:"Estratégia Concursos",url:"https://concursos.estrategia.com/portal/concursos-es/"}} ],
     },
   },
-  GO: { atualizado:"26/11/2026", todos:"https://www.pciconcursos.com.br/concursos/centrooeste/",
+  GO: { atualizado:"27/11/2026", todos:"https://www.pciconcursos.com.br/concursos/centrooeste/",
     estaduais: [
       {orgao:"TCE-GO",cargo:"Técnico de controle externo",status:"aberto",vagas:16,ate:"2026-11-06",quando:"até 06/11/2026",fonte:{nome:"PCI Concursos",url:"https://www.pciconcursos.com.br/noticias/tce-go-retifica-concurso-publico-para-tecnicos-de-controle-externo"}},
       {orgao:"IDTECH - Instituto de Desenvolvimento Tecnológico e Humano",cargo:"Vários Cargos (Médio / Técnico / Superior)",status:"aberto",vagas:3,ate:"2026-10-19",quando:"até 19/10/2026",fonte:{nome:"PCI Concursos",url:"https://www.pciconcursos.com.br/noticias/idtech-go-abre-processo-seletivo-para-o-hgg-e-hemogo"}},
@@ -238,7 +240,7 @@ const CONCURSOS_LEVANTAMENTO = {
       '5212501': [ {orgao:"Guarda Municipal de Luziânia",cargo:"Guarda municipal",status:"previsto",vagas:0,quando:"Concurso previsto (notícia de 24/08/2026)",fonte:{nome:"Estratégia Concursos",url:"https://concursos.estrategia.com/portal/concursos-go/"}} ],
     },
   },
-  MA: { atualizado:"26/11/2026", todos:"https://www.pciconcursos.com.br/concursos/nordeste/",
+  MA: { atualizado:"27/11/2026", todos:"https://www.pciconcursos.com.br/concursos/nordeste/",
     estaduais: [
       {orgao:"SEAP-MA",cargo:"Agente penitenciário (seleção)",status:"aberto",vagas:0,ate:"2026-10-23",quando:"até 23/10/2026 · cadastro de reserva",fonte:{nome:"PCI Concursos",url:"https://www.pciconcursos.com.br/noticias/seap-ma-abre-selecao-para-agente-penitenciario-em-godofredo-viana"}},
       {orgao:"SEAP-MA",cargo:"Auxiliar penitenciário (seleção)",status:"aberto",vagas:0,ate:"2026-10-23",quando:"até 23/10/2026 · cadastro de reserva",fonte:{nome:"PCI Concursos",url:"https://www.pciconcursos.com.br/noticias/seap-ma-abre-selecoes-para-auxiliares-penitenciarios-em-diferentes-unidades"}},
@@ -271,7 +273,7 @@ const CONCURSOS_LEVANTAMENTO = {
       '2111300': [ {orgao:"ISS São Luís",cargo:"Auditor fiscal de tributos",status:"previsto",vagas:0,quando:"Concurso autorizado (notícia de 06/10/2026)",fonte:{nome:"Estratégia Concursos",url:"https://concursos.estrategia.com/portal/concursos-ma/"}} ],
     },
   },
-  MG: { atualizado:"26/11/2026", todos:"https://www.pciconcursos.com.br/concursos/sudeste/",
+  MG: { atualizado:"27/11/2026", todos:"https://www.pciconcursos.com.br/concursos/sudeste/",
     estaduais: [
       {orgao:"EMATER-MG",cargo:"Vários cargos",status:"aberto",vagas:120,ate:"2026-10-30",quando:"até 30/10/2026",fonte:{nome:"PCI Concursos",url:"https://www.pciconcursos.com.br/noticias/emater-mg-anuncia-retificacao-de-concurso-publico-com-salarios-de-ate-7321"}},
       {orgao:"Polícia Militar de MG",cargo:"Cadete (formação de oficiais)",status:"aberto",vagas:90,ate:"2026-12-10",de:"2026-11-10",quando:"de 10/11/2026 a 10/12/2026",fonte:{nome:"PCI Concursos",url:"https://www.pciconcursos.com.br/noticias/pmmg-abre-concurso-com-90-vagas-para-o-curso-de-formacao-de-oficiais"}},
@@ -322,6 +324,8 @@ const CONCURSOS_LEVANTAMENTO = {
       {orgao:"IFMG - Instituto Federal de Educação, Ciência e Tecnologia de Minas Gerais",cargo:"Professor Visitante (Superior)",status:"aberto",vagas:3,ate:"2027-01-22",de:"2026-11-30",quando:"de 30/11/2026 a 22/01/2027",fonte:{nome:"PCI Concursos",url:"https://www.pciconcursos.com.br/noticias/ifmg-mg-abre-vagas-para-professor-visitante-em-computacao-e-fisica"}},
       {orgao:"CRF/MG - Conselho Regional de Farmácia do Estado de Minas Gerais",cargo:"Vários Cargos (Médio / Técnico / Superior)",status:"aberto",vagas:6,ate:"2026-12-21",quando:"até 21/12/2026",fonte:{nome:"PCI Concursos",url:"https://www.pciconcursos.com.br/noticias/crf-mg-abre-concurso-para-profissionais-de-diversas-areas"}},
       {orgao:"IFMG - Instituto Federal de Educação, Ciência e Tecnologia de Minas Gerais",cargo:"Professor Visitante (Superior)",status:"aberto",vagas:1,ate:"2026-12-18",de:"2026-11-30",quando:"de 30/11/2026 a 18/12/2026",fonte:{nome:"PCI Concursos",url:"https://www.pciconcursos.com.br/noticias/ifmg-mg-abre-processo-seletivo-para-professor-visitante-com-remuneracao-de-ate-8340"}},
+      {orgao:"FAEPU - Fundação de Assistência, Estudo e Pesquisa de Uberlândia",cargo:"Vários Cargos (Fundamental / Médio / Técnico / Superior)",status:"aberto",vagas:0,ate:"2026-11-29",quando:"até 29/11/2026",fonte:{nome:"PCI Concursos",url:"https://www.pciconcursos.com.br/noticias/faepu-mg-abre-processo-seletivo-em-araguari-para-diversos-niveis-de-escolaridade"}},
+      {orgao:"UFCIMG - Universidade Federal de Ciência e Inovação de Minas Gerais",cargo:"Professor substituto (Superior)",status:"aberto",vagas:3,ate:"2026-12-08",quando:"até 08/12/2026",fonte:{nome:"PCI Concursos",url:"https://www.pciconcursos.com.br/noticias/ufcimg-mg-abre-processos-seletivos-para-o-cargo-de-professor-substituto"}},
       {orgao:"Polícia Militar de MG",cargo:"A definir",status:"previsto",vagas:2500,quando:"Concurso previsto (notícia de 15/10/2026)",fonte:{nome:"Estratégia Concursos",url:"https://concursos.estrategia.com/portal/concursos-mg/"}},
       {orgao:"Polícia Civil de MG",cargo:"A definir",status:"previsto",vagas:3000,quando:"Concurso autorizado (notícia de 15/10/2026)",fonte:{nome:"Estratégia Concursos",url:"https://concursos.estrategia.com/portal/concursos-mg/"}},
       {orgao:"Secretaria da Fazenda de MG",cargo:"Gestor fazendário",status:"previsto",vagas:50,quando:"Concurso previsto (50 a 250 vagas) (notícia de 15/10/2026)",fonte:{nome:"Estratégia Concursos",url:"https://concursos.estrategia.com/portal/concursos-mg/"}},
@@ -402,7 +406,7 @@ const CONCURSOS_LEVANTAMENTO = {
       '3103504': [ {orgao:"Prefeitura de Araguari",cargo:"A definir",status:"previsto",vagas:0,quando:"Comissão formada (notícia de 15/10/2026)",fonte:{nome:"Estratégia Concursos",url:"https://concursos.estrategia.com/portal/concursos-mg/"}} ],
     },
   },
-  MS: { atualizado:"26/11/2026", todos:"https://www.pciconcursos.com.br/concursos/centrooeste/",
+  MS: { atualizado:"27/11/2026", todos:"https://www.pciconcursos.com.br/concursos/centrooeste/",
     estaduais: [
       {orgao:"UEMS",cargo:"Professor (seleção)",status:"aberto",vagas:0,ate:"2026-10-20",quando:"até 20/10/2026 · cadastro de reserva",fonte:{nome:"PCI Concursos",url:"https://www.pciconcursos.com.br/noticias/uems-abre-selecao-para-professores-em-diferentes-campi"}},
       {orgao:"UEMS",cargo:"Professor de Biologia e Pedagogia (seleção)",status:"aberto",vagas:0,ate:"2026-10-20",quando:"até 20/10/2026 · cadastro de reserva",fonte:{nome:"PCI Concursos",url:"https://www.pciconcursos.com.br/noticias/uems-abre-processo-seletivo-para-docentes-de-ciencias-biologicas-e-pedagogia"}},
@@ -427,7 +431,7 @@ const CONCURSOS_LEVANTAMENTO = {
       '5002704': [ {orgao:"Prefeitura de Campo Grande (Educação)",cargo:"Níveis médio e superior",status:"previsto",vagas:2000,quando:"Comissão formada (notícia de 06/10/2026)",fonte:{nome:"Estratégia Concursos",url:"https://concursos.estrategia.com/portal/concursos-ms/"}}, {orgao:"Prefeitura de Campo Grande",cargo:"A definir",status:"semprevisao",vagas:0,quando:"Prefeitura (GECAV) informou que não há previsão; as 4.500 vagas que circulam (ainda citadas pela Estratégia em out/2026) não foram confirmadas (notícia de 26/06/2026)",fonte:{nome:"Gran Cursos",url:"https://blog.grancursosonline.com.br/concurso-campo-grande-ms/"}}, {orgao:"Prefeitura de Campo Grande (Saúde)",cargo:"A definir",status:"previsto",vagas:0,quando:"Concurso autorizado (notícia de 06/10/2026)",fonte:{nome:"Estratégia Concursos",url:"https://concursos.estrategia.com/portal/concursos-ms/"}}, {orgao:"Câmara de Campo Grande",cargo:"A definir",status:"previsto",vagas:20,quando:"Concurso previsto (20 a 40 vagas) (notícia de 06/10/2026)",fonte:{nome:"Estratégia Concursos",url:"https://concursos.estrategia.com/portal/concursos-ms/"}} ],
     },
   },
-  MT: { atualizado:"26/11/2026", todos:"https://www.pciconcursos.com.br/concursos/centrooeste/",
+  MT: { atualizado:"27/11/2026", todos:"https://www.pciconcursos.com.br/concursos/centrooeste/",
     estaduais: [
       {orgao:"SEMA-MT",cargo:"Analista de meio ambiente",status:"aberto",vagas:0,ate:"2026-10-14",quando:"até 14/10/2026 · cadastro de reserva",fonte:{nome:"PCI Concursos",url:"https://www.pciconcursos.com.br/noticias/sema-mt-abre-concurso-para-analistas-de-meio-ambiente-e-de-desenvolvimento-economico-e-social"}},
       {orgao:"UNEMAT",cargo:"Professor (seleção)",status:"aberto",vagas:27,ate:"2026-11-01",quando:"até 01/11/2026",fonte:{nome:"PCI Concursos",url:"https://www.pciconcursos.com.br/noticias/unemat-mt-abre-processo-seletivo-para-professores-de-ensino-superior-em-alto-araguaia"}},
@@ -458,7 +462,7 @@ const CONCURSOS_LEVANTAMENTO = {
       '5102678': [ {orgao:"Prefeitura de Campo Verde",cargo:"A definir",status:"previsto",vagas:27,quando:"Concurso autorizado (notícia de 15/10/2026)",fonte:{nome:"Estratégia Concursos",url:"https://concursos.estrategia.com/portal/concursos-mt/"}} ],
     },
   },
-  PA: { atualizado:"26/11/2026", todos:"https://www.pciconcursos.com.br/concursos/norte/",
+  PA: { atualizado:"27/11/2026", todos:"https://www.pciconcursos.com.br/concursos/norte/",
     estaduais: [
       {orgao:"Hospital Gaspar Vianna (FHCGV)",cargo:"Vários cargos",status:"aberto",vagas:215,ate:"2026-10-22",quando:"até 22/10/2026",fonte:{nome:"PCI Concursos",url:"https://www.pciconcursos.com.br/noticias/seplad-e-fhcgv-pa-anunciam-concurso-publico-com-vagas-imediatas-e-formacao-de-cadastro-de-reserva"}},
       {orgao:"ALEPA",cargo:"Vários cargos",status:"aberto",vagas:135,ate:"2026-11-04",quando:"até 04/11/2026",fonte:{nome:"PCI Concursos",url:"https://www.pciconcursos.com.br/noticias/assembleia-legislativa-do-estado-do-para-retifica-concursos-para-diversos-cargos"}},
@@ -478,12 +482,13 @@ const CONCURSOS_LEVANTAMENTO = {
       '1501402': [ {orgao:"ISS Belém",cargo:"Auditor fiscal",status:"previsto",vagas:20,quando:"Concurso autorizado (notícia de 07/10/2026)",fonte:{nome:"O Liberal",url:"https://www.oliberal.com/concurso/concursos-publicos-no-para-veja-editais-abertos-e-selecoes-previstas-com-salarios-de-ate-r-7-7-mil-1.1137016"}} ],
     },
   },
-  PB: { atualizado:"26/11/2026", todos:"https://www.pciconcursos.com.br/concursos/nordeste/",
+  PB: { atualizado:"27/11/2026", todos:"https://www.pciconcursos.com.br/concursos/nordeste/",
     estaduais: [
       {orgao:"Defensoria Pública da PB",cargo:"Vários cargos",status:"aberto",vagas:20,ate:"2026-11-13",quando:"até 13/11/2026",fonte:{nome:"PCI Concursos",url:"https://www.pciconcursos.com.br/noticias/dpe-pb-abre-concurso-publico-com-salarios-de-ate-5197"}},
       {orgao:"TJPB - Tribunal de Justiça do Estado da Paraíba",cargo:"Analista Judiciário, Contabilidade (Superior)",status:"aberto",vagas:50,ate:"2026-11-18",quando:"até 18/11/2026",fonte:{nome:"PCI Concursos",url:"https://www.pciconcursos.com.br/noticias/tjpb-abre-concurso-publico-para-analistas-judiciarios"}},
       {orgao:"TJPB - Tribunal de Justiça do Estado da Paraíba",cargo:"Analista Judiciário, Contabilidade (Superior)",status:"aberto",vagas:50,ate:"2026-11-18",quando:"até 18/11/2026",fonte:{nome:"PCI Concursos",url:"https://www.pciconcursos.com.br/noticias/tjpb-retifica-concurso-publico-para-analistas-judiciarios"}},
       {orgao:"CBMPB - Corpo de Bombeiros Militar da Paraíba",cargo:"Oficial Bombeiro Militar (Superior)",status:"aberto",vagas:20,ate:"2026-12-11",de:"2026-11-19",quando:"de 19/11/2026 a 11/12/2026",fonte:{nome:"PCI Concursos",url:"https://www.pciconcursos.com.br/noticias/corpo-de-bombeiros-militar-pb-concurso-abre-vagas-para-curso-de-formacao-de-oficiais"}},
+      {orgao:"PMPB - Polícia Militar do Estado da Paraíba",cargo:"Oficial do Quadro de Oficiais do Estado-Maior (Superior)",status:"aberto",vagas:30,ate:"2026-12-23",quando:"até 23/12/2026",fonte:{nome:"PCI Concursos",url:"https://www.pciconcursos.com.br/noticias/pmpb-pb-abre-concurso-publico-para-o-quadro-de-oficiais-com-30-vagas"}},
       {orgao:"Polícia Penal da PB",cargo:"Policial penal",status:"previsto",vagas:1000,banca:"IDECAN",quando:"Será realizado em breve (notícia de 02/10/2026)",fonte:{nome:"Estratégia Concursos",url:"https://concursos.estrategia.com/portal/concursos-pb/"}},
       {orgao:"Polícia Civil da PB",cargo:"Nível superior",status:"previsto",vagas:0,quando:"TCE recomendou novo concurso (notícia de 02/10/2026)",fonte:{nome:"Estratégia Concursos",url:"https://concursos.estrategia.com/portal/concursos-pb/"}},
       {orgao:"TJ-PB",cargo:"Analista judiciário",status:"previsto",vagas:56,banca:"FGV",quando:"Banca definida (notícia de 02/10/2026)",fonte:{nome:"Estratégia Concursos",url:"https://concursos.estrategia.com/portal/concursos-pb/"}},
@@ -502,7 +507,7 @@ const CONCURSOS_LEVANTAMENTO = {
       '2503209': [ {orgao:"Prefeitura de Cabedelo",cargo:"A definir",status:"previsto",vagas:0,quando:"Concurso anunciado (notícia de 02/10/2026)",fonte:{nome:"Estratégia Concursos",url:"https://concursos.estrategia.com/portal/concursos-pb/"}} ],
     },
   },
-  PE: { atualizado:"26/11/2026", todos:"https://www.pciconcursos.com.br/concursos/nordeste/",
+  PE: { atualizado:"27/11/2026", todos:"https://www.pciconcursos.com.br/concursos/nordeste/",
     estaduais: [
       {orgao:"Corpo de Bombeiros de PE",cargo:"Soldado e 2º tenente",status:"aberto",vagas:570,ate:"2026-11-23",quando:"até 23/11/2026",fonte:{nome:"PCI Concursos",url:"https://www.pciconcursos.com.br/noticias/secretaria-de-defesa-social-pe-retifica-concurso-com-570-vagas-para-bombeiros"}},
       {orgao:"Polícia Militar de PE",cargo:"Soldado e 2º tenente",status:"aberto",vagas:1320,ate:"2026-11-23",quando:"até 23/11/2026",fonte:{nome:"PCI Concursos",url:"https://www.pciconcursos.com.br/noticias/pmpe-altera-periodo-de-inscricao-para-concurso-publico-de-soldados-e-oficiais"}},
@@ -533,7 +538,7 @@ const CONCURSOS_LEVANTAMENTO = {
       '2616407': [ {orgao:"ISS Vitória de Santo Antão",cargo:"Auditor fiscal",status:"previsto",vagas:7,quando:"Concurso autorizado (notícia de 30/09/2026)",fonte:{nome:"Estratégia Concursos",url:"https://concursos.estrategia.com/portal/concursos-pe/"}} ],
     },
   },
-  PI: { atualizado:"26/11/2026", todos:"https://www.pciconcursos.com.br/concursos/nordeste/",
+  PI: { atualizado:"27/11/2026", todos:"https://www.pciconcursos.com.br/concursos/nordeste/",
     estaduais: [
       {orgao:"Corpo de Bombeiros do PI",cargo:"Oficial",status:"previsto",vagas:40,quando:"Autorizado; comissão formada (notícia de 07/08/2026)",fonte:{nome:"Estratégia Concursos",url:"https://concursos.estrategia.com/portal/concursos-pi/"}},
       {orgao:"SSP-PI (Segurança Pública)",cargo:"Agente técnico e superior de serviço",status:"previsto",vagas:0,quando:"Comissão formada (notícia de 07/08/2026)",fonte:{nome:"Estratégia Concursos",url:"https://concursos.estrategia.com/portal/concursos-pi/"}},
@@ -548,7 +553,7 @@ const CONCURSOS_LEVANTAMENTO = {
       '2211001': [ {orgao:"Guarda Municipal de Teresina",cargo:"Guarda municipal",status:"previsto",vagas:300,quando:"Concurso previsto (notícia de 07/08/2026)",fonte:{nome:"Estratégia Concursos",url:"https://concursos.estrategia.com/portal/concursos-pi/"}}, {orgao:"Câmara de Teresina",cargo:"Diversos",status:"previsto",vagas:18,quando:"Comissão formada (notícia de 07/08/2026)",fonte:{nome:"Estratégia Concursos",url:"https://concursos.estrategia.com/portal/concursos-pi/"}}, {orgao:"Prefeitura de Teresina (Saúde)",cargo:"A definir",status:"previsto",vagas:0,quando:"Concurso anunciado (notícia de 07/08/2026)",fonte:{nome:"Estratégia Concursos",url:"https://concursos.estrategia.com/portal/concursos-pi/"}} ],
     },
   },
-  PR: { atualizado:"26/11/2026", todos:"https://www.pciconcursos.com.br/concursos/sul/",
+  PR: { atualizado:"27/11/2026", todos:"https://www.pciconcursos.com.br/concursos/sul/",
     estaduais: [
       {orgao:"CREA-PR",cargo:"Vários cargos",status:"aberto",vagas:7,ate:"2026-10-15",quando:"até 15/10/2026",fonte:{nome:"PCI Concursos",url:"https://www.pciconcursos.com.br/noticias/crea-pr-publica-edital-de-concurso-publico-com-vagas-imediatas-e-formacao-de-cadastro-de-reserva"}},
       {orgao:"CRQ 9ª Região",cargo:"Vários cargos",status:"aberto",vagas:3,ate:"2026-10-21",quando:"até 21/10/2026",fonte:{nome:"PCI Concursos",url:"https://www.pciconcursos.com.br/noticias/crq-da-9-regiao-do-parana-abre-concurso-publico-com-salarios-de-ate-10727"}},
@@ -601,7 +606,7 @@ const CONCURSOS_LEVANTAMENTO = {
       '4126256': [ {orgao:"Guarda Municipal de Sarandi",cargo:"Guarda municipal",status:"previsto",vagas:20,quando:"Concurso anunciado (notícia de 15/10/2026)",fonte:{nome:"Estratégia Concursos",url:"https://concursos.estrategia.com/portal/concursos-pr/"}} ],
     },
   },
-  RJ: { atualizado:"26/11/2026", todos:"https://www.pciconcursos.com.br/concursos/sudeste/",
+  RJ: { atualizado:"27/11/2026", todos:"https://www.pciconcursos.com.br/concursos/sudeste/",
     estaduais: [
       {orgao:"Corpo de Bombeiros do RJ",cargo:"1º tenente temporário (seleção)",status:"aberto",vagas:192,ate:"2026-11-09",de:"2026-10-19",quando:"de 19/10/2026 a 09/11/2026",fonte:{nome:"PCI Concursos",url:"https://www.pciconcursos.com.br/noticias/cbmerj-rj-abre-processo-seletivo-para-1-tenente-temporario"}},
       {orgao:"CREMERJ",cargo:"Vários cargos",status:"aberto",vagas:26,ate:"2026-10-29",quando:"até 29/10/2026",fonte:{nome:"PCI Concursos",url:"https://www.pciconcursos.com.br/noticias/cremerj-retifica-concurso-com-salarios-de-ate-18000-para-diversos-cargos"}},
@@ -660,11 +665,12 @@ const CONCURSOS_LEVANTAMENTO = {
       '3302908': [ {orgao:"Prefeitura de Miguel Pereira",cargo:"Diversos",status:"previsto",vagas:91,quando:"Concurso solicitado (notícia de 06/10/2026)",fonte:{nome:"Estratégia Concursos",url:"https://concursos.estrategia.com/portal/concursos-rj/"}} ],
     },
   },
-  RN: { atualizado:"26/11/2026", todos:"https://www.pciconcursos.com.br/concursos/nordeste/",
+  RN: { atualizado:"27/11/2026", todos:"https://www.pciconcursos.com.br/concursos/nordeste/",
     estaduais: [
       {orgao:"UFRN",cargo:"Professor do magistério superior",status:"aberto",vagas:9,ate:"2026-10-23",quando:"até 23/10/2026",fonte:{nome:"PCI Concursos",url:"https://www.pciconcursos.com.br/noticias/ufrn-abre-concurso-para-professores-do-magisterio-superior"}},
       {orgao:"UFRN",cargo:"Professor EBTT",status:"aberto",vagas:9,ate:"2026-11-05",quando:"até 05/11/2026",fonte:{nome:"PCI Concursos",url:"https://www.pciconcursos.com.br/noticias/ufrn-abre-concurso-publico-para-professores-de-ensino-basico-tecnico-e-tecnologico"}},
       {orgao:"CREF16/RN - Conselho Regional de Educação Física da 16ª Região",cargo:"Advogado, Contador, Agente de Licitações e Contratos (Superior)",status:"aberto",vagas:3,ate:"2026-11-15",de:"2026-10-30",quando:"de 30/10/2026 a 15/11/2026",fonte:{nome:"PCI Concursos",url:"https://www.pciconcursos.com.br/noticias/cref16-rn-abre-concurso-publico-para-profissionais-de-nivel-superior"}},
+      {orgao:"SEEC - Secretaria de Estado da Educação, do Esporte e do Lazer",cargo:"Professor da Educação Profissional (Superior)",status:"aberto",vagas:0,ate:"2026-12-09",quando:"até 09/12/2026",fonte:{nome:"PCI Concursos",url:"https://www.pciconcursos.com.br/noticias/seec-rn-abre-processo-seletivo-para-professores-da-educacao-profissional"}},
       {orgao:"PGE-RN",cargo:"Analista",status:"previsto",vagas:0,quando:"Previsto no orçamento de 2027 (notícia de 07/10/2026)",fonte:{nome:"Estratégia Concursos",url:"https://concursos.estrategia.com/portal/concursos-rn/"}},
       {orgao:"Defensoria Pública do RN",cargo:"A definir",status:"previsto",vagas:0,quando:"Previsto no orçamento de 2027 (notícia de 07/10/2026)",fonte:{nome:"Estratégia Concursos",url:"https://concursos.estrategia.com/portal/concursos-rn/"}},
       {orgao:"MP-RN",cargo:"Servidores",status:"previsto",vagas:0,quando:"Previsto no orçamento de 2027 (notícia de 07/10/2026)",fonte:{nome:"Estratégia Concursos",url:"https://concursos.estrategia.com/portal/concursos-rn/"}},
@@ -685,7 +691,7 @@ const CONCURSOS_LEVANTAMENTO = {
       '2408102': [ {orgao:"STTU Natal",cargo:"Agente de mobilidade",status:"previsto",vagas:120,quando:"Comissão formada (notícia de 07/10/2026)",fonte:{nome:"Estratégia Concursos",url:"https://concursos.estrategia.com/portal/concursos-rn/"}} ],
     },
   },
-  RO: { atualizado:"26/11/2026", todos:"https://www.pciconcursos.com.br/concursos/norte/",
+  RO: { atualizado:"27/11/2026", todos:"https://www.pciconcursos.com.br/concursos/norte/",
     estaduais: [
       {orgao:"SESDEC - Secretaria de Estado da Segurança, Defesa e Cidadania",cargo:"Prestador Voluntário de Serviços Administrativos (Ensino Médio)",status:"aberto",vagas:332,ate:"2026-11-17",quando:"até 17/11/2026",fonte:{nome:"PCI Concursos",url:"https://www.pciconcursos.com.br/noticias/sesdec-ro-abre-selecao-para-prestadores-voluntarios-na-policia-militar-e-no-corpo-de-bombeiros"}},
       {orgao:"SESAU-RO (Saúde)",cargo:"Níveis médio, técnico e superior",status:"previsto",vagas:2395,banca:"IDECAN",quando:"Edital deve sair ainda em 2026 (notícia de 30/09/2026)",fonte:{nome:"Estratégia Concursos",url:"https://concursos.estrategia.com/portal/concursos-ro/"}},
@@ -701,7 +707,7 @@ const CONCURSOS_LEVANTAMENTO = {
       '1100304': [ {orgao:"Prefeitura de Vilhena",cargo:"Agentes de saúde e endemias",status:"aberto",vagas:30,ate:"2026-10-13",quando:"até 13/10/2026",fonte:{nome:"PCI Concursos",url:"https://www.pciconcursos.com.br/noticias/prefeitura-de-vilhena-ro-retifica-o-edital-de-processo-seletivo-para-agentes-de-saude-e-de-endemias"}} ],
     },
   },
-  RR: { atualizado:"26/11/2026", todos:"https://www.pciconcursos.com.br/concursos/norte/",
+  RR: { atualizado:"27/11/2026", todos:"https://www.pciconcursos.com.br/concursos/norte/",
     estaduais: [
       {orgao:"UERR",cargo:"Professor visitante",status:"aberto",vagas:1,ate:"2026-11-03",quando:"até 03/11/2026",fonte:{nome:"PCI Concursos",url:"https://www.pciconcursos.com.br/noticias/uerr-abre-selecao-para-professor-visitante-com-salario-de-16993"}},
       {orgao:"Polícia Militar de RR",cargo:"Oficial",status:"previsto",vagas:45,banca:"UERR",quando:"Banca definida (notícia de 14/08/2026)",fonte:{nome:"Estratégia Concursos",url:"https://concursos.estrategia.com/portal/concursos-rr/"}},
@@ -714,7 +720,7 @@ const CONCURSOS_LEVANTAMENTO = {
       '1400100': [ {orgao:"Câmara de Boa Vista",cargo:"Diversos",status:"previsto",vagas:70,quando:"Comissão formada (notícia de 14/08/2026)",fonte:{nome:"Estratégia Concursos",url:"https://concursos.estrategia.com/portal/concursos-rr/"}}, {orgao:"Prefeitura de Boa Vista",cargo:"Saúde, educação e quadro geral",status:"previsto",vagas:0,quando:"Concurso anunciado (notícia de 14/08/2026)",fonte:{nome:"Estratégia Concursos",url:"https://concursos.estrategia.com/portal/concursos-rr/"}} ],
     },
   },
-  RS: { atualizado:"26/11/2026", todos:"https://www.pciconcursos.com.br/concursos/sul/",
+  RS: { atualizado:"27/11/2026", todos:"https://www.pciconcursos.com.br/concursos/sul/",
     estaduais: [
       {orgao:"Marinha do Brasil (5º Distrito Naval)",cargo:"Oficiais médicos temporários",status:"aberto",vagas:5,ate:"2026-11-10",quando:"até 10/11/2026",fonte:{nome:"PCI Concursos",url:"https://www.pciconcursos.com.br/noticias/marinha-do-brasil-5-distrito-naval-abre-selecao-para-oficiais-medicos-temporarios-no-rs"}},
       {orgao:"Hospital de Clínicas de Porto Alegre",cargo:"Vários cargos (seleção)",status:"aberto",vagas:0,ate:"2026-11-11",quando:"até 11/11/2026 · cadastro de reserva",fonte:{nome:"PCI Concursos",url:"https://www.pciconcursos.com.br/noticias/hospital-de-clinicas-de-porto-alegre-rs-abre-selecoes-para-diversos-cargos"}},
@@ -735,6 +741,7 @@ const CONCURSOS_LEVANTAMENTO = {
       {orgao:"IFFar - Instituto Federal de Educação, Ciência e Tecnologia Farroupilha",cargo:"Professor Substituto (Superior)",status:"aberto",vagas:2,ate:"2026-11-30",quando:"até 30/11/2026",fonte:{nome:"PCI Concursos",url:"https://www.pciconcursos.com.br/noticias/iffar-rs-abre-selecao-para-professores-substitutos-com-salarios-de-ate-8-mil"}},
       {orgao:"IFRS - Instituto Federal de Educação, Ciência e Tecnologia do Rio Grande do Sul",cargo:"Professor substituto (Superior)",status:"aberto",vagas:2,ate:"2026-12-02",quando:"até 02/12/2026",fonte:{nome:"PCI Concursos",url:"https://www.pciconcursos.com.br/noticias/ifrs-rs-abre-selecao-para-professores-substitutos-no-campus-porto-alegre"}},
       {orgao:"IFFar - Instituto Federal de Educação, Ciência e Tecnologia Farroupilha",cargo:"Vários Cargos (Médio / Técnico / Superior)",status:"aberto",vagas:30,ate:"2026-12-21",quando:"até 21/12/2026",fonte:{nome:"PCI Concursos",url:"https://www.pciconcursos.com.br/noticias/iffar-rs-abre-concurso-publico-para-cargos-de-niveis-medio-e-superior"}},
+      {orgao:"IFRS - Instituto Federal de Educação, Ciência e Tecnologia do Rio Grande do Sul",cargo:"Professor substituto (Superior)",status:"aberto",vagas:1,ate:"2026-12-08",quando:"até 08/12/2026",fonte:{nome:"PCI Concursos",url:"https://www.pciconcursos.com.br/noticias/ifrs-rs-abre-selecao-para-professor-substituto-no-campus-osorio"}},
       {orgao:"SEFAZ-RS",cargo:"Auditor fiscal e analista tributário",status:"previsto",vagas:0,banca:"FCC",quando:"Banca definida (notícia de 15/10/2026)",fonte:{nome:"Estratégia Concursos",url:"https://concursos.estrategia.com/portal/concursos-rs/"}},
       {orgao:"TJ-RS",cargo:"Analista judiciário",status:"previsto",vagas:0,quando:"Concurso autorizado; comissão formada (notícia de 15/10/2026)",fonte:{nome:"Estratégia Concursos",url:"https://concursos.estrategia.com/portal/concursos-rs/"}},
       {orgao:"PGE-RS",cargo:"A definir",status:"previsto",vagas:0,quando:"Comissão formada (notícia de 15/10/2026)",fonte:{nome:"Estratégia Concursos",url:"https://concursos.estrategia.com/portal/concursos-rs/"}},
@@ -786,7 +793,7 @@ const CONCURSOS_LEVANTAMENTO = {
       '4310207': [ {orgao:"Prefeitura de Ijuí",cargo:"Vários cargos",status:"previsto",vagas:200,quando:"Concurso previsto (notícia de 15/10/2026)",fonte:{nome:"Estratégia Concursos",url:"https://concursos.estrategia.com/portal/concursos-rs/"}} ],
     },
   },
-  SC: { atualizado:"26/11/2026", todos:"https://www.pciconcursos.com.br/concursos/sul/",
+  SC: { atualizado:"27/11/2026", todos:"https://www.pciconcursos.com.br/concursos/sul/",
     estaduais: [
       {orgao:"CASAN",cargo:"Vários cargos",status:"aberto",vagas:0,ate:"2026-10-09",quando:"até 09/10/2026 · cadastro de reserva",fonte:{nome:"PCI Concursos",url:"https://www.pciconcursos.com.br/noticias/casan-sc-retifica-editais-de-concursos-publicos"}},
       {orgao:"Fundação Catarinense de Cultura",cargo:"Analista (seleção)",status:"aberto",vagas:8,ate:"2026-11-09",quando:"até 09/11/2026",fonte:{nome:"PCI Concursos",url:"https://www.pciconcursos.com.br/noticias/fundacao-catarinense-de-cultura-sc-abre-processo-seletivo-para-analista-contador"}},
@@ -880,7 +887,7 @@ const CONCURSOS_LEVANTAMENTO = {
       '4202008': [ {orgao:"Guarda Municipal de Balneário Camboriú",cargo:"Guarda municipal",status:"previsto",vagas:0,quando:"Concurso anunciado (notícia de 09/10/2026)",fonte:{nome:"Estratégia Concursos",url:"https://concursos.estrategia.com/portal/concursos-sc/"}} ],
     },
   },
-  SE: { atualizado:"26/11/2026", todos:"https://www.pciconcursos.com.br/concursos/nordeste/",
+  SE: { atualizado:"27/11/2026", todos:"https://www.pciconcursos.com.br/concursos/nordeste/",
     estaduais: [
       {orgao:"CRO-SE",cargo:"Vários cargos",status:"aberto",vagas:3,ate:"2026-10-26",quando:"até 26/10/2026",fonte:{nome:"PCI Concursos",url:"https://www.pciconcursos.com.br/noticias/cro-se-abre-concurso-publico-com-salarios-de-ate-4504"}},
       {orgao:"IFS",cargo:"Professor substituto",status:"aberto",vagas:4,ate:"2026-10-28",de:"2026-10-19",quando:"de 19/10/2026 a 28/10/2026",fonte:{nome:"PCI Concursos",url:"https://www.pciconcursos.com.br/noticias/ifs-se-abre-processo-seletivo-para-professores-substitutos-de-informatica"}},
@@ -896,7 +903,7 @@ const CONCURSOS_LEVANTAMENTO = {
       '2806701': [ {orgao:"Prefeitura de São Cristóvão (Educação)",cargo:"A definir",status:"previsto",vagas:0,quando:"Comissão formada (notícia de 28/05/2026)",fonte:{nome:"Estratégia Concursos",url:"https://concursos.estrategia.com/portal/concursos-se/"}} ],
     },
   },
-  SP: { atualizado:"26/11/2026", todos:"https://www.pciconcursos.com.br/concursos/sudeste/",
+  SP: { atualizado:"27/11/2026", todos:"https://www.pciconcursos.com.br/concursos/sudeste/",
     estaduais: [
       {orgao:"Defensoria Pública de SP",cargo:"Defensor público",status:"aberto",vagas:70,ate:"2026-11-11",quando:"até 11/11/2026",fonte:{nome:"PCI Concursos",url:"https://www.pciconcursos.com.br/noticias/defensoria-publica-de-sp-abre-concurso-para-defensor-publico"}},
       {orgao:"Detran-SP",cargo:"Agente estadual de trânsito",status:"aberto",vagas:145,ate:"2026-10-13",quando:"até 13/10/2026",fonte:{nome:"PCI Concursos",url:"https://www.pciconcursos.com.br/noticias/detran-sp-prorroga-inscricoes-do-concurso-com-145-vagas-para-agentes-estaduais-de-transito"}},
@@ -942,6 +949,8 @@ const CONCURSOS_LEVANTAMENTO = {
       {orgao:"CIOP - Consórcio Intermunicipal do Oeste Paulista",cargo:"Motorista Condutor de Ambulância, Técnico em Enfermagem (Médio / Técnico)",status:"aberto",vagas:21,ate:"2026-11-29",quando:"até 29/11/2026",fonte:{nome:"PCI Concursos",url:"https://www.pciconcursos.com.br/noticias/ciop-sp-abre-concurso-publico-para-motoristas-e-tecnicos-em-enfermagem"}},
       {orgao:"Funcamp - Fundação de Desenvolvimento da Unicamp",cargo:"Camareiro (Fundamental)",status:"aberto",vagas:1,ate:"2026-11-27",quando:"até 27/11/2026",fonte:{nome:"PCI Concursos",url:"https://www.pciconcursos.com.br/noticias/funcamp-sp-abre-vaga-para-camareiro-na-casa-do-professor-visitante"}},
       {orgao:"Unifesp - Universidade Federal de São Paulo",cargo:"Professor Assistente A Substituto (Superior)",status:"aberto",vagas:1,ate:"2026-11-27",quando:"até 27/11/2026",fonte:{nome:"PCI Concursos",url:"https://www.pciconcursos.com.br/noticias/unifesp-sp-abre-vaga-para-professor-substituto-com-salario-de-6157"}},
+      {orgao:"FAMESP - Fundação para o Desenvolvimento Médico e Hospitalar",cargo:"Enfermeiro, Analista de Sistemas Júnior, Médico (Superior)",status:"aberto",vagas:5,ate:"2026-12-08",de:"2026-11-29",quando:"de 29/11/2026 a 08/12/2026",fonte:{nome:"PCI Concursos",url:"https://www.pciconcursos.com.br/noticias/famesp-sp-abre-processos-seletivos-para-cargos-de-nivel-superior-com-ganhos-de-12-1-mil"}},
+      {orgao:"Fundhas - Fundação Hélio Augusto de Souza",cargo:"Educador(a) Social, Orientador(a), Professor(a) (Médio / Técnico / Superior)",status:"aberto",vagas:20,ate:"2026-12-28",quando:"até 28/12/2026",fonte:{nome:"PCI Concursos",url:"https://www.pciconcursos.com.br/noticias/fundhas-sp-abre-concurso-com-20-vagas-e-cadastro-reserva-em-diversas-areas"}},
     ],
     municipais: {
       '3522109': [ {orgao:"Câmara de Itanhaém",cargo:"Vários cargos",status:"aberto",vagas:27,ate:"2026-10-19",quando:"até 19/10/2026",fonte:{nome:"PCI Concursos",url:"https://www.pciconcursos.com.br/noticias/camara-de-itanhaem-sp-abre-concurso-publico-com-salarios-de-ate-7097"}} ],
@@ -1028,7 +1037,7 @@ const CONCURSOS_LEVANTAMENTO = {
       '3518701': [ {orgao:"Câmara de Guarujá",cargo:"Níveis médio e superior",status:"previsto",vagas:0,quando:"Concurso previsto (notícia de 13/10/2026)",fonte:{nome:"Estratégia Concursos",url:"https://concursos.estrategia.com/portal/concursos-sp/"}} ],
     },
   },
-  TO: { atualizado:"26/11/2026", todos:"https://www.pciconcursos.com.br/concursos/norte/",
+  TO: { atualizado:"27/11/2026", todos:"https://www.pciconcursos.com.br/concursos/norte/",
     estaduais: [
       {orgao:"CAU-TO",cargo:"Vários cargos",status:"aberto",vagas:3,ate:"2026-11-09",quando:"até 09/11/2026",fonte:{nome:"PCI Concursos",url:"https://www.pciconcursos.com.br/noticias/cau-to-abre-concurso-publico-com-salarios-de-ate-9726"}},
       {orgao:"UFNT",cargo:"Professor substituto",status:"aberto",vagas:6,ate:"2026-10-30",de:"2026-10-16",quando:"de 16/10/2026 a 30/10/2026",fonte:{nome:"PCI Concursos",url:"https://www.pciconcursos.com.br/noticias/ufnt-to-abre-processo-seletivo-para-professores-substitutos"}},
