@@ -1,8 +1,7 @@
-ROBÔ DO GORILA — 27/11/2026 14:14 (horário de Brasília)
-PCI hoje: 640 concursos com inscrições abertas
-CONFERIR: 'Prefeitura de Leopoldina' (MG) estava em municipais-previstos.txt e agora abriu inscrições — tirar dos previstos? prefeitura-de-leopoldina-mg-abre-concurso-com-vagas-para-guarda-civil-municipal
-novos concursos: 27 em cidades + 9 estaduais/sem cidade · 0 com data mudada (prorrogação/retificação)
-notícias: parte 0 pronta (36 nesta rodada)
+ROBÔ DO GORILA — 28/11/2026 12:58 (horário de Brasília)
+PCI hoje: 639 concursos com inscrições abertas
+novos concursos: 37 em cidades + 2 estaduais/sem cidade · 1 com data mudada (prorrogação/retificação)
+notícias: parte 0 pronta (41 nesta rodada)
 AVISO GO 17232 vagas sem conferência, ficou 'a definir': seduce-go-retifica-um-dos-dois-processos-seletivos-com-mais-de-17-2-mil-vagas
 AVISO GO 7453 vagas sem conferência, ficou 'a definir': valparaiso-de-goias-go-prorroga-inscricoes-e-retifica-edital-001-2014
 AVISO MT 5156 vagas sem conferência, ficou 'a definir': prefeitura-de-varzea-grande-mt-retifica-processo-seletivo-com-vagas-para-a-educacao
@@ -27,7 +26,7 @@ AVISO taxa impossível (R$ 1627.28), não mostrada: taboao-da-serra-sp-vagas-par
 AVISO taxa impossível (R$ 4231.6), não mostrada: uem-pr-abre-selecao-para-tecnico-em-laboratorio-com-salario-de-4-2-mil
 AVISO taxa impossível (R$ 2125.02), não mostrada: prefeitura-de-cajamar-sp-retifica-um-dos-editais-de-concursos-publicos
 AUDITORIA: 0 erros, 27 para conferir, 1 info (ver auditoria.txt)
-concursos nas cidades: 143007 (no ar: 142988) · detalhes: 142217 (no ar: 142188)
-levantamento estadual/municipal: 992 (no ar: 983)
+concursos nas cidades: 143031 (no ar: 143007) · detalhes: 142244 (no ar: 142217)
+levantamento estadual/municipal: 994 (no ar: 992)
 sintaxe conferida com o Node em 82 arquivos
 OK: pode publicar

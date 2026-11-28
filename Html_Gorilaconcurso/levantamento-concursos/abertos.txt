@@ -45,7 +45,7 @@ AL|Corpo de Bombeiros de AL|-|172|Oficial e soldado|26/10/2026|cbm-al-reabre-ins
 AL|Polícia Militar de AL|-|530|Oficial e soldado|16/10/2026|pm-al-reabre-concurso-para-soldado-do-quadro-de-pracas-e-oficial-de-estado-maior
 AL|Prefeitura de Chã Preta|Chã Preta|76|Vários cargos|01/11/2026|prefeitura-de-cha-preta-al-abre-concursos-com-salarios-de-ate-7256
 AL|UFAL|-|CR|Professor substituto|28/10/2026|ufal-abre-editais-de-selecao-para-professores-substitutos
-PB|Defensoria Pública da PB|-|20|Vários cargos|13/11/2026|dpe-pb-abre-concurso-publico-com-salarios-de-ate-5197
+PB|Defensoria Pública da PB|-|20|Vários cargos|04/01/2027|dpe-pb-abre-concurso-publico-com-salarios-de-ate-5197
 PB|Câmara de Guarabira|Guarabira|5|Vários cargos|21/10/2026>22/11/2026|camara-de-guarabira-pb-abre-concurso-publico-com-salarios-de-ate-3354
 PB|Prefeitura de Água Branca|Água Branca|24|Vários cargos|15/11/2026|prefeitura-de-agua-branca-pb-republica-editais-de-concursos-publicos
 PB|Prefeitura de Cruz do Espírito Santo|Cruz do Espírito Santo|202|Vários cargos|05/10/2026|prefeitura-de-cruz-do-espirito-santo-pb-prorroga-inscricoes-de-concurso-publico
@@ -727,3 +727,5 @@ MG|FAEPU - Fundação de Assistência, Estudo e Pesquisa de Uberlândia|-|0|Vár
 MG|UFCIMG - Universidade Federal de Ciência e Inovação de Minas Gerais|-|3|Professor substituto (Superior)|08/12/2026|ufcimg-mg-abre-processos-seletivos-para-o-cargo-de-professor-substituto
 ES|SEDU - Secretaria de Estado da Educação|-|0|Agente de Integração Escolar (Ensino Médio)|30/11/2026>09/12/2026|sedu-es-abre-processo-seletivo-para-agente-de-integracao-escolar-com-bolsa-de-2300
 RS|IFRS - Instituto Federal de Educação, Ciência e Tecnologia do Rio Grande do Sul|-|1|Professor substituto (Superior)|08/12/2026|ifrs-rs-abre-selecao-para-professor-substituto-no-campus-osorio
+RJ|CMTC - Companhia Municipal de Transportes Coletivos|-|100|Motorista (Fundamental)|30/11/2026>05/12/2026|mobi-rio-rj-abre-processo-seletivo-com-100-vagas-para-motorista-padron
+ES|UFES - Universidade Federal do Espírito Santo|-|23|Professor substituto (Superior)|11/12/2026|ufes-es-abre-processo-seletivo-para-23-vagas-de-professor-substituto

@@ -3601,7 +3601,8 @@ batatais	Batatais	Prefeitura de Batatais	Professor de História	Superior	1			200
 bauru	Bauru	FMB-USP - Faculdade de Medicina de Bauru da Universidade de São Paulo	Professor Titular	Superior	22		2026-12-03	2027-06-01	usp-bauru-sp-abre-concursos-para-22-vagas-de-professor-titular	na
 bauru	Bauru	UNESP - Universidade Estadual Paulista "Júlio de Mesquita Filho"	Professor Titular	Superior	1			2027-01-06	unesp-sp-abre-concurso-publico-para-professor-titular-na-faculdade-de-engenharia-de-bauru	na
 bauru	Bauru	UNESP - Universidade Estadual Paulista "Júlio de Mesquita Filho"	Professor Titular	Superior	1			2027-01-06	unesp-abre-vaga-para-professor-titular-na-faculdade-de-arquitetura-artes-comunicacao-e-design-de-bauru-sp	na
-bauru	Bauru	Unesp - Universidade Estadual Paulista	Professor substituto	Superior	2		2026-11-30	2026-12-14	unesp-sp-abre-dois-concursos-para-professor-substituto-em-bauru	na
+bauru	Bauru	Unesp - Universidade Estadual Paulista	Professor Substituto	Superior	2		2026-11-30	2026-12-14	unesp-sp-abre-dois-novos-concursos-para-professores-substitutos-em-bauru	na
+bauru	Bauru	Unesp - Universidade Estadual Paulista	Professor substituto	Superior	2		2026-11-30	2026-12-14	unesp-bauru-sp-abre-vagas-para-professor-substituto-em-arquitetura-e-urbanismo	na
 bauru	Bauru	UNESP - Universidade Estadual Paulista "Júlio de Mesquita Filho"	Professor Assistente	Superior	1			2026-12-14	unesp-abre-concurso-para-professor-assistente-de-arquitetura-e-urbanismo-em-bauru-sp	na
 bauru	Bauru	UNESP - Universidade Estadual Paulista "Júlio de Mesquita Filho"	Professor Substituto	Superior	1			2026-12-07	unesp-abre-concurso-para-professor-substituto-na-faculdade-de-engenharia-em-bauru-sp	na
 bauru	Bauru	UNESP - Universidade Estadual Paulista "Júlio de Mesquita Filho"	Professor Substituto	Superior	1			2026-12-03	unesp-abre-concurso-para-professor-substituto-na-faculdade-de-ciencias-de-botucatu-sp	na
@@ -3797,7 +3798,6 @@ bauru	Bauru	Departamento de Água e Esgoto de Bauru	Engenheiro Eletricista, Fisc
 bauru	Bauru	Prefeitura de Bauru	Médico Infectologista	Superior	4			2024-10-29	prefeitura-de-bauru-sp-divulga-quatro-vagas-em-novo-processo-seletivo	ea
 bauru	Bauru	DAE - Departamento de Água e Esgoto de Bauru	Vários Cargos	Fundamental / Médio / Superior	5			2024-10-25	dae-de-bauru-sp-dispoe-de-dois-novos-concursos-publicos	ea
 bauru	Bauru	FAMESP - Fundação para o Desenvolvimento Médico e Hospitalar	Biologo, Bio-Médico, Farmacêutico-Bioquímico	Superior	1			2024-10-15	novo-edital-de-processo-seletivo-e-publicado-pela-famesp	ea
-bauru	Bauru	UNESP - Universidade Estadual Paulista - Bauru	Docente de Ensino Médio I ou II	Superior	0			2024-10-07	unesp-sp-faculdade-de-engenharia-do-campus-de-bauru-anuncia-dois-concursos-publicos	ea
 bebedouro	Bebedouro	Prefeitura de Bebedouro e BebedouroPrev - Bebedouro Previdência	Vários Cargos	Fundamental / Médio / Técnico / Superior	5			2026-08-20	prefeitura-de-bebedouro-e-bebedouroprev-sp-lancam-editais-para-concurso-e-processo-seletivo	ea
 bebedouro	Bebedouro	Prefeitura de Bebedouro	Profissional de Apoio Escolar, Professor de Educação Infantil, Professor de Ensino Fundamental	Médio / Superior	0	CR		2026-05-07	prefeitura-de-bebedouro-sp-abre-processo-seletivo-para-a-area-da-educacao	ea
 bebedouro	Bebedouro	Fatec - Faculdade de Tecnologia - Bebedouro	Professor de Ensino Superior	Superior	2			2026-01-13	fatec-dois-processos-seletivos-para-professores-de-ensino-superior-sao-divulgados-em-bebedouro-sp	ea
@@ -7063,6 +7063,7 @@ catigua	Catiguá	Prefeitura de Catiguá	PEB II - Educação Física	Superior	0		
 catigua	Catiguá	Prefeitura de Catiguá	Vários Cargos	Fundamental / Médio / Superior	21			2012-05-11	ultimos-dias-de-inscricoes-para-o-concurso-da-prefeitura-de-catigua-sp	ea
 catigua	Catiguá	Prefeitura de Catiguá	Professoress	Superior	0			2011-12-22	prefeitura-de-catigua-sp-abre-vaga-para-diversas-areas-de-ate-6411	ea
 catigua	Catiguá	Prefeitura de Catiguá	Vários Cargos	Fundamental / Médio / Superior	114			2011-01-10	114-vagas-para-diversos-cargos-de-ate-2211-na-prefeitura-de-catigua-sp	ea
+cedral	Cedral	Prefeitura de Cedral	Agente Comunitário de Saúde, Agente de Controle de Endemias	Ensino Médio	5		2026-12-04	2027-01-03	prefeitura-de-cedral-sp-abre-processo-seletivo-para-5-vagas-e-cadastro-de-reserva-na-area-da-saude	na
 cedral	Cedral	Prefeitura de Cedral	Professores	Superior	0			2022-10-31	processo-seletivo-e-retificado-pela-prefeitura-de-cedral-sp	ea
 cedral	Cedral	Prefeitura de Cedral	Vários Cargos	Fundamental / Médio / Superior	0			2021-10-31	prefeitura-de-cedral-sp-divulga-processo-seletivo-para-formacao-de-cadastro-reserva	ea
 cedral	Cedral	Prefeitura de Cedral	Professores	Superior	0			2017-06-28	prefeitura-de-cedral-sp-vai-realizar-processo-seletivo-para-professores	ea
@@ -9019,6 +9020,7 @@ emilianopolis	Emilianópolis	Prefeitura de Emilianópolis	Vários Cargos	Fundame
 emilianopolis	Emilianópolis	Prefeitura de Emilianópolis	Vários Cargos	Fundamental / Médio / Superior	21			2013-02-08	prefeitura-de-emilianopolis-sp-divulga-retificacao-acrescentando-novas-vagas	ea
 emilianopolis	Emilianópolis	Prefeitura de Emilianópolis	Vários Cargos	Magistério / Superior	5			2011-11-25	prefeitura-de-emilianopolis-sp-abre-concurso-com-salarios-de-ate-7-mil	ea
 emilianopolis	Emilianópolis	Prefeitura de Emilianópolis	Concurso Público	Fundamental / Médio / Superior	36			2007-08-24	em-emilianopolis-sp-vagas-para-todos-os-niveis-de-escolaridade	ea
+engenheiro-coelho	Engenheiro Coelho	Prefeitura de Engenheiro Coelho	Vários Cargos	Fundamental / Médio / Superior	82			2026-12-28	prefeitura-de-engenheiro-coelho-sp-abre-concurso-com-82-vagas-e-salarios-de-ate-7069	na
 engenheiro-coelho	Engenheiro Coelho	Saeec - Serviço de Água e Esgoto de Engenheiro Coelho	Vários Cargos	Fundamental / Médio / Técnico / Superior	10			2025-05-21	concurso-publico-do-saeec-em-engenheiro-coelho-sp-oferece-10-vagas	ea
 engenheiro-coelho	Engenheiro Coelho	Prefeitura de Engenheiro Coelho	Vários Cargos	Fundamental / Médio / Técnico / Superior	90			2025-01-22	prefeitura-de-engenheiro-coelho-sp-divulga-processo-seletivo-com-90-vagas	ea
 engenheiro-coelho	Engenheiro Coelho	SAEEC - Serviço de Água e Esgoto de Engenheiro Coelho	Vários Cargos	Médio / Técnico / Superior	5			2022-03-11	saeec-de-engenheiro-coelho-sp-anuncia-concurso-publico-com-cinco-vagas	ea
@@ -14468,6 +14470,7 @@ itobi	Itobi	Prefeitura de Itobi	Vários Cargos	Médio / Superior	4			2011-02-04	
 itobi	Itobi	Prefeitura de Itobi	Professores	Magistério / Superior	3			2011-02-04	prefeitura-de-itobi-sp-reabre-novamente-as-inscricoes-do-concurso-n-01-2011	ea
 itobi	Itobi	Prefeitura de Itobi	Vários Cargos	Fundamental / Médio / Superior	44			2009-08-31	44-vagas-de-ate-4100-para-prefeitura-de-itobi-sp	ea
 itobi	Itobi	Prefeitura de Itobi	Vários Cargos	Fundamental Incompleto / Fundamental / Médio / Técnico / Superior	0				prefeitura-de-itobi-sp-suspende-processo-seletivo-para-diversas-areas	suspenso
+itu	Itu	Prefeitura da Estância Turística de Itu	Vários Cargos	Fundamental / Médio / Técnico / Superior	94			2027-02-15	prefeitura-de-itu-sp-abre-concurso-com-94-vagas-e-salarios-de-ate-18847	na
 itu	Itu	CIS - Companhia Ituana de Saneamento	Vários Cargos	Fundamental / Médio / Técnico / Superior	28			2026-12-07	cis-itu-sp-abre-concurso-publico-com-salarios-de-ate-7553	na
 itu	Itu	Prefeitura da Estância Turística de Itu	Cuidador, Educador Social	Ensino Médio	5			2026-12-04	prefeitura-de-itu-sp-abre-concurso-publico-com-vagas-para-cuidador-e-educador-social	na
 itu	Itu	Etec - Escola Técnica Estadual Martinho di Ciero	Professor de Ensino Médio e Técnico	Superior	0	CR		2026-01-27	etec-de-itu-sp-anuncia-abertura-de-seis-processos-seletivos	ea
@@ -14667,7 +14670,6 @@ itu	Itu	Prefeitura de Itu	Cuidador	Ensino Médio	8			2011-11-30	vagas-para-cuida
 itu	Itu	Câmara de Itu	Vários Cargos	Fundamental / Médio / Superior	11			2011-11-25	salarios-de-ate-3-2-mil-para-profissionais-de-varios-niveis-na-camara-de-itu-sp	ea
 itu	Itu	Diretoria de Ensino - Região de Itu	Agente de Organização Escolar	Ensino Médio	0			2011-09-20	de-regiao-de-itu-sp-abre-selecao-para-agente-de-organizacao-escolar	ea
 itu	Itu	Prefeitura de Itu	Vários Cargos	Fundamental / Médio / Superior	255			2011-08-23	prefeitura-de-itu-sp-prorroga-as-inscricoes-do-concurso-n-001-2011	ea
-itu	Itu	Prefeitura de Itu	Médicos	Superior	32			2011-05-25	itu-sp-prorroga-inscricoes-da-selecao-002-2011	ea
 itupeva	Itupeva	Prefeitura de Itupeva	Agente de Infraestrutura	Fundamental / Médio	7		2026-11-30	2026-12-27	prefeitura-de-itupeva-sp-abre-concurso-com-7-vagas-e-salarios-de-ate-5009	na
 itupeva	Itupeva	Prefeitura de Itupeva	Vários Cargos	Fundamental / Médio / Superior	72		2026-11-30	2026-12-27	prefeitura-de-itupeva-sp-abre-concurso-com-salarios-de-ate-13289	na
 itupeva	Itupeva	Prefeitura de Itupeva	Professor de Desenvolvimento Infantil, Professor de Educação Básica	Superior	33			2026-11-26	prefeitura-de-itupeva-sp-abre-processo-seletivo-para-professores	ea
@@ -15441,8 +15443,7 @@ jambeiro	Jambeiro	Prefeitura de Jambeiro	Vários Cargos	Fundamental / Médio / S
 jambeiro	Jambeiro	Prefeitura de Jambeiro	Vários Cargos	Fundamental / Médio / Superior	14			2008-03-28	14-vagas-de-ate-4850-para-a-prefeitura-de-jambeiro-sp	ea
 jambeiro	Jambeiro	Prefeitura de Jambeiro	Vários Cargos	Fundamental / Médio / Superior	33				prefeitura-de-jambeiro-sp-suspende-concurso-publico	suspenso
 jambeiro	Jambeiro	Prefeitura de Jambeiro	Agente de Saúde e Professores	Fundamental / Superior	4				prefeitura-de-jambeiro-sp-suspende-temporariamente-o-edital-n-02-2011	suspenso
-jandira	Jandira	Prefeitura de Jandira	Vários Cargos	Fundamental / Médio / Técnico / Superior	1072			2027-01-04	prefeitura-de-jandira-sp-abre-tres-concursos-publicos-para-diversos-cargos	na
-jandira	Jandira	Prefeitura de Jandira	Vários Cargos	Fundamental / Médio / Superior	308			2027-01-04	prefeitura-de-jandira-sp-abre-concurso-publico-com-salarios-de-ate-6812	na
+jandira	Jandira	Prefeitura de Jandira	Vários Cargos	Fundamental / Médio / Técnico / Superior	1380			2027-01-04	prefeitura-de-jandira-sp-abre-quatro-concursos-com-1380-vagas-e-salarios-de-ate-12-mil	da
 jandira	Jandira	Etec - Escola Técnica - Jandira	Professor de Ensino Médio e Técnico - Processos Logísticos Empresariais	Superior	0			2025-12-12	etec-de-jandira-sp-pulica-edital-de-processo-seletivo-para-cargo-de-professor	ea
 jandira	Jandira	Etec - Escola Técnica - Jandira	Professor de Ensino Médio e Técnico	Superior	0			2025-08-27	etec-de-jandira-sp-abre-processo-seletivo-para-professores	ea
 jandira	Jandira	Etec - Escola Técnica Estadual Prefeito Braz Paschoalin	Professores de Ensino Médio e Técnico	Superior	0			2025-04-14	etec-prefeito-braz-paschoalin-abre-cinco-processos-seletivos-para-professores-em-jandira-sp	ea
@@ -28598,8 +28599,9 @@ sao-francisco	São Francisco	Câmara de São Francisco	Auxiliar de Serviços Ger
 sao-francisco	São Francisco	Prefeitura de São Francisco	Vários Cargos	Fundamental / Superior	6			2015-04-23	prefeitura-de-sao-francisco-sp-realiza-concurso-publico-e-processo-seletivo	ea
 sao-francisco	São Francisco	Prefeitura de São Francisco	Vários Cargos	Fundamental / Médio / Superior	22			2014-08-08	prefeitura-de-sao-francisco-sp-prorroga-inscricoes-de-cp-001-2014	ea
 sao-francisco	São Francisco	Prefeitura de São Francisco	Monitor de Transporte Escolar	Ensino Médio	5			2011-07-19	vagas-de-monitor-de-transporte-escolar-em-sao-francisco-sp	ea
+sao-joao-da-boa-vista	São João da Boa Vista	Unesp - Universidade Estadual Paulista	Professor Substituto	Superior	1			2026-12-15	unesp-sao-joao-da-boa-vista-sp-abre-concurso-para-professor-substituto-em-engenharia-eletrica	na
 sao-joao-da-boa-vista	São João da Boa Vista	UNESP - Universidade Estadual Paulista "Júlio de Mesquita Filho"	Professor Substituto	Superior	2			2026-12-02	unesp-prorroga-inscricoes-de-concurso-para-professor-substituto-de-engenharia-aeroespacial	na
-sao-joao-da-boa-vista	São João da Boa Vista	Prefeitura de São João da Boa Vista	Vários Cargos	Fundamental / Médio / Superior	0	CR		2026-11-24	prefeitura-de-sao-joao-da-boa-vista-sp-abre-selecao-para-cadastro-de-reserva	na
+sao-joao-da-boa-vista	São João da Boa Vista	Prefeitura de São João da Boa Vista	Cozinheiro, Assistente de Desenvolvimento da Infância, Professor de Ensino Fundamental II	Fundamental / Médio / Superior	0	CR		2026-11-24	prefeitura-de-sao-joao-da-boa-vista-sp-abre-selecao-para-cadastro-reserva-em-diversos-niveis	ea
 sao-joao-da-boa-vista	São João da Boa Vista	Prefeitura de São João da Boa Vista	Vários Cargos	Fundamental / Médio / Superior	0	CR		2026-08-25	prefeitura-de-sao-joao-da-boa-vista-sp-abre-concursos-publicos-para-cadastro-de-reserva	ea
 sao-joao-da-boa-vista	São João da Boa Vista	EE Rita Levi-Montalcini Dra. - Escola Estadual Rita Levi-Montalcini Dra.	Agente de Organização Escolar	Ensino Médio	0			2026-08-21	escola-estadual-rita-levi-montalcini-dra-sp-abre-processo-seletivo-para-o-cargo-de-agente-de-organizacao-escolar	ea
 sao-joao-da-boa-vista	São João da Boa Vista	UNESP - Universidade Estadual Paulista	Professor Substituto	Superior	1			2026-08-04	unesp-sp-abre-concurso-publico-para-professor-substituto-em-sao-joao-da-boa-vista	ea
@@ -28797,7 +28799,6 @@ sao-joao-da-boa-vista	São João da Boa Vista	AME - Ambulatório Médico de Espe
 sao-joao-da-boa-vista	São João da Boa Vista	IFSP - Instituto Federal de Educação, Ciência e Tecnologia	Professor Substituto ou Temporário	Superior	1			2013-04-30	ifsp-abre-vaga-para-professor-de-quimica-no-campus-de-sao-joao-da-boa-vista	ea
 sao-joao-da-boa-vista	São João da Boa Vista	Prefeitura de São João da Boa Vista (IPSJBV)	Servente	Fundamental	1			2013-04-08	instituto-de-previdencia-dos-servidores-publicos-de-sao-joao-da-boa-vista-sp-abre-uma-vaga-de-servente	ea
 sao-joao-da-boa-vista	São João da Boa Vista	AME - Ambulatório Médico de Especialidades - S. J. Boa Vista	Médico Ultrassonografista	Superior	1			2013-03-27	ame-de-sao-joao-da-boa-vista-prorroga-inscricao-para-medico-ultrassonografista	ea
-sao-joao-da-boa-vista	São João da Boa Vista	AME - Ambulatório Médico de Especialidades - S. J. Boa Vista	Médico Endoscopista	Superior	1			2013-03-27	ame-de-sao-joao-da-boa-vista-prorroga-inscricao-para-medico-endoscopista	ea
 sao-joao-das-duas-pontes	São João das Duas Pontes	Prefeitura de São João das Duas Pontes	Vários Cargos	Médio / Superior	3			2026-09-28	prefeitura-de-sao-joao-das-duas-pontes-sp-abre-processo-seletivo-para-diversos-cargos	ea
 sao-joao-das-duas-pontes	São João das Duas Pontes	Prefeitura de São João das Duas Pontes	Vários Cargos	Fundamental / Médio / Superior	8			2023-12-04	em-sao-joao-das-duas-pontes-sp-prefeitura-retifica-um-dos-editais-de-concurso-publico-e-processo-seletivo	ea
 sao-joao-das-duas-pontes	São João das Duas Pontes	Prefeitura de São João das Duas Pontes	Vários Cargos	Fundamental Incompleto / Fundamental / Médio / Técnico / Superior	12			2022-03-25	prefeitura-de-sao-joao-das-duas-pontes-sp-divulga-processo-seletivo	ea
@@ -29632,7 +29633,7 @@ sao-paulo	São Paulo	USP - Universidade de São Paulo	Professor Titular	Superior
 sao-paulo	São Paulo	USP - Universidade de São Paulo	Professor Doutor	Superior	1			2027-01-22	usp-abre-concurso-publico-para-professor-doutor-na-area-de-enfermagem-em-saude-coletiva	na
 sao-paulo	São Paulo	USP - Universidade de São Paulo	Professor Doutor	Superior	1			2027-01-19	usp-abre-concurso-para-professor-doutor-na-faculdade-de-ciencias-farmaceuticas	na
 sao-paulo	São Paulo	USP - Universidade de São Paulo	Professor Titular	Superior	1			2027-01-15	usp-abre-concurso-publico-para-o-cargo-de-professor-titular-no-instituto-de-relacoes-internacionais	na
-sao-paulo	São Paulo	USP - Universidade de São Paulo	Professor Doutor	Superior	1		2026-11-27	2027-01-11	usp-sp-abre-concurso-publico-para-professor-doutor-em-sistemas-de-informacao	na
+sao-paulo	São Paulo	USP - Universidade de São Paulo	Professor Doutor	Superior	1			2027-01-11	usp-sp-abre-concurso-publico-para-professor-doutor-em-sistemas-de-informacao	na
 sao-paulo	São Paulo	Coren - Conselho Regional de Enfermagem de São Paulo	Vários Cargos	Médio / Superior	76			2027-01-11	coren-sp-abre-concurso-com-76-vagas-e-salarios-de-ate-10692	na
 sao-paulo	São Paulo	USP - Universidade de São Paulo	Professor Titular	Superior	1			2027-01-08	usp-sp-abre-concurso-publico-para-o-cargo-de-professor-titular-na-area-de-sistemas-de-computacao	na
 sao-paulo	São Paulo	USP - Universidade de São Paulo	Vários Cargos	Médio / Superior	10		2026-12-01	2027-01-07	usp-sp-abre-10-novos-concursos-publicos-para-diversos-cargos	na
@@ -29642,10 +29643,10 @@ sao-paulo	São Paulo	HFASP - Hospital de Força Aérea de São Paulo	Vários Car
 sao-paulo	São Paulo	IPA - Instituto de Pesquisas Ambientais	Pesquisador Científico I A	Superior	98			2026-12-22	ipa-sp-abre-concurso-publico-para-pesquisadores-cientificos	na
 sao-paulo	São Paulo	SP-Águas - Agência de Águas do Estado de São Paulo	Vários Cargos	Superior	190			2026-12-17	sp-aguas-sp-abre-concurso-publico-com-salarios-de-ate-12070	da
 sao-paulo	São Paulo	USP - Universidade de São Paulo	Professor Titular	Superior	3			2026-12-14	usp-abre-concursos-publicos-para-professores-titulares-em-diversas-areas-de-atuacao	na
-sao-paulo	São Paulo	TJ-SP - Tribunal de Justiça do Estado de São Paulo	Oficial de Justiça, Escrevente Técnico Judiciário	Médio / Superior	132			2026-12-10	tjsp-abre-concursos-para-oficial-de-justica-e-escrevente-tecnico-judiciario	da
+sao-paulo	São Paulo	TJSP - Tribunal de Justiça do Estado de São Paulo	Oficial de Justiça, Escrevente Técnico Judiciário	Médio / Superior	132			2026-12-10	tjsp-sp-abre-concursos-com-salarios-de-ate-10276-para-oficial-e-escrevente	da
 sao-paulo	São Paulo	USP - Universidade de São Paulo	Professor de Ensino Fundamental e Médio	Superior	2			2026-12-02	usp-abre-concurso-com-duas-vagas-para-professores-de-ensino-fundamental-e-medio	na
 sao-paulo	São Paulo	FAJ - Fundação Adib Jatene	Técnico de Enfermagem, Enfermeiro	Técnico / Superior	5			2026-11-30	fundacao-adib-jatene-sp-abre-selecao-com-salarios-de-ate-7000-na-enfermagem	na
-sao-paulo	São Paulo	Sebrae - Serviço de Apoio às Micro e Pequenas Empresas de São Paulo	Analista de Projetos Setoriais Sênior	Superior	1			2026-11-27	sebrae-sp-abre-selecao-para-analista-com-salario-de-13814-000	na
+sao-paulo	São Paulo	Sebrae - Serviço de Apoio às Micro e Pequenas Empresas de São Paulo	Analista de Projetos Setoriais Sênior	Superior	1			2026-11-27	sebrae-sp-abre-selecao-para-analista-com-salario-de-13814-000	ea
 sao-paulo	São Paulo	Sebrae - Serviço de Apoio às Micro e Pequenas Empresas de São Paulo	Analista de Marketing Pleno	Superior	1			2026-11-24	sebrae-sp-abre-processo-seletivo-para-analista-de-marketing-pleno	ea
 sao-paulo	São Paulo	Faculdade Sebrae	Professor Adjunto	Superior	1			2026-11-19	faculdade-sebrae-sp-abre-selecao-para-professor-adjunto-arquiteto-de-solucoes	ea
 sao-paulo	São Paulo	UNESP - Universidade Estadual Paulista Júlio de Mesquita Filho	Professor Substituto	Superior	2			2026-11-17	unesp-abre-concursos-para-professores-substitutos-no-instituto-de-artes	ea
@@ -31094,8 +31095,9 @@ socorro	Socorro	Prefeitura de Socorro	Aux. Desenv. Infantil e Professores	Médio
 socorro	Socorro	Prefeitura de Socorro	Agente Comunitário	Fundamental	0			2011-01-28	divulgada-a-prorrogacao-das-inscricoes-dos-editais-da-prefeitura-de-socorro-sp	ea
 socorro	Socorro	Prefeitura de Socorro	Vários Cargos	Fundamental / Médio / Superior	19			2010-12-29	prefeitura-de-socorro-sp-disponibiliza-19-vagas-para-diversos-cargos	ea
 socorro	Socorro	Prefeitura de Socorro	Vários Cargos	Fundamental / Médio / Superior	92			2008-01-14	92-ofertas-de-trabalho-na-prefeitura-de-socorro-sp	ea
-sorocaba	Sorocaba	UNESP - Universidade Estadual Paulista "Júlio de Mesquita Filho"	Professor Titular	Superior	1		2026-11-25	2027-01-08	unesp-sp-abre-concurso-para-professor-titular-no-instituto-de-ciencia-e-tecnologia-de-sorocaba	na
-sorocaba	Sorocaba	UNESP - Universidade Estadual Paulista "Júlio de Mesquita Filho"	Professor Substituto	Superior	2			2026-11-27	unesp-sp-abre-concursos-publicos-para-professores-substitutos-no-campus-de-sorocaba	na
+sorocaba	Sorocaba	Unesp - Universidade Estadual Paulista	Professor titular	Superior	2		2026-12-07	2027-02-19	unesp-sp-abre-concursos-para-professor-titular-com-salario-de-25261-em-sorocaba	na
+sorocaba	Sorocaba	UNESP - Universidade Estadual Paulista "Júlio de Mesquita Filho"	Professor Titular	Superior	1			2027-01-08	unesp-sp-abre-concurso-para-professor-titular-no-instituto-de-ciencia-e-tecnologia-de-sorocaba	na
+sorocaba	Sorocaba	UNESP - Universidade Estadual Paulista "Júlio de Mesquita Filho"	Professor Substituto	Superior	2			2026-11-27	unesp-sp-abre-concursos-publicos-para-professores-substitutos-no-campus-de-sorocaba	ea
 sorocaba	Sorocaba	UNESP - Universidade Estadual Paulista "Júlio de Mesquita Filho"	Professor Assistente	Superior	1			2026-11-06	unesp-prorroga-inscricoes-de-concurso-para-professor-assistente-na-area-de-sistemas-de-computacao	ea
 sorocaba	Sorocaba	UNESP - Universidade Estadual Paulista	Assistente de Suporte Acadêmico II	Ensino Médio	1			2026-10-30	unesp-de-sorocaba-sp-abre-concurso-para-assistente-de-suporte-academico-ii	ea
 sorocaba	Sorocaba	UNESP - Universidade Estadual Paulista	Professor Substituto	Superior	1			2026-05-26	unesp-abre-concurso-para-professor-substituto-na-area-de-engenharia-de-producao-em-sorocaba-sp	ea
@@ -31293,7 +31295,6 @@ sorocaba	Sorocaba	PSFN - Procuradoria Sec. da Fazenda Nacional - Sorocaba	Estagi
 sorocaba	Sorocaba	Prefeitura de Sorocaba	Agente de Combate às Endemias	Ensino Médio	10			2022-04-19	edital-de-processo-seletivo-e-divulgado-pela-prefeitura-de-sorocaba-sp	ea
 sorocaba	Sorocaba	UNESP - Universidade Estadual Paulista - Sorocaba	Técnico-Administrativo Substituto	Ensino Médio	1			2022-04-14	unesp-um-novo-concurso-publico-e-realizado-em-sorocaba	ea
 sorocaba	Sorocaba	UNESP - Universidade Estadual Paulista	Professor Assistente	Superior	1			2022-04-14	unesp-campus-de-sorocaba-abre-concurso-publico	ea
-sorocaba	Sorocaba	UNESP - Universidade Estadual Paulista - Sorocaba	Professor Assistente	Superior	1			2022-04-11	unesp-concurso-publico-para-o-campus-de-sorocaba-tem-inscricoes-prorrogadas	ea
 sud-mennucci	Sud Mennucci	Prefeitura de Sud Mennucci	Vários Cargos	Médio / Superior	0			2025-12-05	prefeitura-de-sud-mennucci-sp-publica-retificacao-de-processo-seletivo	ea
 sud-mennucci	Sud Mennucci	Prefeitura de Sud Mennucci	Vários Cargos	Fundamental / Médio / Técnico / Superior	6			2024-07-23	prefeitura-de-sud-mennucci-sp-anuncia-reabertura-de-concurso-publico	ea
 sud-mennucci	Sud Mennucci	Prefeitura de Sud Mennucci	Vários Cargos	Médio / Superior	0			2023-09-19	prefeitura-de-sud-mennucci-sp-anuncia-novo-edital-de-processo-seletivo	ea
@@ -31834,6 +31835,7 @@ taboao-da-serra	Taboão da Serra	Prefeitura de Taboão da Serra	Vários Cargos	F
 taboao-da-serra	Taboão da Serra	Câmara de Taboão da Serra	Vários Cargos	Fundamental / Médio / Superior	23			2008-11-25	camara-de-taboao-da-serra-sp-oferece-23-vagas	ea
 taboao-da-serra	Taboão da Serra	Prefeitura de Taboão da Serra	Vários Cargos	Médio / Superior	211			2008-01-25	211-oportunidades-na-prefeitura-de-taboao-da-serra-sp	ea
 taboao-da-serra	Taboão da Serra	Prefeitura de Taboão da Serra	Vários Cargos	Superior	41			2007-08-24	taboao-da-serra-sp-vagas-para-o-cargo-de-medico	ea
+taciba	Taciba	Prefeitura de Taciba	Vários Cargos	Fundamental / Superior	0			2026-12-13	prefeitura-de-taciba-sp-abre-processo-seletivo-para-cadastro-reserva-em-cargos-de-todos-os-niveis	na
 taciba	Taciba	Prefeitura de Taciba	Agente Comunitário de Saúde	Ensino Médio	0	CR		2026-02-01	prefeitura-de-taciba-sp-promove-concurso-publico-para-agente-comunitario-de-saude	ea
 taciba	Taciba	Prefeitura de Taciba	Vários Cargos	Fundamental / Médio / Técnico / Superior	0	CR		2026-01-20	prefeitura-de-taciba-sp-retifica-processo-seletivo-e-suspende-funcoes-na-saude	ea
 taciba	Taciba	Prefeitura de Taciba	Vários Cargos	Fundamental / Médio / Técnico / Superior	0			2024-11-17	prefeitura-de-taciba-sp-abre-novo-edital-de-processo-seletivo	ea
@@ -31881,6 +31883,7 @@ taguai	Taguaí	Prefeitura de Taguaí	Vários Cargos	Fundamental	11			2012-02-10	
 taguai	Taguaí	Prefeitura de Taguaí	Zelador	Fundamental	1			2011-05-09	vaga-de-zelador-na-camara-de-taguai-sp	ea
 taguai	Taguaí	Prefeitura de Taguaí	Vários Cargos	Ensino Médio	20			2010-12-08	20-vagas-para-cargos-de-nivel-medio-ofertadas-na-prefeitura-de-taguai-sp	ea
 taguai	Taguaí	Prefeitura de Taguaí	Orientador Social	Ensino Médio	1			2010-06-08	prefeitura-de-taguai-sp-abre-29-vagas-para-diversos-cargos-de-ate-1977	ea
+taiacu	Taiaçu	Prefeitura de Taiaçu	Vários Cargos	Superior	1		2026-11-30	2026-12-18	prefeitura-de-taiacu-sp-abre-concurso-publico-com-salarios-de-5130-na-area-da-educacao	na
 taiacu	Taiaçu	Prefeitura de Taiaçu	Vários Cargos	Superior	0			2026-12-10	prefeitura-de-taiacu-sp-abre-processo-seletivo-para-professores-e-psicopedagogo	na
 taiacu	Taiaçu	Prefeitura de Taiaçu	Vários Cargos	Fundamental / Médio / Técnico / Superior	0			2025-01-27	prefeitura-de-taiacu-sp-publica-retificacao-de-processo-seletivo	ea
 taiacu	Taiaçu	Prefeitura de Taiaçu	Vários Cargos	Médio / Superior	0			2024-02-21	prefeitura-de-taiacu-sp-abre-inscricoes-para-novo-processo-seletivo	ea
@@ -32660,6 +32663,7 @@ tatui	Tatuí	Fatec - Faculdade de Tecnologia - Tatuí	Auxiliar de Docente	Técni
 tatui	Tatuí	Etec - Escola Técnica - Tatuí	Professor de Ensino Médio e Técnico	Superior	0			2017-10-16	em-tatui-sp-a-etec-anuncia-novo-concurso-publico-para-docente	ea
 tatui	Tatuí	Fatec - Faculdade de Tecnologia - Tatuí	Professor de Ensino Superior	Superior	1			2017-09-06	fatec-de-tatui-sp-abre-processo-seletivo-destinado-a-professor	ea
 tatui	Tatuí	Fatec - Faculdade de Tecnologia - Tatuí	Professor de Ensino Superior	Superior	1			2017-09-04	novo-processo-seletivo-e-realizado-pela-fatec-de-tatui-sp	ea
+taubate	Taubaté	UNITAU - Universidade de Taubaté	Vários Cargos	Fundamental / Médio / Técnico / Superior	4			2026-12-21	unitau-sp-abre-concursos-publicos-com-vagas-em-taubate-e-caraguatatuba	na
 taubate	Taubaté	FUNCABES - Fundação Caixa Beneficente dos Servidores da Universidade de Taubaté	Vários Cargos	Médio / Superior	33			2026-11-08	funcabes-sp-abre-processo-seletivo-com-vagas-imediatas-e-cadastro-de-reserva	ea
 taubate	Taubaté	Prefeitura de Taubaté	Auditor Fiscal de Tributos Municipais	Superior	2			2026-08-17	prefeitura-de-taubate-sp-abre-concurso-para-auditor-fiscal-de-tributos-municipais	ea
 taubate	Taubaté	Prefeitura de Taubaté	Vários Cargos	Fundamental / Médio / Técnico / Superior	239			2026-08-09	prefeitura-de-taubate-sp-retifica-concursos-publicos-com-vagas-para-diversas-areas	ea
@@ -32859,7 +32863,6 @@ taubate	Taubaté	Prefeitura de Taubaté	Professores	Médio / Superior	44			2015-
 taubate	Taubaté	FATEC Taubaté	Professores	Superior	2			2015-11-10	fatec-de-taubate-sp-abre-dois-concursos-para-professores	ea
 taubate	Taubaté	FATEC Taubaté	Professores	Superior	2			2015-11-10	fatec-de-taubate-sp-anuncia-concursos	ea
 taubate	Taubaté	Prefeitura de Taubaté	Vários Cargos	Médio / Superior	6			2015-10-15	prefeitura-de-taubate-sp-retifica-concurso-publico-com-seis-vagas	ea
-taubate	Taubaté	FATEC Taubaté	Professor de Ensino Superior	Superior	1			2015-09-28	fatec-de-taubate-sp-abre-processo-seletivo-para-docente	ea
 tejupa	Tejupá	Prefeitura de Tejupá	Vários Cargos	Fundamental / Superior	4			2026-02-01	prefeitura-de-tejupa-sp-abre-concurso-publico-com-salarios-de-ate-7-mil	ea
 tejupa	Tejupá	Prefeitura de Tejupá	Professores	Superior	0			2024-05-30	prefeitura-de-tejupa-sp-abre-processo-seletivo-para-professor	ea
 tejupa	Tejupá	Prefeitura de Tejupá	Vários Cargos	Fundamental / Médio / Superior	6			2022-09-26	prefeitura-de-tejupa-sp-divulga-retificacao-ao-novo-concurso-publico	ea
